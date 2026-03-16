@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moriarty Group – Store Forms</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #1a6b35;
+    --green-dark: #124d26;
+    --green-light: #e8f3ed;
+    --green-mid: #2d8a4e;
+    --accent: #c8102e;
+    --gold: #c9a84c;
+    --ink: #1a1a1a;
+    --muted: #6b7280;
+    --border: #d1d5db;
+    --bg: #f7f6f2;
+    --white: #ffffff;
+    --card-shadow: 0 2px 12px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06);
+  }
+
+- { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+font-family: ‘DM Sans’, sans-serif;
+background: var(–bg);
+color: var(–ink);
+min-height: 100vh;
+}
+
+/* ── Header ── */
+header {
+background: var(–green-dark);
+color: white;
+padding: 0;
+position: sticky;
+top: 0;
+z-index: 100;
+box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+.header-inner {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 14px 24px;
+}
+.header-brand {
+display: flex;
+align-items: center;
+gap: 12px;
+}
+.sv-badge {
+background: white;
+color: var(–green-dark);
+font-family: ‘Playfair Display’, serif;
+font-size: 11px;
+font-weight: 700;
+padding: 4px 8px;
+border-radius: 4px;
+letter-spacing: 0.5px;
+}
+.header-title {
+font-family: ‘DM Sans’, sans-serif;
+font-weight: 600;
+font-size: 15px;
+letter-spacing: 0.3px;
+color: rgba(255,255,255,0.95);
+}
+.header-sub {
+font-size: 11px;
+color: rgba(255,255,255,0.6);
+font-weight: 300;
+}
+.nav-back {
+background: rgba(255,255,255,0.12);
+border: none;
+color: white;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 13px;
+padding: 8px 14px;
+border-radius: 6px;
+cursor: pointer;
+display: none;
+align-items: center;
+gap: 6px;
+transition: background 0.2s;
+}
+.nav-back:hover { background: rgba(255,255,255,0.2); }
+.nav-back.visible { display: flex; }
+
+/* ── Main shell ── */
+.shell { max-width: 680px; margin: 0 auto; padding: 0 16px 80px; }
+
+/* ── Home screen ── */
+.home { padding-top: 28px; }
+.home-greeting {
+text-align: center;
+margin-bottom: 28px;
+}
+.home-greeting h1 {
+font-family: ‘Playfair Display’, serif;
+font-size: 26px;
+color: var(–green-dark);
+margin-bottom: 4px;
+}
+.home-greeting p {
+color: var(–muted);
+font-size: 13px;
+font-weight: 300;
+}
+
+.section-label {
+font-size: 10px;
+font-weight: 600;
+letter-spacing: 1.5px;
+text-transform: uppercase;
+color: var(–muted);
+margin-bottom: 10px;
+padding-left: 2px;
+}
+
+.form-cards { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+
+.form-card {
+background: var(–white);
+border-radius: 12px;
+padding: 16px 18px;
+display: flex;
+align-items: center;
+gap: 14px;
+cursor: pointer;
+box-shadow: var(–card-shadow);
+border: 1.5px solid transparent;
+transition: all 0.18s ease;
+text-decoration: none;
+color: inherit;
+}
+.form-card:hover {
+border-color: var(–green);
+transform: translateY(-1px);
+box-shadow: 0 6px 20px rgba(26,107,53,0.12);
+}
+.form-card-icon {
+width: 46px;
+height: 46px;
+border-radius: 10px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 22px;
+flex-shrink: 0;
+}
+.icon-green { background: var(–green-light); }
+.icon-amber { background: #fef3c7; }
+.icon-blue { background: #eff6ff; }
+.icon-red { background: #fef2f2; }
+
+.form-card-text { flex: 1; }
+.form-card-name {
+font-weight: 600;
+font-size: 15px;
+color: var(–ink);
+margin-bottom: 2px;
+}
+.form-card-desc {
+font-size: 12px;
+color: var(–muted);
+font-weight: 300;
+}
+.form-card-arrow {
+color: var(–border);
+font-size: 18px;
+flex-shrink: 0;
+}
+
+/* ── Form screens ── */
+.form-screen { display: none; padding-top: 20px; }
+.form-screen.active { display: block; }
+
+.form-header {
+background: var(–white);
+border-radius: 12px;
+padding: 18px;
+margin-bottom: 14px;
+box-shadow: var(–card-shadow);
+}
+.form-title {
+font-family: ‘Playfair Display’, serif;
+font-size: 20px;
+color: var(–green-dark);
+margin-bottom: 4px;
+}
+.form-number {
+font-family: ‘DM Mono’, monospace;
+font-size: 11px;
+color: var(–accent);
+font-weight: 500;
+letter-spacing: 1px;
+}
+
+.store-pills {
+display: flex;
+gap: 6px;
+flex-wrap: wrap;
+margin-top: 12px;
+}
+.store-pill {
+padding: 5px 12px;
+border-radius: 20px;
+border: 1.5px solid var(–border);
+font-size: 11px;
+font-weight: 500;
+cursor: pointer;
+background: transparent;
+color: var(–muted);
+font-family: ‘DM Sans’, sans-serif;
+transition: all 0.15s;
+}
+.store-pill.selected {
+background: var(–green);
+border-color: var(–green);
+color: white;
+}
+
+/* ── Field groups ── */
+.field-card {
+background: var(–white);
+border-radius: 12px;
+padding: 16px 18px;
+margin-bottom: 10px;
+box-shadow: var(–card-shadow);
+}
+.field-card-title {
+font-size: 10px;
+font-weight: 600;
+letter-spacing: 1.2px;
+text-transform: uppercase;
+color: var(–muted);
+margin-bottom: 12px;
+}
+.field-row {
+display: grid;
+gap: 10px;
+margin-bottom: 10px;
+}
+.field-row.cols-2 { grid-template-columns: 1fr 1fr; }
+.field-row.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+.field-row:last-child { margin-bottom: 0; }
+
+.field { display: flex; flex-direction: column; gap: 4px; }
+.field label {
+font-size: 11px;
+font-weight: 500;
+color: var(–muted);
+letter-spacing: 0.3px;
+}
+.field input, .field select, .field textarea {
+border: 1.5px solid var(–border);
+border-radius: 8px;
+padding: 9px 11px;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 14px;
+color: var(–ink);
+background: var(–bg);
+transition: border-color 0.15s;
+outline: none;
+width: 100%;
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+border-color: var(–green);
+background: white;
+}
+.field textarea { resize: vertical; min-height: 60px; }
+.field input[type=“date”] { font-family: ‘DM Mono’, monospace; font-size: 13px; }
+
+/* ── Line items table ── */
+.line-items-wrap { overflow-x: auto; }
+.line-table {
+width: 100%;
+border-collapse: collapse;
+font-size: 13px;
+min-width: 480px;
+}
+.line-table th {
+text-align: left;
+padding: 8px 10px;
+font-size: 10px;
+font-weight: 600;
+letter-spacing: 1px;
+text-transform: uppercase;
+color: var(–muted);
+border-bottom: 1.5px solid var(–border);
+}
+.line-table td {
+padding: 6px 4px;
+vertical-align: middle;
+}
+.line-table input {
+border: 1.5px solid transparent;
+border-radius: 6px;
+padding: 6px 8px;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 13px;
+width: 100%;
+background: var(–bg);
+outline: none;
+transition: border-color 0.15s;
+}
+.line-table input:focus {
+border-color: var(–green);
+background: white;
+}
+.line-table .td-num input { text-align: right; font-family: ‘DM Mono’, monospace; }
+.del-row {
+background: none;
+border: none;
+color: #dc2626;
+cursor: pointer;
+font-size: 16px;
+padding: 4px 6px;
+border-radius: 4px;
+opacity: 0.5;
+transition: opacity 0.15s;
+}
+.del-row:hover { opacity: 1; }
+.add-row-btn {
+margin-top: 10px;
+background: var(–green-light);
+border: 1.5px dashed var(–green);
+color: var(–green-dark);
+font-family: ‘DM Sans’, sans-serif;
+font-size: 13px;
+font-weight: 500;
+padding: 8px 14px;
+border-radius: 8px;
+cursor: pointer;
+width: 100%;
+transition: background 0.15s;
+}
+.add-row-btn:hover { background: #d4e8dc; }
+
+/* ── Totals ── */
+.totals-row {
+display: flex;
+justify-content: flex-end;
+gap: 16px;
+margin-top: 10px;
+padding-top: 10px;
+border-top: 1.5px solid var(–border);
+font-size: 13px;
+}
+.total-item { text-align: right; }
+.total-item .total-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(–muted); }
+.total-item .total-val {
+font-family: ‘DM Mono’, monospace;
+font-size: 17px;
+font-weight: 500;
+color: var(–green-dark);
+margin-top: 2px;
+}
+
+/* ── Photo evidence ── */
+.photo-upload-area {
+border: 2px dashed var(–border);
+border-radius: 10px;
+padding: 24px;
+text-align: center;
+cursor: pointer;
+transition: all 0.2s;
+background: var(–bg);
+position: relative;
+}
+.photo-upload-area:hover {
+border-color: var(–green);
+background: var(–green-light);
+}
+.photo-upload-area input[type=“file”] {
+position: absolute;
+inset: 0;
+opacity: 0;
+cursor: pointer;
+width: 100%;
+height: 100%;
+}
+.photo-icon { font-size: 28px; margin-bottom: 6px; }
+.photo-label { font-size: 13px; font-weight: 500; color: var(–green-dark); }
+.photo-sub { font-size: 11px; color: var(–muted); margin-top: 2px; }
+
+.photo-preview-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 8px;
+margin-top: 12px;
+}
+.photo-thumb {
+position: relative;
+aspect-ratio: 1;
+border-radius: 8px;
+overflow: hidden;
+background: var(–border);
+}
+.photo-thumb img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+.photo-thumb-remove {
+position: absolute;
+top: 4px;
+right: 4px;
+background: rgba(0,0,0,0.6);
+border: none;
+border-radius: 50%;
+width: 22px;
+height: 22px;
+color: white;
+font-size: 12px;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+/* ── Signature pad ── */
+.sig-pad-wrap {
+border: 1.5px solid var(–border);
+border-radius: 10px;
+overflow: hidden;
+background: white;
+}
+.sig-pad-label {
+padding: 8px 12px;
+font-size: 10px;
+font-weight: 600;
+text-transform: uppercase;
+letter-spacing: 1px;
+color: var(–muted);
+border-bottom: 1px solid var(–border);
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.sig-clear {
+background: none;
+border: none;
+font-size: 11px;
+color: var(–accent);
+cursor: pointer;
+font-family: ‘DM Sans’, sans-serif;
+font-weight: 500;
+}
+canvas#sigCanvas {
+display: block;
+width: 100%;
+touch-action: none;
+cursor: crosshair;
+}
+.sig-hint {
+text-align: center;
+font-size: 11px;
+color: var(–muted);
+padding: 6px;
+border-top: 1px solid var(–border);
+}
+
+/* ── Date stamp ── */
+.stamp-row {
+display: flex;
+align-items: center;
+gap: 10px;
+padding: 12px 14px;
+background: var(–green-light);
+border-radius: 8px;
+margin-top: 10px;
+}
+.stamp-icon { font-size: 16px; }
+.stamp-text { font-family: ‘DM Mono’, monospace; font-size: 12px; color: var(–green-dark); font-weight: 500; }
+
+/* ── Submit ── */
+.submit-section { padding: 16px 0 0; }
+.btn-submit {
+width: 100%;
+background: var(–green);
+color: white;
+border: none;
+border-radius: 12px;
+padding: 16px;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 15px;
+font-weight: 600;
+cursor: pointer;
+letter-spacing: 0.3px;
+transition: background 0.2s, transform 0.1s;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
+}
+.btn-submit:hover { background: var(–green-dark); }
+.btn-submit:active { transform: scale(0.99); }
+
+/* ── Submitted records ── */
+.records-section { margin-top: 20px; }
+.record-item {
+background: white;
+border-radius: 10px;
+padding: 14px 16px;
+margin-bottom: 8px;
+box-shadow: var(–card-shadow);
+border-left: 4px solid var(–green);
+}
+.record-top {
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+margin-bottom: 6px;
+}
+.record-id {
+font-family: ‘DM Mono’, monospace;
+font-size: 11px;
+color: var(–accent);
+font-weight: 500;
+letter-spacing: 0.5px;
+}
+.record-ts {
+font-size: 10px;
+color: var(–muted);
+font-family: ‘DM Mono’, monospace;
+}
+.record-main { font-weight: 500; font-size: 14px; margin-bottom: 2px; }
+.record-meta { font-size: 11px; color: var(–muted); }
+.record-photos {
+display: flex;
+gap: 6px;
+margin-top: 8px;
+}
+.record-photo-thumb {
+width: 44px;
+height: 44px;
+border-radius: 6px;
+object-fit: cover;
+border: 1.5px solid var(–border);
+}
+.has-sig {
+display: inline-flex;
+align-items: center;
+gap: 4px;
+font-size: 10px;
+color: var(–green-dark);
+background: var(–green-light);
+padding: 2px 8px;
+border-radius: 20px;
+margin-top: 6px;
+font-weight: 500;
+}
+
+/* ── Toast ── */
+.toast {
+position: fixed;
+bottom: 28px;
+left: 50%;
+transform: translateX(-50%) translateY(80px);
+background: var(–ink);
+color: white;
+padding: 12px 20px;
+border-radius: 10px;
+font-size: 13px;
+font-weight: 500;
+z-index: 999;
+transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+white-space: nowrap;
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ── Checklist rows ── */
+.check-row {
+display: flex;
+align-items: center;
+padding: 10px 0;
+border-bottom: 1px solid var(–border);
+gap: 12px;
+}
+.check-row:last-child { border-bottom: none; }
+.check-row label { flex: 1; font-size: 13px; font-weight: 400; cursor: pointer; }
+.check-toggle {
+position: relative;
+width: 38px;
+height: 22px;
+flex-shrink: 0;
+}
+.check-toggle input { opacity: 0; width: 0; height: 0; }
+.check-slider {
+position: absolute;
+inset: 0;
+background: var(–border);
+border-radius: 11px;
+cursor: pointer;
+transition: background 0.2s;
+}
+.check-slider::after {
+content: ‘’;
+position: absolute;
+width: 16px;
+height: 16px;
+left: 3px;
+top: 3px;
+background: white;
+border-radius: 50%;
+transition: transform 0.2s;
+box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.check-toggle input:checked + .check-slider { background: var(–green); }
+.check-toggle input:checked + .check-slider::after { transform: translateX(16px); }
+
+.empty-state {
+text-align: center;
+padding: 32px 16px;
+color: var(–muted);
+font-size: 13px;
+}
+.empty-state .empty-icon { font-size: 36px; margin-bottom: 8px; }
+
+@media (max-width: 400px) {
+.field-row.cols-3 { grid-template-columns: 1fr 1fr; }
+}
+</style>
+
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-brand">
+      <div class="sv-badge">S</div>
+      <div>
+        <div class="header-title">Moriarty Group</div>
+        <div class="header-sub">Store Forms &amp; Records</div>
+      </div>
+    </div>
+    <button class="nav-back" id="navBack" onclick="goHome()">← Back</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <!-- ══ HOME ══ -->
+
+  <div class="home" id="screenHome">
+    <div class="home-greeting">
+      <h1>Store Forms</h1>
+      <p>SuperValu · Moriarty Group · Est. 1987</p>
+    </div>
+
+```
+<div class="section-label">📋 Purchase & Delivery</div>
+<div class="form-cards">
+  <div class="form-card" onclick="openForm('purchase')">
+    <div class="form-card-icon icon-green">🧾</div>
+    <div class="form-card-text">
+      <div class="form-card-name">Purchase Docket Log</div>
+      <div class="form-card-desc">Grocery, cigs, wine, beers, spirits — week ending</div>
+    </div>
+    <div class="form-card-arrow">›</div>
+  </div>
+  <div class="form-card" onclick="openForm('inwards')">
+    <div class="form-card-icon icon-blue">📦</div>
+    <div class="form-card-text">
+      <div class="form-card-name">Goods Inwards</div>
+      <div class="form-card-desc">Beef, lamb, pork, fish, poultry, F&V, bakery</div>
+    </div>
+    <div class="form-card-arrow">›</div>
+  </div>
+</div>
+
+<div class="section-label">↩️ Returns & Transfers</div>
+<div class="form-cards">
+  <div class="form-card" onclick="openForm('returns')">
+    <div class="form-card-icon icon-red">🔄</div>
+    <div class="form-card-text">
+      <div class="form-card-name">Goods Returned for Credit</div>
+      <div class="form-card-desc">Return docket with reason &amp; cost value</div>
+    </div>
+    <div class="form-card-arrow">›</div>
+  </div>
+  <div class="form-card" onclick="openForm('transfer')">
+    <div class="form-card-icon icon-amber">🔀</div>
+    <div class="form-card-text">
+      <div class="form-card-name">Inter Store Transfer</div>
+      <div class="form-card-desc">Cost price, retail price, total — store to store</div>
+    </div>
+    <div class="form-card-arrow">›</div>
+  </div>
+</div>
+
+<!-- Recent records -->
+<div class="section-label">🗂 Recent Submissions</div>
+<div id="recentList">
+  <div class="empty-state">
+    <div class="empty-icon">📄</div>
+    No forms submitted yet
+  </div>
+</div>
+```
+
+  </div>
+
+  <!-- ══ PURCHASE DOCKET LOG ══ -->
+
+  <div class="form-screen" id="screenPurchase">
+    <div class="form-header">
+      <div class="form-number">PURCHASE DOCKET · FORM 1871</div>
+      <div class="form-title">Purchase Docket Log</div>
+      <div class="store-pills" id="storePillsPurchase">
+        <button class="store-pill selected" onclick="selectStore(this,'purchase')">Balbriggan</button>
+        <button class="store-pill" onclick="selectStore(this,'purchase')">Palmerstown</button>
+        <button class="store-pill" onclick="selectStore(this,'purchase')">Skerries</button>
+      </div>
+    </div>
+
+```
+<div class="field-card">
+  <div class="field-card-title">Period</div>
+  <div class="field-row cols-2">
+    <div class="field">
+      <label>Week Ending</label>
+      <input type="date" id="pWeekEnding">
+    </div>
+    <div class="field">
+      <label>Mgr. Sign</label>
+      <input type="text" placeholder="Manager name">
+    </div>
+  </div>
+</div>
+
+<div class="field-card">
+  <div class="field-card-title">Docket Lines</div>
+  <div class="line-items-wrap">
+    <table class="line-table" id="purchaseTable">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Supplier</th>
+          <th>Docket #</th>
+          <th style="width:60px">Groc</th>
+          <th style="width:60px">Cigs</th>
+          <th style="width:60px">Wine</th>
+          <th style="width:60px">Beers</th>
+          <th style="width:60px">Spirits</th>
+          <th style="width:60px">Non Food</th>
+          <th style="width:60px">News</th>
+          <th style="width:60px">Promo</th>
+          <th style="width:80px">Total €</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="purchaseTbody"></tbody>
+    </table>
+  </div>
+  <button class="add-row-btn" onclick="addPurchaseRow()">+ Add Line</button>
+  <div class="totals-row">
+    <div class="total-item">
+      <div class="total-label">Grand Total</div>
+      <div class="total-val" id="purchaseTotal">€ 0.00</div>
+    </div>
+  </div>
+</div>
+
+<div class="field-card">
+  <div class="field-card-title">📷 Photo Evidence</div>
+  <div class="photo-upload-area" onclick="triggerPhoto('purchasePhotos')">
+    <input type="file" id="purchasePhotos" accept="image/*" multiple onchange="handlePhotos(this,'purchasePhotoGrid')">
+    <div class="photo-icon">📸</div>
+    <div class="photo-label">Attach delivery dockets / invoices</div>
+    <div class="photo-sub">Tap to photograph or choose from library</div>
+  </div>
+  <div class="photo-preview-grid" id="purchasePhotoGrid"></div>
+</div>
+
+<div class="field-card">
+  <div class="field-card-title">✍️ Manager Signature</div>
+  <div class="sig-pad-wrap">
+    <div class="sig-pad-label">
+      Sign here
+      <button class="sig-clear" onclick="clearSig('sigPurchase')">Clear</button>
+    </div>
+    <canvas id="sigPurchase" height="130"></canvas>
+    <div class="sig-hint">Draw signature with finger or mouse</div>
+  </div>
+  <div class="stamp-row" id="stampPurchase">
+    <span class="stamp-icon">🕐</span>
+    <span class="stamp-text" id="stampPurchaseText">—</span>
+  </div>
+</div>
+
+<div class="submit-section">
+  <button class="btn-submit" onclick="submitForm('purchase')">✓ &nbsp;Submit Purchase Log</button>
+</div>
+```
+
+  </div>
+
+  <!-- ══ GOODS INWARDS ══ -->
+
+  <div class="form-screen" id="screenInwards">
+    <div class="form-header">
+      <div class="form-number">GOODS INWARDS · FORM 2523</div>
+      <div class="form-title">Goods Inwards Record</div>
+      <div class="store-pills" id="storePillsInwards">
+        <button class="store-pill selected" onclick="selectStore(this,'inwards')">Balbriggan</button>
+        <button class="store-pill" onclick="selectStore(this,'inwards')">Palmerstown</button>
+        <button class="store-pill" onclick="selectStore(this,'inwards')">Skerries</button>
+      </div>
+    </div>
+
+```
+<div class="field-card">
+  <div class="field-card-title">Delivery Details</div>
+  <div class="field-row cols-2">
+    <div class="field"><label>Date</label><input type="date" id="inDate"></div>
+    <div class="field"><label>Supplier</label><input type="text" placeholder="e.g. Musgrave Depot"></div>
+  </div>
+  <div class="field-row cols-2">
+    <div class="field"><label>Musgrave Depot No.</label><input type="text" placeholder="Depot number"></div>
+    <div class="field"><label>Ref No.</label><input type="text" placeholder="Reference"></div>
+  </div>
+</div>
+
+<div class="field-card">
+  <div class="field-card-title">Departments Received</div>
+  <div class="line-items-wrap">
+    <table class="line-table" id="inwardsTable">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Supplier / Ref</th>
+          <th style="width:64px">Beef</th>
+          <th style="width:64px">Lamb</th>
+          <th style="width:64px">Pork</th>
+          <th style="width:64px">Fish</th>
+          <th style="width:64px">Poultry</th>
+          <th style="width:64px">F&amp;V</th>
+          <th style="width:64px">Deli</th>
+          <th style="width:64px">Bakery</th>
+          <th style="width:64px">Provs</th>
+          <th style="width:80px">Total €</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="inwardsTbody"></tbody>
+    </table>
+  </div>
+  <button class="add-row-btn" onclick="addInwardsRow()">+ Add Delivery Line</button>
+  <div class="totals-row">
+    <div class="total-item">
+      <div class="total-label">Sub Total (this page)</div>
+      <div class="total-val" id="inwardsSubTotal">€ 0.00</div>
+    </div>
+    <div class="total-item">
+      <div class="total-label">Total</div>
+      <div class="total-val" id="inwardsTotal">€ 0.00</div>
+    </div>
+  </div>
+</div>
+
+<div class="field-card">
+  <div class="field-card-title">📷 Photo Evidence</div>
+  <div class="photo-upload-area">
+    <input type="file" id="inwardsPhotos" accept="image/*" multiple onchange="handlePhotos(this,'inwardsPhotoGrid')">
+    <div class="photo-icon">📸</div>
+    <div class="photo-label">Photograph delivery dockets</div>
+    <div class="photo-sub">Attach delivery note images here</div>
+  </div>
+  <div class="photo-preview-grid" id="inwardsPhotoGrid"></div>
+</div>
+
+<div class="field-card">
+  <div class="field-card-title">✍️ Receiver Signature</div>
+  <div class="sig-pad-wrap">
+    <div class="sig-pad-label">Receiving Manager
+      <button class="sig-clear" onclick="clearSig('sigInwards')">Clear</button>
+    </div>
+    <canvas id="sigInwards" height="130"></canvas>
+    <div class="sig-hint">Draw signature with finger or mouse</div>
+  </div>
+  <div class="stamp-row">
+    <span class="stamp-icon">🕐</span>
+    <span class="stamp-text" id="stampInwardsText">—</span>
+  </div>
+</div>
+
+<div class="submit-section">
+  <button class="btn-submit" onclick="submitForm('inwards')">✓ &nbsp;Submit Goods Inwards</button>
+</div>
+```
+
+  </div>
+
+  <!-- ══ GOODS RETURNED ══ -->
+
+  <div class="form-screen" id="screenReturns">
+    <div class="form-header">
+      <div class="form-number">GOODS RETURNED · FORM <span id="returnsFormNum" style="color:var(--accent);font-weight:700">0480</span></div>
+      <div class="form-title">Goods Returned for Credit</div>
+      <div class="store-pills" id="storePillsReturns">
+        <button class="store-pill selected" onclick="selectStore(this,'returns')">Balbriggan</button>
+        <button class="store-pill" onclick="selectStore(this,'returns')">Palmerstown</button>
+        <button class="store-pill" onclick="selectStore(this,'returns')">Skerries</button>
+      </div>
+    </div>
+
+```
+<div class="field-card">
+  <div class="field-card-title">Return Details</div>
+  <div class="field-row cols-2">
+    <div class="field"><label>To (Supplier)</label><input type="text" id="retTo" placeholder="Supplier name"></div>
+    <div class="field"><label>Dept.</label><input type="text" id="retDept" placeholder="e.g. Deli"></div>
+  </div>
+  <div class="field-row cols-2">
+    <div class="field"><label>Ref.</label><input type="text" id="retRef" placeholder="Reference number"></div>
+    <div class="field"><label>Date</label><input type="date" id="retDate"></div>
+  </div>
+  <div class="field-row">
+    <div class="field"><label>Reason for Return</label><textarea id="retReason" placeholder="Describe reason for return…"></textarea></div>
+  </div>
+</div>
+
+<div class="field-card">
+  <div class="field-card-title">Items Returned</div>
+  <div class="line-items-wrap">
+    <table class="line-table" id="returnsTable">
+      <thead>
+        <tr>
+          <th style="width:70px">Qty/Units</th>
+          <th>Description of Goods</th>
+          <th style="width:100px">Cost per Box €</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="returnsTbody"></tbody>
+    </table>
+  </div>
+  <button class="add-row-btn" onclick="addReturnsRow()">+ Add Item</button>
+  <div class="totals-row">
+    <div class="total-item">
+      <div class="total-label">Total Credit</div>
+      <div class="total-val" id="returnsTotal">€ 0.00</div>
+    </div>
+  </div>
+</div>
+
+<div class="field-card">
+  <div class="field-card-title">📷 Photo Evidence</div>
+  <div class="photo-upload-area">
+    <input type="file" id="returnsPhotos" accept="image/*" multiple onchange="handlePhotos(this,'returnsPhotoGrid')">
+    <div class="photo-icon">📸</div>
+    <div class="photo-label">Photograph returned goods</div>
+    <div class="photo-sub">Capture condition of returned items</div>
+  </div>
+  <div class="photo-preview-grid" id="returnsPhotoGrid"></div>
+</div>
+
+<div class="field-card">
+  <div class="field-card-title">✍️ Signatures</div>
+  <div style="margin-bottom:10px;font-size:12px;color:var(--muted)">Your Rep. (goods accepted)</div>
+  <div class="sig-pad-wrap" style="margin-bottom:14px">
+    <div class="sig-pad-label">Rep Signature
+      <button class="sig-clear" onclick="clearSig('sigReturnsRep')">Clear</button>
+    </div>
+    <canvas id="sigReturnsRep" height="100"></canvas>
+  </div>
+  <div style="margin-bottom:10px;font-size:12px;color:var(--muted)">Branch Manager</div>
+  <div class="sig-pad-wrap">
+    <div class="sig-pad-label">Branch Manager Signature
+      <button class="sig-clear" onclick="clearSig('sigReturnsMgr')">Clear</button>
+    </div>
+    <canvas id="sigReturnsMgr" height="100"></canvas>
+    <div class="sig-hint">Draw signature with finger or mouse</div>
+  </div>
+  <div class="stamp-row" style="margin-top:10px">
+    <span class="stamp-icon">🕐</span>
+    <span class="stamp-text" id="stampReturnsText">—</span>
+  </div>
+</div>
+
+<div class="submit-section">
+  <button class="btn-submit" onclick="submitForm('returns')">✓ &nbsp;Submit Return Docket</button>
+</div>
+```
+
+  </div>
+
+  <!-- ══ INTER STORE TRANSFER ══ -->
+
+  <div class="form-screen" id="screenTransfer">
+    <div class="form-header">
+      <div class="form-number">INTER STORE TRANSFER · DOCKET <span id="transferFormNum" style="color:var(--accent);font-weight:700">0851</span></div>
+      <div class="form-title">Inter Store Transfer Docket</div>
+    </div>
+
+```
+<div class="field-card">
+  <div class="field-card-title">Transfer Details</div>
+  <div class="field-row cols-2">
+    <div class="field"><label>To (Store)</label><input type="text" id="trTo" placeholder="Receiving store"></div>
+    <div class="field"><label>From (Store)</label><input type="text" id="trFrom" placeholder="Dispatching store"></div>
+  </div>
+  <div class="field-row cols-3">
+    <div class="field"><label>Dept.</label><input type="text" id="trDept" placeholder="Department"></div>
+    <div class="field"><label>Ref.</label><input type="text" id="trRef" placeholder="Reference"></div>
+    <div class="field"><label>Date</label><input type="date" id="trDate"></div>
+  </div>
+</div>
+
+<div class="field-card">
+  <div class="field-card-title">Goods Transferred</div>
+  <div class="line-items-wrap">
+    <table class="line-table" id="transferTable">
+      <thead>
+        <tr>
+          <th style="width:70px">Qty/Units</th>
+          <th>Description of Goods</th>
+          <th style="width:90px">Cost Price €</th>
+          <th style="width:90px">Retail Price €</th>
+          <th style="width:100px">Total Amount €</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="transferTbody"></tbody>
+    </table>
+  </div>
+  <button class="add-row-btn" onclick="addTransferRow()">+ Add Item</button>
+  <div class="totals-row">
+    <div class="total-item">
+      <div class="total-label">Total Amount</div>
+      <div class="total-val" id="transferTotal">€ 0.00</div>
+    </div>
+  </div>
+</div>
+
+<div class="field-card">
+  <div class="field-card-title">📷 Photo Evidence</div>
+  <div class="photo-upload-area">
+    <input type="file" id="transferPhotos" accept="image/*" multiple onchange="handlePhotos(this,'transferPhotoGrid')">
+    <div class="photo-icon">📸</div>
+    <div class="photo-label">Photograph transfer goods</div>
+    <div class="photo-sub">Document goods leaving / arriving store</div>
+  </div>
+  <div class="photo-preview-grid" id="transferPhotoGrid"></div>
+</div>
+
+<div class="field-card">
+  <div class="field-card-title">✍️ Signatures</div>
+  <div style="margin-bottom:10px;font-size:12px;color:var(--muted)">Receiving Manager</div>
+  <div class="sig-pad-wrap" style="margin-bottom:14px">
+    <div class="sig-pad-label">Receiving Manager Signature
+      <button class="sig-clear" onclick="clearSig('sigTransferRecv')">Clear</button>
+    </div>
+    <canvas id="sigTransferRecv" height="100"></canvas>
+  </div>
+  <div style="margin-bottom:10px;font-size:12px;color:var(--muted)">Dispatching Branch Manager</div>
+  <div class="sig-pad-wrap">
+    <div class="sig-pad-label">Dispatching Manager Signature
+      <button class="sig-clear" onclick="clearSig('sigTransferDisp')">Clear</button>
+    </div>
+    <canvas id="sigTransferDisp" height="100"></canvas>
+    <div class="sig-hint">Draw signature with finger or mouse</div>
+  </div>
+  <div class="stamp-row" style="margin-top:10px">
+    <span class="stamp-icon">🕐</span>
+    <span class="stamp-text" id="stampTransferText">—</span>
+  </div>
+</div>
+
+<div class="submit-section">
+  <button class="btn-submit" onclick="submitForm('transfer')">✓ &nbsp;Submit Transfer Docket</button>
+</div>
+```
+
+  </div>
+
+</div><!-- /shell -->
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── Navigation ──────────────────────────────────────────────
+let currentForm = null;
+
+function openForm(form) {
+  document.getElementById('screenHome').style.display = 'none';
+  document.querySelectorAll('.form-screen').forEach(s => s.classList.remove('active'));
+  const map = {purchase:'screenPurchase', inwards:'screenInwards', returns:'screenReturns', transfer:'screenTransfer'};
+  document.getElementById(map[form]).classList.add('active');
+  document.getElementById('navBack').classList.add('visible');
+  currentForm = form;
+  updateStamps();
+  window.scrollTo(0,0);
+}
+
+function goHome() {
+  document.getElementById('screenHome').style.display = '';
+  document.querySelectorAll('.form-screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('navBack').classList.remove('visible');
+  currentForm = null;
+  renderRecent();
+}
+
+function selectStore(btn, form) {
+  btn.closest('.store-pills').querySelectorAll('.store-pill').forEach(p => p.classList.remove('selected'));
+  btn.classList.add('selected');
+}
+
+// ── Date stamps ─────────────────────────────────────────────
+function fmtStamp() {
+  return new Date().toLocaleString('en-IE', {
+    day:'2-digit', month:'short', year:'numeric',
+    hour:'2-digit', minute:'2-digit', second:'2-digit'
+  });
+}
+function updateStamps() {
+  const t = fmtStamp();
+  ['Purchase','Inwards','Returns','Transfer'].forEach(k => {
+    const el = document.getElementById('stamp'+k+'Text');
+    if (el) el.textContent = t;
+  });
+  // set today on date fields
+  const today = new Date().toISOString().split('T')[0];
+  ['pWeekEnding','inDate','retDate','trDate'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el && !el.value) el.value = today;
+  });
+}
+
+// ── Signature pads ───────────────────────────────────────────
+const sigs = {};
+function initSig(id) {
+  if (sigs[id]) return;
+  const canvas = document.getElementById(id);
+  if (!canvas) return;
+  // size canvas to display size
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = canvas.offsetWidth || 500;
+  const ctx = canvas.getContext('2d');
+  ctx.strokeStyle = '#1a1a1a';
+  ctx.lineWidth = 2;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+  let drawing = false;
+  let lastX = 0, lastY = 0;
+
+  function getPos(e) {
+    const r = canvas.getBoundingClientRect();
+    const src = e.touches ? e.touches[0] : e;
+    return [(src.clientX - r.left) * (canvas.width / r.width),
+            (src.clientY - r.top) * (canvas.height / r.height)];
+  }
+  function start(e) { e.preventDefault(); drawing = true; [lastX, lastY] = getPos(e); }
+  function move(e) {
+    if (!drawing) return; e.preventDefault();
+    const [x, y] = getPos(e);
+    ctx.beginPath(); ctx.moveTo(lastX, lastY); ctx.lineTo(x, y); ctx.stroke();
+    lastX = x; lastY = y;
+  }
+  function end() { drawing = false; }
+
+  canvas.addEventListener('mousedown', start);
+  canvas.addEventListener('mousemove', move);
+  canvas.addEventListener('mouseup', end);
+  canvas.addEventListener('mouseleave', end);
+  canvas.addEventListener('touchstart', start, {passive:false});
+  canvas.addEventListener('touchmove', move, {passive:false});
+  canvas.addEventListener('touchend', end);
+  sigs[id] = { canvas, ctx, isEmpty: () => {
+    const data = ctx.getImageData(0,0,canvas.width,canvas.height).data;
+    return !data.some(v => v !== 0);
+  }};
+}
+
+function clearSig(id) {
+  const s = sigs[id];
+  if (s) s.ctx.clearRect(0, 0, s.canvas.width, s.canvas.height);
+}
+
+function getSigDataUrl(id) {
+  const s = sigs[id];
+  if (!s || s.isEmpty()) return null;
+  return s.canvas.toDataURL();
+}
+
+// Init all sigs after layout
+setTimeout(() => {
+  ['sigPurchase','sigInwards','sigReturnsRep','sigReturnsMgr','sigTransferRecv','sigTransferDisp'].forEach(initSig);
+}, 200);
+
+// Re-init when form opens (canvas needs to be visible)
+const origOpen = window.openForm;
+window.openForm = function(form) {
+  origOpen(form);
+  setTimeout(() => {
+    ['sigPurchase','sigInwards','sigReturnsRep','sigReturnsMgr','sigTransferRecv','sigTransferDisp'].forEach(id => {
+      const canvas = document.getElementById(id);
+      if (canvas && canvas.offsetParent) {
+        if (!sigs[id]) initSig(id);
+        else { canvas.width = canvas.offsetWidth || 500; }
+      }
+    });
+  }, 50);
+};
+
+// ── Photo uploads ─────────────────────────────────────────────
+function handlePhotos(input, gridId) {
+  const grid = document.getElementById(gridId);
+  const files = Array.from(input.files);
+  files.forEach(file => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      const wrap = document.createElement('div');
+      wrap.className = 'photo-thumb';
+      const img = document.createElement('img');
+      img.src = e.target.result;
+      const btn = document.createElement('button');
+      btn.className = 'photo-thumb-remove';
+      btn.innerHTML = '×';
+      btn.onclick = () => wrap.remove();
+      wrap.appendChild(img);
+      wrap.appendChild(btn);
+      grid.appendChild(wrap);
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+function triggerPhoto(id) {
+  // let native file input handle it via overlap
+}
+
+// ── Line item tables ─────────────────────────────────────────
+
+// Purchase
+function addPurchaseRow() {
+  const tbody = document.getElementById('purchaseTbody');
+  const tr = document.createElement('tr');
+  const fields = ['date','supplier','docket','groc','cigs','wine','beers','spirits','nonfood','news','promo','total'];
+  const nums = ['groc','cigs','wine','beers','spirits','nonfood','news','promo','total'];
+  tr.innerHTML = fields.map(f => {
+    const isNum = nums.includes(f);
+    const isDate = f === 'date';
+    return `<td class="${isNum?'td-num':''}"><input type="${isDate?'date':isNum?'number':'text'}" ${isNum?'step="0.01" min="0" placeholder="0.00"':''} ${isDate?`value="${new Date().toISOString().split('T')[0]}"`:''} oninput="calcPurchaseTotal(this)" /></td>`;
+  }).join('') + `<td><button class="del-row" onclick="this.closest('tr').remove();calcAllPurchase()">×</button></td>`;
+  tbody.appendChild(tr);
+}
+
+function calcPurchaseTotal(input) {
+  const row = input.closest('tr');
+  const cells = row.querySelectorAll('td.td-num input');
+  let sum = 0;
+  cells.forEach((c,i) => { if (i < cells.length-1) sum += parseFloat(c.value)||0; });
+  cells[cells.length-1].value = sum.toFixed(2);
+  calcAllPurchase();
+}
+
+function calcAllPurchase() {
+  let grand = 0;
+  document.querySelectorAll('#purchaseTbody tr').forEach(tr => {
+    const cells = tr.querySelectorAll('td.td-num input');
+    if (cells.length) grand += parseFloat(cells[cells.length-1].value)||0;
+  });
+  document.getElementById('purchaseTotal').textContent = '€ '+grand.toFixed(2);
+}
+
+// Inwards
+function addInwardsRow() {
+  const tbody = document.getElementById('inwardsTbody');
+  const tr = document.createElement('tr');
+  const numFields = ['beef','lamb','pork','fish','poultry','fv','deli','bakery','provs','total'];
+  tr.innerHTML = `<td><input type="date" value="${new Date().toISOString().split('T')[0]}"></td>
+  <td><input type="text" placeholder="Supplier / ref"></td>` +
+  numFields.map(f => `<td class="td-num"><input type="number" step="0.01" min="0" placeholder="0.00" oninput="calcInwardsTotal(this)"></td>`).join('')+
+  `<td><button class="del-row" onclick="this.closest('tr').remove();calcAllInwards()">×</button></td>`;
+  tbody.appendChild(tr);
+}
+
+function calcInwardsTotal(input) {
+  const row = input.closest('tr');
+  const cells = row.querySelectorAll('td.td-num input');
+  let sum = 0;
+  cells.forEach((c,i) => { if (i < cells.length-1) sum += parseFloat(c.value)||0; });
+  cells[cells.length-1].value = sum.toFixed(2);
+  calcAllInwards();
+}
+
+function calcAllInwards() {
+  let grand = 0;
+  document.querySelectorAll('#inwardsTbody tr').forEach(tr => {
+    const cells = tr.querySelectorAll('td.td-num input');
+    if (cells.length) grand += parseFloat(cells[cells.length-1].value)||0;
+  });
+  const f = '€ '+grand.toFixed(2);
+  document.getElementById('inwardsSubTotal').textContent = f;
+  document.getElementById('inwardsTotal').textContent = f;
+}
+
+// Returns
+function addReturnsRow() {
+  const tbody = document.getElementById('returnsTbody');
+  const tr = document.createElement('tr');
+  tr.innerHTML = `<td><input type="text" placeholder="e.g. 1 box"></td>
+  <td><input type="text" placeholder="Description of goods"></td>
+  <td class="td-num"><input type="number" step="0.01" min="0" placeholder="0.00" oninput="calcReturnsTotal()"></td>
+  <td><button class="del-row" onclick="this.closest('tr').remove();calcReturnsTotal()">×</button></td>`;
+  tbody.appendChild(tr);
+}
+
+function calcReturnsTotal() {
+  let t = 0;
+  document.querySelectorAll('#returnsTbody td.td-num input').forEach(i => t += parseFloat(i.value)||0);
+  document.getElementById('returnsTotal').textContent = '€ '+t.toFixed(2);
+}
+
+// Transfer
+function addTransferRow() {
+  const tbody = document.getElementById('transferTbody');
+  const tr = document.createElement('tr');
+  tr.innerHTML = `<td><input type="text" placeholder="Qty"></td>
+  <td><input type="text" placeholder="Description of goods"></td>
+  <td class="td-num"><input type="number" step="0.01" min="0" placeholder="0.00" oninput="calcTransferTotal(this)"></td>
+  <td class="td-num"><input type="number" step="0.01" min="0" placeholder="0.00" oninput="calcTransferTotal(this)"></td>
+  <td class="td-num"><input type="number" step="0.01" min="0" placeholder="0.00" readonly style="background:var(--green-light)"></td>
+  <td><button class="del-row" onclick="this.closest('tr').remove();recalcAllTransfer()">×</button></td>`;
+  tbody.appendChild(tr);
+}
+
+function calcTransferTotal(input) {
+  const row = input.closest('tr');
+  const cells = row.querySelectorAll('td.td-num input');
+  const cost = parseFloat(cells[0].value)||0;
+  const retail = parseFloat(cells[1].value)||0;
+  cells[2].value = retail.toFixed(2);
+  recalcAllTransfer();
+}
+
+function recalcAllTransfer() {
+  let t = 0;
+  document.querySelectorAll('#transferTbody tr').forEach(tr => {
+    const cells = tr.querySelectorAll('td.td-num input');
+    if (cells.length >= 3) t += parseFloat(cells[2].value)||0;
+  });
+  document.getElementById('transferTotal').textContent = '€ '+t.toFixed(2);
+}
+
+// ── Submissions ───────────────────────────────────────────────
+const records = [];
+
+function submitForm(form) {
+  const stamp = fmtStamp();
+  const storeMap = {
+    purchase: 'storePillsPurchase',
+    inwards: 'storePillsInwards',
+    returns: 'storePillsReturns',
+    transfer: null
+  };
+  let store = 'Balbriggan';
+  if (storeMap[form]) {
+    const sel = document.querySelector('#'+storeMap[form]+' .store-pill.selected');
+    if (sel) store = sel.textContent;
+  }
+
+  const formNames = {
+    purchase: 'Purchase Docket Log',
+    inwards: 'Goods Inwards Record',
+    returns: 'Goods Returned for Credit',
+    transfer: 'Inter Store Transfer'
+  };
+
+  const formNums = {
+    purchase: '1871',
+    inwards: '2523',
+    returns: document.getElementById('returnsFormNum')?.textContent || '0480',
+    transfer: document.getElementById('transferFormNum')?.textContent || '0851'
+  };
+
+  // collect photos
+  const gridMap = {
+    purchase: 'purchasePhotoGrid',
+    inwards: 'inwardsPhotoGrid',
+    returns: 'returnsPhotoGrid',
+    transfer: 'transferPhotoGrid'
+  };
+  const photos = [];
+  document.querySelectorAll('#'+gridMap[form]+' img').forEach(img => photos.push(img.src));
+
+  // sig
+  const sigMap = {
+    purchase: ['sigPurchase'],
+    inwards: ['sigInwards'],
+    returns: ['sigReturnsRep','sigReturnsMgr'],
+    transfer: ['sigTransferRecv','sigTransferDisp']
+  };
+  let hasSig = false;
+  sigMap[form].forEach(id => { if (getSigDataUrl(id)) hasSig = true; });
+
+  const rec = {
+    id: formNums[form],
+    form,
+    name: formNames[form],
+    store,
+    stamp,
+    photos: photos.slice(0,4),
+    hasSig,
+    total: document.getElementById({
+      purchase:'purchaseTotal', inwards:'inwardsTotal',
+      returns:'returnsTotal', transfer:'transferTotal'
+    }[form])?.textContent || ''
+  };
+
+  records.unshift(rec);
+  showToast('✅  '+formNames[form]+' submitted');
+  goHome();
+}
+
+// ── Render recent ─────────────────────────────────────────────
+function renderRecent() {
+  const list = document.getElementById('recentList');
+  if (!records.length) {
+    list.innerHTML = '<div class="empty-state"><div class="empty-icon">📄</div>No forms submitted yet</div>';
+    return;
+  }
+  list.innerHTML = records.slice(0,10).map(r => `
+    <div class="record-item">
+      <div class="record-top">
+        <div class="record-id">FORM ${r.id} · ${r.store.toUpperCase()}</div>
+        <div class="record-ts">${r.stamp}</div>
+      </div>
+      <div class="record-main">${r.name}</div>
+      <div class="record-meta">${r.total ? 'Total: '+r.total : ''}</div>
+      ${r.photos.length ? `<div class="record-photos">${r.photos.map(p=>`<img class="record-photo-thumb" src="${p}">`).join('')}</div>` : ''}
+      ${r.hasSig ? '<div class="has-sig">✍️ Signed</div>' : ''}
+    </div>
+  `).join('');
+}
+
+// ── Toast ─────────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ── Boot ──────────────────────────────────────────────────────
+// Seed one row in each form
+addPurchaseRow();
+addInwardsRow();
+addReturnsRow();
+addTransferRow();
+</script>
+
+</body>
+</html>
