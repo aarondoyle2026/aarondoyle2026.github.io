@@ -26,14 +26,14 @@
 
 body {
 font-family: ‘DM Sans’, sans-serif;
-background: var(–bg);
-color: var(–ink);
+background: #f7f6f2;
+color: #1a1a1a;
 min-height: 100vh;
 }
 
 /* ── Header ── */
 header {
-background: var(–green-dark);
+background: #124d26;
 color: white;
 padding: 0;
 position: sticky;
@@ -54,7 +54,7 @@ gap: 12px;
 }
 .sv-badge {
 background: white;
-color: var(–green-dark);
+color: #124d26;
 font-family: ‘Playfair Display’, serif;
 font-size: 11px;
 font-weight: 700;
@@ -103,11 +103,11 @@ margin-bottom: 28px;
 .home-greeting h1 {
 font-family: ‘Playfair Display’, serif;
 font-size: 26px;
-color: var(–green-dark);
+color: #124d26;
 margin-bottom: 4px;
 }
 .home-greeting p {
-color: var(–muted);
+color: #6b7280;
 font-size: 13px;
 font-weight: 300;
 }
@@ -117,7 +117,7 @@ font-size: 10px;
 font-weight: 600;
 letter-spacing: 1.5px;
 text-transform: uppercase;
-color: var(–muted);
+color: #6b7280;
 margin-bottom: 10px;
 padding-left: 2px;
 }
@@ -125,21 +125,21 @@ padding-left: 2px;
 .form-cards { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
 
 .form-card {
-background: var(–white);
+background: #ffffff;
 border-radius: 12px;
 padding: 16px 18px;
 display: flex;
 align-items: center;
 gap: 14px;
 cursor: pointer;
-box-shadow: var(–card-shadow);
+box-shadow: 0 2px 12px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06);
 border: 1.5px solid transparent;
 transition: all 0.18s ease;
 text-decoration: none;
 color: inherit;
 }
 .form-card:hover {
-border-color: var(–green);
+border-color: #1a6b35;
 transform: translateY(-1px);
 box-shadow: 0 6px 20px rgba(26,107,53,0.12);
 }
@@ -153,7 +153,7 @@ justify-content: center;
 font-size: 22px;
 flex-shrink: 0;
 }
-.icon-green { background: var(–green-light); }
+.icon-green { background: #e8f3ed; }
 .icon-amber { background: #fef3c7; }
 .icon-blue { background: #eff6ff; }
 .icon-red { background: #fef2f2; }
@@ -162,16 +162,16 @@ flex-shrink: 0;
 .form-card-name {
 font-weight: 600;
 font-size: 15px;
-color: var(–ink);
+color: #1a1a1a;
 margin-bottom: 2px;
 }
 .form-card-desc {
 font-size: 12px;
-color: var(–muted);
+color: #6b7280;
 font-weight: 300;
 }
 .form-card-arrow {
-color: var(–border);
+color: #d1d5db;
 font-size: 18px;
 flex-shrink: 0;
 }
@@ -181,22 +181,22 @@ flex-shrink: 0;
 .form-screen.active { display: block; }
 
 .form-header {
-background: var(–white);
+background: #ffffff;
 border-radius: 12px;
 padding: 18px;
 margin-bottom: 14px;
-box-shadow: var(–card-shadow);
+box-shadow: 0 2px 12px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06);
 }
 .form-title {
 font-family: ‘Playfair Display’, serif;
 font-size: 20px;
-color: var(–green-dark);
+color: #124d26;
 margin-bottom: 4px;
 }
 .form-number {
 font-family: ‘DM Mono’, monospace;
 font-size: 11px;
-color: var(–accent);
+color: #c8102e;
 font-weight: 500;
 letter-spacing: 1px;
 }
@@ -210,35 +210,35 @@ margin-top: 12px;
 .store-pill {
 padding: 5px 12px;
 border-radius: 20px;
-border: 1.5px solid var(–border);
+border: 1.5px solid #d1d5db;
 font-size: 11px;
 font-weight: 500;
 cursor: pointer;
 background: transparent;
-color: var(–muted);
+color: #6b7280;
 font-family: ‘DM Sans’, sans-serif;
 transition: all 0.15s;
 }
 .store-pill.selected {
-background: var(–green);
-border-color: var(–green);
+background: #1a6b35;
+border-color: #1a6b35;
 color: white;
 }
 
 /* ── Field groups ── */
 .field-card {
-background: var(–white);
+background: #ffffff;
 border-radius: 12px;
 padding: 16px 18px;
 margin-bottom: 10px;
-box-shadow: var(–card-shadow);
+box-shadow: 0 2px 12px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06);
 }
 .field-card-title {
 font-size: 10px;
 font-weight: 600;
 letter-spacing: 1.2px;
 text-transform: uppercase;
-color: var(–muted);
+color: #6b7280;
 margin-bottom: 12px;
 }
 .field-row {
@@ -254,23 +254,23 @@ margin-bottom: 10px;
 .field label {
 font-size: 11px;
 font-weight: 500;
-color: var(–muted);
+color: #6b7280;
 letter-spacing: 0.3px;
 }
 .field input, .field select, .field textarea {
-border: 1.5px solid var(–border);
+border: 1.5px solid #d1d5db;
 border-radius: 8px;
 padding: 9px 11px;
 font-family: ‘DM Sans’, sans-serif;
 font-size: 14px;
-color: var(–ink);
-background: var(–bg);
+color: #1a1a1a;
+background: #f7f6f2;
 transition: border-color 0.15s;
 outline: none;
 width: 100%;
 }
 .field input:focus, .field select:focus, .field textarea:focus {
-border-color: var(–green);
+border-color: #1a6b35;
 background: white;
 }
 .field textarea { resize: vertical; min-height: 60px; }
@@ -291,8 +291,8 @@ font-size: 10px;
 font-weight: 600;
 letter-spacing: 1px;
 text-transform: uppercase;
-color: var(–muted);
-border-bottom: 1.5px solid var(–border);
+color: #6b7280;
+border-bottom: 1.5px solid #d1d5db;
 }
 .line-table td {
 padding: 6px 4px;
@@ -305,12 +305,12 @@ padding: 6px 8px;
 font-family: ‘DM Sans’, sans-serif;
 font-size: 13px;
 width: 100%;
-background: var(–bg);
+background: #f7f6f2;
 outline: none;
 transition: border-color 0.15s;
 }
 .line-table input:focus {
-border-color: var(–green);
+border-color: #1a6b35;
 background: white;
 }
 .line-table .td-num input { text-align: right; font-family: ‘DM Mono’, monospace; }
@@ -328,9 +328,9 @@ transition: opacity 0.15s;
 .del-row:hover { opacity: 1; }
 .add-row-btn {
 margin-top: 10px;
-background: var(–green-light);
-border: 1.5px dashed var(–green);
-color: var(–green-dark);
+background: #e8f3ed;
+border: 1.5px dashed #1a6b35;
+color: #124d26;
 font-family: ‘DM Sans’, sans-serif;
 font-size: 13px;
 font-weight: 500;
@@ -349,33 +349,33 @@ justify-content: flex-end;
 gap: 16px;
 margin-top: 10px;
 padding-top: 10px;
-border-top: 1.5px solid var(–border);
+border-top: 1.5px solid #d1d5db;
 font-size: 13px;
 }
 .total-item { text-align: right; }
-.total-item .total-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(–muted); }
+.total-item .total-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #6b7280; }
 .total-item .total-val {
 font-family: ‘DM Mono’, monospace;
 font-size: 17px;
 font-weight: 500;
-color: var(–green-dark);
+color: #124d26;
 margin-top: 2px;
 }
 
 /* ── Photo evidence ── */
 .photo-upload-area {
-border: 2px dashed var(–border);
+border: 2px dashed #d1d5db;
 border-radius: 10px;
 padding: 24px;
 text-align: center;
 cursor: pointer;
 transition: all 0.2s;
-background: var(–bg);
+background: #f7f6f2;
 position: relative;
 }
 .photo-upload-area:hover {
-border-color: var(–green);
-background: var(–green-light);
+border-color: #1a6b35;
+background: #e8f3ed;
 }
 .photo-upload-area input[type=“file”] {
 position: absolute;
@@ -386,8 +386,8 @@ width: 100%;
 height: 100%;
 }
 .photo-icon { font-size: 28px; margin-bottom: 6px; }
-.photo-label { font-size: 13px; font-weight: 500; color: var(–green-dark); }
-.photo-sub { font-size: 11px; color: var(–muted); margin-top: 2px; }
+.photo-label { font-size: 13px; font-weight: 500; color: #124d26; }
+.photo-sub { font-size: 11px; color: #6b7280; margin-top: 2px; }
 
 .photo-preview-grid {
 display: grid;
@@ -400,7 +400,7 @@ position: relative;
 aspect-ratio: 1;
 border-radius: 8px;
 overflow: hidden;
-background: var(–border);
+background: #d1d5db;
 }
 .photo-thumb img {
 width: 100%;
@@ -426,7 +426,7 @@ justify-content: center;
 
 /* ── Signature pad ── */
 .sig-pad-wrap {
-border: 1.5px solid var(–border);
+border: 1.5px solid #d1d5db;
 border-radius: 10px;
 overflow: hidden;
 background: white;
@@ -437,8 +437,8 @@ font-size: 10px;
 font-weight: 600;
 text-transform: uppercase;
 letter-spacing: 1px;
-color: var(–muted);
-border-bottom: 1px solid var(–border);
+color: #6b7280;
+border-bottom: 1px solid #d1d5db;
 display: flex;
 justify-content: space-between;
 align-items: center;
@@ -447,7 +447,7 @@ align-items: center;
 background: none;
 border: none;
 font-size: 11px;
-color: var(–accent);
+color: #c8102e;
 cursor: pointer;
 font-family: ‘DM Sans’, sans-serif;
 font-weight: 500;
@@ -461,9 +461,9 @@ cursor: crosshair;
 .sig-hint {
 text-align: center;
 font-size: 11px;
-color: var(–muted);
+color: #6b7280;
 padding: 6px;
-border-top: 1px solid var(–border);
+border-top: 1px solid #d1d5db;
 }
 
 /* ── Date stamp ── */
@@ -472,18 +472,18 @@ display: flex;
 align-items: center;
 gap: 10px;
 padding: 12px 14px;
-background: var(–green-light);
+background: #e8f3ed;
 border-radius: 8px;
 margin-top: 10px;
 }
 .stamp-icon { font-size: 16px; }
-.stamp-text { font-family: ‘DM Mono’, monospace; font-size: 12px; color: var(–green-dark); font-weight: 500; }
+.stamp-text { font-family: ‘DM Mono’, monospace; font-size: 12px; color: #124d26; font-weight: 500; }
 
 /* ── Submit ── */
 .submit-section { padding: 16px 0 0; }
 .btn-submit {
 width: 100%;
-background: var(–green);
+background: #1a6b35;
 color: white;
 border: none;
 border-radius: 12px;
@@ -499,7 +499,7 @@ align-items: center;
 justify-content: center;
 gap: 8px;
 }
-.btn-submit:hover { background: var(–green-dark); }
+.btn-submit:hover { background: #124d26; }
 .btn-submit:active { transform: scale(0.99); }
 
 /* ── Submitted records ── */
@@ -509,8 +509,8 @@ background: white;
 border-radius: 10px;
 padding: 14px 16px;
 margin-bottom: 8px;
-box-shadow: var(–card-shadow);
-border-left: 4px solid var(–green);
+box-shadow: 0 2px 12px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06);
+border-left: 4px solid #1a6b35;
 }
 .record-top {
 display: flex;
@@ -521,17 +521,17 @@ margin-bottom: 6px;
 .record-id {
 font-family: ‘DM Mono’, monospace;
 font-size: 11px;
-color: var(–accent);
+color: #c8102e;
 font-weight: 500;
 letter-spacing: 0.5px;
 }
 .record-ts {
 font-size: 10px;
-color: var(–muted);
+color: #6b7280;
 font-family: ‘DM Mono’, monospace;
 }
 .record-main { font-weight: 500; font-size: 14px; margin-bottom: 2px; }
-.record-meta { font-size: 11px; color: var(–muted); }
+.record-meta { font-size: 11px; color: #6b7280; }
 .record-photos {
 display: flex;
 gap: 6px;
@@ -542,15 +542,15 @@ width: 44px;
 height: 44px;
 border-radius: 6px;
 object-fit: cover;
-border: 1.5px solid var(–border);
+border: 1.5px solid #d1d5db;
 }
 .has-sig {
 display: inline-flex;
 align-items: center;
 gap: 4px;
 font-size: 10px;
-color: var(–green-dark);
-background: var(–green-light);
+color: #124d26;
+background: #e8f3ed;
 padding: 2px 8px;
 border-radius: 20px;
 margin-top: 6px;
@@ -563,7 +563,7 @@ position: fixed;
 bottom: 28px;
 left: 50%;
 transform: translateX(-50%) translateY(80px);
-background: var(–ink);
+background: #1a1a1a;
 color: white;
 padding: 12px 20px;
 border-radius: 10px;
@@ -580,7 +580,7 @@ white-space: nowrap;
 display: flex;
 align-items: center;
 padding: 10px 0;
-border-bottom: 1px solid var(–border);
+border-bottom: 1px solid #d1d5db;
 gap: 12px;
 }
 .check-row:last-child { border-bottom: none; }
@@ -595,7 +595,7 @@ flex-shrink: 0;
 .check-slider {
 position: absolute;
 inset: 0;
-background: var(–border);
+background: #d1d5db;
 border-radius: 11px;
 cursor: pointer;
 transition: background 0.2s;
@@ -612,13 +612,13 @@ border-radius: 50%;
 transition: transform 0.2s;
 box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
-.check-toggle input:checked + .check-slider { background: var(–green); }
+.check-toggle input:checked + .check-slider { background: #1a6b35; }
 .check-toggle input:checked + .check-slider::after { transform: translateX(16px); }
 
 .empty-state {
 text-align: center;
 padding: 32px 16px;
-color: var(–muted);
+color: #6b7280;
 font-size: 13px;
 }
 .empty-state .empty-icon { font-size: 36px; margin-bottom: 8px; }
@@ -902,7 +902,7 @@ font-size: 13px;
 
   <div class="form-screen" id="screenReturns">
     <div class="form-header">
-      <div class="form-number">GOODS RETURNED · FORM <span id="returnsFormNum" style="color:var(--accent);font-weight:700">0480</span></div>
+      <div class="form-number">GOODS RETURNED · FORM <span id="returnsFormNum" style="color:#c8102e;font-weight:700">0480</span></div>
       <div class="form-title">Goods Returned for Credit</div>
       <div class="store-pills" id="storePillsReturns">
         <button class="store-pill selected" onclick="selectStore(this,'returns')">Balbriggan</button>
@@ -964,14 +964,14 @@ font-size: 13px;
 
 <div class="field-card">
   <div class="field-card-title">✍️ Signatures</div>
-  <div style="margin-bottom:10px;font-size:12px;color:var(--muted)">Your Rep. (goods accepted)</div>
+  <div style="margin-bottom:10px;font-size:12px;color:#6b7280">Your Rep. (goods accepted)</div>
   <div class="sig-pad-wrap" style="margin-bottom:14px">
     <div class="sig-pad-label">Rep Signature
       <button class="sig-clear" onclick="clearSig('sigReturnsRep')">Clear</button>
     </div>
     <canvas id="sigReturnsRep" height="100"></canvas>
   </div>
-  <div style="margin-bottom:10px;font-size:12px;color:var(--muted)">Branch Manager</div>
+  <div style="margin-bottom:10px;font-size:12px;color:#6b7280">Branch Manager</div>
   <div class="sig-pad-wrap">
     <div class="sig-pad-label">Branch Manager Signature
       <button class="sig-clear" onclick="clearSig('sigReturnsMgr')">Clear</button>
@@ -996,7 +996,7 @@ font-size: 13px;
 
   <div class="form-screen" id="screenTransfer">
     <div class="form-header">
-      <div class="form-number">INTER STORE TRANSFER · DOCKET <span id="transferFormNum" style="color:var(--accent);font-weight:700">0851</span></div>
+      <div class="form-number">INTER STORE TRANSFER · DOCKET <span id="transferFormNum" style="color:#c8102e;font-weight:700">0851</span></div>
       <div class="form-title">Inter Store Transfer Docket</div>
     </div>
 
@@ -1053,14 +1053,14 @@ font-size: 13px;
 
 <div class="field-card">
   <div class="field-card-title">✍️ Signatures</div>
-  <div style="margin-bottom:10px;font-size:12px;color:var(--muted)">Receiving Manager</div>
+  <div style="margin-bottom:10px;font-size:12px;color:#6b7280">Receiving Manager</div>
   <div class="sig-pad-wrap" style="margin-bottom:14px">
     <div class="sig-pad-label">Receiving Manager Signature
       <button class="sig-clear" onclick="clearSig('sigTransferRecv')">Clear</button>
     </div>
     <canvas id="sigTransferRecv" height="100"></canvas>
   </div>
-  <div style="margin-bottom:10px;font-size:12px;color:var(--muted)">Dispatching Branch Manager</div>
+  <div style="margin-bottom:10px;font-size:12px;color:#6b7280">Dispatching Branch Manager</div>
   <div class="sig-pad-wrap">
     <div class="sig-pad-label">Dispatching Manager Signature
       <button class="sig-clear" onclick="clearSig('sigTransferDisp')">Clear</button>
@@ -1328,7 +1328,7 @@ function addTransferRow() {
   <td><input type="text" placeholder="Description of goods"></td>
   <td class="td-num"><input type="number" step="0.01" min="0" placeholder="0.00" oninput="calcTransferTotal(this)"></td>
   <td class="td-num"><input type="number" step="0.01" min="0" placeholder="0.00" oninput="calcTransferTotal(this)"></td>
-  <td class="td-num"><input type="number" step="0.01" min="0" placeholder="0.00" readonly style="background:var(--green-light)"></td>
+  <td class="td-num"><input type="number" step="0.01" min="0" placeholder="0.00" readonly style="background:#e8f3ed"></td>
   <td><button class="del-row" onclick="this.closest('tr').remove();recalcAllTransfer()">×</button></td>`;
   tbody.appendChild(tr);
 }
