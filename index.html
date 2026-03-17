@@ -1464,11 +1464,12 @@ function calcAllPurchase() {
 function addInwardsRow() {
   const tbody = document.getElementById('inwardsTbody');
   const tr = document.createElement('tr');
-  const numFields = ['beef','lamb','pork','fish','poultry','fv','deli','bakery','provs','total'];
-  tr.innerHTML = `<td><input type="date" value="${new Date().toISOString().split('T')[0]}"></td>
-  <td><input type="text" placeholder="Supplier / ref"></td>` +
-  numFields.map(f => `<td class="td-num"><input type="number" step="0.01" min="0" placeholder="0.00" oninput="calcInwardsTotal(this)"></td>`).join('')+
-  `<td><button class="del-row" onclick="this.closest('tr').remove();calcAllInwards()">×</button></td>`;
+  var numFields = ['beef','lamb','pork','fish','poultry','fv','deli','bakery','provs','total'];
+  var today2 = new Date().toISOString().split('T')[0];
+  tr.innerHTML = '<td><input type="date" value="' + today2 + '"></td>' +
+  '<td><input type="text" placeholder="Supplier / ref"></td>' +
+  numFields.map(function(f){ return '<td class="td-num"><input type="number" step="0.01" min="0" placeholder="0.00" oninput="calcInwardsTotal(this)"></td>'; }).join('') +
+  '<td><button class="del-row" onclick="this.closest(\'tr\').remove();calcAllInwards()">\xd7</button></td>';
   tbody.appendChild(tr);
 }
 
@@ -1496,10 +1497,10 @@ function calcAllInwards() {
 function addReturnsRow() {
   const tbody = document.getElementById('returnsTbody');
   const tr = document.createElement('tr');
-  tr.innerHTML = `<td><input type="text" placeholder="e.g. 1 box"></td>
-  <td><input type="text" placeholder="Description of goods"></td>
-  <td class="td-num"><input type="number" step="0.01" min="0" placeholder="0.00" oninput="calcReturnsTotal()"></td>
-  <td><button class="del-row" onclick="this.closest('tr').remove();calcReturnsTotal()">×</button></td>`;
+  tr.innerHTML = '<td><input type="text" placeholder="e.g. 1 box"></td>' +
+  '<td><input type="text" placeholder="Description of goods"></td>' +
+  '<td class="td-num"><input type="number" step="0.01" min="0" placeholder="0.00" oninput="calcReturnsTotal()"></td>' +
+  '<td><button class="del-row" onclick="this.closest(\'tr\').remove();calcReturnsTotal()">\xd7</button></td>';
   tbody.appendChild(tr);
 }
 
@@ -1513,12 +1514,12 @@ function calcReturnsTotal() {
 function addTransferRow() {
   const tbody = document.getElementById('transferTbody');
   const tr = document.createElement('tr');
-  tr.innerHTML = `<td><input type="text" placeholder="Qty"></td>
-  <td><input type="text" placeholder="Description of goods"></td>
-  <td class="td-num"><input type="number" step="0.01" min="0" placeholder="0.00" oninput="calcTransferTotal(this)"></td>
-  <td class="td-num"><input type="number" step="0.01" min="0" placeholder="0.00" oninput="calcTransferTotal(this)"></td>
-  <td class="td-num"><input type="number" step="0.01" min="0" placeholder="0.00" readonly style="background:#e8f3ed"></td>
-  <td><button class="del-row" onclick="this.closest('tr').remove();recalcAllTransfer()">×</button></td>`;
+  tr.innerHTML = '<td><input type="text" placeholder="Qty"></td>' +
+  '<td><input type="text" placeholder="Description of goods"></td>' +
+  '<td class="td-num"><input type="number" step="0.01" min="0" placeholder="0.00" oninput="calcTransferTotal(this)"></td>' +
+  '<td class="td-num"><input type="number" step="0.01" min="0" placeholder="0.00" oninput="calcTransferTotal(this)"></td>' +
+  '<td class="td-num"><input type="number" step="0.01" min="0" placeholder="0.00" readonly style="background:#e8f3ed"></td>' +
+  '<td><button class="del-row" onclick="this.closest(\'tr\').remove();recalcAllTransfer()">×</button></td>';
   tbody.appendChild(tr);
 }
 
@@ -1734,23 +1735,26 @@ async function submitForm(form) {
 
 // ── Render recent ─────────────────────────────────────────────
 function renderRecent() {
-  const list = document.getElementById('recentList');
+  var list = document.getElementById('recentList');
   if (!records.length) {
-    list.innerHTML = '<div class="empty-state"><div class="empty-icon">📄</div>No forms submitted yet</div>';
+    list.innerHTML = '<div class="empty-state"><div class="empty-icon">&#128196;</div>No forms submitted yet</div>';
     return;
   }
-  list.innerHTML = records.slice(0,10).map(r => `
-    <div class="record-item">
-      <div class="record-top">
-        <div class="record-id">FORM ${r.id} · ${r.store.toUpperCase()}</div>
-        <div class="record-ts">${r.stamp}</div>
-      </div>
-      <div class="record-main">${r.name}</div>
-      <div class="record-meta">${r.total ? 'Total: '+r.total : ''}</div>
-      ${r.photos.length ? `<div class="record-photos">${r.photos.map(p=>`<img class="record-photo-thumb" src="${p}">`).join('')}</div>` : ''}
-      ${r.hasSig ? '<div class="has-sig">✍️ Signed</div>' : ''}
-    </div>
-  `).join('');
+  list.innerHTML = records.slice(0,10).map(function(r) {
+    var photos = r.photos && r.photos.length
+      ? '<div class="record-photos">' + r.photos.map(function(p){ return '<img class="record-photo-thumb" src="' + p + '">'; }).join('') + '</div>'
+      : '';
+    var sig = r.hasSig ? '<div class="has-sig">&#9997;&#65039; Signed</div>' : '';
+    return '<div class="record-item">' +
+      '<div class="record-top">' +
+      '<div class="record-id">FORM ' + r.id + ' \u00b7 ' + (r.store||'').toUpperCase() + '</div>' +
+      '<div class="record-ts">' + (r.stamp||'') + '</div>' +
+      '</div>' +
+      '<div class="record-main">' + (r.name||'') + '</div>' +
+      '<div class="record-meta">' + (r.total ? 'Total: '+r.total : '') + '</div>' +
+      photos + sig +
+      '</div>';
+  }).join('');
 }
 
 // ── Gallery & Weekly Totals ────────────────────────────────────
@@ -1801,32 +1805,29 @@ function renderGallery() {
   };
   weekRecs.forEach(r => { if (groups[r.form]) groups[r.form].recs.push(r); });
 
-  container.innerHTML = Object.values(groups).filter(g => g.recs.length).map(g => `
-    <div class="gallery-group">
-      <div class="gallery-group-title">${g.label}</div>
-      ${g.recs.map(r => `
-        <div class="docket-card">
-          ${r.photos.length > 1
-            ? `<div class="multi-photo-grid">${r.photos.map(p=>`<img src="${p}" loading="lazy">`).join('')}</div>`
-            : r.photos.length === 1
-              ? `<img class="docket-card-photo" src="${r.photos[0]}" loading="lazy">`
-              : `<div class="docket-card-no-photo"><div class="np-icon">📄</div><span>No photo attached</span></div>`
-          }
-          <div class="docket-card-body">
-            <div class="docket-card-top">
-              <div class="docket-card-supplier">${r.supplier || r.name}</div>
-              <div class="docket-card-amount">${r.total || '—'}</div>
-            </div>
-            <div class="docket-card-meta">
-              <span class="docket-tag ${g.color}">${r.store}</span>
-              <span class="docket-tag">${r.stamp.split(',')[0]}</span>
-              ${r.hasSig ? '<span class="docket-tag">✍️ Signed</span>' : ''}
-            </div>
-          </div>
-        </div>
-      `).join('')}
-    </div>
-  `).join('');
+  container.innerHTML = Object.values(groups).filter(function(g){return g.recs.length;}).map(function(g){
+    return '<div class="gallery-group">' +
+      '<div class="gallery-group-title">' + g.label + '</div>' +
+      g.recs.map(function(r){
+        var photoHTML = r.photos && r.photos.length > 1
+          ? '<div class="multi-photo-grid">' + r.photos.map(function(p){return '<img src="'+p+'" loading="lazy">';}).join('') + '</div>'
+          : r.photos && r.photos.length === 1
+            ? '<img class="docket-card-photo" src="' + r.photos[0] + '" loading="lazy">'
+            : '<div class="docket-card-no-photo"><div class="np-icon">&#128196;</div><span>No photo attached</span></div>';
+        return '<div class="docket-card">' + photoHTML +
+          '<div class="docket-card-body">' +
+          '<div class="docket-card-top">' +
+          '<div class="docket-card-supplier">' + (r.supplier||r.name) + '</div>' +
+          '<div class="docket-card-amount">' + (r.total||'—') + '</div>' +
+          '</div>' +
+          '<div class="docket-card-meta">' +
+          '<span class="docket-tag ' + g.color + '">' + r.store + '</span>' +
+          '<span class="docket-tag">' + r.stamp.split(',')[0] + '</span>' +
+          (r.hasSig ? '<span class="docket-tag">&#9997;&#65039; Signed</span>' : '') +
+          '</div></div></div>';
+      }).join('') +
+      '</div>';
+  }).join('');
 }
 
 // ── Toast ─────────────────────────────────────────────────────
