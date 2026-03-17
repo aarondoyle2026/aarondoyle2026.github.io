@@ -371,20 +371,12 @@ text-align: center;
 cursor: pointer;
 transition: all 0.2s;
 background: #f7f6f2;
-position: relative;
 }
 .photo-upload-area:hover {
 border-color: #1a6b35;
 background: #e8f3ed;
 }
-.photo-upload-area input[type=“file”] {
-position: absolute;
-inset: 0;
-opacity: 0;
-cursor: pointer;
-width: 100%;
-height: 100%;
-}
+.photo-upload-area input[type=“file”] { display: none; }
 .photo-icon { font-size: 28px; margin-bottom: 6px; }
 .photo-label { font-size: 13px; font-weight: 500; color: #124d26; }
 .photo-sub { font-size: 11px; color: #6b7280; margin-top: 2px; }
@@ -1038,7 +1030,7 @@ font-size: 13px;
 
 <div class="field-card">
   <div class="field-card-title">📷 Photo Evidence</div>
-  <div class="photo-upload-area">
+  <div class="photo-upload-area" onclick="triggerPhoto('inwardsPhotos')">
     <input type="file" id="inwardsPhotos" accept="image/*" multiple onchange="handlePhotos(this,'inwardsPhotoGrid')">
     <div class="photo-icon">📸</div>
     <div class="photo-label">Photograph delivery dockets</div>
@@ -1124,7 +1116,7 @@ font-size: 13px;
 
 <div class="field-card">
   <div class="field-card-title">📷 Photo Evidence</div>
-  <div class="photo-upload-area">
+  <div class="photo-upload-area" onclick="triggerPhoto('returnsPhotos')">
     <input type="file" id="returnsPhotos" accept="image/*" multiple onchange="handlePhotos(this,'returnsPhotoGrid')">
     <div class="photo-icon">📸</div>
     <div class="photo-label">Photograph returned goods</div>
@@ -1213,7 +1205,7 @@ font-size: 13px;
 
 <div class="field-card">
   <div class="field-card-title">📷 Photo Evidence</div>
-  <div class="photo-upload-area">
+  <div class="photo-upload-area" onclick="triggerPhoto('transferPhotos')">
     <input type="file" id="transferPhotos" accept="image/*" multiple onchange="handlePhotos(this,'transferPhotoGrid')">
     <div class="photo-icon">📸</div>
     <div class="photo-label">Photograph transfer goods</div>
@@ -1414,8 +1406,9 @@ function handlePhotos(input, gridId) {
   });
 }
 
-function triggerPhoto(id) {
-  // let native file input handle it via overlap
+function triggerPhoto(inputId) {
+  const input = document.getElementById(inputId);
+  if (input) input.click();
 }
 
 // ── Line item tables ─────────────────────────────────────────
