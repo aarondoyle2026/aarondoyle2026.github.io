@@ -626,6 +626,132 @@ font-size: 13px;
 @media (max-width: 400px) {
 .field-row.cols-3 { grid-template-columns: 1fr 1fr; }
 }
+
+/* ── Gallery ── */
+.gallery-screen { display: none; padding-top: 20px; }
+.gallery-screen.active { display: block; }
+
+.week-banner {
+background: #124d26;
+color: white;
+border-radius: 12px;
+padding: 14px 18px;
+margin-bottom: 16px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+.week-banner-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.7; }
+.week-banner-val { font-size: 16px; font-weight: 600; margin-top: 2px; }
+.week-banner-total { text-align: right; }
+.week-banner-total .wt-label { font-size: 10px; opacity: 0.7; letter-spacing: 1px; text-transform: uppercase; }
+.week-banner-total .wt-val { font-size: 20px; font-weight: 700; color: #c9a84c; }
+
+.gallery-group { margin-bottom: 24px; }
+.gallery-group-title {
+font-size: 10px;
+font-weight: 600;
+letter-spacing: 1.5px;
+text-transform: uppercase;
+color: #6b7280;
+margin-bottom: 10px;
+padding-left: 2px;
+}
+
+.docket-card {
+background: white;
+border-radius: 12px;
+overflow: hidden;
+box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+margin-bottom: 12px;
+}
+.docket-card-photo {
+width: 100%;
+aspect-ratio: 4/3;
+object-fit: cover;
+display: block;
+background: #f0f0f0;
+}
+.docket-card-no-photo {
+width: 100%;
+aspect-ratio: 4/3;
+background: #f7f6f2;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+gap: 8px;
+color: #6b7280;
+font-size: 12px;
+}
+.docket-card-no-photo .np-icon { font-size: 32px; }
+.docket-card-body { padding: 14px 16px; }
+.docket-card-top {
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+margin-bottom: 8px;
+}
+.docket-card-supplier { font-weight: 600; font-size: 15px; }
+.docket-card-amount {
+font-size: 18px;
+font-weight: 700;
+color: #124d26;
+font-family: ‘DM Mono’, monospace;
+}
+.docket-card-meta {
+display: flex;
+gap: 10px;
+flex-wrap: wrap;
+}
+.docket-tag {
+font-size: 10px;
+font-weight: 600;
+letter-spacing: 0.5px;
+padding: 3px 8px;
+border-radius: 20px;
+background: #e8f3ed;
+color: #124d26;
+}
+.docket-tag.red { background: #fef2f2; color: #c8102e; }
+.docket-tag.blue { background: #eff6ff; color: #1d4ed8; }
+.docket-tag.amber { background: #fef3c7; color: #92400e; }
+
+.multi-photo-grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 2px;
+}
+.multi-photo-grid img {
+width: 100%;
+aspect-ratio: 1;
+object-fit: cover;
+display: block;
+}
+.multi-photo-grid img:first-child:nth-last-child(1) {
+grid-column: span 2;
+aspect-ratio: 4/3;
+}
+
+.weekly-totals-card {
+background: white;
+border-radius: 12px;
+padding: 16px 18px;
+box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+margin-bottom: 16px;
+}
+.wt-row {
+display: flex;
+justify-content: space-between;
+padding: 8px 0;
+border-bottom: 1px solid #d1d5db;
+font-size: 13px;
+}
+.wt-row:last-child { border-bottom: none; }
+.wt-row-label { color: #6b7280; }
+.wt-row-val { font-family: ‘DM Mono’, monospace; font-weight: 600; color: #124d26; }
+.wt-row.grand { font-weight: 700; font-size: 15px; }
+.wt-row.grand .wt-row-val { color: #c8102e; font-size: 17px; }
 </style>
 
 </head>
@@ -697,10 +823,55 @@ font-size: 13px;
 
 <!-- Recent records -->
 <div class="section-label">🗂 Recent Submissions</div>
+<div class="form-cards" style="margin-bottom:10px">
+  <div class="form-card" onclick="openGallery()">
+    <div class="form-card-icon icon-amber">🖼️</div>
+    <div class="form-card-text">
+      <div class="form-card-name">This Week's Docket Gallery</div>
+      <div class="form-card-desc">All photos &amp; weekly totals</div>
+    </div>
+    <div class="form-card-arrow">›</div>
+  </div>
+</div>
 <div id="recentList">
   <div class="empty-state">
     <div class="empty-icon">📄</div>
     No forms submitted yet
+  </div>
+</div>
+```
+
+  </div>
+
+  <!-- ══ GALLERY ══ -->
+
+  <div class="gallery-screen" id="screenGallery">
+    <div class="week-banner">
+      <div>
+        <div class="week-banner-label">Current Week</div>
+        <div class="week-banner-val" id="galleryWeekLabel">—</div>
+      </div>
+      <div class="week-banner-total">
+        <div class="wt-label">Week Total</div>
+        <div class="wt-val" id="galleryWeekTotal">€ 0.00</div>
+      </div>
+    </div>
+
+```
+<div class="section-label">📊 Weekly Breakdown</div>
+<div class="weekly-totals-card">
+  <div class="wt-row"><span class="wt-row-label">🧾 Purchase Dockets</span><span class="wt-row-val" id="wtPurchase">€ 0.00</span></div>
+  <div class="wt-row"><span class="wt-row-label">📦 Goods Inwards</span><span class="wt-row-val" id="wtInwards">€ 0.00</span></div>
+  <div class="wt-row"><span class="wt-row-label">🔄 Returns (Credit)</span><span class="wt-row-val" id="wtReturns">€ 0.00</span></div>
+  <div class="wt-row"><span class="wt-row-label">🔀 Transfers</span><span class="wt-row-val" id="wtTransfer">€ 0.00</span></div>
+  <div class="wt-row grand"><span class="wt-row-label">Grand Total</span><span class="wt-row-val" id="wtGrand">€ 0.00</span></div>
+</div>
+
+<div class="section-label">📷 Docket Photos</div>
+<div id="galleryContent">
+  <div class="empty-state">
+    <div class="empty-icon">📷</div>
+    No dockets submitted this week yet
   </div>
 </div>
 ```
@@ -1091,7 +1262,7 @@ let currentForm = null;
 
 function openForm(form) {
   document.getElementById('screenHome').style.display = 'none';
-  document.querySelectorAll('.form-screen').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.form-screen, .gallery-screen').forEach(s => s.classList.remove('active'));
   const map = {purchase:'screenPurchase', inwards:'screenInwards', returns:'screenReturns', transfer:'screenTransfer'};
   document.getElementById(map[form]).classList.add('active');
   document.getElementById('navBack').classList.add('visible');
@@ -1100,9 +1271,19 @@ function openForm(form) {
   window.scrollTo(0,0);
 }
 
+function openGallery() {
+  document.getElementById('screenHome').style.display = 'none';
+  document.querySelectorAll('.form-screen, .gallery-screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screenGallery').classList.add('active');
+  document.getElementById('navBack').classList.add('visible');
+  currentForm = 'gallery';
+  renderGallery();
+  window.scrollTo(0,0);
+}
+
 function goHome() {
   document.getElementById('screenHome').style.display = '';
-  document.querySelectorAll('.form-screen').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.form-screen, .gallery-screen').forEach(s => s.classList.remove('active'));
   document.getElementById('navBack').classList.remove('visible');
   currentForm = null;
   renderRecent();
@@ -1528,11 +1709,16 @@ async function submitForm(form) {
 
   const rec = {
     id: formNums[form], form, name: formNames[form],
-    store, stamp, photos: photos.slice(0,4), hasSig, total
+    store, stamp, photos: photos.slice(0,6), hasSig, total,
+    supplier: form === 'purchase' ? (document.querySelector('#purchaseTbody tr input[type="text"]')?.value || '') :
+              form === 'inwards' ? (document.querySelector('#inwardsTbody tr input[type="text"]:nth-child(2)')?.value || '') :
+              form === 'returns' ? (document.getElementById('retTo')?.value || '') :
+              (document.getElementById('trFrom')?.value || ''),
+    weekLabel: getWeekLabel()
   };
   records.unshift(rec);
 
-  if (btn) { btn.textContent = '✓  Submit'; btn.disabled = false; }
+  if (btn) { btn.textContent = '✓ \u00a0Submit'; btn.disabled = false; }
   showToast(success ? '✅  Saved to Google Sheets!' : '✅  Saved locally (Sheets offline)');
   goHome();
 }
@@ -1554,6 +1740,82 @@ function renderRecent() {
       <div class="record-meta">${r.total ? 'Total: '+r.total : ''}</div>
       ${r.photos.length ? `<div class="record-photos">${r.photos.map(p=>`<img class="record-photo-thumb" src="${p}">`).join('')}</div>` : ''}
       ${r.hasSig ? '<div class="has-sig">✍️ Signed</div>' : ''}
+    </div>
+  `).join('');
+}
+
+// ── Gallery & Weekly Totals ────────────────────────────────────
+function getWeekLabel() {
+  const now = new Date();
+  const day = now.getDay();
+  const diff = day === 0 ? 0 : 7 - day;
+  const sun = new Date(now);
+  sun.setDate(now.getDate() + diff);
+  return 'W/E ' + sun.getDate() + ' ' +
+    sun.toLocaleString('en-IE', {month:'short'}) + ' ' + sun.getFullYear();
+}
+
+function parseTotal(str) {
+  if (!str) return 0;
+  return parseFloat(String(str).replace(/[^0-9.]/g,'')) || 0;
+}
+
+function renderGallery() {
+  const thisWeek = getWeekLabel();
+  document.getElementById('galleryWeekLabel').textContent = thisWeek;
+
+  const weekRecs = records.filter(r => r.weekLabel === thisWeek);
+
+  // Weekly totals
+  const totals = {purchase:0, inwards:0, returns:0, transfer:0};
+  weekRecs.forEach(r => { totals[r.form] = (totals[r.form]||0) + parseTotal(r.total); });
+  const grand = Object.values(totals).reduce((a,b)=>a+b,0);
+
+  document.getElementById('wtPurchase').textContent = '€ '+totals.purchase.toFixed(2);
+  document.getElementById('wtInwards').textContent = '€ '+totals.inwards.toFixed(2);
+  document.getElementById('wtReturns').textContent = '€ '+totals.returns.toFixed(2);
+  document.getElementById('wtTransfer').textContent = '€ '+totals.transfer.toFixed(2);
+  document.getElementById('wtGrand').textContent = '€ '+grand.toFixed(2);
+  document.getElementById('galleryWeekTotal').textContent = '€ '+grand.toFixed(2);
+
+  const container = document.getElementById('galleryContent');
+  if (!weekRecs.length) {
+    container.innerHTML = '<div class="empty-state"><div class="empty-icon">📷</div>No dockets submitted this week yet</div>';
+    return;
+  }
+
+  const groups = {
+    purchase: { label: '🧾 Purchase Dockets', color: 'green', recs: [] },
+    inwards:  { label: '📦 Goods Inwards',    color: 'blue',  recs: [] },
+    returns:  { label: '🔄 Returns for Credit', color: 'red',  recs: [] },
+    transfer: { label: '🔀 Inter Store Transfers', color: 'amber', recs: [] }
+  };
+  weekRecs.forEach(r => { if (groups[r.form]) groups[r.form].recs.push(r); });
+
+  container.innerHTML = Object.values(groups).filter(g => g.recs.length).map(g => `
+    <div class="gallery-group">
+      <div class="gallery-group-title">${g.label}</div>
+      ${g.recs.map(r => `
+        <div class="docket-card">
+          ${r.photos.length > 1
+            ? `<div class="multi-photo-grid">${r.photos.map(p=>`<img src="${p}" loading="lazy">`).join('')}</div>`
+            : r.photos.length === 1
+              ? `<img class="docket-card-photo" src="${r.photos[0]}" loading="lazy">`
+              : `<div class="docket-card-no-photo"><div class="np-icon">📄</div><span>No photo attached</span></div>`
+          }
+          <div class="docket-card-body">
+            <div class="docket-card-top">
+              <div class="docket-card-supplier">${r.supplier || r.name}</div>
+              <div class="docket-card-amount">${r.total || '—'}</div>
+            </div>
+            <div class="docket-card-meta">
+              <span class="docket-tag ${g.color}">${r.store}</span>
+              <span class="docket-tag">${r.stamp.split(',')[0]}</span>
+              ${r.hasSig ? '<span class="docket-tag">✍️ Signed</span>' : ''}
+            </div>
+          </div>
+        </div>
+      `).join('')}
     </div>
   `).join('');
 }
