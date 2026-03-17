@@ -1429,11 +1429,16 @@ function addPurchaseRow() {
   const tr = document.createElement('tr');
   const fields = ['date','supplier','docket','groc','cigs','wine','beers','spirits','nonfood','news','promo','total'];
   const nums = ['groc','cigs','wine','beers','spirits','nonfood','news','promo','total'];
-  tr.innerHTML = fields.map(f => {
-    const isNum = nums.includes(f);
-    const isDate = f === 'date';
-    return `<td class="${isNum?'td-num':''}"><input type="${isDate?'date':isNum?'number':'text'}" ${isNum?'step="0.01" min="0" placeholder="0.00"':''} ${isDate?`value="${new Date().toISOString().split('T')[0]}"`:''} oninput="calcPurchaseTotal(this)" /></td>`;
-  }).join('') + `<td><button class="del-row" onclick="this.closest('tr').remove();calcAllPurchase()">×</button></td>`;
+  var today = new Date().toISOString().split('T')[0];
+  tr.innerHTML = fields.map(function(f) {
+    var isNum = nums.indexOf(f) !== -1;
+    var isDate = f === 'date';
+    var cls = isNum ? ' class="td-num"' : '';
+    var type = isDate ? 'date' : isNum ? 'number' : 'text';
+    var extra = isNum ? ' step="0.01" min="0" placeholder="0.00"' : '';
+    var val = isDate ? ' value="' + today + '"' : '';
+    return '<td' + cls + '><input type="' + type + '"' + extra + val + ' oninput="calcPurchaseTotal(this)" /></td>';
+  }).join('') + '<td><button class="del-row" onclick="this.closest(\'tr\').remove();calcAllPurchase()">\xd7</button></td>';
   tbody.appendChild(tr);
 }
 
@@ -2137,7 +2142,7 @@ function printWeekReport(weekLabel, storeFilter) {
 '<span class="lbl">' + weekLabel + ' &middot; ' + storeLabel + '</span>' +
 '</div>' +
 '<div class="wrap">' + html + '</div>' +
-'<script>function doShare(){' +
+'<scr'+'ipt>function doShare(){' +
 'var t="Moriarty Group Store Forms\n' + weekLabel + ' ' + storeLabel + '";' +
 'if(navigator.share){navigator.share({title:"Store Report",text:t});}' +
 'else{var e=document.createElement("textarea");e.value=t;document.body.appendChild(e);e.select();document.execCommand("copy");document.body.removeChild(e);alert("Copied to clipboard");}' +
@@ -2357,7 +2362,7 @@ var doc = ‘<!DOCTYPE html><html><head>’ +
 ‘Moriarty Group · ’ + meta.label + ’ · Generated ’ + generated +
 ‘</div>’ +
 ‘</div>’ +
-‘<script>’ +
+‘<scr’+‘ipt>’ +
 ‘var currentWeek=”’ + weekLabel + ‘”;’ +
 ‘var currentStore=”’ + storeFilter + ‘”;’ +
 ‘var currentForm=”’ + formType + ‘”;’ +
@@ -2371,7 +2376,7 @@ var doc = ‘<!DOCTYPE html><html><head>’ +
 ’  if(navigator.share){navigator.share({title:”’ + meta.label + ‘”,text:t});}’ +
 ’  else{var e=document.createElement(“textarea”);e.value=t;document.body.appendChild(e);e.select();document.execCommand(“copy”);document.body.removeChild(e);alert(“Copied to clipboard”);}’ +
 ‘}’ +
-‘</script>’ +
+‘<’+’/script>’ +
 ‘</body></html>’;
 win.document.write(doc);
 win.document.close();
