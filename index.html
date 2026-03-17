@@ -1271,6 +1271,15 @@ function openForm(form) {
   currentForm = form;
   updateStamps();
   window.scrollTo(0,0);
+  setTimeout(function() {
+    ['sigPurchase','sigInwards','sigReturnsRep','sigReturnsMgr','sigTransferRecv','sigTransferDisp'].forEach(function(id) {
+      var canvas = document.getElementById(id);
+      if (canvas && canvas.offsetParent) {
+        if (!sigs[id]) initSig(id);
+        else { canvas.width = canvas.offsetWidth || 500; }
+      }
+    });
+  }, 50);
 }
 
 function openGallery() {
@@ -1378,20 +1387,7 @@ setTimeout(() => {
   ['sigPurchase','sigInwards','sigReturnsRep','sigReturnsMgr','sigTransferRecv','sigTransferDisp'].forEach(initSig);
 }, 200);
 
-// Re-init when form opens (canvas needs to be visible)
-const origOpen = window.openForm;
-window.openForm = function(form) {
-  origOpen(form);
-  setTimeout(() => {
-    ['sigPurchase','sigInwards','sigReturnsRep','sigReturnsMgr','sigTransferRecv','sigTransferDisp'].forEach(id => {
-      const canvas = document.getElementById(id);
-      if (canvas && canvas.offsetParent) {
-        if (!sigs[id]) initSig(id);
-        else { canvas.width = canvas.offsetWidth || 500; }
-      }
-    });
-  }, 50);
-};
+
 
 // ── Photo uploads ─────────────────────────────────────────────
 function handlePhotos(input, gridId) {
@@ -1773,62 +1769,6 @@ function parseTotal(str) {
   return parseFloat(String(str).replace(/[^0-9.]/g,'')) || 0;
 }
 
-function renderGallery() {
-  const thisWeek = getWeekLabel();
-  document.getElementById('galleryWeekLabel').textContent = thisWeek;
-
-  const weekRecs = records.filter(r => r.weekLabel === thisWeek);
-
-  // Weekly totals
-  const totals = {purchase:0, inwards:0, returns:0, transfer:0};
-  weekRecs.forEach(r => { totals[r.form] = (totals[r.form]||0) + parseTotal(r.total); });
-  const grand = Object.values(totals).reduce((a,b)=>a+b,0);
-
-  document.getElementById('wtPurchase').textContent = '€ '+totals.purchase.toFixed(2);
-  document.getElementById('wtInwards').textContent = '€ '+totals.inwards.toFixed(2);
-  document.getElementById('wtReturns').textContent = '€ '+totals.returns.toFixed(2);
-  document.getElementById('wtTransfer').textContent = '€ '+totals.transfer.toFixed(2);
-  document.getElementById('wtGrand').textContent = '€ '+grand.toFixed(2);
-  document.getElementById('galleryWeekTotal').textContent = '€ '+grand.toFixed(2);
-
-  const container = document.getElementById('galleryContent');
-  if (!weekRecs.length) {
-    container.innerHTML = '<div class="empty-state"><div class="empty-icon">📷</div>No dockets submitted this week yet</div>';
-    return;
-  }
-
-  const groups = {
-    purchase: { label: '🧾 Purchase Dockets', color: 'green', recs: [] },
-    inwards:  { label: '📦 Goods Inwards',    color: 'blue',  recs: [] },
-    returns:  { label: '🔄 Returns for Credit', color: 'red',  recs: [] },
-    transfer: { label: '🔀 Inter Store Transfers', color: 'amber', recs: [] }
-  };
-  weekRecs.forEach(r => { if (groups[r.form]) groups[r.form].recs.push(r); });
-
-  container.innerHTML = Object.values(groups).filter(function(g){return g.recs.length;}).map(function(g){
-    return '<div class="gallery-group">' +
-      '<div class="gallery-group-title">' + g.label + '</div>' +
-      g.recs.map(function(r){
-        var photoHTML = r.photos && r.photos.length > 1
-          ? '<div class="multi-photo-grid">' + r.photos.map(function(p){return '<img src="'+p+'" loading="lazy">';}).join('') + '</div>'
-          : r.photos && r.photos.length === 1
-            ? '<img class="docket-card-photo" src="' + r.photos[0] + '" loading="lazy">'
-            : '<div class="docket-card-no-photo"><div class="np-icon">&#128196;</div><span>No photo attached</span></div>';
-        return '<div class="docket-card">' + photoHTML +
-          '<div class="docket-card-body">' +
-          '<div class="docket-card-top">' +
-          '<div class="docket-card-supplier">' + (r.supplier||r.name) + '</div>' +
-          '<div class="docket-card-amount">' + (r.total||'—') + '</div>' +
-          '</div>' +
-          '<div class="docket-card-meta">' +
-          '<span class="docket-tag ' + g.color + '">' + r.store + '</span>' +
-          '<span class="docket-tag">' + r.stamp.split(',')[0] + '</span>' +
-          (r.hasSig ? '<span class="docket-tag">&#9997;&#65039; Signed</span>' : '') +
-          '</div></div></div>';
-      }).join('') +
-      '</div>';
-  }).join('');
-}
 
 // ── Toast ─────────────────────────────────────────────────────
 function showToast(msg) {
@@ -2537,8 +2477,6 @@ addPurchaseRow();
 addInwardsRow();
 addReturnsRow();
 addTransferRow();
-renderRecent();
-
 renderRecent();
 </script>
 
