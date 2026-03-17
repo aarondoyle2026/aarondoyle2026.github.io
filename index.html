@@ -850,6 +850,13 @@ font-size: 13px;
     </div>
 
 ```
+<div class="store-pills" id="galleryStorePills" style="margin-bottom:16px;">
+  <button class="store-pill selected" onclick="setGalleryStore(this,'All')">All Stores</button>
+  <button class="store-pill" onclick="setGalleryStore(this,'Balbriggan')">Balbriggan</button>
+  <button class="store-pill" onclick="setGalleryStore(this,'Palmerstown')">Palmerstown</button>
+  <button class="store-pill" onclick="setGalleryStore(this,'Skerries')">Skerries</button>
+</div>
+
 <div class="section-label">📊 Weekly Breakdown</div>
 <div class="weekly-totals-card">
   <div class="wt-row"><span class="wt-row-label">🧾 Purchase Dockets</span><span class="wt-row-val" id="wtPurchase">€ 0.00</span></div>
@@ -858,6 +865,9 @@ font-size: 13px;
   <div class="wt-row"><span class="wt-row-label">🔀 Transfers</span><span class="wt-row-val" id="wtTransfer">€ 0.00</span></div>
   <div class="wt-row grand"><span class="wt-row-label">Grand Total</span><span class="wt-row-val" id="wtGrand">€ 0.00</span></div>
 </div>
+
+<div class="section-label">🏪 By Store</div>
+<div id="storeBreakdownCards" style="margin-bottom:20px;"></div>
 
 <div class="section-label">📷 Docket Photos</div>
 <div id="galleryContent">
@@ -1710,6 +1720,7 @@ async function submitForm(form) {
     weekLabel: getWeekLabel()
   };
   records.unshift(rec);
+  saveRecords();
 
   if (btn) { btn.textContent = '✓ \u00a0Submit'; btn.disabled = false; }
   showToast(success ? '✅  Saved to Google Sheets!' : '✅  Saved locally (Sheets offline)');
@@ -1821,12 +1832,708 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 3000);
 }
 
+// ── Persistence (localStorage) ────────────────────────────────
+function saveRecords() {
+  try {
+    // Strip photo data for storage efficiency — keep only first photo per record
+    const slim = records.map(r => ({...r, photos: r.photos.slice(0,3)}));
+    localStorage.setItem('mgRecords', JSON.stringify(slim));
+  } catch(e) { console.warn('Storage full, trimming oldest records'); }
+}
+
+function loadRecords() {
+  try {
+    const raw = localStorage.getItem('mgRecords');
+    if (raw) { const parsed = JSON.parse(raw); if (Array.isArray(parsed)) records.push(...parsed); }
+  } catch(e) { console.warn('Could not load records', e); }
+}
+
+// ── Report Generation ─────────────────────────────────────────
+function getWeekGroups() {
+  const weeks = {};
+  records.forEach(r => {
+    const wl = r.weekLabel || 'Unknown Week';
+    if (!weeks[wl]) weeks[wl] = {purchase:[], inwards:[], returns:[], transfer:[]};
+    if (weeks[wl][r.form]) weeks[wl][r.form].push(r);
+  });
+  return weeks;
+}
+
+function buildReportHTML(weekLabel, storeFilter) {
+  storeFilter = storeFilter || 'All';
+  var weeks = getWeekGroups();
+  var week = weeks[weekLabel];
+  if (!week) return '<p>No data for this week.</p>';
+
+  var allRecs = Object.values(week).flat();
+  var filteredWeek = {};
+  Object.keys(week).forEach(function(f) {
+    filteredWeek[f] = storeFilter === 'All' ? week[f] : week[f].filter(function(r){ return r.store === storeFilter; });
+  });
+  var storeTitle = storeFilter === 'All' ? 'All Stores' : storeFilter;
+  var totals = {purchase:0, inwards:0, returns:0, transfer:0};
+  Object.keys(totals).forEach(function(f) {
+    filteredWeek[f].forEach(function(r){ totals[f] += parseTotal(r.total); });
+  });
+  var grand = Object.values(totals).reduce(function(a,b){return a+b;},0);
+
+  var stores = ['Balbriggan','Palmerstown','Skerries'];
+  var storeColors = {Balbriggan:'#1a6b35', Palmerstown:'#1d4ed8', Skerries:'#92400e'};
+  var generated = new Date().toLocaleString('en-IE');
+
+  function th(txt, right) {
+    var bg = right ? 'text-align:right;' : '';
+    return '<th style="background:#124d26;color:white;padding:7px 9px;font-size:10px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;white-space:nowrap;' + bg + '">' + txt + '</th>';
+  }
+  function thC(txt, color, right) {
+    var bg = right ? 'text-align:right;' : '';
+    return '<th style="background:' + color + ';color:white;padding:7px 9px;font-size:10px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;white-space:nowrap;' + bg + '">' + txt + '</th>';
+  }
+  function td(val, bold, right, color) {
+    var s = 'padding:7px 9px;font-size:12px;border-bottom:1px solid #e5e7eb;vertical-align:top;';
+    if (right) s += 'text-align:right;font-family:monospace;';
+    if (bold) s += 'font-weight:700;';
+    if (color) s += 'color:' + color + ';';
+    return '<td style="' + s + '">' + (val || '') + '</td>';
+  }
+  function storeBadge(store) {
+    return '<span style="background:' + (storeColors[store]||'#6b7280') + ';color:white;padding:2px 7px;border-radius:10px;font-size:10px;font-weight:600;">' + store + '</span>';
+  }
+  function photoRow(r, cols) {
+    if (!r.photos || !r.photos.length) return '';
+    return '<tr><td colspan="' + cols + '" style="padding:8px 9px;border-bottom:1px solid #e5e7eb;">' +
+      r.photos.map(function(p){ return '<img src="' + p + '" style="height:80px;width:auto;border-radius:4px;border:1px solid #d1d5db;object-fit:cover;margin-right:4px;">'; }).join('') +
+      '</td></tr>';
+  }
+  function sigRow(r, cols, color) {
+    if (!r.hasSig) return '';
+    return '<tr><td colspan="' + cols + '" style="padding:4px 9px 8px;font-size:11px;color:' + color + ';font-weight:600;border-bottom:1px solid #e5e7eb;">&#9997;&#65039; Digitally Signed</td></tr>';
+  }
+
+  var html = '';
+
+  // ── HEADER ──
+  html += '<div style="background:#124d26;color:white;padding:20px 22px;border-radius:8px;margin-bottom:20px;">';
+  html += '<table style="width:100%;border-collapse:collapse;"><tr>';
+  html += '<td style="vertical-align:top;">';
+  html += '<div style="font-size:10px;letter-spacing:2px;opacity:0.65;text-transform:uppercase;margin-bottom:6px;">Moriarty Group &middot; SuperValu</div>';
+  html += '<div style="font-size:22px;font-weight:700;margin-bottom:4px;">Weekly Store Forms Report</div>';
+  html += '<div style="font-size:14px;opacity:0.9;">' + weekLabel + '</div>';
+  html += '<div style="font-size:12px;opacity:0.7;margin-top:3px;">&#128205; ' + storeTitle + '</div>';
+  html += '<div style="font-size:11px;opacity:0.55;margin-top:3px;">Generated: ' + generated + '</div>';
+  html += '</td>';
+  html += '<td style="text-align:right;vertical-align:top;">';
+  html += '<div style="font-size:10px;opacity:0.65;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Week Grand Total</div>';
+  html += '<div style="font-size:32px;font-weight:700;color:#c9a84c;">&euro;' + grand.toFixed(2) + '</div>';
+  html += '</td></tr></table></div>';
+
+  // ── SUMMARY TABLE ──
+  html += '<div style="margin-bottom:24px;">';
+  html += '<div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#6b7280;margin-bottom:8px;">Summary</div>';
+  html += '<table style="width:100%;border-collapse:collapse;border:1px solid #d1d5db;">';
+  html += '<thead><tr>' + th('Form Type');
+  if (storeFilter === 'All') stores.forEach(function(s){ html += th(s, true); });
+  html += th(storeFilter === 'All' ? 'Total' : 'Amount', true) + '</tr></thead><tbody>';
+
+  var formRows = [
+    {label:'&#129649; Purchase Dockets', key:'purchase'},
+    {label:'&#128230; Goods Inwards',    key:'inwards'},
+    {label:'&#128260; Returns for Credit', key:'returns'},
+    {label:'&#128256; Inter Store Transfers', key:'transfer'}
+  ];
+  formRows.forEach(function(row, idx) {
+    var bg = idx%2 ? 'background:#f9fafb;' : '';
+    html += '<tr>';
+    html += '<td style="padding:8px 9px;font-size:13px;border-bottom:1px solid #e5e7eb;' + bg + '">' + row.label + '</td>';
+    if (storeFilter === 'All') {
+      stores.forEach(function(s) {
+        var sv = (week[row.key]||[]).filter(function(r){return r.store===s;}).reduce(function(a,r){return a+parseTotal(r.total);},0);
+        html += '<td style="padding:8px 9px;font-size:12px;border-bottom:1px solid #e5e7eb;text-align:right;font-family:monospace;' + bg + '">' + (sv>0 ? '&euro;'+sv.toFixed(2) : '&mdash;') + '</td>';
+      });
+    }
+    html += '<td style="padding:8px 9px;font-size:12px;border-bottom:1px solid #e5e7eb;text-align:right;font-family:monospace;font-weight:600;' + bg + '">&euro;' + totals[row.key].toFixed(2) + '</td>';
+    html += '</tr>';
+  });
+  // totals footer
+  html += '</tbody><tfoot><tr style="background:#e8f3ed;">';
+  html += '<td style="padding:9px;font-weight:700;font-size:14px;">Grand Total</td>';
+  if (storeFilter === 'All') {
+    stores.forEach(function(s) {
+      var sv = allRecs.filter(function(r){return r.store===s;}).reduce(function(a,r){return a+parseTotal(r.total);},0);
+      html += '<td style="padding:9px;text-align:right;font-family:monospace;font-weight:700;">' + (sv>0 ? '&euro;'+sv.toFixed(2) : '&mdash;') + '</td>';
+    });
+  }
+  html += '<td style="padding:9px;text-align:right;font-family:monospace;font-weight:700;font-size:15px;color:#c8102e;">&euro;' + grand.toFixed(2) + '</td>';
+  html += '</tr></tfoot></table></div>';
+
+  // ── PURCHASE DOCKETS ──
+  var pRecs = filteredWeek.purchase || [];
+  if (pRecs.length) {
+    var pCols = storeFilter === 'All' ? 13 : 12;
+    html += '<div style="margin-bottom:28px;">';
+    html += '<div style="background:#1a6b35;color:white;padding:9px 14px;font-size:12px;font-weight:700;border-radius:6px 6px 0 0;">&#129649; Purchase Docket Log &nbsp;&middot;&nbsp; <span style="opacity:0.8;font-weight:400;">Form 1871</span></div>';
+    html += '<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;border:1px solid #d1d5db;border-top:none;min-width:700px;">';
+    html += '<thead><tr>';
+    html += thC('Date','#2d8a4e'); html += thC('Supplier','#2d8a4e'); html += thC('Docket #','#2d8a4e');
+    ['Groc','Cigs','Wine','Beers','Spirits','Non Food','News','Promo'].forEach(function(c){ html += thC(c,'#2d8a4e',true); });
+    html += thC('Total &euro;','#2d8a4e',true);
+    if (storeFilter === 'All') html += thC('Store','#2d8a4e');
+    html += '</tr></thead><tbody>';
+    pRecs.forEach(function(r,i) {
+      var bg = i%2 ? 'background:#f9fafb;' : '';
+      html += '<tr style="' + bg + '">';
+      html += td(r.stamp ? r.stamp.split(',')[0] : '');
+      html += td(r.supplier || '');
+      html += td(r.id || '');
+      for (var x=0;x<8;x++) html += td('&mdash;',false,true);
+      html += td(r.total || '&mdash;', true, true, '#1a6b35');
+      if (storeFilter === 'All') html += '<td style="padding:7px 9px;border-bottom:1px solid #e5e7eb;">' + storeBadge(r.store) + '</td>';
+      html += '</tr>';
+      html += photoRow(r, pCols);
+      html += sigRow(r, pCols, '#1a6b35');
+    });
+    html += '</tbody><tfoot><tr style="background:#e8f3ed;">';
+    html += '<td colspan="' + (pCols-2) + '" style="padding:9px;font-weight:700;">Week Total &mdash; Purchase Dockets</td>';
+    html += '<td style="padding:9px;text-align:right;font-family:monospace;font-weight:700;color:#1a6b35;">&euro;' + totals.purchase.toFixed(2) + '</td>';
+    if (storeFilter === 'All') html += '<td></td>';
+    html += '</tr></tfoot></table></div></div>';
+  }
+
+  // ── GOODS INWARDS ──
+  var iRecs = filteredWeek.inwards || [];
+  if (iRecs.length) {
+    var iCols = storeFilter === 'All' ? 13 : 12;
+    html += '<div style="margin-bottom:28px;">';
+    html += '<div style="background:#1d4ed8;color:white;padding:9px 14px;font-size:12px;font-weight:700;border-radius:6px 6px 0 0;">&#128230; Goods Inwards &nbsp;&middot;&nbsp; <span style="opacity:0.8;font-weight:400;">Form 2523</span></div>';
+    html += '<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;border:1px solid #d1d5db;border-top:none;min-width:700px;">';
+    html += '<thead><tr>';
+    html += thC('Date','#2563eb'); html += thC('Supplier','#2563eb');
+    ['Beef','Lamb','Pork','Fish','Poultry','F&amp;V','Deli','Bakery','Provs'].forEach(function(c){ html += thC(c,'#2563eb',true); });
+    html += thC('Total &euro;','#2563eb',true);
+    if (storeFilter === 'All') html += thC('Store','#2563eb');
+    html += '</tr></thead><tbody>';
+    iRecs.forEach(function(r,i) {
+      var bg = i%2 ? 'background:#f9fafb;' : '';
+      html += '<tr style="' + bg + '">';
+      html += td(r.stamp ? r.stamp.split(',')[0] : '');
+      html += td(r.supplier || '');
+      for (var x=0;x<9;x++) html += td('&mdash;',false,true);
+      html += td(r.total || '&mdash;', true, true, '#1d4ed8');
+      if (storeFilter === 'All') html += '<td style="padding:7px 9px;border-bottom:1px solid #e5e7eb;">' + storeBadge(r.store) + '</td>';
+      html += '</tr>';
+      html += photoRow(r, iCols);
+      html += sigRow(r, iCols, '#1d4ed8');
+    });
+    html += '</tbody><tfoot><tr style="background:#eff6ff;">';
+    html += '<td colspan="' + (iCols-2) + '" style="padding:9px;font-weight:700;">Week Total &mdash; Goods Inwards</td>';
+    html += '<td style="padding:9px;text-align:right;font-family:monospace;font-weight:700;color:#1d4ed8;">&euro;' + totals.inwards.toFixed(2) + '</td>';
+    if (storeFilter === 'All') html += '<td></td>';
+    html += '</tr></tfoot></table></div></div>';
+  }
+
+  // ── GOODS RETURNED ──
+  var rRecs = filteredWeek.returns || [];
+  if (rRecs.length) {
+    var rCols = storeFilter === 'All' ? 8 : 7;
+    html += '<div style="margin-bottom:28px;">';
+    html += '<div style="background:#c8102e;color:white;padding:9px 14px;font-size:12px;font-weight:700;border-radius:6px 6px 0 0;">&#128260; Goods Returned for Credit &nbsp;&middot;&nbsp; <span style="opacity:0.8;font-weight:400;">Form 0480</span></div>';
+    html += '<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;border:1px solid #d1d5db;border-top:none;">';
+    html += '<thead><tr>';
+    html += thC('Date','#dc2626'); html += thC('To Supplier','#dc2626'); html += thC('Dept','#dc2626');
+    html += thC('Reason','#dc2626'); html += thC('Description','#dc2626');
+    html += thC('Cost/Box &euro;','#dc2626',true); html += thC('Total Credit &euro;','#dc2626',true);
+    if (storeFilter === 'All') html += thC('Store','#dc2626');
+    html += '</tr></thead><tbody>';
+    rRecs.forEach(function(r,i) {
+      var bg = i%2 ? 'background:#f9fafb;' : '';
+      html += '<tr style="' + bg + '">';
+      html += td(r.stamp ? r.stamp.split(',')[0] : '');
+      html += td(r.supplier || '');
+      html += td('&mdash;'); html += td('&mdash;'); html += td('&mdash;');
+      html += td('&mdash;',false,true);
+      html += td(r.total || '&mdash;', true, true, '#c8102e');
+      if (storeFilter === 'All') html += '<td style="padding:7px 9px;border-bottom:1px solid #e5e7eb;">' + storeBadge(r.store) + '</td>';
+      html += '</tr>';
+      html += photoRow(r, rCols);
+      html += sigRow(r, rCols, '#c8102e');
+    });
+    html += '</tbody><tfoot><tr style="background:#fef2f2;">';
+    html += '<td colspan="' + (rCols-2) + '" style="padding:9px;font-weight:700;">Week Total &mdash; Returns for Credit</td>';
+    html += '<td style="padding:9px;text-align:right;font-family:monospace;font-weight:700;color:#c8102e;">&euro;' + totals.returns.toFixed(2) + '</td>';
+    if (storeFilter === 'All') html += '<td></td>';
+    html += '</tr></tfoot></table></div></div>';
+  }
+
+  // ── INTER STORE TRANSFER ──
+  var tRecs = filteredWeek.transfer || [];
+  if (tRecs.length) {
+    html += '<div style="margin-bottom:28px;">';
+    html += '<div style="background:#92400e;color:white;padding:9px 14px;font-size:12px;font-weight:700;border-radius:6px 6px 0 0;">&#128256; Inter Store Transfers &nbsp;&middot;&nbsp; <span style="opacity:0.8;font-weight:400;">Form 0851</span></div>';
+    html += '<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;border:1px solid #d1d5db;border-top:none;">';
+    html += '<thead><tr>';
+    html += thC('Date','#a16207'); html += thC('To Store','#a16207'); html += thC('From Store','#a16207');
+    html += thC('Dept','#a16207'); html += thC('Description','#a16207');
+    html += thC('Cost &euro;','#a16207',true); html += thC('Retail &euro;','#a16207',true); html += thC('Total &euro;','#a16207',true);
+    html += '</tr></thead><tbody>';
+    tRecs.forEach(function(r,i) {
+      var bg = i%2 ? 'background:#f9fafb;' : '';
+      html += '<tr style="' + bg + '">';
+      html += td(r.stamp ? r.stamp.split(',')[0] : '');
+      html += td(r.supplier || '');
+      html += td('&mdash;'); html += td('&mdash;'); html += td('&mdash;');
+      html += td('&mdash;',false,true); html += td('&mdash;',false,true);
+      html += td(r.total || '&mdash;', true, true, '#92400e');
+      html += '</tr>';
+      html += photoRow(r, 8);
+      html += sigRow(r, 8, '#92400e');
+    });
+    html += '</tbody><tfoot><tr style="background:#fef3c7;">';
+    html += '<td colspan="7" style="padding:9px;font-weight:700;">Week Total &mdash; Inter Store Transfers</td>';
+    html += '<td style="padding:9px;text-align:right;font-family:monospace;font-weight:700;color:#92400e;">&euro;' + totals.transfer.toFixed(2) + '</td>';
+    html += '</tr></tfoot></table></div></div>';
+  }
+
+  html += '<div style="text-align:center;padding:16px;color:#6b7280;font-size:11px;border-top:2px solid #124d26;margin-top:8px;">';
+  html += 'Moriarty Group Store Forms &nbsp;&middot;&nbsp; ' + weekLabel + ' &nbsp;&middot;&nbsp; ' + storeTitle + ' &nbsp;&middot;&nbsp; Generated ' + generated;
+  html += '</div>';
+
+  return html;
+}
+
+function getAvailableWeeks() {
+  const weeks = getWeekGroups();
+  return Object.keys(weeks).sort((a,b) => {
+    // sort by date descending
+    const da = records.find(r=>r.weekLabel===a)?.stamp || '';
+    const db = records.find(r=>r.weekLabel===b)?.stamp || '';
+    return db.localeCompare(da);
+  });
+}
+
+// ── Print / Share ─────────────────────────────────────────────
+function printWeekReport(weekLabel, storeFilter) {
+  storeFilter = storeFilter || 'All';
+  var storeLabel = storeFilter === 'All' ? 'All Stores' : storeFilter;
+  var html = buildReportHTML(weekLabel, storeFilter);
+  var win = window.open('', '_blank');
+  var doc = '<!DOCTYPE html><html><head>' +
+    '<title>Store Report ' + weekLabel + ' ' + storeLabel + '</title>' +
+    '<meta name="viewport" content="width=device-width,initial-scale=1">' +
+    '<style>' +
+    'body{margin:0;background:#f7f6f2;font-family:Arial,sans-serif;}' +
+    '.wrap{max-width:960px;margin:0 auto;padding:16px;}' +
+    '.bar{background:#124d26;color:white;padding:10px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;position:sticky;top:0;z-index:99;}' +
+    '.bar button{background:white;color:#124d26;border:none;padding:7px 16px;border-radius:6px;font-weight:700;cursor:pointer;font-size:13px;}' +
+    '.bar .s{background:#c9a84c;color:white;}' +
+    '.bar .lbl{font-size:12px;opacity:0.8;margin-left:auto;}' +
+    '@media print{body{background:white;}.bar{display:none;}@page{margin:1.2cm;size:A4 landscape;}thead{display:table-header-group;}tfoot{display:table-footer-group;}tr{page-break-inside:avoid;}}' +
+    '</style>' +
+
+```
+'</head><body>' +
+'<div class="bar">' +
+'<button onclick="window.print()">Print / Save PDF</button>' +
+'<button class="s" onclick="doShare()">Share</button>' +
+'<span class="lbl">' + weekLabel + ' &middot; ' + storeLabel + '</span>' +
+'</div>' +
+'<div class="wrap">' + html + '</div>' +
+'<script>function doShare(){' +
+'var t="Moriarty Group Store Forms\n' + weekLabel + ' ' + storeLabel + '";' +
+'if(navigator.share){navigator.share({title:"Store Report",text:t});}' +
+'else{var e=document.createElement("textarea");e.value=t;document.body.appendChild(e);e.select();document.execCommand("copy");document.body.removeChild(e);alert("Copied to clipboard");}' +
+'}<\/script>' +
+'</body></html>';
+```
+
+win.document.write(doc);
+win.document.close();
+}
+
+function shareWeekReport(weekLabel, storeFilter) {
+storeFilter = storeFilter || ‘All’;
+var weeks = getWeekGroups();
+var week = weeks[weekLabel];
+if (!week) return;
+var totals = {purchase:0, inwards:0, returns:0, transfer:0};
+Object.keys(totals).forEach(function(f) {
+var recs = storeFilter === ‘All’ ? week[f] : week[f].filter(function(r){return r.store===storeFilter;});
+recs.forEach(function(r){ totals[f] += parseTotal(r.total); });
+});
+var grand = Object.values(totals).reduce(function(a,b){return a+b;},0);
+var storeLabel = storeFilter === ‘All’ ? ‘All Stores’ : storeFilter;
+var text = ‘Moriarty Group Store Forms\n’ + weekLabel + ’ - ’ + storeLabel + ‘\n\n’ +
+‘Purchase Dockets: EUR’ + totals.purchase.toFixed(2) + ‘\n’ +
+‘Goods Inwards: EUR’ + totals.inwards.toFixed(2) + ‘\n’ +
+‘Returns for Credit: EUR’ + totals.returns.toFixed(2) + ‘\n’ +
+‘Inter Store Transfers: EUR’ + totals.transfer.toFixed(2) + ‘\n’ +
+‘—\n’ +
+‘Grand Total: EUR’ + grand.toFixed(2) + ‘\n\n’ +
+’Generated ’ + new Date().toLocaleString(‘en-IE’);
+if (navigator.share) {
+navigator.share({ title: ’Store Report ’ + weekLabel, text: text });
+} else {
+var el = document.createElement(‘textarea’);
+el.value = text;
+document.body.appendChild(el);
+el.select();
+document.execCommand(‘copy’);
+document.body.removeChild(el);
+showToast(‘Report copied to clipboard!’);
+}
+}
+
+// ── Gallery State ─────────────────────────────────────────────
+var galleryCurrentWeek = null;
+var galleryCurrentStore = ‘All’;
+
+function setGalleryStore(btn, store) {
+galleryCurrentStore = store;
+document.querySelectorAll(’#galleryStorePills .store-pill’).forEach(function(p){ p.classList.remove(‘selected’); });
+btn.classList.add(‘selected’);
+var wl = galleryCurrentWeek || getWeekLabel();
+renderGalleryView(wl, galleryCurrentStore);
+}
+
+function switchGalleryWeek(weekLabel) {
+galleryCurrentWeek = weekLabel;
+document.getElementById(‘galleryWeekLabel’).textContent = weekLabel;
+document.querySelectorAll(’#weekSelector button’).forEach(function(btn){
+var isSel = btn.textContent.trim() === weekLabel;
+btn.style.background = isSel ? ‘#1a6b35’ : ‘white’;
+btn.style.color = isSel ? ‘white’ : ‘#6b7280’;
+btn.style.borderColor = isSel ? ‘#1a6b35’ : ‘#d1d5db’;
+});
+renderGalleryView(weekLabel, galleryCurrentStore);
+}
+
+function openFormTopSheet(formType) {
+var wl = galleryCurrentWeek || getWeekLabel();
+var store = galleryCurrentStore || ‘All’;
+printFormSheet(formType, wl, store);
+}
+
+function printFormSheet(formType, weekLabel, storeFilter) {
+storeFilter = storeFilter || ‘All’;
+var weeks = getWeekGroups();
+var availWeeks = getAvailableWeeks();
+var week = weeks[weekLabel] || {purchase:[],inwards:[],returns:[],transfer:[]};
+var storeLabel = storeFilter === ‘All’ ? ‘All Stores’ : storeFilter;
+
+var recs = storeFilter === ‘All’
+? (week[formType] || [])
+: (week[formType] || []).filter(function(r){ return r.store === storeFilter; });
+
+var formMeta = {
+purchase: {label:‘Purchase Docket Log’, num:‘1871’, color:’#1a6b35’, colorbg:’#2d8a4e’},
+inwards:  {label:‘Goods Inwards Record’, num:‘2523’, color:’#1d4ed8’, colorbg:’#2563eb’},
+returns:  {label:‘Goods Returned for Credit’, num:‘0480’, color:’#c8102e’, colorbg:’#dc2626’},
+transfer: {label:‘Inter Store Transfer Docket’, num:‘0851’, color:’#92400e’, colorbg:’#a16207’}
+};
+var meta = formMeta[formType];
+var total = recs.reduce(function(a,r){ return a + parseTotal(r.total); }, 0);
+var generated = new Date().toLocaleString(‘en-IE’);
+
+// Build week selector buttons HTML string
+var weekBtns = availWeeks.map(function(w) {
+var active = w === weekLabel ? ‘background:#124d26;color:white;border-color:#124d26;’ : ‘background:white;color:#333;border-color:#ccc;’;
+return ‘<button onclick="changeWeek(\'' + w + '\')" style="' + active + 'padding:5px 12px;border:1.5px solid;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;margin:2px;">’ + w + ‘</button>’;
+}).join(’’);
+
+// Build table HTML
+var tableHTML = ‘’;
+var colDefs = {
+purchase: [‘Date’,‘Supplier’,‘Docket #’,‘Groc’,‘Cigs’,‘Wine’,‘Beers’,‘Spirits’,‘Non Food’,‘News’,‘Promo’,‘Total’],
+inwards:  [‘Date’,‘Supplier / Ref’,‘Beef’,‘Lamb’,‘Pork’,‘Fish’,‘Poultry’,‘F&V’,‘Deli’,‘Bakery’,‘Provs’,‘Total’],
+returns:  [‘Date’,‘To Supplier’,‘Dept’,‘Reason for Return’,‘Description’,‘Cost/Box’,‘Total Credit’],
+transfer: [‘Date’,‘To Store’,‘From Store’,‘Dept’,‘Description’,‘Cost Price’,‘Retail Price’,‘Total Amount’]
+};
+var cols = colDefs[formType];
+var numericFrom = {purchase:3, inwards:2, returns:5, transfer:5};
+var numStart = numericFrom[formType];
+
+tableHTML += ‘<table style="width:100%;border-collapse:collapse;font-size:12px;">’;
+tableHTML += ‘<thead><tr>’;
+if (storeFilter === ‘All’) tableHTML += ‘<th style="background:' + meta.colorbg + ';color:white;padding:8px 10px;text-align:left;font-size:10px;letter-spacing:0.8px;text-transform:uppercase;">Store</th>’;
+cols.forEach(function(c, i) {
+var align = i >= numStart ? ‘text-align:right;’ : ‘text-align:left;’;
+tableHTML += ‘<th style="background:' + meta.colorbg + ';color:white;padding:8px 10px;' + align + 'font-size:10px;letter-spacing:0.8px;text-transform:uppercase;white-space:nowrap;">’ + c + ‘</th>’;
+});
+tableHTML += ‘</tr></thead><tbody>’;
+
+if (!recs.length) {
+var totalCols = cols.length + (storeFilter === ‘All’ ? 1 : 0);
+tableHTML += ‘<tr><td colspan="' + totalCols + '" style="padding:20px;text-align:center;color:#6b7280;font-style:italic;">No entries for this week</td></tr>’;
+} else {
+recs.forEach(function(r, i) {
+var bg = i%2 ? ‘background:#f9fafb;’ : ‘background:white;’;
+var totalCols = cols.length + (storeFilter === ‘All’ ? 1 : 0);
+tableHTML += ‘<tr style="' + bg + '">’;
+if (storeFilter === ‘All’) {
+tableHTML += ‘<td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;"><span style="background:' + (({Balbriggan:'#1a6b35',Palmerstown:'#1d4ed8',Skerries:'#92400e'}[r.store]||'#6b7280') + ';color:white;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600;">’ + (r.store||’’) + ‘</span></td>’);
+}
+// Date
+tableHTML += ‘<td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;white-space:nowrap;">’ + (r.stamp ? r.stamp.split(’,’)[0] : ‘’) + ‘</td>’;
+// Supplier/main field
+tableHTML += ‘<td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;">’ + (r.supplier || ‘’) + ‘</td>’;
+// Docket # or 3rd col for purchase/inwards
+if (formType === ‘purchase’) {
+tableHTML += ‘<td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;font-family:monospace;">’ + (r.id||’’) + ‘</td>’;
+for (var x=0;x<8;x++) tableHTML += ‘<td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;text-align:right;color:#6b7280;">—</td>’;
+} else if (formType === ‘inwards’) {
+for (var x=0;x<9;x++) tableHTML += ‘<td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;text-align:right;color:#6b7280;">—</td>’;
+} else if (formType === ‘returns’) {
+tableHTML += ‘<td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;">—</td>’;
+tableHTML += ‘<td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;">—</td>’;
+tableHTML += ‘<td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;">—</td>’;
+tableHTML += ‘<td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;text-align:right;color:#6b7280;">—</td>’;
+} else if (formType === ‘transfer’) {
+tableHTML += ‘<td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;">—</td>’;
+tableHTML += ‘<td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;">—</td>’;
+tableHTML += ‘<td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;text-align:right;color:#6b7280;">—</td>’;
+tableHTML += ‘<td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;text-align:right;color:#6b7280;">—</td>’;
+}
+// Total
+tableHTML += ‘<td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;text-align:right;font-family:monospace;font-weight:700;color:' + meta.color + ';">’ + (r.total || ‘—’) + ‘</td>’;
+tableHTML += ‘</tr>’;
+// Photo row
+if (r.photos && r.photos.length) {
+tableHTML += ‘<tr style="' + bg + '"><td colspan="' + totalCols + '" style="padding:8px 10px;border-bottom:1px solid #e5e7eb;">’;
+r.photos.forEach(function(p){ tableHTML += ‘<img src="' + p + '" style="height:90px;width:auto;object-fit:cover;border-radius:5px;border:1px solid #ddd;margin-right:5px;">’; });
+tableHTML += ‘</td></tr>’;
+}
+// Sig row
+if (r.hasSig) {
+tableHTML += ‘<tr style="' + bg + '"><td colspan="' + totalCols + '" style="padding:4px 10px 8px;border-bottom:1px solid #e5e7eb;font-size:11px;font-weight:600;color:' + meta.color + ';">✍️ Digitally Signed</td></tr>’;
+}
+});
+}
+tableHTML += ‘</tbody><tfoot>’;
+tableHTML += ‘<tr style="background:#f0f7f0;">’;
+var tfootCols = cols.length - 1 + (storeFilter === ‘All’ ? 1 : 0);
+tableHTML += ‘<td colspan="' + tfootCols + '" style="padding:9px 10px;font-weight:700;font-size:13px;">WEEK TOTAL</td>’;
+tableHTML += ‘<td style="padding:9px 10px;text-align:right;font-family:monospace;font-weight:700;font-size:14px;color:' + meta.color + ';">€’ + total.toFixed(2) + ‘</td>’;
+tableHTML += ‘</tr></tfoot></table>’;
+
+// Open print window
+var win = window.open(’’, ‘_blank’);
+var doc = ‘<!DOCTYPE html><html><head>’ +
+‘<title>’ + meta.label + ’ - ’ + weekLabel + ‘</title>’ +
+‘<meta name="viewport" content="width=device-width,initial-scale=1">’ +
+‘<style>’ +
+‘body{margin:0;font-family:Arial,sans-serif;background:#f7f6f2;}’ +
+‘.bar{background:’ + meta.color + ‘;color:white;padding:10px 16px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;position:sticky;top:0;z-index:99;}’ +
+‘.bar button{background:white;color:’ + meta.color + ‘;border:none;padding:7px 14px;border-radius:6px;font-weight:700;cursor:pointer;font-size:12px;}’ +
+‘.bar .share{background:rgba(255,255,255,0.2);color:white;border:1.5px solid rgba(255,255,255,0.4);}’ +
+‘.bar .lbl{font-size:11px;opacity:0.8;margin-left:auto;}’ +
+‘.week-nav{display:flex;gap:4px;flex-wrap:wrap;padding:4px 0;}’ +
+‘.wrap{max-width:1000px;margin:0 auto;padding:16px;}’ +
+‘@media print{body{background:white;}.bar{display:none;}@page{margin:1cm;size:A4 landscape;}thead{display:table-header-group;}tfoot{display:table-footer-group;}}’ +
+‘</style>’ +
+‘</head><body>’ +
+‘<div class="bar">’ +
+‘<button onclick="window.print()">🖨️ Print / Save PDF</button>’ +
+‘<button class="share" onclick="doShare()">📤 Share</button>’ +
+‘<span class="lbl">’ + meta.label + ’ · ’ + storeLabel + ‘</span>’ +
+‘</div>’ +
+‘<div class="wrap">’ +
+‘<div style="background:' + meta.color + ';color:white;padding:18px 20px;border-radius:8px;margin-bottom:16px;">’ +
+‘<table style="width:100%;border-collapse:collapse;"><tr>’ +
+‘<td style="vertical-align:top;">’ +
+‘<div style="font-size:10px;opacity:0.65;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;">Moriarty Group · SuperValu</div>’ +
+‘<div style="font-size:20px;font-weight:700;">’ + meta.label + ‘</div>’ +
+‘<div style="font-size:12px;opacity:0.8;margin-top:3px;">Form ’ + meta.num + ’  ·  ’ + storeLabel + ‘</div>’ +
+‘</td>’ +
+‘<td style="text-align:right;vertical-align:top;">’ +
+‘<div style="font-size:10px;opacity:0.65;text-transform:uppercase;letter-spacing:1px;">Week Total</div>’ +
+‘<div style="font-size:28px;font-weight:700;color:#c9a84c;">€’ + total.toFixed(2) + ‘</div>’ +
+‘</td></tr></table>’ +
+‘</div>’ +
+‘<div style="background:white;border-radius:8px;padding:12px 14px;margin-bottom:14px;border:1px solid #e5e7eb;">’ +
+‘<div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#6b7280;margin-bottom:8px;">Select Week</div>’ +
+‘<div class="week-nav">’ + weekBtns + ‘</div>’ +
+‘</div>’ +
+‘<div style="background:white;border-radius:0 0 8px 8px;overflow:hidden;">’ + tableHTML + ‘</div>’ +
+‘<div style="text-align:center;padding:14px;color:#6b7280;font-size:11px;margin-top:8px;">’ +
+‘Moriarty Group · ’ + meta.label + ’ · Generated ’ + generated +
+‘</div>’ +
+‘</div>’ +
+‘<script>’ +
+‘var currentWeek=”’ + weekLabel + ‘”;’ +
+‘var currentStore=”’ + storeFilter + ‘”;’ +
+‘var currentForm=”’ + formType + ‘”;’ +
+‘function changeWeek(w){’ +
+’  currentWeek=w;’ +
+’  window.opener && window.opener.printFormSheet(currentForm,w,currentStore);’ +
+’  window.close();’ +
+‘}’ +
+‘function doShare(){’ +
+’  var t=“Moriarty Group - ’ + meta.label + ‘\n’ + weekLabel + ’ - ’ + storeLabel + ‘\nTotal: EUR’ + total.toFixed(2) + ‘\nGenerated ’ + generated + ‘”;’ +
+’  if(navigator.share){navigator.share({title:”’ + meta.label + ‘”,text:t});}’ +
+’  else{var e=document.createElement(“textarea”);e.value=t;document.body.appendChild(e);e.select();document.execCommand(“copy”);document.body.removeChild(e);alert(“Copied to clipboard”);}’ +
+‘}’ +
+‘</script>’ +
+‘</body></html>’;
+win.document.write(doc);
+win.document.close();
+}
+
+// ── Gallery render ────────────────────────────────────────────
+function renderGallery() {
+galleryCurrentStore = ‘All’;
+var thisWeek = getWeekLabel();
+galleryCurrentWeek = thisWeek;
+var availWeeks = getAvailableWeeks();
+
+document.getElementById(‘galleryWeekLabel’).textContent = thisWeek;
+
+// Week selector
+var selector = document.getElementById(‘weekSelector’);
+if (!selector) {
+selector = document.createElement(‘div’);
+selector.id = ‘weekSelector’;
+selector.style.cssText = ‘margin-bottom:16px;’;
+var container = document.getElementById(‘galleryContent’);
+container.parentNode.insertBefore(selector, container);
+}
+if (availWeeks.length > 1) {
+var btnHTML = ‘<div style="font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#6b7280;margin-bottom:8px;">Select Week</div><div style="display:flex;gap:6px;flex-wrap:wrap;">’;
+availWeeks.forEach(function(w) {
+var active = w === thisWeek ? ‘background:#1a6b35;color:white;border-color:#1a6b35;’ : ‘background:white;color:#6b7280;border-color:#d1d5db;’;
+btnHTML += ‘<button onclick="switchGalleryWeek(\'' + w + '\')" style="' + active + 'padding:6px 14px;border:1.5px solid;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;">’ + w + ‘</button>’;
+});
+btnHTML += ‘</div>’;
+selector.innerHTML = btnHTML;
+} else {
+selector.innerHTML = ‘’;
+}
+
+// Share buttons
+var shareBtns = document.getElementById(‘galleryShareBtns’);
+if (!shareBtns) {
+shareBtns = document.createElement(‘div’);
+shareBtns.id = ‘galleryShareBtns’;
+shareBtns.style.cssText = ‘display:flex;gap:8px;margin-bottom:16px;’;
+var container = document.getElementById(‘galleryContent’);
+container.parentNode.insertBefore(shareBtns, container);
+}
+
+renderGalleryView(thisWeek, ‘All’);
+}
+
+function renderGalleryView(weekLabel, storeFilter) {
+storeFilter = storeFilter || ‘All’;
+var store = storeFilter;
+var weeks = getWeekGroups();
+var week = weeks[weekLabel] || {purchase:[],inwards:[],returns:[],transfer:[]};
+var allWeekRecs = Object.values(week).flat();
+var filteredRecs = store === ‘All’ ? allWeekRecs : allWeekRecs.filter(function(r){ return r.store === store; });
+
+// Totals
+var totals = {purchase:0, inwards:0, returns:0, transfer:0};
+filteredRecs.forEach(function(r){ totals[r.form] = (totals[r.form]||0) + parseTotal(r.total); });
+var grand = Object.values(totals).reduce(function(a,b){return a+b;},0);
+
+document.getElementById(‘wtPurchase’).textContent = ’\u20ac ’ + totals.purchase.toFixed(2);
+document.getElementById(‘wtInwards’).textContent  = ’\u20ac ’ + totals.inwards.toFixed(2);
+document.getElementById(‘wtReturns’).textContent  = ’\u20ac ’ + totals.returns.toFixed(2);
+document.getElementById(‘wtTransfer’).textContent = ’\u20ac ’ + totals.transfer.toFixed(2);
+document.getElementById(‘wtGrand’).textContent    = ’\u20ac ’ + grand.toFixed(2);
+document.getElementById(‘galleryWeekTotal’).textContent = ’\u20ac ’ + grand.toFixed(2);
+
+// Per-store breakdown
+var breakdown = document.getElementById(‘storeBreakdownCards’);
+if (breakdown) {
+var stores = [‘Balbriggan’,‘Palmerstown’,‘Skerries’];
+var storeColors = {Balbriggan:’#1a6b35’, Palmerstown:’#1d4ed8’, Skerries:’#92400e’};
+var bhtml = ‘’;
+stores.forEach(function(s) {
+var srecs = allWeekRecs.filter(function(r){return r.store===s;});
+if (!srecs.length) return;
+var st = {purchase:0,inwards:0,returns:0,transfer:0};
+srecs.forEach(function(r){ st[r.form]=(st[r.form]||0)+parseTotal(r.total); });
+var sg = Object.values(st).reduce(function(a,b){return a+b;},0);
+bhtml += ‘<div style="background:white;border-radius:12px;padding:14px 16px;margin-bottom:10px;box-shadow:0 2px 12px rgba(0,0,0,0.08);border-left:4px solid ' + (storeColors[s]||'#6b7280') + ';">’;
+bhtml += ‘<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">’;
+bhtml += ‘<div style="font-weight:700;font-size:15px;">’ + s + ‘</div>’;
+bhtml += ‘<div style="font-size:17px;font-weight:700;font-family:monospace;color:' + (storeColors[s]||'#124d26') + ';">\u20ac’ + sg.toFixed(2) + ‘</div>’;
+bhtml += ‘</div><table style="width:100%;border-collapse:collapse;font-size:12px;">’;
+if (st.purchase>0) bhtml += ‘<tr><td style="color:#6b7280;padding:2px 0;">Purchase</td><td style="text-align:right;font-family:monospace;font-weight:600;">\u20ac’ + st.purchase.toFixed(2) + ‘</td></tr>’;
+if (st.inwards>0)  bhtml += ‘<tr><td style="color:#6b7280;padding:2px 0;">Inwards</td><td style="text-align:right;font-family:monospace;font-weight:600;">\u20ac’ + st.inwards.toFixed(2) + ‘</td></tr>’;
+if (st.returns>0)  bhtml += ‘<tr><td style="color:#6b7280;padding:2px 0;">Returns</td><td style="text-align:right;font-family:monospace;font-weight:600;">\u20ac’ + st.returns.toFixed(2) + ‘</td></tr>’;
+if (st.transfer>0) bhtml += ‘<tr><td style="color:#6b7280;padding:2px 0;">Transfers</td><td style="text-align:right;font-family:monospace;font-weight:600;">\u20ac’ + st.transfer.toFixed(2) + ‘</td></tr>’;
+bhtml += ‘</table></div>’;
+});
+breakdown.innerHTML = bhtml || ‘’;
+}
+
+// 4 clickable form cards
+var container = document.getElementById(‘galleryContent’);
+var formCards = [
+{key:‘purchase’, label:‘Purchase Docket Log’, num:‘Form 1871’, color:’#1a6b35’, icon:’🩱’},
+{key:‘inwards’,  label:‘Goods Inwards’,        num:‘Form 2523’, color:’#1d4ed8’, icon:’📦’},
+{key:‘returns’,  label:‘Returns for Credit’,    num:‘Form 0480’, color:’#c8102e’, icon:’🔄’},
+{key:‘transfer’, label:‘Inter Store Transfers’, num:‘Form 0851’, color:’#92400e’, icon:’🔀’}
+];
+
+var chtml = ‘’;
+formCards.forEach(function(fc) {
+var fRecs = storeFilter === ‘All’ ? (week[fc.key]||[]) : (week[fc.key]||[]).filter(function(r){return r.store===storeFilter;});
+var fTotal = fRecs.reduce(function(a,r){return a+parseTotal(r.total);},0);
+var count = fRecs.length;
+var photos = [];
+fRecs.forEach(function(r){ if(r.photos) r.photos.slice(0,1).forEach(function(p){photos.push(p);}); });
+
+```
+chtml += '<div onclick="openFormTopSheet(\'' + fc.key + '\')" style="background:white;border-radius:12px;overflow:hidden;margin-bottom:12px;box-shadow:0 2px 12px rgba(0,0,0,0.08);cursor:pointer;border:1.5px solid transparent;transition:border-color 0.15s;" onmouseover="this.style.borderColor=\'' + fc.color + '\'" onmouseout="this.style.borderColor=\'transparent\'">';
+
+// Photo strip if photos exist
+if (photos.length) {
+  chtml += '<div style="display:flex;gap:1px;height:80px;overflow:hidden;">';
+  photos.slice(0,3).forEach(function(p){ chtml += '<img src="' + p + '" style="flex:1;object-fit:cover;min-width:0;">'; });
+  chtml += '</div>';
+}
+
+chtml += '<div style="padding:14px 16px;">';
+chtml += '<div style="display:flex;justify-content:space-between;align-items:flex-start;">';
+chtml += '<div>';
+chtml += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:3px;">';
+chtml += '<span style="background:' + fc.color + ';color:white;padding:3px 9px;border-radius:6px;font-size:10px;font-weight:700;letter-spacing:0.5px;">' + fc.num + '</span>';
+chtml += '</div>';
+chtml += '<div style="font-weight:700;font-size:15px;color:#1a1a1a;">' + fc.icon + ' ' + fc.label + '</div>';
+chtml += '<div style="font-size:11px;color:#6b7280;margin-top:2px;">' + count + (count===1?' entry':' entries') + ' this week &middot; tap to open full sheet</div>';
+chtml += '</div>';
+chtml += '<div style="text-align:right;">';
+chtml += '<div style="font-size:11px;color:#6b7280;text-transform:uppercase;letter-spacing:0.5px;">Total</div>';
+chtml += '<div style="font-size:20px;font-weight:700;color:' + fc.color + ';font-family:monospace;">\u20ac' + fTotal.toFixed(2) + '</div>';
+chtml += '</div></div></div>';
+chtml += '<div style="background:' + fc.color + ';color:white;padding:8px 16px;font-size:11px;font-weight:600;letter-spacing:0.5px;display:flex;justify-content:space-between;align-items:center;">';
+chtml += '<span>Open Full Top Sheet &nbsp;&rarr;</span>';
+chtml += '<span style="opacity:0.7;">Print &middot; Share &middot; Week selector</span>';
+chtml += '</div></div>';
+```
+
+});
+
+container.innerHTML = chtml || ‘<div class="empty-state"><div class="empty-icon">📷</div>No dockets submitted this week yet</div>’;
+
+// Update share buttons
+var shareBtns = document.getElementById(‘galleryShareBtns’);
+if (shareBtns) {
+shareBtns.innerHTML =
+‘<button onclick="printWeekReport(\'' + weekLabel + '\',\'' + storeFilter + '\')" style="flex:1;background:#124d26;color:white;border:none;border-radius:10px;padding:13px;font-size:13px;font-weight:600;cursor:pointer;">🖨️ Full Report PDF</button>’ +
+‘<button onclick="shareWeekReport(\'' + weekLabel + '\',\'' + storeFilter + '\')" style="flex:1;background:#c9a84c;color:white;border:none;border-radius:10px;padding:13px;font-size:13px;font-weight:600;cursor:pointer;">📤 Share Summary</button>’;
+}
+}
+
 // ── Boot ──────────────────────────────────────────────────────
-// Seed one row in each form
+loadRecords();
 addPurchaseRow();
 addInwardsRow();
 addReturnsRow();
 addTransferRow();
+renderRecent();
+
+renderRecent();
 </script>
 
 </body>
