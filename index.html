@@ -1354,7 +1354,113 @@ function recalcAllTransfer() {
 // ── Submissions ───────────────────────────────────────────────
 const records = [];
 
-function submitForm(form) {
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxY0KCxG1mwvooVLOD6beCkDM84beW9gPdD_XD_E7tJRYfgs2XYL7pq_srWNDvL2co/exec';
+
+function collectFormData(form, store) {
+  if (form === 'purchase') {
+    const rows = [];
+    document.querySelectorAll('#purchaseTbody tr').forEach(tr => {
+      const inputs = tr.querySelectorAll('input');
+      if (inputs.length >= 12) {
+        rows.push({
+          formType: 'purchase',
+          store,
+          weekEnding: document.getElementById('pWeekEnding')?.value || '',
+          manager: document.querySelector('#screenPurchase input[placeholder="Manager name"]')?.value || '',
+          date: inputs[0].value,
+          supplier: inputs[1].value,
+          docketNum: inputs[2].value,
+          groc: inputs[3].value || 0,
+          cigs: inputs[4].value || 0,
+          wine: inputs[5].value || 0,
+          beers: inputs[6].value || 0,
+          spirits: inputs[7].value || 0,
+          nonFood: inputs[8].value || 0,
+          news: inputs[9].value || 0,
+          promo: inputs[10].value || 0,
+          lineTotal: inputs[11].value || 0,
+          grandTotal: document.getElementById('purchaseTotal')?.textContent?.replace('€ ','') || 0,
+          hasSig: !!getSigDataUrl('sigPurchase')
+        });
+      }
+    });
+    return rows;
+  }
+  if (form === 'inwards') {
+    const rows = [];
+    document.querySelectorAll('#inwardsTbody tr').forEach(tr => {
+      const inputs = tr.querySelectorAll('input');
+      if (inputs.length >= 11) {
+        rows.push({
+          formType: 'inwards',
+          store,
+          date: inputs[0].value,
+          supplier: inputs[1].value,
+          depotNo: document.querySelector('#screenInwards input[placeholder="Depot number"]')?.value || '',
+          refNo: document.querySelector('#screenInwards input[placeholder="Reference"]')?.value || '',
+          beef: inputs[2].value || 0,
+          lamb: inputs[3].value || 0,
+          pork: inputs[4].value || 0,
+          fish: inputs[5].value || 0,
+          poultry: inputs[6].value || 0,
+          fv: inputs[7].value || 0,
+          deli: inputs[8].value || 0,
+          bakery: inputs[9].value || 0,
+          provs: inputs[10].value || 0,
+          lineTotal: inputs[11]?.value || 0,
+          hasSig: !!getSigDataUrl('sigInwards')
+        });
+      }
+    });
+    return rows;
+  }
+  if (form === 'returns') {
+    const rows = [];
+    document.querySelectorAll('#returnsTbody tr').forEach(tr => {
+      const inputs = tr.querySelectorAll('input, textarea');
+      rows.push({
+        formType: 'returns',
+        store,
+        date: document.getElementById('retDate')?.value || '',
+        toSupplier: document.getElementById('retTo')?.value || '',
+        dept: document.getElementById('retDept')?.value || '',
+        ref: document.getElementById('retRef')?.value || '',
+        reason: document.getElementById('retReason')?.value || '',
+        qty: inputs[0]?.value || '',
+        description: inputs[1]?.value || '',
+        costPerBox: inputs[2]?.value || 0,
+        totalCredit: document.getElementById('returnsTotal')?.textContent?.replace('€ ','') || 0,
+        hasSig: !!getSigDataUrl('sigReturnsRep') || !!getSigDataUrl('sigReturnsMgr')
+      });
+    });
+    return rows;
+  }
+  if (form === 'transfer') {
+    const rows = [];
+    document.querySelectorAll('#transferTbody tr').forEach(tr => {
+      const inputs = tr.querySelectorAll('input');
+      rows.push({
+        formType: 'transfer',
+        store,
+        date: document.getElementById('trDate')?.value || '',
+        toStore: document.getElementById('trTo')?.value || '',
+        fromStore: document.getElementById('trFrom')?.value || '',
+        dept: document.getElementById('trDept')?.value || '',
+        ref: document.getElementById('trRef')?.value || '',
+        qty: inputs[0]?.value || '',
+        description: inputs[1]?.value || '',
+        costPrice: inputs[2]?.value || 0,
+        retailPrice: inputs[3]?.value || 0,
+        totalAmount: inputs[4]?.value || 0,
+        hasSig: !!getSigDataUrl('sigTransferRecv') || !!getSigDataUrl('sigTransferDisp')
+      });
+    });
+    return rows;
+  }
+  return [];
+}
+
+async function submitForm(form) {
   const stamp = fmtStamp();
   const storeMap = {
     purchase: 'storePillsPurchase',
@@ -1365,7 +1471,7 @@ function submitForm(form) {
   let store = 'Balbriggan';
   if (storeMap[form]) {
     const sel = document.querySelector('#'+storeMap[form]+' .store-pill.selected');
-    if (sel) store = sel.textContent;
+    if (sel) store = sel.textContent.trim();
   }
 
   const formNames = {
@@ -1376,48 +1482,58 @@ function submitForm(form) {
   };
 
   const formNums = {
-    purchase: '1871',
-    inwards: '2523',
+    purchase: '1871', inwards: '2523',
     returns: document.getElementById('returnsFormNum')?.textContent || '0480',
     transfer: document.getElementById('transferFormNum')?.textContent || '0851'
   };
 
-  // collect photos
   const gridMap = {
-    purchase: 'purchasePhotoGrid',
-    inwards: 'inwardsPhotoGrid',
-    returns: 'returnsPhotoGrid',
-    transfer: 'transferPhotoGrid'
+    purchase: 'purchasePhotoGrid', inwards: 'inwardsPhotoGrid',
+    returns: 'returnsPhotoGrid', transfer: 'transferPhotoGrid'
   };
   const photos = [];
   document.querySelectorAll('#'+gridMap[form]+' img').forEach(img => photos.push(img.src));
 
-  // sig
   const sigMap = {
-    purchase: ['sigPurchase'],
-    inwards: ['sigInwards'],
+    purchase: ['sigPurchase'], inwards: ['sigInwards'],
     returns: ['sigReturnsRep','sigReturnsMgr'],
     transfer: ['sigTransferRecv','sigTransferDisp']
   };
   let hasSig = false;
   sigMap[form].forEach(id => { if (getSigDataUrl(id)) hasSig = true; });
 
-  const rec = {
-    id: formNums[form],
-    form,
-    name: formNames[form],
-    store,
-    stamp,
-    photos: photos.slice(0,4),
-    hasSig,
-    total: document.getElementById({
-      purchase:'purchaseTotal', inwards:'inwardsTotal',
-      returns:'returnsTotal', transfer:'transferTotal'
-    }[form])?.textContent || ''
-  };
+  const totalEl = {purchase:'purchaseTotal', inwards:'inwardsTotal', returns:'returnsTotal', transfer:'transferTotal'};
+  const total = document.getElementById(totalEl[form])?.textContent || '';
 
+  // Show sending state
+  const btn = document.querySelector('#screen'+form.charAt(0).toUpperCase()+form.slice(1)+' .btn-submit');
+  if (btn) { btn.textContent = '⏳  Sending to Sheets...'; btn.disabled = true; }
+
+  // Send each row to Google Sheets
+  const rows = collectFormData(form, store);
+  let success = true;
+  try {
+    for (const row of rows) {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(row)
+      });
+    }
+  } catch(err) {
+    success = false;
+    console.error('Sheets error:', err);
+  }
+
+  const rec = {
+    id: formNums[form], form, name: formNames[form],
+    store, stamp, photos: photos.slice(0,4), hasSig, total
+  };
   records.unshift(rec);
-  showToast('✅  '+formNames[form]+' submitted');
+
+  if (btn) { btn.textContent = '✓  Submit'; btn.disabled = false; }
+  showToast(success ? '✅  Saved to Google Sheets!' : '✅  Saved locally (Sheets offline)');
   goHome();
 }
 
