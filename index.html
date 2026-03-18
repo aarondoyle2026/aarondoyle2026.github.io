@@ -3,401 +3,1332 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moriarty Group Store Forms</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Moriarty Group – Docket System</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#f5f5f5;color:#111}
-header{background:#124d26;color:#fff;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
-header h1{font-size:16px;margin:0}
-header p{font-size:11px;opacity:.7;margin:0}
-#btnBack{display:none;background:rgba(255,255,255,.2);border:none;color:#fff;padding:7px 12px;border-radius:6px;font-size:13px;cursor:pointer}
-.wrap{max-width:640px;margin:0 auto;padding:16px}
-.pg{display:none;padding-top:16px}
-.pg.on{display:block}
-.greet{text-align:center;padding:16px 0 8px}
-.greet h2{font-size:24px;color:#124d26}
-.greet p{font-size:13px;color:#888;margin-top:4px}
-.sec{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#888;margin:18px 0 8px}
-.card{background:#fff;border-radius:10px;padding:15px 16px;display:flex;align-items:center;gap:12px;margin-bottom:8px;box-shadow:0 1px 4px rgba(0,0,0,.08);cursor:pointer;border:none;width:100%;text-align:left;font-family:Arial}
-.ico{width:44px;height:44px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-.c1{background:#e8f3ed}.c2{background:#e8f0ff}.c3{background:#ffeaea}.c4{background:#fff3e0}
-.card .tx{flex:1}
-.card .tx b{display:block;font-size:14px;margin-bottom:2px}
-.card .tx span{font-size:12px;color:#888}
-.card .ar{color:#ccc;font-size:18px}
-.fh{background:#fff;border-radius:10px;padding:16px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
-.fh .fn{font-size:11px;color:#c0392b;font-weight:700;margin-bottom:4px}
-.fh .ft{font-size:19px;font-weight:700;color:#124d26}
-.pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
-.pill{padding:5px 12px;border-radius:20px;border:1.5px solid #ddd;font-size:11px;font-weight:700;cursor:pointer;background:#fff;color:#888;font-family:Arial}
-.pill.on{background:#124d26;border-color:#124d26;color:#fff}
-.bx{background:#fff;border-radius:10px;padding:16px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
-.bx h3{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;margin:0 0 12px}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
-.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px}
-.fl{display:flex;flex-direction:column;gap:4px}
-.fl label{font-size:11px;font-weight:700;color:#888}
-.fl input,.fl textarea{width:100%;padding:9px 10px;border:1.5px solid #ddd;border-radius:7px;font-size:14px;font-family:Arial;background:#f7f7f7;outline:none}
-.fl input:focus,.fl textarea:focus{border-color:#124d26;background:#fff}
-.fl textarea{min-height:60px;resize:vertical}
-.tw{overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:12px;min-width:400px}
-th{padding:7px 6px;text-align:left;font-size:10px;text-transform:uppercase;color:#888;border-bottom:2px solid #eee;white-space:nowrap}
-td{padding:4px 3px;vertical-align:middle}
-td input{width:100%;padding:5px 6px;border:1.5px solid transparent;border-radius:5px;font-size:12px;background:#f7f7f7;font-family:Arial;outline:none}
-td input:focus{border-color:#124d26;background:#fff}
-.nr input{text-align:right}
-.xb{background:none;border:none;color:#e74c3c;font-size:16px;cursor:pointer;padding:4px 8px}
-.ab{width:100%;padding:8px;background:#e8f3ed;border:1.5px dashed #124d26;border-radius:7px;color:#124d26;font-weight:700;font-size:13px;cursor:pointer;font-family:Arial;margin-top:4px}
-.tr2{display:flex;justify-content:flex-end;padding-top:8px;margin-top:8px;border-top:1.5px solid #eee}
-.tr2 .t{text-align:right}
-.tr2 .t .tl{font-size:10px;text-transform:uppercase;color:#888;font-weight:700}
-.tr2 .t .tv{font-size:18px;font-weight:700;color:#124d26}
-.pz{border:2px dashed #ddd;border-radius:9px;padding:20px;text-align:center;cursor:pointer;background:#f7f7f7}
-.pz input{display:none}
-.pz .pi{font-size:26px;margin-bottom:4px}
-.pz .pl{font-size:13px;font-weight:700;color:#124d26}
-.pz .ps{font-size:11px;color:#888;margin-top:2px}
-.pg2{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
-.pt{position:relative;aspect-ratio:1;border-radius:7px;overflow:hidden;background:#ddd}
-.pt img{width:100%;height:100%;object-fit:cover}
-.pt button{position:absolute;top:3px;right:3px;background:rgba(0,0,0,.6);border:none;border-radius:50%;width:20px;height:20px;color:#fff;font-size:12px;cursor:pointer}
-.sb2{border:1.5px solid #ddd;border-radius:9px;overflow:hidden;background:#fff}
-.sb2 .sl{padding:8px 12px;font-size:10px;font-weight:700;text-transform:uppercase;color:#888;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center}
-.sb2 .sl button{background:none;border:none;font-size:11px;color:#c0392b;cursor:pointer;font-weight:700;font-family:Arial}
-.sb2 canvas{display:block;width:100%;cursor:crosshair;touch-action:none}
-.sh{text-align:center;font-size:11px;color:#888;padding:5px;border-top:1px solid #eee}
-.st{padding:10px 12px;background:#e8f3ed;border-radius:7px;margin-top:8px;font-size:12px;color:#124d26;font-weight:700}
-.sb3{width:100%;padding:15px;background:#124d26;color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:Arial;margin-top:12px}
-.ri{background:#fff;border-radius:9px;padding:13px 15px;margin-bottom:8px;box-shadow:0 1px 4px rgba(0,0,0,.08);border-left:4px solid #124d26}
-.rt{display:flex;justify-content:space-between;margin-bottom:4px}
-.rid{font-size:11px;color:#c0392b;font-weight:700}
-.rts{font-size:10px;color:#888}
-.rn{font-weight:700;font-size:14px}
-.rm{font-size:11px;color:#888;margin-top:2px}
-.rp{display:flex;gap:5px;margin-top:6px}
-.rp img{width:42px;height:42px;border-radius:5px;object-fit:cover;border:1px solid #eee}
-.sg{display:inline-block;background:#e8f3ed;color:#124d26;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;margin-top:5px}
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(60px);background:#222;color:#fff;padding:11px 18px;border-radius:9px;font-size:13px;font-weight:700;z-index:999;transition:transform .3s;white-space:nowrap}
-.toast.up{transform:translateX(-50%) translateY(0)}
-.empty{text-align:center;padding:28px 16px;color:#888;font-size:13px}
-@media(max-width:380px){.g3{grid-template-columns:1fr 1fr}}
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+
+:root {
+–sv-green: #1a5e2a;
+–sv-green-light: #2d7a3e;
+–sv-red: #c8102e;
+–bg: #f4f5f0;
+–card: #ffffff;
+–border: #d8dbd2;
+–text: #1a1f18;
+–muted: #6b7266;
+–radius: 12px;
+–shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+- { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+body {
+font-family: ‘DM Sans’, sans-serif;
+background: var(–bg);
+color: var(–text);
+min-height: 100vh;
+padding-bottom: 120px;
+}
+
+/* ===== HEADER ===== */
+.app-header {
+background: var(–sv-green);
+color: white;
+padding: 14px 16px 12px;
+position: sticky;
+top: 0;
+z-index: 100;
+box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.app-header .logo-row { display: flex; align-items: center; justify-content: space-between; }
+.app-header .brand { font-size: 14px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.app-header .sub { font-size: 11px; opacity: 0.7; margin-top: 1px; }
+.sv-badge { background: white; color: var(–sv-green); font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 20px; letter-spacing: 0.05em; }
+
+/* ===== STORE BAR ===== */
+.store-bar { background: var(–sv-green-light); padding: 8px 14px; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+.store-bar::-webkit-scrollbar { display: none; }
+.store-btn { background: rgba(255,255,255,0.18); border: 1.5px solid rgba(255,255,255,0.35); color: white; padding: 6px 16px; border-radius: 20px; font-family: ‘DM Sans’, sans-serif; font-size: 13px; font-weight: 600; white-space: nowrap; cursor: pointer; transition: all 0.15s; }
+.store-btn.active { background: white; color: var(–sv-green); border-color: white; }
+
+/* ===== NAV TABS ===== */
+.nav-tabs { display: flex; background: white; border-bottom: 2px solid var(–border); overflow-x: auto; scrollbar-width: none; position: sticky; top: 84px; z-index: 90; }
+.nav-tabs::-webkit-scrollbar { display: none; }
+.nav-tab { padding: 11px 14px; font-size: 11px; font-weight: 700; color: var(–muted); cursor: pointer; white-space: nowrap; border-bottom: 2.5px solid transparent; margin-bottom: -2px; transition: all 0.15s; letter-spacing: 0.04em; text-transform: uppercase; }
+.nav-tab.active { color: var(–sv-green); border-bottom-color: var(–sv-green); }
+
+/* ===== SECTIONS ===== */
+.section { display: none; padding: 14px; }
+.section.active { display: block; }
+
+/* ===== CARDS ===== */
+.card { background: var(–card); border-radius: var(–radius); border: 1px solid var(–border); padding: 14px; margin-bottom: 12px; box-shadow: var(–shadow); }
+.card-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(–muted); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.card-title::before { content: ‘’; display: block; width: 3px; height: 13px; background: var(–sv-green); border-radius: 2px; }
+
+/* ===== FIELDS ===== */
+label { display: block; font-size: 10px; font-weight: 700; color: var(–muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; margin-top: 11px; }
+label:first-child { margin-top: 0; }
+input[type=“text”], input[type=“date”], input[type=“number”], input[type=“time”], select, textarea {
+width: 100%; background: var(–bg); border: 1.5px solid var(–border); border-radius: 8px;
+padding: 10px 12px; font-family: ‘DM Sans’, sans-serif; font-size: 15px; color: var(–text);
+outline: none; transition: border-color 0.15s; -webkit-appearance: none;
+}
+input:focus, select:focus, textarea:focus { border-color: var(–sv-green); background: white; }
+textarea { resize: vertical; min-height: 72px; }
+.row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+
+/* ===== TABLE ===== */
+.tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 8px; }
+.docket-table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 700px; }
+.docket-table th { background: var(–sv-green); color: white; padding: 7px 5px; font-size: 9px; font-weight: 700; text-align: center; letter-spacing: 0.04em; white-space: nowrap; }
+.docket-table td { border-bottom: 1px solid var(–border); padding: 2px; }
+.docket-table input { border: none; background: transparent; padding: 6px 4px; font-size: 12px; width: 100%; text-align: center; border-radius: 4px; min-width: 50px; font-family: ‘DM Sans’, sans-serif; }
+.docket-table input:focus { background: #e8f5e9; outline: none; }
+.docket-table tr:nth-child(even) { background: #f9faf7; }
+.total-row td { font-weight: 700; background: #e8f5e9 !important; border-top: 2px solid var(–sv-green); }
+.add-row-btn { background: none; border: 1.5px dashed var(–border); color: var(–muted); border-radius: 8px; padding: 8px; width: 100%; font-family: ‘DM Sans’, sans-serif; font-size: 13px; cursor: pointer; margin-top: 8px; transition: all 0.15s; }
+.add-row-btn:active { border-color: var(–sv-green); color: var(–sv-green); }
+
+/* ===== SIGNATURE ===== */
+.sig-wrap { border: 1.5px solid var(–border); border-radius: 8px; background: white; margin-top: 6px; position: relative; overflow: hidden; touch-action: none; }
+.sig-wrap canvas { display: block; width: 100%; height: 110px; }
+.sig-placeholder { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 12px; color: #ccc; pointer-events: none; transition: opacity 0.2s; white-space: nowrap; }
+.sig-actions { display: flex; gap: 8px; margin-top: 6px; }
+
+/* ===== BUTTONS ===== */
+.btn { display: block; width: 100%; padding: 13px; border-radius: 10px; font-family: ‘DM Sans’, sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; border: none; transition: all 0.15s; text-align: center; letter-spacing: 0.02em; }
+.btn-primary { background: var(–sv-green); color: white; }
+.btn-primary:active { opacity: 0.85; transform: scale(0.98); }
+.btn-secondary { background: white; color: var(–sv-green); border: 1.5px solid var(–sv-green); padding: 8px; font-size: 13px; }
+.btn-sm { padding: 7px 12px; font-size: 12px; width: auto; border-radius: 8px; }
+.btn-danger { background: white; color: var(–sv-red); border: 1.5px solid var(–sv-red); }
+.btn-dark { background: #1a1f18; color: white; }
+
+/* ===== PHOTO ===== */
+.photo-upload { border: 2px dashed var(–border); border-radius: 10px; padding: 18px; text-align: center; cursor: pointer; margin-top: 6px; background: var(–bg); }
+.photo-upload input { display: none; }
+.photo-upload .icon { font-size: 26px; margin-bottom: 5px; }
+.photo-upload p { font-size: 13px; color: var(–muted); font-weight: 500; }
+.photo-preview { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.photo-thumb { position: relative; width: 70px; height: 70px; border-radius: 8px; overflow: hidden; border: 1px solid var(–border); }
+.photo-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.photo-thumb .rm { position: absolute; top: 2px; right: 2px; background: rgba(0,0,0,0.6); color: white; border: none; border-radius: 50%; width: 18px; height: 18px; font-size: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; line-height: 1; }
+
+/* ===== TIMESTAMP ===== */
+.timestamp-badge { background: var(–bg); border: 1px solid var(–border); border-radius: 6px; padding: 8px 12px; font-family: ‘DM Mono’, monospace; font-size: 11px; color: var(–muted); margin-top: 6px; }
+
+/* ===== SUCCESS ===== */
+.form-success { background: #e8f5e9; border: 1px solid #a5d6a7; border-radius: 8px; padding: 11px 14px; font-size: 14px; font-weight: 600; color: #2e7d32; margin-bottom: 12px; display: none; align-items: center; gap: 8px; }
+.form-success.show { display: flex; }
+
+/* ===== REVIEW ===== */
+.store-group { margin-bottom: 20px; }
+.store-group-header { background: var(–sv-green); color: white; padding: 9px 13px; border-radius: 8px 8px 0 0; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; display: flex; justify-content: space-between; align-items: center; }
+.record-item { background: white; border: 1px solid var(–border); border-top: none; padding: 11px 13px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+.record-item:last-child { border-radius: 0 0 8px 8px; }
+.record-item:active { background: #f0f4f0; }
+.rec-type { font-size: 12px; font-weight: 700; color: var(–sv-green); text-transform: uppercase; letter-spacing: 0.04em; }
+.rec-meta { font-size: 11px; color: var(–muted); margin-top: 2px; font-family: ‘DM Mono’, monospace; }
+.rec-arrow { color: var(–border); font-size: 20px; margin-left: 8px; }
+.badge { display: inline-block; padding: 2px 7px; border-radius: 20px; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-left: 7px; }
+.badge-weekly { background: #e8f5e9; color: #2e7d32; }
+.badge-returns { background: #fff3e0; color: #e65100; }
+.badge-transfer { background: #e3f2fd; color: #1565c0; }
+.badge-docketlog { background: #f3e5f5; color: #6a1b9a; }
+
+.empty-state { text-align: center; padding: 40px 20px; color: var(–muted); }
+.empty-state .icon { font-size: 38px; margin-bottom: 10px; }
+.empty-state p { font-size: 14px; }
+
+/* ===== DATA TOOLS ===== */
+.data-tools { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+.data-tool-btn { background: white; border: 1.5px solid var(–border); border-radius: 10px; padding: 12px; text-align: center; cursor: pointer; font-family: ‘DM Sans’, sans-serif; transition: all 0.15s; }
+.data-tool-btn:active { border-color: var(–sv-green); background: #f0f8f0; }
+.data-tool-btn .dt-icon { font-size: 22px; margin-bottom: 5px; }
+.data-tool-btn .dt-label { font-size: 12px; font-weight: 700; color: var(–text); }
+.data-tool-btn .dt-sub { font-size: 10px; color: var(–muted); margin-top: 2px; }
+.db-status { font-size: 11px; color: var(–muted); text-align: center; margin-bottom: 12px; font-family: ‘DM Mono’, monospace; }
+.db-status.ok { color: #2e7d32; }
+.db-status.err { color: var(–sv-red); }
+
+/* ===== MODAL ===== */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 1000; align-items: flex-end; }
+.modal-overlay.open { display: flex; }
+.modal { background: white; border-radius: 20px 20px 0 0; padding: 18px; width: 100%; max-height: 88vh; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.modal-title { font-size: 15px; font-weight: 700; }
+.modal-close { background: none; border: none; font-size: 22px; cursor: pointer; color: var(–muted); padding: 4px; }
+.modal-actions { display: grid; grid-template-columns: auto 1fr 1fr; gap: 8px; margin-top: 16px; }
+
+/* ===== DETAIL VIEW ===== */
+.detail-field { margin-bottom: 10px; }
+.detail-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(–muted); }
+.detail-value { font-size: 14px; margin-top: 2px; }
+.detail-sig { width: 100%; max-height: 80px; object-fit: contain; border: 1px solid var(–border); border-radius: 6px; margin-top: 6px; background: white; }
+.detail-photo { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; border: 1px solid var(–border); }
+.detail-row { background: var(–bg); border-radius: 6px; padding: 6px 10px; margin-top: 5px; font-size: 12px; font-family: ‘DM Mono’, monospace; }
+.divider { height: 1px; background: var(–border); margin: 14px 0; }
+.section-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(–muted); margin-bottom: 8px; }
+
+/* ===== PRINT STYLES ===== */
+@media print {
+.app-header, .store-bar, .nav-tabs, .modal-overlay, .modal-actions, .btn, .add-row-btn, .photo-upload, .sig-actions, .data-tools, .db-status { display: none !important; }
+body { background: white; padding: 0; }
+.modal { border-radius: 0; max-height: none; padding: 20px; box-shadow: none; }
+.modal-overlay { display: flex !important; position: static; background: none; }
+.print-header { display: block !important; }
+}
+.print-header { display: none; }
 </style>
+
 </head>
 <body>
-<header>
-<div><h1>Moriarty Group</h1><p>Store Forms &amp; Records</p></div>
-<button id="btnBack" onclick="goHome()">Back</button>
-</header>
-<div class="wrap">
 
-<div id="pgHome" class="pg on">
-<div class="greet"><h2>Store Forms</h2><p>SuperValu &middot; Moriarty Group &middot; Est. 1987</p></div>
-<div class="sec">Purchase &amp; Delivery</div>
-<button class="card" onclick="gotoPage('pgPurchase','purchase')">
-<div class="ico c1">&#129649;</div><div class="tx"><b>Purchase Docket Log</b><span>Grocery, cigs, wine, beers, spirits</span></div><div class="ar">&#8250;</div>
-</button>
-<button class="card" onclick="gotoPage('pgInwards','inwards')">
-<div class="ico c2">&#128230;</div><div class="tx"><b>Goods Inwards</b><span>Beef, lamb, pork, fish, poultry, F&amp;V, bakery</span></div><div class="ar">&#8250;</div>
-</button>
-<div class="sec">Returns &amp; Transfers</div>
-<button class="card" onclick="gotoPage('pgReturns','returns')">
-<div class="ico c3">&#128260;</div><div class="tx"><b>Goods Returned for Credit</b><span>Return docket with reason &amp; cost value</span></div><div class="ar">&#8250;</div>
-</button>
-<button class="card" onclick="gotoPage('pgTransfer','transfer')">
-<div class="ico c4">&#128256;</div><div class="tx"><b>Inter Store Transfer</b><span>Cost price, retail price &mdash; store to store</span></div><div class="ar">&#8250;</div>
-</button>
-<div class="sec">Recent Submissions</div>
-<div id="recList"><div class="empty">No forms submitted yet</div></div>
+<!-- ===== APP HEADER ===== -->
+
+<div class="app-header">
+  <div class="logo-row">
+    <div>
+      <div class="brand">Moriarty Group</div>
+      <div class="sub">SuperValu · Docket System</div>
+    </div>
+    <div class="sv-badge">SUPERVALU</div>
+  </div>
 </div>
 
-<div id="pgPurchase" class="pg">
-<div class="fh"><div class="fn">PURCHASE DOCKET &middot; FORM 1871</div><div class="ft">Purchase Docket Log</div>
-<div class="pills" id="stP"><button class="pill on" onclick="setPill(this)">Balbriggan</button><button class="pill" onclick="setPill(this)">Palmerstown</button><button class="pill" onclick="setPill(this)">Skerries</button></div></div>
-<div class="bx"><h3>Period</h3><div class="g2"><div class="fl"><label>Week Ending</label><input type="date" id="pWE"></div><div class="fl"><label>Manager</label><input type="text" id="pMg" placeholder="Manager name"></div></div></div>
-<div class="bx"><h3>Docket Lines</h3>
-<div class="tw"><table><thead><tr><th>Date</th><th>Supplier</th><th>Docket</th><th>Groc</th><th>Cigs</th><th>Wine</th><th>Beers</th><th>Spirits</th><th>Non Food</th><th>News</th><th>Promo</th><th>Total</th><th></th></tr></thead><tbody id="pTb"></tbody></table></div>
-<button class="ab" onclick="addRow('p')">+ Add Line</button>
-<div class="tr2"><div class="t"><div class="tl">Grand Total</div><div class="tv" id="pTot">0.00</div></div></div></div>
-<div class="bx"><h3>Photo Evidence</h3>
-<div class="pz" onclick="document.getElementById('pFi').click()"><input type="file" id="pFi" accept="image/*" multiple onchange="addPhotos(this,'pPg')"><div class="pi">&#128247;</div><div class="pl">Tap to attach photos</div><div class="ps">Camera or library</div></div>
-<div class="pg2" id="pPg"></div></div>
-<div class="bx"><h3>Signature</h3>
-<div class="sb2"><div class="sl">Sign here <button onclick="clrSig('sgP')">Clear</button></div><canvas id="sgP" height="110"></canvas><div class="sh">Draw with finger</div></div>
-<div class="st" id="stP">--</div></div>
-<button class="sb3" onclick="doSub('purchase')">Submit Purchase Log</button>
+<!-- ===== STORE BAR ===== -->
+
+<div class="store-bar">
+  <button class="store-btn active" onclick="selectStore('Balbriggan',this)">Balbriggan</button>
+  <button class="store-btn" onclick="selectStore('Palmerstown',this)">Palmerstown</button>
+  <button class="store-btn" onclick="selectStore('Skerries',this)">Skerries</button>
 </div>
 
-<div id="pgInwards" class="pg">
-<div class="fh"><div class="fn">GOODS INWARDS &middot; FORM 2523</div><div class="ft">Goods Inwards Record</div>
-<div class="pills" id="stI"><button class="pill on" onclick="setPill(this)">Balbriggan</button><button class="pill" onclick="setPill(this)">Palmerstown</button><button class="pill" onclick="setPill(this)">Skerries</button></div></div>
-<div class="bx"><h3>Delivery Details</h3>
-<div class="g2"><div class="fl"><label>Date</label><input type="date" id="iDt"></div><div class="fl"><label>Supplier</label><input type="text" id="iSp" placeholder="e.g. Musgrave"></div></div>
-<div class="g2" style="margin-top:10px"><div class="fl"><label>Depot No.</label><input type="text" id="iDp" placeholder="Depot number"></div><div class="fl"><label>Ref No.</label><input type="text" id="iRf" placeholder="Reference"></div></div></div>
-<div class="bx"><h3>Departments Received</h3>
-<div class="tw"><table><thead><tr><th>Date</th><th>Supplier</th><th>Beef</th><th>Lamb</th><th>Pork</th><th>Fish</th><th>Poultry</th><th>F&amp;V</th><th>Deli</th><th>Bakery</th><th>Provs</th><th>Total</th><th></th></tr></thead><tbody id="iTb"></tbody></table></div>
-<button class="ab" onclick="addRow('i')">+ Add Delivery Line</button>
-<div class="tr2"><div class="t"><div class="tl">Total</div><div class="tv" id="iTot">0.00</div></div></div></div>
-<div class="bx"><h3>Photo Evidence</h3>
-<div class="pz" onclick="document.getElementById('iFi').click()"><input type="file" id="iFi" accept="image/*" multiple onchange="addPhotos(this,'iPg')"><div class="pi">&#128247;</div><div class="pl">Tap to attach photos</div><div class="ps">Camera or library</div></div>
-<div class="pg2" id="iPg"></div></div>
-<div class="bx"><h3>Signature</h3>
-<div class="sb2"><div class="sl">Receiving Manager <button onclick="clrSig('sgI')">Clear</button></div><canvas id="sgI" height="110"></canvas><div class="sh">Draw with finger</div></div>
-<div class="st" id="stI">--</div></div>
-<button class="sb3" onclick="doSub('inwards')">Submit Goods Inwards</button>
+<!-- ===== NAV TABS ===== -->
+
+<div class="nav-tabs">
+  <div class="nav-tab active" onclick="showTab('weekly',this)">Ambient Dockets</div>
+  <div class="nav-tab" onclick="showTab('returns',this)">Returns</div>
+  <div class="nav-tab" onclick="showTab('transfer',this)">Transfer</div>
+  <div class="nav-tab" onclick="showTab('docketlog',this)">Chilled Dockets</div>
+  <div class="nav-tab" onclick="showTab('review',this)">📋 Review</div>
 </div>
 
-<div id="pgReturns" class="pg">
-<div class="fh"><div class="fn">GOODS RETURNED &middot; FORM 0480</div><div class="ft">Goods Returned for Credit</div>
-<div class="pills" id="stR"><button class="pill on" onclick="setPill(this)">Balbriggan</button><button class="pill" onclick="setPill(this)">Palmerstown</button><button class="pill" onclick="setPill(this)">Skerries</button></div></div>
-<div class="bx"><h3>Return Details</h3>
-<div class="g2"><div class="fl"><label>To (Supplier)</label><input type="text" id="rTo" placeholder="Supplier name"></div><div class="fl"><label>Dept.</label><input type="text" id="rDp" placeholder="e.g. Deli"></div></div>
-<div class="g2" style="margin-top:10px"><div class="fl"><label>Ref.</label><input type="text" id="rRf" placeholder="Reference"></div><div class="fl"><label>Date</label><input type="date" id="rDt"></div></div>
-<div class="fl" style="margin-top:10px"><label>Reason for Return</label><textarea id="rRs" placeholder="Describe reason"></textarea></div></div>
-<div class="bx"><h3>Items Returned</h3>
-<div class="tw"><table><thead><tr><th>Qty</th><th>Description</th><th>Cost/Box</th><th></th></tr></thead><tbody id="rTb"></tbody></table></div>
-<button class="ab" onclick="addRow('r')">+ Add Item</button>
-<div class="tr2"><div class="t"><div class="tl">Total Credit</div><div class="tv" id="rTot">0.00</div></div></div></div>
-<div class="bx"><h3>Photo Evidence</h3>
-<div class="pz" onclick="document.getElementById('rFi').click()"><input type="file" id="rFi" accept="image/*" multiple onchange="addPhotos(this,'rPg')"><div class="pi">&#128247;</div><div class="pl">Tap to attach photos</div><div class="ps">Camera or library</div></div>
-<div class="pg2" id="rPg"></div></div>
-<div class="bx"><h3>Signatures</h3>
-<div style="font-size:12px;color:#888;margin-bottom:6px">Your Rep.</div>
-<div class="sb2" style="margin-bottom:10px"><div class="sl">Rep Signature <button onclick="clrSig('sgR1')">Clear</button></div><canvas id="sgR1" height="90"></canvas></div>
-<div style="font-size:12px;color:#888;margin-bottom:6px">Branch Manager</div>
-<div class="sb2"><div class="sl">Branch Manager <button onclick="clrSig('sgR2')">Clear</button></div><canvas id="sgR2" height="90"></canvas><div class="sh">Draw with finger</div></div>
-<div class="st" id="stR">--</div></div>
-<button class="sb3" onclick="doSub('returns')">Submit Return Docket</button>
+<!-- ================================================================ -->
+
+<!-- WEEKLY REGISTER                                                    -->
+
+<!-- ================================================================ -->
+
+<div id="tab-weekly" class="section active">
+  <div class="form-success" id="success-weekly">✅ Ambient Dockets saved!</div>
+  <div class="card">
+    <div class="card-title">Ambient Docket Register</div>
+    <div class="row-2">
+      <div><label>Store</label><input type="text" id="wr-store" readonly></div>
+      <div><label>Week Ending</label><input type="date" id="wr-weekending"></div>
+    </div>
+    <label>Reference No.</label>
+    <input type="text" id="wr-ref" placeholder="e.g. 1871">
+  </div>
+
+  <div class="card">
+    <div class="card-title">Docket Entries</div>
+    <div class="tbl-wrap">
+      <table class="docket-table">
+        <thead>
+          <tr>
+            <th>Date</th><th>Supplier</th><th>Docket #</th>
+            <th>Groc</th><th>Cigs</th><th>Wine</th><th>Beers</th>
+            <th>Spirits</th><th>Non Food</th><th>News</th>
+            <th>Promo</th><th>Expense</th><th>Total</th><th>Comments</th>
+          </tr>
+        </thead>
+        <tbody id="wr-tbody"></tbody>
+        <tfoot>
+          <tr class="total-row">
+            <td colspan="3" style="padding:6px 8px;font-size:10px;font-weight:700;">TOTALS</td>
+            <td><input id="tot-groc" readonly style="font-weight:700;"></td>
+            <td><input id="tot-cigs" readonly style="font-weight:700;"></td>
+            <td><input id="tot-wine" readonly style="font-weight:700;"></td>
+            <td><input id="tot-beers" readonly style="font-weight:700;"></td>
+            <td><input id="tot-spirits" readonly style="font-weight:700;"></td>
+            <td><input id="tot-nonfood" readonly style="font-weight:700;"></td>
+            <td><input id="tot-news" readonly style="font-weight:700;"></td>
+            <td><input id="tot-promo" readonly style="font-weight:700;"></td>
+            <td><input id="tot-expense" readonly style="font-weight:700;"></td>
+            <td><input id="tot-total" readonly style="font-weight:700;color:var(--sv-green);"></td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <button class="add-row-btn" onclick="addWRRow()">+ Add Row</button>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Manager Signature</div>
+    <label>Manager Name</label>
+    <input type="text" id="wr-mgr" placeholder="Full name">
+    <label>Signature</label>
+    <div class="sig-wrap"><canvas id="sig-wr"></canvas><div class="sig-placeholder">Sign here with finger</div></div>
+    <div class="sig-actions"><button class="btn btn-secondary btn-sm" onclick="clearSig('sig-wr')">Clear Signature</button></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Attach Photos</div>
+    <label class="photo-upload" for="photo-wr">
+      <input type="file" id="photo-wr" accept="image/*" multiple onchange="previewPhotos('photo-wr','prev-wr')">
+      <div class="icon">📄</div><p>Tap to attach docket photos</p>
+    </label>
+    <div class="photo-preview" id="prev-wr"></div>
+  </div>
+
+  <div class="card">
+    <label>Auto Timestamp</label>
+    <div class="timestamp-badge" id="ts-weekly"></div>
+  </div>
+  <button class="btn btn-primary" onclick="saveRecord('weekly')">Save Ambient Dockets</button>
 </div>
 
-<div id="pgTransfer" class="pg">
-<div class="fh"><div class="fn">INTER STORE TRANSFER &middot; DOCKET 0851</div><div class="ft">Inter Store Transfer Docket</div></div>
-<div class="bx"><h3>Transfer Details</h3>
-<div class="g2"><div class="fl"><label>To (Store)</label><input type="text" id="tTo" placeholder="Receiving store"></div><div class="fl"><label>From (Store)</label><input type="text" id="tFr" placeholder="Dispatching store"></div></div>
-<div class="g3" style="margin-top:10px"><div class="fl"><label>Dept.</label><input type="text" id="tDp" placeholder="Dept"></div><div class="fl"><label>Ref.</label><input type="text" id="tRf" placeholder="Ref"></div><div class="fl"><label>Date</label><input type="date" id="tDt"></div></div></div>
-<div class="bx"><h3>Goods Transferred</h3>
-<div class="tw"><table><thead><tr><th>Qty</th><th>Description</th><th>Cost</th><th>Retail</th><th>Total</th><th></th></tr></thead><tbody id="tTb"></tbody></table></div>
-<button class="ab" onclick="addRow('t')">+ Add Item</button>
-<div class="tr2"><div class="t"><div class="tl">Total Amount</div><div class="tv" id="tTot">0.00</div></div></div></div>
-<div class="bx"><h3>Photo Evidence</h3>
-<div class="pz" onclick="document.getElementById('tFi').click()"><input type="file" id="tFi" accept="image/*" multiple onchange="addPhotos(this,'tPg')"><div class="pi">&#128247;</div><div class="pl">Tap to attach photos</div><div class="ps">Camera or library</div></div>
-<div class="pg2" id="tPg"></div></div>
-<div class="bx"><h3>Signatures</h3>
-<div style="font-size:12px;color:#888;margin-bottom:6px">Receiving Manager</div>
-<div class="sb2" style="margin-bottom:10px"><div class="sl">Receiving Manager <button onclick="clrSig('sgT1')">Clear</button></div><canvas id="sgT1" height="90"></canvas></div>
-<div style="font-size:12px;color:#888;margin-bottom:6px">Dispatching Manager</div>
-<div class="sb2"><div class="sl">Dispatching Manager <button onclick="clrSig('sgT2')">Clear</button></div><canvas id="sgT2" height="90"></canvas><div class="sh">Draw with finger</div></div>
-<div class="st" id="stT">--</div></div>
-<button class="sb3" onclick="doSub('transfer')">Submit Transfer Docket</button>
+<!-- ================================================================ -->
+
+<!-- RETURNS DOCKET                                                     -->
+
+<!-- ================================================================ -->
+
+<div id="tab-returns" class="section">
+  <div class="form-success" id="success-returns">✅ Returns Docket saved!</div>
+  <div class="card">
+    <div class="card-title">Returns / Credit Docket</div>
+    <div class="row-2">
+      <div><label>Store</label><input type="text" id="ret-store" readonly></div>
+      <div><label>Date</label><input type="date" id="ret-date"></div>
+    </div>
+    <label>To (Supplier)</label>
+    <input type="text" id="ret-to" placeholder="Supplier name">
+    <div class="row-3">
+      <div><label>Dept</label><input type="text" id="ret-dept"></div>
+      <div><label>Ref #</label><input type="text" id="ret-ref"></div>
+      <div><label>Docket #</label><input type="text" id="ret-docket" placeholder="ORED"></div>
+    </div>
+    <label>Reason for Return</label>
+    <textarea id="ret-reason" placeholder="Describe reason for return..."></textarea>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Goods Returned</div>
+    <div class="tbl-wrap">
+      <table class="docket-table">
+        <thead>
+          <tr><th>Qty / Units</th><th>Description of Goods</th><th>Cost Price €</th><th>Retail Price €</th><th>Total Amount €</th></tr>
+        </thead>
+        <tbody id="ret-tbody"></tbody>
+      </table>
+    </div>
+    <button class="add-row-btn" onclick="addRetRow()">+ Add Item</button>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Signatures</div>
+    <label>Staff Signature</label>
+    <div class="sig-wrap"><canvas id="sig-ret-staff"></canvas><div class="sig-placeholder">Sign here with finger</div></div>
+    <div class="sig-actions"><button class="btn btn-secondary btn-sm" onclick="clearSig('sig-ret-staff')">Clear</button></div>
+    <label style="margin-top:14px;">Branch Manager</label>
+    <div class="sig-wrap"><canvas id="sig-ret-mgr"></canvas><div class="sig-placeholder">Sign here with finger</div></div>
+    <div class="sig-actions"><button class="btn btn-secondary btn-sm" onclick="clearSig('sig-ret-mgr')">Clear</button></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Attach Photos</div>
+    <label class="photo-upload" for="photo-ret">
+      <input type="file" id="photo-ret" accept="image/*" multiple onchange="previewPhotos('photo-ret','prev-ret')">
+      <div class="icon">📷</div><p>Tap to attach photos of returned goods</p>
+    </label>
+    <div class="photo-preview" id="prev-ret"></div>
+  </div>
+
+  <div class="card">
+    <label>Auto Timestamp</label>
+    <div class="timestamp-badge" id="ts-returns"></div>
+  </div>
+  <button class="btn btn-primary" onclick="saveRecord('returns')">Save Returns Docket</button>
 </div>
 
+<!-- ================================================================ -->
+
+<!-- INTER-STORE TRANSFER                                               -->
+
+<!-- ================================================================ -->
+
+<div id="tab-transfer" class="section">
+  <div class="form-success" id="success-transfer">✅ Transfer Docket saved!</div>
+  <div class="card">
+    <div class="card-title">Inter-Store Transfer Docket</div>
+    <div class="row-2">
+      <div><label>From Store</label>
+        <select id="tr-from"><option>Balbriggan</option><option>Palmerstown</option><option>Skerries</option></select>
+      </div>
+      <div><label>To Store</label>
+        <select id="tr-to"><option>Palmerstown</option><option>Balbriggan</option><option>Skerries</option></select>
+      </div>
+    </div>
+    <div class="row-3">
+      <div><label>Dept</label><input type="text" id="tr-dept"></div>
+      <div><label>Ref #</label><input type="text" id="tr-ref"></div>
+      <div><label>Date</label><input type="date" id="tr-date"></div>
+    </div>
+    <label>Docket #</label>
+    <input type="text" id="tr-docket" placeholder="e.g. 0851">
+  </div>
+
+  <div class="card">
+    <div class="card-title">Goods Being Transferred</div>
+    <div class="tbl-wrap">
+      <table class="docket-table">
+        <thead>
+          <tr><th>Qty / Units</th><th>Description of Goods</th><th>Cost Price €</th><th>Retail Price €</th><th>Total Amount €</th></tr>
+        </thead>
+        <tbody id="tr-tbody"></tbody>
+      </table>
+    </div>
+    <button class="add-row-btn" onclick="addTrRow()">+ Add Item</button>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Signatures</div>
+    <label>Signed (Outgoing Staff)</label>
+    <input type="text" id="tr-sig-out-name" placeholder="Name">
+    <div class="sig-wrap" style="margin-top:6px;"><canvas id="sig-tr-out"></canvas><div class="sig-placeholder">Sign here with finger</div></div>
+    <div class="sig-actions"><button class="btn btn-secondary btn-sm" onclick="clearSig('sig-tr-out')">Clear</button></div>
+    <label style="margin-top:14px;">Agreed – Outgoing Branch Manager</label>
+    <div class="sig-wrap"><canvas id="sig-tr-mgr-out"></canvas><div class="sig-placeholder">Sign here with finger</div></div>
+    <div class="sig-actions"><button class="btn btn-secondary btn-sm" onclick="clearSig('sig-tr-mgr-out')">Clear</button></div>
+    <label style="margin-top:14px;">Incoming Manager</label>
+    <div class="sig-wrap"><canvas id="sig-tr-mgr-in"></canvas><div class="sig-placeholder">Sign here with finger</div></div>
+    <div class="sig-actions"><button class="btn btn-secondary btn-sm" onclick="clearSig('sig-tr-mgr-in')">Clear</button></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Attach Photos</div>
+    <label class="photo-upload" for="photo-tr">
+      <input type="file" id="photo-tr" accept="image/*" multiple onchange="previewPhotos('photo-tr','prev-tr')">
+      <div class="icon">📷</div><p>Tap to attach photos</p>
+    </label>
+    <div class="photo-preview" id="prev-tr"></div>
+  </div>
+
+  <div class="card">
+    <label>Auto Timestamp</label>
+    <div class="timestamp-badge" id="ts-transfer"></div>
+  </div>
+  <button class="btn btn-primary" onclick="saveRecord('transfer')">Save Transfer Docket</button>
 </div>
-<div class="toast" id="toast"></div>
+
+<!-- ================================================================ -->
+
+<!-- CHILLED DOCKETS                                                    -->
+
+<!-- ================================================================ -->
+
+<div id="tab-docketlog" class="section">
+  <div class="form-success" id="success-docketlog">✅ Chilled Dockets saved!</div>
+  <div class="card">
+    <div class="card-title">Chilled Docket Register</div>
+    <div class="row-2">
+      <div><label>Store</label><input type="text" id="dl-store" readonly></div>
+      <div><label>Week Ending</label><input type="date" id="dl-date"></div>
+    </div>
+    <label>Reference No.</label>
+    <input type="text" id="dl-ref" placeholder="e.g. 1872">
+  </div>
+
+  <div class="card">
+    <div class="card-title">Docket Entries</div>
+    <div class="tbl-wrap">
+      <table class="docket-table">
+        <thead>
+          <tr>
+            <th>Date</th><th>Supplier</th><th>Docket #</th>
+            <th>Beef</th><th>Lamb</th><th>Pork</th><th>Poultry</th>
+            <th>Produce</th><th>Frozen</th><th>Provisions</th>
+            <th>Deli</th><th>Bakery</th><th>Total</th><th>Comments</th>
+          </tr>
+        </thead>
+        <tbody id="dl-tbody"></tbody>
+        <tfoot>
+          <tr class="total-row">
+            <td colspan="3" style="padding:6px 8px;font-size:10px;font-weight:700;">TOTALS</td>
+            <td><input id="chtot-beef" readonly style="font-weight:700;"></td>
+            <td><input id="chtot-lamb" readonly style="font-weight:700;"></td>
+            <td><input id="chtot-pork" readonly style="font-weight:700;"></td>
+            <td><input id="chtot-poultry" readonly style="font-weight:700;"></td>
+            <td><input id="chtot-produce" readonly style="font-weight:700;"></td>
+            <td><input id="chtot-frozen" readonly style="font-weight:700;"></td>
+            <td><input id="chtot-provisions" readonly style="font-weight:700;"></td>
+            <td><input id="chtot-deli" readonly style="font-weight:700;"></td>
+            <td><input id="chtot-bakery" readonly style="font-weight:700;"></td>
+            <td><input id="chtot-total" readonly style="font-weight:700;color:var(--sv-green);"></td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <button class="add-row-btn" onclick="addCHRow()">+ Add Row</button>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Manager Signature</div>
+    <label>Manager Name</label>
+    <input type="text" id="dl-mgr" placeholder="Full name">
+    <label>Signature</label>
+    <div class="sig-wrap"><canvas id="sig-dl"></canvas><div class="sig-placeholder">Sign here with finger</div></div>
+    <div class="sig-actions"><button class="btn btn-secondary btn-sm" onclick="clearSig('sig-dl')">Clear Signature</button></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Attach Photos</div>
+    <label class="photo-upload" for="photo-dl">
+      <input type="file" id="photo-dl" accept="image/*" multiple onchange="previewPhotos('photo-dl','prev-dl')">
+      <div class="icon">🧊</div><p>Tap to attach chilled docket photos</p>
+    </label>
+    <div class="photo-preview" id="prev-dl"></div>
+  </div>
+
+  <div class="card">
+    <label>Auto Timestamp</label>
+    <div class="timestamp-badge" id="ts-docketlog"></div>
+  </div>
+  <button class="btn btn-primary" onclick="saveRecord('docketlog')">Save Chilled Dockets</button>
+</div>
+
+<!-- ================================================================ -->
+
+<!-- REVIEW                                                             -->
+
+<!-- ================================================================ -->
+
+<div id="tab-review" class="section">
+
+  <div class="db-status" id="db-status">Connecting to storage...</div>
+
+  <div class="data-tools">
+    <button class="data-tool-btn" onclick="exportJSON()">
+      <div class="dt-icon">💾</div>
+      <div class="dt-label">Backup All</div>
+      <div class="dt-sub">Download JSON file</div>
+    </button>
+    <button class="data-tool-btn" onclick="document.getElementById('import-file').click()">
+      <div class="dt-icon">📂</div>
+      <div class="dt-label">Restore</div>
+      <div class="dt-sub">Import JSON backup</div>
+    </button>
+  </div>
+  <input type="file" id="import-file" accept=".json" style="display:none" onchange="importJSON(this)">
+
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+    <div style="font-size:15px;font-weight:700;">Records</div>
+    <select id="review-filter" onchange="renderReview()" style="width:auto;padding:6px 10px;font-size:12px;">
+      <option value="all">All Stores</option>
+      <option value="Balbriggan">Balbriggan</option>
+      <option value="Palmerstown">Palmerstown</option>
+      <option value="Skerries">Skerries</option>
+    </select>
+  </div>
+  <div id="review-list"></div>
+</div>
+
+<!-- ================================================================ -->
+
+<!-- RECORD DETAIL MODAL                                                -->
+
+<!-- ================================================================ -->
+
+<div class="modal-overlay" id="recordModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="modal-title">Record</div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div id="modal-body"></div>
+    <div class="modal-actions">
+      <button class="btn btn-danger btn-sm" onclick="deleteRecord()">🗑</button>
+      <button class="btn btn-dark btn-sm" onclick="printRecord()">🖨 Print / PDF</button>
+      <button class="btn btn-secondary btn-sm" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+</div>
+
 <script>
-var DB=[];
-var SU='https://script.google.com/macros/s/AKfycbxY0KCxG1mwvooVLOD6beCkDM84beW9gPdD_XD_E7tJRYfgs2XYL7pq_srWNDvL2co/exec';
+// ================================================================
+// INDEXEDDB SETUP
+// ================================================================
+const DB_NAME = 'MoriartyDockets';
+const DB_VERSION = 1;
+const STORE_NAME = 'records';
+let db = null;
 
-function gotoPage(pid,form){
-var all=document.querySelectorAll(’.pg’);
-for(var i=0;i<all.length;i++) all[i].classList.remove(‘on’);
-document.getElementById(pid).classList.add(‘on’);
-document.getElementById(‘btnBack’).style.display=‘block’;
-setDates(); setStamp(form); setTimeout(initSigs,150);
-window.scrollTo(0,0);
+function openDB() {
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open(DB_NAME, DB_VERSION);
+    req.onupgradeneeded = e => {
+      const d = e.target.result;
+      if (!d.objectStoreNames.contains(STORE_NAME)) {
+        const s = d.createObjectStore(STORE_NAME, { keyPath: 'id' });
+        s.createIndex('store', 'store', { unique: false });
+        s.createIndex('type', 'type', { unique: false });
+        s.createIndex('savedAt', 'savedAt', { unique: false });
+      }
+    };
+    req.onsuccess = e => { db = e.target.result; resolve(db); };
+    req.onerror = e => reject(e.target.error);
+  });
 }
 
-function goHome(){
-var all=document.querySelectorAll(’.pg’);
-for(var i=0;i<all.length;i++) all[i].classList.remove(‘on’);
-document.getElementById(‘pgHome’).classList.add(‘on’);
-document.getElementById(‘btnBack’).style.display=‘none’;
-renderRec();
+function dbPut(record) {
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(STORE_NAME, 'readwrite');
+    tx.objectStore(STORE_NAME).put(record);
+    tx.oncomplete = resolve;
+    tx.onerror = e => reject(e.target.error);
+  });
 }
 
-function setPill(btn){
-var pp=btn.parentNode.querySelectorAll(’.pill’);
-for(var i=0;i<pp.length;i++) pp[i].classList.remove(‘on’);
-btn.classList.add(‘on’);
+function dbGetAll() {
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(STORE_NAME, 'readonly');
+    const req = tx.objectStore(STORE_NAME).getAll();
+    req.onsuccess = e => resolve(e.target.result);
+    req.onerror = e => reject(e.target.error);
+  });
 }
 
-function getActivePill(id){
-var el=document.querySelector(’#’+id+’ .pill.on’);
-return el?el.textContent:‘Balbriggan’;
+function dbDelete(id) {
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(STORE_NAME, 'readwrite');
+    tx.objectStore(STORE_NAME).delete(id);
+    tx.oncomplete = resolve;
+    tx.onerror = e => reject(e.target.error);
+  });
 }
 
-function setDates(){
-var t=new Date().toISOString().split(‘T’)[0];
-var ids=[‘pWE’,‘iDt’,‘rDt’,‘tDt’];
-for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&!el.value)el.value=t;}
+function dbClear() {
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(STORE_NAME, 'readwrite');
+    tx.objectStore(STORE_NAME).clear();
+    tx.oncomplete = resolve;
+    tx.onerror = e => reject(e.target.error);
+  });
 }
 
-function setStamp(f){
-var m={purchase:‘stP’,inwards:‘stI’,returns:‘stR’,transfer:‘stT’};
-var el=document.getElementById(m[f]);
-if(el) el.textContent=new Date().toLocaleString(‘en-IE’,{day:‘2-digit’,month:‘short’,year:‘numeric’,hour:‘2-digit’,minute:‘2-digit’,second:‘2-digit’});
-}
+// ================================================================
+// STATE
+// ================================================================
+let currentStore = 'Balbriggan';
+let allRecords = [];
+let activeRecordId = null;
 
-function fmtNow(){
-return new Date().toLocaleString(‘en-IE’,{day:‘2-digit’,month:‘short’,year:‘numeric’,hour:‘2-digit’,minute:‘2-digit’,second:‘2-digit’});
-}
+// ================================================================
+// INIT
+// ================================================================
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    await openDB();
+    allRecords = await dbGetAll();
+    updateDBStatus();
+  } catch(e) {
+    document.getElementById('db-status').textContent = '⚠️ Storage error: ' + e.message;
+    document.getElementById('db-status').className = 'db-status err';
+  }
 
-function wkLabel(){
-var now=new Date(),day=now.getDay(),diff=day===0?0:7-day;
-var sun=new Date(now);sun.setDate(now.getDate()+diff);
-return ’W/E ‘+sun.getDate()+’ ‘+sun.toLocaleString(‘en-IE’,{month:‘short’})+’ ’+sun.getFullYear();
-}
+  setTimestamps();
+  syncStoreFields();
 
-var SG={};
-function initSig(id){
-if(SG[id]) return;
-var c=document.getElementById(id);if(!c) return;
-c.width=c.offsetWidth||500;
-var ctx=c.getContext(‘2d’);
-ctx.strokeStyle=’#111’;ctx.lineWidth=2;ctx.lineCap=‘round’;ctx.lineJoin=‘round’;
-var on=false,lx=0,ly=0;
-function gp(e){var r=c.getBoundingClientRect(),s=e.touches?e.touches[0]:e;return[(s.clientX-r.left)*(c.width/r.width),(s.clientY-r.top)*(c.height/r.height)];}
-function dn(e){e.preventDefault();on=true;var p=gp(e);lx=p[0];ly=p[1];}
-function mv(e){if(!on)return;e.preventDefault();var p=gp(e);ctx.beginPath();ctx.moveTo(lx,ly);ctx.lineTo(p[0],p[1]);ctx.stroke();lx=p[0];ly=p[1];}
-function up(){on=false;}
-c.addEventListener(‘mousedown’,dn);c.addEventListener(‘mousemove’,mv);c.addEventListener(‘mouseup’,up);c.addEventListener(‘mouseleave’,up);
-c.addEventListener(‘touchstart’,dn,{passive:false});c.addEventListener(‘touchmove’,mv,{passive:false});c.addEventListener(‘touchend’,up);
-SG[id]={c:c,ctx:ctx};
-}
-function initSigs(){var ids=[‘sgP’,‘sgI’,‘sgR1’,‘sgR2’,‘sgT1’,‘sgT2’];for(var i=0;i<ids.length;i++)initSig(ids[i]);}
-function clrSig(id){var s=SG[id];if(s)s.ctx.clearRect(0,0,s.c.width,s.c.height);}
-function hSig(id){var s=SG[id];if(!s)return false;var d=s.ctx.getImageData(0,0,s.c.width,s.c.height).data;for(var i=0;i<d.length;i++){if(d[i]!==0)return true;}return false;}
-setTimeout(initSigs,400);
+  // Init signatures
+  ['sig-wr','sig-ret-staff','sig-ret-mgr','sig-tr-out','sig-tr-mgr-out','sig-tr-mgr-in','sig-dl'].forEach(initSig);
 
-function addPhotos(inp,gid){
-var g=document.getElementById(gid);
-var files=Array.prototype.slice.call(inp.files);
-files.forEach(function(f){
-var fr=new FileReader();
-fr.onload=function(e){
-var w=document.createElement(‘div’);w.className=‘pt’;
-var img=document.createElement(‘img’);img.src=e.target.result;
-var btn=document.createElement(‘button’);btn.textContent=‘x’;
-btn.onclick=function(){w.parentNode.removeChild(w);};
-w.appendChild(img);w.appendChild(btn);g.appendChild(w);
-};
-fr.readAsDataURL(f);
+  // Seed default rows
+  addWRRow(); addWRRow(); addWRRow();
+  addRetRow(); addRetRow();
+  addTrRow(); addTrRow();
+  addCHRow(); addCHRow(); addCHRow();
+
+  renderReview();
 });
+
+function updateDBStatus() {
+  const el = document.getElementById('db-status');
+  el.textContent = '🟢 Storage active · ' + allRecords.length + ' record' + (allRecords.length !== 1 ? 's' : '') + ' saved';
+  el.className = 'db-status ok';
 }
 
-function getPh(gid){var ph=[],imgs=document.querySelectorAll(’#’+gid+’ img’);for(var i=0;i<imgs.length;i++)ph.push(imgs[i].src);return ph;}
-
-function ni(cb){return ‘<td class="nr"><input type="number" step="0.01" min="0" placeholder="0.00" oninput="calc(\''+cb+'\',this)"></td>’;}
-function ri(){return ‘<td class="nr"><input type="number" readonly style="background:#e8f3ed;font-weight:700"></td>’;}
-function ti(ph){return ‘<td><input type="text" placeholder="'+ph+'"></td>’;}
-function di(){return ‘<td><input type="date" value="'+new Date().toISOString().split('T')[0]+'"></td>’;}
-function db(){return ‘<td><button class="xb" onclick="delR(this)">x</button></td>’;}
-
-function addRow(type){
-var tr=document.createElement(‘tr’);
-if(type==‘p’) tr.innerHTML=di()+ti(‘Supplier’)+ti(‘Docket’)+ni(‘p’)+ni(‘p’)+ni(‘p’)+ni(‘p’)+ni(‘p’)+ni(‘p’)+ni(‘p’)+ni(‘p’)+ri()+db();
-if(type==‘i’) tr.innerHTML=di()+ti(‘Supplier’)+ni(‘i’)+ni(‘i’)+ni(‘i’)+ni(‘i’)+ni(‘i’)+ni(‘i’)+ni(‘i’)+ni(‘i’)+ni(‘i’)+ri()+db();
-if(type==‘r’) tr.innerHTML=ti(‘e.g. 1 box’)+ti(‘Description’)+ni(‘r’)+db();
-if(type==‘t’) tr.innerHTML=ti(‘Qty’)+ti(‘Description’)+ni(‘t’)+ni(‘t’)+ri()+db();
-var tb={p:‘pTb’,i:‘iTb’,r:‘rTb’,t:‘tTb’}[type];
-document.getElementById(tb).appendChild(tr);
+// ================================================================
+// STORE
+// ================================================================
+function selectStore(store, btn) {
+  currentStore = store;
+  document.querySelectorAll('.store-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  syncStoreFields();
 }
 
-function calc(type,inp){
-var row=inp.closest(‘tr’),ns=row.querySelectorAll(’.nr input’);
-if(type==‘t’){if(ns.length>=3)ns[2].value=(parseFloat(ns[1].value)||0).toFixed(2);}
-else{var sum=0;for(var i=0;i<ns.length-1;i++)sum+=parseFloat(ns[i].value)||0;ns[ns.length-1].value=sum.toFixed(2);}
-if(type==‘p’)calcTot(‘pTb’,‘pTot’);
-if(type==‘i’)calcTot(‘iTb’,‘iTot’);
-if(type==‘r’)calcTot2(‘rTb’,‘rTot’);
-if(type==‘t’)calcTot3(‘tTb’,‘tTot’);
+function syncStoreFields() {
+  ['wr-store','ret-store','dl-store'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = currentStore;
+  });
 }
 
-function calcTot(tb,tot){
-var rows=document.querySelectorAll(’#’+tb+’ tr’),g=0;
-for(var i=0;i<rows.length;i++){var ns=rows[i].querySelectorAll(’.nr input’);if(ns.length)g+=parseFloat(ns[ns.length-1].value)||0;}
-document.getElementById(tot).textContent=g.toFixed(2);
+// ================================================================
+// TABS
+// ================================================================
+function showTab(name, el) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  el.classList.add('active');
+  setTimestamps();
+  syncStoreFields();
+  if (name === 'review') renderReview();
 }
 
-function calcTot2(tb,tot){
-var ins=document.querySelectorAll(’#’+tb+’ .nr input’),t=0;
-for(var i=0;i<ins.length;i++)t+=parseFloat(ins[i].value)||0;
-document.getElementById(tot).textContent=t.toFixed(2);
+// ================================================================
+// TIMESTAMPS
+// ================================================================
+function setTimestamps() {
+  const now = new Date().toLocaleString('en-IE', {
+    weekday:'short', year:'numeric', month:'short', day:'numeric',
+    hour:'2-digit', minute:'2-digit', second:'2-digit'
+  });
+  ['weekly','returns','transfer','docketlog'].forEach(t => {
+    const el = document.getElementById('ts-' + t);
+    if (el) el.textContent = now;
+  });
+  const today = new Date().toISOString().split('T')[0];
+  ['wr-weekending','ret-date','tr-date','dl-date'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el && !el.value) el.value = today;
+  });
 }
 
-function calcTot3(tb,tot){
-var rows=document.querySelectorAll(’#’+tb+’ tr’),t=0;
-for(var i=0;i<rows.length;i++){var ns=rows[i].querySelectorAll(’.nr input’);if(ns.length>=3)t+=parseFloat(ns[2].value)||0;}
-document.getElementById(tot).textContent=t.toFixed(2);
+// ================================================================
+// TABLE ROWS
+// ================================================================
+function addWRRow() {
+  const tbody = document.getElementById('wr-tbody');
+  const cols = ['date','supplier','docket','groc','cigs','wine','beers','spirits','nonfood','news','promo','expense','total','comments'];
+  const numCols = ['groc','cigs','wine','beers','spirits','nonfood','news','promo','expense','total'];
+  const tr = document.createElement('tr');
+  cols.forEach(c => {
+    const td = document.createElement('td');
+    const inp = document.createElement('input');
+    inp.type = c === 'date' ? 'date' : 'text';
+    inp.dataset.col = c;
+    if (numCols.includes(c)) {
+      inp.placeholder = '0.00';
+      inp.addEventListener('input', calcWRTotals);
+    }
+    if (c === 'supplier' || c === 'comments') inp.style.minWidth = '90px';
+    td.appendChild(inp);
+    tr.appendChild(td);
+  });
+  tbody.appendChild(tr);
 }
 
-function delR(btn){
-var tr=btn.closest(‘tr’);tr.parentNode.removeChild(tr);
-calcTot(‘pTb’,‘pTot’);calcTot(‘iTb’,‘iTot’);calcTot2(‘rTb’,‘rTot’);calcTot3(‘tTb’,‘tTot’);
+function calcWRTotals() {
+  const numCols = ['groc','cigs','wine','beers','spirits','nonfood','news','promo','expense','total'];
+  const tots = {};
+  numCols.forEach(c => tots[c] = 0);
+  document.querySelectorAll('#wr-tbody tr').forEach(tr => {
+    numCols.forEach(c => {
+      const inp = tr.querySelector('[data-col="' + c + '"]');
+      if (inp) tots[c] += parseFloat(inp.value) || 0;
+    });
+  });
+  numCols.forEach(c => {
+    const el = document.getElementById('tot-' + c);
+    if (el) el.value = tots[c] > 0 ? tots[c].toFixed(2) : '';
+  });
 }
 
-function getStore(form){
-var m={purchase:‘stP’,inwards:‘stI’,returns:‘stR’};
-return m[form]?getActivePill(m[form]):‘Balbriggan’;
+function addRetRow() {
+  const tbody = document.getElementById('ret-tbody');
+  const tr = document.createElement('tr');
+  ['qty','desc','cost','retail','total'].forEach(c => {
+    const td = document.createElement('td');
+    const inp = document.createElement('input');
+    inp.type = 'text';
+    if (c === 'desc') inp.style.minWidth = '110px';
+    inp.placeholder = c === 'qty' ? 'Qty' : c === 'desc' ? 'Description' : '0.00';
+    td.appendChild(inp);
+    tr.appendChild(td);
+  });
+  tbody.appendChild(tr);
 }
 
-function getSup(form){
-if(form==‘purchase’){var r=document.querySelector(’#pTb tr’);if(!r)return ‘’;var ins=r.querySelectorAll(‘input’);return ins[1]?ins[1].value:’’;}
-if(form==‘inwards’)return document.getElementById(‘iSp’).value;
-if(form==‘returns’)return document.getElementById(‘rTo’).value;
-if(form==‘transfer’)return document.getElementById(‘tFr’).value;
-return ‘’;
+function addTrRow() {
+  const tbody = document.getElementById('tr-tbody');
+  const tr = document.createElement('tr');
+  ['qty','desc','cost','retail','total'].forEach(c => {
+    const td = document.createElement('td');
+    const inp = document.createElement('input');
+    inp.type = 'text';
+    if (c === 'desc') inp.style.minWidth = '110px';
+    inp.placeholder = c === 'qty' ? 'Qty' : c === 'desc' ? 'Description' : '0.00';
+    td.appendChild(inp);
+    tr.appendChild(td);
+  });
+  tbody.appendChild(tr);
 }
 
-function getTot(form){
-var m={purchase:‘pTot’,inwards:‘iTot’,returns:‘rTot’,transfer:‘tTot’};
-var el=document.getElementById(m[form]);return el?el.textContent:‘0.00’;
+function addCHRow() {
+  const tbody = document.getElementById('dl-tbody');
+  const cols = ['date','supplier','docket','beef','lamb','pork','poultry','produce','frozen','provisions','deli','bakery','total','comments'];
+  const numCols = ['beef','lamb','pork','poultry','produce','frozen','provisions','deli','bakery','total'];
+  const tr = document.createElement('tr');
+  cols.forEach(c => {
+    const td = document.createElement('td');
+    const inp = document.createElement('input');
+    inp.type = c === 'date' ? 'date' : 'text';
+    inp.dataset.col = c;
+    if (numCols.includes(c)) {
+      inp.placeholder = '0.00';
+      inp.addEventListener('input', calcCHTotals);
+    }
+    if (c === 'supplier' || c === 'comments') inp.style.minWidth = '90px';
+    td.appendChild(inp);
+    tr.appendChild(td);
+  });
+  tbody.appendChild(tr);
 }
 
-function isSigned(form){
-var m={purchase:[‘sgP’],inwards:[‘sgI’],returns:[‘sgR1’,‘sgR2’],transfer:[‘sgT1’,‘sgT2’]};
-var ids=m[form]||[];for(var i=0;i<ids.length;i++){if(hSig(ids[i]))return true;}return false;
+function calcCHTotals() {
+  const numCols = ['beef','lamb','pork','poultry','produce','frozen','provisions','deli','bakery','total'];
+  const tots = {};
+  numCols.forEach(c => tots[c] = 0);
+  document.querySelectorAll('#dl-tbody tr').forEach(tr => {
+    numCols.forEach(c => {
+      const inp = tr.querySelector('[data-col="' + c + '"]');
+      if (inp) tots[c] += parseFloat(inp.value) || 0;
+    });
+  });
+  numCols.forEach(c => {
+    const el = document.getElementById('chtot-' + c);
+    if (el) el.value = tots[c] > 0 ? tots[c].toFixed(2) : '';
+  });
 }
 
-function doSub(form){
-var nm={purchase:‘Purchase Docket Log’,inwards:‘Goods Inwards Record’,returns:‘Goods Returned for Credit’,transfer:‘Inter Store Transfer’};
-var num={purchase:‘1871’,inwards:‘2523’,returns:‘0480’,transfer:‘0851’};
-var pg={purchase:‘pPg’,inwards:‘iPg’,returns:‘rPg’,transfer:‘tPg’};
-var rec={id:num[form],form:form,name:nm[form],store:getStore(form),stamp:fmtNow(),wk:wkLabel(),total:getTot(form),photos:getPh(pg[form]).slice(0,4),signed:isSigned(form),sup:getSup(form)};
-DB.unshift(rec);
-saveDB();
-try{var x=new XMLHttpRequest();x.open(‘POST’,SU,true);x.setRequestHeader(‘Content-Type’,‘application/json’);x.send(JSON.stringify({formType:form,store:rec.store,stamp:rec.stamp,total:rec.total,weekLabel:rec.wk,supplier:rec.sup,hasSig:rec.signed}));}catch(e){}
-showToast(‘Saved!’);
-goHome();
+// ================================================================
+// SIGNATURES
+// ================================================================
+function initSig(id) {
+  const canvas = document.getElementById(id);
+  if (!canvas) return;
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.parentElement.getBoundingClientRect();
+  canvas.width = (rect.width || 340) * dpr;
+  canvas.height = 110 * dpr;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  ctx.strokeStyle = '#1a5e2a';
+  ctx.lineWidth = 2.5;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+
+  let drawing = false, lastX = 0, lastY = 0, hasDrawn = false;
+
+  function getPos(e) {
+    const r = canvas.getBoundingClientRect();
+    const src = e.touches ? e.touches[0] : e;
+    return [(src.clientX - r.left), (src.clientY - r.top)];
+  }
+
+  function startDraw(e) {
+    drawing = true;
+    [lastX, lastY] = getPos(e);
+    if (!hasDrawn) {
+      hasDrawn = true;
+      const ph = canvas.parentElement.querySelector('.sig-placeholder');
+      if (ph) ph.style.opacity = '0';
+    }
+  }
+
+  function draw(e) {
+    if (!drawing) return;
+    e.preventDefault();
+    const [x, y] = getPos(e);
+    ctx.beginPath(); ctx.moveTo(lastX, lastY); ctx.lineTo(x, y); ctx.stroke();
+    lastX = x; lastY = y;
+  }
+
+  function stopDraw() { drawing = false; }
+
+  canvas.addEventListener('mousedown', startDraw);
+  canvas.addEventListener('mousemove', draw);
+  canvas.addEventListener('mouseup', stopDraw);
+  canvas.addEventListener('touchstart', startDraw, { passive: true });
+  canvas.addEventListener('touchmove', e => { e.preventDefault(); draw(e); }, { passive: false });
+  canvas.addEventListener('touchend', stopDraw);
 }
 
-function saveDB(){
-try{var s=DB.map(function(r){return{id:r.id,form:r.form,name:r.name,store:r.store,stamp:r.stamp,wk:r.wk,total:r.total,photos:r.photos.slice(0,2),signed:r.signed,sup:r.sup};});localStorage.setItem(‘mgv5’,JSON.stringify(s));}catch(e){}
+function clearSig(id) {
+  const canvas = document.getElementById(id);
+  if (!canvas) return;
+  const dpr = window.devicePixelRatio || 1;
+  canvas.getContext('2d').clearRect(0, 0, canvas.width / dpr * dpr, canvas.height / dpr * dpr);
+  const ph = canvas.parentElement.querySelector('.sig-placeholder');
+  if (ph) ph.style.opacity = '1';
 }
 
-function loadDB(){
-try{var raw=localStorage.getItem(‘mgv5’);if(raw){var p=JSON.parse(raw);if(Array.isArray(p)){for(var i=0;i<p.length;i++)DB.push(p[i]);}}}catch(e){}
+function getSigData(id) {
+  const canvas = document.getElementById(id);
+  if (!canvas) return null;
+  // Check if anything was drawn
+  const ctx = canvas.getContext('2d');
+  const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+  const hasContent = data.some(v => v !== 0);
+  return hasContent ? canvas.toDataURL('image/png') : null;
 }
 
-function renderRec(){
-var el=document.getElementById(‘recList’);
-if(!DB.length){el.innerHTML=’<div class="empty">No forms submitted yet</div>’;return;}
-var h=’’;
-for(var i=0;i<Math.min(DB.length,8);i++){
-var r=DB[i];
-var ph=’’;if(r.photos&&r.photos.length){ph=’<div class="rp">’;for(var j=0;j<r.photos.length;j++)ph+=’<img src="'+r.photos[j]+'">’;ph+=’</div>’;}
-var sg=r.signed?’<div class="sg">Signed</div>’:’’;
-h+=’<div class="ri"><div class="rt"><span class="rid">FORM ‘+r.id+’ - ‘+r.store+’</span><span class="rts">’+r.stamp+’</span></div><div class="rn">’+r.name+’</div><div class="rm">’+r.total+’</div>’+ph+sg+’</div>’;
-}
-el.innerHTML=h;
+// ================================================================
+// PHOTOS
+// ================================================================
+function previewPhotos(inputId, previewId) {
+  const input = document.getElementById(inputId);
+  const preview = document.getElementById(previewId);
+  Array.from(input.files).forEach(file => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      const div = document.createElement('div');
+      div.className = 'photo-thumb';
+      div.innerHTML = '<img src="' + e.target.result + '"><button class="rm" onclick="this.parentElement.remove()">✕</button>';
+      preview.appendChild(div);
+    };
+    reader.readAsDataURL(file);
+  });
 }
 
-function showToast(msg){var t=document.getElementById(‘toast’);t.textContent=msg;t.classList.add(‘up’);setTimeout(function(){t.classList.remove(‘up’);},3000);}
+function getPhotos(previewId) {
+  return Array.from(document.querySelectorAll('#' + previewId + ' img')).map(i => i.src);
+}
 
-loadDB();
-addRow(‘p’);addRow(‘i’);addRow(‘r’);addRow(‘t’);
-setDates();
-renderRec();
+// ================================================================
+// SAVE RECORD
+// ================================================================
+async function saveRecord(type) {
+  const now = new Date();
+  let record = {
+    id: now.getTime(),
+    type,
+    store: currentStore,
+    savedAt: now.toISOString()
+  };
+
+  if (type === 'weekly') {
+    record.weekEnding = document.getElementById('wr-weekending').value;
+    record.ref = document.getElementById('wr-ref').value;
+    record.manager = document.getElementById('wr-mgr').value;
+    record.signature = getSigData('sig-wr');
+    record.photos = getPhotos('prev-wr');
+    const rows = [];
+    document.querySelectorAll('#wr-tbody tr').forEach(tr => {
+      const row = {};
+      tr.querySelectorAll('input').forEach(inp => { if (inp.dataset.col) row[inp.dataset.col] = inp.value; });
+      if (Object.values(row).some(v => v)) rows.push(row);
+    });
+    record.rows = rows;
+  } else if (type === 'returns') {
+    record.to = document.getElementById('ret-to').value;
+    record.date = document.getElementById('ret-date').value;
+    record.dept = document.getElementById('ret-dept').value;
+    record.ref = document.getElementById('ret-ref').value;
+    record.docket = document.getElementById('ret-docket').value;
+    record.reason = document.getElementById('ret-reason').value;
+    record.sigStaff = getSigData('sig-ret-staff');
+    record.sigMgr = getSigData('sig-ret-mgr');
+    record.photos = getPhotos('prev-ret');
+    const rows = [];
+    document.querySelectorAll('#ret-tbody tr').forEach(tr => {
+      const vals = Array.from(tr.querySelectorAll('input')).map(i => i.value);
+      if (vals.some(v => v)) rows.push(vals);
+    });
+    record.rows = rows;
+  } else if (type === 'transfer') {
+    record.from = document.getElementById('tr-from').value;
+    record.toStore = document.getElementById('tr-to').value;
+    record.store = record.from;
+    record.dept = document.getElementById('tr-dept').value;
+    record.ref = document.getElementById('tr-ref').value;
+    record.date = document.getElementById('tr-date').value;
+    record.docket = document.getElementById('tr-docket').value;
+    record.outStaffName = document.getElementById('tr-sig-out-name').value;
+    record.sigOut = getSigData('sig-tr-out');
+    record.sigMgrOut = getSigData('sig-tr-mgr-out');
+    record.sigMgrIn = getSigData('sig-tr-mgr-in');
+    record.photos = getPhotos('prev-tr');
+    const rows = [];
+    document.querySelectorAll('#tr-tbody tr').forEach(tr => {
+      const vals = Array.from(tr.querySelectorAll('input')).map(i => i.value);
+      if (vals.some(v => v)) rows.push(vals);
+    });
+    record.rows = rows;
+  } else if (type === 'docketlog') {
+    record.weekEnding = document.getElementById('dl-date').value;
+    record.ref = document.getElementById('dl-ref').value;
+    record.manager = document.getElementById('dl-mgr').value;
+    record.signature = getSigData('sig-dl');
+    record.photos = getPhotos('prev-dl');
+    const rows = [];
+    document.querySelectorAll('#dl-tbody tr').forEach(tr => {
+      const row = {};
+      tr.querySelectorAll('input').forEach(inp => { if (inp.dataset.col) row[inp.dataset.col] = inp.value; });
+      if (Object.values(row).some(v => v)) rows.push(row);
+    });
+    record.rows = rows;
+  }
+
+  try {
+    await dbPut(record);
+    allRecords = await dbGetAll();
+    updateDBStatus();
+    const msg = document.getElementById('success-' + type);
+    if (msg) { msg.classList.add('show'); setTimeout(() => msg.classList.remove('show'), 3000); }
+    renderReview();
+  } catch(e) {
+    alert('Save failed: ' + e.message);
+  }
+}
+
+// ================================================================
+// REVIEW
+// ================================================================
+function renderReview() {
+  const filter = document.getElementById('review-filter').value;
+  const list = document.getElementById('review-list');
+  const filtered = filter === 'all' ? allRecords : allRecords.filter(r => r.store === filter);
+
+  if (!filtered.length) {
+    list.innerHTML = '<div class="empty-state"><div class="icon">📋</div><p>No records saved yet.<br>Complete a form above to get started.</p></div>';
+    return;
+  }
+
+  const typeLabels = { weekly:'Ambient Dockets', returns:'Returns Docket', transfer:'Transfer Docket', docketlog:'Chilled Dockets' };
+  const stores = ['Balbriggan','Palmerstown','Skerries'];
+  let html = '';
+
+  stores.forEach(store => {
+    const recs = filtered.filter(r => r.store === store).sort((a,b) => b.id - a.id);
+    if (!recs.length) return;
+    html += '<div class="store-group"><div class="store-group-header"><span>📍 ' + store + '</span><span>' + recs.length + ' record' + (recs.length!==1?'s':'') + '</span></div>';
+    recs.forEach(r => {
+      const date = r.weekEnding || r.date || r.savedAt.split('T')[0];
+      const sub = r.ref || r.docket || r.supplier || (r.from && r.toStore ? r.from + ' → ' + r.toStore : '') || '';
+      html += '<div class="record-item" onclick="openRecord(' + r.id + ')">';
+      html += '<div class="rec-info"><div class="rec-type">' + typeLabels[r.type] + '<span class="badge badge-' + r.type + '">' + r.type + '</span></div>';
+      html += '<div class="rec-meta">' + date + (sub ? '  ·  ' + sub : '') + '</div></div>';
+      html += '<div class="rec-arrow">›</div></div>';
+    });
+    html += '</div>';
+  });
+
+  list.innerHTML = html;
+}
+
+// ================================================================
+// RECORD MODAL
+// ================================================================
+function openRecord(id) {
+  const r = allRecords.find(x => x.id === id);
+  if (!r) return;
+  activeRecordId = id;
+
+  const typeLabels = { weekly:'Ambient Dockets', returns:'Returns Docket', transfer:'Transfer Docket', docketlog:'Chilled Dockets' };
+  document.getElementById('modal-title').textContent = typeLabels[r.type] + '  ·  ' + r.store;
+
+  let html = '<div class="timestamp-badge" style="margin-bottom:14px;">🕐 Saved: ' + new Date(r.savedAt).toLocaleString('en-IE') + '</div>';
+
+  function df(label, val) {
+    if (!val) return '';
+    return '<div class="detail-field"><div class="detail-label">' + label + '</div><div class="detail-value">' + val + '</div></div>';
+  }
+
+  if (r.type === 'weekly') {
+    html += df('Store', r.store) + df('Week Ending', r.weekEnding) + df('Reference', r.ref) + df('Manager', r.manager);
+    if (r.rows && r.rows.length) {
+      html += '<div class="divider"></div><div class="section-label">Entries (' + r.rows.length + ')</div>';
+      r.rows.forEach(row => {
+        const line = [row.date, row.supplier, row.docket ? '#'+row.docket : '', row.total ? '€'+row.total : ''].filter(Boolean).join('  ·  ');
+        html += '<div class="detail-row">' + (line || '—') + '</div>';
+      });
+    }
+  } else if (r.type === 'returns') {
+    html += df('Store', r.store) + df('Date', r.date) + df('Supplier', r.to) + df('Department', r.dept) + df('Ref', r.ref) + df('Docket #', r.docket) + df('Reason', r.reason);
+    if (r.rows && r.rows.length) {
+      html += '<div class="divider"></div><div class="section-label">Items Returned</div>';
+      r.rows.forEach(row => { html += '<div class="detail-row">' + row.join('  ·  ') + '</div>'; });
+    }
+  } else if (r.type === 'transfer') {
+    html += df('From', r.from) + df('To', r.toStore) + df('Date', r.date) + df('Department', r.dept) + df('Ref', r.ref) + df('Docket #', r.docket) + df('Outgoing Staff', r.outStaffName);
+    if (r.rows && r.rows.length) {
+      html += '<div class="divider"></div><div class="section-label">Goods Transferred</div>';
+      r.rows.forEach(row => { html += '<div class="detail-row">' + row.join('  ·  ') + '</div>'; });
+    }
+  } else if (r.type === 'docketlog') {
+    html += df('Store', r.store) + df('Week Ending', r.weekEnding) + df('Reference', r.ref) + df('Manager', r.manager);
+    if (r.rows && r.rows.length) {
+      html += '<div class="divider"></div><div class="section-label">Entries (' + r.rows.length + ')</div>';
+      r.rows.forEach(row => {
+        const line = [row.date, row.supplier, row.docket ? '#'+row.docket : '', row.total ? '€'+row.total : ''].filter(Boolean).join('  ·  ');
+        html += '<div class="detail-row">' + (line || '—') + '</div>';
+      });
+    }
+  }
+
+  // Signatures
+  const sigs = [r.signature, r.sigStaff, r.sigMgr, r.sigOut, r.sigMgrOut, r.sigMgrIn].filter(Boolean);
+  if (sigs.length) {
+    html += '<div class="divider"></div><div class="section-label">Signature' + (sigs.length > 1 ? 's' : '') + '</div>';
+    sigs.forEach(s => { html += '<img src="' + s + '" class="detail-sig" style="margin-bottom:6px;">'; });
+  }
+
+  // Photos
+  if (r.photos && r.photos.length) {
+    html += '<div class="divider"></div><div class="section-label">Photos (' + r.photos.length + ')</div>';
+    html += '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;">';
+    r.photos.forEach(p => { html += '<img src="' + p + '" class="detail-photo">'; });
+    html += '</div>';
+  }
+
+  document.getElementById('modal-body').innerHTML = html;
+  document.getElementById('recordModal').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('recordModal').classList.remove('open');
+  activeRecordId = null;
+}
+
+async function deleteRecord() {
+  if (!confirm('Delete this record? This cannot be undone.')) return;
+  try {
+    await dbDelete(activeRecordId);
+    allRecords = await dbGetAll();
+    updateDBStatus();
+    closeModal();
+    renderReview();
+  } catch(e) {
+    alert('Delete failed: ' + e.message);
+  }
+}
+
+// ================================================================
+// PRINT / PDF
+// ================================================================
+function printRecord() {
+  const r = allRecords.find(x => x.id === activeRecordId);
+  if (!r) return;
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+
+  const GREEN = [26, 94, 42];
+  const LIGHT = [240, 245, 240];
+  const DARK = [26, 31, 24];
+  const MUTED = [107, 114, 102];
+  const PW = 210, PH = 297;
+  const ML = 15, MR = 15, MT = 15;
+  let y = MT;
+
+  // Header bar
+  doc.setFillColor(...GREEN);
+  doc.rect(0, 0, PW, 28, 'F');
+  doc.setTextColor(255,255,255);
+  doc.setFontSize(16); doc.setFont('helvetica','bold');
+  doc.text('MORIARTY GROUP', ML, 11);
+  doc.setFontSize(8); doc.setFont('helvetica','normal');
+  doc.text('SuperValu · Docket System', ML, 17);
+
+  const typeLabels = { weekly:'AMBIENT DOCKET REGISTER', returns:'RETURNS / CREDIT DOCKET', transfer:'INTER-STORE TRANSFER DOCKET', docketlog:'CHILLED DOCKET REGISTER' };
+  doc.setFontSize(11); doc.setFont('helvetica','bold');
+  doc.text(typeLabels[r.type], PW - MR, 11, { align: 'right' });
+  doc.setFontSize(8); doc.setFont('helvetica','normal');
+  doc.text(r.store.toUpperCase(), PW - MR, 17, { align: 'right' });
+
+  y = 34;
+
+  // Timestamp
+  doc.setFontSize(7); doc.setTextColor(...MUTED);
+  doc.text('Saved: ' + new Date(r.savedAt).toLocaleString('en-IE'), ML, y);
+  y += 7;
+
+  function fieldRow(label, val, x2) {
+    if (!val) return;
+    doc.setFontSize(7); doc.setTextColor(...MUTED); doc.setFont('helvetica','bold');
+    doc.text(label.toUpperCase(), ML, y);
+    doc.setFontSize(10); doc.setTextColor(...DARK); doc.setFont('helvetica','normal');
+    doc.text(String(val), ML, y + 4);
+    y += 11;
+  }
+
+  function sectionHead(title) {
+    doc.setFillColor(...LIGHT);
+    doc.rect(ML, y, PW - ML - MR, 6, 'F');
+    doc.setFontSize(7); doc.setFont('helvetica','bold'); doc.setTextColor(...GREEN);
+    doc.text(title.toUpperCase(), ML + 2, y + 4);
+    y += 9;
+  }
+
+  // Fields
+  if (r.type === 'weekly') {
+    fieldRow('Store', r.store); fieldRow('Week Ending', r.weekEnding); fieldRow('Reference', r.ref); fieldRow('Manager', r.manager);
+    if (r.rows && r.rows.length) {
+      sectionHead('Docket Entries');
+      const cols = ['Date','Supplier','Docket #','Groc','Cigs','Wine','Beers','Spirits','Non Food','News','Promo','Expense','Total'];
+      const cw = (PW - ML - MR) / cols.length;
+      doc.setFontSize(6); doc.setFont('helvetica','bold'); doc.setTextColor(255,255,255);
+      doc.setFillColor(...GREEN);
+      doc.rect(ML, y, PW-ML-MR, 6, 'F');
+      cols.forEach((c,i) => doc.text(c, ML + i*cw + cw/2, y+4, {align:'center'}));
+      y += 7;
+      const keys = ['date','supplier','docket','groc','cigs','wine','beers','spirits','nonfood','news','promo','expense','total'];
+      r.rows.forEach((row, ri) => {
+        if (ri % 2 === 0) { doc.setFillColor(249,250,247); doc.rect(ML, y-1, PW-ML-MR, 6, 'F'); }
+        doc.setFont('helvetica','normal'); doc.setFontSize(6); doc.setTextColor(...DARK);
+        keys.forEach((k,i) => { const v = row[k] || ''; doc.text(String(v), ML + i*cw + cw/2, y+3, {align:'center', maxWidth: cw-1}); });
+        y += 6;
+      });
+    }
+  } else if (r.type === 'returns') {
+    fieldRow('Store', r.store); fieldRow('Date', r.date); fieldRow('Supplier', r.to);
+    fieldRow('Department', r.dept); fieldRow('Ref', r.ref); fieldRow('Docket #', r.docket); fieldRow('Reason for Return', r.reason);
+    if (r.rows && r.rows.length) {
+      sectionHead('Goods Returned');
+      const cols = ['Qty / Units','Description','Cost Price €','Retail Price €','Total Amount €'];
+      const cw = (PW - ML - MR) / cols.length;
+      doc.setFillColor(...GREEN); doc.rect(ML, y, PW-ML-MR, 6, 'F');
+      doc.setFontSize(6); doc.setFont('helvetica','bold'); doc.setTextColor(255,255,255);
+      cols.forEach((c,i) => doc.text(c, ML+i*cw+cw/2, y+4, {align:'center'}));
+      y += 7;
+      r.rows.forEach((row, ri) => {
+        if (ri % 2 === 0) { doc.setFillColor(249,250,247); doc.rect(ML, y-1, PW-ML-MR, 6, 'F'); }
+        doc.setFont('helvetica','normal'); doc.setFontSize(7); doc.setTextColor(...DARK);
+        row.forEach((v,i) => doc.text(String(v||''), ML+i*cw+cw/2, y+3, {align:'center', maxWidth:cw-1}));
+        y += 6;
+      });
+    }
+  } else if (r.type === 'transfer') {
+    fieldRow('From Store', r.from); fieldRow('To Store', r.toStore); fieldRow('Date', r.date);
+    fieldRow('Department', r.dept); fieldRow('Ref', r.ref); fieldRow('Docket #', r.docket); fieldRow('Outgoing Staff', r.outStaffName);
+    if (r.rows && r.rows.length) {
+      sectionHead('Goods Transferred');
+      const cols = ['Qty / Units','Description','Cost Price €','Retail Price €','Total Amount €'];
+      const cw = (PW - ML - MR) / cols.length;
+      doc.setFillColor(...GREEN); doc.rect(ML, y, PW-ML-MR, 6, 'F');
+      doc.setFontSize(6); doc.setFont('helvetica','bold'); doc.setTextColor(255,255,255);
+      cols.forEach((c,i) => doc.text(c, ML+i*cw+cw/2, y+4, {align:'center'}));
+      y += 7;
+      r.rows.forEach((row, ri) => {
+        if (ri % 2 === 0) { doc.setFillColor(249,250,247); doc.rect(ML, y-1, PW-ML-MR, 6, 'F'); }
+        doc.setFont('helvetica','normal'); doc.setFontSize(7); doc.setTextColor(...DARK);
+        row.forEach((v,i) => doc.text(String(v||''), ML+i*cw+cw/2, y+3, {align:'center', maxWidth:cw-1}));
+        y += 6;
+      });
+    }
+  } else if (r.type === 'docketlog') {
+    fieldRow('Store', r.store); fieldRow('Week Ending', r.weekEnding); fieldRow('Reference', r.ref); fieldRow('Manager', r.manager);
+    if (r.rows && r.rows.length) {
+      sectionHead('Chilled Docket Entries');
+      const cols = ['Date','Supplier','Docket #','Beef','Lamb','Pork','Poultry','Produce','Frozen','Provisions','Deli','Bakery','Total'];
+      const cw = (PW - ML - MR) / cols.length;
+      doc.setFontSize(6); doc.setFont('helvetica','bold'); doc.setTextColor(255,255,255);
+      doc.setFillColor(...GREEN);
+      doc.rect(ML, y, PW-ML-MR, 6, 'F');
+      cols.forEach((c,i) => doc.text(c, ML + i*cw + cw/2, y+4, {align:'center'}));
+      y += 7;
+      const keys = ['date','supplier','docket','beef','lamb','pork','poultry','produce','frozen','provisions','deli','bakery','total'];
+      r.rows.forEach((row, ri) => {
+        if (ri % 2 === 0) { doc.setFillColor(249,250,247); doc.rect(ML, y-1, PW-ML-MR, 6, 'F'); }
+        doc.setFont('helvetica','normal'); doc.setFontSize(6); doc.setTextColor(...DARK);
+        keys.forEach((k,i) => { const v = row[k] || ''; doc.text(String(v), ML + i*cw + cw/2, y+3, {align:'center', maxWidth: cw-1}); });
+        y += 6;
+      });
+    }
+  }
+
+  // Signatures
+  const sigs = [];
+  const sigLabels = [];
+  if (r.signature) { sigs.push(r.signature); sigLabels.push('Manager / Checker Signature'); }
+  if (r.sigStaff) { sigs.push(r.sigStaff); sigLabels.push('Staff Signature'); }
+  if (r.sigMgr) { sigs.push(r.sigMgr); sigLabels.push('Branch Manager Signature'); }
+  if (r.sigOut) { sigs.push(r.sigOut); sigLabels.push('Outgoing Staff Signature'); }
+  if (r.sigMgrOut) { sigs.push(r.sigMgrOut); sigLabels.push('Outgoing Branch Manager'); }
+  if (r.sigMgrIn) { sigs.push(r.sigMgrIn); sigLabels.push('Incoming Manager'); }
+
+  if (sigs.length) {
+    y += 4;
+    sectionHead('Signatures');
+    sigs.forEach((sig, i) => {
+      if (y > PH - 50) { doc.addPage(); y = MT; }
+      doc.setFontSize(7); doc.setTextColor(...MUTED); doc.setFont('helvetica','bold');
+      doc.text((sigLabels[i] || 'Signature').toUpperCase(), ML, y);
+      y += 3;
+      try { doc.addImage(sig, 'PNG', ML, y, 80, 22); } catch(e) {}
+      y += 26;
+    });
+  }
+
+  // Footer
+  doc.setFillColor(...GREEN);
+  doc.rect(0, PH - 10, PW, 10, 'F');
+  doc.setFontSize(7); doc.setTextColor(255,255,255); doc.setFont('helvetica','normal');
+  doc.text('Moriarty Group · SuperValu · Generated: ' + new Date().toLocaleString('en-IE'), PW/2, PH - 4, { align: 'center' });
+
+  const filename = r.type + '_' + r.store + '_' + (r.weekEnding || r.date || r.savedAt.split('T')[0]) + '.pdf';
+  doc.save(filename);
+}
+
+// ================================================================
+// BACKUP / RESTORE
+// ================================================================
+async function exportJSON() {
+  const records = await dbGetAll();
+  if (!records.length) { alert('No records to export yet.'); return; }
+  const blob = new Blob([JSON.stringify({ version: 1, exportedAt: new Date().toISOString(), records }, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'moriarty-dockets-backup-' + new Date().toISOString().split('T')[0] + '.json';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+async function importJSON(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = async e => {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (!data.records || !Array.isArray(data.records)) { alert('Invalid backup file.'); return; }
+      const confirmed = confirm('This will merge ' + data.records.length + ' records into your current data. Existing records with the same ID will be overwritten. Continue?');
+      if (!confirmed) return;
+      for (const r of data.records) { await dbPut(r); }
+      allRecords = await dbGetAll();
+      updateDBStatus();
+      renderReview();
+      alert('✅ Import complete. ' + data.records.length + ' records restored.');
+    } catch(err) {
+      alert('Import failed: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+  input.value = '';
+}
 </script>
 
 </body>
