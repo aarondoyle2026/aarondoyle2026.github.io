@@ -4,831 +4,400 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moriarty Group</title>
+<title>Moriarty Group Store Forms</title>
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:#f0f0f0}
-nav{background:#124d26;color:#fff;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99}
-nav h1{font-size:16px;margin:0}
-nav span{font-size:12px;opacity:.7}
-#backBtn{display:none;background:rgba(255,255,255,.2);border:none;color:#fff;padding:7px 12px;border-radius:6px;font-size:13px;cursor:pointer}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f5f5f5;color:#111}
+header{background:#124d26;color:#fff;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
+header h1{font-size:16px;margin:0}
+header p{font-size:11px;opacity:.7;margin:0}
+#btnBack{display:none;background:rgba(255,255,255,.2);border:none;color:#fff;padding:7px 12px;border-radius:6px;font-size:13px;cursor:pointer}
 .wrap{max-width:640px;margin:0 auto;padding:16px}
-.page{display:none}
-.page.show{display:block}
-.home-title{text-align:center;padding:20px 0 10px}
-.home-title h2{color:#124d26;font-size:24px;margin:0 0 4px}
-.home-title p{color:#888;font-size:13px;margin:0}
-.section{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#888;margin:18px 0 8px}
-.btn-card{background:#fff;border-radius:10px;padding:15px 16px;display:flex;align-items:center;gap:12px;margin-bottom:8px;box-shadow:0 1px 6px rgba(0,0,0,.08);cursor:pointer;border:none;width:100%;text-align:left;font-family:Arial}
-.btn-card .ico{width:44px;height:44px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-.g{background:#e8f3ed}.b{background:#e8f0ff}.r{background:#ffeaea}.a{background:#fff3e0}
-.btn-card .info{flex:1}
-.btn-card .info b{display:block;font-size:14px;margin-bottom:2px}
-.btn-card .info span{font-size:12px;color:#888}
-.btn-card .arr{color:#ccc;font-size:18px}
-.form-box{background:#fff;border-radius:10px;padding:16px;margin-bottom:10px;box-shadow:0 1px 6px rgba(0,0,0,.08)}
-.form-box h3{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;margin:0 0 10px}
-.form-head{background:#fff;border-radius:10px;padding:16px;margin-bottom:10px;box-shadow:0 1px 6px rgba(0,0,0,.08)}
-.form-head .num{font-size:11px;color:#c0392b;font-weight:700;margin-bottom:4px}
-.form-head .title{font-size:19px;font-weight:700;color:#124d26}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
-.field label{display:block;font-size:11px;font-weight:700;color:#888;margin-bottom:3px}
-.field input,.field textarea,.field select{width:100%;padding:9px 10px;border:1.5px solid #ddd;border-radius:7px;font-size:14px;font-family:Arial;background:#f7f7f7;outline:none;box-sizing:border-box}
-.field input:focus,.field textarea:focus{border-color:#124d26;background:#fff}
-.field textarea{min-height:60px;resize:vertical}
+.pg{display:none;padding-top:16px}
+.pg.on{display:block}
+.greet{text-align:center;padding:16px 0 8px}
+.greet h2{font-size:24px;color:#124d26}
+.greet p{font-size:13px;color:#888;margin-top:4px}
+.sec{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#888;margin:18px 0 8px}
+.card{background:#fff;border-radius:10px;padding:15px 16px;display:flex;align-items:center;gap:12px;margin-bottom:8px;box-shadow:0 1px 4px rgba(0,0,0,.08);cursor:pointer;border:none;width:100%;text-align:left;font-family:Arial}
+.ico{width:44px;height:44px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.c1{background:#e8f3ed}.c2{background:#e8f0ff}.c3{background:#ffeaea}.c4{background:#fff3e0}
+.card .tx{flex:1}
+.card .tx b{display:block;font-size:14px;margin-bottom:2px}
+.card .tx span{font-size:12px;color:#888}
+.card .ar{color:#ccc;font-size:18px}
+.fh{background:#fff;border-radius:10px;padding:16px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.fh .fn{font-size:11px;color:#c0392b;font-weight:700;margin-bottom:4px}
+.fh .ft{font-size:19px;font-weight:700;color:#124d26}
 .pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
 .pill{padding:5px 12px;border-radius:20px;border:1.5px solid #ddd;font-size:11px;font-weight:700;cursor:pointer;background:#fff;color:#888;font-family:Arial}
-.pill.sel{background:#124d26;border-color:#124d26;color:#fff}
-.table-wrap{overflow-x:auto;margin-bottom:8px}
+.pill.on{background:#124d26;border-color:#124d26;color:#fff}
+.bx{background:#fff;border-radius:10px;padding:16px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.bx h3{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;margin:0 0 12px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px}
+.fl{display:flex;flex-direction:column;gap:4px}
+.fl label{font-size:11px;font-weight:700;color:#888}
+.fl input,.fl textarea{width:100%;padding:9px 10px;border:1.5px solid #ddd;border-radius:7px;font-size:14px;font-family:Arial;background:#f7f7f7;outline:none}
+.fl input:focus,.fl textarea:focus{border-color:#124d26;background:#fff}
+.fl textarea{min-height:60px;resize:vertical}
+.tw{overflow-x:auto}
 table{width:100%;border-collapse:collapse;font-size:12px;min-width:400px}
 th{padding:7px 6px;text-align:left;font-size:10px;text-transform:uppercase;color:#888;border-bottom:2px solid #eee;white-space:nowrap}
 td{padding:4px 3px;vertical-align:middle}
-td input{width:100%;padding:5px 6px;border:1.5px solid transparent;border-radius:5px;font-size:12px;background:#f7f7f7;font-family:Arial;outline:none;box-sizing:border-box}
+td input{width:100%;padding:5px 6px;border:1.5px solid transparent;border-radius:5px;font-size:12px;background:#f7f7f7;font-family:Arial;outline:none}
 td input:focus{border-color:#124d26;background:#fff}
-.nc{text-align:right}
-.nc input{text-align:right}
-.add-btn{width:100%;padding:8px;background:#e8f3ed;border:1.5px dashed #124d26;border-radius:7px;color:#124d26;font-weight:700;font-size:13px;cursor:pointer;font-family:Arial;margin-top:4px}
-.del-btn{background:none;border:none;color:#e74c3c;font-size:16px;cursor:pointer;padding:4px 8px}
-.total-row{display:flex;justify-content:flex-end;padding-top:8px;margin-top:8px;border-top:1.5px solid #eee}
-.total-row .tot{text-align:right}
-.total-row .tot .lbl{font-size:10px;text-transform:uppercase;color:#888;font-weight:700}
-.total-row .tot .val{font-size:18px;font-weight:700;color:#124d26}
-.photo-zone{border:2px dashed #ddd;border-radius:9px;padding:20px;text-align:center;cursor:pointer;background:#f7f7f7}
-.photo-zone input{display:none}
-.photo-zone .ico2{font-size:26px;margin-bottom:4px}
-.photo-zone .lbl2{font-size:13px;font-weight:700;color:#124d26}
-.photo-zone .sub{font-size:11px;color:#888;margin-top:2px}
-.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
-.photo-item{position:relative;aspect-ratio:1;border-radius:7px;overflow:hidden;background:#ddd}
-.photo-item img{width:100%;height:100%;object-fit:cover}
-.photo-item button{position:absolute;top:3px;right:3px;background:rgba(0,0,0,.6);border:none;border-radius:50%;width:20px;height:20px;color:#fff;font-size:12px;cursor:pointer;line-height:1}
-.sig-box{border:1.5px solid #ddd;border-radius:9px;overflow:hidden;background:#fff}
-.sig-top{padding:8px 12px;font-size:10px;font-weight:700;text-transform:uppercase;color:#888;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center}
-.sig-top button{background:none;border:none;font-size:11px;color:#c0392b;cursor:pointer;font-weight:700;font-family:Arial}
-.sig-box canvas{display:block;width:100%;cursor:crosshair;touch-action:none}
-.sig-hint{text-align:center;font-size:11px;color:#888;padding:5px;border-top:1px solid #eee}
-.stamp{display:flex;align-items:center;gap:8px;padding:10px 12px;background:#e8f3ed;border-radius:7px;margin-top:8px;font-size:12px;color:#124d26;font-weight:700}
-.sub-btn{width:100%;padding:15px;background:#124d26;color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:Arial;margin-top:12px}
-.rec-item{background:#fff;border-radius:9px;padding:13px 15px;margin-bottom:8px;box-shadow:0 1px 6px rgba(0,0,0,.08);border-left:4px solid #124d26}
-.rec-top{display:flex;justify-content:space-between;margin-bottom:4px}
-.rec-id{font-size:11px;color:#c0392b;font-weight:700}
-.rec-ts{font-size:10px;color:#888}
-.rec-name{font-weight:700;font-size:14px}
-.rec-amt{font-size:11px;color:#888;margin-top:2px}
-.rec-photos{display:flex;gap:5px;margin-top:6px}
-.rec-photos img{width:42px;height:42px;border-radius:5px;object-fit:cover;border:1px solid #eee}
-.signed{display:inline-block;background:#e8f3ed;color:#124d26;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;margin-top:5px}
+.nr input{text-align:right}
+.xb{background:none;border:none;color:#e74c3c;font-size:16px;cursor:pointer;padding:4px 8px}
+.ab{width:100%;padding:8px;background:#e8f3ed;border:1.5px dashed #124d26;border-radius:7px;color:#124d26;font-weight:700;font-size:13px;cursor:pointer;font-family:Arial;margin-top:4px}
+.tr2{display:flex;justify-content:flex-end;padding-top:8px;margin-top:8px;border-top:1.5px solid #eee}
+.tr2 .t{text-align:right}
+.tr2 .t .tl{font-size:10px;text-transform:uppercase;color:#888;font-weight:700}
+.tr2 .t .tv{font-size:18px;font-weight:700;color:#124d26}
+.pz{border:2px dashed #ddd;border-radius:9px;padding:20px;text-align:center;cursor:pointer;background:#f7f7f7}
+.pz input{display:none}
+.pz .pi{font-size:26px;margin-bottom:4px}
+.pz .pl{font-size:13px;font-weight:700;color:#124d26}
+.pz .ps{font-size:11px;color:#888;margin-top:2px}
+.pg2{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.pt{position:relative;aspect-ratio:1;border-radius:7px;overflow:hidden;background:#ddd}
+.pt img{width:100%;height:100%;object-fit:cover}
+.pt button{position:absolute;top:3px;right:3px;background:rgba(0,0,0,.6);border:none;border-radius:50%;width:20px;height:20px;color:#fff;font-size:12px;cursor:pointer}
+.sb2{border:1.5px solid #ddd;border-radius:9px;overflow:hidden;background:#fff}
+.sb2 .sl{padding:8px 12px;font-size:10px;font-weight:700;text-transform:uppercase;color:#888;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center}
+.sb2 .sl button{background:none;border:none;font-size:11px;color:#c0392b;cursor:pointer;font-weight:700;font-family:Arial}
+.sb2 canvas{display:block;width:100%;cursor:crosshair;touch-action:none}
+.sh{text-align:center;font-size:11px;color:#888;padding:5px;border-top:1px solid #eee}
+.st{padding:10px 12px;background:#e8f3ed;border-radius:7px;margin-top:8px;font-size:12px;color:#124d26;font-weight:700}
+.sb3{width:100%;padding:15px;background:#124d26;color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:Arial;margin-top:12px}
+.ri{background:#fff;border-radius:9px;padding:13px 15px;margin-bottom:8px;box-shadow:0 1px 4px rgba(0,0,0,.08);border-left:4px solid #124d26}
+.rt{display:flex;justify-content:space-between;margin-bottom:4px}
+.rid{font-size:11px;color:#c0392b;font-weight:700}
+.rts{font-size:10px;color:#888}
+.rn{font-weight:700;font-size:14px}
+.rm{font-size:11px;color:#888;margin-top:2px}
+.rp{display:flex;gap:5px;margin-top:6px}
+.rp img{width:42px;height:42px;border-radius:5px;object-fit:cover;border:1px solid #eee}
+.sg{display:inline-block;background:#e8f3ed;color:#124d26;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;margin-top:5px}
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(60px);background:#222;color:#fff;padding:11px 18px;border-radius:9px;font-size:13px;font-weight:700;z-index:999;transition:transform .3s;white-space:nowrap}
 .toast.up{transform:translateX(-50%) translateY(0)}
 .empty{text-align:center;padding:28px 16px;color:#888;font-size:13px}
-.empty .ei{font-size:32px;margin-bottom:6px}
-.gal-banner{background:#124d26;color:#fff;border-radius:10px;padding:14px 16px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
-.gal-banner .left .lbl{font-size:10px;opacity:.7;text-transform:uppercase;letter-spacing:1.5px}
-.gal-banner .left .val{font-size:16px;font-weight:700;margin-top:2px}
-.gal-banner .right .lbl{font-size:10px;opacity:.7;text-transform:uppercase;letter-spacing:1px;text-align:right}
-.gal-banner .right .val{font-size:22px;font-weight:700;color:#f0c040}
-.totals-card{background:#fff;border-radius:10px;padding:14px 16px;box-shadow:0 1px 6px rgba(0,0,0,.08);margin-bottom:14px}
-.tot-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #eee;font-size:13px}
-.tot-row:last-child{border:none}
-.tot-row .tl{color:#888}
-.tot-row .tv{font-weight:700;color:#124d26}
-.tot-row.grand{font-weight:700;font-size:15px}
-.tot-row.grand .tv{color:#c0392b;font-size:16px}
-.store-card{background:#fff;border-radius:10px;padding:13px 15px;margin-bottom:8px;box-shadow:0 1px 6px rgba(0,0,0,.08)}
-.store-card .st{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
-.store-card .sn{font-weight:700;font-size:15px}
-.store-card .sv{font-size:18px;font-weight:700}
-.store-card .sl{font-size:12px;color:#888}
-.store-card .sr{display:flex;justify-content:space-between;padding:2px 0}
-.form-card{background:#fff;border-radius:10px;overflow:hidden;margin-bottom:10px;box-shadow:0 1px 6px rgba(0,0,0,.08)}
-.form-card .fc-body{padding:13px 15px;display:flex;justify-content:space-between;align-items:flex-start}
-.form-card .fc-badge{display:inline-block;color:#fff;padding:3px 9px;border-radius:5px;font-size:10px;font-weight:700;margin-bottom:4px}
-.form-card .fc-name{font-weight:700;font-size:14px}
-.form-card .fc-count{font-size:11px;color:#888;margin-top:2px}
-.form-card .fc-amt{text-align:right}
-.form-card .fc-lbl{font-size:11px;color:#888}
-.form-card .fc-val{font-size:20px;font-weight:700}
-.form-card .fc-foot{padding:8px 15px;color:#fff;font-size:11px;font-weight:700;display:flex;justify-content:space-between}
-.share-row{display:flex;gap:8px;margin-bottom:14px}
-.share-row button{flex:1;padding:12px;border:none;border-radius:9px;color:#fff;font-size:13px;font-weight:700;cursor:pointer;font-family:Arial}
-@media(max-width:380px){.row3{grid-template-columns:1fr 1fr}}
+@media(max-width:380px){.g3{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
-<nav>
-  <div>
-    <h1>Moriarty Group</h1>
-    <span>Store Forms &amp; Records</span>
-  </div>
-  <button id="backBtn" onclick="goHome()">Back</button>
-</nav>
+<header>
+<div><h1>Moriarty Group</h1><p>Store Forms &amp; Records</p></div>
+<button id="btnBack" onclick="goHome()">Back</button>
+</header>
 <div class="wrap">
 
-<div id="pageHome" class="page show">
-  <div class="home-title"><h2>Store Forms</h2><p>SuperValu &middot; Moriarty Group &middot; Est. 1987</p></div>
-  <div class="section">Purchase &amp; Delivery</div>
-  <button class="btn-card" onclick="gotoForm('purchase')">
-    <div class="ico g">&#129649;</div><div class="info"><b>Purchase Docket Log</b><span>Grocery, cigs, wine, beers, spirits</span></div><div class="arr">&#8250;</div>
-  </button>
-  <button class="btn-card" onclick="gotoForm('inwards')">
-    <div class="ico b">&#128230;</div><div class="info"><b>Goods Inwards</b><span>Beef, lamb, pork, fish, poultry, F&amp;V, bakery</span></div><div class="arr">&#8250;</div>
-  </button>
-  <div class="section">Returns &amp; Transfers</div>
-  <button class="btn-card" onclick="gotoForm('returns')">
-    <div class="ico r">&#128260;</div><div class="info"><b>Goods Returned for Credit</b><span>Return docket with reason &amp; cost value</span></div><div class="arr">&#8250;</div>
-  </button>
-  <button class="btn-card" onclick="gotoForm('transfer')">
-    <div class="ico a">&#128256;</div><div class="info"><b>Inter Store Transfer</b><span>Cost price, retail price &mdash; store to store</span></div><div class="arr">&#8250;</div>
-  </button>
-  <div class="section">Records</div>
-  <button class="btn-card" onclick="gotoGallery()">
-    <div class="ico a">&#128444;</div><div class="info"><b>Weekly Gallery &amp; Reports</b><span>Totals by store, photos, share</span></div><div class="arr">&#8250;</div>
-  </button>
-  <div class="section">Recent Submissions</div>
-  <div id="recentList"><div class="empty"><div class="ei">&#128196;</div>No forms submitted yet</div></div>
+<div id="pgHome" class="pg on">
+<div class="greet"><h2>Store Forms</h2><p>SuperValu &middot; Moriarty Group &middot; Est. 1987</p></div>
+<div class="sec">Purchase &amp; Delivery</div>
+<button class="card" onclick="gotoPage('pgPurchase','purchase')">
+<div class="ico c1">&#129649;</div><div class="tx"><b>Purchase Docket Log</b><span>Grocery, cigs, wine, beers, spirits</span></div><div class="ar">&#8250;</div>
+</button>
+<button class="card" onclick="gotoPage('pgInwards','inwards')">
+<div class="ico c2">&#128230;</div><div class="tx"><b>Goods Inwards</b><span>Beef, lamb, pork, fish, poultry, F&amp;V, bakery</span></div><div class="ar">&#8250;</div>
+</button>
+<div class="sec">Returns &amp; Transfers</div>
+<button class="card" onclick="gotoPage('pgReturns','returns')">
+<div class="ico c3">&#128260;</div><div class="tx"><b>Goods Returned for Credit</b><span>Return docket with reason &amp; cost value</span></div><div class="ar">&#8250;</div>
+</button>
+<button class="card" onclick="gotoPage('pgTransfer','transfer')">
+<div class="ico c4">&#128256;</div><div class="tx"><b>Inter Store Transfer</b><span>Cost price, retail price &mdash; store to store</span></div><div class="ar">&#8250;</div>
+</button>
+<div class="sec">Recent Submissions</div>
+<div id="recList"><div class="empty">No forms submitted yet</div></div>
 </div>
 
-<div id="pagePurchase" class="page">
-  <div class="form-head"><div class="num">PURCHASE DOCKET &middot; FORM 1871</div><div class="title">Purchase Docket Log</div>
-    <div class="pills" id="storeP">
-      <button class="pill sel" onclick="selPill(this,'storeP')">Balbriggan</button>
-      <button class="pill" onclick="selPill(this,'storeP')">Palmerstown</button>
-      <button class="pill" onclick="selPill(this,'storeP')">Skerries</button>
-    </div>
-  </div>
-  <div class="form-box"><h3>Period</h3>
-    <div class="row2"><div class="field"><label>Week Ending</label><input type="date" id="pWE"></div><div class="field"><label>Manager</label><input type="text" id="pMgr" placeholder="Manager name"></div></div>
-  </div>
-  <div class="form-box"><h3>Docket Lines</h3>
-    <div class="table-wrap"><table><thead><tr><th>Date</th><th>Supplier</th><th>Docket #</th><th>Groc</th><th>Cigs</th><th>Wine</th><th>Beers</th><th>Spirits</th><th>Non Food</th><th>News</th><th>Promo</th><th>Total</th><th></th></tr></thead><tbody id="pRows"></tbody></table></div>
-    <button class="add-btn" onclick="addPRow()">+ Add Line</button>
-    <div class="total-row"><div class="tot"><div class="lbl">Grand Total</div><div class="val" id="pTotal">0.00</div></div></div>
-  </div>
-  <div class="form-box"><h3>Photo Evidence</h3>
-    <div class="photo-zone" onclick="document.getElementById('pFile').click()">
-      <input type="file" id="pFile" accept="image/*" multiple onchange="addPhotos(this,'pGrid')">
-      <div class="ico2">&#128247;</div><div class="lbl2">Tap to attach photos</div><div class="sub">Camera or library</div>
-    </div>
-    <div class="photo-grid" id="pGrid"></div>
-  </div>
-  <div class="form-box"><h3>Manager Signature</h3>
-    <div class="sig-box"><div class="sig-top">Sign here<button onclick="clearSig('sigP')">Clear</button></div><canvas id="sigP" height="110"></canvas><div class="sig-hint">Draw with finger</div></div>
-    <div class="stamp" id="stampP">Time: --</div>
-  </div>
-  <button class="sub-btn" onclick="submitForm('purchase')">Submit Purchase Log</button>
+<div id="pgPurchase" class="pg">
+<div class="fh"><div class="fn">PURCHASE DOCKET &middot; FORM 1871</div><div class="ft">Purchase Docket Log</div>
+<div class="pills" id="stP"><button class="pill on" onclick="setPill(this)">Balbriggan</button><button class="pill" onclick="setPill(this)">Palmerstown</button><button class="pill" onclick="setPill(this)">Skerries</button></div></div>
+<div class="bx"><h3>Period</h3><div class="g2"><div class="fl"><label>Week Ending</label><input type="date" id="pWE"></div><div class="fl"><label>Manager</label><input type="text" id="pMg" placeholder="Manager name"></div></div></div>
+<div class="bx"><h3>Docket Lines</h3>
+<div class="tw"><table><thead><tr><th>Date</th><th>Supplier</th><th>Docket</th><th>Groc</th><th>Cigs</th><th>Wine</th><th>Beers</th><th>Spirits</th><th>Non Food</th><th>News</th><th>Promo</th><th>Total</th><th></th></tr></thead><tbody id="pTb"></tbody></table></div>
+<button class="ab" onclick="addRow('p')">+ Add Line</button>
+<div class="tr2"><div class="t"><div class="tl">Grand Total</div><div class="tv" id="pTot">0.00</div></div></div></div>
+<div class="bx"><h3>Photo Evidence</h3>
+<div class="pz" onclick="document.getElementById('pFi').click()"><input type="file" id="pFi" accept="image/*" multiple onchange="addPhotos(this,'pPg')"><div class="pi">&#128247;</div><div class="pl">Tap to attach photos</div><div class="ps">Camera or library</div></div>
+<div class="pg2" id="pPg"></div></div>
+<div class="bx"><h3>Signature</h3>
+<div class="sb2"><div class="sl">Sign here <button onclick="clrSig('sgP')">Clear</button></div><canvas id="sgP" height="110"></canvas><div class="sh">Draw with finger</div></div>
+<div class="st" id="stP">--</div></div>
+<button class="sb3" onclick="doSub('purchase')">Submit Purchase Log</button>
 </div>
 
-<div id="pageInwards" class="page">
-  <div class="form-head"><div class="num">GOODS INWARDS &middot; FORM 2523</div><div class="title">Goods Inwards Record</div>
-    <div class="pills" id="storeI">
-      <button class="pill sel" onclick="selPill(this,'storeI')">Balbriggan</button>
-      <button class="pill" onclick="selPill(this,'storeI')">Palmerstown</button>
-      <button class="pill" onclick="selPill(this,'storeI')">Skerries</button>
-    </div>
-  </div>
-  <div class="form-box"><h3>Delivery Details</h3>
-    <div class="row2"><div class="field"><label>Date</label><input type="date" id="iDate"></div><div class="field"><label>Supplier</label><input type="text" id="iSup" placeholder="e.g. Musgrave"></div></div>
-    <div class="row2" style="margin-top:10px"><div class="field"><label>Depot No.</label><input type="text" id="iDep" placeholder="Depot number"></div><div class="field"><label>Ref No.</label><input type="text" id="iRef" placeholder="Reference"></div></div>
-  </div>
-  <div class="form-box"><h3>Departments Received</h3>
-    <div class="table-wrap"><table><thead><tr><th>Date</th><th>Supplier</th><th>Beef</th><th>Lamb</th><th>Pork</th><th>Fish</th><th>Poultry</th><th>F&amp;V</th><th>Deli</th><th>Bakery</th><th>Provs</th><th>Total</th><th></th></tr></thead><tbody id="iRows"></tbody></table></div>
-    <button class="add-btn" onclick="addIRow()">+ Add Delivery Line</button>
-    <div class="total-row"><div class="tot"><div class="lbl">Total</div><div class="val" id="iTotal">0.00</div></div></div>
-  </div>
-  <div class="form-box"><h3>Photo Evidence</h3>
-    <div class="photo-zone" onclick="document.getElementById('iFile').click()">
-      <input type="file" id="iFile" accept="image/*" multiple onchange="addPhotos(this,'iGrid')">
-      <div class="ico2">&#128247;</div><div class="lbl2">Tap to attach photos</div><div class="sub">Camera or library</div>
-    </div>
-    <div class="photo-grid" id="iGrid"></div>
-  </div>
-  <div class="form-box"><h3>Receiver Signature</h3>
-    <div class="sig-box"><div class="sig-top">Receiving Manager<button onclick="clearSig('sigI')">Clear</button></div><canvas id="sigI" height="110"></canvas><div class="sig-hint">Draw with finger</div></div>
-    <div class="stamp" id="stampI">Time: --</div>
-  </div>
-  <button class="sub-btn" onclick="submitForm('inwards')">Submit Goods Inwards</button>
+<div id="pgInwards" class="pg">
+<div class="fh"><div class="fn">GOODS INWARDS &middot; FORM 2523</div><div class="ft">Goods Inwards Record</div>
+<div class="pills" id="stI"><button class="pill on" onclick="setPill(this)">Balbriggan</button><button class="pill" onclick="setPill(this)">Palmerstown</button><button class="pill" onclick="setPill(this)">Skerries</button></div></div>
+<div class="bx"><h3>Delivery Details</h3>
+<div class="g2"><div class="fl"><label>Date</label><input type="date" id="iDt"></div><div class="fl"><label>Supplier</label><input type="text" id="iSp" placeholder="e.g. Musgrave"></div></div>
+<div class="g2" style="margin-top:10px"><div class="fl"><label>Depot No.</label><input type="text" id="iDp" placeholder="Depot number"></div><div class="fl"><label>Ref No.</label><input type="text" id="iRf" placeholder="Reference"></div></div></div>
+<div class="bx"><h3>Departments Received</h3>
+<div class="tw"><table><thead><tr><th>Date</th><th>Supplier</th><th>Beef</th><th>Lamb</th><th>Pork</th><th>Fish</th><th>Poultry</th><th>F&amp;V</th><th>Deli</th><th>Bakery</th><th>Provs</th><th>Total</th><th></th></tr></thead><tbody id="iTb"></tbody></table></div>
+<button class="ab" onclick="addRow('i')">+ Add Delivery Line</button>
+<div class="tr2"><div class="t"><div class="tl">Total</div><div class="tv" id="iTot">0.00</div></div></div></div>
+<div class="bx"><h3>Photo Evidence</h3>
+<div class="pz" onclick="document.getElementById('iFi').click()"><input type="file" id="iFi" accept="image/*" multiple onchange="addPhotos(this,'iPg')"><div class="pi">&#128247;</div><div class="pl">Tap to attach photos</div><div class="ps">Camera or library</div></div>
+<div class="pg2" id="iPg"></div></div>
+<div class="bx"><h3>Signature</h3>
+<div class="sb2"><div class="sl">Receiving Manager <button onclick="clrSig('sgI')">Clear</button></div><canvas id="sgI" height="110"></canvas><div class="sh">Draw with finger</div></div>
+<div class="st" id="stI">--</div></div>
+<button class="sb3" onclick="doSub('inwards')">Submit Goods Inwards</button>
 </div>
 
-<div id="pageReturns" class="page">
-  <div class="form-head"><div class="num">GOODS RETURNED &middot; FORM 0480</div><div class="title">Goods Returned for Credit</div>
-    <div class="pills" id="storeR">
-      <button class="pill sel" onclick="selPill(this,'storeR')">Balbriggan</button>
-      <button class="pill" onclick="selPill(this,'storeR')">Palmerstown</button>
-      <button class="pill" onclick="selPill(this,'storeR')">Skerries</button>
-    </div>
-  </div>
-  <div class="form-box"><h3>Return Details</h3>
-    <div class="row2"><div class="field"><label>To (Supplier)</label><input type="text" id="rTo" placeholder="Supplier name"></div><div class="field"><label>Dept.</label><input type="text" id="rDept" placeholder="e.g. Deli"></div></div>
-    <div class="row2" style="margin-top:10px"><div class="field"><label>Ref.</label><input type="text" id="rRef" placeholder="Reference"></div><div class="field"><label>Date</label><input type="date" id="rDate"></div></div>
-    <div class="field" style="margin-top:10px"><label>Reason for Return</label><textarea id="rRsn" placeholder="Describe reason"></textarea></div>
-  </div>
-  <div class="form-box"><h3>Items Returned</h3>
-    <div class="table-wrap"><table><thead><tr><th>Qty</th><th>Description</th><th>Cost/Box</th><th></th></tr></thead><tbody id="rRows"></tbody></table></div>
-    <button class="add-btn" onclick="addRRow()">+ Add Item</button>
-    <div class="total-row"><div class="tot"><div class="lbl">Total Credit</div><div class="val" id="rTotal">0.00</div></div></div>
-  </div>
-  <div class="form-box"><h3>Photo Evidence</h3>
-    <div class="photo-zone" onclick="document.getElementById('rFile').click()">
-      <input type="file" id="rFile" accept="image/*" multiple onchange="addPhotos(this,'rGrid')">
-      <div class="ico2">&#128247;</div><div class="lbl2">Tap to attach photos</div><div class="sub">Camera or library</div>
-    </div>
-    <div class="photo-grid" id="rGrid"></div>
-  </div>
-  <div class="form-box"><h3>Signatures</h3>
-    <div style="font-size:12px;color:#888;margin-bottom:6px">Your Rep.</div>
-    <div class="sig-box" style="margin-bottom:10px"><div class="sig-top">Rep Signature<button onclick="clearSig('sigR1')">Clear</button></div><canvas id="sigR1" height="90"></canvas></div>
-    <div style="font-size:12px;color:#888;margin-bottom:6px">Branch Manager</div>
-    <div class="sig-box"><div class="sig-top">Branch Manager<button onclick="clearSig('sigR2')">Clear</button></div><canvas id="sigR2" height="90"></canvas><div class="sig-hint">Draw with finger</div></div>
-    <div class="stamp" id="stampR">Time: --</div>
-  </div>
-  <button class="sub-btn" onclick="submitForm('returns')">Submit Return Docket</button>
+<div id="pgReturns" class="pg">
+<div class="fh"><div class="fn">GOODS RETURNED &middot; FORM 0480</div><div class="ft">Goods Returned for Credit</div>
+<div class="pills" id="stR"><button class="pill on" onclick="setPill(this)">Balbriggan</button><button class="pill" onclick="setPill(this)">Palmerstown</button><button class="pill" onclick="setPill(this)">Skerries</button></div></div>
+<div class="bx"><h3>Return Details</h3>
+<div class="g2"><div class="fl"><label>To (Supplier)</label><input type="text" id="rTo" placeholder="Supplier name"></div><div class="fl"><label>Dept.</label><input type="text" id="rDp" placeholder="e.g. Deli"></div></div>
+<div class="g2" style="margin-top:10px"><div class="fl"><label>Ref.</label><input type="text" id="rRf" placeholder="Reference"></div><div class="fl"><label>Date</label><input type="date" id="rDt"></div></div>
+<div class="fl" style="margin-top:10px"><label>Reason for Return</label><textarea id="rRs" placeholder="Describe reason"></textarea></div></div>
+<div class="bx"><h3>Items Returned</h3>
+<div class="tw"><table><thead><tr><th>Qty</th><th>Description</th><th>Cost/Box</th><th></th></tr></thead><tbody id="rTb"></tbody></table></div>
+<button class="ab" onclick="addRow('r')">+ Add Item</button>
+<div class="tr2"><div class="t"><div class="tl">Total Credit</div><div class="tv" id="rTot">0.00</div></div></div></div>
+<div class="bx"><h3>Photo Evidence</h3>
+<div class="pz" onclick="document.getElementById('rFi').click()"><input type="file" id="rFi" accept="image/*" multiple onchange="addPhotos(this,'rPg')"><div class="pi">&#128247;</div><div class="pl">Tap to attach photos</div><div class="ps">Camera or library</div></div>
+<div class="pg2" id="rPg"></div></div>
+<div class="bx"><h3>Signatures</h3>
+<div style="font-size:12px;color:#888;margin-bottom:6px">Your Rep.</div>
+<div class="sb2" style="margin-bottom:10px"><div class="sl">Rep Signature <button onclick="clrSig('sgR1')">Clear</button></div><canvas id="sgR1" height="90"></canvas></div>
+<div style="font-size:12px;color:#888;margin-bottom:6px">Branch Manager</div>
+<div class="sb2"><div class="sl">Branch Manager <button onclick="clrSig('sgR2')">Clear</button></div><canvas id="sgR2" height="90"></canvas><div class="sh">Draw with finger</div></div>
+<div class="st" id="stR">--</div></div>
+<button class="sb3" onclick="doSub('returns')">Submit Return Docket</button>
 </div>
 
-<div id="pageTransfer" class="page">
-  <div class="form-head"><div class="num">INTER STORE TRANSFER &middot; DOCKET 0851</div><div class="title">Inter Store Transfer Docket</div></div>
-  <div class="form-box"><h3>Transfer Details</h3>
-    <div class="row2"><div class="field"><label>To (Store)</label><input type="text" id="tTo" placeholder="Receiving store"></div><div class="field"><label>From (Store)</label><input type="text" id="tFr" placeholder="Dispatching store"></div></div>
-    <div class="row3" style="margin-top:10px"><div class="field"><label>Dept.</label><input type="text" id="tDpt" placeholder="Dept"></div><div class="field"><label>Ref.</label><input type="text" id="tRef" placeholder="Ref"></div><div class="field"><label>Date</label><input type="date" id="tDate"></div></div>
-  </div>
-  <div class="form-box"><h3>Goods Transferred</h3>
-    <div class="table-wrap"><table><thead><tr><th>Qty</th><th>Description</th><th>Cost</th><th>Retail</th><th>Total</th><th></th></tr></thead><tbody id="tRows"></tbody></table></div>
-    <button class="add-btn" onclick="addTRow()">+ Add Item</button>
-    <div class="total-row"><div class="tot"><div class="lbl">Total Amount</div><div class="val" id="tTotal">0.00</div></div></div>
-  </div>
-  <div class="form-box"><h3>Photo Evidence</h3>
-    <div class="photo-zone" onclick="document.getElementById('tFile').click()">
-      <input type="file" id="tFile" accept="image/*" multiple onchange="addPhotos(this,'tGrid')">
-      <div class="ico2">&#128247;</div><div class="lbl2">Tap to attach photos</div><div class="sub">Camera or library</div>
-    </div>
-    <div class="photo-grid" id="tGrid"></div>
-  </div>
-  <div class="form-box"><h3>Signatures</h3>
-    <div style="font-size:12px;color:#888;margin-bottom:6px">Receiving Manager</div>
-    <div class="sig-box" style="margin-bottom:10px"><div class="sig-top">Receiving Manager<button onclick="clearSig('sigT1')">Clear</button></div><canvas id="sigT1" height="90"></canvas></div>
-    <div style="font-size:12px;color:#888;margin-bottom:6px">Dispatching Manager</div>
-    <div class="sig-box"><div class="sig-top">Dispatching Manager<button onclick="clearSig('sigT2')">Clear</button></div><canvas id="sigT2" height="90"></canvas><div class="sig-hint">Draw with finger</div></div>
-    <div class="stamp" id="stampT">Time: --</div>
-  </div>
-  <button class="sub-btn" onclick="submitForm('transfer')">Submit Transfer Docket</button>
-</div>
-
-<div id="pageGallery" class="page">
-  <div class="gal-banner">
-    <div class="left"><div class="lbl">Current Week</div><div class="val" id="galWeek">-</div></div>
-    <div class="right"><div class="lbl">Week Total</div><div class="val" id="galTotal">0.00</div></div>
-  </div>
-  <div class="pills" id="galStore" style="margin-bottom:14px">
-    <button class="pill sel" onclick="selPill(this,'galStore');renderGal()">All Stores</button>
-    <button class="pill" onclick="selPill(this,'galStore');renderGal()">Balbriggan</button>
-    <button class="pill" onclick="selPill(this,'galStore');renderGal()">Palmerstown</button>
-    <button class="pill" onclick="selPill(this,'galStore');renderGal()">Skerries</button>
-  </div>
-  <div class="section">Weekly Breakdown</div>
-  <div class="totals-card">
-    <div class="tot-row"><span class="tl">Purchase Dockets</span><span class="tv" id="gP">0.00</span></div>
-    <div class="tot-row"><span class="tl">Goods Inwards</span><span class="tv" id="gI">0.00</span></div>
-    <div class="tot-row"><span class="tl">Returns for Credit</span><span class="tv" id="gR">0.00</span></div>
-    <div class="tot-row"><span class="tl">Transfers</span><span class="tv" id="gT">0.00</span></div>
-    <div class="tot-row grand"><span class="tl">Grand Total</span><span class="tv" id="gG">0.00</span></div>
-  </div>
-  <div class="section">By Store</div>
-  <div id="galStores"></div>
-  <div class="share-row">
-    <button style="background:#124d26" onclick="doShare()">Share Summary</button>
-    <button style="background:#1a5aad" onclick="doPrint()">Print View</button>
-  </div>
-  <div class="section">Select Week</div>
-  <div class="pills" id="galWeeks" style="margin-bottom:14px;flex-wrap:wrap"></div>
-  <div class="section">Forms This Week</div>
-  <div id="galForms"></div>
-  <div class="section">Recent Dockets</div>
-  <div id="galRecent"></div>
+<div id="pgTransfer" class="pg">
+<div class="fh"><div class="fn">INTER STORE TRANSFER &middot; DOCKET 0851</div><div class="ft">Inter Store Transfer Docket</div></div>
+<div class="bx"><h3>Transfer Details</h3>
+<div class="g2"><div class="fl"><label>To (Store)</label><input type="text" id="tTo" placeholder="Receiving store"></div><div class="fl"><label>From (Store)</label><input type="text" id="tFr" placeholder="Dispatching store"></div></div>
+<div class="g3" style="margin-top:10px"><div class="fl"><label>Dept.</label><input type="text" id="tDp" placeholder="Dept"></div><div class="fl"><label>Ref.</label><input type="text" id="tRf" placeholder="Ref"></div><div class="fl"><label>Date</label><input type="date" id="tDt"></div></div></div>
+<div class="bx"><h3>Goods Transferred</h3>
+<div class="tw"><table><thead><tr><th>Qty</th><th>Description</th><th>Cost</th><th>Retail</th><th>Total</th><th></th></tr></thead><tbody id="tTb"></tbody></table></div>
+<button class="ab" onclick="addRow('t')">+ Add Item</button>
+<div class="tr2"><div class="t"><div class="tl">Total Amount</div><div class="tv" id="tTot">0.00</div></div></div></div>
+<div class="bx"><h3>Photo Evidence</h3>
+<div class="pz" onclick="document.getElementById('tFi').click()"><input type="file" id="tFi" accept="image/*" multiple onchange="addPhotos(this,'tPg')"><div class="pi">&#128247;</div><div class="pl">Tap to attach photos</div><div class="ps">Camera or library</div></div>
+<div class="pg2" id="tPg"></div></div>
+<div class="bx"><h3>Signatures</h3>
+<div style="font-size:12px;color:#888;margin-bottom:6px">Receiving Manager</div>
+<div class="sb2" style="margin-bottom:10px"><div class="sl">Receiving Manager <button onclick="clrSig('sgT1')">Clear</button></div><canvas id="sgT1" height="90"></canvas></div>
+<div style="font-size:12px;color:#888;margin-bottom:6px">Dispatching Manager</div>
+<div class="sb2"><div class="sl">Dispatching Manager <button onclick="clrSig('sgT2')">Clear</button></div><canvas id="sgT2" height="90"></canvas><div class="sh">Draw with finger</div></div>
+<div class="st" id="stT">--</div></div>
+<button class="sb3" onclick="doSub('transfer')">Submit Transfer Docket</button>
 </div>
 
 </div>
 <div class="toast" id="toast"></div>
 <script>
 var DB=[];
-var curWeek=null;
-var GSURL='https://script.google.com/macros/s/AKfycbxY0KCxG1mwvooVLOD6beCkDM84beW9gPdD_XD_E7tJRYfgs2XYL7pq_srWNDvL2co/exec';
+var SU='https://script.google.com/macros/s/AKfycbxY0KCxG1mwvooVLOD6beCkDM84beW9gPdD_XD_E7tJRYfgs2XYL7pq_srWNDvL2co/exec';
 
-function show(id){
-var pages=document.querySelectorAll(’.page’);
-for(var i=0;i<pages.length;i++) pages[i].classList.remove(‘show’);
-document.getElementById(id).classList.add(‘show’);
-}
-
-function gotoForm(f){
-var map={purchase:‘pagePurchase’,inwards:‘pageInwards’,returns:‘pageReturns’,transfer:‘pageTransfer’};
-show(map[f]);
-document.getElementById(‘backBtn’).style.display=‘block’;
-setDates();
-setStamp(f);
-setTimeout(function(){initSigs();},150);
-window.scrollTo(0,0);
-}
-
-function gotoGallery(){
-show(‘pageGallery’);
-document.getElementById(‘backBtn’).style.display=‘block’;
-curWeek=weekLabel();
-document.getElementById(‘galWeek’).textContent=curWeek;
-renderGal();
+function gotoPage(pid,form){
+var all=document.querySelectorAll(’.pg’);
+for(var i=0;i<all.length;i++) all[i].classList.remove(‘on’);
+document.getElementById(pid).classList.add(‘on’);
+document.getElementById(‘btnBack’).style.display=‘block’;
+setDates(); setStamp(form); setTimeout(initSigs,150);
 window.scrollTo(0,0);
 }
 
 function goHome(){
-show(‘pageHome’);
-document.getElementById(‘backBtn’).style.display=‘none’;
-renderRecent();
+var all=document.querySelectorAll(’.pg’);
+for(var i=0;i<all.length;i++) all[i].classList.remove(‘on’);
+document.getElementById(‘pgHome’).classList.add(‘on’);
+document.getElementById(‘btnBack’).style.display=‘none’;
+renderRec();
 }
 
-function selPill(btn,groupId){
-var pills=document.getElementById(groupId).querySelectorAll(’.pill’);
-for(var i=0;i<pills.length;i++) pills[i].classList.remove(‘sel’);
-btn.classList.add(‘sel’);
+function setPill(btn){
+var pp=btn.parentNode.querySelectorAll(’.pill’);
+for(var i=0;i<pp.length;i++) pp[i].classList.remove(‘on’);
+btn.classList.add(‘on’);
 }
 
-function getSelPill(groupId){
-var sel=document.querySelector(’#’+groupId+’ .pill.sel’);
-return sel?sel.textContent:‘Balbriggan’;
+function getActivePill(id){
+var el=document.querySelector(’#’+id+’ .pill.on’);
+return el?el.textContent:‘Balbriggan’;
 }
 
 function setDates(){
 var t=new Date().toISOString().split(‘T’)[0];
-var ids=[‘pWE’,‘iDate’,‘rDate’,‘tDate’];
-for(var i=0;i<ids.length;i++){
-var el=document.getElementById(ids[i]);
-if(el&&!el.value) el.value=t;
-}
+var ids=[‘pWE’,‘iDt’,‘rDt’,‘tDt’];
+for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&!el.value)el.value=t;}
 }
 
 function setStamp(f){
-var map={purchase:‘stampP’,inwards:‘stampI’,returns:‘stampR’,transfer:‘stampT’};
-var el=document.getElementById(map[f]);
-if(el) el.textContent=’Time: ’+new Date().toLocaleString(‘en-IE’,{day:‘2-digit’,month:‘short’,year:‘numeric’,hour:‘2-digit’,minute:‘2-digit’,second:‘2-digit’});
+var m={purchase:‘stP’,inwards:‘stI’,returns:‘stR’,transfer:‘stT’};
+var el=document.getElementById(m[f]);
+if(el) el.textContent=new Date().toLocaleString(‘en-IE’,{day:‘2-digit’,month:‘short’,year:‘numeric’,hour:‘2-digit’,minute:‘2-digit’,second:‘2-digit’});
 }
 
 function fmtNow(){
 return new Date().toLocaleString(‘en-IE’,{day:‘2-digit’,month:‘short’,year:‘numeric’,hour:‘2-digit’,minute:‘2-digit’,second:‘2-digit’});
 }
 
-function weekLabel(){
-var now=new Date();
-var day=now.getDay();
-var diff=day===0?0:7-day;
-var sun=new Date(now);
-sun.setDate(now.getDate()+diff);
+function wkLabel(){
+var now=new Date(),day=now.getDay(),diff=day===0?0:7-day;
+var sun=new Date(now);sun.setDate(now.getDate()+diff);
 return ’W/E ‘+sun.getDate()+’ ‘+sun.toLocaleString(‘en-IE’,{month:‘short’})+’ ’+sun.getFullYear();
 }
 
-function toNum(s){
-if(!s) return 0;
-return parseFloat(String(s).replace(/[^0-9.]/g,’’))||0;
-}
-
-var SIGS={};
+var SG={};
 function initSig(id){
-if(SIGS[id]) return;
-var c=document.getElementById(id);
-if(!c) return;
+if(SG[id]) return;
+var c=document.getElementById(id);if(!c) return;
 c.width=c.offsetWidth||500;
 var ctx=c.getContext(‘2d’);
 ctx.strokeStyle=’#111’;ctx.lineWidth=2;ctx.lineCap=‘round’;ctx.lineJoin=‘round’;
-var drawing=false,lx=0,ly=0;
-function pos(e){
-var r=c.getBoundingClientRect();
-var src=e.touches?e.touches[0]:e;
-return[(src.clientX-r.left)*(c.width/r.width),(src.clientY-r.top)*(c.height/r.height)];
+var on=false,lx=0,ly=0;
+function gp(e){var r=c.getBoundingClientRect(),s=e.touches?e.touches[0]:e;return[(s.clientX-r.left)*(c.width/r.width),(s.clientY-r.top)*(c.height/r.height)];}
+function dn(e){e.preventDefault();on=true;var p=gp(e);lx=p[0];ly=p[1];}
+function mv(e){if(!on)return;e.preventDefault();var p=gp(e);ctx.beginPath();ctx.moveTo(lx,ly);ctx.lineTo(p[0],p[1]);ctx.stroke();lx=p[0];ly=p[1];}
+function up(){on=false;}
+c.addEventListener(‘mousedown’,dn);c.addEventListener(‘mousemove’,mv);c.addEventListener(‘mouseup’,up);c.addEventListener(‘mouseleave’,up);
+c.addEventListener(‘touchstart’,dn,{passive:false});c.addEventListener(‘touchmove’,mv,{passive:false});c.addEventListener(‘touchend’,up);
+SG[id]={c:c,ctx:ctx};
 }
-function down(e){e.preventDefault();drawing=true;var p=pos(e);lx=p[0];ly=p[1];}
-function move(e){
-if(!drawing)return;e.preventDefault();
-var p=pos(e);
-ctx.beginPath();ctx.moveTo(lx,ly);ctx.lineTo(p[0],p[1]);ctx.stroke();
-lx=p[0];ly=p[1];
-}
-function up(){drawing=false;}
-c.addEventListener(‘mousedown’,down);
-c.addEventListener(‘mousemove’,move);
-c.addEventListener(‘mouseup’,up);
-c.addEventListener(‘mouseleave’,up);
-c.addEventListener(‘touchstart’,down,{passive:false});
-c.addEventListener(‘touchmove’,move,{passive:false});
-c.addEventListener(‘touchend’,up);
-SIGS[id]={c:c,ctx:ctx};
-}
+function initSigs(){var ids=[‘sgP’,‘sgI’,‘sgR1’,‘sgR2’,‘sgT1’,‘sgT2’];for(var i=0;i<ids.length;i++)initSig(ids[i]);}
+function clrSig(id){var s=SG[id];if(s)s.ctx.clearRect(0,0,s.c.width,s.c.height);}
+function hSig(id){var s=SG[id];if(!s)return false;var d=s.ctx.getImageData(0,0,s.c.width,s.c.height).data;for(var i=0;i<d.length;i++){if(d[i]!==0)return true;}return false;}
+setTimeout(initSigs,400);
 
-function initSigs(){
-var ids=[‘sigP’,‘sigI’,‘sigR1’,‘sigR2’,‘sigT1’,‘sigT2’];
-for(var i=0;i<ids.length;i++) initSig(ids[i]);
-}
-
-function clearSig(id){
-var s=SIGS[id];
-if(s) s.ctx.clearRect(0,0,s.c.width,s.c.height);
-}
-
-function hasSig(id){
-var s=SIGS[id];
-if(!s) return false;
-var d=s.ctx.getImageData(0,0,s.c.width,s.c.height).data;
-for(var i=0;i<d.length;i++){if(d[i]!==0)return true;}
-return false;
-}
-
-setTimeout(initSigs,500);
-
-function addPhotos(inp,gridId){
-var grid=document.getElementById(gridId);
+function addPhotos(inp,gid){
+var g=document.getElementById(gid);
 var files=Array.prototype.slice.call(inp.files);
 files.forEach(function(f){
 var fr=new FileReader();
 fr.onload=function(e){
-var wrap=document.createElement(‘div’);
-wrap.className=‘photo-item’;
-var img=document.createElement(‘img’);
-img.src=e.target.result;
-var btn=document.createElement(‘button’);
-btn.textContent=‘x’;
-btn.onclick=function(){wrap.parentNode.removeChild(wrap);};
-wrap.appendChild(img);
-wrap.appendChild(btn);
-grid.appendChild(wrap);
+var w=document.createElement(‘div’);w.className=‘pt’;
+var img=document.createElement(‘img’);img.src=e.target.result;
+var btn=document.createElement(‘button’);btn.textContent=‘x’;
+btn.onclick=function(){w.parentNode.removeChild(w);};
+w.appendChild(img);w.appendChild(btn);g.appendChild(w);
 };
 fr.readAsDataURL(f);
 });
 }
 
-function getPhotos(gridId){
-var photos=[];
-var imgs=document.querySelectorAll(’#’+gridId+’ img’);
-for(var i=0;i<imgs.length;i++) photos.push(imgs[i].src);
-return photos;
-}
+function getPh(gid){var ph=[],imgs=document.querySelectorAll(’#’+gid+’ img’);for(var i=0;i<imgs.length;i++)ph.push(imgs[i].src);return ph;}
 
-function numInput(cb){return ‘<td class="nc"><input type="number" step="0.01" min="0" placeholder="0.00" oninput="'+cb+'(this)"></td>’;}
-function roInput(){return ‘<td class="nc"><input type="number" step="0.01" min="0" placeholder="0.00" readonly style="background:#e8f3ed;font-weight:700"></td>’;}
-function txtInput(ph){return ‘<td><input type="text" placeholder="'+ph+'"></td>’;}
-function dateInput(){return ‘<td><input type="date" value="'+new Date().toISOString().split('T')[0]+'"></td>’;}
-function delBtn(){return ‘<td><button class="del-btn" onclick="delRow(this)">x</button></td>’;}
+function ni(cb){return ‘<td class="nr"><input type="number" step="0.01" min="0" placeholder="0.00" oninput="calc(\''+cb+'\',this)"></td>’;}
+function ri(){return ‘<td class="nr"><input type="number" readonly style="background:#e8f3ed;font-weight:700"></td>’;}
+function ti(ph){return ‘<td><input type="text" placeholder="'+ph+'"></td>’;}
+function di(){return ‘<td><input type="date" value="'+new Date().toISOString().split('T')[0]+'"></td>’;}
+function db(){return ‘<td><button class="xb" onclick="delR(this)">x</button></td>’;}
 
-function makeRow(cells){
+function addRow(type){
 var tr=document.createElement(‘tr’);
-tr.innerHTML=cells+delBtn();
-return tr;
+if(type==‘p’) tr.innerHTML=di()+ti(‘Supplier’)+ti(‘Docket’)+ni(‘p’)+ni(‘p’)+ni(‘p’)+ni(‘p’)+ni(‘p’)+ni(‘p’)+ni(‘p’)+ni(‘p’)+ri()+db();
+if(type==‘i’) tr.innerHTML=di()+ti(‘Supplier’)+ni(‘i’)+ni(‘i’)+ni(‘i’)+ni(‘i’)+ni(‘i’)+ni(‘i’)+ni(‘i’)+ni(‘i’)+ni(‘i’)+ri()+db();
+if(type==‘r’) tr.innerHTML=ti(‘e.g. 1 box’)+ti(‘Description’)+ni(‘r’)+db();
+if(type==‘t’) tr.innerHTML=ti(‘Qty’)+ti(‘Description’)+ni(‘t’)+ni(‘t’)+ri()+db();
+var tb={p:‘pTb’,i:‘iTb’,r:‘rTb’,t:‘tTb’}[type];
+document.getElementById(tb).appendChild(tr);
 }
 
-function addPRow(){
-var row=makeRow(dateInput()+txtInput(‘Supplier’)+txtInput(‘Docket #’)+numInput(‘calcP’)+numInput(‘calcP’)+numInput(‘calcP’)+numInput(‘calcP’)+numInput(‘calcP’)+numInput(‘calcP’)+numInput(‘calcP’)+numInput(‘calcP’)+roInput());
-document.getElementById(‘pRows’).appendChild(row);
+function calc(type,inp){
+var row=inp.closest(‘tr’),ns=row.querySelectorAll(’.nr input’);
+if(type==‘t’){if(ns.length>=3)ns[2].value=(parseFloat(ns[1].value)||0).toFixed(2);}
+else{var sum=0;for(var i=0;i<ns.length-1;i++)sum+=parseFloat(ns[i].value)||0;ns[ns.length-1].value=sum.toFixed(2);}
+if(type==‘p’)calcTot(‘pTb’,‘pTot’);
+if(type==‘i’)calcTot(‘iTb’,‘iTot’);
+if(type==‘r’)calcTot2(‘rTb’,‘rTot’);
+if(type==‘t’)calcTot3(‘tTb’,‘tTot’);
 }
 
-function calcP(inp){
-var row=inp.closest(‘tr’);
-var ns=row.querySelectorAll(’.nc input’);
-var sum=0;
-for(var i=0;i<ns.length-1;i++) sum+=parseFloat(ns[i].value)||0;
-ns[ns.length-1].value=sum.toFixed(2);
-calcPTotal();
+function calcTot(tb,tot){
+var rows=document.querySelectorAll(’#’+tb+’ tr’),g=0;
+for(var i=0;i<rows.length;i++){var ns=rows[i].querySelectorAll(’.nr input’);if(ns.length)g+=parseFloat(ns[ns.length-1].value)||0;}
+document.getElementById(tot).textContent=g.toFixed(2);
 }
 
-function calcPTotal(){
-var rows=document.querySelectorAll(’#pRows tr’);
-var g=0;
-for(var i=0;i<rows.length;i++){
-var ns=rows[i].querySelectorAll(’.nc input’);
-if(ns.length) g+=parseFloat(ns[ns.length-1].value)||0;
-}
-document.getElementById(‘pTotal’).textContent=g.toFixed(2);
+function calcTot2(tb,tot){
+var ins=document.querySelectorAll(’#’+tb+’ .nr input’),t=0;
+for(var i=0;i<ins.length;i++)t+=parseFloat(ins[i].value)||0;
+document.getElementById(tot).textContent=t.toFixed(2);
 }
 
-function addIRow(){
-var row=makeRow(dateInput()+txtInput(‘Supplier’)+numInput(‘calcI’)+numInput(‘calcI’)+numInput(‘calcI’)+numInput(‘calcI’)+numInput(‘calcI’)+numInput(‘calcI’)+numInput(‘calcI’)+numInput(‘calcI’)+numInput(‘calcI’)+roInput());
-document.getElementById(‘iRows’).appendChild(row);
+function calcTot3(tb,tot){
+var rows=document.querySelectorAll(’#’+tb+’ tr’),t=0;
+for(var i=0;i<rows.length;i++){var ns=rows[i].querySelectorAll(’.nr input’);if(ns.length>=3)t+=parseFloat(ns[2].value)||0;}
+document.getElementById(tot).textContent=t.toFixed(2);
 }
 
-function calcI(inp){
-var row=inp.closest(‘tr’);
-var ns=row.querySelectorAll(’.nc input’);
-var sum=0;
-for(var i=0;i<ns.length-1;i++) sum+=parseFloat(ns[i].value)||0;
-ns[ns.length-1].value=sum.toFixed(2);
-calcITotal();
-}
-
-function calcITotal(){
-var rows=document.querySelectorAll(’#iRows tr’);
-var g=0;
-for(var i=0;i<rows.length;i++){
-var ns=rows[i].querySelectorAll(’.nc input’);
-if(ns.length) g+=parseFloat(ns[ns.length-1].value)||0;
-}
-document.getElementById(‘iTotal’).textContent=g.toFixed(2);
-}
-
-function addRRow(){
-var row=makeRow(txtInput(‘e.g. 1 box’)+txtInput(‘Description’)+numInput(‘calcRTotal’));
-document.getElementById(‘rRows’).appendChild(row);
-}
-
-function calcRTotal(){
-var ins=document.querySelectorAll(’#rRows .nc input’);
-var t=0;
-for(var i=0;i<ins.length;i++) t+=parseFloat(ins[i].value)||0;
-document.getElementById(‘rTotal’).textContent=t.toFixed(2);
-}
-
-function addTRow(){
-var row=makeRow(txtInput(‘Qty’)+txtInput(‘Description’)+numInput(‘calcT’)+numInput(‘calcT’)+roInput());
-document.getElementById(‘tRows’).appendChild(row);
-}
-
-function calcT(inp){
-var row=inp.closest(‘tr’);
-var ns=row.querySelectorAll(’.nc input’);
-if(ns.length>=3) ns[2].value=(parseFloat(ns[1].value)||0).toFixed(2);
-calcTTotal();
-}
-
-function calcTTotal(){
-var rows=document.querySelectorAll(’#tRows tr’);
-var t=0;
-for(var i=0;i<rows.length;i++){
-var ns=rows[i].querySelectorAll(’.nc input’);
-if(ns.length>=3) t+=parseFloat(ns[2].value)||0;
-}
-document.getElementById(‘tTotal’).textContent=t.toFixed(2);
-}
-
-function delRow(btn){
-var tr=btn.closest(‘tr’);
-tr.parentNode.removeChild(tr);
-calcPTotal();calcITotal();calcRTotal();calcTTotal();
+function delR(btn){
+var tr=btn.closest(‘tr’);tr.parentNode.removeChild(tr);
+calcTot(‘pTb’,‘pTot’);calcTot(‘iTb’,‘iTot’);calcTot2(‘rTb’,‘rTot’);calcTot3(‘tTb’,‘tTot’);
 }
 
 function getStore(form){
-var map={purchase:‘storeP’,inwards:‘storeI’,returns:‘storeR’};
-if(!map[form]) return ‘Balbriggan’;
-return getSelPill(map[form]);
+var m={purchase:‘stP’,inwards:‘stI’,returns:‘stR’};
+return m[form]?getActivePill(m[form]):‘Balbriggan’;
 }
 
-function getSupplier(form){
-if(form===‘purchase’){var r=document.querySelector(’#pRows tr’);if(!r)return ‘’;var ins=r.querySelectorAll(‘input’);return ins[1]?ins[1].value:’’;}
-if(form===‘inwards’) return document.getElementById(‘iSup’).value;
-if(form===‘returns’) return document.getElementById(‘rTo’).value;
-if(form===‘transfer’) return document.getElementById(‘tFr’).value;
+function getSup(form){
+if(form==‘purchase’){var r=document.querySelector(’#pTb tr’);if(!r)return ‘’;var ins=r.querySelectorAll(‘input’);return ins[1]?ins[1].value:’’;}
+if(form==‘inwards’)return document.getElementById(‘iSp’).value;
+if(form==‘returns’)return document.getElementById(‘rTo’).value;
+if(form==‘transfer’)return document.getElementById(‘tFr’).value;
 return ‘’;
 }
 
-function getTotal(form){
-var map={purchase:‘pTotal’,inwards:‘iTotal’,returns:‘rTotal’,transfer:‘tTotal’};
-var el=document.getElementById(map[form]);
-return el?el.textContent:‘0.00’;
-}
-
-function getFormPhotos(form){
-var map={purchase:‘pGrid’,inwards:‘iGrid’,returns:‘rGrid’,transfer:‘tGrid’};
-return getPhotos(map[form]);
+function getTot(form){
+var m={purchase:‘pTot’,inwards:‘iTot’,returns:‘rTot’,transfer:‘tTot’};
+var el=document.getElementById(m[form]);return el?el.textContent:‘0.00’;
 }
 
 function isSigned(form){
-var map={purchase:[‘sigP’],inwards:[‘sigI’],returns:[‘sigR1’,‘sigR2’],transfer:[‘sigT1’,‘sigT2’]};
-var ids=map[form]||[];
-for(var i=0;i<ids.length;i++){if(hasSig(ids[i]))return true;}
-return false;
+var m={purchase:[‘sgP’],inwards:[‘sgI’],returns:[‘sgR1’,‘sgR2’],transfer:[‘sgT1’,‘sgT2’]};
+var ids=m[form]||[];for(var i=0;i<ids.length;i++){if(hSig(ids[i]))return true;}return false;
 }
 
-function submitForm(form){
+function doSub(form){
 var nm={purchase:‘Purchase Docket Log’,inwards:‘Goods Inwards Record’,returns:‘Goods Returned for Credit’,transfer:‘Inter Store Transfer’};
 var num={purchase:‘1871’,inwards:‘2523’,returns:‘0480’,transfer:‘0851’};
-var rec={
-id:num[form],form:form,name:nm[form],
-store:getStore(form),
-stamp:fmtNow(),
-weekLabel:weekLabel(),
-total:getTotal(form),
-photos:getFormPhotos(form).slice(0,4),
-signed:isSigned(form),
-supplier:getSupplier(form)
-};
+var pg={purchase:‘pPg’,inwards:‘iPg’,returns:‘rPg’,transfer:‘tPg’};
+var rec={id:num[form],form:form,name:nm[form],store:getStore(form),stamp:fmtNow(),wk:wkLabel(),total:getTot(form),photos:getPh(pg[form]).slice(0,4),signed:isSigned(form),sup:getSup(form)};
 DB.unshift(rec);
 saveDB();
-try{
-var xhr=new XMLHttpRequest();
-xhr.open(‘POST’,GSURL,true);
-xhr.setRequestHeader(‘Content-Type’,‘application/json’);
-xhr.send(JSON.stringify({formType:form,store:rec.store,stamp:rec.stamp,total:rec.total,weekLabel:rec.weekLabel,supplier:rec.supplier,hasSig:rec.signed}));
-}catch(e){}
+try{var x=new XMLHttpRequest();x.open(‘POST’,SU,true);x.setRequestHeader(‘Content-Type’,‘application/json’);x.send(JSON.stringify({formType:form,store:rec.store,stamp:rec.stamp,total:rec.total,weekLabel:rec.wk,supplier:rec.sup,hasSig:rec.signed}));}catch(e){}
 showToast(‘Saved!’);
 goHome();
 }
 
 function saveDB(){
-try{
-var slim=DB.map(function(r){
-return{id:r.id,form:r.form,name:r.name,store:r.store,stamp:r.stamp,weekLabel:r.weekLabel,total:r.total,photos:r.photos.slice(0,2),signed:r.signed,supplier:r.supplier};
-});
-localStorage.setItem(‘mgDB’,JSON.stringify(slim));
-}catch(e){}
+try{var s=DB.map(function(r){return{id:r.id,form:r.form,name:r.name,store:r.store,stamp:r.stamp,wk:r.wk,total:r.total,photos:r.photos.slice(0,2),signed:r.signed,sup:r.sup};});localStorage.setItem(‘mgv5’,JSON.stringify(s));}catch(e){}
 }
 
 function loadDB(){
-try{
-var raw=localStorage.getItem(‘mgDB’);
-if(raw){
-var parsed=JSON.parse(raw);
-if(Array.isArray(parsed)){
-for(var i=0;i<parsed.length;i++) DB.push(parsed[i]);
-}
-}
-}catch(e){}
+try{var raw=localStorage.getItem(‘mgv5’);if(raw){var p=JSON.parse(raw);if(Array.isArray(p)){for(var i=0;i<p.length;i++)DB.push(p[i]);}}}catch(e){}
 }
 
-function renderRecent(){
-var el=document.getElementById(‘recentList’);
-if(!DB.length){el.innerHTML=’<div class="empty"><div class="ei">📄</div>No forms submitted yet</div>’;return;}
-var html=’’;
-var items=DB.slice(0,8);
-for(var i=0;i<items.length;i++){
-var r=items[i];
-var ph=’’;
-if(r.photos&&r.photos.length){
-ph=’<div class="rec-photos">’;
-for(var j=0;j<r.photos.length;j++) ph+=’<img src="'+r.photos[j]+'">’;
-ph+=’</div>’;
-}
-var sig=r.signed?’<div class="signed">Signed</div>’:’’;
-html+=’<div class="rec-item"><div class="rec-top"><span class="rec-id">FORM ‘+r.id+’ - ‘+r.store+’</span><span class="rec-ts">’+r.stamp+’</span></div><div class="rec-name">’+r.name+’</div><div class="rec-amt">’+r.total+’</div>’+ph+sig+’</div>’;
-}
-el.innerHTML=html;
-}
-
-function getWeekRecs(wl,store){
-var res=[];
-for(var i=0;i<DB.length;i++){
+function renderRec(){
+var el=document.getElementById(‘recList’);
+if(!DB.length){el.innerHTML=’<div class="empty">No forms submitted yet</div>’;return;}
+var h=’’;
+for(var i=0;i<Math.min(DB.length,8);i++){
 var r=DB[i];
-if(r.weekLabel===wl&&(store===‘All Stores’||r.store===store)) res.push(r);
+var ph=’’;if(r.photos&&r.photos.length){ph=’<div class="rp">’;for(var j=0;j<r.photos.length;j++)ph+=’<img src="'+r.photos[j]+'">’;ph+=’</div>’;}
+var sg=r.signed?’<div class="sg">Signed</div>’:’’;
+h+=’<div class="ri"><div class="rt"><span class="rid">FORM ‘+r.id+’ - ‘+r.store+’</span><span class="rts">’+r.stamp+’</span></div><div class="rn">’+r.name+’</div><div class="rm">’+r.total+’</div>’+ph+sg+’</div>’;
 }
-return res;
-}
-
-function getAllWeeks(){
-var seen={},weeks=[];
-for(var i=0;i<DB.length;i++){
-var wl=DB[i].weekLabel||‘Unknown’;
-if(!seen[wl]){seen[wl]=true;weeks.push(wl);}
-}
-return weeks;
+el.innerHTML=h;
 }
 
-function renderGal(){
-var store=getSelPill(‘galStore’);
-var wl=curWeek||weekLabel();
-
-document.getElementById(‘galWeek’).textContent=wl;
-
-var recs=getWeekRecs(wl,store);
-var allRecs=getWeekRecs(wl,‘All Stores’);
-
-var tot={purchase:0,inwards:0,returns:0,transfer:0};
-for(var i=0;i<recs.length;i++) tot[recs[i].form]=(tot[recs[i].form]||0)+toNum(recs[i].total);
-var grand=tot.purchase+tot.inwards+tot.returns+tot.transfer;
-
-document.getElementById(‘gP’).textContent=tot.purchase.toFixed(2);
-document.getElementById(‘gI’).textContent=tot.inwards.toFixed(2);
-document.getElementById(‘gR’).textContent=tot.returns.toFixed(2);
-document.getElementById(‘gT’).textContent=tot.transfer.toFixed(2);
-document.getElementById(‘gG’).textContent=grand.toFixed(2);
-document.getElementById(‘galTotal’).textContent=grand.toFixed(2);
-
-var storeColors={Balbriggan:’#124d26’,Palmerstown:’#1a5aad’,Skerries:’#8b3a0f’};
-var storeNames=[‘Balbriggan’,‘Palmerstown’,‘Skerries’];
-var sh=’’;
-for(var s=0;s<storeNames.length;s++){
-var sn=storeNames[s];
-var sr=[];
-for(var j=0;j<allRecs.length;j++){if(allRecs[j].store===sn)sr.push(allRecs[j]);}
-if(!sr.length) continue;
-var st={purchase:0,inwards:0,returns:0,transfer:0};
-for(var k=0;k<sr.length;k++) st[sr[k].form]=(st[sr[k].form]||0)+toNum(sr[k].total);
-var sg=st.purchase+st.inwards+st.returns+st.transfer;
-var col=storeColors[sn]||’#555’;
-sh+=’<div class="store-card" style="border-left:4px solid '+col+'"><div class="st"><span class="sn">’+sn+’</span><span class="sv" style="color:'+col+'">’+sg.toFixed(2)+’</span></div><div class="sl">’;
-if(st.purchase>0) sh+=’<div class="sr"><span>Purchase</span><span>’+st.purchase.toFixed(2)+’</span></div>’;
-if(st.inwards>0) sh+=’<div class="sr"><span>Inwards</span><span>’+st.inwards.toFixed(2)+’</span></div>’;
-if(st.returns>0) sh+=’<div class="sr"><span>Returns</span><span>’+st.returns.toFixed(2)+’</span></div>’;
-if(st.transfer>0) sh+=’<div class="sr"><span>Transfers</span><span>’+st.transfer.toFixed(2)+’</span></div>’;
-sh+=’</div></div>’;
-}
-document.getElementById(‘galStores’).innerHTML=sh;
-
-var weeks=getAllWeeks();
-var wh=’’;
-for(var w=0;w<weeks.length;w++){
-var wk=weeks[w];
-var sel=wk===wl?’ sel’:’’;
-wh+=’<button class="pill'+sel+'" onclick="switchWeek(\''+wk+'\')">’+wk+’</button>’;
-}
-document.getElementById(‘galWeeks’).innerHTML=wh;
-
-var fds=[
-{key:‘purchase’,label:‘Purchase Docket Log’,num:‘Form 1871’,color:’#124d26’},
-{key:‘inwards’,label:‘Goods Inwards’,num:‘Form 2523’,color:’#1a5aad’},
-{key:‘returns’,label:‘Returns for Credit’,num:‘Form 0480’,color:’#c0392b’},
-{key:‘transfer’,label:‘Inter Store Transfers’,num:‘Form 0851’,color:’#8b3a0f’}
-];
-var fh=’’;
-for(var f=0;f<fds.length;f++){
-var fd=fds[f];
-var fr=[],ft=0;
-for(var r=0;r<recs.length;r++){if(recs[r].form===fd.key)fr.push(recs[r]);}
-for(var r=0;r<fr.length;r++) ft+=toNum(fr[r].total);
-var ps=’’;
-if(fr.length&&fr[0].photos&&fr[0].photos.length){
-ps=’<div style="height:65px;overflow:hidden;display:flex;gap:1px">’;
-for(var p=0;p<Math.min(fr[0].photos.length,3);p++) ps+=’<img src="'+fr[0].photos[p]+'" style="flex:1;object-fit:cover;min-width:0">’;
-ps+=’</div>’;
-}
-fh+=’<div class="form-card">’+ps;
-fh+=’<div class="fc-body"><div><div class="fc-badge" style="background:'+fd.color+'">’+fd.num+’</div><div class="fc-name">’+fd.label+’</div><div class="fc-count">’+fr.length+(fr.length===1?’ entry’:’ entries’)+’ this week</div></div>’;
-fh+=’<div class="fc-amt"><div class="fc-lbl">Total</div><div class="fc-val" style="color:'+fd.color+'">’+ft.toFixed(2)+’</div></div></div>’;
-fh+=’<div class="fc-foot" style="background:'+fd.color+'"><span>’+fr.length+’ submission’+(fr.length===1?’’:‘s’)+’</span><span style="opacity:.7">’+fd.num+’</span></div></div>’;
-}
-document.getElementById(‘galForms’).innerHTML=fh;
-
-var rh=’’;
-if(!recs.length){rh=’<div class="empty"><div class="ei">📷</div>No dockets this week</div>’;}
-else{
-for(var i=0;i<recs.length;i++){
-var r=recs[i];
-var ph=’’;
-if(r.photos&&r.photos.length){
-ph=’<div class="rec-photos">’;
-for(var j=0;j<r.photos.length;j++) ph+=’<img src="'+r.photos[j]+'" style="width:50px;height:50px">’;
-ph+=’</div>’;
-}
-var sig=r.signed?’<div class="signed">Signed</div>’:’’;
-rh+=’<div class="rec-item"><div class="rec-top"><span class="rec-id">’+r.name+’</span><span class="rec-ts">’+r.store+’</span></div><div class="rec-name">’+(r.supplier||r.stamp.split(’,’)[0])+’</div><div class="rec-amt">’+r.total+’</div>’+ph+sig+’</div>’;
-}
-}
-document.getElementById(‘galRecent’).innerHTML=rh;
-}
-
-function switchWeek(wl){
-curWeek=wl;
-document.getElementById(‘galWeek’).textContent=wl;
-renderGal();
-}
-
-function doShare(){
-var store=getSelPill(‘galStore’);
-var wl=curWeek||weekLabel();
-var recs=getWeekRecs(wl,store);
-var tot={purchase:0,inwards:0,returns:0,transfer:0};
-for(var i=0;i<recs.length;i++) tot[recs[i].form]=(tot[recs[i].form]||0)+toNum(recs[i].total);
-var grand=tot.purchase+tot.inwards+tot.returns+tot.transfer;
-var txt=‘Moriarty Group Store Forms\n’+wl+’ - ‘+store+’\n\nPurchase: ‘+tot.purchase.toFixed(2)+’\nInwards: ‘+tot.inwards.toFixed(2)+’\nReturns: ‘+tot.returns.toFixed(2)+’\nTransfers: ‘+tot.transfer.toFixed(2)+’\n—\nGrand Total: ‘+grand.toFixed(2)+’\n\nGenerated ’+fmtNow();
-if(navigator.share){navigator.share({title:‘Store Report’,text:txt});}
-else{
-var el=document.createElement(‘textarea’);el.value=txt;document.body.appendChild(el);el.select();document.execCommand(‘copy’);document.body.removeChild(el);
-showToast(‘Copied to clipboard!’);
-}
-}
-
-function doPrint(){
-var store=getSelPill(‘galStore’);
-var wl=curWeek||weekLabel();
-var recs=getWeekRecs(wl,store);
-var tot={purchase:0,inwards:0,returns:0,transfer:0};
-for(var i=0;i<recs.length;i++) tot[recs[i].form]=(tot[recs[i].form]||0)+toNum(recs[i].total);
-var grand=tot.purchase+tot.inwards+tot.returns+tot.transfer;
-var rows=’’;
-for(var i=0;i<recs.length;i++){
-var r=recs[i];
-rows+=’<tr><td>’+r.stamp.split(’,’)[0]+’</td><td>’+r.name+’</td><td>’+r.store+’</td><td>’+(r.supplier||’’)+’</td><td style="text-align:right;font-weight:700">’+r.total+’</td><td>’+(r.signed?‘Yes’:’’)+’</td></tr>’;
-if(r.photos&&r.photos.length){
-rows+=’<tr><td colspan="6" style="padding:6px">’;
-for(var p=0;p<r.photos.length;p++) rows+=’<img src="'+r.photos[p]+'" style="height:65px;width:auto;border-radius:4px;margin-right:4px">’;
-rows+=’</td></tr>’;
-}
-}
-var pw=window.open(’’,’_blank’);
-if(!pw){showToast(‘Allow popups to print’);return;}
-pw.document.write(’<!DOCTYPE html><html><head><title>Store Report</title><style>body{font-family:Arial,sans-serif;margin:0;padding:0}.bar{background:#124d26;color:#fff;padding:10px 16px;display:flex;gap:8px}.bar button{background:#fff;color:#124d26;border:none;padding:6px 12px;border-radius:5px;font-weight:700;cursor:pointer}.wrap{max-width:960px;margin:0 auto;padding:16px}table{width:100%;border-collapse:collapse}th{background:#124d26;color:#fff;padding:8px;text-align:left;font-size:11px;text-transform:uppercase}td{padding:7px 8px;border-bottom:1px solid #eee}@media print{.bar{display:none}}</style></head><body><div class="bar"><button onclick="window.print()">Print / PDF</button><button onclick="window.close()">Close</button></div><div class="wrap"><h2 style="color:#124d26">’+wl+’ - ‘+store+’</h2><p style="color:#888;font-size:13px">Grand Total: <strong>’+grand.toFixed(2)+’</strong></p><table><thead><tr><th>Date</th><th>Form</th><th>Store</th><th>Supplier</th><th>Total</th><th>Sig</th></tr></thead><tbody>’+(rows||’<tr><td colspan="6" style="text-align:center;color:#888;padding:20px">No entries</td></tr>’)+’</tbody></table></div></body></html>’);
-pw.document.close();
-}
-
-function showToast(msg){
-var t=document.getElementById(‘toast’);
-t.textContent=msg;t.classList.add(‘up’);
-setTimeout(function(){t.classList.remove(‘up’);},3000);
-}
+function showToast(msg){var t=document.getElementById(‘toast’);t.textContent=msg;t.classList.add(‘up’);setTimeout(function(){t.classList.remove(‘up’);},3000);}
 
 loadDB();
-addPRow();addIRow();addRRow();addTRow();
+addRow(‘p’);addRow(‘i’);addRow(‘r’);addRow(‘t’);
 setDates();
-renderRecent();
+renderRec();
 </script>
 
 </body>
