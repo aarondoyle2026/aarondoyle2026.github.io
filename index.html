@@ -1442,14 +1442,14 @@ function calcPurchaseTotal(input) {
   const row = input.closest('tr');
   const cells = row.querySelectorAll('td.td-num input');
   let sum = 0;
-  cells.forEach((c,i) => { if (i < cells.length-1) sum += parseFloat(c.value)||0; });
+  cells.forEach(function(c,i) { if (i < cells.length-1) sum += parseFloat(c.value)||0; });
   cells[cells.length-1].value = sum.toFixed(2);
   calcAllPurchase();
 }
 
 function calcAllPurchase() {
   let grand = 0;
-  document.querySelectorAll('#purchaseTbody tr').forEach(tr => {
+  document.querySelectorAll('#purchaseTbody tr').forEach(function(tr) {
     const cells = tr.querySelectorAll('td.td-num input');
     if (cells.length) grand += parseFloat(cells[cells.length-1].value)||0;
   });
@@ -1473,14 +1473,14 @@ function calcInwardsTotal(input) {
   const row = input.closest('tr');
   const cells = row.querySelectorAll('td.td-num input');
   let sum = 0;
-  cells.forEach((c,i) => { if (i < cells.length-1) sum += parseFloat(c.value)||0; });
+  cells.forEach(function(c,i) { if (i < cells.length-1) sum += parseFloat(c.value)||0; });
   cells[cells.length-1].value = sum.toFixed(2);
   calcAllInwards();
 }
 
 function calcAllInwards() {
   let grand = 0;
-  document.querySelectorAll('#inwardsTbody tr').forEach(tr => {
+  document.querySelectorAll('#inwardsTbody tr').forEach(function(tr) {
     const cells = tr.querySelectorAll('td.td-num input');
     if (cells.length) grand += parseFloat(cells[cells.length-1].value)||0;
   });
@@ -1502,7 +1502,7 @@ function addReturnsRow() {
 
 function calcReturnsTotal() {
   let t = 0;
-  document.querySelectorAll('#returnsTbody td.td-num input').forEach(i => t += parseFloat(i.value)||0);
+  document.querySelectorAll('#returnsTbody td.td-num input').forEach(function(i) { t += parseFloat(i.value)||0; });
   document.getElementById('returnsTotal').textContent = '€ '+t.toFixed(2);
 }
 
@@ -1530,7 +1530,7 @@ function calcTransferTotal(input) {
 
 function recalcAllTransfer() {
   let t = 0;
-  document.querySelectorAll('#transferTbody tr').forEach(tr => {
+  document.querySelectorAll('#transferTbody tr').forEach(function(tr) {
     const cells = tr.querySelectorAll('td.td-num input');
     if (cells.length >= 3) t += parseFloat(cells[2].value)||0;
   });
@@ -1545,14 +1545,14 @@ const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxY0KCxG1mwvooVLOD6b
 function collectFormData(form, store) {
   if (form === 'purchase') {
     const rows = [];
-    document.querySelectorAll('#purchaseTbody tr').forEach(tr => {
+    document.querySelectorAll('#purchaseTbody tr').forEach(function(tr) {
       const inputs = tr.querySelectorAll('input');
       if (inputs.length >= 12) {
         rows.push({
           formType: 'purchase',
           store,
-          weekEnding: document.getElementById('pWeekEnding')?.value || '',
-          manager: document.querySelector('#screenPurchase input[placeholder="Manager name"]')?.value || '',
+          weekEnding: document.getElementById('pWeekEnding') ? document.getElementById('pWeekEnding').value : '' || '',
+          manager: document.querySelector('#screenPurchase input[placeholder="Manager name"]') ? document.querySelector('#screenPurchase input[placeholder="Manager name"]').value : '' || '',
           date: inputs[0].value,
           supplier: inputs[1].value,
           docketNum: inputs[2].value,
@@ -1565,7 +1565,7 @@ function collectFormData(form, store) {
           news: inputs[9].value || 0,
           promo: inputs[10].value || 0,
           lineTotal: inputs[11].value || 0,
-          grandTotal: document.getElementById('purchaseTotal')?.textContent?.replace('€ ','') || 0,
+          grandTotal: (document.getElementById('purchaseTotal') ? document.getElementById('purchaseTotal').textContent.replace('€ ','') : '0') || 0,
           hasSig: !!getSigDataUrl('sigPurchase')
         });
       }
@@ -1574,7 +1574,7 @@ function collectFormData(form, store) {
   }
   if (form === 'inwards') {
     const rows = [];
-    document.querySelectorAll('#inwardsTbody tr').forEach(tr => {
+    document.querySelectorAll('#inwardsTbody tr').forEach(function(tr) {
       const inputs = tr.querySelectorAll('input');
       if (inputs.length >= 11) {
         rows.push({
@@ -1582,8 +1582,8 @@ function collectFormData(form, store) {
           store,
           date: inputs[0].value,
           supplier: inputs[1].value,
-          depotNo: document.querySelector('#screenInwards input[placeholder="Depot number"]')?.value || '',
-          refNo: document.querySelector('#screenInwards input[placeholder="Reference"]')?.value || '',
+          depotNo: document.querySelector('#screenInwards input[placeholder="Depot number"]') ? document.querySelector('#screenInwards input[placeholder="Depot number"]').value : '' || '',
+          refNo: document.querySelector('#screenInwards input[placeholder="Reference"]') ? document.querySelector('#screenInwards input[placeholder="Reference"]').value : '' || '',
           beef: inputs[2].value || 0,
           lamb: inputs[3].value || 0,
           pork: inputs[4].value || 0,
@@ -1593,7 +1593,7 @@ function collectFormData(form, store) {
           deli: inputs[8].value || 0,
           bakery: inputs[9].value || 0,
           provs: inputs[10].value || 0,
-          lineTotal: inputs[11]?.value || 0,
+          lineTotal: inputs[11] ? inputs[11].value : '0' || 0,
           hasSig: !!getSigDataUrl('sigInwards')
         });
       }
@@ -1607,15 +1607,15 @@ function collectFormData(form, store) {
       rows.push({
         formType: 'returns',
         store,
-        date: document.getElementById('retDate')?.value || '',
-        toSupplier: document.getElementById('retTo')?.value || '',
-        dept: document.getElementById('retDept')?.value || '',
-        ref: document.getElementById('retRef')?.value || '',
-        reason: document.getElementById('retReason')?.value || '',
-        qty: inputs[0]?.value || '',
-        description: inputs[1]?.value || '',
-        costPerBox: inputs[2]?.value || 0,
-        totalCredit: document.getElementById('returnsTotal')?.textContent?.replace('€ ','') || 0,
+        date: document.getElementById('retDate') ? document.getElementById('retDate').value : '' || '',
+        toSupplier: document.getElementById('retTo') ? document.getElementById('retTo').value : '' || '',
+        dept: document.getElementById('retDept') ? document.getElementById('retDept').value : '' || '',
+        ref: document.getElementById('retRef') ? document.getElementById('retRef').value : '' || '',
+        reason: document.getElementById('retReason') ? document.getElementById('retReason').value : '' || '',
+        qty: inputs[0] ? inputs[0].value : '' || '',
+        description: inputs[1] ? inputs[1].value : '' || '',
+        costPerBox: inputs[2] ? inputs[2].value : '' || 0,
+        totalCredit: (document.getElementById('returnsTotal') ? document.getElementById('returnsTotal').textContent.replace('€ ','') : '0') || 0,
         hasSig: !!getSigDataUrl('sigReturnsRep') || !!getSigDataUrl('sigReturnsMgr')
       });
     });
@@ -1623,21 +1623,21 @@ function collectFormData(form, store) {
   }
   if (form === 'transfer') {
     const rows = [];
-    document.querySelectorAll('#transferTbody tr').forEach(tr => {
+    document.querySelectorAll('#transferTbody tr').forEach(function(tr) {
       const inputs = tr.querySelectorAll('input');
       rows.push({
         formType: 'transfer',
         store,
-        date: document.getElementById('trDate')?.value || '',
-        toStore: document.getElementById('trTo')?.value || '',
-        fromStore: document.getElementById('trFrom')?.value || '',
-        dept: document.getElementById('trDept')?.value || '',
-        ref: document.getElementById('trRef')?.value || '',
-        qty: inputs[0]?.value || '',
-        description: inputs[1]?.value || '',
-        costPrice: inputs[2]?.value || 0,
-        retailPrice: inputs[3]?.value || 0,
-        totalAmount: inputs[4]?.value || 0,
+        date: document.getElementById('trDate') ? document.getElementById('trDate').value : '' || '',
+        toStore: document.getElementById('trTo') ? document.getElementById('trTo').value : '' || '',
+        fromStore: document.getElementById('trFrom') ? document.getElementById('trFrom').value : '' || '',
+        dept: document.getElementById('trDept') ? document.getElementById('trDept').value : '' || '',
+        ref: document.getElementById('trRef') ? document.getElementById('trRef').value : '' || '',
+        qty: inputs[0] ? inputs[0].value : '' || '',
+        description: inputs[1] ? inputs[1].value : '' || '',
+        costPrice: inputs[2] ? inputs[2].value : '' || 0,
+        retailPrice: inputs[3] ? inputs[3].value : 0,
+        totalAmount: inputs[4] ? inputs[4].value : 0,
         hasSig: !!getSigDataUrl('sigTransferRecv') || !!getSigDataUrl('sigTransferDisp')
       });
     });
@@ -1646,7 +1646,7 @@ function collectFormData(form, store) {
   return [];
 }
 
-async function submitForm(form) {
+function submitForm(form) {
   const stamp = fmtStamp();
   const storeMap = {
     purchase: 'storePillsPurchase',
@@ -1669,8 +1669,8 @@ async function submitForm(form) {
 
   const formNums = {
     purchase: '1871', inwards: '2523',
-    returns: document.getElementById('returnsFormNum')?.textContent || '0480',
-    transfer: document.getElementById('transferFormNum')?.textContent || '0851'
+    returns: document.getElementById('returnsFormNum') ? document.getElementById('returnsFormNum').textContent : '0480' || '0480',
+    transfer: document.getElementById('transferFormNum') ? document.getElementById('transferFormNum').textContent : '0851' || '0851'
   };
 
   const gridMap = {
@@ -1689,7 +1689,7 @@ async function submitForm(form) {
   sigMap[form].forEach(id => { if (getSigDataUrl(id)) hasSig = true; });
 
   const totalEl = {purchase:'purchaseTotal', inwards:'inwardsTotal', returns:'returnsTotal', transfer:'transferTotal'};
-  const total = document.getElementById(totalEl[form])?.textContent || '';
+  const total = document.getElementById(totalEl[form]) ? document.getElementById(totalEl[form]).textContent : '' || '';
 
   // Show sending state
   const btn = document.querySelector('#screen'+form.charAt(0).toUpperCase()+form.slice(1)+' .btn-submit');
@@ -1699,26 +1699,26 @@ async function submitForm(form) {
   const rows = collectFormData(form, store);
   let success = true;
   try {
-    for (const row of rows) {
-      await fetch(SCRIPT_URL, {
+    rows.forEach(function(row) {
+      fetch(SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(row)
       });
-    }
-  } catch(err) {
+    });
+  } catch(e) {
     success = false;
-    console.error('Sheets error:', err);
+    console.warn('Sheets:', e);
   }
 
   const rec = {
     id: formNums[form], form, name: formNames[form],
     store, stamp, photos: photos.slice(0,6), hasSig, total,
-    supplier: form === 'purchase' ? (document.querySelector('#purchaseTbody tr input[type="text"]')?.value || '') :
-              form === 'inwards' ? (document.querySelector('#inwardsTbody tr input[type="text"]:nth-child(2)')?.value || '') :
-              form === 'returns' ? (document.getElementById('retTo')?.value || '') :
-              (document.getElementById('trFrom')?.value || ''),
+    supplier: form === 'purchase' ? ((document.querySelector('#purchaseTbody tr input[type="text"]') ? document.querySelector('#purchaseTbody tr input[type="text"]').value : '')) :
+              form === 'inwards' ? ((document.querySelector('#inwardsTbody tr input[type="text"]:nth-child(2)') ? document.querySelector('#inwardsTbody tr input[type="text"]:nth-child(2)').value : '')) :
+              form === 'returns' ? (document.getElementById('retTo') ? document.getElementById('retTo').value : '' || '') :
+              (document.getElementById('trFrom') ? document.getElementById('trFrom').value : '' || ''),
     weekLabel: getWeekLabel()
   };
   records.unshift(rec);
@@ -1782,7 +1782,7 @@ function showToast(msg) {
 function saveRecords() {
   try {
     // Strip photo data for storage efficiency — keep only first photo per record
-    const slim = records.map(r => ({...r, photos: r.photos.slice(0,3)}));
+    var slim = records.map(function(r) { var copy = {}; Object.keys(r).forEach(function(k){ copy[k] = r[k]; }); copy.photos = r.photos.slice(0,3); return copy; });
     localStorage.setItem('mgRecords', JSON.stringify(slim));
   } catch(e) { console.warn('Storage full, trimming oldest records'); }
 }
@@ -1790,7 +1790,7 @@ function saveRecords() {
 function loadRecords() {
   try {
     const raw = localStorage.getItem('mgRecords');
-    if (raw) { const parsed = JSON.parse(raw); if (Array.isArray(parsed)) records.push(...parsed); }
+    if (raw) { const parsed = JSON.parse(raw); if (Array.isArray(parsed)) { for (var i=0; i<parsed.length; i++) records.push(parsed[i]); } }
   } catch(e) { console.warn('Could not load records', e); }
 }
 
@@ -2050,8 +2050,8 @@ function getAvailableWeeks() {
   const weeks = getWeekGroups();
   return Object.keys(weeks).sort((a,b) => {
     // sort by date descending
-    const da = records.find(r=>r.weekLabel===a)?.stamp || '';
-    const db = records.find(r=>r.weekLabel===b)?.stamp || '';
+    const da = (records.find(function(r){return r.weekLabel===a;}) ? records.find(function(r){return r.weekLabel===a;}).stamp : '');
+    const db = (records.find(function(r){return r.weekLabel===b;}) ? records.find(function(r){return r.weekLabel===b;}).stamp : '');
     return db.localeCompare(da);
   });
 }
