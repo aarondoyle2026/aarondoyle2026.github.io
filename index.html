@@ -728,7 +728,7 @@ var wh=’’;
 for(var w=0;w<weeks.length;w++){
 var wk=weeks[w];
 var sel=wk===wl?’ sel’:’’;
-wh+=’<button class="pill'+sel+'" onclick="switchWeek(\&#39;&#39;+wk+&#39;\&#39;)">’+wk+’</button>’;
+wh+=’<button class="pill'+sel+'" onclick="switchWeek(this.textContent)">’+wk+’</button>’;
 }
 document.getElementById(‘galWeeks’).innerHTML=wh;
 
