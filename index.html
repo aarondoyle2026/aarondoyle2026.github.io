@@ -127,17 +127,17 @@ td input:focus{border-color:#124d26;background:#fff}
 <div id="pageHome" class="page show">
   <div class="home-title"><h2>Store Forms</h2><p>SuperValu &middot; Moriarty Group &middot; Est. 1987</p></div>
   <div class="section">Purchase &amp; Delivery</div>
-  <button class="btn-card" onclick="gotoForm(&#39;purchase&#39;)">
+  <button class="btn-card" onclick="gotoForm('purchase')">
     <div class="ico g">&#129649;</div><div class="info"><b>Purchase Docket Log</b><span>Grocery, cigs, wine, beers, spirits</span></div><div class="arr">&#8250;</div>
   </button>
-  <button class="btn-card" onclick="gotoForm(&#39;inwards&#39;)">
+  <button class="btn-card" onclick="gotoForm('inwards')">
     <div class="ico b">&#128230;</div><div class="info"><b>Goods Inwards</b><span>Beef, lamb, pork, fish, poultry, F&amp;V, bakery</span></div><div class="arr">&#8250;</div>
   </button>
   <div class="section">Returns &amp; Transfers</div>
-  <button class="btn-card" onclick="gotoForm(&#39;returns&#39;)">
+  <button class="btn-card" onclick="gotoForm('returns')">
     <div class="ico r">&#128260;</div><div class="info"><b>Goods Returned for Credit</b><span>Return docket with reason &amp; cost value</span></div><div class="arr">&#8250;</div>
   </button>
-  <button class="btn-card" onclick="gotoForm(&#39;transfer&#39;)">
+  <button class="btn-card" onclick="gotoForm('transfer')">
     <div class="ico a">&#128256;</div><div class="info"><b>Inter Store Transfer</b><span>Cost price, retail price &mdash; store to store</span></div><div class="arr">&#8250;</div>
   </button>
   <div class="section">Records</div>
@@ -151,9 +151,9 @@ td input:focus{border-color:#124d26;background:#fff}
 <div id="pagePurchase" class="page">
   <div class="form-head"><div class="num">PURCHASE DOCKET &middot; FORM 1871</div><div class="title">Purchase Docket Log</div>
     <div class="pills" id="storeP">
-      <button class="pill sel" onclick="selPill(this,&#39;storeP&#39;)">Balbriggan</button>
-      <button class="pill" onclick="selPill(this,&#39;storeP&#39;)">Palmerstown</button>
-      <button class="pill" onclick="selPill(this,&#39;storeP&#39;)">Skerries</button>
+      <button class="pill sel" onclick="selPill(this,'storeP')">Balbriggan</button>
+      <button class="pill" onclick="selPill(this,'storeP')">Palmerstown</button>
+      <button class="pill" onclick="selPill(this,'storeP')">Skerries</button>
     </div>
   </div>
   <div class="form-box"><h3>Period</h3>
@@ -165,25 +165,25 @@ td input:focus{border-color:#124d26;background:#fff}
     <div class="total-row"><div class="tot"><div class="lbl">Grand Total</div><div class="val" id="pTotal">0.00</div></div></div>
   </div>
   <div class="form-box"><h3>Photo Evidence</h3>
-    <div class="photo-zone" onclick="document.getElementById(&#39;pFile&#39;).click()">
+    <div class="photo-zone" onclick="document.getElementById('pFile').click()">
       <input type="file" id="pFile" accept="image/*" multiple onchange="addPhotos(this,'pGrid')">
       <div class="ico2">&#128247;</div><div class="lbl2">Tap to attach photos</div><div class="sub">Camera or library</div>
     </div>
     <div class="photo-grid" id="pGrid"></div>
   </div>
   <div class="form-box"><h3>Manager Signature</h3>
-    <div class="sig-box"><div class="sig-top">Sign here<button onclick="clearSig(&#39;sigP&#39;)">Clear</button></div><canvas id="sigP" height="110"></canvas><div class="sig-hint">Draw with finger</div></div>
+    <div class="sig-box"><div class="sig-top">Sign here<button onclick="clearSig('sigP')">Clear</button></div><canvas id="sigP" height="110"></canvas><div class="sig-hint">Draw with finger</div></div>
     <div class="stamp" id="stampP">Time: --</div>
   </div>
-  <button class="sub-btn" onclick="submitForm(&#39;purchase&#39;)">Submit Purchase Log</button>
+  <button class="sub-btn" onclick="submitForm('purchase')">Submit Purchase Log</button>
 </div>
 
 <div id="pageInwards" class="page">
   <div class="form-head"><div class="num">GOODS INWARDS &middot; FORM 2523</div><div class="title">Goods Inwards Record</div>
     <div class="pills" id="storeI">
-      <button class="pill sel" onclick="selPill(this,&#39;storeI&#39;)">Balbriggan</button>
-      <button class="pill" onclick="selPill(this,&#39;storeI&#39;)">Palmerstown</button>
-      <button class="pill" onclick="selPill(this,&#39;storeI&#39;)">Skerries</button>
+      <button class="pill sel" onclick="selPill(this,'storeI')">Balbriggan</button>
+      <button class="pill" onclick="selPill(this,'storeI')">Palmerstown</button>
+      <button class="pill" onclick="selPill(this,'storeI')">Skerries</button>
     </div>
   </div>
   <div class="form-box"><h3>Delivery Details</h3>
@@ -196,25 +196,25 @@ td input:focus{border-color:#124d26;background:#fff}
     <div class="total-row"><div class="tot"><div class="lbl">Total</div><div class="val" id="iTotal">0.00</div></div></div>
   </div>
   <div class="form-box"><h3>Photo Evidence</h3>
-    <div class="photo-zone" onclick="document.getElementById(&#39;iFile&#39;).click()">
+    <div class="photo-zone" onclick="document.getElementById('iFile').click()">
       <input type="file" id="iFile" accept="image/*" multiple onchange="addPhotos(this,'iGrid')">
       <div class="ico2">&#128247;</div><div class="lbl2">Tap to attach photos</div><div class="sub">Camera or library</div>
     </div>
     <div class="photo-grid" id="iGrid"></div>
   </div>
   <div class="form-box"><h3>Receiver Signature</h3>
-    <div class="sig-box"><div class="sig-top">Receiving Manager<button onclick="clearSig(&#39;sigI&#39;)">Clear</button></div><canvas id="sigI" height="110"></canvas><div class="sig-hint">Draw with finger</div></div>
+    <div class="sig-box"><div class="sig-top">Receiving Manager<button onclick="clearSig('sigI')">Clear</button></div><canvas id="sigI" height="110"></canvas><div class="sig-hint">Draw with finger</div></div>
     <div class="stamp" id="stampI">Time: --</div>
   </div>
-  <button class="sub-btn" onclick="submitForm(&#39;inwards&#39;)">Submit Goods Inwards</button>
+  <button class="sub-btn" onclick="submitForm('inwards')">Submit Goods Inwards</button>
 </div>
 
 <div id="pageReturns" class="page">
   <div class="form-head"><div class="num">GOODS RETURNED &middot; FORM 0480</div><div class="title">Goods Returned for Credit</div>
     <div class="pills" id="storeR">
-      <button class="pill sel" onclick="selPill(this,&#39;storeR&#39;)">Balbriggan</button>
-      <button class="pill" onclick="selPill(this,&#39;storeR&#39;)">Palmerstown</button>
-      <button class="pill" onclick="selPill(this,&#39;storeR&#39;)">Skerries</button>
+      <button class="pill sel" onclick="selPill(this,'storeR')">Balbriggan</button>
+      <button class="pill" onclick="selPill(this,'storeR')">Palmerstown</button>
+      <button class="pill" onclick="selPill(this,'storeR')">Skerries</button>
     </div>
   </div>
   <div class="form-box"><h3>Return Details</h3>
@@ -228,7 +228,7 @@ td input:focus{border-color:#124d26;background:#fff}
     <div class="total-row"><div class="tot"><div class="lbl">Total Credit</div><div class="val" id="rTotal">0.00</div></div></div>
   </div>
   <div class="form-box"><h3>Photo Evidence</h3>
-    <div class="photo-zone" onclick="document.getElementById(&#39;rFile&#39;).click()">
+    <div class="photo-zone" onclick="document.getElementById('rFile').click()">
       <input type="file" id="rFile" accept="image/*" multiple onchange="addPhotos(this,'rGrid')">
       <div class="ico2">&#128247;</div><div class="lbl2">Tap to attach photos</div><div class="sub">Camera or library</div>
     </div>
@@ -236,12 +236,12 @@ td input:focus{border-color:#124d26;background:#fff}
   </div>
   <div class="form-box"><h3>Signatures</h3>
     <div style="font-size:12px;color:#888;margin-bottom:6px">Your Rep.</div>
-    <div class="sig-box" style="margin-bottom:10px"><div class="sig-top">Rep Signature<button onclick="clearSig(&#39;sigR1&#39;)">Clear</button></div><canvas id="sigR1" height="90"></canvas></div>
+    <div class="sig-box" style="margin-bottom:10px"><div class="sig-top">Rep Signature<button onclick="clearSig('sigR1')">Clear</button></div><canvas id="sigR1" height="90"></canvas></div>
     <div style="font-size:12px;color:#888;margin-bottom:6px">Branch Manager</div>
-    <div class="sig-box"><div class="sig-top">Branch Manager<button onclick="clearSig(&#39;sigR2&#39;)">Clear</button></div><canvas id="sigR2" height="90"></canvas><div class="sig-hint">Draw with finger</div></div>
+    <div class="sig-box"><div class="sig-top">Branch Manager<button onclick="clearSig('sigR2')">Clear</button></div><canvas id="sigR2" height="90"></canvas><div class="sig-hint">Draw with finger</div></div>
     <div class="stamp" id="stampR">Time: --</div>
   </div>
-  <button class="sub-btn" onclick="submitForm(&#39;returns&#39;)">Submit Return Docket</button>
+  <button class="sub-btn" onclick="submitForm('returns')">Submit Return Docket</button>
 </div>
 
 <div id="pageTransfer" class="page">
@@ -256,7 +256,7 @@ td input:focus{border-color:#124d26;background:#fff}
     <div class="total-row"><div class="tot"><div class="lbl">Total Amount</div><div class="val" id="tTotal">0.00</div></div></div>
   </div>
   <div class="form-box"><h3>Photo Evidence</h3>
-    <div class="photo-zone" onclick="document.getElementById(&#39;tFile&#39;).click()">
+    <div class="photo-zone" onclick="document.getElementById('tFile').click()">
       <input type="file" id="tFile" accept="image/*" multiple onchange="addPhotos(this,'tGrid')">
       <div class="ico2">&#128247;</div><div class="lbl2">Tap to attach photos</div><div class="sub">Camera or library</div>
     </div>
@@ -264,12 +264,12 @@ td input:focus{border-color:#124d26;background:#fff}
   </div>
   <div class="form-box"><h3>Signatures</h3>
     <div style="font-size:12px;color:#888;margin-bottom:6px">Receiving Manager</div>
-    <div class="sig-box" style="margin-bottom:10px"><div class="sig-top">Receiving Manager<button onclick="clearSig(&#39;sigT1&#39;)">Clear</button></div><canvas id="sigT1" height="90"></canvas></div>
+    <div class="sig-box" style="margin-bottom:10px"><div class="sig-top">Receiving Manager<button onclick="clearSig('sigT1')">Clear</button></div><canvas id="sigT1" height="90"></canvas></div>
     <div style="font-size:12px;color:#888;margin-bottom:6px">Dispatching Manager</div>
-    <div class="sig-box"><div class="sig-top">Dispatching Manager<button onclick="clearSig(&#39;sigT2&#39;)">Clear</button></div><canvas id="sigT2" height="90"></canvas><div class="sig-hint">Draw with finger</div></div>
+    <div class="sig-box"><div class="sig-top">Dispatching Manager<button onclick="clearSig('sigT2')">Clear</button></div><canvas id="sigT2" height="90"></canvas><div class="sig-hint">Draw with finger</div></div>
     <div class="stamp" id="stampT">Time: --</div>
   </div>
-  <button class="sub-btn" onclick="submitForm(&#39;transfer&#39;)">Submit Transfer Docket</button>
+  <button class="sub-btn" onclick="submitForm('transfer')">Submit Transfer Docket</button>
 </div>
 
 <div id="pageGallery" class="page">
@@ -278,10 +278,10 @@ td input:focus{border-color:#124d26;background:#fff}
     <div class="right"><div class="lbl">Week Total</div><div class="val" id="galTotal">0.00</div></div>
   </div>
   <div class="pills" id="galStore" style="margin-bottom:14px">
-    <button class="pill sel" onclick="selPill(this,&#39;galStore&#39;);renderGal()">All Stores</button>
-    <button class="pill" onclick="selPill(this,&#39;galStore&#39;);renderGal()">Balbriggan</button>
-    <button class="pill" onclick="selPill(this,&#39;galStore&#39;);renderGal()">Palmerstown</button>
-    <button class="pill" onclick="selPill(this,&#39;galStore&#39;);renderGal()">Skerries</button>
+    <button class="pill sel" onclick="selPill(this,'galStore');renderGal()">All Stores</button>
+    <button class="pill" onclick="selPill(this,'galStore');renderGal()">Balbriggan</button>
+    <button class="pill" onclick="selPill(this,'galStore');renderGal()">Palmerstown</button>
+    <button class="pill" onclick="selPill(this,'galStore');renderGal()">Skerries</button>
   </div>
   <div class="section">Weekly Breakdown</div>
   <div class="totals-card">
@@ -647,7 +647,7 @@ for(var i=0;i<parsed.length;i++) DB.push(parsed[i]);
 
 function renderRecent(){
 var el=document.getElementById(‘recentList’);
-if(!DB.length){el.innerHTML=’<div class="empty"><div class="ei">-</div>No forms submitted yet</div>’;return;}
+if(!DB.length){el.innerHTML=’<div class="empty"><div class="ei">📄</div>No forms submitted yet</div>’;return;}
 var html=’’;
 var items=DB.slice(0,8);
 for(var i=0;i<items.length;i++){
@@ -728,7 +728,7 @@ var wh=’’;
 for(var w=0;w<weeks.length;w++){
 var wk=weeks[w];
 var sel=wk===wl?’ sel’:’’;
-wh+=’<button class="pill'+sel+'" onclick="switchWeek(this.textContent)">’+wk+’</button>’;
+wh+=’<button class="pill'+sel+'" onclick="switchWeek(\''+wk+'\')">’+wk+’</button>’;
 }
 document.getElementById(‘galWeeks’).innerHTML=wh;
 
@@ -758,7 +758,7 @@ fh+=’<div class="fc-foot" style="background:'+fd.color+'"><span>’+fr.length+
 document.getElementById(‘galForms’).innerHTML=fh;
 
 var rh=’’;
-if(!recs.length){rh=’<div class="empty"><div class="ei">-</div>No dockets this week</div>’;}
+if(!recs.length){rh=’<div class="empty"><div class="ei">📷</div>No dockets this week</div>’;}
 else{
 for(var i=0;i<recs.length;i++){
 var r=recs[i];
