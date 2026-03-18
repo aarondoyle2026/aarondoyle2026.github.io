@@ -647,7 +647,7 @@ for(var i=0;i<parsed.length;i++) DB.push(parsed[i]);
 
 function renderRecent(){
 var el=document.getElementById(‘recentList’);
-if(!DB.length){el.innerHTML=’<div class="empty"><div class="ei">📄</div>No forms submitted yet</div>’;return;}
+if(!DB.length){el.innerHTML=’<div class="empty"><div class="ei">-</div>No forms submitted yet</div>’;return;}
 var html=’’;
 var items=DB.slice(0,8);
 for(var i=0;i<items.length;i++){
@@ -758,7 +758,7 @@ fh+=’<div class="fc-foot" style="background:'+fd.color+'"><span>’+fr.length+
 document.getElementById(‘galForms’).innerHTML=fh;
 
 var rh=’’;
-if(!recs.length){rh=’<div class="empty"><div class="ei">📷</div>No dockets this week</div>’;}
+if(!recs.length){rh=’<div class="empty"><div class="ei">-</div>No dockets this week</div>’;}
 else{
 for(var i=0;i<recs.length;i++){
 var r=recs[i];
