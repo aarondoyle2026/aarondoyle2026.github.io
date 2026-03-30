@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Moriarty Group – Return to Work Form</title>
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+body{font-family:'DM Sans',sans-serif;background:#f0f4f1;color:#1a1a1a;min-height:100vh;padding-bottom:100px;}
+.app-header{background:#00703c;color:white;padding:14px 16px 12px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.2);text-align:center;}
+.brand{font-size:16px;font-weight:700;letter-spacing:3px;font-family:'DM Sans',sans-serif;}
+.estd{font-size:10px;letter-spacing:2px;opacity:0.6;margin-top:1px;}
+.page-title{font-size:12px;font-weight:600;margin-top:5px;letter-spacing:1.5px;opacity:0.85;}
+.nav-tabs{display:flex;background:white;border-bottom:2px solid #d0d0d0;position:sticky;top:74px;z-index:90;}
+.nav-tab{flex:1;padding:12px 8px;font-size:11px;font-weight:700;color:#666;cursor:pointer;text-align:center;border-bottom:2.5px solid transparent;margin-bottom:-2px;letter-spacing:0.5px;text-transform:uppercase;}
+.nav-tab.active{color:#00703c;border-bottom-color:#00703c;}
+.tab-content{display:none;padding:14px;max-width:700px;margin:0 auto;}
+.tab-content.active{display:block;}
+.card{background:white;border-radius:10px;padding:16px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,112,60,0.08);}
+.card-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#00703c;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #e8f5ee;display:flex;align-items:center;gap:8px;}
+.card-title::before{content:'';display:block;width:3px;height:13px;background:#00703c;border-radius:2px;}
+.field-label{font-size:10px;font-weight:700;color:#666;text-transform:uppercase;letter-spacing:0.8px;display:block;margin-bottom:4px;margin-top:12px;}
+.field-label:first-child{margin-top:0;}
+input[type="text"],input[type="date"],textarea{width:100%;background:#f4f5f0;border:1.5px solid #d0d0d0;border-radius:8px;padding:10px 12px;font-family:'DM Sans',sans-serif;font-size:15px;color:#1a1a1a;outline:none;transition:border-color 0.15s;-webkit-appearance:none;}
+input:focus,textarea:focus{border-color:#00703c;background:white;}
+textarea{resize:vertical;min-height:60px;}
+.row-2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+/* Radio groups */
+.radio-group{display:flex;gap:14px;margin:8px 0 4px;flex-wrap:wrap;}
+.radio-option{display:flex;align-items:center;gap:7px;cursor:pointer;}
+.radio-option input[type=radio]{width:20px;height:20px;accent-color:#00703c;cursor:pointer;}
+.radio-option span{font-size:15px;font-weight:500;}
+.inline-field{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:8px 0;}
+.inline-field .field-label{margin:0;white-space:nowrap;}
+.inline-field input[type=text]{flex:1;min-width:120px;}
+/* Signatures */
+.sig-wrap{border:1.5px solid #d0d0d0;border-radius:8px;background:white;margin-top:6px;position:relative;overflow:hidden;touch-action:none;}
+.sig-wrap canvas{display:block;width:100%;height:130px;}
+.sig-placeholder{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:12px;color:#ccc;pointer-events:none;}
+.sig-label{font-size:10px;font-weight:700;color:#666;text-transform:uppercase;letter-spacing:0.8px;margin-top:12px;margin-bottom:4px;display:block;}
+.sig-actions{margin-top:6px;}
+/* Buttons */
+.btn{display:block;width:100%;padding:13px;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;border:none;transition:all 0.15s;text-align:center;}
+.btn-primary{background:#00703c;color:white;margin-top:8px;}
+.btn-secondary{background:white;color:#00703c;border:1.5px solid #00703c;padding:8px;font-size:13px;}
+.btn-danger{background:white;color:#c8102e;border:1.5px solid #c8102e;}
+.btn-dark{background:#1a1a1a;color:white;}
+.btn-sm{padding:7px 12px;font-size:12px;width:auto;border-radius:8px;}
+.form-success{background:#e8f5e9;border:1px solid #a5d6a7;border-radius:8px;padding:11px 14px;font-size:14px;font-weight:600;color:#2e7d32;margin-bottom:12px;display:none;align-items:center;gap:8px;}
+.form-success.show{display:flex;}
+/* Note box */
+.note-box{background:#fffbe6;border-left:3px solid #ffcc00;border-radius:0 8px 8px 0;padding:10px 12px;font-size:12px;color:#555;line-height:1.6;margin:10px 0;}
+.note-box strong{color:#1a1a1a;}
+/* Records */
+.db-status{font-size:11px;color:#666;text-align:center;margin-bottom:12px;font-family:'DM Mono',monospace;}
+.db-status.ok{color:#00703c;}
+.data-tools{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+.data-tool-btn{background:white;border:1.5px solid #d0d0d0;border-radius:10px;padding:12px;text-align:center;cursor:pointer;}
+.data-tool-btn .dt-icon{font-size:22px;margin-bottom:5px;}
+.data-tool-btn .dt-label{font-size:12px;font-weight:700;color:#1a1a1a;}
+.data-tool-btn .dt-sub{font-size:10px;color:#666;margin-top:2px;}
+.record-group{margin-bottom:20px;}
+.record-group-hdr{background:#00703c;color:white;padding:9px 13px;border-radius:10px 10px 0 0;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;display:flex;justify-content:space-between;}
+.record-item{background:white;border:1px solid #d0d0d0;border-top:none;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;}
+.record-item:last-child{border-radius:0 0 10px 10px;}
+.record-item:active{background:#f0f8f0;}
+.rec-name{font-size:13px;font-weight:700;color:#00703c;}
+.rec-meta{font-size:11px;color:#666;margin-top:2px;font-family:'DM Mono',monospace;}
+.rec-arrow{color:#d0d0d0;font-size:20px;}
+.empty-state{text-align:center;padding:40px 20px;color:#666;}
+.empty-state .icon{font-size:38px;margin-bottom:10px;}
+/* Modal */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:1000;align-items:flex-end;}
+.modal-overlay.open{display:flex;}
+.modal{background:white;border-radius:20px 20px 0 0;padding:18px;width:100%;max-height:90vh;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+.modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.modal-title{font-size:15px;font-weight:700;}
+.modal-close{background:none;border:none;font-size:22px;cursor:pointer;color:#666;padding:4px;}
+.modal-actions{display:grid;grid-template-columns:auto 1fr 1fr;gap:8px;margin-top:16px;}
+/* Detail view */
+.detail-section{margin-bottom:14px;}
+.detail-section-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#00703c;margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid #e8f5ee;}
+.detail-field{margin-bottom:6px;}
+.detail-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#666;}
+.detail-value{font-size:13px;margin-top:1px;color:#1a1a1a;line-height:1.4;}
+.detail-row-2{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.detail-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+.yn-badge{display:inline-block;padding:2px 10px;border-radius:20px;font-size:11px;font-weight:700;}
+.yn-yes{background:#e8f5e9;color:#2e7d32;}
+.yn-no{background:#ffeaea;color:#c8102e;}
+.yn-na{background:#f4f5f0;color:#666;}
+</style>
+</head>
+<body>
+
+<div class="app-header">
+  <div class="brand">MORIARTY GROUP</div>
+  <div class="estd">SUPERVALU · ESTD 1987</div>
+  <div class="page-title">RETURN TO WORK FORM</div>
+</div>
+
+<div class="nav-tabs">
+  <div class="nav-tab active" onclick="showTab('form',this)">📝 New Form</div>
+  <div class="nav-tab" onclick="showTab('records',this)">📋 Records</div>
+</div>
+
+<!-- ===== FORM TAB ===== -->
+<div id="tab-form" class="tab-content active">
+  <div class="form-success" id="form-success">✅ Return to Work form saved!</div>
+
+  <!-- Employee Details -->
+  <div class="card">
+    <div class="card-title">Employee Details</div>
+    <span class="field-label">Employee Name</span>
+    <input type="text" id="f-name" placeholder="Full name">
+    <span class="field-label">Store / Location</span>
+    <input type="text" id="f-store" placeholder="e.g. Balbriggan">
+    <div class="row-3" style="margin-top:10px;">
+      <div><span class="field-label">Absence From</span><input type="date" id="f-from"></div>
+      <div><span class="field-label">Absence To</span><input type="date" id="f-to"></div>
+      <div><span class="field-label">No. of Days</span><input type="text" id="f-days" placeholder="e.g. 5"></div>
+    </div>
+    <span class="field-label">Absence Due To</span>
+    <input type="text" id="f-reason" placeholder="Brief reason for absence">
+  </div>
+
+  <!-- COVID Section -->
+  <div class="card">
+    <div class="card-title">COVID-19 Related (if applicable)</div>
+    <div class="note-box">⚠️ Complete this section <strong>only if absence was COVID-19 related</strong></div>
+
+    <span class="field-label">Has a manager been in contact with you to complete the COVID RTW form in the last 3 days?</span>
+    <div class="radio-group">
+      <label class="radio-option"><input type="radio" name="covidContact" value="Yes"><span>Yes</span></label>
+      <label class="radio-option"><input type="radio" name="covidContact" value="No"><span>No</span></label>
+    </div>
+    <div class="inline-field">
+      <span class="field-label">Manager's Name</span>
+      <input type="text" id="f-covidMgr" placeholder="Name">
+    </div>
+
+    <span class="field-label">Have you self-isolated for 7 days?</span>
+    <div class="radio-group">
+      <label class="radio-option"><input type="radio" name="selfIsolated" value="Yes"><span>Yes</span></label>
+      <label class="radio-option"><input type="radio" name="selfIsolated" value="No"><span>No</span></label>
+    </div>
+
+    <span class="field-label">If tested — confirmation of result</span>
+    <input type="text" id="f-testResult" placeholder="e.g. Negative / Positive">
+
+    <span class="field-label">How many days since your last fever?</span>
+    <input type="text" id="f-feverDays" placeholder="Number of days">
+
+    <span class="field-label">If you had COVID symptoms but tested negative — have you been 48 hours symptom free?</span>
+    <div class="radio-group">
+      <label class="radio-option"><input type="radio" name="symptomFree48" value="Yes"><span>Yes</span></label>
+      <label class="radio-option"><input type="radio" name="symptomFree48" value="No"><span>No</span></label>
+    </div>
+  </div>
+
+  <!-- Illness Section -->
+  <div class="card">
+    <div class="card-title">Illness During Absence</div>
+
+    <span class="field-label">During your absence did you have diarrhoea or vomiting?</span>
+    <div class="radio-group">
+      <label class="radio-option"><input type="radio" name="diarrhVomit" value="Yes"><span>Yes</span></label>
+      <label class="radio-option"><input type="radio" name="diarrhVomit" value="No"><span>No</span></label>
+    </div>
+
+    <span class="field-label">If yes — have you been symptom free for 48 hours?</span>
+    <div class="radio-group">
+      <label class="radio-option"><input type="radio" name="symptomFree48ill" value="Yes"><span>Yes</span></label>
+      <label class="radio-option"><input type="radio" name="symptomFree48ill" value="No"><span>No</span></label>
+    </div>
+  </div>
+
+  <!-- Notification & Doctor -->
+  <div class="card">
+    <div class="card-title">Notification & Doctor</div>
+
+    <span class="field-label">Notified on Day 1?</span>
+    <div class="radio-group">
+      <label class="radio-option"><input type="radio" name="notifiedDay1" value="Yes"><span>Yes</span></label>
+      <label class="radio-option"><input type="radio" name="notifiedDay1" value="No"><span>No</span></label>
+    </div>
+    <div class="inline-field">
+      <span class="field-label">Name</span>
+      <input type="text" id="f-notifiedName" placeholder="Who was notified">
+    </div>
+
+    <span class="field-label">Did you attend a Doctor?</span>
+    <div class="radio-group">
+      <label class="radio-option"><input type="radio" name="attendedDoctor" value="Yes"><span>Yes</span></label>
+      <label class="radio-option"><input type="radio" name="attendedDoctor" value="No"><span>No</span></label>
+    </div>
+    <div class="inline-field">
+      <span class="field-label">Doctor's Name</span>
+      <input type="text" id="f-doctorName" placeholder="Doctor's name">
+    </div>
+  </div>
+
+  <!-- Return to Work -->
+  <div class="card">
+    <div class="card-title">Return to Work</div>
+
+    <span class="field-label">Do you feel ready to return to work at this time?</span>
+    <input type="text" id="f-readyRTW" placeholder="Yes / No / Details">
+
+    <span class="field-label">Do you have a doctor's clearance note for your file?</span>
+    <div class="radio-group">
+      <label class="radio-option"><input type="radio" name="clearanceNote" value="Yes"><span>Yes</span></label>
+      <label class="radio-option"><input type="radio" name="clearanceNote" value="No"><span>No</span></label>
+    </div>
+    <div class="note-box">⚠️ <strong>If certified to self-isolate by a doctor, a fit to return letter must be provided.</strong></div>
+
+    <span class="field-label">Is there any provisions we need to make to assist you in your return to work?</span>
+    <div class="radio-group">
+      <label class="radio-option"><input type="radio" name="provisions" value="Yes"><span>Yes</span></label>
+      <label class="radio-option"><input type="radio" name="provisions" value="No"><span>No</span></label>
+    </div>
+    <span class="field-label">If yes, please detail</span>
+    <textarea id="f-provisionsDetail" placeholder="Detail any provisions required..."></textarea>
+  </div>
+
+  <!-- Sign Off -->
+  <div class="card">
+    <div class="card-title">Sign Off</div>
+    <div class="note-box">📌 <strong>Manager / HOD Present:</strong> I understand that falsifying information on this form will be treated as a disciplinary matter and could lead to disciplinary action being taken against me.</div>
+
+    <span class="sig-label">Employee Signature</span>
+    <div class="sig-wrap">
+      <canvas id="sig-employee"></canvas>
+      <div class="sig-placeholder">Employee signs here</div>
+    </div>
+    <div class="sig-actions"><button class="btn btn-secondary btn-sm" onclick="clearSig('employee')">Clear</button></div>
+
+    <span class="sig-label" style="margin-top:16px;">Manager Signature</span>
+    <div class="sig-wrap">
+      <canvas id="sig-manager"></canvas>
+      <div class="sig-placeholder">Manager signs here</div>
+    </div>
+    <div class="sig-actions"><button class="btn btn-secondary btn-sm" onclick="clearSig('manager')">Clear</button></div>
+
+    <span class="field-label" style="margin-top:14px;">Date</span>
+    <input type="date" id="f-signDate">
+    <span class="field-label">Manager / HOD Name</span>
+    <input type="text" id="f-hodName" placeholder="Manager name">
+  </div>
+
+  <button class="btn btn-primary" onclick="saveForm()">💾 Save Form</button>
+</div>
+
+<!-- ===== RECORDS TAB ===== -->
+<div id="tab-records" class="tab-content">
+  <div class="db-status" id="db-status">Connecting...</div>
+  <div class="data-tools">
+    <button class="data-tool-btn" onclick="exportJSON()"><div class="dt-icon">💾</div><div class="dt-label">Backup</div><div class="dt-sub">Download JSON</div></button>
+    <button class="data-tool-btn" onclick="document.getElementById('import-file').click()"><div class="dt-icon">📂</div><div class="dt-label">Restore</div><div class="dt-sub">Import JSON</div></button>
+  </div>
+  <input type="file" id="import-file" accept=".json" style="display:none" onchange="importJSON(this)">
+  <div id="records-list"></div>
+</div>
+
+<!-- RECORD MODAL -->
+<div class="modal-overlay" id="recordModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="modal-title">Return to Work Form</div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div id="modal-body"></div>
+    <div class="modal-actions">
+      <button class="btn-sm btn-danger" onclick="deleteRecord()">🗑</button>
+      <button class="btn-sm btn-dark" onclick="printActiveRecord()">🖨 Print PDF</button>
+      <button class="btn-sm btn-secondary" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+// ================================================================
+// SUPABASE
+// ================================================================
+const SB_URL='https://mnebkteiwjxbbmnfotse.supabase.co';
+const SB_KEY='sb_publishable_eutRHOftOW4ZJNlVrDKXOg_XtnBQ7cM';
+function sbFetch(path,method,body){return fetch(SB_URL+'/rest/v1/'+path,{method:method||'GET',headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':method==='POST'?'resolution=merge-duplicates':''},body:body?JSON.stringify(body):undefined});}
+function sbPush(r){return sbFetch('rtw_forms','POST',[{id:String(r.id),employee_name:r.name||'',store:r.store||'',saved_at:r.savedAt,data:r}]).catch(()=>{});}
+async function sbLoadAll(){try{const res=await sbFetch('rtw_forms?order=saved_at.desc','GET');const rows=await res.json();if(!rows||rows.error)return null;return rows.map(r=>({...r.data,id:r.data.id||r.id}));}catch(e){return null;}}
+
+// ================================================================
+// DB
+// ================================================================
+const DB_NAME='MoriartyRTW',DB_VERSION=1,STORE_NAME='forms';
+let db=null,allRecords=[],activeRecordId=null;
+function openDB(){return new Promise((res,rej)=>{const req=indexedDB.open(DB_NAME,DB_VERSION);req.onupgradeneeded=e=>{const d=e.target.result;if(!d.objectStoreNames.contains(STORE_NAME))d.createObjectStore(STORE_NAME,{keyPath:'id'});};req.onsuccess=e=>{db=e.target.result;res(db);};req.onerror=e=>rej(e.target.error);});}
+function dbPut(r){return new Promise((res,rej)=>{const tx=db.transaction(STORE_NAME,'readwrite');tx.objectStore(STORE_NAME).put(r);tx.oncomplete=res;tx.onerror=e=>rej(e.target.error);});}
+function dbGetAll(){return new Promise((res,rej)=>{const tx=db.transaction(STORE_NAME,'readonly');const req=tx.objectStore(STORE_NAME).getAll();req.onsuccess=e=>res(e.target.result);req.onerror=e=>rej(e.target.error);});}
+function dbDelete(id){return new Promise((res,rej)=>{const tx=db.transaction(STORE_NAME,'readwrite');tx.objectStore(STORE_NAME).delete(id);tx.oncomplete=res;tx.onerror=e=>rej(e.target.error);});}
+
+// ================================================================
+// INIT
+// ================================================================
+const sigPads={};
+window.addEventListener('DOMContentLoaded',async()=>{
+  initSig('employee');initSig('manager');
+  document.getElementById('f-signDate').value=new Date().toISOString().split('T')[0];
+  document.getElementById('f-from').value=new Date().toISOString().split('T')[0];
+  document.getElementById('f-to').value=new Date().toISOString().split('T')[0];
+  try{
+    await openDB();
+    const sbData=await sbLoadAll();
+    if(sbData&&sbData.length){allRecords=sbData;for(const r of sbData){try{await dbPut(r);}catch(e){}}}
+    else{allRecords=await dbGetAll();}
+    updateDBStatus();
+  }catch(e){document.getElementById('db-status').textContent='⚠️ '+e.message;}
+  renderRecords();
+});
+
+function updateDBStatus(){const el=document.getElementById('db-status');el.textContent='🟢 '+allRecords.length+' form'+(allRecords.length!==1?'s':'')+' saved';el.className='db-status ok';}
+function showTab(name,el){document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));document.getElementById('tab-'+name).classList.add('active');el.classList.add('active');if(name==='records')renderRecords();}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+// ================================================================
+// SIGNATURES
+// ================================================================
+function initSig(id){
+  const canvas=document.getElementById('sig-'+id);if(!canvas)return;
+  const dpr=window.devicePixelRatio||1;const rect=canvas.parentElement.getBoundingClientRect();
+  canvas.width=(rect.width||340)*dpr;canvas.height=130*dpr;
+  const pad=new SignaturePad(canvas,{penColor:'#00703c'});
+  sigPads[id]=pad;
+  pad.addEventListener('beginStroke',()=>{const ph=canvas.parentElement.querySelector('.sig-placeholder');if(ph)ph.style.opacity='0';});
+}
+function clearSig(id){if(sigPads[id])sigPads[id].clear();const ph=document.getElementById('sig-'+id).parentElement.querySelector('.sig-placeholder');if(ph)ph.style.opacity='1';}
+function getSig(id){const pad=sigPads[id];if(!pad||pad.isEmpty())return null;return pad.toDataURL();}
+
+// ================================================================
+// HELPERS
+// ================================================================
+function g(id){const el=document.getElementById(id);return el?el.value.trim():'';}
+function getRadio(name){const el=document.querySelector(`input[name="${name}"]:checked`);return el?el.value:'';}
+
+// ================================================================
+// COLLECT & SAVE
+// ================================================================
+function collectForm(){
+  return{
+    id:Date.now(),savedAt:new Date().toISOString(),
+    name:g('f-name'),store:g('f-store'),
+    from:g('f-from'),to:g('f-to'),days:g('f-days'),reason:g('f-reason'),
+    covidContact:getRadio('covidContact'),covidMgr:g('f-covidMgr'),
+    selfIsolated:getRadio('selfIsolated'),testResult:g('f-testResult'),
+    feverDays:g('f-feverDays'),symptomFree48:getRadio('symptomFree48'),
+    diarrhVomit:getRadio('diarrhVomit'),symptomFree48ill:getRadio('symptomFree48ill'),
+    notifiedDay1:getRadio('notifiedDay1'),notifiedName:g('f-notifiedName'),
+    attendedDoctor:getRadio('attendedDoctor'),doctorName:g('f-doctorName'),
+    readyRTW:g('f-readyRTW'),clearanceNote:getRadio('clearanceNote'),
+    provisions:getRadio('provisions'),provisionsDetail:g('f-provisionsDetail'),
+    signDate:g('f-signDate'),hodName:g('f-hodName'),
+    sigEmployee:getSig('employee'),sigManager:getSig('manager')
+  };
+}
+
+async function saveForm(){
+  const record=collectForm();
+  if(!record.name){alert('Please enter the employee name.');return;}
+  try{
+    await dbPut(record);sbPush(record).catch(()=>{});
+    allRecords=await dbGetAll();updateDBStatus();
+    const msg=document.getElementById('form-success');msg.classList.add('show');setTimeout(()=>msg.classList.remove('show'),3000);
+    renderRecords();
+  }catch(e){alert('Save failed: '+e.message);}
+}
+
+// ================================================================
+// RECORDS
+// ================================================================
+function renderRecords(){
+  const list=document.getElementById('records-list');
+  if(!allRecords.length){list.innerHTML='<div class="empty-state"><div class="icon">📋</div><p>No RTW forms saved yet.<br>Complete a form to get started.</p></div>';return;}
+  const sorted=allRecords.slice().sort((a,b)=>b.id-a.id);
+  const grouped={};
+  sorted.forEach(r=>{const store=r.store||'Unknown Store';if(!grouped[store])grouped[store]=[];grouped[store].push(r);});
+  let html='';
+  Object.keys(grouped).sort().forEach(store=>{
+    html+=`<div class="record-group"><div class="record-group-hdr"><span>📍 ${esc(store)}</span><span>${grouped[store].length} form${grouped[store].length!==1?'s':''}</span></div>`;
+    grouped[store].forEach(r=>{
+      const hasSigs=(r.sigEmployee||r.sigManager)?'✍️ ':'';
+      html+=`<div class="record-item" onclick="openRecord(${r.id})"><div><div class="rec-name">${esc(r.name||'Unknown')}</div><div class="rec-meta">${r.from||''}${r.to?' → '+r.to:''} · ${r.days||'?'} days ${hasSigs}· ${new Date(r.savedAt).toLocaleDateString('en-IE')}</div></div><div class="rec-arrow">›</div></div>`;
+    });
+    html+='</div>';
+  });
+  list.innerHTML=html;
+}
+
+// ================================================================
+// RECORD MODAL
+// ================================================================
+function openRecord(id){
+  const r=allRecords.find(x=>x.id===id);if(!r)return;
+  activeRecordId=id;
+  document.getElementById('modal-title').textContent=`RTW — ${r.name||''}`;
+  function df(label,value){if(!value)return'';return`<div class="detail-field"><div class="detail-label">${label}</div><div class="detail-value">${esc(value)}</div></div>`;}
+  function yn(label,value){if(!value)return'';const cls=value==='Yes'?'yn-yes':value==='No'?'yn-no':'yn-na';return`<div class="detail-field"><div class="detail-label">${label}</div><div class="detail-value"><span class="yn-badge ${cls}">${esc(value)}</span></div></div>`;}
+  let html='';
+  // Header
+  html+=`<div style="background:#1a1a1a;color:white;border-radius:8px;padding:12px 14px;margin-bottom:14px;"><div style="font-size:10px;opacity:0.5;letter-spacing:0.1em;">RETURN TO WORK FORM</div><div style="font-size:17px;font-weight:700;margin-top:2px;">${esc(r.name||'')}</div><div style="font-size:12px;opacity:0.6;margin-top:4px;">${esc(r.store||'')} · ${r.from||''} → ${r.to||''} · ${r.days||'?'} days</div></div>`;
+  html+=`<div class="detail-section"><div class="detail-section-title">Absence Details</div><div class="detail-row-3">${df('From',r.from)}${df('To',r.to)}${df('Days',r.days)}</div>${df('Reason for Absence',r.reason)}</div>`;
+  html+=`<div class="detail-section"><div class="detail-section-title">COVID-19 Section</div><div class="detail-row-2">${yn('Manager Contact (last 3 days)',r.covidContact)}${df("Manager's Name",r.covidMgr)}</div><div class="detail-row-2" style="margin-top:6px;">${yn('Self-Isolated 7 Days',r.selfIsolated)}${df('Test Result',r.testResult)}</div>${df('Days Since Last Fever',r.feverDays)}${yn('48hr Symptom Free (if neg. test)',r.symptomFree48)}</div>`;
+  html+=`<div class="detail-section"><div class="detail-section-title">Illness</div><div class="detail-row-2">${yn('Diarrhoea/Vomiting',r.diarrhVomit)}${yn('48hr Symptom Free',r.symptomFree48ill)}</div></div>`;
+  html+=`<div class="detail-section"><div class="detail-section-title">Notification & Doctor</div><div class="detail-row-2">${yn('Notified Day 1',r.notifiedDay1)}${df('Notified Name',r.notifiedName)}</div><div class="detail-row-2" style="margin-top:6px;">${yn('Attended Doctor',r.attendedDoctor)}${df("Doctor's Name",r.doctorName)}</div></div>`;
+  html+=`<div class="detail-section"><div class="detail-section-title">Return to Work</div>${df('Ready to Return',r.readyRTW)}${yn("Doctor's Clearance Note",r.clearanceNote)}${yn('Provisions Required',r.provisions)}${r.provisionsDetail?df('Provisions Detail',r.provisionsDetail):''}</div>`;
+  // Signatures
+  html+=`<div class="detail-section"><div class="detail-section-title">Signatures</div><div class="detail-row-2">`;
+  if(r.sigEmployee){html+=`<div><div class="detail-label">Employee</div><img src="${r.sigEmployee}" style="width:100%;max-height:70px;object-fit:contain;border:1px solid #d0d0d0;border-radius:6px;background:white;margin-top:4px;display:block;"></div>`;}
+  if(r.sigManager){html+=`<div><div class="detail-label">Manager</div><img src="${r.sigManager}" style="width:100%;max-height:70px;object-fit:contain;border:1px solid #d0d0d0;border-radius:6px;background:white;margin-top:4px;display:block;"></div>`;}
+  html+=`</div><div class="detail-row-2" style="margin-top:8px;">${df('Date Signed',r.signDate)}${df('Manager / HOD',r.hodName)}</div></div>`;
+  document.getElementById('modal-body').innerHTML=html;
+  document.getElementById('recordModal').classList.add('open');
+}
+
+function closeModal(){document.getElementById('recordModal').classList.remove('open');activeRecordId=null;}
+async function deleteRecord(){if(!confirm('Delete this form? This cannot be undone.'))return;try{await dbDelete(activeRecordId);allRecords=await dbGetAll();updateDBStatus();closeModal();renderRecords();}catch(e){alert('Delete failed: '+e.message);}}
+function printActiveRecord(){const r=allRecords.find(x=>x.id===activeRecordId);if(r)generatePDF(r);}
+
+// ================================================================
+// PDF
+// ================================================================
+function generatePDF(r){
+  const {jsPDF}=window.jspdf;
+  const doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+  const GREEN=[0,112,60],DARK=[26,26,26],MUTED=[102,102,102],LIGHT=[232,245,238];
+  const PW=210,PH=297,ML=15,MR=15;
+  let y=15;
+
+  // Header
+  doc.setFillColor(...GREEN);doc.rect(0,0,PW,32,'F');
+  doc.setTextColor(255,255,255);doc.setFontSize(16);doc.setFont('helvetica','bold');doc.text('MORIARTY GROUP (SUPERVALU)',ML,12);
+  doc.setFontSize(10);doc.setFont('helvetica','normal');doc.text('ESTD 1987',ML,18);
+  doc.setFontSize(13);doc.setFont('helvetica','bold');doc.text('RETURN TO WORK FORM',PW-MR,12,{align:'right'});
+  doc.setFontSize(8);doc.setFont('helvetica','normal');doc.text(r.signDate||r.savedAt.split('T')[0],PW-MR,18,{align:'right'});
+  y=40;
+
+  // Employee info bar
+  doc.setFillColor(...LIGHT);doc.rect(ML,y,PW-ML-MR,14,'F');
+  doc.setDrawColor(...GREEN);doc.setLineWidth(0.4);doc.rect(ML,y,PW-ML-MR,14);
+  doc.setFont('helvetica','bold');doc.setFontSize(7);doc.setTextColor(...MUTED);
+  doc.text('NAME',ML+2,y+5);doc.setFont('helvetica','normal');doc.setFontSize(10);doc.setTextColor(...DARK);doc.text(r.name||'',ML+2,y+11);
+  doc.setFont('helvetica','bold');doc.setFontSize(7);doc.setTextColor(...MUTED);
+  doc.text('STORE',ML+75,y+5);doc.setFont('helvetica','normal');doc.setFontSize(10);doc.setTextColor(...DARK);doc.text(r.store||'',ML+75,y+11);
+  const infoRight=['FROM','TO','DAYS'];const infoVals=[r.from||'',r.to||'',r.days||''];
+  infoRight.forEach((label,i)=>{const x=ML+120+i*25;doc.setFont('helvetica','bold');doc.setFontSize(7);doc.setTextColor(...MUTED);doc.text(label,x,y+5);doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(...DARK);doc.text(infoVals[i],x,y+11);});
+  y+=20;
+
+  function sHead(title){if(y>PH-30){doc.addPage();y=15;}doc.setFillColor(...GREEN);doc.rect(ML,y,PW-ML-MR,7,'F');doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(255,255,255);doc.text(title,ML+3,y+5);y+=10;}
+  function field(label,value){if(y>PH-20){doc.addPage();y=15;}doc.setFont('helvetica','bold');doc.setFontSize(7);doc.setTextColor(...MUTED);doc.text(label.toUpperCase(),ML,y);y+=4;doc.setDrawColor(200,200,200);doc.setLineWidth(0.2);doc.line(ML,y,PW-MR,y);if(value){doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(...DARK);const lines=doc.splitTextToSize(value,PW-ML-MR-2);lines.forEach(l=>{if(y>PH-20){doc.addPage();y=15;}doc.text(l,ML+1,y+4);y+=5;});y+=2;}else{y+=8;}}
+  function ynLine(label,value,extraLabel,extraValue){if(y>PH-15){doc.addPage();y=15;}doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(...DARK);doc.text(label,ML,y+5);const col=value==='Yes'?GREEN:value==='No'?[200,16,46]:MUTED;doc.setFillColor(...col);doc.rect(PW-MR-18,y+1,18,6,'F');doc.setFont('helvetica','bold');doc.setFontSize(7);doc.setTextColor(255,255,255);doc.text(value||'—',PW-MR-9,y+5.5,{align:'center'});if(extraLabel&&extraValue){doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(...MUTED);doc.text(extraLabel+': ',ML+95,y+5);doc.setTextColor(...DARK);doc.text(extraValue,ML+115,y+5);}doc.setDrawColor(220,220,220);doc.setLineWidth(0.2);doc.line(ML,y+8,PW-MR,y+8);y+=11;}
+
+  // Absence
+  sHead('ABSENCE DETAILS');
+  if(y>PH-20){doc.addPage();y=15;}
+  doc.setFont('helvetica','bold');doc.setFontSize(7);doc.setTextColor(...MUTED);
+  doc.text('DATE OF ABSENCE',ML,y);doc.text('NO. OF DAYS',ML+90,y);y+=4;
+  doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(...DARK);
+  doc.text(`From: ${r.from||''}  To: ${r.to||''}`,ML,y+4);doc.text(r.days||'',ML+90,y+4);y+=10;
+  field('Absence due to',r.reason);
+
+  // COVID
+  sHead('COVID-19 SECTION (IF APPLICABLE)');
+  ynLine('Has a manager been in contact with you (COVID RTW form — last 3 days)?',r.covidContact,"Manager's Name",r.covidMgr);
+  ynLine('Have you self-isolated for 7 days?',r.selfIsolated,'Test Result',r.testResult);
+  field('How many days since your last fever?',r.feverDays);
+  ynLine('If COVID symptoms but tested negative — 48 hours symptom free?',r.symptomFree48);
+
+  // Illness
+  sHead('ILLNESS DURING ABSENCE');
+  ynLine('During your absence did you have diarrhoea or vomiting?',r.diarrhVomit);
+  ynLine('If yes — have you been symptom free for 48 hours?',r.symptomFree48ill);
+
+  // Notification & Doctor
+  sHead('NOTIFICATION & DOCTOR');
+  ynLine('Notified on Day 1?',r.notifiedDay1,'Name',r.notifiedName);
+  ynLine('Did you attend a Doctor?',r.attendedDoctor,"Doctor's Name",r.doctorName);
+
+  // RTW
+  sHead('RETURN TO WORK');
+  field('Do you feel ready to return to work at this time?',r.readyRTW);
+  ynLine("Do you have a doctor's clearance note for your file?",r.clearanceNote);
+  doc.setFontSize(7);doc.setFont('helvetica','italic');doc.setTextColor(...MUTED);
+  doc.text('**** If certified to self-isolate by a doctor, a fit to return letter must be provided.',ML,y);y+=6;
+  ynLine('Any provisions needed to assist return to work?',r.provisions);
+  if(r.provisionsDetail){field('Provisions detail',r.provisionsDetail);}
+
+  // Sign off page
+  doc.addPage();y=20;
+  sHead('SIGN OFF — MANAGER / HOD PRESENT');
+  y+=5;
+  doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(...DARK);
+  doc.text('I understand that falsifying information on this form will be treated as a disciplinary matter',ML,y);
+  doc.text('and could lead to disciplinary action being taken against me.',ML,y+5);
+  y+=14;
+  doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(...MUTED);
+  doc.text('DATE:',ML,y);doc.setFont('helvetica','normal');doc.setTextColor(...DARK);doc.text(r.signDate||'',ML+14,y);
+  doc.setFont('helvetica','bold');doc.setTextColor(...MUTED);doc.text('MANAGER / HOD:',ML+70,y);doc.setFont('helvetica','normal');doc.setTextColor(...DARK);doc.text(r.hodName||'',ML+108,y);
+  y+=10;
+  // Employee sig
+  doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(...MUTED);doc.text('EMPLOYEE SIGNED:',ML,y);y+=3;
+  doc.setDrawColor(180,180,180);doc.rect(ML,y,85,28);
+  if(r.sigEmployee){try{doc.addImage(r.sigEmployee,'PNG',ML+1,y+1,83,26);}catch(e){}}
+  doc.setFontSize(7);doc.setTextColor(...MUTED);doc.text('Employee Signature',ML,y+31);
+  // Manager sig
+  doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(...MUTED);doc.text('MANAGER SIGNED:',ML+100,y-3);
+  doc.setDrawColor(180,180,180);doc.rect(ML+100,y,85,28);
+  if(r.sigManager){try{doc.addImage(r.sigManager,'PNG',ML+101,y+1,83,26);}catch(e){}}
+  doc.setFontSize(7);doc.setTextColor(...MUTED);doc.text('Manager / HOD Signature',ML+100,y+31);
+
+  // Footer on all pages
+  const total=doc.getNumberOfPages();
+  for(let i=1;i<=total;i++){doc.setPage(i);doc.setFillColor(...GREEN);doc.rect(0,PH-10,PW,10,'F');doc.setFont('helvetica','normal');doc.setFontSize(7);doc.setTextColor(255,255,255);doc.text(`Moriarty Group · SuperValu · Return to Work Form · ${r.name||''} · Page ${i} of ${total}`,PW/2,PH-4,{align:'center'});}
+
+  const filename=`RTW_${(r.name||'Employee').replace(/\s+/g,'_')}_${(r.from||'').replace(/-/g,'')}.pdf`;
+  const blob=doc.output('blob');
+  const file=new File([blob],filename,{type:'application/pdf'});
+  if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){navigator.share({title:'Return to Work Form',files:[file]});}
+  else{const link=document.createElement('a');link.href=URL.createObjectURL(blob);link.download=filename;link.click();}
+}
+
+// ================================================================
+// BACKUP / RESTORE
+// ================================================================
+async function exportJSON(){const records=await dbGetAll();if(!records.length){alert('No forms to export.');return;}const blob=new Blob([JSON.stringify({version:1,exportedAt:new Date().toISOString(),records},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='rtw-forms-backup-'+new Date().toISOString().split('T')[0]+'.json';a.click();URL.revokeObjectURL(url);}
+async function importJSON(input){const file=input.files[0];if(!file)return;const reader=new FileReader();reader.onload=async e=>{try{const data=JSON.parse(e.target.result);if(!data.records){alert('Invalid file.');return;}const ok=confirm('Import '+data.records.length+' forms?');if(!ok)return;for(const r of data.records)await dbPut(r);allRecords=await dbGetAll();updateDBStatus();renderRecords();alert('✅ '+data.records.length+' forms imported.');}catch(err){alert('Import failed: '+err.message);}};reader.readAsText(file);input.value='';}
+</script>
+</body>
+</html>
