@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Moriarty Group – Weekly Roster</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap');
+:root{--green:#00703c;--green-dark:#005a30;--green-light:#e8f5ee;--green-mid:#c2e0ce;--accent:#ffcc00;--text:#1a1a1a;--muted:#666;--border:#d0d0d0;--bg:#f0f4f1;--white:#ffffff;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Open Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding-bottom:80px;}
+header{background:var(--green);color:white;padding:16px 20px 12px;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.2);}
+.logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:20px;letter-spacing:3px;}
+.estd{font-size:10px;letter-spacing:2px;opacity:0.6;margin-top:1px;}
+.page-title{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;margin-top:6px;letter-spacing:2px;opacity:0.85;}
+.nav-tabs{display:flex;background:white;border-bottom:2px solid var(--border);position:sticky;top:74px;z-index:90;}
+.nav-tab{flex:1;padding:12px 8px;font-size:11px;font-weight:700;color:var(--muted);cursor:pointer;text-align:center;border-bottom:2.5px solid transparent;margin-bottom:-2px;font-family:'Montserrat',sans-serif;letter-spacing:0.5px;text-transform:uppercase;}
+.nav-tab.active{color:var(--green);border-bottom-color:var(--green);}
+.tab-content{display:none;padding:14px;max-width:960px;margin:0 auto;}
+.tab-content.active{display:block;}
+.card{background:var(--white);border-radius:10px;padding:16px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,112,60,0.08);}
+.card-title{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--green);margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--green-light);}
+.meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.meta-grid .full{grid-column:1/-1;}
+label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.8px;display:block;margin-bottom:4px;}
+input[type=text],input[type=date],input[type=email]{width:100%;padding:9px 11px;border:1.5px solid var(--border);border-radius:6px;font-size:14px;font-family:'Open Sans',sans-serif;color:var(--text);background:white;transition:border-color 0.15s;}
+input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(0,112,60,0.1);}
+.dept-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
+.dept-tab{padding:7px 13px;border-radius:20px;border:2px solid var(--border);background:white;font-size:12px;font-weight:700;cursor:pointer;font-family:'Montserrat',sans-serif;color:var(--muted);letter-spacing:0.5px;transition:all 0.15s;}
+.dept-tab.active{background:var(--green);border-color:var(--green);color:white;}
+.dept-tab:hover:not(.active){border-color:var(--green);color:var(--green);}
+.staff-mgmt{background:var(--green-light);border-radius:8px;padding:12px;margin-bottom:14px;}
+.staff-mgmt-title{font-size:11px;font-weight:700;color:var(--green-dark);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;}
+.staff-list{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;}
+.staff-chip{display:inline-flex;align-items:center;gap:5px;background:white;border:1.5px solid var(--green-mid);border-radius:20px;padding:4px 10px 4px 12px;font-size:12px;font-weight:600;color:var(--text);}
+.staff-chip .remove-chip{background:none;border:none;color:#aaa;font-size:14px;cursor:pointer;padding:0;line-height:1;}
+.add-staff-form{display:flex;gap:8px;}
+.add-staff-form input{flex:1;padding:7px 10px;font-size:13px;}
+.add-staff-form button{padding:7px 14px;background:var(--green);color:white;border:none;border-radius:6px;font-size:13px;font-weight:700;font-family:'Montserrat',sans-serif;cursor:pointer;white-space:nowrap;}
+.roster-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+table.roster{width:100%;border-collapse:collapse;min-width:620px;font-size:13px;}
+table.roster thead tr.dept-banner th{background:var(--green);color:white;font-family:'Montserrat',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.5px;padding:8px 10px;text-align:left;}
+table.roster thead tr.day-header th{background:var(--green-light);color:var(--green-dark);font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;padding:7px 6px;text-align:center;border:1px solid var(--green-mid);white-space:nowrap;}
+table.roster thead tr.day-header th.name-col{text-align:left;min-width:140px;padding-left:10px;}
+table.roster thead tr.day-header th.total-col{background:var(--green);color:white;min-width:64px;}
+table.roster tbody tr{border-bottom:1px solid var(--border);}
+table.roster tbody tr:nth-child(even){background:#fbfdfb;}
+table.roster tbody td{padding:5px 4px;border:1px solid var(--border);text-align:center;vertical-align:middle;}
+table.roster tbody td.name-cell{text-align:left;padding:6px 8px;min-width:140px;font-size:13px;font-weight:600;}
+table.roster tbody td.total-cell{background:var(--green-light);font-family:'Montserrat',sans-serif;font-weight:700;font-size:12px;color:var(--green-dark);white-space:nowrap;}
+.shift-input{border:1px solid transparent;background:transparent;font-size:12px;font-family:'Open Sans',sans-serif;color:var(--text);width:100%;padding:5px 3px;text-align:center;border-radius:4px;min-width:72px;}
+.shift-input:focus{outline:none;border-color:var(--green);background:white;box-shadow:0 0 0 2px rgba(0,112,60,0.1);}
+.shift-input::placeholder{color:#ccc;}
+.shift-input.has-value{font-weight:600;}
+.shift-input.is-off{color:var(--muted);font-style:italic;}
+.net-hours{font-size:10px;font-weight:700;color:var(--green);display:block;margin-top:1px;}
+.net-off{font-size:10px;color:#bbb;display:block;margin-top:1px;}
+.dept-totals-bar{display:flex;justify-content:flex-end;align-items:center;gap:16px;padding:10px 12px;background:var(--green);border-radius:7px;color:white;margin-top:10px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;}
+.dept-totals-bar .label{opacity:0.8;font-weight:400;font-size:12px;}
+.law-note{font-size:11px;color:var(--muted);background:#fffbe6;border-left:3px solid var(--accent);padding:8px 12px;border-radius:0 6px 6px 0;margin-top:12px;line-height:1.6;}
+.save-btn{width:100%;padding:14px;background:var(--green);color:white;border:none;border-radius:8px;font-size:16px;font-family:'Montserrat',sans-serif;font-weight:700;letter-spacing:1px;cursor:pointer;margin-top:8px;}
+.email-btn{width:100%;padding:14px;background:#1a1f18;color:white;border:none;border-radius:8px;font-size:16px;font-family:'Montserrat',sans-serif;font-weight:700;letter-spacing:1px;cursor:pointer;margin-top:8px;}
+.hint{font-size:11px;color:var(--muted);margin-top:4px;}
+.form-success{background:#e8f5e9;border:1px solid #a5d6a7;border-radius:8px;padding:11px 14px;font-size:14px;font-weight:600;color:#2e7d32;margin-bottom:12px;display:none;align-items:center;gap:8px;}
+.form-success.show{display:flex;}
+/* Records */
+.db-status{font-size:11px;color:var(--muted);text-align:center;margin-bottom:12px;font-family:'Montserrat',monospace;}
+.db-status.ok{color:var(--green);}
+.data-tools{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+.data-tool-btn{background:white;border:1.5px solid var(--border);border-radius:10px;padding:12px;text-align:center;cursor:pointer;font-family:'Open Sans',sans-serif;}
+.data-tool-btn .dt-icon{font-size:22px;margin-bottom:5px;}
+.data-tool-btn .dt-label{font-size:12px;font-weight:700;color:var(--text);}
+.data-tool-btn .dt-sub{font-size:10px;color:var(--muted);margin-top:2px;}
+.record-group{margin-bottom:20px;}
+.record-group-header{background:var(--green);color:white;padding:9px 13px;border-radius:10px 10px 0 0;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;display:flex;justify-content:space-between;}
+.record-item{background:white;border:1px solid var(--border);border-top:none;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;}
+.record-item:last-child{border-radius:0 0 10px 10px;}
+.record-item:active{background:#f0f8f0;}
+.rec-title{font-size:13px;font-weight:700;color:var(--green);font-family:'Montserrat',sans-serif;}
+.rec-meta{font-size:11px;color:var(--muted);margin-top:2px;}
+.rec-arrow{color:var(--border);font-size:20px;}
+.empty-state{text-align:center;padding:40px 20px;color:var(--muted);}
+.empty-state .icon{font-size:38px;margin-bottom:10px;}
+/* Modal */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:1000;align-items:flex-end;}
+.modal-overlay.open{display:flex;}
+.modal{background:white;border-radius:20px 20px 0 0;padding:18px;width:100%;max-height:90vh;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+.modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.modal-title{font-size:15px;font-weight:700;font-family:'Montserrat',sans-serif;}
+.modal-close{background:none;border:none;font-size:22px;cursor:pointer;color:var(--muted);padding:4px;}
+.modal-actions{display:grid;grid-template-columns:auto 1fr 1fr;gap:8px;margin-top:16px;}
+.btn-sm{padding:7px 12px;font-size:12px;border-radius:8px;border:none;cursor:pointer;font-family:'Montserrat',sans-serif;font-weight:700;}
+.btn-danger{background:white;color:#c8102e;border:1.5px solid #c8102e;}
+.btn-dark{background:#1a1f18;color:white;}
+.btn-secondary{background:white;color:var(--green);border:1.5px solid var(--green);}
+/* Roster view in modal */
+.modal-dept{margin-bottom:16px;}
+.modal-dept-title{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:white;background:var(--green);padding:6px 10px;border-radius:5px 5px 0 0;}
+.modal-roster-table{width:100%;border-collapse:collapse;font-size:11px;overflow-x:auto;display:block;}
+.modal-roster-table th{background:var(--green-light);color:var(--green-dark);padding:5px 4px;text-align:center;border:1px solid var(--green-mid);font-size:10px;font-weight:700;white-space:nowrap;}
+.modal-roster-table th:first-child{text-align:left;min-width:120px;}
+.modal-roster-table td{border:1px solid var(--border);padding:4px;text-align:center;font-size:11px;}
+.modal-roster-table td:first-child{text-align:left;padding-left:8px;font-weight:600;}
+.modal-roster-table td.tot{background:var(--green-light);font-weight:700;color:var(--green-dark);}
+.modal-roster-table .off-cell{color:#bbb;font-style:italic;font-size:10px;}
+.modal-summary{background:var(--green);color:white;border-radius:7px;padding:10px 14px;margin-top:8px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;display:flex;justify-content:space-between;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">MORIARTY GROUP</div>
+  <div class="estd">ESTD 1987</div>
+  <div class="page-title">WEEKLY STAFF ROSTER</div>
+</header>
+
+<div class="nav-tabs">
+  <div class="nav-tab active" onclick="showTab('form',this)">📋 Roster</div>
+  <div class="nav-tab" onclick="showTab('records',this)">📁 Records</div>
+</div>
+
+<!-- ===== ROSTER TAB ===== -->
+
+<div id="tab-form" class="tab-content active">
+  <div class="form-success" id="form-success">✅ Roster saved!</div>
+
+  <div class="card">
+    <div class="card-title">Week Details</div>
+    <div class="meta-grid">
+      <div><label>Week Starting (Sunday)</label><input type="date" id="weekStart" onchange="renderActiveDept()"></div>
+      <div><label>Store / Location</label><input type="text" id="storeName" placeholder="e.g. Skerries" oninput="updateBanner()"></div>
+      <div class="full"><label>Prepared By</label><input type="text" id="preparedBy" placeholder="Department head name"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Department Roster</div>
+    <div class="dept-tabs" id="deptTabs"></div>
+    <div id="rosterContainer"></div>
+    <div class="law-note">ℹ️ <strong>Irish Working Time Act 1997 — breaks auto-deducted:</strong> &nbsp;Under 4.5hrs = no break &nbsp;·&nbsp; 4.5–6hrs = 15 min &nbsp;·&nbsp; 6–8hrs = 30 min &nbsp;·&nbsp; 8hrs+ = 1 hour<br>Enter shifts as <strong>07:00-17:00</strong> · Type <strong>OFF</strong>, <strong>D/O</strong>, <strong>AL</strong> or <strong>HOLS</strong> for days off / leave.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Save & Send</div>
+    <button class="save-btn" onclick="saveRoster()">💾 Save Roster</button>
+    <label style="margin-top:14px;">Recipient Email</label>
+    <input type="email" id="hrEmail" placeholder="e.g. hr@moriartygroup.ie">
+    <p class="hint">Enter HR or manager email — the full roster will be sent as a text summary.</p>
+    <button class="email-btn" onclick="emailRoster()">📧 &nbsp;Email Roster</button>
+  </div>
+</div>
+
+<!-- ===== RECORDS TAB ===== -->
+
+<div id="tab-records" class="tab-content">
+  <div class="db-status" id="db-status">Connecting...</div>
+  <div class="data-tools">
+    <button class="data-tool-btn" onclick="exportJSON()"><div class="dt-icon">💾</div><div class="dt-label">Backup</div><div class="dt-sub">Download JSON</div></button>
+    <button class="data-tool-btn" onclick="document.getElementById('import-file').click()"><div class="dt-icon">📂</div><div class="dt-label">Restore</div><div class="dt-sub">Import JSON</div></button>
+  </div>
+  <input type="file" id="import-file" accept=".json" style="display:none" onchange="importJSON(this)">
+  <div id="records-list"></div>
+</div>
+
+<!-- RECORD MODAL -->
+
+<div class="modal-overlay" id="recordModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="modal-title">Roster</div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div id="modal-body"></div>
+    <div class="modal-actions">
+      <button class="btn-sm btn-danger" onclick="deleteRecord()">🗑</button>
+      <button class="btn-sm btn-dark" onclick="loadRosterFromRecord()">📋 Load & Edit</button>
+      <button class="btn-sm btn-secondary" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ================================================================
+// SUPABASE
+// ================================================================
+const SB_URL='https://mnebkteiwjxbbmnfotse.supabase.co';
+const SB_KEY='sb_publishable_eutRHOftOW4ZJNlVrDKXOg_XtnBQ7cM';
+function sbFetch(path,method,body){return fetch(SB_URL+'/rest/v1/'+path,{method:method||'GET',headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':method==='POST'?'resolution=merge-duplicates':''},body:body?JSON.stringify(body):undefined});}
+function sbPush(r){return sbFetch('roster_records','POST',[{id:String(r.id),store:r.store||'',week_start:r.weekStart||'',saved_at:r.savedAt,data:r}]).catch(()=>{});}
+async function sbLoadAll(){try{const res=await sbFetch('roster_records?order=saved_at.desc','GET');const rows=await res.json();if(!rows||rows.error)return null;return rows.map(r=>({...r.data,id:r.data.id||r.id}));}catch(e){return null;}}
+
+// ================================================================
+// DB
+// ================================================================
+const DB_NAME='MoriartyRosters',DB_VERSION=1,STORE_NAME='rosters';
+let db=null,allRecords=[],activeRecordId=null;
+function openDB(){return new Promise((res,rej)=>{const req=indexedDB.open(DB_NAME,DB_VERSION);req.onupgradeneeded=e=>{const d=e.target.result;if(!d.objectStoreNames.contains(STORE_NAME))d.createObjectStore(STORE_NAME,{keyPath:'id'});};req.onsuccess=e=>{db=e.target.result;res(db);};req.onerror=e=>rej(e.target.error);});}
+function dbPut(r){return new Promise((res,rej)=>{const tx=db.transaction(STORE_NAME,'readwrite');tx.objectStore(STORE_NAME).put(r);tx.oncomplete=res;tx.onerror=e=>rej(e.target.error);});}
+function dbGetAll(){return new Promise((res,rej)=>{const tx=db.transaction(STORE_NAME,'readonly');const req=tx.objectStore(STORE_NAME).getAll();req.onsuccess=e=>res(e.target.result);req.onerror=e=>rej(e.target.error);});}
+function dbDelete(id){return new Promise((res,rej)=>{const tx=db.transaction(STORE_NAME,'readwrite');tx.objectStore(STORE_NAME).delete(id);tx.oncomplete=res;tx.onerror=e=>rej(e.target.error);});}
+
+// ================================================================
+// ROSTER STATE
+// ================================================================
+const DEPARTMENTS=["Butchers","Deli","Shop Floor","Tills","Vans","Cash Office","HR"];
+const DAY_NAMES=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+const DEFAULT_STAFF={
+  "Butchers":["Alexander Khalikov","Billy Peters","Ethan Forristal","Gregory Lynch","Liam Phillips","Stephen Heenan"],
+  "Deli":["Abigail Jaskan","Alice Ellis D","Holly O'Connor","Jessica Cox","Katie Gaffney","Natalin Chyshladdiy","Peter Kennon","Rowena Murphy","Shakira Panaghia","Sigita Sarkane"],
+  "Shop Floor":["Joe Fanning","Liam Lynam Nguyen","Luke Armstrong","Mark Mc Allister","Mark Keogh","Noel Morris","Rolands Zedlemi","Ross Ryan","William Byrne McClelland","Angelo Mendes","Andrea Pesce","Brian Grimes Snr","Brendan Walsh","Daniel Nico Vitan","David Hogan","Dylan McCarthy","Ellie Mcgee","Fiona Connell","Jack Crilly","Jake Branagan"],
+  "Tills":["Joyce Mc Garry","Mara O'Donohoe","Marriam Buffone","Maya Broderick","Nicole Byrne","Paula Nugent","Pauline Woodcock","Rachael McBride","Sarah El Shamy","Sophie Murny","Stella Moore","Alice Flood","Aoife Mc Kenna","Bridie Tulie","Caroline Young","Charlotte Joyce","Clara Monik","Clara Lindsay","Emilia Zedemi","Evan Burns"],
+  "Vans":[],"Cash Office":[],"HR":[]
+};
+let staffLists={},rosterShifts={},activeDept=DEPARTMENTS[0];
+
+// ================================================================
+// INIT
+// ================================================================
+async function init(){
+  DEPARTMENTS.forEach(d=>{staffLists[d]=[...(DEFAULT_STAFF[d]||[])];rosterShifts[d]={};staffLists[d].forEach(n=>{rosterShifts[d][n]=Array(7).fill('');});});
+  const today=new Date();const sunday=new Date(today);sunday.setDate(today.getDate()-today.getDay());
+  document.getElementById('weekStart').value=sunday.toISOString().split('T')[0];
+  try{
+    await openDB();
+    const sbData=await sbLoadAll();
+    if(sbData&&sbData.length){allRecords=sbData;for(const r of sbData){try{await dbPut(r);}catch(e){}}}
+    else{allRecords=await dbGetAll();}
+    updateDBStatus();
+  }catch(e){document.getElementById('db-status').textContent='⚠️ '+e.message;}
+  buildTabs();renderActiveDept();renderRecords();
+}
+
+function updateDBStatus(){const el=document.getElementById('db-status');el.textContent='🟢 '+allRecords.length+' roster'+(allRecords.length!==1?'s':'')+' saved';el.className='db-status ok';}
+function showTab(name,el){document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));document.getElementById('tab-'+name).classList.add('active');el.classList.add('active');if(name==='records')renderRecords();}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+// ================================================================
+// ROSTER LOGIC
+// ================================================================
+function calcBreak(g){if(g>=8)return 1;if(g>6)return 0.5;if(g>=4.5)return 0.25;return 0;}
+function isOff(t){if(!t)return false;const u=t.trim().toUpperCase();return["OFF","D/O","RD","AL","SL","HOLS","LEAVE","-"].includes(u);}
+function calcNet(val){if(!val||!val.trim()||isOff(val))return null;const m=val.trim().match(/^(\d{1,2})[:.h](\d{2})\s*[-–]\s*(\d{1,2})[:.h](\d{2})$/);if(!m)return null;const s=parseInt(m[1])+parseInt(m[2])/60;let f=parseInt(m[3])+parseInt(m[4])/60;let g=f-s;if(g<0)g+=24;if(g<=0)return null;return g-calcBreak(g);}
+function formatH(h){if(!h||isNaN(h)||h===0)return'';const hrs=Math.floor(h);const mins=Math.round((h-hrs)*60);return mins===0?`${hrs}h`:`${hrs}h ${mins}m`;}
+function safeId(name){return name.replace(/[^a-zA-Z0-9]/g,'_');}
+
+function buildTabs(){
+  const wrap=document.getElementById('deptTabs');wrap.innerHTML='';
+  DEPARTMENTS.forEach(d=>{const btn=document.createElement('button');btn.className='dept-tab'+(d===activeDept?' active':'');btn.textContent=d+(staffLists[d].length?` (${staffLists[d].length})`:'');btn.onclick=()=>{saveCurrent();activeDept=d;buildTabs();renderActiveDept();};wrap.appendChild(btn);});
+}
+
+function getDayHeaders(){
+  const val=document.getElementById('weekStart').value;if(!val)return DAY_NAMES.map(d=>`<span>${d}</span>`);
+  const start=new Date(val);
+  return DAY_NAMES.map((d,i)=>{const dt=new Date(start);dt.setDate(start.getDate()+i);return `${d}<br><span style="font-weight:400;font-size:10px">${dt.getDate()}/${dt.getMonth()+1}</span>`;});
+}
+
+function saveCurrent(){
+  const dept=activeDept;
+  staffLists[dept].forEach(name=>{
+    if(!rosterShifts[dept][name])rosterShifts[dept][name]=Array(7).fill('');
+    for(let i=0;i<7;i++){const el=document.getElementById(`shift_${dept}_${safeId(name)}_${i}`);if(el)rosterShifts[dept][name][i]=el.value;}
+  });
+}
+
+function addStaffMember(dept){
+  const input=document.getElementById(`newStaffInput_${dept}`);if(!input)return;
+  const name=input.value.trim();if(!name)return;
+  if(staffLists[dept].includes(name)){input.value='';return;}
+  if(staffLists[dept].length>=30){alert('Maximum 30 staff per department.');return;}
+  staffLists[dept].push(name);rosterShifts[dept][name]=Array(7).fill('');input.value='';buildTabs();renderActiveDept();
+}
+
+function removeStaffMember(dept,name){
+  saveCurrent();staffLists[dept]=staffLists[dept].filter(n=>n!==name);delete rosterShifts[dept][name];buildTabs();renderActiveDept();
+}
+
+function updateBanner(){const el=document.getElementById('banner_text');if(el){const store=document.getElementById('storeName').value||'Store';const week=document.getElementById('weekStart').value||'—';el.textContent=`${activeDept}  ·  Week: ${week}  ·  ${store}`;}}
+
+function renderActiveDept(){
+  const dept=activeDept;const dayHeaders=getDayHeaders();const staff=staffLists[dept]||[];
+  const store=document.getElementById('storeName').value||'Store';const week=document.getElementById('weekStart').value||'—';
+  let html=`<div class="staff-mgmt"><div class="staff-mgmt-title">👥 Staff List — ${dept} (${staff.length}/30)</div><div class="staff-list">`;
+  staff.forEach(name=>{html+=`<div class="staff-chip">${esc(name)} <button class="remove-chip" onclick="removeStaffMember('${dept.replace(/'/g,"\\'")}','${name.replace(/'/g,"\\'")}')">×</button></div>`;});
+  html+=`</div><div class="add-staff-form"><input type="text" id="newStaffInput_${dept}" placeholder="Add new staff member..." onkeydown="if(event.key==='Enter') addStaffMember('${dept.replace(/'/g,"\\'")}')"><button onclick="addStaffMember('${dept.replace(/'/g,"\\'")}')">+ Add</button></div></div>`;
+  html+=`<div class="roster-table-wrap"><table class="roster"><thead><tr class="dept-banner"><th colspan="10" id="banner_text">${dept}  ·  Week: ${week}  ·  ${store}</th></tr><tr class="day-header"><th class="name-col">Name</th>${dayHeaders.map(d=>`<th>${d}</th>`).join('')}<th class="total-col">Total</th></tr></thead><tbody>`;
+  let deptTotal=0;
+  staff.forEach(name=>{
+    const shifts=rosterShifts[dept][name]||Array(7).fill('');let rowTotal=0;let dayCells='';
+    for(let i=0;i<7;i++){
+      const val=shifts[i]||'';const net=calcNet(val);if(net!==null)rowTotal+=net;const off=isOff(val);
+      const badge=net!==null?`<span class="net-hours">${formatH(net)}</span>`:(off?`<span class="net-off">${val.trim().toUpperCase()}</span>`:'');
+      dayCells+=`<td><input class="shift-input${val?(off?' is-off':' has-value'):''}" id="shift_${dept}_${safeId(name)}_${i}" value="${esc(val)}" placeholder="—" oninput="liveUpdate('${dept.replace(/'/g,"\\'")}','${name.replace(/'/g,"\\'")}',${i})" onchange="liveUpdate('${dept.replace(/'/g,"\\'")}','${name.replace(/'/g,"\\'")}',${i})"><span id="net_${dept}_${safeId(name)}_${i}">${badge}</span></td>`;
+    }
+    deptTotal+=rowTotal;
+    html+=`<tr><td class="name-cell">${esc(name)}</td>${dayCells}<td class="total-cell" id="rowtotal_${dept}_${safeId(name)}">${rowTotal>0?formatH(rowTotal):'—'}</td></tr>`;
+  });
+  if(!staff.length)html+=`<tr><td colspan="10" style="text-align:center;padding:20px;color:#aaa;font-style:italic;">No staff added yet</td></tr>`;
+  html+=`</tbody></table></div><div class="dept-totals-bar"><span class="label">Department Total Hours</span><span id="deptTotal_${dept}">${formatH(deptTotal)||'0h'}</span></div>`;
+  document.getElementById('rosterContainer').innerHTML=html;
+}
+
+function liveUpdate(dept,name,dayIndex){
+  const el=document.getElementById(`shift_${dept}_${safeId(name)}_${dayIndex}`);if(!el)return;
+  if(!rosterShifts[dept][name])rosterShifts[dept][name]=Array(7).fill('');
+  rosterShifts[dept][name][dayIndex]=el.value;
+  const val=el.value;const net=calcNet(val);const off=isOff(val);
+  const badge=document.getElementById(`net_${dept}_${safeId(name)}_${dayIndex}`);
+  if(badge){if(net!==null)badge.innerHTML=`<span class="net-hours">${formatH(net)}</span>`;else if(off)badge.innerHTML=`<span class="net-off">${val.trim().toUpperCase()}</span>`;else badge.innerHTML='';}
+  let rowTotal=0;for(let i=0;i<7;i++){const n=calcNet(rosterShifts[dept][name][i]||'');if(n!==null)rowTotal+=n;}
+  const rowEl=document.getElementById(`rowtotal_${dept}_${safeId(name)}`);if(rowEl)rowEl.textContent=rowTotal>0?formatH(rowTotal):'—';
+  let deptTotal=0;(staffLists[dept]||[]).forEach(n=>{for(let i=0;i<7;i++){const nn=calcNet((rosterShifts[dept][n]||[])[i]||'');if(nn!==null)deptTotal+=nn;}});
+  const deptEl=document.getElementById(`deptTotal_${dept}`);if(deptEl)deptEl.textContent=formatH(deptTotal)||'0h';
+}
+
+// ================================================================
+// SAVE ROSTER
+// ================================================================
+async function saveRoster(){
+  saveCurrent();
+  const record={
+    id:Date.now(),savedAt:new Date().toISOString(),
+    store:document.getElementById('storeName').value,
+    weekStart:document.getElementById('weekStart').value,
+    preparedBy:document.getElementById('preparedBy').value,
+    staffLists:JSON.parse(JSON.stringify(staffLists)),
+    rosterShifts:JSON.parse(JSON.stringify(rosterShifts))
+  };
+  try{
+    await dbPut(record);sbPush(record).catch(()=>{});
+    allRecords=await dbGetAll();updateDBStatus();
+    const msg=document.getElementById('form-success');msg.classList.add('show');setTimeout(()=>msg.classList.remove('show'),3000);
+    renderRecords();
+  }catch(e){alert('Save failed: '+e.message);}
+}
+
+// ================================================================
+// RECORDS
+// ================================================================
+function renderRecords(){
+  const list=document.getElementById('records-list');
+  if(!allRecords.length){list.innerHTML='<div class="empty-state"><div class="icon">📁</div><p>No rosters saved yet.<br>Complete a roster and tap Save.</p></div>';return;}
+  const sorted=allRecords.slice().sort((a,b)=>b.id-a.id);
+  const grouped={};
+  sorted.forEach(r=>{const store=r.store||'Unknown Store';if(!grouped[store])grouped[store]=[];grouped[store].push(r);});
+  let html='';
+  Object.keys(grouped).sort().forEach(store=>{
+    html+=`<div class="record-group"><div class="record-group-header"><span>📍 ${esc(store)}</span><span>${grouped[store].length} roster${grouped[store].length!==1?'s':''}</span></div>`;
+    grouped[store].forEach(r=>{
+      const deptCount=Object.values(r.staffLists||{}).filter(s=>s.length>0).length;
+      const totalStaff=Object.values(r.staffLists||{}).reduce((a,s)=>a+s.length,0);
+      html+=`<div class="record-item" onclick="openRecord(${r.id})"><div><div class="rec-title">w/c ${r.weekStart||'—'}</div><div class="rec-meta">${deptCount} dept${deptCount!==1?'s':''} · ${totalStaff} staff · Saved ${new Date(r.savedAt).toLocaleDateString('en-IE')}${r.preparedBy?' · '+esc(r.preparedBy):''}</div></div><div class="rec-arrow">›</div></div>`;
+    });
+    html+='</div>';
+  });
+  list.innerHTML=html;
+}
+
+function openRecord(id){
+  const r=allRecords.find(x=>x.id===id);if(!r)return;
+  activeRecordId=id;
+  document.getElementById('modal-title').textContent=`Roster — w/c ${r.weekStart||'—'} · ${r.store||''}`;
+  const days=DAY_NAMES.map((d,i)=>{if(!r.weekStart)return d;const dt=new Date(r.weekStart);dt.setDate(dt.getDate()+i);return `${d} ${dt.getDate()}/${dt.getMonth()+1}`;});
+  let html=`<div style="background:#1a1f18;color:white;border-radius:8px;padding:10px 14px;margin-bottom:14px;"><div style="font-size:10px;opacity:0.5;letter-spacing:0.1em;">WEEKLY ROSTER</div><div style="font-size:15px;font-weight:700;margin-top:2px;">${esc(r.store||'')} &nbsp;·&nbsp; w/c ${r.weekStart||'—'}</div>${r.preparedBy?`<div style="font-size:11px;opacity:0.6;margin-top:3px;">Prepared by: ${esc(r.preparedBy)}</div>`:''}</div>`;
+  let grandTotal=0;
+  DEPARTMENTS.forEach(dept=>{
+    const staff=(r.staffLists||{})[dept]||[];if(!staff.length)return;
+    let deptTotal=0;
+    html+=`<div class="modal-dept"><div class="modal-dept-title">${esc(dept)}</div><table class="modal-roster-table"><thead><tr><th>Name</th>${days.map(d=>`<th>${esc(d)}</th>`).join('')}<th>Total</th></tr></thead><tbody>`;
+    staff.forEach(name=>{
+      const shifts=((r.rosterShifts||{})[dept]||{})[name]||Array(7).fill('');
+      let rowTotal=0;
+      const cells=shifts.map(s=>{const net=calcNet(s||'');if(net!==null)rowTotal+=net;const off=isOff(s);return net!==null?`<td>${esc(s)}<br><span style="font-size:9px;color:var(--green);font-weight:700;">${formatH(net)}</span></td>`:(off?`<td class="off-cell">${esc(s||'').toUpperCase()}</td>`:`<td style="color:#ccc;">—</td>`);}).join('');
+      deptTotal+=rowTotal;
+      html+=`<tr><td>${esc(name)}</td>${cells}<td class="tot">${rowTotal>0?formatH(rowTotal):'—'}</td></tr>`;
+    });
+    grandTotal+=deptTotal;
+    html+=`</tbody></table><div class="modal-summary"><span>${esc(dept)} Total</span><span>${formatH(deptTotal)||'0h'}</span></div></div>`;
+  });
+  html+=`<div style="background:var(--green-dark);color:white;border-radius:8px;padding:12px 14px;margin-top:8px;display:flex;justify-content:space-between;font-family:'Montserrat',sans-serif;font-weight:700;font-size:15px;"><span>ALL DEPARTMENTS TOTAL</span><span>${formatH(grandTotal)||'0h'}</span></div>`;
+  document.getElementById('modal-body').innerHTML=html;
+  document.getElementById('recordModal').classList.add('open');
+}
+
+function closeModal(){document.getElementById('recordModal').classList.remove('open');activeRecordId=null;}
+
+function loadRosterFromRecord(){
+  const r=allRecords.find(x=>x.id===activeRecordId);if(!r)return;
+  closeModal();
+  if(r.weekStart)document.getElementById('weekStart').value=r.weekStart;
+  if(r.store)document.getElementById('storeName').value=r.store;
+  if(r.preparedBy)document.getElementById('preparedBy').value=r.preparedBy;
+  if(r.staffLists)staffLists=JSON.parse(JSON.stringify(r.staffLists));
+  if(r.rosterShifts)rosterShifts=JSON.parse(JSON.stringify(r.rosterShifts));
+  activeDept=DEPARTMENTS[0];buildTabs();renderActiveDept();
+  showTab('form',document.querySelector('.nav-tab'));
+  document.querySelectorAll('.nav-tab')[0].classList.add('active');
+  document.querySelectorAll('.nav-tab')[1].classList.remove('active');
+}
+
+async function deleteRecord(){
+  if(!confirm('Delete this roster? This cannot be undone.'))return;
+  try{await dbDelete(activeRecordId);allRecords=await dbGetAll();updateDBStatus();closeModal();renderRecords();}catch(e){alert('Delete failed: '+e.message);}
+}
+
+// ================================================================
+// EMAIL
+// ================================================================
+function emailRoster(){
+  saveCurrent();
+  const hrEmail=document.getElementById('hrEmail').value;
+  const store=document.getElementById('storeName').value;
+  const weekStart=document.getElementById('weekStart').value;
+  const prepBy=document.getElementById('preparedBy').value;
+  const days=DAY_NAMES.map((d,i)=>{if(!weekStart)return d;const dt=new Date(weekStart);dt.setDate(dt.getDate()+i);return `${d} ${dt.getDate()}/${dt.getMonth()+1}`;});
+  let text=`MORIARTY GROUP — WEEKLY ROSTER\nStore: ${store}\nWeek Starting: ${weekStart}\nPrepared By: ${prepBy}\n\n`;
+  DEPARTMENTS.forEach(dept=>{
+    const staff=staffLists[dept]||[];if(!staff.length)return;
+    text+=`${'═'.repeat(55)}\n${dept.toUpperCase()}\n${'═'.repeat(55)}\n`;
+    const col=22;text+='Name'.padEnd(col)+days.map(d=>d.padEnd(14)).join('')+'TOTAL\n'+'-'.repeat(col+14*7+5)+'\n';
+    let deptTotal=0;
+    staff.forEach(name=>{
+      const shifts=rosterShifts[dept][name]||[];let rowTotal=0;
+      const cells=shifts.map(s=>{const net=calcNet(s||'');if(net!==null){rowTotal+=net;return (s||'').padEnd(14);}return (isOff(s)?s.trim().toUpperCase():'OFF').padEnd(14);});
+      text+=name.padEnd(col)+cells.join('')+(formatH(rowTotal)||'0h')+'\n';deptTotal+=rowTotal;
+    });
+    text+=`\nDept Total: ${formatH(deptTotal)||'0h'}\n\n`;
+  });
+  const subject=`Weekly Roster — ${store} — w/c ${weekStart}`;
+  window.location.href=`mailto:${encodeURIComponent(hrEmail)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
+}
+
+// ================================================================
+// BACKUP / RESTORE
+// ================================================================
+async function exportJSON(){const records=await dbGetAll();if(!records.length){alert('No rosters to export.');return;}const blob=new Blob([JSON.stringify({version:1,exportedAt:new Date().toISOString(),records},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='roster-backup-'+new Date().toISOString().split('T')[0]+'.json';a.click();URL.revokeObjectURL(url);}
+async function importJSON(input){const file=input.files[0];if(!file)return;const reader=new FileReader();reader.onload=async e=>{try{const data=JSON.parse(e.target.result);if(!data.records){alert('Invalid file.');return;}const ok=confirm('Import '+data.records.length+' rosters?');if(!ok)return;for(const r of data.records)await dbPut(r);allRecords=await dbGetAll();updateDBStatus();renderRecords();alert('✅ '+data.records.length+' rosters imported.');}catch(err){alert('Import failed: '+err.message);}};reader.readAsText(file);input.value='';}
+
+init();
+</script>
+
+</body>
+</html>
