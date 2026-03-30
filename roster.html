@@ -129,7 +129,13 @@ table.roster tbody td.total-cell{background:var(--green-light);font-family:'Mont
     <div class="card-title">Week Details</div>
     <div class="meta-grid">
       <div><label>Week Starting (Sunday)</label><input type="date" id="weekStart" onchange="renderActiveDept()"></div>
-      <div><label>Store / Location</label><input type="text" id="storeName" placeholder="e.g. Skerries" oninput="updateBanner()"></div>
+      <div><label>Store / Location</label>
+        <select id="storeName" onchange="onStoreChange()" style="width:100%;background:#f4f5f0;border:1.5px solid var(--border);border-radius:6px;padding:9px 11px;font-size:14px;font-family:'Open Sans',sans-serif;color:var(--text);-webkit-appearance:none;outline:none;">
+          <option value="Skerries">Skerries</option>
+          <option value="Balbriggan">Balbriggan</option>
+          <option value="Palmerstown">Palmerstown</option>
+        </select>
+      </div>
       <div class="full"><label>Prepared By</label><input type="text" id="preparedBy" placeholder="Department head name"></div>
     </div>
   </div>
@@ -142,12 +148,9 @@ table.roster tbody td.total-cell{background:var(--green-light);font-family:'Mont
   </div>
 
   <div class="card">
-    <div class="card-title">Save & Send</div>
+    <div class="card-title">Save & Print</div>
     <button class="save-btn" onclick="saveRoster()">💾 Save Roster</button>
-    <label style="margin-top:14px;">Recipient Email</label>
-    <input type="email" id="hrEmail" placeholder="e.g. hr@moriartygroup.ie">
-    <p class="hint">Enter HR or manager email — the full roster will be sent as a text summary.</p>
-    <button class="email-btn" onclick="emailRoster()">📧 &nbsp;Email Roster</button>
+    <button class="email-btn" style="margin-top:8px;" onclick="printRosterPDF()">🖨 Print / PDF</button>
   </div>
 </div>
 
@@ -205,13 +208,23 @@ function dbDelete(id){return new Promise((res,rej)=>{const tx=db.transaction(STO
 // ================================================================
 const DEPARTMENTS=["Butchers","Deli","Shop Floor","Tills","Vans","Cash Office","HR"];
 const DAY_NAMES=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-const DEFAULT_STAFF={
-  "Butchers":["Alexander Khalikov","Billy Peters","Ethan Forristal","Gregory Lynch","Liam Phillips","Stephen Heenan"],
-  "Deli":["Abigail Jaskan","Alice Ellis D","Holly O'Connor","Jessica Cox","Katie Gaffney","Natalin Chyshladdiy","Peter Kennon","Rowena Murphy","Shakira Panaghia","Sigita Sarkane"],
-  "Shop Floor":["Joe Fanning","Liam Lynam Nguyen","Luke Armstrong","Mark Mc Allister","Mark Keogh","Noel Morris","Rolands Zedlemi","Ross Ryan","William Byrne McClelland","Angelo Mendes","Andrea Pesce","Brian Grimes Snr","Brendan Walsh","Daniel Nico Vitan","David Hogan","Dylan McCarthy","Ellie Mcgee","Fiona Connell","Jack Crilly","Jake Branagan"],
-  "Tills":["Joyce Mc Garry","Mara O'Donohoe","Marriam Buffone","Maya Broderick","Nicole Byrne","Paula Nugent","Pauline Woodcock","Rachael McBride","Sarah El Shamy","Sophie Murny","Stella Moore","Alice Flood","Aoife Mc Kenna","Bridie Tulie","Caroline Young","Charlotte Joyce","Clara Monik","Clara Lindsay","Emilia Zedemi","Evan Burns"],
-  "Vans":[],"Cash Office":[],"HR":[]
+// Store-specific default staff lists
+const STORE_STAFF={
+  "Skerries":{
+    "Butchers":["Alexander Khalikov","Billy Peters","Ethan Forristal","Gregory Lynch","Liam Phillips","Stephen Heenan"],
+    "Deli":["Abigail Jaskan","Alice Ellis D","Holly O'Connor","Jessica Cox","Katie Gaffney","Natalin Chyshladdiy","Peter Kennon","Rowena Murphy","Shakira Panaghia","Sigita Sarkane"],
+    "Shop Floor":["Joe Fanning","Liam Lynam Nguyen","Luke Armstrong","Mark Mc Allister","Mark Keogh","Noel Morris","Rolands Zedlemi","Ross Ryan","William Byrne McClelland","Angelo Mendes","Andrea Pesce","Brian Grimes Snr","Brendan Walsh","Daniel Nico Vitan","David Hogan","Dylan McCarthy","Ellie Mcgee","Fiona Connell","Jack Crilly","Jake Branagan"],
+    "Tills":["Joyce Mc Garry","Mara O'Donohoe","Marriam Buffone","Maya Broderick","Nicole Byrne","Paula Nugent","Pauline Woodcock","Rachael McBride","Sarah El Shamy","Sophie Murny","Stella Moore","Alice Flood","Aoife Mc Kenna","Bridie Tulie","Caroline Young","Charlotte Joyce","Clara Monik","Clara Lindsay","Emilia Zedemi","Evan Burns"],
+    "Vans":[],"Cash Office":[],"HR":[]
+  },
+  "Balbriggan":{
+    "Butchers":[],"Deli":[],"Shop Floor":[],"Tills":[],"Vans":[],"Cash Office":[],"HR":[]
+  },
+  "Palmerstown":{
+    "Butchers":[],"Deli":[],"Shop Floor":[],"Tills":[],"Vans":[],"Cash Office":[],"HR":[]
+  }
 };
+const DEFAULT_STAFF=STORE_STAFF["Skerries"];
 let staffLists={},rosterShifts={},activeDept=DEPARTMENTS[0];
 
 // ================================================================
@@ -244,6 +257,19 @@ function calcNet(val){if(!val||!val.trim()||isOff(val))return null;const m=val.t
 function formatH(h){if(!h||isNaN(h)||h===0)return'';const hrs=Math.floor(h);const mins=Math.round((h-hrs)*60);return mins===0?`${hrs}h`:`${hrs}h ${mins}m`;}
 function safeId(name){return name.replace(/[^a-zA-Z0-9]/g,'_');}
 
+function onStoreChange(){
+  var store=document.getElementById('storeName').value;
+  var defaults=STORE_STAFF[store]||STORE_STAFF['Skerries'];
+  if(!confirm('Load default staff list for '+store+'? This will replace the current staff list.'))return;
+  DEPARTMENTS.forEach(function(d){
+    staffLists[d]=[].concat(defaults[d]||[]);
+    rosterShifts[d]={};
+    staffLists[d].forEach(function(n){rosterShifts[d][n]=Array(7).fill('');});
+  });
+  activeDept=DEPARTMENTS[0];
+  buildTabs();renderActiveDept();
+  updateBanner();
+}
 function buildTabs(){
   const wrap=document.getElementById('deptTabs');wrap.innerHTML='';
   DEPARTMENTS.forEach(d=>{const btn=document.createElement('button');btn.className='dept-tab'+(d===activeDept?' active':'');btn.textContent=d+(staffLists[d].length?` (${staffLists[d].length})`:'');btn.onclick=()=>{saveCurrent();activeDept=d;buildTabs();renderActiveDept();};wrap.appendChild(btn);});
@@ -256,10 +282,16 @@ function getDayHeaders(){
 }
 
 function saveCurrent(){
-  const dept=activeDept;
-  staffLists[dept].forEach(name=>{
-    if(!rosterShifts[dept][name])rosterShifts[dept][name]=Array(7).fill('');
-    for(let i=0;i<7;i++){const el=document.getElementById(`shift_${dept}_${safeId(name)}_${i}`);if(el)rosterShifts[dept][name][i]=el.value;}
+  // Save all departments from DOM (only active dept has DOM elements, others rely on rosterShifts)
+  DEPARTMENTS.forEach(function(dept){
+    (staffLists[dept]||[]).forEach(function(name){
+      if(!rosterShifts[dept])rosterShifts[dept]={};
+      if(!rosterShifts[dept][name])rosterShifts[dept][name]=Array(7).fill('');
+      for(var i=0;i<7;i++){
+        var el=document.getElementById('shift_'+dept+'_'+safeId(name)+'_'+i);
+        if(el)rosterShifts[dept][name][i]=el.value;
+      }
+    });
   });
 }
 
@@ -275,7 +307,7 @@ function removeStaffMember(dept,name){
   saveCurrent();staffLists[dept]=staffLists[dept].filter(n=>n!==name);delete rosterShifts[dept][name];buildTabs();renderActiveDept();
 }
 
-function updateBanner(){const el=document.getElementById('banner_text');if(el){const store=document.getElementById('storeName').value||'Store';const week=document.getElementById('weekStart').value||'—';el.textContent=`${activeDept}  ·  Week: ${week}  ·  ${store}`;}}
+function updateBanner(){var el=document.getElementById('banner_text');if(el){var store=document.getElementById('storeName').value||'Store';var week=document.getElementById('weekStart').value||'—';el.textContent=activeDept+'  ·  Week: '+week+'  ·  '+store;}}
 
 function renderActiveDept(){
   const dept=activeDept;const dayHeaders=getDayHeaders();const staff=staffLists[dept]||[];
@@ -404,30 +436,89 @@ async function deleteRecord(){
 }
 
 // ================================================================
-// EMAIL
+// PRINT PDF
 // ================================================================
-function emailRoster(){
+function printRosterPDF(){
   saveCurrent();
-  const hrEmail=document.getElementById('hrEmail').value;
-  const store=document.getElementById('storeName').value;
-  const weekStart=document.getElementById('weekStart').value;
-  const prepBy=document.getElementById('preparedBy').value;
-  const days=DAY_NAMES.map((d,i)=>{if(!weekStart)return d;const dt=new Date(weekStart);dt.setDate(dt.getDate()+i);return `${d} ${dt.getDate()}/${dt.getMonth()+1}`;});
-  let text=`MORIARTY GROUP — WEEKLY ROSTER\nStore: ${store}\nWeek Starting: ${weekStart}\nPrepared By: ${prepBy}\n\n`;
-  DEPARTMENTS.forEach(dept=>{
-    const staff=staffLists[dept]||[];if(!staff.length)return;
-    text+=`${'═'.repeat(55)}\n${dept.toUpperCase()}\n${'═'.repeat(55)}\n`;
-    const col=22;text+='Name'.padEnd(col)+days.map(d=>d.padEnd(14)).join('')+'TOTAL\n'+'-'.repeat(col+14*7+5)+'\n';
-    let deptTotal=0;
-    staff.forEach(name=>{
-      const shifts=rosterShifts[dept][name]||[];let rowTotal=0;
-      const cells=shifts.map(s=>{const net=calcNet(s||'');if(net!==null){rowTotal+=net;return (s||'').padEnd(14);}return (isOff(s)?s.trim().toUpperCase():'OFF').padEnd(14);});
-      text+=name.padEnd(col)+cells.join('')+(formatH(rowTotal)||'0h')+'\n';deptTotal+=rowTotal;
+  var jsPDF=window.jspdf&&window.jspdf.jsPDF;
+  if(!jsPDF){alert('PDF library not loaded. Please refresh and try again.');return;}
+  var doc=new jsPDF({orientation:'landscape',unit:'mm',format:'a4'});
+  var GREEN=[0,112,60],DARK=[26,26,26],MUTED=[102,102,102],LIGHT=[232,245,238];
+  var PW=297,PH=210,ML=8,MR=8;
+  var store=document.getElementById('storeName').value||'Store';
+  var weekStart=document.getElementById('weekStart').value||'';
+  var prepBy=document.getElementById('preparedBy').value||'';
+  var days=DAY_NAMES.map(function(d,i){if(!weekStart)return d;var dt=new Date(weekStart);dt.setDate(dt.getDate()+i);return d+' '+dt.getDate()+'/'+(dt.getMonth()+1);});
+  var firstPage=true;
+  DEPARTMENTS.forEach(function(dept){
+    var staff=staffLists[dept]||[];
+    if(!staff.length)return;
+    if(!firstPage)doc.addPage();
+    firstPage=false;
+    var y=8;
+    // Header
+    doc.setFillColor(0,112,60);doc.rect(0,0,PW,18,'F');
+    doc.setTextColor(255,255,255);doc.setFontSize(14);doc.setFont('helvetica','bold');
+    doc.text('MORIARTY GROUP',ML,8);
+    doc.setFontSize(9);doc.setFont('helvetica','normal');doc.text('WEEKLY STAFF ROSTER',ML,14);
+    doc.setFontSize(12);doc.setFont('helvetica','bold');doc.text(dept.toUpperCase(),PW/2,10,{align:'center'});
+    doc.setFontSize(8);doc.setFont('helvetica','normal');doc.text('w/c '+weekStart+'  ·  '+store+(prepBy?'  ·  '+prepBy:''),PW/2,15,{align:'center'});
+    y=24;
+    // Column widths
+    var nameW=38;var dayW=Math.floor((PW-ML-MR-nameW-16)/7);var totalW=16;
+    // Header row
+    doc.setFillColor(232,245,238);doc.rect(ML,y,PW-ML-MR,8,'F');
+    doc.setDrawColor(0,112,60);doc.setLineWidth(0.3);
+    doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(0,80,40);
+    doc.text('NAME',ML+2,y+5.5);
+    days.forEach(function(d,i){doc.text(d,ML+nameW+i*dayW+dayW/2,y+5.5,{align:'center'});});
+    doc.text('TOTAL',ML+nameW+7*dayW+totalW/2,y+5.5,{align:'center'});
+    doc.rect(ML,y,PW-ML-MR,8);
+    y+=9;
+    var deptTotal=0;
+    staff.forEach(function(name,ri){
+      if(y>PH-12){doc.addPage();y=10;}
+      var shifts=(rosterShifts[dept]||{})[name]||[];
+      var rowTotal=0;
+      var bg=ri%2===0?[248,252,248]:[255,255,255];
+      doc.setFillColor(bg[0],bg[1],bg[2]);doc.rect(ML,y,PW-ML-MR,9,'F');
+      doc.setDrawColor(210,220,210);doc.setLineWidth(0.2);doc.rect(ML,y,PW-ML-MR,9);
+      doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(26,26,26);
+      doc.text(name,ML+2,y+6,{maxWidth:nameW-3});
+      shifts.forEach(function(s,i){
+        var net=calcNet(s||'');
+        if(net!==null)rowTotal+=net;
+        var off=isOff(s);
+        var cx=ML+nameW+i*dayW;
+        if(net!==null){
+          doc.setFont('helvetica','normal');doc.setFontSize(7.5);doc.setTextColor(26,26,26);
+          doc.text(s||'',cx+dayW/2,y+4,{align:'center'});
+          doc.setFont('helvetica','bold');doc.setFontSize(7);doc.setTextColor(0,112,60);
+          doc.text(formatH(net),cx+dayW/2,y+7.5,{align:'center'});
+        } else if(off){
+          doc.setFont('helvetica','italic');doc.setFontSize(7);doc.setTextColor(150,150,150);
+          doc.text((s||'').toUpperCase(),cx+dayW/2,y+5.5,{align:'center'});
+        }
+      });
+      deptTotal+=rowTotal;
+      var totX=ML+nameW+7*dayW;
+      doc.setFillColor(232,245,238);doc.rect(totX,y,totalW,9,'F');
+      doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(0,80,40);
+      doc.text(rowTotal>0?formatH(rowTotal):'—',totX+totalW/2,y+5.5,{align:'center'});
+      y+=9;
     });
-    text+=`\nDept Total: ${formatH(deptTotal)||'0h'}\n\n`;
+    // Dept total bar
+    y+=2;
+    doc.setFillColor(0,112,60);doc.rect(ML,y,PW-ML-MR,8,'F');
+    doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(255,255,255);
+    doc.text('DEPARTMENT TOTAL',ML+3,y+5.5);
+    doc.text(formatH(deptTotal)||'0h',PW-MR-3,y+5.5,{align:'right'});
+    // Footer
+    doc.setFillColor(0,112,60);doc.rect(0,PH-8,PW,8,'F');
+    doc.setFont('helvetica','normal');doc.setFontSize(7);doc.setTextColor(255,255,255);
+    doc.text('Moriarty Group · SuperValu · Weekly Roster · '+dept+' · '+store+' · w/c '+weekStart,PW/2,PH-3,{align:'center'});
   });
-  const subject=`Weekly Roster — ${store} — w/c ${weekStart}`;
-  window.location.href=`mailto:${encodeURIComponent(hrEmail)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
+  doc.save('Roster_'+store.replace(/\s+/g,'_')+'_'+weekStart+'.pdf');
 }
 
 // ================================================================
