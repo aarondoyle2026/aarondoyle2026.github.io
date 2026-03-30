@@ -431,6 +431,11 @@ textarea{resize:vertical;min-height:72px;}
 // DB
 // ================================================================
 const DB_NAME='MoriartyDockets',DB_VERSION=1,STORE_NAME='records';
+const SB_URL='https://mnebkteiwjxbbmnfotse.supabase.co';
+const SB_KEY='sb_publishable_eutRHOftOW4ZJNlVrDKXOg_XtnBQ7cM';
+function sbFetch(path,method,body){return fetch(SB_URL+'/rest/v1/'+path,{method:method||'GET',headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':method==='POST'?'resolution=merge-duplicates':''},body:body?JSON.stringify(body):undefined});}
+function sbPushRecord(r){const row={id:String(r.id),type:r.type,store:r.store,saved_at:r.savedAt,data:r};return sbFetch('docket_records','POST',[row]).catch(()=>{});}
+async function sbLoadAll(){try{const res=await sbFetch('docket_records?order=saved_at.desc','GET');const rows=await res.json();if(!rows||rows.error)return null;return rows.map(r=>({...r.data,id:r.data.id||r.id}));}catch(e){return null;}}
 let db=null;
 function openDB(){return new Promise((res,rej)=>{const req=indexedDB.open(DB_NAME,DB_VERSION);req.onupgradeneeded=e=>{const d=e.target.result;if(!d.objectStoreNames.contains(STORE_NAME)){const s=d.createObjectStore(STORE_NAME,{keyPath:'id'});s.createIndex('store','store',{unique:false});s.createIndex('type','type',{unique:false});}};req.onsuccess=e=>{db=e.target.result;res(db);};req.onerror=e=>rej(e.target.error);});}
 function dbPut(r){return new Promise((res,rej)=>{const tx=db.transaction(STORE_NAME,'readwrite');tx.objectStore(STORE_NAME).put(r);tx.oncomplete=res;tx.onerror=e=>rej(e.target.error);});}
@@ -442,7 +447,17 @@ function dbDelete(id){return new Promise((res,rej)=>{const tx=db.transaction(STO
 // ================================================================
 let currentStore='Balbriggan',allRecords=[],activeRecordId=null;
 document.addEventListener('DOMContentLoaded',async()=>{
-  try{await openDB();allRecords=await dbGetAll();updateDBStatus();}catch(e){document.getElementById('db-status').textContent='⚠️ '+e.message;document.getElementById('db-status').className='db-status err';}
+  try{
+    await openDB();
+    const sbData=await sbLoadAll();
+    if(sbData&&sbData.length){
+      allRecords=sbData;
+      for(const r of sbData){try{await dbPut(r);}catch(e){}}
+    } else {
+      allRecords=await dbGetAll();
+    }
+    updateDBStatus();
+  }catch(e){document.getElementById('db-status').textContent='⚠️ '+e.message;document.getElementById('db-status').className='db-status err';}
   setTimestamps();syncStoreFields();
   ['sig-wr','sig-ret-staff','sig-ret-mgr','sig-tr-out','sig-tr-mgr-out','sig-tr-mgr-in','sig-dl'].forEach(initSig);
   addWRRow();addWRRow();addWRRow();addRetRow();addRetRow();addTrRow();addTrRow();addCHRow();addCHRow();addCHRow();
@@ -489,7 +504,7 @@ async function saveRecord(type){
   else if(type==='returns'){record.to=document.getElementById('ret-to').value;record.date=document.getElementById('ret-date').value;record.dept=document.getElementById('ret-dept').value;record.ref=document.getElementById('ret-ref').value;record.docket=document.getElementById('ret-docket').value;record.reason=document.getElementById('ret-reason').value;record.sigStaff=getSigData('sig-ret-staff');record.sigMgr=getSigData('sig-ret-mgr');record.photos=getPhotos('prev-ret');const rows=[];document.querySelectorAll('#ret-tbody tr').forEach(tr=>{const vals=Array.from(tr.querySelectorAll('input')).map(i=>i.value);if(vals.some(v=>v))rows.push(vals);});record.rows=rows;}
   else if(type==='transfer'){record.from=document.getElementById('tr-from').value;record.toStore=document.getElementById('tr-to').value;record.store=record.from;record.dept=document.getElementById('tr-dept').value;record.ref=document.getElementById('tr-ref').value;record.date=document.getElementById('tr-date').value;record.docket=document.getElementById('tr-docket').value;record.outStaffName=document.getElementById('tr-sig-out-name').value;record.sigOut=getSigData('sig-tr-out');record.sigMgrOut=getSigData('sig-tr-mgr-out');record.sigMgrIn=getSigData('sig-tr-mgr-in');record.photos=getPhotos('prev-tr');const rows=[];document.querySelectorAll('#tr-tbody tr').forEach(tr=>{const vals=Array.from(tr.querySelectorAll('input')).map(i=>i.value);if(vals.some(v=>v))rows.push(vals);});record.rows=rows;}
   else if(type==='docketlog'){record.weekEnding=document.getElementById('dl-date').value;record.ref=document.getElementById('dl-ref').value;record.manager=document.getElementById('dl-mgr').value;record.signature=getSigData('sig-dl');record.photos=getPhotos('prev-dl');const rows=[];document.querySelectorAll('#dl-tbody tr').forEach(tr=>{const row={};tr.querySelectorAll('input').forEach(inp=>{if(inp.dataset.col)row[inp.dataset.col]=inp.value;});if(Object.values(row).some(v=>v))rows.push(row);});record.rows=rows;}
-  try{await dbPut(record);allRecords=await dbGetAll();updateDBStatus();const msg=document.getElementById('success-'+type);if(msg){msg.classList.add('show');setTimeout(()=>msg.classList.remove('show'),3000);}renderReview();}catch(e){alert('Save failed: '+e.message);}
+  try{await dbPut(record);sbPushRecord(record).catch(()=>{});allRecords=await dbGetAll();updateDBStatus();const msg=document.getElementById('success-'+type);if(msg){msg.classList.add('show');setTimeout(()=>msg.classList.remove('show'),3000);}renderReview();}catch(e){alert('Save failed: '+e.message);}
 }
 
 // ================================================================
@@ -713,6 +728,7 @@ function getWeekKey(date){const d=date?new Date(date):new Date();const day=d.get
 function getWeekLabel(weekKey){const sun=new Date(weekKey+'T00:00:00');const sat=new Date(sun);sat.setDate(sat.getDate()+6);const fmt=d=>d.toLocaleDateString('en-IE',{day:'numeric',month:'short'});return fmt(sun)+' \u2013 '+fmt(sat)+' '+sat.getFullYear();}
 function getSaturdayMidnight(weekKey){const sun=new Date(weekKey+'T00:00:00');const sat=new Date(sun);sat.setDate(sat.getDate()+6);sat.setHours(23,59,59,0);return sat;}
 function openWeeksDB(){return new Promise((res,rej)=>{const req=indexedDB.open('MoriartyWeeks',1);req.onupgradeneeded=e=>{const d=e.target.result;if(!d.objectStoreNames.contains(WEEKS_STORE))d.createObjectStore(WEEKS_STORE,{keyPath:'weekKey'});};req.onsuccess=e=>res(e.target.result);req.onerror=e=>rej(e.target.error);});}
+async function syncAllToSB(){try{const all=await dbGetAll();if(!all.length)return;const rows=all.map(r=>({id:String(r.id),type:r.type,store:r.store,saved_at:r.savedAt,data:r}));await sbFetch('docket_records','POST',rows);}catch(e){}}
 async function weeksPut(week){const wdb=await openWeeksDB();return new Promise((res,rej)=>{const tx=wdb.transaction(WEEKS_STORE,'readwrite');tx.objectStore(WEEKS_STORE).put(week);tx.oncomplete=res;tx.onerror=e=>rej(e.target.error);});}
 async function weeksGetAll(){const wdb=await openWeeksDB();return new Promise((res,rej)=>{const tx=wdb.transaction(WEEKS_STORE,'readonly');const req=tx.objectStore(WEEKS_STORE).getAll();req.onsuccess=e=>res(e.target.result);req.onerror=e=>rej(e.target.error);});}
 async function weeksDelete(key){const wdb=await openWeeksDB();return new Promise((res,rej)=>{const tx=wdb.transaction(WEEKS_STORE,'readwrite');tx.objectStore(WEEKS_STORE).delete(key);tx.oncomplete=res;tx.onerror=e=>rej(e.target.error);});}
