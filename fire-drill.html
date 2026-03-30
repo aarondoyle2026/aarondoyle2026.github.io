@@ -297,24 +297,24 @@ function buildStaffGrid(){
 function initSig(){
   var canvas=document.getElementById('sig-canvas');
   if(!canvas)return;
-  sigPad=new SignaturePad(canvas,{penColor:'#1a5e2a'});
-  function resizeCanvas(){
+  function doInit(){
+    var w=canvas.parentElement.offsetWidth||canvas.offsetWidth;
+    if(w<10){setTimeout(doInit,100);return;}
     var ratio=Math.max(window.devicePixelRatio||1,1);
-    canvas.width=canvas.offsetWidth*ratio;
-    canvas.height=canvas.offsetHeight*ratio;
-    canvas.style.width=canvas.offsetWidth+'px';
-    canvas.style.height=canvas.offsetHeight+'px';
+    canvas.style.width='100%';
+    canvas.style.height='150px';
+    canvas.width=canvas.parentElement.offsetWidth*ratio;
+    canvas.height=150*ratio;
     canvas.getContext('2d').scale(ratio,ratio);
-    sigPad.clear();
+    sigPad=new SignaturePad(canvas,{penColor:'#1a5e2a',minWidth:1,maxWidth:3});
+    sigPad.addEventListener('beginStroke',function(){
+      var ph=canvas.parentElement.querySelector('.sig-placeholder');
+      if(ph)ph.style.opacity='0';
+    });
   }
-  window.addEventListener('resize',resizeCanvas);
-  setTimeout(resizeCanvas,50);
-  sigPad.addEventListener('beginStroke',function(){
-    var ph=canvas.parentElement.querySelector('.sig-placeholder');
-    if(ph)ph.style.opacity='0';
-  });
-}sigPad=new SignaturePad(canvas,{penColor:'#1a5e2a'});setTimeout(function(){resizeCanvas();},100);window.addEventListener('resize',resizeCanvas);sigPad.addEventListener('beginStroke',function(){var ph=canvas.parentElement.querySelector('.sig-placeholder');if(ph)ph.style.opacity='0';});}
-function clearSig(){if(sigPad)sigPad.clear();const ph=document.getElementById('sig-canvas').parentElement.querySelector('.sig-placeholder');if(ph)ph.style.opacity='1';}
+  setTimeout(doInit,200);
+}
+function clearSig(){if(sigPad){sigPad.clear();}var ph=document.getElementById('sig-canvas').parentElement.querySelector('.sig-placeholder');if(ph)ph.style.opacity='1';}
 
 // ================================================================
 // HELPERS
