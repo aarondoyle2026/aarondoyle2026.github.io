@@ -106,6 +106,7 @@ table.roster tbody td.total-cell{background:var(--green-light);font-family:'Mont
 .modal-roster-table .off-cell{color:#bbb;font-style:italic;font-size:10px;}
 .modal-summary{background:var(--green);color:white;border-radius:7px;padding:10px 14px;margin-top:8px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;display:flex;justify-content:space-between;}
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
 
@@ -144,7 +145,7 @@ table.roster tbody td.total-cell{background:var(--green-light);font-family:'Mont
     <div class="card-title">Department Roster</div>
     <div class="dept-tabs" id="deptTabs"></div>
     <div id="rosterContainer"></div>
-    <div class="law-note">ℹ️ <strong>Irish Working Time Act 1997 — breaks auto-deducted:</strong> &nbsp;Under 4.5hrs = no break &nbsp;·&nbsp; 4.5–6hrs = 15 min &nbsp;·&nbsp; 6–8hrs = 30 min &nbsp;·&nbsp; 8hrs+ = 1 hour<br>Enter shifts as <strong>07:00-17:00</strong> · Type <strong>OFF</strong>, <strong>D/O</strong>, <strong>AL</strong> or <strong>HOLS</strong> for days off / leave.</div>
+    <div class="law-note">ℹ️ <strong>Irish Working Time Act 1997 — breaks auto-deducted:</strong> &nbsp;Under 4.5hrs = no break &nbsp;·&nbsp; 4.5–6hrs = 15 min &nbsp;·&nbsp; 6–8hrs = 30 min &nbsp;·&nbsp; 8hrs+ = 1 hour<br>Enter shifts as <strong>07:00-17:00</strong> or <strong>7-17</strong> · Type <strong>OFF</strong>, <strong>D/O</strong>, <strong>AL</strong> or <strong>HOLS</strong> for days off / leave.</div>
   </div>
 
   <div class="card">
@@ -253,7 +254,25 @@ function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').
 // ================================================================
 function calcBreak(g){if(g>=8)return 1;if(g>6)return 0.5;if(g>=4.5)return 0.25;return 0;}
 function isOff(t){if(!t)return false;const u=t.trim().toUpperCase();return["OFF","D/O","RD","AL","SL","HOLS","LEAVE","-"].includes(u);}
-function calcNet(val){if(!val||!val.trim()||isOff(val))return null;const m=val.trim().match(/^(\d{1,2})[:.h](\d{2})\s*[-–]\s*(\d{1,2})[:.h](\d{2})$/);if(!m)return null;const s=parseInt(m[1])+parseInt(m[2])/60;let f=parseInt(m[3])+parseInt(m[4])/60;let g=f-s;if(g<0)g+=24;if(g<=0)return null;return g-calcBreak(g);}
+function parseTime(t){
+  t=t.trim();
+  // formats: 07:00, 7:00, 7h00, 07, 7 (hour only)
+  var m=t.match(/^(\d{1,2})[:.h](\d{2})$/);
+  if(m)return parseInt(m[1])+parseInt(m[2])/60;
+  m=t.match(/^(\d{1,2})$/);
+  if(m)return parseInt(m[1]);
+  return null;
+}
+function calcNet(val){
+  if(!val||!val.trim()||isOff(val))return null;
+  var parts=val.trim().split(/[-–]/);
+  if(parts.length!==2)return null;
+  var s=parseTime(parts[0]);
+  var f=parseTime(parts[1]);
+  if(s===null||f===null)return null;
+  var g=f-s;if(g<0)g+=24;if(g<=0)return null;
+  return g-calcBreak(g);
+}
 function formatH(h){if(!h||isNaN(h)||h===0)return'';const hrs=Math.floor(h);const mins=Math.round((h-hrs)*60);return mins===0?`${hrs}h`:`${hrs}h ${mins}m`;}
 function safeId(name){return name.replace(/[^a-zA-Z0-9]/g,'_');}
 
