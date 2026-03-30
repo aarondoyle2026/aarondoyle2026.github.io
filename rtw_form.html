@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -108,10 +109,12 @@ textarea{resize:vertical;min-height:60px;}
 </div>
 
 <!-- ===== FORM TAB ===== -->
+
 <div id="tab-form" class="tab-content active">
   <div class="form-success" id="form-success">✅ Return to Work form saved!</div>
 
   <!-- Employee Details -->
+
   <div class="card">
     <div class="card-title">Employee Details</div>
     <span class="field-label">Employee Name</span>
@@ -128,133 +131,155 @@ textarea{resize:vertical;min-height:60px;}
   </div>
 
   <!-- COVID Section -->
+
   <div class="card">
     <div class="card-title">COVID-19 Related (if applicable)</div>
     <div class="note-box">⚠️ Complete this section <strong>only if absence was COVID-19 related</strong></div>
 
-    <span class="field-label">Has a manager been in contact with you to complete the COVID RTW form in the last 3 days?</span>
-    <div class="radio-group">
-      <label class="radio-option"><input type="radio" name="covidContact" value="Yes"><span>Yes</span></label>
-      <label class="radio-option"><input type="radio" name="covidContact" value="No"><span>No</span></label>
-    </div>
-    <div class="inline-field">
-      <span class="field-label">Manager's Name</span>
-      <input type="text" id="f-covidMgr" placeholder="Name">
-    </div>
+```
+<span class="field-label">Has a manager been in contact with you to complete the COVID RTW form in the last 3 days?</span>
+<div class="radio-group">
+  <label class="radio-option"><input type="radio" name="covidContact" value="Yes"><span>Yes</span></label>
+  <label class="radio-option"><input type="radio" name="covidContact" value="No"><span>No</span></label>
+</div>
+<div class="inline-field">
+  <span class="field-label">Manager's Name</span>
+  <input type="text" id="f-covidMgr" placeholder="Name">
+</div>
 
-    <span class="field-label">Have you self-isolated for 7 days?</span>
-    <div class="radio-group">
-      <label class="radio-option"><input type="radio" name="selfIsolated" value="Yes"><span>Yes</span></label>
-      <label class="radio-option"><input type="radio" name="selfIsolated" value="No"><span>No</span></label>
-    </div>
+<span class="field-label">Have you self-isolated for 7 days?</span>
+<div class="radio-group">
+  <label class="radio-option"><input type="radio" name="selfIsolated" value="Yes"><span>Yes</span></label>
+  <label class="radio-option"><input type="radio" name="selfIsolated" value="No"><span>No</span></label>
+</div>
 
-    <span class="field-label">If tested — confirmation of result</span>
-    <input type="text" id="f-testResult" placeholder="e.g. Negative / Positive">
+<span class="field-label">If tested — confirmation of result</span>
+<input type="text" id="f-testResult" placeholder="e.g. Negative / Positive">
 
-    <span class="field-label">How many days since your last fever?</span>
-    <input type="text" id="f-feverDays" placeholder="Number of days">
+<span class="field-label">How many days since your last fever?</span>
+<input type="text" id="f-feverDays" placeholder="Number of days">
 
-    <span class="field-label">If you had COVID symptoms but tested negative — have you been 48 hours symptom free?</span>
-    <div class="radio-group">
-      <label class="radio-option"><input type="radio" name="symptomFree48" value="Yes"><span>Yes</span></label>
-      <label class="radio-option"><input type="radio" name="symptomFree48" value="No"><span>No</span></label>
-    </div>
+<span class="field-label">If you had COVID symptoms but tested negative — have you been 48 hours symptom free?</span>
+<div class="radio-group">
+  <label class="radio-option"><input type="radio" name="symptomFree48" value="Yes"><span>Yes</span></label>
+  <label class="radio-option"><input type="radio" name="symptomFree48" value="No"><span>No</span></label>
+</div>
+```
+
   </div>
 
   <!-- Illness Section -->
+
   <div class="card">
     <div class="card-title">Illness During Absence</div>
 
-    <span class="field-label">During your absence did you have diarrhoea or vomiting?</span>
-    <div class="radio-group">
-      <label class="radio-option"><input type="radio" name="diarrhVomit" value="Yes"><span>Yes</span></label>
-      <label class="radio-option"><input type="radio" name="diarrhVomit" value="No"><span>No</span></label>
-    </div>
+```
+<span class="field-label">During your absence did you have diarrhoea or vomiting?</span>
+<div class="radio-group">
+  <label class="radio-option"><input type="radio" name="diarrhVomit" value="Yes"><span>Yes</span></label>
+  <label class="radio-option"><input type="radio" name="diarrhVomit" value="No"><span>No</span></label>
+</div>
 
-    <span class="field-label">If yes — have you been symptom free for 48 hours?</span>
-    <div class="radio-group">
-      <label class="radio-option"><input type="radio" name="symptomFree48ill" value="Yes"><span>Yes</span></label>
-      <label class="radio-option"><input type="radio" name="symptomFree48ill" value="No"><span>No</span></label>
-    </div>
+<span class="field-label">If yes — have you been symptom free for 48 hours?</span>
+<div class="radio-group">
+  <label class="radio-option"><input type="radio" name="symptomFree48ill" value="Yes"><span>Yes</span></label>
+  <label class="radio-option"><input type="radio" name="symptomFree48ill" value="No"><span>No</span></label>
+</div>
+```
+
   </div>
 
   <!-- Notification & Doctor -->
+
   <div class="card">
     <div class="card-title">Notification & Doctor</div>
 
-    <span class="field-label">Notified on Day 1?</span>
-    <div class="radio-group">
-      <label class="radio-option"><input type="radio" name="notifiedDay1" value="Yes"><span>Yes</span></label>
-      <label class="radio-option"><input type="radio" name="notifiedDay1" value="No"><span>No</span></label>
-    </div>
-    <div class="inline-field">
-      <span class="field-label">Name</span>
-      <input type="text" id="f-notifiedName" placeholder="Who was notified">
-    </div>
+```
+<span class="field-label">Notified on Day 1?</span>
+<div class="radio-group">
+  <label class="radio-option"><input type="radio" name="notifiedDay1" value="Yes"><span>Yes</span></label>
+  <label class="radio-option"><input type="radio" name="notifiedDay1" value="No"><span>No</span></label>
+</div>
+<div class="inline-field">
+  <span class="field-label">Name</span>
+  <input type="text" id="f-notifiedName" placeholder="Who was notified">
+</div>
 
-    <span class="field-label">Did you attend a Doctor?</span>
-    <div class="radio-group">
-      <label class="radio-option"><input type="radio" name="attendedDoctor" value="Yes"><span>Yes</span></label>
-      <label class="radio-option"><input type="radio" name="attendedDoctor" value="No"><span>No</span></label>
-    </div>
-    <div class="inline-field">
-      <span class="field-label">Doctor's Name</span>
-      <input type="text" id="f-doctorName" placeholder="Doctor's name">
-    </div>
+<span class="field-label">Did you attend a Doctor?</span>
+<div class="radio-group">
+  <label class="radio-option"><input type="radio" name="attendedDoctor" value="Yes"><span>Yes</span></label>
+  <label class="radio-option"><input type="radio" name="attendedDoctor" value="No"><span>No</span></label>
+</div>
+<div class="inline-field">
+  <span class="field-label">Doctor's Name</span>
+  <input type="text" id="f-doctorName" placeholder="Doctor's name">
+</div>
+```
+
   </div>
 
   <!-- Return to Work -->
+
   <div class="card">
     <div class="card-title">Return to Work</div>
 
-    <span class="field-label">Do you feel ready to return to work at this time?</span>
-    <input type="text" id="f-readyRTW" placeholder="Yes / No / Details">
+```
+<span class="field-label">Do you feel ready to return to work at this time?</span>
+<input type="text" id="f-readyRTW" placeholder="Yes / No / Details">
 
-    <span class="field-label">Do you have a doctor's clearance note for your file?</span>
-    <div class="radio-group">
-      <label class="radio-option"><input type="radio" name="clearanceNote" value="Yes"><span>Yes</span></label>
-      <label class="radio-option"><input type="radio" name="clearanceNote" value="No"><span>No</span></label>
-    </div>
-    <div class="note-box">⚠️ <strong>If certified to self-isolate by a doctor, a fit to return letter must be provided.</strong></div>
+<span class="field-label">Do you have a doctor's clearance note for your file?</span>
+<div class="radio-group">
+  <label class="radio-option"><input type="radio" name="clearanceNote" value="Yes"><span>Yes</span></label>
+  <label class="radio-option"><input type="radio" name="clearanceNote" value="No"><span>No</span></label>
+</div>
+<div class="note-box">⚠️ <strong>If certified to self-isolate by a doctor, a fit to return letter must be provided.</strong></div>
 
-    <span class="field-label">Is there any provisions we need to make to assist you in your return to work?</span>
-    <div class="radio-group">
-      <label class="radio-option"><input type="radio" name="provisions" value="Yes"><span>Yes</span></label>
-      <label class="radio-option"><input type="radio" name="provisions" value="No"><span>No</span></label>
-    </div>
-    <span class="field-label">If yes, please detail</span>
-    <textarea id="f-provisionsDetail" placeholder="Detail any provisions required..."></textarea>
+<span class="field-label">Is there any provisions we need to make to assist you in your return to work?</span>
+<div class="radio-group">
+  <label class="radio-option"><input type="radio" name="provisions" value="Yes"><span>Yes</span></label>
+  <label class="radio-option"><input type="radio" name="provisions" value="No"><span>No</span></label>
+</div>
+<span class="field-label">If yes, please detail</span>
+<textarea id="f-provisionsDetail" placeholder="Detail any provisions required..."></textarea>
+```
+
   </div>
 
   <!-- Sign Off -->
+
   <div class="card">
     <div class="card-title">Sign Off</div>
     <div class="note-box">📌 <strong>Manager / HOD Present:</strong> I understand that falsifying information on this form will be treated as a disciplinary matter and could lead to disciplinary action being taken against me.</div>
 
-    <span class="sig-label">Employee Signature</span>
-    <div class="sig-wrap">
-      <canvas id="sig-employee"></canvas>
-      <div class="sig-placeholder">Employee signs here</div>
-    </div>
-    <div class="sig-actions"><button class="btn btn-secondary btn-sm" onclick="clearSig('employee')">Clear</button></div>
+```
+<span class="sig-label">Employee Signature</span>
+<div class="sig-wrap">
+  <canvas id="sig-employee"></canvas>
+  <div class="sig-placeholder">Employee signs here</div>
+</div>
+<div class="sig-actions"><button class="btn btn-secondary btn-sm" onclick="clearSig('employee')">Clear</button></div>
 
-    <span class="sig-label" style="margin-top:16px;">Manager Signature</span>
-    <div class="sig-wrap">
-      <canvas id="sig-manager"></canvas>
-      <div class="sig-placeholder">Manager signs here</div>
-    </div>
-    <div class="sig-actions"><button class="btn btn-secondary btn-sm" onclick="clearSig('manager')">Clear</button></div>
+<span class="sig-label" style="margin-top:16px;">Manager Signature</span>
+<div class="sig-wrap">
+  <canvas id="sig-manager"></canvas>
+  <div class="sig-placeholder">Manager signs here</div>
+</div>
+<div class="sig-actions"><button class="btn btn-secondary btn-sm" onclick="clearSig('manager')">Clear</button></div>
 
-    <span class="field-label" style="margin-top:14px;">Date</span>
-    <input type="date" id="f-signDate">
-    <span class="field-label">Manager / HOD Name</span>
-    <input type="text" id="f-hodName" placeholder="Manager name">
+<span class="field-label" style="margin-top:14px;">Date</span>
+<input type="date" id="f-signDate">
+<span class="field-label">Manager / HOD Name</span>
+<input type="text" id="f-hodName" placeholder="Manager name">
+```
+
   </div>
 
-  <button class="btn btn-primary" onclick="saveForm()">💾 Save Form</button>
+<button class="btn btn-primary" onclick="saveForm()">💾 Save Form</button>
+
 </div>
 
 <!-- ===== RECORDS TAB ===== -->
+
 <div id="tab-records" class="tab-content">
   <div class="db-status" id="db-status">Connecting...</div>
   <div class="data-tools">
@@ -266,6 +291,7 @@ textarea{resize:vertical;min-height:60px;}
 </div>
 
 <!-- RECORD MODAL -->
+
 <div class="modal-overlay" id="recordModal">
   <div class="modal">
     <div class="modal-header">
@@ -282,6 +308,7 @@ textarea{resize:vertical;min-height:60px;}
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 <script>
 // ================================================================
 // SUPABASE
@@ -329,12 +356,25 @@ function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').
 // SIGNATURES
 // ================================================================
 function initSig(id){
-  const canvas=document.getElementById('sig-'+id);if(!canvas)return;
-  const dpr=window.devicePixelRatio||1;const rect=canvas.parentElement.getBoundingClientRect();
-  canvas.width=(rect.width||340)*dpr;canvas.height=130*dpr;
-  const pad=new SignaturePad(canvas,{penColor:'#00703c'});
+  var canvas=document.getElementById('sig-'+id);
+  if(!canvas)return;
+  var pad=new SignaturePad(canvas,{penColor:'#1a5e2a'});
   sigPads[id]=pad;
-  pad.addEventListener('beginStroke',()=>{const ph=canvas.parentElement.querySelector('.sig-placeholder');if(ph)ph.style.opacity='0';});
+  function resizeCanvas(){
+    var ratio=Math.max(window.devicePixelRatio||1,1);
+    canvas.width=canvas.offsetWidth*ratio;
+    canvas.height=canvas.offsetHeight*ratio;
+    canvas.style.width=canvas.offsetWidth+'px';
+    canvas.style.height=canvas.offsetHeight+'px';
+    canvas.getContext('2d').scale(ratio,ratio);
+    pad.clear();
+  }
+  window.addEventListener('resize',resizeCanvas);
+  setTimeout(resizeCanvas,50);
+  pad.addEventListener('beginStroke',function(){
+    var ph=canvas.parentElement.querySelector('.sig-placeholder');
+    if(ph)ph.style.opacity='0';
+  });
 }
 function clearSig(id){if(sigPads[id])sigPads[id].clear();const ph=document.getElementById('sig-'+id).parentElement.querySelector('.sig-placeholder');if(ph)ph.style.opacity='1';}
 function getSig(id){const pad=sigPads[id];if(!pad||pad.isEmpty())return null;return pad.toDataURL();}
@@ -536,5 +576,6 @@ function generatePDF(r){
 async function exportJSON(){const records=await dbGetAll();if(!records.length){alert('No forms to export.');return;}const blob=new Blob([JSON.stringify({version:1,exportedAt:new Date().toISOString(),records},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='rtw-forms-backup-'+new Date().toISOString().split('T')[0]+'.json';a.click();URL.revokeObjectURL(url);}
 async function importJSON(input){const file=input.files[0];if(!file)return;const reader=new FileReader();reader.onload=async e=>{try{const data=JSON.parse(e.target.result);if(!data.records){alert('Invalid file.');return;}const ok=confirm('Import '+data.records.length+' forms?');if(!ok)return;for(const r of data.records)await dbPut(r);allRecords=await dbGetAll();updateDBStatus();renderRecords();alert('✅ '+data.records.length+' forms imported.');}catch(err){alert('Import failed: '+err.message);}};reader.readAsText(file);input.value='';}
 </script>
+
 </body>
 </html>
