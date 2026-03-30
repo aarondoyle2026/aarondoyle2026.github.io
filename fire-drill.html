@@ -294,7 +294,26 @@ function buildStaffGrid(){
 // ================================================================
 // SIGNATURE
 // ================================================================
-function initSig(){const canvas=document.getElementById('sig-canvas');const dpr=window.devicePixelRatio||1;const rect=canvas.parentElement.getBoundingClientRect();canvas.width=(rect.width||340)*dpr;canvas.height=150*dpr;sigPad=new SignaturePad(canvas,{penColor:'#1a5e2a'});sigPad.addEventListener('beginStroke',()=>{const ph=canvas.parentElement.querySelector('.sig-placeholder');if(ph)ph.style.opacity='0';});}
+function initSig(){
+  var canvas=document.getElementById('sig-canvas');
+  if(!canvas)return;
+  sigPad=new SignaturePad(canvas,{penColor:'#1a5e2a'});
+  function resizeCanvas(){
+    var ratio=Math.max(window.devicePixelRatio||1,1);
+    canvas.width=canvas.offsetWidth*ratio;
+    canvas.height=canvas.offsetHeight*ratio;
+    canvas.style.width=canvas.offsetWidth+'px';
+    canvas.style.height=canvas.offsetHeight+'px';
+    canvas.getContext('2d').scale(ratio,ratio);
+    sigPad.clear();
+  }
+  window.addEventListener('resize',resizeCanvas);
+  setTimeout(resizeCanvas,50);
+  sigPad.addEventListener('beginStroke',function(){
+    var ph=canvas.parentElement.querySelector('.sig-placeholder');
+    if(ph)ph.style.opacity='0';
+  });
+}sigPad=new SignaturePad(canvas,{penColor:'#1a5e2a'});setTimeout(function(){resizeCanvas();},100);window.addEventListener('resize',resizeCanvas);sigPad.addEventListener('beginStroke',function(){var ph=canvas.parentElement.querySelector('.sig-placeholder');if(ph)ph.style.opacity='0';});}
 function clearSig(){if(sigPad)sigPad.clear();const ph=document.getElementById('sig-canvas').parentElement.querySelector('.sig-placeholder');if(ph)ph.style.opacity='1';}
 
 // ================================================================
@@ -477,26 +496,14 @@ function generatePDF(reportIn){
   // Staff list
   if(r.staff&&r.staff.length){
     sHead('PARTICIPATING STAFF ('+r.staff.length+')');
-    const cols=3,colW=(PW-ML-MR)/cols,rowH=6;
-    r.staff.forEach((name,i)=>{
-      if(y>PH-20){doc.addPage();y=15;}
-      const col=i%cols;const row=Math.floor(i/cols);
-      if(col===0&&row>0&&i>0){}
-      const cx=ML+col*colW;const cy=y+(col===0&&i>0?0:0);
-      if(col===0&&i>0){if(i%cols===0)y+=rowH;}
-      if(i===0||i%cols===0){if(i!==0)y+=rowH;}
-      doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(...DARK);
-      doc.text((i+1)+'. '+name,cx+1,y+(col===0?0:0));
-    });
-    // Simpler approach - just list them
-    y-=rowH*(Math.ceil(r.staff.length/cols)); // reset and redo
-    for(let i=0;i<r.staff.length;i+=cols){
+    var cols=3,colW=(PW-ML-MR)/cols;
+    for(var i=0;i<r.staff.length;i+=cols){
       if(y>PH-15){doc.addPage();y=15;}
       doc.setFillColor(i%2===0?248:255,i%2===0?250:255,i%2===0?248:255);
       doc.rect(ML,y,PW-ML-MR,6,'F');
-      for(let j=0;j<cols&&i+j<r.staff.length;j++){
-        const cx=ML+j*colW+2;
-        doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(...DARK);
+      for(var j=0;j<cols&&i+j<r.staff.length;j++){
+        var cx=ML+j*colW+2;
+        doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(26,26,26);
         doc.text((i+j+1)+'. '+r.staff[i+j],cx,y+4.5,{maxWidth:colW-4});
       }
       y+=6;
@@ -525,14 +532,8 @@ function generatePDF(reportIn){
     doc.text('Moriarty Group · SuperValu · Fire Drill Report · '+(r.location||'')+'  ·  Page '+i+' of '+total,PW/2,PH-4,{align:'center'});
   }
 
-  const filename='FireDrill_'+(r.location||'Store')+'_'+(r.date||'').replace(/-/g,'')+'.pdf';
-  const blob=doc.output('blob');
-  const file=new File([blob],filename,{type:'application/pdf'});
-  if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){
-    navigator.share({title:'Fire Drill Report',files:[file]});
-  } else {
-    const link=document.createElement('a');link.href=URL.createObjectURL(blob);link.download=filename;link.click();
-  }
+  var filename='FireDrill_'+(r.location||'Store')+'_'+(r.date||'').replace(/-/g,'')+'.pdf';
+  doc.save(filename);
 }
 
 // ================================================================
