@@ -19,10 +19,6 @@ body{font-family:'DM Sans',sans-serif;background:#0d1f13;color:white;min-height:
 .tagline{font-size:12px;color:rgba(255,255,255,0.5);margin-top:10px;letter-spacing:1px;}
 
 /* Store selector */
-.store-bar{display:flex;gap:8px;padding:0 16px 20px;overflow-x:auto;scrollbar-width:none;justify-content:center;}
-.store-bar::-webkit-scrollbar{display:none;}
-.store-chip{background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);padding:6px 16px;border-radius:20px;font-size:12px;font-weight:600;white-space:nowrap;cursor:pointer;transition:all 0.2s;}
-.store-chip.active{background:#00703c;border-color:#00703c;color:white;}
 
 /* Section */
 .section{padding:0 14px 10px;}
@@ -86,13 +82,6 @@ body{font-family:'DM Sans',sans-serif;background:#0d1f13;color:white;min-height:
   <div class="date-display" id="dateline">Loading...</div>
 </div>
 
-<div class="store-bar">
-  <div class="store-chip active">All Stores</div>
-  <div class="store-chip">Balbriggan</div>
-  <div class="store-chip">Palmerstown</div>
-  <div class="store-chip">Skerries</div>
-</div>
-
 <div class="status-strip">
   <div class="status-dot"></div>
   <div class="status-text"><strong>All systems live</strong> · Data synced across all devices</div>
@@ -154,7 +143,7 @@ body{font-family:'DM Sans',sans-serif;background:#0d1f13;color:white;min-height:
 </div>
 
 <div class="footer">
-  Moriarty Group · SuperValu Store 424 · Internal Use Only
+  Moriarty Group · SuperValu · Internal Use Only
 </div>
 
 <script>
@@ -166,13 +155,7 @@ function updateClock(){
 }
 updateClock();setInterval(updateClock,1000);
 
-// Store chips (visual only - could filter in future)
-document.querySelectorAll('.store-chip').forEach(chip=>{
-  chip.addEventListener('click',()=>{
-    document.querySelectorAll('.store-chip').forEach(c=>c.classList.remove('active'));
-    chip.classList.add('active');
-  });
-});
+
 </script>
 
 </body>
