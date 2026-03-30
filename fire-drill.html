@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Moriarty Group – Fire Drill Report</title>
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+body{font-family:'DM Sans',sans-serif;background:#f4f5f0;color:#1a1f18;min-height:100vh;padding-bottom:100px;}
+.app-header{background:#1a5e2a;color:white;padding:14px 16px 12px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.2);}
+.logo-row{display:flex;align-items:center;justify-content:space-between;}
+.brand{font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;}
+.sub{font-size:11px;opacity:0.7;margin-top:1px;}
+.sv-badge{background:white;color:#1a5e2a;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;letter-spacing:0.05em;}
+.nav-tabs{display:flex;background:white;border-bottom:2px solid #d8dbd2;position:sticky;top:57px;z-index:90;}
+.nav-tab{flex:1;padding:12px 8px;font-size:11px;font-weight:700;color:#6b7266;cursor:pointer;text-align:center;border-bottom:2.5px solid transparent;margin-bottom:-2px;transition:all 0.15s;letter-spacing:0.04em;text-transform:uppercase;}
+.nav-tab.active{color:#1a5e2a;border-bottom-color:#1a5e2a;}
+.tab-content{display:none;padding:14px;}
+.tab-content.active{display:block;}
+.card{background:white;border-radius:12px;border:1px solid #d8dbd2;padding:14px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+.card-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#6b7266;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.card-title::before{content:'';display:block;width:3px;height:13px;background:#1a5e2a;border-radius:2px;}
+.field-label{font-size:10px;font-weight:700;color:#6b7266;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;margin-top:12px;display:block;}
+.field-label:first-child{margin-top:0;}
+input[type="text"],input[type="date"],input[type="time"],textarea{width:100%;background:#f4f5f0;border:1.5px solid #d8dbd2;border-radius:8px;padding:10px 12px;font-family:'DM Sans',sans-serif;font-size:15px;color:#1a1f18;outline:none;transition:border-color 0.15s;-webkit-appearance:none;}
+input:focus,textarea:focus{border-color:#1a5e2a;background:white;}
+textarea{resize:vertical;min-height:70px;}
+.row-2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+.radio-group{display:flex;gap:16px;margin:8px 0 4px;flex-wrap:wrap;}
+.radio-option{display:flex;align-items:center;gap:6px;cursor:pointer;}
+.radio-option input[type=radio]{width:20px;height:20px;accent-color:#1a5e2a;cursor:pointer;}
+.radio-option span{font-size:15px;}
+.eff-table{width:100%;border-collapse:collapse;margin-top:8px;}
+.eff-table th{background:#1a5e2a;color:white;padding:8px 6px;font-size:11px;font-weight:700;text-align:center;}
+.eff-table th:first-child{text-align:left;padding-left:10px;}
+.eff-table td{border:1px solid #d8dbd2;padding:8px 6px;text-align:center;font-size:13px;}
+.eff-table td:first-child{text-align:left;padding-left:10px;background:#f9faf7;}
+.eff-table tr:nth-child(even) td{background:#f4f5f0;}
+.eff-table tr:nth-child(even) td:first-child{background:#f0f2ee;}
+.eff-table input[type=radio]{width:20px;height:20px;accent-color:#1a5e2a;}
+.staff-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.staff-item{display:flex;align-items:center;gap:8px;}
+.staff-num{font-size:11px;font-weight:700;color:#6b7266;min-width:22px;text-align:right;}
+.staff-item input{margin:0;padding:8px 10px;font-size:13px;}
+.sig-wrap{border:1.5px solid #d8dbd2;border-radius:8px;background:white;margin-top:6px;position:relative;overflow:hidden;touch-action:none;}
+.sig-wrap canvas{display:block;width:100%;height:150px;}
+.sig-placeholder{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:12px;color:#ccc;pointer-events:none;}
+.btn{display:block;width:100%;padding:13px;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;border:none;transition:all 0.15s;text-align:center;}
+.btn-primary{background:#1a5e2a;color:white;}
+.btn-secondary{background:white;color:#1a5e2a;border:1.5px solid #1a5e2a;padding:8px;font-size:13px;}
+.btn-danger{background:white;color:#c8102e;border:1.5px solid #c8102e;}
+.btn-dark{background:#1a1f18;color:white;}
+.btn-sm{padding:7px 12px;font-size:12px;width:auto;border-radius:8px;}
+.form-success{background:#e8f5e9;border:1px solid #a5d6a7;border-radius:8px;padding:11px 14px;font-size:14px;font-weight:600;color:#2e7d32;margin-bottom:12px;display:none;align-items:center;gap:8px;}
+.form-success.show{display:flex;}
+.record-item{background:white;border:1px solid #d8dbd2;border-top:none;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;}
+.record-item:first-child{border-top:1px solid #d8dbd2;border-radius:10px 10px 0 0;}
+.record-item:last-child{border-radius:0 0 10px 10px;}
+.record-item:only-child{border-radius:10px;}
+.record-item:active{background:#f0f4f0;}
+.rec-title{font-size:13px;font-weight:700;color:#1a5e2a;}
+.rec-meta{font-size:11px;color:#6b7266;margin-top:2px;font-family:'DM Mono',monospace;}
+.rec-arrow{color:#d8dbd2;font-size:20px;}
+.empty-state{text-align:center;padding:40px 20px;color:#6b7266;}
+.empty-state .icon{font-size:38px;margin-bottom:10px;}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:1000;align-items:flex-end;}
+.modal-overlay.open{display:flex;}
+.modal{background:white;border-radius:20px 20px 0 0;padding:18px;width:100%;max-height:90vh;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+.modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.modal-title{font-size:15px;font-weight:700;}
+.modal-close{background:none;border:none;font-size:22px;cursor:pointer;color:#6b7266;padding:4px;}
+.modal-actions{display:grid;grid-template-columns:auto 1fr 1fr;gap:8px;margin-top:16px;}
+.detail-section{margin-bottom:14px;}
+.detail-section-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#1a5e2a;margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid #e8f5e9;}
+.detail-field{margin-bottom:6px;}
+.detail-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#6b7266;}
+.detail-value{font-size:13px;margin-top:1px;color:#1a1f18;line-height:1.4;}
+.detail-row-2{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.detail-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+.eff-badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700;}
+.eff-sat{background:#e8f5e9;color:#2e7d32;}
+.eff-unsat{background:#ffeaea;color:#c8102e;}
+.staff-list{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin-top:6px;}
+.staff-list-item{font-size:11px;color:#1a1f18;padding:3px 0;}
+.data-tools{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+.data-tool-btn{background:white;border:1.5px solid #d8dbd2;border-radius:10px;padding:12px;text-align:center;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.data-tool-btn .dt-icon{font-size:22px;margin-bottom:5px;}
+.data-tool-btn .dt-label{font-size:12px;font-weight:700;color:#1a1f18;}
+.data-tool-btn .dt-sub{font-size:10px;color:#6b7266;margin-top:2px;}
+.db-status{font-size:11px;color:#6b7266;text-align:center;margin-bottom:12px;font-family:'DM Mono',monospace;}
+.db-status.ok{color:#2e7d32;}
+</style>
+</head>
+<body>
+
+<div class="app-header">
+  <div class="logo-row">
+    <div><div class="brand">Moriarty Group</div><div class="sub">Fire Drill Reports · Est. 1987</div></div>
+    <div class="sv-badge">SUPERVALU</div>
+  </div>
+</div>
+
+<div class="nav-tabs">
+  <div class="nav-tab active" onclick="showTab('form',this)">🔥 New Drill</div>
+  <div class="nav-tab" onclick="showTab('records',this)">📋 Records</div>
+</div>
+
+<!-- ===== NEW REPORT ===== -->
+
+<div id="tab-form" class="tab-content active">
+  <div class="form-success" id="form-success">✅ Fire drill report saved!</div>
+
+  <div class="card">
+    <div class="card-title">Drill Details</div>
+    <div class="row-3">
+      <div><span class="field-label">Location / Store</span><input type="text" id="f-location" placeholder="e.g. Balbriggan"></div>
+      <div><span class="field-label">Fire Warden</span><input type="text" id="f-warden" placeholder="Name"></div>
+      <div><span class="field-label">Completed By</span><input type="text" id="f-completedBy" placeholder="Name"></div>
+    </div>
+    <div class="row-3" style="margin-top:10px;">
+      <div><span class="field-label">Date of Drill</span><input type="date" id="f-date"></div>
+      <div><span class="field-label">Evacuation Time</span><input type="text" id="f-evacTime" placeholder="mm:ss"></div>
+      <div><span class="field-label">Dial Code</span><input type="text" id="f-dialCode" placeholder="e.g. 991417"></div>
+    </div>
+    <span class="field-label">Assembly Point Location</span>
+    <input type="text" id="f-assembly" placeholder="e.g. Car park, front of store">
+    <span class="field-label">Departments / Personnel who Participated</span>
+    <textarea id="f-departments" style="min-height:50px;"></textarea>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Alarm & Evacuation</div>
+    <span class="field-label">Was an Alarm sounded for Drill?</span>
+    <div class="radio-group">
+      <label class="radio-option"><input type="radio" name="alarmSounded" value="YES"><span>YES</span></label>
+      <label class="radio-option"><input type="radio" name="alarmSounded" value="NO"><span>NO</span></label>
+    </div>
+    <span class="field-label">Fire Alarm Activation Method</span>
+    <div class="radio-group">
+      <label class="radio-option"><input type="radio" name="activationMethod" value="Detector"><span>Detector</span></label>
+      <label class="radio-option"><input type="radio" name="activationMethod" value="Call Point"><span>Call Point</span></label>
+    </div>
+    <span class="field-label">Was Evacuation of all areas completed?</span>
+    <div class="radio-group">
+      <label class="radio-option"><input type="radio" name="evacuationCompleted" value="YES"><span>YES</span></label>
+      <label class="radio-option"><input type="radio" name="evacuationCompleted" value="NO"><span>NO</span></label>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Effectiveness of Drill</div>
+    <table class="eff-table">
+      <thead><tr><th></th><th>Satisfactory</th><th>Unsatisfactory</th></tr></thead>
+      <tbody>
+        <tr><td>1. Personnel Response</td><td><input type="radio" name="eff1" value="Satisfactory"></td><td><input type="radio" name="eff1" value="Unsatisfactory"></td></tr>
+        <tr><td>2. Customer / Visitor Response</td><td><input type="radio" name="eff2" value="Satisfactory"></td><td><input type="radio" name="eff2" value="Unsatisfactory"></td></tr>
+        <tr><td>3. Personnel familiar with duties</td><td><input type="radio" name="eff3" value="Satisfactory"></td><td><input type="radio" name="eff3" value="Unsatisfactory"></td></tr>
+        <tr><td>4. Speed / Time of Evacuation</td><td><input type="radio" name="eff4" value="Satisfactory"></td><td><input type="radio" name="eff4" value="Unsatisfactory"></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Alarm Monitoring</div>
+    <span class="field-label">Alarm Monitoring Company Notified?</span>
+    <div class="radio-group">
+      <label class="radio-option"><input type="radio" name="alarmCompany" value="YES"><span>YES</span></label>
+      <label class="radio-option"><input type="radio" name="alarmCompany" value="NO"><span>NO</span></label>
+    </div>
+    <span class="field-label">Contact Name(s)</span>
+    <input type="text" id="f-contactNames">
+    <span class="field-label">System Reset &amp; Signal Verification</span>
+    <div class="radio-group">
+      <label class="radio-option"><input type="radio" name="systemReset" value="YES"><span>YES</span></label>
+      <label class="radio-option"><input type="radio" name="systemReset" value="NO"><span>NO</span></label>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Participating Staff (up to 50)</div>
+    <div class="staff-grid" id="staff-grid"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Sign Off</div>
+    <span class="field-label">Next Drill Date</span>
+    <input type="date" id="f-nextDate">
+    <span class="field-label">Signature (sign with finger)</span>
+    <div class="sig-wrap">
+      <canvas id="sig-canvas"></canvas>
+      <div class="sig-placeholder">Sign here with finger</div>
+    </div>
+    <div style="margin-top:6px;"><button class="btn btn-secondary btn-sm" onclick="clearSig()">Clear Signature</button></div>
+    <span class="field-label" style="margin-top:12px;">Date Signed</span>
+    <input type="date" id="f-signDate">
+  </div>
+
+<button class="btn btn-primary" onclick="saveReport()">💾 Save Report</button>
+<button class="btn btn-dark" style="margin-top:8px;" onclick="generatePDF(null)">🖨 Generate PDF Now</button>
+
+</div>
+
+<!-- ===== RECORDS ===== -->
+
+<div id="tab-records" class="tab-content">
+  <div class="db-status" id="db-status">Connecting...</div>
+  <div class="data-tools">
+    <button class="data-tool-btn" onclick="exportJSON()"><div class="dt-icon">💾</div><div class="dt-label">Backup</div><div class="dt-sub">Download JSON</div></button>
+    <button class="data-tool-btn" onclick="document.getElementById('import-file').click()"><div class="dt-icon">📂</div><div class="dt-label">Restore</div><div class="dt-sub">Import JSON</div></button>
+  </div>
+  <input type="file" id="import-file" accept=".json" style="display:none" onchange="importJSON(this)">
+  <div id="records-list"></div>
+</div>
+
+<!-- RECORD MODAL -->
+
+<div class="modal-overlay" id="recordModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="modal-title">Fire Drill Report</div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div id="modal-body"></div>
+    <div class="modal-actions">
+      <button class="btn btn-danger btn-sm" onclick="deleteRecord()">🗑</button>
+      <button class="btn btn-dark btn-sm" onclick="printActiveRecord()">🖨 Print PDF</button>
+      <button class="btn btn-secondary btn-sm" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ================================================================
+// SUPABASE
+// ================================================================
+const SB_URL='https://mnebkteiwjxbbmnfotse.supabase.co';
+const SB_KEY='sb_publishable_eutRHOftOW4ZJNlVrDKXOg_XtnBQ7cM';
+function sbFetch(path,method,body){return fetch(SB_URL+'/rest/v1/'+path,{method:method||'GET',headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':method==='POST'?'resolution=merge-duplicates':''},body:body?JSON.stringify(body):undefined});}
+function sbPush(r){return sbFetch('fire_drill_reports','POST',[{id:String(r.id),location:r.location||'',saved_at:r.savedAt,data:r}]).catch(()=>{});}
+async function sbLoadAll(){try{const res=await sbFetch('fire_drill_reports?order=saved_at.desc','GET');const rows=await res.json();if(!rows||rows.error)return null;return rows.map(r=>({...r.data,id:r.data.id||r.id}));}catch(e){return null;}}
+
+// ================================================================
+// DB
+// ================================================================
+const DB_NAME='MoriartyFireDrills',DB_VERSION=1,STORE_NAME='reports';
+let db=null,allRecords=[],activeRecordId=null;
+function openDB(){return new Promise((res,rej)=>{const req=indexedDB.open(DB_NAME,DB_VERSION);req.onupgradeneeded=e=>{const d=e.target.result;if(!d.objectStoreNames.contains(STORE_NAME))d.createObjectStore(STORE_NAME,{keyPath:'id'});};req.onsuccess=e=>{db=e.target.result;res(db);};req.onerror=e=>rej(e.target.error);});}
+function dbPut(r){return new Promise((res,rej)=>{const tx=db.transaction(STORE_NAME,'readwrite');tx.objectStore(STORE_NAME).put(r);tx.oncomplete=res;tx.onerror=e=>rej(e.target.error);});}
+function dbGetAll(){return new Promise((res,rej)=>{const tx=db.transaction(STORE_NAME,'readonly');const req=tx.objectStore(STORE_NAME).getAll();req.onsuccess=e=>res(e.target.result);req.onerror=e=>rej(e.target.error);});}
+function dbDelete(id){return new Promise((res,rej)=>{const tx=db.transaction(STORE_NAME,'readwrite');tx.objectStore(STORE_NAME).delete(id);tx.oncomplete=res;tx.onerror=e=>rej(e.target.error);});}
+
+// ================================================================
+// INIT
+// ================================================================
+let sigPad=null;
+window.addEventListener('DOMContentLoaded',async()=>{
+  buildStaffGrid();
+  initSig();
+  const today=new Date().toISOString().split('T')[0];
+  document.getElementById('f-date').value=today;
+  document.getElementById('f-signDate').value=today;
+  try{
+    await openDB();
+    const sbData=await sbLoadAll();
+    if(sbData&&sbData.length){
+      allRecords=sbData;
+      for(const r of sbData){try{await dbPut(r);}catch(e){}}
+    } else {
+      allRecords=await dbGetAll();
+    }
+    updateDBStatus();
+  }catch(e){document.getElementById('db-status').textContent='⚠️ '+e.message;}
+  renderRecords();
+});
+
+function updateDBStatus(){const el=document.getElementById('db-status');el.textContent='🟢 '+allRecords.length+' report'+(allRecords.length!==1?'s':'')+' saved';el.className='db-status ok';}
+function showTab(name,el){document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));document.getElementById('tab-'+name).classList.add('active');el.classList.add('active');if(name==='records')renderRecords();}
+
+// ================================================================
+// STAFF GRID
+// ================================================================
+function buildStaffGrid(){
+  const grid=document.getElementById('staff-grid');
+  let html='';
+  for(let i=1;i<=50;i++){html+='<div class="staff-item"><span class="staff-num">'+i+'.</span><input type="text" id="f-s'+i+'" placeholder="Staff name"></div>';}
+  grid.innerHTML=html;
+}
+
+// ================================================================
+// SIGNATURE
+// ================================================================
+function initSig(){const canvas=document.getElementById('sig-canvas');const dpr=window.devicePixelRatio||1;const rect=canvas.parentElement.getBoundingClientRect();canvas.width=(rect.width||340)*dpr;canvas.height=150*dpr;sigPad=new SignaturePad(canvas,{penColor:'#1a5e2a'});sigPad.addEventListener('beginStroke',()=>{const ph=canvas.parentElement.querySelector('.sig-placeholder');if(ph)ph.style.opacity='0';});}
+function clearSig(){if(sigPad)sigPad.clear();const ph=document.getElementById('sig-canvas').parentElement.querySelector('.sig-placeholder');if(ph)ph.style.opacity='1';}
+
+// ================================================================
+// HELPERS
+// ================================================================
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function g(id){const el=document.getElementById(id);return el?el.value.trim():'';}
+function getRadio(name){const el=document.querySelector('input[name="'+name+'"]:checked');return el?el.value:'';}
+
+// ================================================================
+// COLLECT
+// ================================================================
+function collectReport(){
+  const staff=[];
+  for(let i=1;i<=50;i++){const v=g('f-s'+i);if(v)staff.push(v);}
+  return{
+    id:Date.now(),savedAt:new Date().toISOString(),
+    location:g('f-location'),warden:g('f-warden'),completedBy:g('f-completedBy'),
+    date:g('f-date'),evacTime:g('f-evacTime'),dialCode:g('f-dialCode'),
+    assembly:g('f-assembly'),departments:g('f-departments'),
+    alarmSounded:getRadio('alarmSounded'),activationMethod:getRadio('activationMethod'),
+    evacuationCompleted:getRadio('evacuationCompleted'),
+    eff1:getRadio('eff1'),eff2:getRadio('eff2'),eff3:getRadio('eff3'),eff4:getRadio('eff4'),
+    alarmCompany:getRadio('alarmCompany'),contactNames:g('f-contactNames'),systemReset:getRadio('systemReset'),
+    staff,nextDate:g('f-nextDate'),signDate:g('f-signDate'),
+    signature:sigPad&&!sigPad.isEmpty()?sigPad.toDataURL():null
+  };
+}
+
+// ================================================================
+// SAVE
+// ================================================================
+async function saveReport(){
+  const report=collectReport();
+  try{
+    await dbPut(report);
+    sbPush(report).catch(()=>{});
+    allRecords=await dbGetAll();
+    updateDBStatus();
+    const msg=document.getElementById('form-success');
+    msg.classList.add('show');setTimeout(()=>msg.classList.remove('show'),3000);
+    renderRecords();
+  }catch(e){alert('Save failed: '+e.message);}
+}
+
+// ================================================================
+// RECORDS LIST
+// ================================================================
+function renderRecords(){
+  const list=document.getElementById('records-list');
+  if(!allRecords.length){list.innerHTML='<div class="empty-state"><div class="icon">🔥</div><p>No fire drill reports saved yet.<br>Complete a drill form to get started.</p></div>';return;}
+  const sorted=allRecords.slice().sort((a,b)=>b.id-a.id);
+  const grouped={};
+  sorted.forEach(r=>{const loc=r.location||'Unknown Location';if(!grouped[loc])grouped[loc]=[];grouped[loc].push(r);});
+  let html='';
+  Object.keys(grouped).sort().forEach(loc=>{
+    html+='<div style="margin-bottom:20px;"><div style="background:#1a5e2a;color:white;padding:9px 13px;border-radius:10px 10px 0 0;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;display:flex;justify-content:space-between;"><span>📍 '+esc(loc)+'</span><span>'+grouped[loc].length+' drill'+(grouped[loc].length!==1?'s':'')+'</span></div>';
+    grouped[loc].forEach(r=>{
+      const allEff=[r.eff1,r.eff2,r.eff3,r.eff4].filter(Boolean);
+      const unsatCount=allEff.filter(e=>e==='Unsatisfactory').length;
+      const statusIcon=unsatCount>0?'⚠️':'✅';
+      const staffCount=r.staff?r.staff.length:0;
+      html+='<div class="record-item" onclick="openRecord('+r.id+')">';
+      html+='<div><div class="rec-title">'+statusIcon+' '+esc(r.date||r.savedAt.split('T')[0])+(r.warden?' · '+esc(r.warden):'')+'</div>';
+      html+='<div class="rec-meta">'+(r.evacTime?'⏱ '+r.evacTime+'  ':'')+(staffCount?'👥 '+staffCount+' staff  ':'')+(r.signature?'✍️ signed':'')+'</div></div>';
+      html+='<div class="rec-arrow">›</div></div>';
+    });
+    html+='</div>';
+  });
+  list.innerHTML=html;
+}
+
+// ================================================================
+// RECORD MODAL
+// ================================================================
+function openRecord(id){
+  const r=allRecords.find(x=>x.id===id);if(!r)return;
+  activeRecordId=id;
+  document.getElementById('modal-title').textContent='Fire Drill · '+(r.location||'');
+  function df(label,value){if(!value)return'';return'<div class="detail-field"><div class="detail-label">'+label+'</div><div class="detail-value">'+esc(value)+'</div></div>';}
+  function rb(label,value){if(!value)return'';const sat=value==='Satisfactory'||value==='YES';return'<div class="detail-field"><div class="detail-label">'+label+'</div><div class="detail-value"><span class="eff-badge '+(sat?'eff-sat':'eff-unsat')+'">'+esc(value)+'</span></div></div>';}
+  let html='';
+  html+='<div style="background:#1a1f18;color:white;border-radius:8px;padding:12px 14px;margin-bottom:14px;">';
+  html+='<div style="font-size:10px;opacity:0.5;letter-spacing:0.1em;">FIRE DRILL REPORT</div>';
+  html+='<div style="font-size:16px;font-weight:700;margin-top:2px;">'+(r.location||'')+'</div>';
+  html+='<div style="font-size:12px;opacity:0.7;margin-top:4px;">'+(r.date||'')+(r.warden?' · Fire Warden: '+esc(r.warden):'')+'</div>';
+  html+='</div>';
+  html+='<div class="detail-section"><div class="detail-section-title">Drill Details</div>';
+  html+='<div class="detail-row-3">'+df('Location',r.location)+df('Fire Warden',r.warden)+df('Completed By',r.completedBy)+'</div>';
+  html+='<div class="detail-row-3" style="margin-top:6px;">'+df('Date',r.date)+df('Evacuation Time',r.evacTime)+df('Dial Code',r.dialCode)+'</div>';
+  html+=df('Assembly Point',r.assembly)+df('Departments',r.departments)+'</div>';
+  html+='<div class="detail-section"><div class="detail-section-title">Alarm & Evacuation</div>';
+  html+='<div class="detail-row-3">'+rb('Alarm Sounded',r.alarmSounded)+df('Activation Method',r.activationMethod)+rb('Full Evacuation',r.evacuationCompleted)+'</div></div>';
+  html+='<div class="detail-section"><div class="detail-section-title">Effectiveness</div>';
+  html+='<div class="detail-row-2">'+rb('1. Personnel Response',r.eff1)+rb('2. Customer/Visitor Response',r.eff2)+rb('3. Familiar with Duties',r.eff3)+rb('4. Speed of Evacuation',r.eff4)+'</div></div>';
+  html+='<div class="detail-section"><div class="detail-section-title">Alarm Monitoring</div>';
+  html+='<div class="detail-row-3">'+rb('Company Notified',r.alarmCompany)+df('Contact Names',r.contactNames)+rb('System Reset',r.systemReset)+'</div></div>';
+  if(r.staff&&r.staff.length){
+    html+='<div class="detail-section"><div class="detail-section-title">Participating Staff ('+r.staff.length+')</div>';
+    html+='<div class="staff-list">';
+    r.staff.forEach((s,i)=>{html+='<div class="staff-list-item"><span style="color:#6b7266;font-size:10px;">'+(i+1)+'. </span>'+esc(s)+'</div>';});
+    html+='</div></div>';
+  }
+  html+='<div class="detail-section"><div class="detail-section-title">Sign Off</div>';
+  html+='<div class="detail-row-2">'+df('Next Drill Date',r.nextDate)+df('Date Signed',r.signDate)+'</div>';
+  if(r.signature){html+='<div style="margin-top:8px;"><div class="detail-label">Signature</div><img src="'+r.signature+'" style="max-width:200px;height:70px;object-fit:contain;border:1px solid #d8dbd2;border-radius:6px;background:white;display:block;margin-top:4px;"></div>';}
+  html+='</div>';
+  document.getElementById('modal-body').innerHTML=html;
+  document.getElementById('recordModal').classList.add('open');
+}
+function closeModal(){document.getElementById('recordModal').classList.remove('open');activeRecordId=null;}
+async function deleteRecord(){if(!confirm('Delete this report? This cannot be undone.'))return;try{await dbDelete(activeRecordId);allRecords=await dbGetAll();updateDBStatus();closeModal();renderRecords();}catch(e){alert('Delete failed: '+e.message);}}
+function printActiveRecord(){const r=allRecords.find(x=>x.id===activeRecordId);if(r)generatePDF(r);}
+
+// ================================================================
+// PDF — Faithful fire drill report layout
+// ================================================================
+function generatePDF(reportIn){
+  const r=reportIn||collectReport();
+  const {jsPDF}=window.jspdf;
+  const doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+  const GREEN=[26,94,42],DARK=[26,31,24],MUTED=[107,114,102],LIGHT=[232,245,233],RED=[200,16,46];
+  const PW=210,PH=297,ML=15,MR=15;
+  let y=15;
+
+  // Header
+  doc.setFillColor(...GREEN);doc.rect(0,0,PW,35,'F');
+  doc.setTextColor(255,255,255);
+  doc.setFontSize(18);doc.setFont('helvetica','bold');doc.text('MORIARTY GROUP',ML,13);
+  doc.setFontSize(8);doc.setFont('helvetica','normal');doc.text('ESTD 1987  ·  SUPERVALU',ML,19);
+  doc.setFontSize(13);doc.setFont('helvetica','bold');doc.text('FIRE DRILL REPORT',PW-MR,13,{align:'right'});
+  doc.setFontSize(8);doc.setFont('helvetica','normal');doc.text(r.date||'',PW-MR,19,{align:'right'});
+  y=43;
+
+  // Info bar
+  doc.setFillColor(...LIGHT);doc.rect(ML,y,PW-ML-MR,14,'F');
+  doc.setDrawColor(...GREEN);doc.setLineWidth(0.4);doc.rect(ML,y,PW-ML-MR,14);
+  doc.setFontSize(7.5);doc.setFont('helvetica','bold');doc.setTextColor(...DARK);
+  const infoItems=[['LOCATION',r.location],['FIRE WARDEN',r.warden],['COMPLETED BY',r.completedBy],['DIAL CODE',r.dialCode]];
+  const iw=(PW-ML-MR)/4;
+  infoItems.forEach(([label,val],i)=>{const x=ML+i*iw+2;doc.setFont('helvetica','bold');doc.setFontSize(6.5);doc.setTextColor(...MUTED);doc.text(label,x,y+5);doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(...DARK);doc.text(String(val||'—'),x,y+11);});
+  y+=20;
+
+  // Date / Evac / Assembly row
+  doc.setFillColor(248,250,248);doc.rect(ML,y,PW-ML-MR,10,'F');
+  doc.setLineWidth(0.3);doc.setDrawColor(200,200,200);doc.rect(ML,y,PW-ML-MR,10);
+  const row2Items=[['DATE OF DRILL',r.date],['EVACUATION TIME',r.evacTime],['ASSEMBLY POINT',r.assembly],['NEXT DRILL DATE',r.nextDate]];
+  row2Items.forEach(([label,val],i)=>{const x=ML+i*(PW-ML-MR)/4+2;doc.setFont('helvetica','bold');doc.setFontSize(6);doc.setTextColor(...MUTED);doc.text(label,x,y+4);doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(...DARK);doc.text(String(val||'—'),x,y+8.5);});
+  y+=16;
+
+  function sHead(title){if(y>PH-30){doc.addPage();y=15;}doc.setFillColor(...GREEN);doc.rect(ML,y,PW-ML-MR,7,'F');doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(255,255,255);doc.text(title,ML+3,y+5);y+=10;}
+  function field(label,value,indent){if(y>PH-20){doc.addPage();y=15;}const x=ML+(indent?4:0);doc.setFont('helvetica','bold');doc.setFontSize(7);doc.setTextColor(...MUTED);doc.text(label,x,y);y+=4;doc.setLineWidth(0.2);doc.setDrawColor(200,200,200);doc.line(x,y,PW-MR,y);if(value){doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(...DARK);const lines=doc.splitTextToSize(value,PW-ML-MR-(indent?4:0)-2);lines.forEach(l=>{if(y>PH-20){doc.addPage();y=15;}doc.text(l,x+1,y+4);y+=5;});y+=3;}else{y+=8;}}
+  function yesNo(label,value,x,yy){doc.setFont('helvetica','bold');doc.setFontSize(7);doc.setTextColor(...MUTED);doc.text(label,x,yy);doc.setFont('helvetica','bold');doc.setFontSize(9);if(value==='YES'){doc.setTextColor(...GREEN);doc.text('YES',x,yy+6);}else if(value==='NO'){doc.setTextColor(...RED);doc.text('NO',x,yy+6);}else{doc.setTextColor(...MUTED);doc.text('—',x,yy+6);}}
+  function effRow(label,value,yy){doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(...DARK);doc.text(label,ML+3,yy+5);const sat=value==='Satisfactory';const col=!value?MUTED:(sat?GREEN:RED);doc.setFillColor(...col);doc.rect(PW-MR-28,yy+1,28,6,'F');doc.setFont('helvetica','bold');doc.setFontSize(7);doc.setTextColor(255,255,255);doc.text(value||'—',PW-MR-14,yy+5,{align:'center'});}
+
+  sHead('ALARM & EVACUATION');
+  if(y>PH-40){doc.addPage();y=15;}
+  const ay=y;
+  yesNo('ALARM SOUNDED',r.alarmSounded,ML+2,ay);
+  yesNo('EVACUATION COMPLETED',r.evacuationCompleted,ML+50,ay);
+  doc.setFont('helvetica','bold');doc.setFontSize(7);doc.setTextColor(...MUTED);doc.text('ACTIVATION METHOD',ML+110,ay);
+  doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(...DARK);doc.text(r.activationMethod||'—',ML+110,ay+6);
+  y+=18;
+
+  if(r.departments){field('DEPARTMENTS / PERSONNEL WHO PARTICIPATED',r.departments);}
+
+  sHead('EFFECTIVENESS OF DRILL');
+  const effItems=[['1. Personnel Response',r.eff1],['2. Customer / Visitor Response',r.eff2],['3. Personnel familiar with duties',r.eff3],['4. Speed / Time of Evacuation',r.eff4]];
+  effItems.forEach(([label,val])=>{if(y>PH-20){doc.addPage();y=15;}doc.setFillColor(248,250,248);doc.rect(ML,y,PW-ML-MR,8,'F');doc.setDrawColor(220,220,220);doc.setLineWidth(0.2);doc.rect(ML,y,PW-ML-MR,8);effRow(label,val,y);y+=9;});
+  y+=4;
+
+  sHead('ALARM MONITORING');
+  if(y>PH-30){doc.addPage();y=15;}
+  const bmy=y;
+  yesNo('MONITORING COMPANY NOTIFIED',r.alarmCompany,ML+2,bmy);
+  yesNo('SYSTEM RESET & VERIFIED',r.systemReset,ML+90,bmy);
+  y+=18;
+  if(r.contactNames){field('CONTACT NAME(S)',r.contactNames);}
+
+  // Staff list
+  if(r.staff&&r.staff.length){
+    sHead('PARTICIPATING STAFF ('+r.staff.length+')');
+    const cols=3,colW=(PW-ML-MR)/cols,rowH=6;
+    r.staff.forEach((name,i)=>{
+      if(y>PH-20){doc.addPage();y=15;}
+      const col=i%cols;const row=Math.floor(i/cols);
+      if(col===0&&row>0&&i>0){}
+      const cx=ML+col*colW;const cy=y+(col===0&&i>0?0:0);
+      if(col===0&&i>0){if(i%cols===0)y+=rowH;}
+      if(i===0||i%cols===0){if(i!==0)y+=rowH;}
+      doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(...DARK);
+      doc.text((i+1)+'. '+name,cx+1,y+(col===0?0:0));
+    });
+    // Simpler approach - just list them
+    y-=rowH*(Math.ceil(r.staff.length/cols)); // reset and redo
+    for(let i=0;i<r.staff.length;i+=cols){
+      if(y>PH-15){doc.addPage();y=15;}
+      doc.setFillColor(i%2===0?248:255,i%2===0?250:255,i%2===0?248:255);
+      doc.rect(ML,y,PW-ML-MR,6,'F');
+      for(let j=0;j<cols&&i+j<r.staff.length;j++){
+        const cx=ML+j*colW+2;
+        doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(...DARK);
+        doc.text((i+j+1)+'. '+r.staff[i+j],cx,y+4.5,{maxWidth:colW-4});
+      }
+      y+=6;
+    }
+    y+=6;
+  }
+
+  // Signature page
+  doc.addPage();y=20;
+  sHead('SIGN OFF');
+  y+=5;
+  doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(...DARK);
+  doc.text('Completed by: '+(r.completedBy||''),ML,y);doc.text('Date: '+(r.signDate||''),ML+90,y);y+=8;
+  doc.text('Next scheduled drill: '+(r.nextDate||'—'),ML,y);y+=10;
+  doc.setDrawColor(200,200,200);doc.rect(ML,y,90,28);
+  if(r.signature){try{doc.addImage(r.signature,'PNG',ML+1,y+1,88,26);}catch(e){}}
+  doc.setFontSize(7);doc.setTextColor(...MUTED);doc.text('Authorised Signature',ML,y+32);
+  doc.text('Date: '+(r.signDate||''),ML+95,y+32);
+
+  // Footer on all pages
+  const total=doc.getNumberOfPages();
+  for(let i=1;i<=total;i++){
+    doc.setPage(i);
+    doc.setFillColor(...GREEN);doc.rect(0,PH-10,PW,10,'F');
+    doc.setFont('helvetica','normal');doc.setFontSize(7);doc.setTextColor(255,255,255);
+    doc.text('Moriarty Group · SuperValu · Fire Drill Report · '+(r.location||'')+'  ·  Page '+i+' of '+total,PW/2,PH-4,{align:'center'});
+  }
+
+  const filename='FireDrill_'+(r.location||'Store')+'_'+(r.date||'').replace(/-/g,'')+'.pdf';
+  const blob=doc.output('blob');
+  const file=new File([blob],filename,{type:'application/pdf'});
+  if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){
+    navigator.share({title:'Fire Drill Report',files:[file]});
+  } else {
+    const link=document.createElement('a');link.href=URL.createObjectURL(blob);link.download=filename;link.click();
+  }
+}
+
+// ================================================================
+// BACKUP / RESTORE
+// ================================================================
+async function exportJSON(){const records=await dbGetAll();if(!records.length){alert('No reports to export.');return;}const blob=new Blob([JSON.stringify({version:1,exportedAt:new Date().toISOString(),records},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='fire-drill-backup-'+new Date().toISOString().split('T')[0]+'.json';a.click();URL.revokeObjectURL(url);}
+async function importJSON(input){const file=input.files[0];if(!file)return;const reader=new FileReader();reader.onload=async e=>{try{const data=JSON.parse(e.target.result);if(!data.records){alert('Invalid file.');return;}const ok=confirm('Import '+data.records.length+' reports?');if(!ok)return;for(const r of data.records)await dbPut(r);allRecords=await dbGetAll();updateDBStatus();renderRecords();alert('✅ '+data.records.length+' reports imported.');}catch(err){alert('Import failed: '+err.message);}};reader.readAsText(file);input.value='';}
+</script>
+
+</body>
+</html>
