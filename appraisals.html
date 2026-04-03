@@ -22,7 +22,7 @@ body{font-family:'Inter',sans-serif;background:#f4f6f4;color:#1a1a1a;min-height:
 .category-section{padding:16px 16px 8px;}
 .category-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#666;padding:0 4px;margin-bottom:10px;}
 .form-grid{display:flex;flex-direction:column;gap:8px;}
-.form-card{background:white;border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:14px;cursor:pointer;border:1px solid #d0d0d0;}
+.form-card{background:white;border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:14px;cursor:pointer;border:1px solid #d0d0d0;-webkit-user-select:none;user-select:none;}
 .form-card:active{transform:scale(0.98);background:#e8f5ee;}
 .form-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
 .form-info{flex:1;}
@@ -289,7 +289,7 @@ textarea.field-input{resize:vertical;min-height:80px;}
 
   <div class="section-title">Section A – Performance Review (Part 1)</div>
   <div style="overflow-x:auto">
-  <table class="rating-table" id="ae-perf1-table">
+  <table class="rating-table">
     <thead><tr><th style="min-width:130px">Area</th><th colspan="2">Team Member</th><th colspan="2" class="mgr-col">Manager</th></tr>
     <tr><th></th><th style="width:40px">Rating</th><th>Comments</th><th style="width:40px" class="mgr-col">Rating</th><th class="mgr-col">Comments</th></tr></thead>
     <tbody id="ae-perf1-body"></tbody>
@@ -537,14 +537,6 @@ function collectFields(formId){
   for(var ri=0;ri<radios.length;ri++){data['radio_'+radios[ri].name]=radios[ri].value;}
   return data;
 }
-function restoreFields(formId,data){
-  if(!data)return;
-  var scr=document.getElementById(formId);if(!scr)return;
-  var inputs=scr.querySelectorAll('input[type=text],input[type=date],input[type=number],textarea');
-  for(var i=0;i<inputs.length;i++){var inp=inputs[i];var key=inp.id||('inp_'+i);if(data[key]!==undefined)inp.value=data[key];}
-  var allRadios=scr.querySelectorAll('input[type=radio]');
-  for(var ri=0;ri<allRadios.length;ri++){var rad=allRadios[ri];var rk='radio_'+rad.name;if(data[rk]!==undefined&&rad.value===data[rk])rad.checked=true;}
-}
 function collectSigs(formId){
   var scr=document.getElementById(formId);if(!scr)return[];
   var sigs=[];
@@ -571,7 +563,7 @@ function saveForm(formId){
     fieldData:fieldData,
     signatures:signatures
   };
-  var sbRow={id:String(rec.id),form_id:formId,saved_at:rec.savedAt,data:{employeeName:empName,fieldData:fieldData,signatures:signatures.map(function(s){return{id:s.id,hasSignature:s.hasSignature};}) }};
+  var sbRow={id:String(rec.id),form_id:formId,saved_at:rec.savedAt,data:{employeeName:empName,fieldData:fieldData,signatures:signatures.map(function(s){return{id:s.id,hasSignature:s.hasSignature};})}};
   dbPut(rec).then(function(){
     return sbFetch('appraisal_records','POST',[sbRow]);
   }).then(function(){
@@ -589,7 +581,6 @@ function loadRecords(formId){
   var container=document.getElementById('records-list-'+formId);
   var section=document.getElementById('records-'+formId);
   if(!container)return;
-  /* Try Supabase first */
   sbFetch('appraisal_records?form_id=eq.'+formId+'&order=saved_at.desc','GET')
   .then(function(r){return r.json();})
   .then(function(rows){
@@ -598,7 +589,6 @@ function loadRecords(formId){
       return{id:r.id,savedAt:r.saved_at,employeeName:(r.data&&r.data.employeeName)||'',fieldData:(r.data&&r.data.fieldData)||{},signatures:(r.data&&r.data.signatures)||[]};
     }));
   }).catch(function(){
-    /* Fall back to local */
     if(!db)return;
     dbGetAll().then(function(recs){
       var filtered=recs.filter(function(r){return r.formId===formId;}).sort(function(a,b){return a.savedAt<b.savedAt?1:-1;});
@@ -615,17 +605,15 @@ function renderRecords(container,section,recs){
     var r=recs[i];
     var dt=new Date(r.savedAt);
     var ts=dt.toLocaleString('en-IE',{weekday:'short',day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',hour12:false});
-    html+='<div class="record-item" onclick="toggleRecord(this)">';
+    html+='<div class="record-item" data-open="0" onclick="toggleRecord(this)">';
     html+='<div class="record-meta">&#128100; '+(r.employeeName||'Unnamed')+'</div>';
     html+='<div class="record-sub">'+ts+'</div>';
     html+='<div class="record-detail">';
-    /* field data */
     var keys=Object.keys(r.fieldData||{});
     for(var ki=0;ki<keys.length;ki++){
       var lbl=keys[ki].replace(/^(ae-|am-|6m-|3m-|sig-)/,'').replace(/-/g,' ');
       html+='<div class="detail-row"><span class="dk">'+esc(lbl)+'</span><span class="dv">'+esc(String(r.fieldData[keys[ki]]))+'</span></div>';
     }
-    /* sigs */
     if(r.signatures&&r.signatures.length){
       var hasSig=false;
       for(var si=0;si<r.signatures.length;si++){if(r.signatures[si].dataUrl){hasSig=true;break;}}
@@ -652,10 +640,8 @@ function deleteRecord(e,btn){
   e.stopPropagation();
   if(!confirm('Delete this record?'))return;
   var id=btn.getAttribute('data-delid');
-  /* try numeric id for local */
   var numId=parseInt(id,10);
   dbDelete(isNaN(numId)?id:numId).catch(function(){});
-  /* also delete from Supabase */
   sbFetch('appraisal_records?id=eq.'+encodeURIComponent(id),'DELETE').catch(function(){});
   btn.closest('.record-item').remove();
   showToast('Deleted');
@@ -694,14 +680,13 @@ function makeRatingRows(bodyId,items){
   var tbody=document.getElementById(bodyId);if(!tbody)return;
   for(var i=0;i<items.length;i++){
     var tr=document.createElement('tr');
-    var base=bodyId.replace('-body','').replace('ae-','').replace('am-','');
-    var key=base+'-'+i;
+    var key=bodyId+'-'+i;
     tr.innerHTML='<td class="area">'+items[i][0]+(items[i][1]?'<small>'+items[i][1]+'</small>':'')+'</td>'+
-      '<td style="width:50px"><select data-label="'+key+'-emp-rating"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td>'+
+      '<td style="width:50px"><select data-label="'+key+'-emp-rating"><option></option><option>1</option><option>2</option><option>3</option><option>4</option></select></td>'+
       '<td><textarea data-label="'+key+'-emp-comment" rows="2"></textarea></td>'+
 
 ```
-  '<td style="width:50px"><select data-label="'+key+'-mgr-rating"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td>'+
+  '<td style="width:50px"><select data-label="'+key+'-mgr-rating"><option></option><option>1</option><option>2</option><option>3</option><option>4</option></select></td>'+
   '<td><textarea data-label="'+key+'-mgr-comment" rows="2"></textarea></td>';
 tbody.appendChild(tr);
 ```
@@ -774,13 +759,10 @@ c.appendChild(div);
 }
 
 /* ===== DATA SETUP ===== */
-/* 6-month perf items */
 var perf6Items=[‘Job Performance’,‘Technical Skills’,‘Application of Learning to the Job’,‘Quality of Work’,‘Attitude to Supervision’,‘Attitude to Colleagues’,‘Attitude to the Business’,‘Ability to Follow Instructions’,‘Time Keeping’,‘Attendance’,‘Flexibility’,‘Uniform / Presentation’,‘Clocking’];
 var questions6=[‘How do you think you are doing? What have you achieved since you started?’,‘Please list what technical knowledge / skills you were able to learn since you started in your role:’,‘Please describe any challenges that make it difficult for you to effectively fulfil your responsibilities:’,‘Is there any area where you feel you need support or direction?’,‘What do you feel you could do to improve your performance and meet your objectives more efficiently?’,‘Do you have any questions about what is expected of you? Are there any unclear areas?’];
-/* Annual employee perf */
 var aePerf1=[[‘Job Knowledge’,‘familiar with all aspects of the role, technical ability’],[‘Living Organisational Values’,‘integrity, sustainability, commercial awareness’],[‘Customer Service’,‘anticipating needs, commitment to customers’],[‘Ownership & Initiative’,‘responsible for assigned tasks, suggesting improvements’]];
 var aePerf2=[[‘Productivity’,‘speed of work, amount of work done, consistent productivity, meeting deadlines’],[‘Quality of Work’,‘accuracy and attention to detail, lack of errors, observance of high standards’],[‘Personal Development’,‘takes initiative in training, takes feedback well, self-directed learning’],[‘Professional Image’,‘uniform in good repair, wears name badge, clean presentation’],[‘Judgement’,‘ability to make sound decisions using facts and data’],[‘Teamwork’,‘relationship with colleagues, approach to work, flexibility’]];
-/* Annual manager */
 var amGeneral=[[‘Appearance’,’’],[‘Attendance’,’’],[‘Time Keeping’,’’],[‘Attitude’,’’],[‘Commitment’,’’]];
 var amReview=[[‘Energy & Work Rate’,‘Give 100% Every Day? Time Management? Delegate the Work Out?’],[‘Role Aspects’,‘Product Knowledge, Orders, Stock, Department Costings, Procure Wizard?’],[‘Look to Improve Departments Weekly?’,‘Incl. Cleanliness of departments/property?’]];
 var amLeadership=[[‘Leadership & Teamwork’,‘Leads by Example, Brings out the Best in Team Members, Resolves Conflict, Delegates Clearly’],[‘People Management’,‘Effectively allocates resources, monitors & controls quality, up to date with policies, trains team, gives feedback and recognition, motivates staff’]];
@@ -823,21 +805,47 @@ makeYNRows(‘am-hs-body’,amHS);
 makeTextItems(‘am-qa-items’,amQA,‘am-qa’,4);
 makeGoalRows(‘am-goalsetting-body’,4,5);
 
-/* Nav */
+/* Nav – back button */
 document.getElementById(‘backBtn’).addEventListener(‘click’,goBack);
+
+/* Form cards – touchend + click for Safari iOS */
 var cards=document.querySelectorAll(’.form-card’);
 for(var ci=0;ci<cards.length;ci++){
-(function(card){card.addEventListener(‘click’,function(){var fid=card.getAttribute(‘data-form’);if(fid)showForm(fid);});})(cards[ci]);
+(function(card){
+card.addEventListener(‘touchend’,function(e){
+e.preventDefault();
+var fid=card.getAttribute(‘data-form’);
+if(fid)showForm(fid);
+});
+card.addEventListener(‘click’,function(){
+var fid=card.getAttribute(‘data-form’);
+if(fid)showForm(fid);
+});
+})(cards[ci]);
 }
+
 /* Save buttons */
 var saveBtns=document.querySelectorAll(’.btn-save’);
 for(var si=0;si<saveBtns.length;si++){
-(function(btn){btn.addEventListener(‘click’,function(){var fid=btn.getAttribute(‘data-saveid’);if(!fid)return;if(btn.getAttribute(‘data-saving’))return;btn.setAttribute(‘data-saving’,‘1’);btn.style.opacity=‘0.6’;setTimeout(function(){btn.removeAttribute(‘data-saving’);btn.style.opacity=’’;},3000);saveForm(fid);});})(saveBtns[si]);
+(function(btn){
+btn.addEventListener(‘click’,function(){
+var fid=btn.getAttribute(‘data-saveid’);
+if(!fid)return;
+if(btn.getAttribute(‘data-saving’))return;
+btn.setAttribute(‘data-saving’,‘1’);
+btn.style.opacity=‘0.6’;
+setTimeout(function(){btn.removeAttribute(‘data-saving’);btn.style.opacity=’’;},3000);
+saveForm(fid);
+});
+})(saveBtns[si]);
 }
+
 /* Sig clear buttons */
 var sigBtns=document.querySelectorAll(’.sig-clear’);
 for(var sgi=0;sgi<sigBtns.length;sgi++){
-(function(btn){btn.addEventListener(‘click’,function(){clearSig(btn.getAttribute(‘data-sigid’));});})(sigBtns[sgi]);
+(function(btn){
+btn.addEventListener(‘click’,function(){clearSig(btn.getAttribute(‘data-sigid’));});
+})(sigBtns[sgi]);
 }
 });
 </script>
