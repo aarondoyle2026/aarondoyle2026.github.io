@@ -1,5 +1,5 @@
-<!DOCTYPE html><html lang="en">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta charset="UTF-8">
@@ -112,8 +112,6 @@ textarea.field-input{resize:vertical;min-height:80px;}
   <div class="nav-logo">MORIARTY<br>GROUP</div>
 </div>
 
-<!-- HOME -->
-
 <div id="home">
   <div class="home-header">
     <div class="brand">MORIARTY GROUP</div>
@@ -123,16 +121,14 @@ textarea.field-input{resize:vertical;min-height:80px;}
   <div class="category-section">
     <div class="category-label">&#128101; Performance Reviews</div>
     <div class="form-grid">
-      <div class="form-card" data-form="f-3month" onclick=""><div class="form-icon" style="background:#e8f5ee">&#128203;</div><div class="form-info"><div class="form-name">3-Month Appraisal</div><div class="form-desc">Feedback framework – what's working, what's not</div></div><div class="form-arrow">&#8250;</div></div>
-      <div class="form-card" data-form="f-6month" onclick=""><div class="form-icon" style="background:#e8f5ee">&#128197;</div><div class="form-info"><div class="form-name">6-Month Probation Review</div><div class="form-desc">Probationary performance review – self & manager</div></div><div class="form-arrow">&#8250;</div></div>
-      <div class="form-card" data-form="f-annual-emp" onclick=""><div class="form-icon" style="background:#fff8e1">&#9733;</div><div class="form-info"><div class="form-name">Annual Appraisal – Employee</div><div class="form-desc">Team member annual review prep form</div></div><div class="form-arrow">&#8250;</div></div>
-      <div class="form-card" data-form="f-annual-mgr" onclick=""><div class="form-icon" style="background:#fce4ec">&#127775;</div><div class="form-info"><div class="form-name">Annual Review – Manager</div><div class="form-desc">Manager performance evaluation form</div></div><div class="form-arrow">&#8250;</div></div>
+      <div class="form-card" data-form="f-3month"><div class="form-icon" style="background:#e8f5ee">&#128203;</div><div class="form-info"><div class="form-name">3-Month Appraisal</div><div class="form-desc">Feedback framework – what's working, what's not</div></div><div class="form-arrow">&#8250;</div></div>
+      <div class="form-card" data-form="f-6month"><div class="form-icon" style="background:#e8f5ee">&#128197;</div><div class="form-info"><div class="form-name">6-Month Probation Review</div><div class="form-desc">Probationary performance review – self & manager</div></div><div class="form-arrow">&#8250;</div></div>
+      <div class="form-card" data-form="f-annual-emp"><div class="form-icon" style="background:#fff8e1">&#9733;</div><div class="form-info"><div class="form-name">Annual Appraisal – Employee</div><div class="form-desc">Team member annual review prep form</div></div><div class="form-arrow">&#8250;</div></div>
+      <div class="form-card" data-form="f-annual-mgr"><div class="form-icon" style="background:#fce4ec">&#127775;</div><div class="form-info"><div class="form-name">Annual Review – Manager</div><div class="form-desc">Manager performance evaluation form</div></div><div class="form-arrow">&#8250;</div></div>
     </div>
   </div>
   <div style="height:20px"></div>
 </div>
-
-<!-- 3-MONTH APPRAISAL -->
 
 <div id="f-3month" class="form-screen">
 <div class="form-header"><h2>&#128203; 3-Month Appraisal</h2><p>Feedback Framework – MidPro-S</p></div>
@@ -160,18 +156,16 @@ textarea.field-input{resize:vertical;min-height:80px;}
   <textarea class="field-input" id="3m-discuss" rows="4" placeholder="Any points for discussion..."></textarea>
   <div class="section-title">&#9999;&#65039; Signature</div>
   <label class="field-label">Employee Signature</label>
-  <div class="sig-box"><canvas id="sig-3m-emp" height="80"></canvas><button class="sig-clear" data-sigid="sig-3m-emp">Clear</button></div>
+  <div class="sig-box"><canvas id="sig-3m-emp" height="80"></canvas><button class="sig-clear" type="button" data-sigid="sig-3m-emp">Clear</button></div>
   <div class="field-group"><label class="field-label">Date</label><input class="field-input" type="date" id="3m-sig-date"></div>
-  <button class="btn-save" data-saveid="f-3month">&#128190; Save to Records</button>
-  <button class="btn-print" onclick="printForm()">&#128424; Print / PDF</button>
+  <button class="btn-save" type="button" data-saveid="f-3month">&#128190; Save to Records</button>
+  <button class="btn-print" type="button" onclick="printForm()">&#128424; Print / PDF</button>
   <div id="records-f-3month" class="records-section" style="display:none">
     <div class="records-header">&#128202; Saved Records</div>
     <div id="records-list-f-3month"></div>
   </div>
 </div>
 </div>
-
-<!-- 6-MONTH PROBATION -->
 
 <div id="f-6month" class="form-screen">
 <div class="form-header"><h2>&#128197; 6-Month Probationary Review</h2><p>Two-way performance dialogue form</p></div>
@@ -226,19 +220,17 @@ textarea.field-input{resize:vertical;min-height:80px;}
   <div class="field-group" style="margin-top:10px"><label class="field-label">Summary Recommendation</label><textarea class="field-input" id="6m-summary" rows="3" placeholder="Summary..."></textarea></div>
   <div class="section-title">&#9999;&#65039; Signatures</div>
   <div class="field-row">
-    <div class="field-group"><label class="field-label">Employee Signature</label><div class="sig-box"><canvas id="sig-6m-emp" height="80"></canvas><button class="sig-clear" data-sigid="sig-6m-emp">Clear</button></div></div>
-    <div class="field-group"><label class="field-label">Manager Signature</label><div class="sig-box"><canvas id="sig-6m-mgr" height="80"></canvas><button class="sig-clear" data-sigid="sig-6m-mgr">Clear</button></div></div>
+    <div class="field-group"><label class="field-label">Employee Signature</label><div class="sig-box"><canvas id="sig-6m-emp" height="80"></canvas><button class="sig-clear" type="button" data-sigid="sig-6m-emp">Clear</button></div></div>
+    <div class="field-group"><label class="field-label">Manager Signature</label><div class="sig-box"><canvas id="sig-6m-mgr" height="80"></canvas><button class="sig-clear" type="button" data-sigid="sig-6m-mgr">Clear</button></div></div>
   </div>
-  <button class="btn-save" data-saveid="f-6month">&#128190; Save to Records</button>
-  <button class="btn-print" onclick="printForm()">&#128424; Print / PDF</button>
+  <button class="btn-save" type="button" data-saveid="f-6month">&#128190; Save to Records</button>
+  <button class="btn-print" type="button" onclick="printForm()">&#128424; Print / PDF</button>
   <div id="records-f-6month" class="records-section" style="display:none">
     <div class="records-header">&#128202; Saved Records</div>
     <div id="records-list-f-6month"></div>
   </div>
 </div>
 </div>
-
-<!-- ANNUAL EMPLOYEE -->
 
 <div id="f-annual-emp" class="form-screen">
 <div class="form-header"><h2>&#9733; Annual Appraisal – Employee Prep</h2><p>SuperValu Annual Team Member Appraisal Form</p></div>
@@ -293,19 +285,17 @@ textarea.field-input{resize:vertical;min-height:80px;}
   <div class="field-group"><label class="field-label">Manager Comments</label><textarea class="field-input" id="ae-comments-mgr" rows="4" placeholder="Manager comments..."></textarea></div>
   <div class="section-title">&#9999;&#65039; Signatures</div>
   <div class="field-row">
-    <div class="field-group"><label class="field-label">Employee Signature</label><div class="sig-box"><canvas id="sig-ae-emp" height="80"></canvas><button class="sig-clear" data-sigid="sig-ae-emp">Clear</button></div><input class="field-input" type="date" id="ae-sig-date-emp" style="margin-top:6px"></div>
-    <div class="field-group"><label class="field-label">Manager Signature</label><div class="sig-box"><canvas id="sig-ae-mgr" height="80"></canvas><button class="sig-clear" data-sigid="sig-ae-mgr">Clear</button></div><input class="field-input" type="date" id="ae-sig-date-mgr" style="margin-top:6px"></div>
+    <div class="field-group"><label class="field-label">Employee Signature</label><div class="sig-box"><canvas id="sig-ae-emp" height="80"></canvas><button class="sig-clear" type="button" data-sigid="sig-ae-emp">Clear</button></div><input class="field-input" type="date" id="ae-sig-date-emp" style="margin-top:6px"></div>
+    <div class="field-group"><label class="field-label">Manager Signature</label><div class="sig-box"><canvas id="sig-ae-mgr" height="80"></canvas><button class="sig-clear" type="button" data-sigid="sig-ae-mgr">Clear</button></div><input class="field-input" type="date" id="ae-sig-date-mgr" style="margin-top:6px"></div>
   </div>
-  <button class="btn-save" data-saveid="f-annual-emp">&#128190; Save to Records</button>
-  <button class="btn-print" onclick="printForm()">&#128424; Print / PDF</button>
+  <button class="btn-save" type="button" data-saveid="f-annual-emp">&#128190; Save to Records</button>
+  <button class="btn-print" type="button" onclick="printForm()">&#128424; Print / PDF</button>
   <div id="records-f-annual-emp" class="records-section" style="display:none">
     <div class="records-header">&#128202; Saved Records</div>
     <div id="records-list-f-annual-emp"></div>
   </div>
 </div>
 </div>
-
-<!-- ANNUAL MANAGER -->
 
 <div id="f-annual-mgr" class="form-screen">
 <div class="form-header"><h2>&#127775; Annual Review – Manager Evaluation</h2><p>Performance Evaluation Form</p></div>
@@ -405,11 +395,11 @@ textarea.field-input{resize:vertical;min-height:80px;}
   <div class="field-group"><label class="field-label">Other Comments</label><textarea class="field-input" id="am-other-comments" rows="4" placeholder="Other comments..."></textarea></div>
   <div class="section-title">&#9999;&#65039; Signatures</div>
   <div class="field-row">
-    <div class="field-group"><label class="field-label">Employee Signature</label><div class="sig-box"><canvas id="sig-am-emp" height="80"></canvas><button class="sig-clear" data-sigid="sig-am-emp">Clear</button></div><input class="field-input" type="date" id="am-sig-date-emp" style="margin-top:6px"></div>
-    <div class="field-group"><label class="field-label">Manager/Director Signature</label><div class="sig-box"><canvas id="sig-am-mgr" height="80"></canvas><button class="sig-clear" data-sigid="sig-am-mgr">Clear</button></div><input class="field-input" type="date" id="am-sig-date-mgr" style="margin-top:6px"></div>
+    <div class="field-group"><label class="field-label">Employee Signature</label><div class="sig-box"><canvas id="sig-am-emp" height="80"></canvas><button class="sig-clear" type="button" data-sigid="sig-am-emp">Clear</button></div><input class="field-input" type="date" id="am-sig-date-emp" style="margin-top:6px"></div>
+    <div class="field-group"><label class="field-label">Manager/Director Signature</label><div class="sig-box"><canvas id="sig-am-mgr" height="80"></canvas><button class="sig-clear" type="button" data-sigid="sig-am-mgr">Clear</button></div><input class="field-input" type="date" id="am-sig-date-mgr" style="margin-top:6px"></div>
   </div>
-  <button class="btn-save" data-saveid="f-annual-mgr">&#128190; Save to Records</button>
-  <button class="btn-print" onclick="printForm()">&#128424; Print / PDF</button>
+  <button class="btn-save" type="button" data-saveid="f-annual-mgr">&#128190; Save to Records</button>
+  <button class="btn-print" type="button" onclick="printForm()">&#128424; Print / PDF</button>
   <div id="records-f-annual-mgr" class="records-section" style="display:none">
     <div class="records-header">&#128202; Saved Records</div>
     <div id="records-list-f-annual-mgr"></div>
@@ -431,41 +421,118 @@ function sbFetch(path,method,body){
   if(method==='POST')headers['Prefer']='resolution=merge-duplicates';
   return fetch(SB_URL+'/rest/v1/'+path,{method:method||'GET',headers:headers,body:body?JSON.stringify(body):undefined});
 }
+
 function openDB(){
   return new Promise(function(res,rej){
     var req=indexedDB.open(DB_NAME,DB_VER);
-    req.onupgradeneeded=function(e){var d=e.target.result;if(!d.objectStoreNames.contains('appraisals'))d.createObjectStore('appraisals',{keyPath:'id'});};
+    req.onupgradeneeded=function(e){
+      var d=e.target.result;
+      if(!d.objectStoreNames.contains('appraisals'))d.createObjectStore('appraisals',{keyPath:'id'});
+    };
     req.onsuccess=function(e){db=e.target.result;res(db);};
     req.onerror=function(e){rej(e.target.error);};
   });
 }
-function dbPut(obj){return new Promise(function(res,rej){var tx=db.transaction('appraisals','readwrite');tx.objectStore('appraisals').put(obj);tx.oncomplete=res;tx.onerror=function(e){rej(e.target.error);};});}
-function dbGetAll(){return new Promise(function(res,rej){var tx=db.transaction('appraisals','readonly');var r=tx.objectStore('appraisals').getAll();r.onsuccess=function(e){res(e.target.result);};r.onerror=function(e){rej(e.target.error);};});}
-function dbDelete(id){return new Promise(function(res,rej){var tx=db.transaction('appraisals','readwrite');tx.objectStore('appraisals').delete(id);tx.oncomplete=res;tx.onerror=function(e){rej(e.target.error);};});}
 
-function showToast(msg){var t=document.getElementById('toast');t.textContent=msg;t.className='toast show';setTimeout(function(){t.className='toast';},3000);}
+function dbPut(obj){
+  return new Promise(function(res,rej){
+    var tx=db.transaction('appraisals','readwrite');
+    tx.objectStore('appraisals').put(obj);
+    tx.oncomplete=res;
+    tx.onerror=function(e){rej(e.target.error);};
+  });
+}
+
+function dbGetAll(){
+  return new Promise(function(res,rej){
+    var tx=db.transaction('appraisals','readonly');
+    var r=tx.objectStore('appraisals').getAll();
+    r.onsuccess=function(e){res(e.target.result);};
+    r.onerror=function(e){rej(e.target.error);};
+  });
+}
+
+function dbDelete(id){
+  return new Promise(function(res,rej){
+    var tx=db.transaction('appraisals','readwrite');
+    tx.objectStore('appraisals').delete(id);
+    tx.oncomplete=res;
+    tx.onerror=function(e){rej(e.target.error);};
+  });
+}
+
+function showToast(msg){
+  var t=document.getElementById('toast');
+  t.textContent=msg;
+  t.className='toast show';
+  setTimeout(function(){t.className='toast';},3000);
+}
 
 function initSig(canvasId){
   var canvas=document.getElementById(canvasId);
   if(!canvas||sigPads[canvasId])return;
   canvas.width=canvas.parentElement.offsetWidth||300;
-  canvas.height=parseInt(canvas.getAttribute('height'))||80;
+  canvas.height=parseInt(canvas.getAttribute('height'),10)||80;
   var ctx=canvas.getContext('2d');
-  ctx.strokeStyle='#1a1a1a';ctx.lineWidth=2;ctx.lineCap='round';ctx.lineJoin='round';
+  ctx.strokeStyle='#1a1a1a';
+  ctx.lineWidth=2;
+  ctx.lineCap='round';
+  ctx.lineJoin='round';
   var drawing=false,lx=0,ly=0;
-  function pos(e){var r=canvas.getBoundingClientRect(),sx=canvas.width/r.width,sy=canvas.height/r.height;if(e.touches)return{x:(e.touches[0].clientX-r.left)*sx,y:(e.touches[0].clientY-r.top)*sy};return{x:(e.clientX-r.left)*sx,y:(e.clientY-r.top)*sy};}
-  function start(e){e.preventDefault();drawing=true;var p=pos(e);lx=p.x;ly=p.y;ctx.beginPath();ctx.arc(p.x,p.y,1,0,Math.PI*2);ctx.fill();}
-  function move(e){if(!drawing)return;e.preventDefault();var p=pos(e);ctx.beginPath();ctx.moveTo(lx,ly);ctx.lineTo(p.x,p.y);ctx.stroke();lx=p.x;ly=p.y;}
+
+  function pos(e){
+    var r=canvas.getBoundingClientRect(),sx=canvas.width/r.width,sy=canvas.height/r.height;
+    if(e.touches)return{x:(e.touches[0].clientX-r.left)*sx,y:(e.touches[0].clientY-r.top)*sy};
+    return{x:(e.clientX-r.left)*sx,y:(e.clientY-r.top)*sy};
+  }
+
+  function start(e){
+    e.preventDefault();
+    drawing=true;
+    var p=pos(e);
+    lx=p.x;ly=p.y;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,1,0,Math.PI*2);
+    ctx.fill();
+  }
+
+  function move(e){
+    if(!drawing)return;
+    e.preventDefault();
+    var p=pos(e);
+    ctx.beginPath();
+    ctx.moveTo(lx,ly);
+    ctx.lineTo(p.x,p.y);
+    ctx.stroke();
+    lx=p.x;ly=p.y;
+  }
+
   function stop(){drawing=false;}
-  canvas.addEventListener('mousedown',start);canvas.addEventListener('mousemove',move);canvas.addEventListener('mouseup',stop);canvas.addEventListener('mouseleave',stop);
-  canvas.addEventListener('touchstart',start,{passive:false});canvas.addEventListener('touchmove',move,{passive:false});canvas.addEventListener('touchend',stop);
+
+  canvas.addEventListener('mousedown',start);
+  canvas.addEventListener('mousemove',move);
+  canvas.addEventListener('mouseup',stop);
+  canvas.addEventListener('mouseleave',stop);
+  canvas.addEventListener('touchstart',start,{passive:false});
+  canvas.addEventListener('touchmove',move,{passive:false});
+  canvas.addEventListener('touchend',stop);
+
   sigPads[canvasId]={clear:function(){ctx.clearRect(0,0,canvas.width,canvas.height);}};
 }
-function clearSig(id){if(sigPads[id])sigPads[id].clear();}
+
+function clearSig(id){
+  if(sigPads[id])sigPads[id].clear();
+}
+
 function getSigData(id){
   var canvas=document.getElementById(id);
   if(!canvas)return null;
-  try{var ctx=canvas.getContext('2d'),img=ctx.getImageData(0,0,canvas.width,canvas.height);for(var px=3;px<img.data.length;px+=4)if(img.data[px]>0)return canvas.toDataURL('image/png');}catch(e){}
+  try{
+    var ctx=canvas.getContext('2d'),img=ctx.getImageData(0,0,canvas.width,canvas.height);
+    for(var px=3;px<img.data.length;px+=4){
+      if(img.data[px]>0)return canvas.toDataURL('image/png');
+    }
+  }catch(e){}
   return null;
 }
 
@@ -473,17 +540,51 @@ function collectFields(formId){
   var scr=document.getElementById(formId);
   if(!scr)return{};
   var data={};
+
   var inputs=scr.querySelectorAll('input[type=text],input[type=date],input[type=number],textarea');
-  for(var i=0;i<inputs.length;i++){var inp=inputs[i];var key=inp.id||('inp_'+i);if(inp.value&&inp.value.trim())data[key]=inp.value;}
+  for(var i=0;i<inputs.length;i++){
+    var inp=inputs[i];
+    var key=inp.id||('inp_'+i);
+    if(inp.value&&inp.value.trim())data[key]=inp.value;
+  }
+
   var radios=scr.querySelectorAll('input[type=radio]:checked');
-  for(var ri=0;ri<radios.length;ri++){data['radio_'+radios[ri].name]=radios[ri].value;}
+  for(var ri=0;ri<radios.length;ri++){
+    data['radio_'+radios[ri].name]=radios[ri].value;
+  }
+
+  var checks=scr.querySelectorAll('input[type=checkbox]');
+  for(var ci=0;ci<checks.length;ci++){
+    var cb=checks[ci];
+    var ckey=cb.getAttribute('data-label')||cb.id||('cb_'+ci);
+    if(cb.checked)data[ckey]='checked';
+  }
+
+  var dyn=scr.querySelectorAll('[data-label]');
+  for(var di=0;di<dyn.length;di++){
+    var el=dyn[di],dkey=el.getAttribute('data-label');
+    if(!dkey)continue;
+    if(el.type==='checkbox'){
+      if(el.checked)data[dkey]='checked';
+    }else if(el.type==='radio'){
+      if(el.checked)data[dkey]=el.value;
+    }else if(el.value&&String(el.value).trim()){
+      data[dkey]=el.value;
+    }
+  }
+
   return data;
 }
+
 function collectSigs(formId){
-  var scr=document.getElementById(formId);if(!scr)return[];
+  var scr=document.getElementById(formId);
+  if(!scr)return[];
   var sigs=[];
   var canvases=scr.querySelectorAll('canvas');
-  for(var i=0;i<canvases.length;i++){var d=getSigData(canvases[i].id);sigs.push({id:canvases[i].id,dataUrl:d,hasSignature:!!d});}
+  for(var i=0;i<canvases.length;i++){
+    var d=getSigData(canvases[i].id);
+    sigs.push({id:canvases[i].id,dataUrl:d,hasSignature:!!d});
+  }
   return sigs;
 }
 
@@ -496,11 +597,33 @@ function saveForm(formId){
   var empName=nameEl?nameEl.value:'';
   var fieldData=collectFields(formId);
   var signatures=collectSigs(formId);
-  var rec={id:now.getTime(),formId:formId,savedAt:now.toISOString(),employeeName:empName,fieldData:fieldData,signatures:signatures};
-  var sbRow={id:String(rec.id),form_id:formId,saved_at:rec.savedAt,data:{employeeName:empName,fieldData:fieldData,signatures:signatures.map(function(s){return{id:s.id,hasSignature:s.hasSignature};})}};
+
+  var rec={
+    id:now.getTime(),
+    formId:formId,
+    savedAt:now.toISOString(),
+    employeeName:empName,
+    fieldData:fieldData,
+    signatures:signatures
+  };
+
+  var sbRow={
+    id:String(rec.id),
+    form_id:formId,
+    saved_at:rec.savedAt,
+    data:{
+      employeeName:empName,
+      fieldData:fieldData,
+      signatures:signatures.map(function(s){
+        return{id:s.id,hasSignature:s.hasSignature,dataUrl:s.dataUrl||null};
+      })
+    }
+  };
+
   dbPut(rec).then(function(){
     return sbFetch('appraisal_records','POST',[sbRow]);
-  }).then(function(){
+  }).then(function(r){
+    if(r && !r.ok)throw new Error('Supabase '+r.status);
     _saving[formId]=false;
     showToast('Saved!');
     loadRecords(formId);
@@ -514,12 +637,22 @@ function loadRecords(formId){
   var container=document.getElementById('records-list-'+formId);
   var section=document.getElementById('records-'+formId);
   if(!container)return;
+
   sbFetch('appraisal_records?form_id=eq.'+formId+'&order=saved_at.desc','GET')
-  .then(function(r){return r.json();})
+  .then(function(r){
+    if(!r.ok)throw new Error('fetch failed');
+    return r.json();
+  })
   .then(function(rows){
     if(!Array.isArray(rows)||!rows.length)throw new Error('empty');
     renderRecords(container,section,rows.map(function(r){
-      return{id:r.id,savedAt:r.saved_at,employeeName:(r.data&&r.data.employeeName)||'',fieldData:(r.data&&r.data.fieldData)||{},signatures:(r.data&&r.data.signatures)||[]};
+      return{
+        id:r.id,
+        savedAt:r.saved_at,
+        employeeName:(r.data&&r.data.employeeName)||'',
+        fieldData:(r.data&&r.data.fieldData)||{},
+        signatures:(r.data&&r.data.signatures)||[]
+      };
     }));
   }).catch(function(){
     if(!db)return;
@@ -531,34 +664,47 @@ function loadRecords(formId){
 }
 
 function renderRecords(container,section,recs){
-  if(!recs.length){section.style.display='none';return;}
+  if(!recs.length){
+    section.style.display='none';
+    return;
+  }
   section.style.display='block';
   var html='';
+
   for(var i=0;i<recs.length;i++){
     var r=recs[i];
     var dt=new Date(r.savedAt);
     var ts=dt.toLocaleString('en-IE',{weekday:'short',day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',hour12:false});
+
     html+='<div class="record-item" data-open="0" onclick="toggleRecord(this)">';
-    html+='<div class="record-meta">&#128100; '+(r.employeeName||'Unnamed')+'</div>';
-    html+='<div class="record-sub">'+ts+'</div>';
+    html+='<div class="record-meta">&#128100; '+esc(r.employeeName||'Unnamed')+'</div>';
+    html+='<div class="record-sub">'+esc(ts)+'</div>';
     html+='<div class="record-detail">';
+
     var keys=Object.keys(r.fieldData||{});
     for(var ki=0;ki<keys.length;ki++){
       var lbl=keys[ki].replace(/^(ae-|am-|6m-|3m-|sig-)/,'').replace(/-/g,' ');
       html+='<div class="detail-row"><span class="dk">'+esc(lbl)+'</span><span class="dv">'+esc(String(r.fieldData[keys[ki]]))+'</span></div>';
     }
+
     if(r.signatures&&r.signatures.length){
       var hasSig=false;
-      for(var si=0;si<r.signatures.length;si++){if(r.signatures[si].dataUrl){hasSig=true;break;}}
+      for(var si=0;si<r.signatures.length;si++){
+        if(r.signatures[si].dataUrl){hasSig=true;break;}
+      }
       if(hasSig){
         html+='<div class="detail-row"><span class="dk">Signatures</span><span class="dv">';
-        for(var sj=0;sj<r.signatures.length;sj++){if(r.signatures[sj].dataUrl)html+='<img src="'+r.signatures[sj].dataUrl+'" class="sig-thumb">';}
+        for(var sj=0;sj<r.signatures.length;sj++){
+          if(r.signatures[sj].dataUrl)html+='<img src="'+r.signatures[sj].dataUrl+'" class="sig-thumb">';
+        }
         html+='</span></div>';
       }
     }
-    html+='<button style="width:100%;margin-top:8px;padding:8px;background:white;border:1.5px solid #d32f2f;color:#d32f2f;border-radius:6px;font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;" data-delid="'+r.id+'" onclick="deleteRecord(event,this)">&#128465; Delete this record</button>';
+
+    html+='<button type="button" style="width:100%;margin-top:8px;padding:8px;background:white;border:1.5px solid #d32f2f;color:#d32f2f;border-radius:6px;font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;" data-delid="'+esc(r.id)+'" onclick="deleteRecord(event,this)">&#128465; Delete this record</button>';
     html+='</div></div>';
   }
+
   container.innerHTML=html;
 }
 
@@ -569,6 +715,7 @@ function toggleRecord(el){
   detail.className=open?'record-detail':'record-detail open';
   el.setAttribute('data-open',open?'0':'1');
 }
+
 function deleteRecord(e,btn){
   e.stopPropagation();
   if(!confirm('Delete this record?'))return;
@@ -579,12 +726,16 @@ function deleteRecord(e,btn){
   btn.closest('.record-item').remove();
   showToast('Deleted');
 }
-function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+function esc(s){
+  return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
 
 function showForm(id){
   document.getElementById('home').style.display='none';
   if(currentForm)document.getElementById(currentForm).style.display='none';
-  var scr=document.getElementById(id);if(!scr)return;
+  var scr=document.getElementById(id);
+  if(!scr)return;
   scr.style.display='block';
   currentForm=id;
   document.getElementById('backBtn').style.display='block';
@@ -597,173 +748,203 @@ function showForm(id){
     loadRecords(id);
   },100);
 }
+
 function goBack(){
   if(currentForm)document.getElementById(currentForm).style.display='none';
   document.getElementById('home').style.display='block';
   document.getElementById('backBtn').style.display='none';
   document.getElementById('navTitle').textContent='Appraisals';
-  currentForm=null;window.scrollTo(0,0);
+  currentForm=null;
+  window.scrollTo(0,0);
 }
+
 function printForm(){window.print();}
 
 function makeRatingRows(bodyId,items){
-  var tbody=document.getElementById(bodyId);if(!tbody)return;
+  var tbody=document.getElementById(bodyId);
+  if(!tbody)return;
   for(var i=0;i<items.length;i++){
     var tr=document.createElement('tr');
     var key=bodyId+'-'+i;
-    tr.innerHTML='<td class="area">'+items[i][0]+(items[i][1]?'<small>'+items[i][1]+'</small>':'')+'</td>'+
+    tr.innerHTML=
+      '<td class="area">'+items[i][0]+(items[i][1]?'<small>'+items[i][1]+'</small>':'')+'</td>'+
       '<td style="width:50px"><select data-label="'+key+'-emp-rating"><option></option><option>1</option><option>2</option><option>3</option><option>4</option></select></td>'+
       '<td><textarea data-label="'+key+'-emp-comment" rows="2"></textarea></td>'+
-
-```
-  '<td style="width:50px"><select data-label="'+key+'-mgr-rating"><option></option><option>1</option><option>2</option><option>3</option><option>4</option></select></td>'+
-  '<td><textarea data-label="'+key+'-mgr-comment" rows="2"></textarea></td>';
-tbody.appendChild(tr);
-```
-
+      '<td style="width:50px"><select data-label="'+key+'-mgr-rating"><option></option><option>1</option><option>2</option><option>3</option><option>4</option></select></td>'+
+      '<td><textarea data-label="'+key+'-mgr-comment" rows="2"></textarea></td>';
+    tbody.appendChild(tr);
+  }
 }
-}
+
 function makePerfRows(bodyId,items){
-var tbody=document.getElementById(bodyId);if(!tbody)return;
-for(var i=0;i<items.length;i++){
-var tr=document.createElement(‘tr’);
-var key=bodyId+’-’+i;
-tr.innerHTML=’<td class="area">’+items[i]+’</td>’+
-‘<td><input type="radio" name="'+key+'" value="1"></td>’+
-‘<td><input type="radio" name="'+key+'" value="2"></td>’+
-‘<td><input type="radio" name="'+key+'" value="3"></td>’+
-‘<td><input type="radio" name="'+key+'" value="4"></td>’+
-‘<td><input type="radio" name="'+key+'" value="5"></td>’+
-‘<td><textarea data-label="'+key+'-comment" rows="2" style="width:100%;border:none;font-size:11px;font-family:inherit;resize:none;background:transparent;padding:2px;"></textarea></td>’;
-tbody.appendChild(tr);
+  var tbody=document.getElementById(bodyId);
+  if(!tbody)return;
+  for(var i=0;i<items.length;i++){
+    var tr=document.createElement('tr');
+    var key=bodyId+'-'+i;
+    tr.innerHTML=
+      '<td class="area">'+items[i]+'</td>'+
+      '<td><input type="radio" name="'+key+'" value="1"></td>'+
+      '<td><input type="radio" name="'+key+'" value="2"></td>'+
+      '<td><input type="radio" name="'+key+'" value="3"></td>'+
+      '<td><input type="radio" name="'+key+'" value="4"></td>'+
+      '<td><input type="radio" name="'+key+'" value="5"></td>'+
+      '<td><textarea data-label="'+key+'-comment" rows="2" style="width:100%;border:none;font-size:11px;font-family:inherit;resize:none;background:transparent;padding:2px;"></textarea></td>';
+    tbody.appendChild(tr);
+  }
 }
-}
+
 function makeGoalRows(bodyId,cols,rows){
-var tbody=document.getElementById(bodyId);if(!tbody)return;
-for(var i=0;i<rows;i++){
-var tr=document.createElement(‘tr’);
-var c=’’;
-for(var j=0;j<cols;j++)c+=’<td><textarea data-label="'+bodyId+'-r'+i+'c'+j+'" rows="2" style="width:100%;border:none;font-size:11px;font-family:inherit;resize:none;background:transparent;padding:2px;"></textarea></td>’;
-tr.innerHTML=c;tbody.appendChild(tr);
+  var tbody=document.getElementById(bodyId);
+  if(!tbody)return;
+  for(var i=0;i<rows;i++){
+    var tr=document.createElement('tr');
+    var c='';
+    for(var j=0;j<cols;j++){
+      c+='<td><textarea data-label="'+bodyId+'-r'+i+'c'+j+'" rows="2" style="width:100%;border:none;font-size:11px;font-family:inherit;resize:none;background:transparent;padding:2px;"></textarea></td>';
+    }
+    tr.innerHTML=c;
+    tbody.appendChild(tr);
+  }
 }
-}
+
 function makeResultRows(bodyId,rows){
-var tbody=document.getElementById(bodyId);if(!tbody)return;
-for(var i=0;i<rows;i++){
-var tr=document.createElement(‘tr’);
-tr.innerHTML=’<td><input type="text" data-label="'+bodyId+'-dept'+i+'"></td>’+
-‘<td><input type="text" data-label="'+bodyId+'-s24'+i+'"></td>’+
-‘<td><input type="text" data-label="'+bodyId+'-s25'+i+'"></td>’+
-‘<td><input type="text" data-label="'+bodyId+'-m24'+i+'"></td>’+
-‘<td><input type="text" data-label="'+bodyId+'-m25'+i+'"></td>’;
-tbody.appendChild(tr);
+  var tbody=document.getElementById(bodyId);
+  if(!tbody)return;
+  for(var i=0;i<rows;i++){
+    var tr=document.createElement('tr');
+    tr.innerHTML=
+      '<td><input type="text" data-label="'+bodyId+'-dept'+i+'"></td>'+
+      '<td><input type="text" data-label="'+bodyId+'-s24'+i+'"></td>'+
+      '<td><input type="text" data-label="'+bodyId+'-s25'+i+'"></td>'+
+      '<td><input type="text" data-label="'+bodyId+'-m24'+i+'"></td>'+
+      '<td><input type="text" data-label="'+bodyId+'-m25'+i+'"></td>';
+    tbody.appendChild(tr);
+  }
 }
-}
+
 function makeYNRows(bodyId,items){
-var tbody=document.getElementById(bodyId);if(!tbody)return;
-for(var i=0;i<items.length;i++){
-var tr=document.createElement(‘tr’);
-var key=bodyId+’-’+i;
-tr.innerHTML=’<td class="area">’+items[i]+’</td>’+
-‘<td><input type="checkbox" data-label="'+key+'-yes"></td>’+
-‘<td><input type="checkbox" data-label="'+key+'-no"></td>’+
-‘<td><input type="text" data-label="'+key+'-comment"></td>’;
-tbody.appendChild(tr);
+  var tbody=document.getElementById(bodyId);
+  if(!tbody)return;
+  for(var i=0;i<items.length;i++){
+    var tr=document.createElement('tr');
+    var key=bodyId+'-'+i;
+    tr.innerHTML=
+      '<td class="area">'+items[i]+'</td>'+
+      '<td><input type="checkbox" data-label="'+key+'-yes"></td>'+
+      '<td><input type="checkbox" data-label="'+key+'-no"></td>'+
+      '<td><input type="text" data-label="'+key+'-comment"></td>';
+    tbody.appendChild(tr);
+  }
 }
-}
+
 function makeTextItems(containerId,labels,prefix,rows){
-var c=document.getElementById(containerId);if(!c)return;
-for(var i=0;i<labels.length;i++){
-var div=document.createElement(‘div’);div.className=‘field-group’;
-div.innerHTML=’<label class="field-label">’+labels[i]+’</label><textarea class="field-input" id="'+prefix+'-'+i+'" rows="'+(rows||3)+'" placeholder="..."></textarea>’;
-c.appendChild(div);
+  var c=document.getElementById(containerId);
+  if(!c)return;
+  for(var i=0;i<labels.length;i++){
+    var div=document.createElement('div');
+    div.className='field-group';
+    div.innerHTML='<label class="field-label">'+labels[i]+'</label><textarea class="field-input" id="'+prefix+'-'+i+'" rows="'+(rows||3)+'" placeholder="..."></textarea>';
+    c.appendChild(div);
+  }
 }
-}
+
 function makeNumberedItems(containerId,count,prefix,placeholder){
-var c=document.getElementById(containerId);if(!c)return;
-for(var i=0;i<count;i++){
-var div=document.createElement(‘div’);div.className=‘field-group’;
-div.innerHTML=’<label class="field-label">’+(i+1)+’.</label><textarea class="field-input" id="'+prefix+'-'+i+'" rows="2" placeholder="'+(placeholder||'')+'"></textarea>’;
-c.appendChild(div);
-}
-}
-
-var perf6Items=[‘Job Performance’,‘Technical Skills’,‘Application of Learning to the Job’,‘Quality of Work’,‘Attitude to Supervision’,‘Attitude to Colleagues’,‘Attitude to the Business’,‘Ability to Follow Instructions’,‘Time Keeping’,‘Attendance’,‘Flexibility’,‘Uniform / Presentation’,‘Clocking’];
-var questions6=[‘How do you think you are doing? What have you achieved since you started?’,‘Please list what technical knowledge / skills you were able to learn since you started in your role:’,‘Please describe any challenges that make it difficult for you to effectively fulfil your responsibilities:’,‘Is there any area where you feel you need support or direction?’,‘What do you feel you could do to improve your performance and meet your objectives more efficiently?’,‘Do you have any questions about what is expected of you? Are there any unclear areas?’];
-var aePerf1=[[‘Job Knowledge’,‘familiar with all aspects of the role, technical ability’],[‘Living Organisational Values’,‘integrity, sustainability, commercial awareness’],[‘Customer Service’,‘anticipating needs, commitment to customers’],[‘Ownership & Initiative’,‘responsible for assigned tasks, suggesting improvements’]];
-var aePerf2=[[‘Productivity’,‘speed of work, amount of work done, consistent productivity, meeting deadlines’],[‘Quality of Work’,‘accuracy and attention to detail, lack of errors, observance of high standards’],[‘Personal Development’,‘takes initiative in training, takes feedback well, self-directed learning’],[‘Professional Image’,‘uniform in good repair, wears name badge, clean presentation’],[‘Judgement’,‘ability to make sound decisions using facts and data’],[‘Teamwork’,‘relationship with colleagues, approach to work, flexibility’]];
-var amGeneral=[[‘Appearance’,’’],[‘Attendance’,’’],[‘Time Keeping’,’’],[‘Attitude’,’’],[‘Commitment’,’’]];
-var amReview=[[‘Energy & Work Rate’,‘Give 100% Every Day? Time Management? Delegate the Work Out?’],[‘Role Aspects’,‘Product Knowledge, Orders, Stock, Department Costings, Procure Wizard?’],[‘Look to Improve Departments Weekly?’,‘Incl. Cleanliness of departments/property?’]];
-var amLeadership=[[‘Leadership & Teamwork’,‘Leads by Example, Brings out the Best in Team Members, Resolves Conflict, Delegates Clearly’],[‘People Management’,‘Effectively allocates resources, monitors & controls quality, up to date with policies, trains team, gives feedback and recognition, motivates staff’]];
-var amSales=[[‘Financials’,‘Understands financial objectives, aware of payroll, keeps within budget, recommends cost solutions’],[‘Drive for Results’,‘Ability to focus on desired result, setting challenging goals, meeting or exceeding them’]];
-var amHR=[‘Strandum HR – able to Review Rosters, Staff Details, Authorise Leave’,‘Do you ensure HR Policies are being adhered to?’,‘Do you attend HOD meetings and participate?’,‘Are staff appraisals completed?’,‘Are you familiar with the stores TNA?’,‘Is all mandatory training completed?’,‘Have you an active training agenda?’];
-var amHS=[‘Are Monthly H&S meetings taking place?’,‘Is there a H&S Agenda in place in the store?’,‘Are Monthly H&S Reports being completed?’,‘Are RTW forms being completed?’,‘Are all H&S documents available for inspection (Safety Statement, Fire Log, H&S Agenda, H&S Minutes)?’];
-var amQA=[‘I would describe my management style in one word as:’,‘My biggest day-to-day challenge is:’,‘One thing I would love to change about how the store is working:’,‘My strength(s) as a Manager are:’,‘My weakness(es) as a Manager are:’,‘I feel I need to improve in the following areas to become a better Manager:’];
-
-document.addEventListener(‘DOMContentLoaded’,function(){
-openDB().catch(function(){});
-
-makePerfRows(‘6m-perf-body’,perf6Items);
-var qContainer=document.getElementById(‘6m-questions’);
-for(var qi=0;qi<questions6.length;qi++){
-var d=document.createElement(‘div’);d.className=‘field-group’;
-d.innerHTML=’<label class="field-label">’+(qi+1)+’. ‘+questions6[qi]+’</label>’+
-‘<div class="field-row"><div class="field-group"><label class="field-label" style="font-size:10px">Employee</label><textarea class="field-input" id="6m-q'+qi+'-emp" rows="3"></textarea></div>’+
-‘<div class="field-group"><label class="field-label" style="font-size:10px">Manager</label><textarea class="field-input" id="6m-q'+qi+'-mgr" rows="3"></textarea></div></div>’;
-qContainer.appendChild(d);
-}
-makeGoalRows(‘6m-dev-body’,4,4);
-makeRatingRows(‘ae-perf1-body’,aePerf1);
-makeRatingRows(‘ae-perf2-body’,aePerf2);
-makeGoalRows(‘ae-goals-body’,5,6);
-makeGoalRows(‘ae-newgoals-body’,6,4);
-makeNumberedItems(‘ae-dev-items’,5,‘ae-dev’,‘Step or activity…’);
-makeResultRows(‘am-results-body’,4);
-makeNumberedItems(‘am-resp-items’,8,‘am-resp’,‘Responsibility…’);
-makeRatingRows(‘am-general-body’,amGeneral);
-makeRatingRows(‘am-review-body’,amReview);
-makeRatingRows(‘am-leadership-body’,amLeadership);
-makeRatingRows(‘am-sales-body’,amSales);
-makeYNRows(‘am-hr-body’,amHR);
-makeYNRows(‘am-hs-body’,amHS);
-makeTextItems(‘am-qa-items’,amQA,‘am-qa’,4);
-makeGoalRows(‘am-goalsetting-body’,4,5);
-
-document.getElementById(‘backBtn’).addEventListener(‘click’,goBack);
-
-var cards=document.querySelectorAll(’.form-card’);
-for(var ci=0;ci<cards.length;ci++){
-(function(card){
-card.addEventListener(‘click’,function(){
-var fid=card.getAttribute(‘data-form’);
-if(fid)showForm(fid);
-});
-})(cards[ci]);
+  var c=document.getElementById(containerId);
+  if(!c)return;
+  for(var i=0;i<count;i++){
+    var div=document.createElement('div');
+    div.className='field-group';
+    div.innerHTML='<label class="field-label">'+(i+1)+'.</label><textarea class="field-input" id="'+prefix+'-'+i+'" rows="2" placeholder="'+(placeholder||'')+'"></textarea>';
+    c.appendChild(div);
+  }
 }
 
-var saveBtns=document.querySelectorAll(’.btn-save’);
-for(var si=0;si<saveBtns.length;si++){
-(function(btn){
-btn.addEventListener(‘click’,function(){
-var fid=btn.getAttribute(‘data-saveid’);
-if(!fid)return;
-if(btn.getAttribute(‘data-saving’))return;
-btn.setAttribute(‘data-saving’,‘1’);
-btn.style.opacity=‘0.6’;
-setTimeout(function(){btn.removeAttribute(‘data-saving’);btn.style.opacity=’’;},3000);
-saveForm(fid);
-});
-})(saveBtns[si]);
-}
+var perf6Items=['Job Performance','Technical Skills','Application of Learning to the Job','Quality of Work','Attitude to Supervision','Attitude to Colleagues','Attitude to the Business','Ability to Follow Instructions','Time Keeping','Attendance','Flexibility','Uniform / Presentation','Clocking'];
+var questions6=['How do you think you are doing? What have you achieved since you started?','Please list what technical knowledge / skills you were able to learn since you started in your role:','Please describe any challenges that make it difficult for you to effectively fulfil your responsibilities:','Is there any area where you feel you need support or direction?','What do you feel you could do to improve your performance and meet your objectives more efficiently?','Do you have any questions about what is expected of you? Are there any unclear areas?'];
+var aePerf1=[['Job Knowledge','familiar with all aspects of the role, technical ability'],['Living Organisational Values','integrity, sustainability, commercial awareness'],['Customer Service','anticipating needs, commitment to customers'],['Ownership & Initiative','responsible for assigned tasks, suggesting improvements']];
+var aePerf2=[['Productivity','speed of work, amount of work done, consistent productivity, meeting deadlines'],['Quality of Work','accuracy and attention to detail, lack of errors, observance of high standards'],['Personal Development','takes initiative in training, takes feedback well, self-directed learning'],['Professional Image','uniform in good repair, wears name badge, clean presentation'],['Judgement','ability to make sound decisions using facts and data'],['Teamwork','relationship with colleagues, approach to work, flexibility']];
+var amGeneral=[['Appearance',''],['Attendance',''],['Time Keeping',''],['Attitude',''],['Commitment','']];
+var amReview=[['Energy & Work Rate','Give 100% Every Day? Time Management? Delegate the Work Out?'],['Role Aspects','Product Knowledge, Orders, Stock, Department Costings, Procure Wizard?'],['Look to Improve Departments Weekly?','Incl. Cleanliness of departments/property?']];
+var amLeadership=[['Leadership & Teamwork','Leads by Example, Brings out the Best in Team Members, Resolves Conflict, Delegates Clearly'],['People Management','Effectively allocates resources, monitors & controls quality, up to date with policies, trains team, gives feedback and recognition, motivates staff']];
+var amSales=[['Financials','Understands financial objectives, aware of payroll, keeps within budget, recommends cost solutions'],['Drive for Results','Ability to focus on desired result, setting challenging goals, meeting or exceeding them']];
+var amHR=['Strandum HR – able to Review Rosters, Staff Details, Authorise Leave','Do you ensure HR Policies are being adhered to?','Do you attend HOD meetings and participate?','Are staff appraisals completed?','Are you familiar with the stores TNA?','Is all mandatory training completed?','Have you an active training agenda?'];
+var amHS=['Are Monthly H&S meetings taking place?','Is there a H&S Agenda in place in the store?','Are Monthly H&S Reports being completed?','Are RTW forms being completed?','Are all H&S documents available for inspection (Safety Statement, Fire Log, H&S Agenda, H&S Minutes)?'];
+var amQA=['I would describe my management style in one word as:','My biggest day-to-day challenge is:','One thing I would love to change about how the store is working:','My strength(s) as a Manager are:','My weakness(es) as a Manager are:','I feel I need to improve in the following areas to become a better Manager:'];
 
-var sigBtns=document.querySelectorAll(’.sig-clear’);
-for(var sgi=0;sgi<sigBtns.length;sgi++){
-(function(btn){
-btn.addEventListener(‘click’,function(){clearSig(btn.getAttribute(‘data-sigid’));});
-})(sigBtns[sgi]);
-}
+document.addEventListener('DOMContentLoaded',function(){
+  openDB().catch(function(){});
+
+  makePerfRows('6m-perf-body',perf6Items);
+
+  var qContainer=document.getElementById('6m-questions');
+  for(var qi=0;qi<questions6.length;qi++){
+    var d=document.createElement('div');
+    d.className='field-group';
+    d.innerHTML=
+      '<label class="field-label">'+(qi+1)+'. '+questions6[qi]+'</label>'+
+      '<div class="field-row"><div class="field-group"><label class="field-label" style="font-size:10px">Employee</label><textarea class="field-input" id="6m-q'+qi+'-emp" rows="3"></textarea></div>'+
+      '<div class="field-group"><label class="field-label" style="font-size:10px">Manager</label><textarea class="field-input" id="6m-q'+qi+'-mgr" rows="3"></textarea></div></div>';
+    qContainer.appendChild(d);
+  }
+
+  makeGoalRows('6m-dev-body',4,4);
+  makeRatingRows('ae-perf1-body',aePerf1);
+  makeRatingRows('ae-perf2-body',aePerf2);
+  makeGoalRows('ae-goals-body',5,6);
+  makeGoalRows('ae-newgoals-body',6,4);
+  makeNumberedItems('ae-dev-items',5,'ae-dev','Step or activity…');
+  makeResultRows('am-results-body',4);
+  makeNumberedItems('am-resp-items',8,'am-resp','Responsibility…');
+  makeRatingRows('am-general-body',amGeneral);
+  makeRatingRows('am-review-body',amReview);
+  makeRatingRows('am-leadership-body',amLeadership);
+  makeRatingRows('am-sales-body',amSales);
+  makeYNRows('am-hr-body',amHR);
+  makeYNRows('am-hs-body',amHS);
+  makeTextItems('am-qa-items',amQA,'am-qa',4);
+  makeGoalRows('am-goalsetting-body',4,5);
+
+  document.getElementById('backBtn').addEventListener('click',goBack);
+
+  var cards=document.querySelectorAll('.form-card');
+  for(var ci=0;ci<cards.length;ci++){
+    (function(card){
+      card.addEventListener('click',function(){
+        var fid=card.getAttribute('data-form');
+        if(fid)showForm(fid);
+      });
+    })(cards[ci]);
+  }
+
+  var saveBtns=document.querySelectorAll('.btn-save');
+  for(var si=0;si<saveBtns.length;si++){
+    (function(btn){
+      btn.addEventListener('click',function(){
+        var fid=btn.getAttribute('data-saveid');
+        if(!fid)return;
+        if(btn.getAttribute('data-saving'))return;
+        btn.setAttribute('data-saving','1');
+        btn.style.opacity='0.6';
+        setTimeout(function(){
+          btn.removeAttribute('data-saving');
+          btn.style.opacity='';
+        },3000);
+        saveForm(fid);
+      });
+    })(saveBtns[si]);
+  }
+
+  var sigBtns=document.querySelectorAll('.sig-clear');
+  for(var sgi=0;sgi<sigBtns.length;sgi++){
+    (function(btn){
+      btn.addEventListener('click',function(e){
+        e.stopPropagation();
+        clearSig(btn.getAttribute('data-sigid'));
+      });
+    })(sigBtns[sgi]);
+  }
 });
 </script>
-
 </body>
 </html>
