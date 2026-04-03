@@ -10,7 +10,6 @@
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 body{font-family:'DM Sans',sans-serif;background:#0d1f13;color:white;min-height:100vh;}
 
-/* Header */
 .header{padding:40px 24px 28px;text-align:center;position:relative;overflow:hidden;}
 .header::before{content:’’;position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(0,112,60,0.5) 0%,transparent 70%);pointer-events:none;}
 .logo-mark{display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;background:#00703c;border-radius:16px;font-size:28px;margin-bottom:16px;box-shadow:0 8px 32px rgba(0,112,60,0.5);}
@@ -18,11 +17,9 @@ body{font-family:'DM Sans',sans-serif;background:#0d1f13;color:white;min-height:
 .estd{font-size:10px;letter-spacing:3px;color:rgba(255,255,255,0.4);margin-top:4px;text-transform:uppercase;}
 .tagline{font-size:12px;color:rgba(255,255,255,0.5);margin-top:10px;letter-spacing:1px;}
 
-/* Section */
 .section{padding:0 14px 10px;}
 .section-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.35);margin-bottom:10px;padding-left:2px;}
 
-/* App cards */
 .app-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;}
 .app-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px 14px;cursor:pointer;text-decoration:none;transition:all 0.2s;display:block;position:relative;overflow:hidden;}
 .app-card::before{content:’’;position:absolute;inset:0;opacity:0;transition:opacity 0.2s;}
@@ -33,33 +30,30 @@ body{font-family:'DM Sans',sans-serif;background:#0d1f13;color:white;min-height:
 .app-card.red::before{background:radial-gradient(circle at top left,rgba(198,40,40,0.3),transparent);}
 .app-card.purple::before{background:radial-gradient(circle at top left,rgba(106,27,154,0.3),transparent);}
 .app-card.teal::before{background:radial-gradient(circle at top left,rgba(0,121,107,0.3),transparent);}
+.app-card.indigo::before{background:radial-gradient(circle at top left,rgba(48,63,159,0.3),transparent);}
 .app-card:hover::before,.app-card:active::before{opacity:1;}
 .app-card.wide{grid-column:1/-1;}
 .app-icon{font-size:32px;margin-bottom:10px;display:block;}
 .app-name{font-size:14px;font-weight:700;color:white;margin-bottom:3px;line-height:1.2;}
 .app-desc{font-size:11px;color:rgba(255,255,255,0.45);line-height:1.4;}
-.app-arrow{position:absolute;top:14px;right:14px;color:rgba(255,255,255,0.2);font-size:16px;}
 .app-badge{position:absolute;top:12px;right:12px;background:rgba(0,112,60,0.8);color:white;font-size:8px;font-weight:700;letter-spacing:0.5px;padding:2px 6px;border-radius:10px;text-transform:uppercase;}
 
-/* Accent borders */
 .app-card.green{border-color:rgba(0,112,60,0.3);}
 .app-card.blue{border-color:rgba(21,101,192,0.3);}
 .app-card.orange{border-color:rgba(230,81,0,0.3);}
 .app-card.red{border-color:rgba(198,40,40,0.3);}
 .app-card.purple{border-color:rgba(106,27,154,0.3);}
 .app-card.teal{border-color:rgba(0,121,107,0.3);}
+.app-card.indigo{border-color:rgba(48,63,159,0.3);}
 
-/* Status strip */
 .status-strip{margin:0 14px 20px;background:rgba(0,112,60,0.15);border:1px solid rgba(0,112,60,0.3);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:10px;}
 .status-dot{width:8px;height:8px;background:#4caf50;border-radius:50%;flex-shrink:0;box-shadow:0 0 8px rgba(76,175,80,0.8);animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
 .status-text{font-size:12px;color:rgba(255,255,255,0.6);}
 .status-text strong{color:white;}
 
-/* Footer */
 .footer{text-align:center;padding:20px 14px 40px;font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:1px;text-transform:uppercase;}
 
-/* Time widget */
 .time-widget{text-align:center;margin-bottom:24px;}
 .time-display{font-size:36px;font-weight:300;color:white;letter-spacing:2px;font-variant-numeric:tabular-nums;}
 .date-display{font-size:12px;color:rgba(255,255,255,0.4);margin-top:4px;letter-spacing:1px;}
@@ -141,6 +135,12 @@ body{font-family:'DM Sans',sans-serif;background:#0d1f13;color:white;min-height:
       <span class="app-icon">📋</span>
       <div class="app-name">Appraisals</div>
       <div class="app-desc">3-month, 6-month probation, annual employee & manager reviews</div>
+    </a>
+    <a class="app-card indigo wide" href="https://aarondoyle2026.github.io/training.html">
+      <span class="app-icon">📚</span>
+      <div class="app-name">Training Records</div>
+      <div class="app-desc">Job descriptions, training directives & staff acknowledgements — alcohol, lotto, POS, shopfloor SOP</div>
+      <div class="app-badge">9 Docs</div>
     </a>
   </div>
 </div>
