@@ -18,8 +18,6 @@ body{font-family:'DM Sans',sans-serif;background:#0d1f13;color:white;min-height:
 .estd{font-size:10px;letter-spacing:3px;color:rgba(255,255,255,0.4);margin-top:4px;text-transform:uppercase;}
 .tagline{font-size:12px;color:rgba(255,255,255,0.5);margin-top:10px;letter-spacing:1px;}
 
-/* Store selector */
-
 /* Section */
 .section{padding:0 14px 10px;}
 .section-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.35);margin-bottom:10px;padding-left:2px;}
@@ -134,10 +132,15 @@ body{font-family:'DM Sans',sans-serif;background:#0d1f13;color:white;min-height:
       <div class="app-name">Fire Drill</div>
       <div class="app-desc">Evacuation reports, staff lists, effectiveness & sign-off</div>
     </a>
-    <a class="app-card purple wide" href="https://aarondoyle2026.github.io/rtw_form.html">
+    <a class="app-card purple" href="https://aarondoyle2026.github.io/rtw_form.html">
       <span class="app-icon">🏥</span>
       <div class="app-name">Return to Work Form</div>
       <div class="app-desc">Employee return from absence, COVID section, doctor clearance & dual signatures</div>
+    </a>
+    <a class="app-card green" href="https://aarondoyle2026.github.io/appraisals.html">
+      <span class="app-icon">📋</span>
+      <div class="app-name">Appraisals</div>
+      <div class="app-desc">3-month, 6-month probation, annual employee & manager reviews</div>
     </a>
   </div>
 </div>
@@ -147,15 +150,12 @@ body{font-family:'DM Sans',sans-serif;background:#0d1f13;color:white;min-height:
 </div>
 
 <script>
-// Clock
 function updateClock(){
-  const now=new Date();
+  var now=new Date();
   document.getElementById('clock').textContent=now.toLocaleTimeString('en-IE',{hour:'2-digit',minute:'2-digit',hour12:false});
   document.getElementById('dateline').textContent=now.toLocaleDateString('en-IE',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
 }
 updateClock();setInterval(updateClock,1000);
-
-
 </script>
 
 </body>
