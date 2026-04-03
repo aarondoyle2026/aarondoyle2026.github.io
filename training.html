@@ -1,0 +1,904 @@
+<!DOCTYPE html><html lang="en">
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Moriarty Group – Training Records</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+body{font-family:'Inter',sans-serif;background:#f4f6f4;color:#1a1a1a;min-height:100vh;}
+.top-nav{background:#00703c;color:white;padding:12px 16px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.2);}
+.back-btn{background:rgba(255,255,255,0.2);border:none;color:white;padding:6px 12px;border-radius:6px;cursor:pointer;font-size:14px;font-family:inherit;display:none;}
+.nav-title{font-size:16px;font-weight:600;flex:1;}
+.nav-logo{font-size:12px;opacity:0.8;text-align:right;line-height:1.2;}
+#home{display:block;}
+.home-header{background:linear-gradient(135deg,#005a30,#00703c);color:white;padding:28px 20px 24px;text-align:center;}
+.home-header .brand{font-size:22px;font-weight:700;letter-spacing:1.5px;}
+.home-header .sub{font-size:12px;opacity:0.75;margin-top:2px;letter-spacing:2px;}
+.home-header .title{font-size:15px;font-weight:500;margin-top:10px;opacity:0.9;}
+.category-section{padding:16px 16px 8px;}
+.category-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#666;padding:0 4px;margin-bottom:10px;}
+.form-grid{display:flex;flex-direction:column;gap:8px;}
+.form-card{background:white;border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:14px;cursor:pointer;border:1px solid #d0d0d0;-webkit-user-select:none;user-select:none;}
+.form-card:active{transform:scale(0.98);background:#e8f5ee;}
+.form-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.form-info{flex:1;}
+.form-name{font-size:14px;font-weight:600;color:#1a1a1a;}
+.form-desc{font-size:12px;color:#666;margin-top:2px;}
+.form-arrow{color:#666;font-size:16px;}
+/* Form screens */
+.form-screen{display:none;padding-bottom:60px;}
+.form-header{background:white;border-bottom:3px solid #00703c;padding:16px;}
+.form-header h2{font-size:17px;font-weight:700;color:#005a30;}
+.form-header p{font-size:12px;color:#666;margin-top:4px;}
+.form-body{padding:16px;}
+/* Training content */
+.training-content{background:white;border-radius:10px;border:1px solid #d0d0d0;padding:16px;margin-bottom:16px;font-size:13px;line-height:1.7;color:#1a1a1a;}
+.training-content h3{font-size:14px;font-weight:700;color:#005a30;margin:14px 0 6px;padding-bottom:4px;border-bottom:1px solid #e8f5ee;}
+.training-content h3:first-child{margin-top:0;}
+.training-content p{margin-bottom:8px;}
+.training-content ol,.training-content ul{margin:8px 0 8px 20px;}
+.training-content li{margin-bottom:4px;}
+.training-content .highlight{background:#e8f5ee;border-left:3px solid #00703c;padding:8px 10px;border-radius:4px;margin:10px 0;font-size:12px;}
+.training-content strong{color:#005a30;}
+.section-divider{border:none;border-top:2px solid #e8f5ee;margin:14px 0;}
+/* Fields */
+.section-title{font-size:13px;font-weight:700;color:#005a30;margin:18px 0 10px;padding-bottom:6px;border-bottom:2px solid #e8f5ee;}
+.field-group{margin-bottom:16px;}
+.field-label{font-size:12px;font-weight:600;color:#666;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;display:block;}
+.field-input{width:100%;padding:10px 12px;border:1.5px solid #d0d0d0;border-radius:8px;font-size:14px;font-family:inherit;background:white;color:#1a1a1a;-webkit-appearance:none;}
+.field-input:focus{outline:none;border-color:#00703c;}
+.field-row{display:flex;gap:10px;}
+.field-row .field-group{flex:1;}
+/* Sig */
+.sig-box{border:2px dashed #d0d0d0;border-radius:8px;background:white;position:relative;overflow:hidden;margin-bottom:8px;}
+.sig-box canvas{display:block;width:100%;touch-action:none;}
+.sig-clear{position:absolute;top:6px;right:8px;background:rgba(255,255,255,0.9);border:1px solid #d0d0d0;border-radius:5px;padding:3px 8px;font-size:11px;cursor:pointer;font-family:inherit;color:#d32f2f;}
+/* Buttons */
+.btn-save{background:#005a30;color:white;width:100%;padding:14px;border:none;border-radius:10px;font-size:15px;font-weight:600;font-family:inherit;cursor:pointer;margin-bottom:10px;margin-top:14px;display:block;}
+.btn-save:active{background:#003d20;}
+.btn-print{background:white;color:#005a30;width:100%;padding:12px;border:2px solid #005a30;border-radius:10px;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;margin-bottom:10px;}
+/* Records */
+.records-section{margin-top:20px;background:white;border-radius:10px;border:1px solid #d0d0d0;overflow:hidden;}
+.records-header{background:#1a1a1a;color:white;padding:10px 14px;font-size:12px;font-weight:700;letter-spacing:0.05em;}
+.record-item{padding:12px 14px;border-bottom:1px solid #eee;cursor:pointer;}
+.record-item:last-child{border-bottom:none;}
+.record-item:active{background:#f0f0f0;}
+.record-meta{font-size:12px;font-weight:600;color:#1a1a1a;}
+.record-sub{font-size:11px;color:#666;margin-top:2px;}
+.record-detail{display:none;padding:12px 14px;background:#fafafa;border-top:1px solid #eee;}
+.record-detail.open{display:block;}
+.detail-row{display:flex;border-bottom:1px solid #eee;padding:4px 0;font-size:11px;}
+.detail-row:last-child{border:none;}
+.detail-row .dk{color:#888;width:45%;flex-shrink:0;}
+.detail-row .dv{font-weight:600;}
+.sig-thumb{height:36px;border:1px solid #ddd;border-radius:4px;margin:3px 2px 0 0;vertical-align:middle;}
+/* Toast */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:#005a30;color:white;padding:12px 20px;border-radius:20px;font-size:13px;font-weight:500;z-index:9999;transition:transform 0.3s;white-space:nowrap;}
+.toast.show{transform:translateX(-50%) translateY(0);}
+.ack-box{background:#fff8e1;border:1px solid #f0c040;border-radius:8px;padding:12px 14px;font-size:12px;color:#7a5c00;margin-bottom:14px;line-height:1.6;}
+@media print{
+  .top-nav,.btn-save,.btn-print,.records-section,.toast,.back-btn{display:none!important;}
+  .form-screen{display:block!important;}
+  #home{display:none!important;}
+  body{background:white;}
+  .form-body{padding:8px;}
+  .training-content{border:none;padding:0;}
+}
+</style>
+</head>
+<body>
+<div class="top-nav">
+  <button class="back-btn" id="backBtn" type="button">&#8592; Back</button>
+  <div class="nav-title" id="navTitle">Training Records</div>
+  <div class="nav-logo">MORIARTY<br>GROUP</div>
+</div>
+
+<!-- HOME -->
+
+<div id="home">
+  <div class="home-header">
+    <div class="brand">MORIARTY GROUP</div>
+    <div class="sub">SUPERVALU &#183; ESTD 1987</div>
+    <div class="title">&#128218; Staff Training & Directives</div>
+  </div>
+
+  <div class="category-section">
+    <div class="category-label">&#128101; Job Descriptions</div>
+    <div class="form-grid">
+      <div class="form-card" data-form="jd-shopfloor" onclick=""><div class="form-icon" style="background:#e8f5ee">&#128722;</div><div class="form-info"><div class="form-name">Shopfloor Assistant</div><div class="form-desc">Job description – sales assistant, shopfloor dept</div></div><div class="form-arrow">&#8250;</div></div>
+      <div class="form-card" data-form="jd-checkout" onclick=""><div class="form-icon" style="background:#e8f5ee">&#128184;</div><div class="form-info"><div class="form-name">Checkout Assistant</div><div class="form-desc">Job description – sales assistant, checkout dept</div></div><div class="form-arrow">&#8250;</div></div>
+      <div class="form-card" data-form="jd-deli" onclick=""><div class="form-icon" style="background:#e8f5ee">&#127859;</div><div class="form-info"><div class="form-name">Deli Assistant</div><div class="form-desc">Job description – deli assistant</div></div><div class="form-arrow">&#8250;</div></div>
+      <div class="form-card" data-form="jd-meat" onclick=""><div class="form-icon" style="background:#e8f5ee">&#129385;</div><div class="form-info"><div class="form-name">Counter Hand – Meat Dept</div><div class="form-desc">Job description – counter hand</div></div><div class="form-arrow">&#8250;</div></div>
+      <div class="form-card" data-form="jd-cleaner" onclick=""><div class="form-icon" style="background:#e8f5ee">&#129529;</div><div class="form-info"><div class="form-name">Cleaner</div><div class="form-desc">Job description – cleaner</div></div><div class="form-arrow">&#8250;</div></div>
+    </div>
+  </div>
+
+  <div class="category-section">
+    <div class="category-label">&#128218; Training Directives</div>
+    <div class="form-grid">
+      <div class="form-card" data-form="td-alcohol" onclick=""><div class="form-icon" style="background:#fff8e1">&#128286;</div><div class="form-info"><div class="form-name">Alcohol, Tobacco, Vapes & Paracetamol</div><div class="form-desc">Responsible sale – priority training directive 2025</div></div><div class="form-arrow">&#8250;</div></div>
+      <div class="form-card" data-form="td-lotto" onclick=""><div class="form-icon" style="background:#fff8e1">&#127922;</div><div class="form-info"><div class="form-name">Lotto – Think 21 Campaign</div><div class="form-desc">Lottery product sales training directive</div></div><div class="form-arrow">&#8250;</div></div>
+      <div class="form-card" data-form="td-pos" onclick=""><div class="form-icon" style="background:#fce4ec">&#128176;</div><div class="form-info"><div class="form-name">POS Awareness</div><div class="form-desc">Fake notes, money cons and till security</div></div><div class="form-arrow">&#8250;</div></div>
+      <div class="form-card" data-form="td-sop" onclick=""><div class="form-icon" style="background:#e8f5ee">&#128218;</div><div class="form-info"><div class="form-name">Shopfloor SOP</div><div class="form-desc">Standard operating procedures – shopfloor training manual</div></div><div class="form-arrow">&#8250;</div></div>
+    </div>
+  </div>
+  <div style="height:20px"></div>
+</div>
+
+<!-- ==================== JD: SHOPFLOOR ==================== -->
+
+<div id="jd-shopfloor" class="form-screen">
+<div class="form-header"><h2>&#128722; Job Description – Shopfloor Assistant</h2><p>Sales Assistant · Moriarty's SuperValu · Skerries</p></div>
+<div class="form-body">
+  <div class="training-content">
+    <h3>Main Purpose of the Role</h3>
+    <p>To provide excellent services and first class customer care through I-Care practices. To support the store's management team in delivering the "Real Food Real People" brand through efficient work practices and team work. The Shopfloor Assistant role involves merchandising and rotating stock in the grocery department, handling and recording of all customer queries and complaints and informing customers of the various services, products and promotions on offer.</p>
+    <h3>Main Duties</h3>
+    <ol>
+      <li>To ensure that all sections of the grocery department are merchandised and presented to the highest standard</li>
+      <li>To wear full uniform, name badge and display a neat appearance at all times</li>
+      <li>To provide a friendly, efficient and polite service to all our customers at all times</li>
+      <li>To adhere to all company rules, policies and procedures at all times (per the handbook and policy boards)</li>
+      <li>Ensure that any product going on the shelf has a SEL or is stocked in front of the appropriate SEL</li>
+      <li>To attend any training that has been scheduled for you</li>
+      <li>To be familiar with all price promotions and continuity promotions and be able to explain and promote such to customers</li>
+      <li>To assist customers to pack shopping bags at checkouts as required</li>
+      <li>To provide a trolley to car service when requested</li>
+      <li>To ensure you take note of your roster correctly so as not to miss or be late for any shifts</li>
+      <li>Report any discrepancies and problems to Managers</li>
+      <li>Maintaining hygiene and food safety standards on the Shopfloor</li>
+      <li>To ensure you clock appropriately for every shift/break/lunch</li>
+      <li>To carry out any other duties as requested by management/supervisors from time to time</li>
+    </ol>
+    <h3>Customer Care</h3>
+    <ol>
+      <li>Approach customers and ask if they need any help</li>
+      <li>To greet customers in a genuine, friendly and welcoming manner</li>
+      <li>To give the customer your full attention and stay engaged throughout the interaction</li>
+      <li>If a customer asks where something is, take them to it (do not send them searching for the product)</li>
+      <li>Engage in a polite and friendly conversation</li>
+      <li>Always ensure you ask the customer if they need anything else once you've answered their query</li>
+      <li>Offer additional advice or information on products/offers</li>
+      <li>Always end the interaction with a thank you and goodbye</li>
+    </ol>
+    <h3>Health &amp; Safety</h3>
+    <ol>
+      <li>Always adhere to the Slip/Trip and Falls directive and never leave a spillage unattended</li>
+      <li>Adhere to all Safety instructions given and safety notices displayed</li>
+      <li>Never run while in the building as this can cause accidents</li>
+      <li>Horseplay is not tolerated as your actions could result in injury to yourself, your colleagues or customers</li>
+      <li>In the event of a fire please exit through your nearest exit and proceed to the recycling bins at the far end of the car park</li>
+      <li>Always inform your manager if you need to leave your work station</li>
+      <li>Report any defective equipment to management and do not use it</li>
+      <li>Be security conscious at all times</li>
+      <li>Always get your receipt signed by security personnel or supervisor after each purchase</li>
+      <li>Always pull a combi when transporting stock</li>
+    </ol>
+    <div class="highlight">Note: This job description is neither definitive nor restrictive and it may be modified to meet changing needs.</div>
+  </div>
+  <div id="ack-jd-shopfloor"></div>
+  <div id="records-jd-shopfloor" class="records-section" style="display:none"><div class="records-header">&#128202; Acknowledgement Records</div><div id="records-list-jd-shopfloor"></div></div>
+</div>
+</div>
+
+<!-- ==================== JD: CHECKOUT ==================== -->
+
+<div id="jd-checkout" class="form-screen">
+<div class="form-header"><h2>&#128184; Job Description – Checkout Assistant</h2><p>Sales Assistant · Moriarty's SuperValu · Skerries</p></div>
+<div class="form-body">
+  <div class="training-content">
+    <h3>Main Purpose of the Role</h3>
+    <p>To provide excellent services and first class customer care through I-Care practices. The Sales Assistant role involves processing of customer sales, deliveries and requests, handling and recording of all customer queries and complaints and ensuring that customer transactions are carried out efficiently and effectively.</p>
+    <h3>Main Duties</h3>
+    <ol>
+      <li>To wear full uniform, name badge and display a neat appearance at all times</li>
+      <li>To provide a friendly, efficient and polite service to all our customers at all times</li>
+      <li>To adhere to all company rules, policies and procedures at all times</li>
+      <li>To process internal store charges, coupons, vouchers, account charges, tags, scratch cards, lotto, stamps and Payzone as per store procedure</li>
+      <li>To ensure that no alcohol/tobacco or paracetamol is sold to a person under 18 years of age</li>
+      <li>To ensure that only 1 paracetamol-containing product is sold in each transaction</li>
+      <li>To attend any training that has been scheduled for you</li>
+      <li>To ensure that no counterfeit notes are accepted as payment for goods</li>
+      <li>To be familiar with till operations ensuring customer transactions are carried out efficiently and effectively</li>
+      <li>To assist customers to pack shopping bags at checkouts as required</li>
+      <li>To provide a trolley to car service when requested</li>
+      <li>To ensure you keep the minimum amount of money in your drawer at all times (€500) and request lifts as needed</li>
+      <li>To ensure you take note of your roster correctly so as not to miss or be late for any shifts</li>
+      <li>Report any discrepancies and problems to Supervisors or Managers</li>
+      <li>To assist customers at the self scan tills</li>
+      <li>To offer advice and assistance in joining the Real Rewards scheme</li>
+      <li>To ensure you give the correct change or cash back from debit card transactions</li>
+      <li>To ensure you are the only person that uses your till drawer — sign off and lock your drawer when going on break</li>
+      <li>To carry out any other duties as requested by management/supervisors from time to time</li>
+    </ol>
+    <h3>Customer Care</h3>
+    <ol>
+      <li>To greet customers in a genuine, friendly and welcoming manner</li>
+      <li>To offer customers a bag or box and assistance in packing their groceries</li>
+      <li>To treat all purchases carefully at all times</li>
+      <li>To give the customer your full attention and stay engaged throughout the interaction</li>
+      <li>To ask the customer if they have a Real Rewards Fob/Card; if not, ask if they'd like to join the scheme</li>
+      <li>Offer any additional advice or information on products/offers</li>
+      <li>If a customer asks where something is, take them to it</li>
+      <li>Always use please and thank you when asking for payment at the tills</li>
+      <li>Provide the customer with a receipt and end each transaction with a thank you and goodbye</li>
+      <li>If a customer has a complaint, organise for them to speak with a Supervisor or Manager immediately</li>
+    </ol>
+    <h3>Health &amp; Safety</h3>
+    <ol>
+      <li>Always adhere to the Slip/Trip and Falls directive and never leave a spillage unattended</li>
+      <li>Never run while in the building as this can cause accidents</li>
+      <li>Horseplay is not tolerated</li>
+      <li>In the event of a fire please exit through your nearest exit and proceed to the recycling bins at the far end of the car park</li>
+      <li>Always inform your supervisor if you need to leave your work station</li>
+      <li>Report any defective equipment to management and do not use it</li>
+      <li>Be conscious of customers trying to "scam" you — if you feel pressured in any transaction speak discreetly with your supervisor</li>
+      <li>Always get your receipt signed by security personnel or supervisor after each purchase</li>
+      <li>Keep your till drawer closed at all times and locked when you leave it</li>
+      <li>Always pull a combi when transporting stock</li>
+    </ol>
+    <div class="highlight">Note: This job description is neither definitive nor restrictive and it may be modified to meet changing needs.</div>
+  </div>
+  <div id="ack-jd-checkout"></div>
+  <div id="records-jd-checkout" class="records-section" style="display:none"><div class="records-header">&#128202; Acknowledgement Records</div><div id="records-list-jd-checkout"></div></div>
+</div>
+</div>
+
+<!-- ==================== JD: DELI ==================== -->
+
+<div id="jd-deli" class="form-screen">
+<div class="form-header"><h2>&#127859; Job Description – Deli Assistant</h2><p>Moriarty's SuperValu · Skerries</p></div>
+<div class="form-body">
+  <div class="training-content">
+    <h3>Main Purpose of the Role</h3>
+    <p>To provide excellent services and first class customer care through I-Care practices. The Deli Assistant role involves food preparation, maintaining hygiene and food safety in the Deli department and assisting customers with product knowledge and recommendations.</p>
+    <h3>Main Duties</h3>
+    <ol>
+      <li>To ensure that you understand and comply with all company hygiene, HACCP and food safety procedures</li>
+      <li>Maintain hygiene and food safety standards in your department and ensure product quality</li>
+      <li>To wear full uniform, name badge and display a neat appearance at all times</li>
+      <li>To ensure you remove all jewelry and nail polish before entering the department (only wedding bands allowed)</li>
+      <li>To attend any training that is scheduled for you</li>
+      <li>To ensure documentation is filled in accurately and efficiently</li>
+      <li>To carry out temperature checks on all food and document</li>
+      <li>To ensure in the back up fridge all food products are stored off the floor</li>
+      <li>To ensure that any food products opened has been clearly labeled and dated</li>
+      <li>To ensure all food products in back up fridge are covered, clearly labeled and dated</li>
+      <li>To ensure segregation in the back up fridge — no raw and cooked foods to be stored together</li>
+      <li>Maintain hygiene and cleanliness in the department and sign all relevant cleaning documentation</li>
+      <li>To adhere to all company rules, policies and procedures at all times</li>
+      <li>To carry out any other duties as requested by management from time to time</li>
+    </ol>
+    <h3>Customer Care</h3>
+    <ol>
+      <li>To greet customers in a genuine, friendly and welcoming manner</li>
+      <li>To give the customer your full attention and stay engaged throughout the interaction</li>
+      <li>Engage in a natural and friendly conversation</li>
+      <li>Make personal recommendations</li>
+      <li>Offer any additional advice or information on products/offers</li>
+      <li>If a customer asks where something is, take them to it</li>
+      <li>Always check that the customer is happy with the price after weighing any item</li>
+      <li>Always ask if there is anything else you can get them and use thank you and goodbye</li>
+      <li>If a customer has a complaint, organise for them to speak with a Supervisor or Manager immediately</li>
+    </ol>
+    <h3>Health &amp; Safety</h3>
+    <ol>
+      <li>Always adhere to the Slip/Trip and Falls directive and never leave a spillage unattended</li>
+      <li>Never run while in the building as this can cause accidents</li>
+      <li>Horseplay is not tolerated</li>
+      <li>In the event of a fire please exit through your nearest exit and proceed to the recycling bins at the far end of the car park</li>
+      <li>Always inform your supervisor if you need to leave your work station</li>
+      <li>Report any defective equipment to management and do not use it</li>
+      <li>Always wear protective clothing provided including Safety Shoes</li>
+      <li>Always get your receipt signed by security personnel or supervisor after each purchase</li>
+      <li>Always pull a combi when transporting stock</li>
+    </ol>
+    <div class="highlight">Note: This job description is neither definitive nor restrictive and it may be modified to meet changing needs.</div>
+  </div>
+  <div id="ack-jd-deli"></div>
+  <div id="records-jd-deli" class="records-section" style="display:none"><div class="records-header">&#128202; Acknowledgement Records</div><div id="records-list-jd-deli"></div></div>
+</div>
+</div>
+
+<!-- ==================== JD: MEAT ==================== -->
+
+<div id="jd-meat" class="form-screen">
+<div class="form-header"><h2>&#129385; Job Description – Counter Hand (Meat Dept)</h2><p>Moriarty's SuperValu · Skerries</p></div>
+<div class="form-body">
+  <div class="training-content">
+    <h3>Main Purpose of the Role</h3>
+    <p>To provide excellent services and first class customer care through I-Care practices. The Counter Hand role involves maintaining hygiene and food safety in the Meat department and assisting customers with product knowledge and recommendations.</p>
+    <h3>Main Duties</h3>
+    <ol>
+      <li>To ensure that you understand and comply with all company hygiene, HACCP and food safety procedures</li>
+      <li>Maintain hygiene and food safety standards in your department and ensure product quality</li>
+      <li>To wear full uniform, name badge and display a neat appearance at all times</li>
+      <li>To ensure you remove all jewelry before entering the department (only wedding bands allowed)</li>
+      <li>To attend any training that is scheduled for you</li>
+      <li>To ensure documentation is filled in accurately and efficiently</li>
+      <li>To carry out temperature checks on all food and document</li>
+      <li>To ensure in the back up fridge all food products are stored off the floor</li>
+      <li>To ensure that any food products opened has been clearly labeled and dated</li>
+      <li>To ensure all food products in back up fridge are covered, clearly labeled and dated</li>
+      <li>Maintain hygiene and cleanliness in the department and sign all relevant cleaning documentation</li>
+      <li>To adhere to all company rules, policies and procedures at all times</li>
+      <li>To carry out any other duties as requested by management from time to time</li>
+    </ol>
+    <h3>Customer Care</h3>
+    <ol>
+      <li>To greet customers in a genuine, friendly and welcoming manner</li>
+      <li>To give the customer your full attention and stay engaged throughout the interaction</li>
+      <li>Engage in a natural and friendly conversation</li>
+      <li>Make personal recommendations</li>
+      <li>Offer any additional advice or information on products/offers</li>
+      <li>If a customer asks where something is, take them to it</li>
+      <li>Always check that the customer is happy with the price after weighing any item</li>
+      <li>Always ask if there is anything else you can get them and use thank you and goodbye</li>
+      <li>If a customer has a complaint, organise for them to speak with a Supervisor or Manager immediately</li>
+    </ol>
+    <h3>Health &amp; Safety</h3>
+    <ol>
+      <li>Always adhere to the Slip/Trip and Falls directive and never leave a spillage unattended</li>
+      <li>Never run while in the building as this can cause accidents</li>
+      <li>Horseplay is not tolerated</li>
+      <li>In the event of a fire please exit through your nearest exit and proceed to the recycling bins at the far end of the car park</li>
+      <li>Always inform your supervisor if you need to leave your work station</li>
+      <li>Report any defective equipment to management and do not use it</li>
+      <li>Always wear protective clothing provided including Safety Shoes</li>
+      <li>Always get your receipt signed by security personnel or supervisor after each purchase</li>
+      <li>Always pull a combi when transporting stock</li>
+    </ol>
+    <div class="highlight">Note: This job description is neither definitive nor restrictive and it may be modified to meet changing needs.</div>
+  </div>
+  <div id="ack-jd-meat"></div>
+  <div id="records-jd-meat" class="records-section" style="display:none"><div class="records-header">&#128202; Acknowledgement Records</div><div id="records-list-jd-meat"></div></div>
+</div>
+</div>
+
+<!-- ==================== JD: CLEANER ==================== -->
+
+<div id="jd-cleaner" class="form-screen">
+<div class="form-header"><h2>&#129529; Job Description – Cleaner</h2><p>Moriarty's SuperValu · Balbriggan</p></div>
+<div class="form-body">
+  <div class="training-content">
+    <h3>Main Purpose of the Role</h3>
+    <p>To keep the building in a clean and orderly condition. To perform heavy cleaning duties, such as cleaning floors, washing walls and glass and removing rubbish.</p>
+    <h3>Main Duties</h3>
+    <ol>
+      <li>To clean the store's floors by sweeping, mopping, scrubbing or hovering them</li>
+      <li>To ensure that he/she understands and complies with all company hygiene, HACCP procedures</li>
+      <li>Maintaining hygiene</li>
+      <li>To gather and empty rubbish</li>
+      <li>To clean and supply toilets, canteen and changing rooms</li>
+      <li>To follow procedures for the use of chemical cleaners</li>
+      <li>To clean and polish all furniture and fixtures</li>
+      <li>To clean windows, glass partitions and mirrors</li>
+      <li>To adhere to all company rules, policies and procedures at all times</li>
+      <li>To provide a friendly, efficient and polite service to all of our customers at all times</li>
+      <li>To carry out any other duties as requested by management/supervisors from time to time</li>
+    </ol>
+    <h3>Customer Care</h3>
+    <ol>
+      <li>To display a neat and tidy appearance at all times by wearing the correct uniform and name badge</li>
+      <li>To greet customers in a genuine, friendly and welcoming manner</li>
+      <li>To give the customer your full attention and stay engaged throughout the interaction</li>
+      <li>Offer any additional advice or information on products/offers</li>
+      <li>If a customer asks where something is, take them to it</li>
+      <li>If a customer has a complaint, organise for them to speak with a supervisor/HOD/Manager immediately</li>
+    </ol>
+    <h3>Health &amp; Safety</h3>
+    <ol>
+      <li>Always adhere to the Slip/Trip and Falls directive and never leave a spillage unattended</li>
+      <li>Adhere to all Safety instructions given and safety notices displayed</li>
+      <li>Never run while in the building as this can cause accidents</li>
+      <li>Horseplay is not tolerated</li>
+      <li>In the event of a fire please exit through your nearest exit and proceed to the recycling bins at the far end of the car park</li>
+      <li>Always inform your supervisor if you need to leave your work station</li>
+      <li>Report any defective equipment to management and do not use it</li>
+      <li>Be security conscious at all times</li>
+      <li>Always get your receipt signed by security personnel or supervisor after each purchase</li>
+    </ol>
+    <div class="highlight">Note: This job description is neither definitive nor restrictive and it may be modified to meet changing needs.</div>
+  </div>
+  <div id="ack-jd-cleaner"></div>
+  <div id="records-jd-cleaner" class="records-section" style="display:none"><div class="records-header">&#128202; Acknowledgement Records</div><div id="records-list-jd-cleaner"></div></div>
+</div>
+</div>
+
+<!-- ==================== TD: ALCOHOL/TOBACCO/VAPES ==================== -->
+
+<div id="td-alcohol" class="form-screen">
+<div class="form-header"><h2>&#128286; Alcohol, Tobacco, Vapes &amp; Paracetamol</h2><p>Priority Training Directive · HR Dept 2025</p></div>
+<div class="form-body">
+  <div class="training-content">
+    <div class="highlight"><strong>Important:</strong> Staff will be held accountable for all sales they process through the tills. Breaches of this legislation will be dealt with by the Gardaí, who will not only hold the store accountable but the sales assistant also.</div>
+    <h3>Sale of Alcohol</h3>
+    <ol>
+      <li>Only staff who are 18 years of age or over may actually sell alcohol in our store</li>
+      <li>If you are under 18 and a customer asks you to take a sale with alcohol in it — you must call your supervisor immediately</li>
+      <li>Only persons aged 18 years of age or over can legally purchase alcohol</li>
+      <li>Anyone who looks under 23 years of age should be asked for photographic ID to show proof of age</li>
+      <li>The preferred proof of age ID is the Garda National Age Card (a passport or driving licence may also be accepted)</li>
+      <li>Ensure that the photo on the ID is the actual person in front of you</li>
+      <li>If a customer cannot produce ID — refuse the sale politely and explain they may return with appropriate ID</li>
+      <li>If a customer becomes difficult, seek the assistance of your supervisor/manager immediately</li>
+      <li>If you suspect alcohol is being purchased for someone under 18, consult your supervisor before processing the sale</li>
+      <li>Never accept payment for alcohol from a minor — even if they are with an adult</li>
+      <li>Do not sell alcohol to an individual who is heavily intoxicated</li>
+      <li>Report any suspicious behaviour to your supervisor who will record it in the incident book</li>
+    </ol>
+    <div class="highlight"><strong>Very Important:</strong> Employees who sell alcohol to underage drinkers can themselves be prosecuted for "aiding and abetting." An Garda Síochána are now prosecuting employees involved in underage sales as well as the licence holders themselves.</div>
+    <h3>Sale of Tobacco</h3>
+    <ol>
+      <li>Only staff who are 18 years of age or over may sell tobacco/tobacco products in our store</li>
+      <li>If you are under 18 and a customer asks you to take a sale with tobacco in it — you must call your supervisor immediately</li>
+      <li>Only people 18 years of age or over are legally entitled to purchase tobacco products</li>
+      <li>If you suspect someone is under 18 (use under 23 as a guideline) ask to see photo ID</li>
+      <li>If a customer cannot produce ID — refuse the sale politely</li>
+      <li>If a customer becomes difficult, bring this to the attention of your supervisor immediately</li>
+    </ol>
+    <h3>Sale of E-Cigarettes (Vapes)</h3>
+    <ol>
+      <li>Only staff who are 18 years of age or over may sell E-Cigarettes/Vapes or vaping products in our store</li>
+      <li>If you are under 18 and a customer asks you to take a sale with vapes in it — you must call your supervisor immediately</li>
+      <li>Only people 18 years of age or over are legally entitled to purchase E-Cigarettes/Vapes or vaping products</li>
+      <li>If you suspect someone is under 18 (use under 23 as a guideline) ask to see photo ID</li>
+      <li>If a customer cannot produce ID — refuse the sale politely</li>
+      <li>If a customer becomes difficult, bring this to the attention of your supervisor immediately</li>
+    </ol>
+    <h3>Sale of Paracetamol</h3>
+    <ol>
+      <li>Only 1 paracetamol-containing product may be sold in each retail transaction</li>
+      <li>It is not acceptable to serve 1 customer 2 paracetamol products by scanning them in 2 separate transactions</li>
+      <li>Your till is programmed to prompt you when a paracetamol product is scanned — you must remain vigilant</li>
+      <li>"Contains Paracetamol" should be clearly marked on the outer packaging of relevant products</li>
+      <li>This rule is LAW and not just our own internal policy</li>
+      <li>Store policy: only sell paracetamol products to customers who are 18 years of age or over</li>
+      <li>If a customer becomes annoyed, contact your Supervisor/Manager in a tactful/sensitive manner</li>
+    </ol>
+    <div class="highlight"><strong>Remember:</strong> The above rules are Law in Ireland. Spot checks are carried out by An Garda Síochána regarding alcohol, tobacco and vapes, and by the HPRA regarding Paracetamol products.</div>
+  </div>
+  <div class="ack-box">I acknowledge receipt of this training directive regarding the guidelines in relation to the sale of alcohol, tobacco, vapes and paracetamol. I have read and understand the contents and I understand my responsibility regarding this directive. I understand that failure to adhere to the above will be treated as gross misconduct and managed through the company's disciplinary process, which could be up to and including dismissal.</div>
+  <div id="ack-td-alcohol"></div>
+  <div id="records-td-alcohol" class="records-section" style="display:none"><div class="records-header">&#128202; Acknowledgement Records</div><div id="records-list-td-alcohol"></div></div>
+</div>
+</div>
+
+<!-- ==================== TD: LOTTO ==================== -->
+
+<div id="td-lotto" class="form-screen">
+<div class="form-header"><h2>&#127922; Lotto Training Directive</h2><p>Think 21 Campaign · HR Dept 2021</p></div>
+<div class="form-body">
+  <div class="training-content">
+    <p>All retailers in conjunction with PLI (Operator of the National Lottery) are working together to ensure that Lotto/Lottery products such as scratch cards are not sold to anyone under the age of 18. The reason for this restriction is to help prevent potential problem gambling behaviours later in life.</p>
+    <p>As with alcohol and tobacco sales we are <strong>legally required</strong> to ask for a formal form of ID such as a Passport, Garda National Age Card or Drivers Licence to establish that an individual is 18 years of age or older before we can sell them Lotto, EuroMillions, any other lotto game and scratch cards. We must also ensure that a person claiming a prize is 18 years of age or above before paying out any prize money to them.</p>
+    <div class="highlight"><strong>Think 21:</strong> PLI have requested that we "Think 21" and ask any individual who looks like they could be under 21 years of age for proof of age if they wish to buy lotto/lotto products or wish to hand in a winning ticket.</div>
+    <h3>With Immediate Effect</h3>
+    <ol>
+      <li>Anyone who looks under 21 years of age is to be asked for photographic ID to show proof of age</li>
+      <li>The preferred proof of age ID is the Garda National Age Card (a passport or driving licence may also be accepted)</li>
+      <li>Ensure that the photo on the ID is the actual person in front of you (random IDs from clubs etc. should not be relied upon as they may be tampered with)</li>
+      <li>If a customer who looks under 21 cannot produce an ID — do not feel under pressure to serve them. Politely explain that you are obliged to ask for proof of age and refuse the sale</li>
+      <li>If a customer becomes difficult, seek the assistance of your supervisor/manager immediately</li>
+    </ol>
+    <div class="highlight">If in doubt about a person's age do not take any chances. It is better to decline a sale than mistakenly sell lottery/lotto products to someone who is under 18 years of age. <strong>Remember THINK 21!</strong></div>
+  </div>
+  <div class="ack-box">I acknowledge receipt of this training directive regarding the guidelines in relation to the sale of lotto/lottery products and payment of lotto winnings. I have read and understand the contents and I understand my responsibility regarding this directive. I understand that failure to adhere to the above will be treated as gross misconduct and managed through the company's disciplinary process, which could be up to and including dismissal.</div>
+  <div id="ack-td-lotto"></div>
+  <div id="records-td-lotto" class="records-section" style="display:none"><div class="records-header">&#128202; Acknowledgement Records</div><div id="records-list-td-lotto"></div></div>
+</div>
+</div>
+
+<!-- ==================== TD: POS AWARENESS ==================== -->
+
+<div id="td-pos" class="form-screen">
+<div class="form-header"><h2>&#128176; POS Awareness</h2><p>Fake Notes, Money Cons &amp; Till Security</p></div>
+<div class="form-body">
+  <div class="training-content">
+    <h3>Fake Money Tendered for Goods</h3>
+    <p>Occasionally a customer will present a money note as payment for goods, and when the note is checked it will turn out to be a dud note (not legal tender, not a real note). This may be done knowingly or unknowingly. The best procedure to follow:</p>
+    <ol>
+      <li>Check the note using the note check marker if available. The mark will indicate if the note is not real. Or carry out the various visual checks for watermarks, paper quality and stand out indicators. The most common recent indicator states along the short end of the note that it is "MOVIE MONEY" and "USED FOR MOTION PROPS"</li>
+      <li>Politely make the customer aware that the note is not genuine and explain how you know this. The customer will most likely offer you another note</li>
+      <li>Most customers will want you to return the note to them — <strong>do not return the note</strong>. Banks have given directives to retailers that fake notes should be taken out of circulation</li>
+      <li>It is important not to draw attention to the customer who in most cases will be embarrassed. Don't create a situation where the customer may later allege you were accusing them of knowingly passing fake money</li>
+    </ol>
+    <h3>Money Con / Dupe Artists</h3>
+    <div class="highlight">The perpetrators are professionals. Their art is practiced to perfection. The act itself is based on your confusion, distraction and the quickness of their hands.</div>
+    <ol>
+      <li>They will only approach a checkout that has a large amount of cash in the drawer. They will watch till drawers open and close until they find one with an abundance of cash notes. They may work as couples or alone</li>
+      <li>A small item will be purchased and then the person will look to change a large sum of €20 notes to €50 notes</li>
+      <li>The person will switch €20s to €50s with you (normally around €400), then tell you they don't want the €50s anymore and return what you think are all of your €50 notes. You will give back all their €20 notes — but your till will be short €100/€150</li>
+      <li><strong>Do not keep excess cash in your till drawer.</strong> Request cash pick-ups from supervisors. If a request is made, politely close your till drawer and tell the person you will have to get a supervisor. They will most likely walk away</li>
+    </ol>
+    <p>Not all money con transactions are carried out in the same manner. There have been recent cases where customers begin the transaction with a cash note and then change it for a different note in order to confuse the cashier. If you find yourself in this kind of situation it is <strong>VITAL</strong> that you close your till drawer immediately and advise that you must call a manager for authorization and assistance.</p>
+    <div class="highlight"><strong>All staff must also be vigilant with cigarette and vape scams.</strong> When a customer requests cigarettes, always make sure that the transaction is paid for <strong>before</strong> cigarettes/vapes are handed over.</div>
+  </div>
+  <div id="ack-td-pos"></div>
+  <div id="records-td-pos" class="records-section" style="display:none"><div class="records-header">&#128202; Acknowledgement Records</div><div id="records-list-td-pos"></div></div>
+</div>
+</div>
+
+<!-- ==================== TD: SHOPFLOOR SOP ==================== -->
+
+<div id="td-sop" class="form-screen">
+<div class="form-header"><h2>&#128218; Shopfloor SOP</h2><p>Standard Operating Procedures – Moriarty's SuperValu</p></div>
+<div class="form-body">
+  <div class="training-content">
+    <p>Welcome to the team! As a part of the team here in Moriarty's SuperValu, there are many duties that each of us carry out every day. This manual has been compiled especially for floor staff who play a very important part in the success of our store. Your Staff Manager/Manager will go through the manual in detail with you to ensure you understand its contents.</p>
+    <h3>1. Uniform &amp; Personal Presentation</h3>
+    <p>Your uniform consists of: Black Trousers (no jeans or tracksuit bottoms), SuperValu Polo-shirt or Fleece, Black Shoes – polished (no trainers), Name Badge. Your Name Badge is as important as your shoes.</p>
+    <ul>
+      <li>Always report to work in full uniform, which should be clean, neat &amp; tidy</li>
+      <li>Hair should be neat and tidy — long hair should be tied back</li>
+      <li>Jewellery should be kept to a minimum</li>
+      <li>Be conscious of your personal hygiene — use an anti-perspirant deodorant</li>
+      <li>Any discrepancies in uniform must be reported to the Duty Manager before the start of your shift</li>
+    </ul>
+    <h3>2. Customer Service</h3>
+    <ul>
+      <li>Always smile and greet the customer with a simple hello</li>
+      <li>If a customer appears to be looking for something, ask if you can help</li>
+      <li>If a customer asks for an item not on the shelf, check the back stores or order it in through your manager</li>
+      <li>If a customer asks where something is, do not point — take them to the particular product</li>
+      <li>If a customer appears to be struggling with their basket or trolley, offer assistance</li>
+      <li>If a customer asks you a question, stop what you are doing and give them your full 100% attention</li>
+      <li>If a customer has a complaint, listen to them and then explain that you will get a manager</li>
+    </ul>
+    <h3>3. Label Discipline</h3>
+    <p>Every product on a shelf must have a label (SEL — Shelf Edge Label) which corresponds to it. If a product does not have a barcode it must have a PLU number.</p>
+    <ul>
+      <li><strong>SEL Positioning:</strong> The label must always be located on the front of the product to the left hand side</li>
+      <li><strong>3 Digit Code Check:</strong> When packing shelves you must always carry out a 3 digit code check — check the last 3 digits on the product's barcode with the last 3 digits on the SEL. These should match. If they don't match, leave one unit in the scanning office so that a new label can be produced</li>
+      <li>The 3 digit code check must be carried out on 1 item out of every case of stock — even stock you are familiar with, as product codes can change frequently</li>
+      <li>The Competition and Consumer Protection Commission can administer fines for EVERY product that doesn't have a label in front of it on the shelf</li>
+    </ul>
+    <h3>4. Merchandising Standards</h3>
+    <ul>
+      <li><strong>Shelf Hygiene:</strong> Any spillages or marks on shelves should be dealt with before packing more stock</li>
+      <li><strong>Stock Rotation:</strong> Always rotate your stock — the product with the shortest time left on its best before date should be pulled to the front so newer stock is packed at the back</li>
+      <li><strong>Out of Stocks:</strong> Leave the allocated space empty, do not fill with another product. Use a "sorry, out of stock" label from the scanning office. Remove this label when the product is back in stock. At no time should a gap be filled with surrounding stock</li>
+      <li><strong>Facing Off:</strong> Face the product in accordance with the amount of space/facings given to it. All products must have their label facing to the front. If there is not enough product to fill the space, leave a gap — do not fill with other products</li>
+    </ul>
+    <h3>5. Manual Handling / Lifting Procedures</h3>
+    <p>8 Principles of Safe Lifting:</p>
+    <ol>
+      <li>Assess the task, area &amp; load (can I do this myself or will I need help?)</li>
+      <li>Bend your knees</li>
+      <li>Broad stable base — feet hip width apart on a safe secure surface</li>
+      <li>Keep back straight, though not necessarily vertical</li>
+      <li>Firm grip</li>
+      <li>Keep arms close to the trunk part of body</li>
+      <li>Carry weight close to the centre of gravity</li>
+      <li>Point/pivot feet in the direction of movement</li>
+    </ol>
+    <p>Always use the combis, pallet trucks and hand trucks to move stock. Never over burden yourself and don't be afraid to ask for help.</p>
+    <h3>6. Slip &amp; Trip Hazards</h3>
+    <ul>
+      <li>If you notice a spillage, stand over it immediately diverting people away. Ask a colleague to fetch paper towel or a bucket and mop. Clean up the spillage and place a yellow warning sign. Stay at the scene until the floor is dry. <strong>You never leave a spillage unattended!</strong></li>
+      <li>Always keep your work area clear; keep all stock on combis until you are ready to pack it</li>
+      <li>Dispose of all empty boxes; remove combis and kick stools from the aisle when not in use</li>
+      <li>Do not walk past fallen stock — pick it up and return it to the shelf</li>
+    </ul>
+    <h3>7. Bag Packing</h3>
+    <ul>
+      <li>Ask the customer if you can pack their shopping</li>
+      <li>Treat all items with care</li>
+      <li>Pack all non-food items together away from food</li>
+      <li>Keep all raw meat away from cooked/ready to eat food</li>
+      <li>Keep eggs, bread and other fragile products at the top</li>
+      <li>If the customer has a lot of bags or a trolley, offer assistance to their car</li>
+    </ul>
+    <h3>8. Home Deliveries</h3>
+    <ul>
+      <li>Pack bags as above and pack bags into delivery crates — do not over pack</li>
+      <li>Obtain address from customer/cashier and fill details onto delivery sheet at customer service desk</li>
+      <li>Always double check the address and where possible show the customer the address you have written</li>
+      <li>Write a sticker for each crate and stick on</li>
+    </ul>
+    <h3>9. Combi Safety</h3>
+    <ol>
+      <li>Never overload a combi or pack stock in an unsecured way — you need to be able to see where you are going</li>
+      <li>When entering the shop floor, be at the front of the combi and check that the way is clear</li>
+      <li>If the combi is heavy ask a colleague to push at one end so you can walk at the side/front</li>
+      <li>Always secure combi before you begin your journey by closing both sides</li>
+      <li>Always return to the stores area when you are finished</li>
+    </ol>
+    <h3>10. Health &amp; Safety</h3>
+    <ul>
+      <li>Be conscious of the effect your actions will have on you and those around you</li>
+      <li>Adhere to safety procedures as set out by management</li>
+      <li>Wear any protective clothing you are given</li>
+      <li>Use safety equipment provided for your job</li>
+      <li>Report any defective equipment to management</li>
+      <li>Do not use machinery/equipment that you are not trained to use</li>
+      <li>Report any illness/accidents to management immediately</li>
+    </ul>
+    <h3>11. Floor Sweeping</h3>
+    <ul>
+      <li>Be mindful of customers always</li>
+      <li>All debris on floor is cleared away</li>
+      <li>Any loose stock is picked up and returned to shelf or returns area if damaged</li>
+      <li>Never leave clumps of dirt lying around — pick them up before moving to the next section</li>
+      <li>All mats are clear and lying flat in place</li>
+      <li>Be vigilant for slip/trip hazards</li>
+      <li>Sign off the floor sweeping schedule when you have completed your sweep</li>
+    </ul>
+    <h3>12. Returns / Damaged Stock</h3>
+    <ul>
+      <li>Always show/tell a member of management about any items you put in returns</li>
+      <li>Never put broken glass in returns</li>
+      <li>Do not throw any stock in the bin unless instructed to do so by a manager</li>
+      <li>There is a separate returns area for each of the fresh food departments</li>
+    </ul>
+    <h3>13. Packing of Fresh Foods</h3>
+    <ul>
+      <li>Stock rotation is the most important aspect of packing any fresh food department</li>
+      <li>Adhere to the "one date rule" where possible — slower selling items will all have the same date on the shelf to limit customers pulling longer dated products from the back</li>
+      <li>In all circumstances where there is a doubt, consult the chargehand or manager for clarification</li>
+    </ul>
+    <h3>14. Procedure for Dead Stock</h3>
+    <ul>
+      <li>After you are satisfied all stock has been packed and the remaining stock is dead, place it in the goods lift</li>
+      <li>If you only have a few boxes left, try to condense them onto any existing dead stock combis already in the goods lift</li>
+      <li>Once the lift is full, the combis must be emptied from the lift and left upstairs</li>
+      <li>If the lift is out of service or in use, show any dead stock combis to a member of management or the back stores team</li>
+    </ul>
+    <h3>15. Communication with Management</h3>
+    <p>As the eyes and ears on the ground you will during the course of your shift encounter a number of issues that management may or may not be aware of. It is part of your duties to report ALL issues that arise during your shift to a member of management. These may include but are not limited to:</p>
+    <ul>
+      <li>Security issues</li>
+      <li>Customer complaints</li>
+      <li>Out of stocks</li>
+      <li>Spillages</li>
+      <li>Structural damage</li>
+      <li>Conduct of other staff members</li>
+      <li>Customer feedback</li>
+    </ul>
+    <h3>16. Real Food Real People</h3>
+    <p>In 2007 Musgrave decided to update our brand identity. The focus is very much on our food and our people from Supplier ▶ Delivery Person ▶ Staff ▶ Customer. We promise sincerity, genuine, inspiration and commitment in our service and staff.</p>
+    <h3>17. Goods Inwards</h3>
+    <p>All new staff will spend some time with our goods inwards managers to discuss basic standards to be observed: Returns, Cleaning Room, Back Stocking, Baler, Bin Segregation, Stacking Combis, Combi Use/Discipline, Back up fridges/freezers.</p>
+    <h3>18. Scanning Office</h3>
+    <p>All new staff will spend time with our scanning team regarding the disciplines in relation to labels/pricing: Labels, Labels wand, Price Checks, Importance of 3 digit code checks.</p>
+    <h3>19. Checkouts</h3>
+    <p>All floor staff will receive basic till training so that they can support the department if it gets very busy. Managers will organise this with the checkout manager: General till operations, Open a till, Close up a till at end of night.</p>
+    <h3>20. The Super / The Valu</h3>
+    <p>The training manager will explain to new staff the meaning behind "The Super The Valu" — at SuperValu we do both.</p>
+    <div class="highlight">I have received this Shop Floor SOP. I can confirm that the contents have been explained to me and that I understand the contents. I understand that non-adherence to the above will be managed through the stores disciplinary process. I have also been encouraged to ask as many questions as needed to increase my understanding of these contents.</div>
+  </div>
+  <div id="ack-td-sop"></div>
+  <div id="records-td-sop" class="records-section" style="display:none"><div class="records-header">&#128202; Acknowledgement Records</div><div id="records-list-td-sop"></div></div>
+</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+var SB_URL='https://mnebkteiwjxbbmnfotse.supabase.co';
+var SB_KEY='sb_publishable_eutRHOftOW4ZJNlVrDKXOg_XtnBQ7cM';
+var DB_NAME='MoriartyTraining',DB_VER=1,db=null;
+var currentForm=null,sigPads={};
+var _saving={};
+
+var FORM_IDS=['jd-shopfloor','jd-checkout','jd-deli','jd-meat','jd-cleaner','td-alcohol','td-lotto','td-pos','td-sop'];
+
+function sbFetch(path,method,body){
+  var headers={'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json'};
+  if(method==='POST')headers['Prefer']='resolution=merge-duplicates';
+  return fetch(SB_URL+'/rest/v1/'+path,{method:method||'GET',headers:headers,body:body?JSON.stringify(body):undefined});
+}
+function openDB(){
+  return new Promise(function(res,rej){
+    var req=indexedDB.open(DB_NAME,DB_VER);
+    req.onupgradeneeded=function(e){var d=e.target.result;if(!d.objectStoreNames.contains('training'))d.createObjectStore('training',{keyPath:'id'});};
+    req.onsuccess=function(e){db=e.target.result;res(db);};
+    req.onerror=function(e){rej(e.target.error);};
+  });
+}
+function dbPut(obj){return new Promise(function(res,rej){var tx=db.transaction('training','readwrite');tx.objectStore('training').put(obj);tx.oncomplete=res;tx.onerror=function(e){rej(e.target.error);};});}
+function dbGetAll(){return new Promise(function(res,rej){var tx=db.transaction('training','readonly');var r=tx.objectStore('training').getAll();r.onsuccess=function(e){res(e.target.result);};r.onerror=function(e){rej(e.target.error);};});}
+function dbDelete(id){return new Promise(function(res,rej){var tx=db.transaction('training','readwrite');tx.objectStore('training').delete(id);tx.oncomplete=res;tx.onerror=function(e){rej(e.target.error);};});}
+
+function showToast(msg){var t=document.getElementById('toast');t.textContent=msg;t.className='toast show';setTimeout(function(){t.className='toast';},3000);}
+
+function initSig(canvasId){
+  var canvas=document.getElementById(canvasId);
+  if(!canvas||sigPads[canvasId])return;
+  canvas.width=canvas.parentElement.offsetWidth||300;
+  canvas.height=parseInt(canvas.getAttribute('height'),10)||80;
+  var ctx=canvas.getContext('2d');
+  ctx.strokeStyle='#1a1a1a';ctx.lineWidth=2;ctx.lineCap='round';ctx.lineJoin='round';
+  var drawing=false,lx=0,ly=0;
+  function pos(e){var r=canvas.getBoundingClientRect(),sx=canvas.width/r.width,sy=canvas.height/r.height;if(e.touches)return{x:(e.touches[0].clientX-r.left)*sx,y:(e.touches[0].clientY-r.top)*sy};return{x:(e.clientX-r.left)*sx,y:(e.clientY-r.top)*sy};}
+  function start(e){e.preventDefault();drawing=true;var p=pos(e);lx=p.x;ly=p.y;ctx.beginPath();ctx.arc(p.x,p.y,1,0,Math.PI*2);ctx.fill();}
+  function move(e){if(!drawing)return;e.preventDefault();var p=pos(e);ctx.beginPath();ctx.moveTo(lx,ly);ctx.lineTo(p.x,p.y);ctx.stroke();lx=p.x;ly=p.y;}
+  function stop(){drawing=false;}
+  canvas.addEventListener('mousedown',start);canvas.addEventListener('mousemove',move);canvas.addEventListener('mouseup',stop);canvas.addEventListener('mouseleave',stop);
+  canvas.addEventListener('touchstart',start,{passive:false});canvas.addEventListener('touchmove',move,{passive:false});canvas.addEventListener('touchend',stop);
+  sigPads[canvasId]={clear:function(){ctx.clearRect(0,0,canvas.width,canvas.height);}};
+}
+function clearSig(id){if(sigPads[id])sigPads[id].clear();}
+function getSigData(id){
+  var canvas=document.getElementById(id);
+  if(!canvas)return null;
+  try{var ctx=canvas.getContext('2d'),img=ctx.getImageData(0,0,canvas.width,canvas.height);for(var px=3;px<img.data.length;px+=4)if(img.data[px]>0)return canvas.toDataURL('image/png');}catch(e){}
+  return null;
+}
+
+function buildAckSection(formId){
+  var container=document.getElementById('ack-'+formId);
+  if(!container)return;
+  container.innerHTML=
+    '<div class="section-title">&#9999;&#65039; Acknowledgement</div>'+
+    '<div class="field-row"><div class="field-group"><label class="field-label">Staff Member Name</label><input class="field-input" type="text" id="'+formId+'-name" placeholder="Full name"></div><div class="field-group"><label class="field-label">Date</label><input class="field-input" type="date" id="'+formId+'-date"></div></div>'+
+    '<div class="field-group"><label class="field-label">Job Title / Department</label><input class="field-input" type="text" id="'+formId+'-dept" placeholder="e.g. Shopfloor Assistant"></div>'+
+    '<label class="field-label">Staff Member Signature</label>'+
+    '<div class="sig-box"><canvas id="sig-'+formId+'-staff" height="80"></canvas><button class="sig-clear" type="button" data-sigid="sig-'+formId+'-staff">Clear</button></div>'+
+    '<div class="field-row" style="margin-top:10px"><div class="field-group"><label class="field-label">Manager / Supervisor Name</label><input class="field-input" type="text" id="'+formId+'-mgrname" placeholder="Manager name"></div><div class="field-group"><label class="field-label">Manager Date</label><input class="field-input" type="date" id="'+formId+'-mgrdate"></div></div>'+
+    '<label class="field-label">Manager Signature</label>'+
+    '<div class="sig-box"><canvas id="sig-'+formId+'-mgr" height="80"></canvas><button class="sig-clear" type="button" data-sigid="sig-'+formId+'-mgr">Clear</button></div>'+
+    '<button class="btn-save" type="button" id="save-'+formId+'">&#128190; Save Acknowledgement</button>'+
+    '<button class="btn-print" type="button" onclick="printForm()">&#128424; Print / PDF</button>';
+
+  var saveBtn=document.getElementById('save-'+formId);
+  saveBtn.addEventListener('click',function(){
+    if(saveBtn.getAttribute('data-saving'))return;
+    saveBtn.setAttribute('data-saving','1');
+    saveBtn.style.opacity='0.6';
+    setTimeout(function(){saveBtn.removeAttribute('data-saving');saveBtn.style.opacity='';},3000);
+    saveRecord(formId);
+  });
+
+  var sigBtns=container.querySelectorAll('.sig-clear');
+  for(var i=0;i<sigBtns.length;i++){
+    (function(btn){btn.addEventListener('click',function(e){e.stopPropagation();clearSig(btn.getAttribute('data-sigid'));});})(sigBtns[i]);
+  }
+}
+
+function saveRecord(formId){
+  if(_saving[formId])return;
+  _saving[formId]=true;
+  var now=new Date();
+  var nameEl=document.getElementById(formId+'-name');
+  var staffName=nameEl?nameEl.value:'';
+  var dateEl=document.getElementById(formId+'-date');
+  var deptEl=document.getElementById(formId+'-dept');
+  var mgrnameEl=document.getElementById(formId+'-mgrname');
+  var mgrdateEl=document.getElementById(formId+'-mgrdate');
+  var staffSig=getSigData('sig-'+formId+'-staff');
+  var mgrSig=getSigData('sig-'+formId+'-mgr');
+  var fieldData={
+    staffName:staffName,
+    date:dateEl?dateEl.value:'',
+    department:deptEl?deptEl.value:'',
+    managerName:mgrnameEl?mgrnameEl.value:'',
+    managerDate:mgrdateEl?mgrdateEl.value:''
+  };
+  var rec={id:now.getTime(),formId:formId,savedAt:now.toISOString(),staffName:staffName,fieldData:fieldData,staffSig:staffSig,mgrSig:mgrSig};
+  var sbRow={id:String(rec.id),form_id:formId,saved_at:rec.savedAt,data:{staffName:staffName,fieldData:fieldData,staffSig:staffSig?true:false,mgrSig:mgrSig?true:false}};
+  dbPut(rec).then(function(){
+    return sbFetch('training_records','POST',[sbRow]);
+  }).then(function(){
+    _saving[formId]=false;
+    showToast('Saved!');
+    loadRecords(formId);
+  }).catch(function(e){
+    _saving[formId]=false;
+    showToast('Save failed: '+(e.message||e));
+  });
+}
+
+function loadRecords(formId){
+  var container=document.getElementById('records-list-'+formId);
+  var section=document.getElementById('records-'+formId);
+  if(!container)return;
+  sbFetch('training_records?form_id=eq.'+formId+'&order=saved_at.desc','GET')
+  .then(function(r){if(!r.ok)throw new Error('fetch');return r.json();})
+  .then(function(rows){
+    if(!Array.isArray(rows)||!rows.length)throw new Error('empty');
+    renderRecords(container,section,rows.map(function(r){
+      return{id:r.id,savedAt:r.saved_at,staffName:(r.data&&r.data.staffName)||'',fieldData:(r.data&&r.data.fieldData)||{},staffSig:null,mgrSig:null};
+    }));
+  }).catch(function(){
+    if(!db)return;
+    dbGetAll().then(function(recs){
+      var filtered=recs.filter(function(r){return r.formId===formId;}).sort(function(a,b){return a.savedAt<b.savedAt?1:-1;});
+      renderRecords(container,section,filtered);
+    });
+  });
+}
+
+function renderRecords(container,section,recs){
+  if(!recs.length){section.style.display='none';return;}
+  section.style.display='block';
+  var html='';
+  for(var i=0;i<recs.length;i++){
+    var r=recs[i];
+    var dt=new Date(r.savedAt);
+    var ts=dt.toLocaleString('en-IE',{weekday:'short',day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',hour12:false});
+    html+='<div class="record-item" data-open="0" onclick="toggleRecord(this)">';
+    html+='<div class="record-meta">&#128100; '+esc(r.staffName||'Unnamed')+'</div>';
+    html+='<div class="record-sub">'+esc(ts)+'</div>';
+    html+='<div class="record-detail">';
+    var fd=r.fieldData||{};
+    var keys=Object.keys(fd);
+    for(var ki=0;ki<keys.length;ki++){
+      if(fd[keys[ki]])html+='<div class="detail-row"><span class="dk">'+esc(keys[ki].replace(/([A-Z])/g,' $1').toLowerCase())+'</span><span class="dv">'+esc(String(fd[keys[ki]]))+'</span></div>';
+    }
+    if(r.staffSig)html+='<div class="detail-row"><span class="dk">Staff sig</span><span class="dv"><img src="'+r.staffSig+'" class="sig-thumb"></span></div>';
+    if(r.mgrSig)html+='<div class="detail-row"><span class="dk">Manager sig</span><span class="dv"><img src="'+r.mgrSig+'" class="sig-thumb"></span></div>';
+    html+='<button type="button" style="width:100%;margin-top:8px;padding:8px;background:white;border:1.5px solid #d32f2f;color:#d32f2f;border-radius:6px;font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;" data-delid="'+esc(r.id)+'" onclick="deleteRecord(event,this)">&#128465; Delete this record</button>';
+    html+='</div></div>';
+  }
+  container.innerHTML=html;
+}
+
+function toggleRecord(el){
+  var detail=el.querySelector('.record-detail');
+  if(!detail)return;
+  var open=el.getAttribute('data-open')==='1';
+  detail.className=open?'record-detail':'record-detail open';
+  el.setAttribute('data-open',open?'0':'1');
+}
+function deleteRecord(e,btn){
+  e.stopPropagation();
+  if(!confirm('Delete this record?'))return;
+  var id=btn.getAttribute('data-delid');
+  var numId=parseInt(id,10);
+  dbDelete(isNaN(numId)?id:numId).catch(function(){});
+  sbFetch('training_records?id=eq.'+encodeURIComponent(id),'DELETE').catch(function(){});
+  btn.closest('.record-item').remove();
+  showToast('Deleted');
+}
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+function showForm(id){
+  document.getElementById('home').style.display='none';
+  if(currentForm)document.getElementById(currentForm).style.display='none';
+  var scr=document.getElementById(id);if(!scr)return;
+  scr.style.display='block';
+  currentForm=id;
+  document.getElementById('backBtn').style.display='block';
+  var h2=scr.querySelector('h2');
+  document.getElementById('navTitle').textContent=h2?h2.textContent:id;
+  window.scrollTo(0,0);
+  setTimeout(function(){
+    var canvases=scr.querySelectorAll('canvas');
+    for(var ci=0;ci<canvases.length;ci++)initSig(canvases[ci].id);
+    loadRecords(id);
+  },100);
+}
+function goBack(){
+  if(currentForm)document.getElementById(currentForm).style.display='none';
+  document.getElementById('home').style.display='block';
+  document.getElementById('backBtn').style.display='none';
+  document.getElementById('navTitle').textContent='Training Records';
+  currentForm=null;window.scrollTo(0,0);
+}
+function printForm(){window.print();}
+
+document.addEventListener('DOMContentLoaded',function(){
+  openDB().catch(function(){});
+
+  for(var fi=0;fi<FORM_IDS.length;fi++){buildAckSection(FORM_IDS[fi]);}
+
+  document.getElementById('backBtn').addEventListener('click',goBack);
+
+  var cards=document.querySelectorAll('.form-card');
+  for(var ci=0;ci<cards.length;ci++){
+    (function(card){
+      card.addEventListener('click',function(){
+        var fid=card.getAttribute('data-form');
+        if(fid)showForm(fid);
+      });
+    })(cards[ci]);
+  }
+});
+</script>
+
+</body>
+</html>
