@@ -24,84 +24,77 @@ header{background:var(--green);color:white;padding:16px 20px 12px;text-align:cen
 .meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .meta-grid .full{grid-column:1/-1;}
 label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.8px;display:block;margin-bottom:4px;}
-input[type=text],input[type=date],input[type=email]{width:100%;padding:9px 11px;border:1.5px solid var(--border);border-radius:6px;font-size:14px;font-family:'Open Sans',sans-serif;color:var(--text);background:white;transition:border-color 0.15s;}
+input[type=text],input[type=date]{width:100%;padding:9px 11px;border:1.5px solid var(--border);border-radius:6px;font-size:14px;font-family:'Open Sans',sans-serif;color:var(--text);background:white;}
 input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(0,112,60,0.1);}
+select{width:100%;background:white;border:1.5px solid var(--border);border-radius:6px;padding:9px 11px;font-size:14px;font-family:'Open Sans',sans-serif;color:var(--text);-webkit-appearance:none;outline:none;}
 .dept-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
-.dept-tab{padding:7px 13px;border-radius:20px;border:2px solid var(--border);background:white;font-size:12px;font-weight:700;cursor:pointer;font-family:'Montserrat',sans-serif;color:var(--muted);letter-spacing:0.5px;transition:all 0.15s;}
+.dept-tab{padding:7px 13px;border-radius:20px;border:2px solid var(--border);background:white;font-size:12px;font-weight:700;cursor:pointer;font-family:'Montserrat',sans-serif;color:var(--muted);letter-spacing:0.5px;}
 .dept-tab.active{background:var(--green);border-color:var(--green);color:white;}
-.dept-tab:hover:not(.active){border-color:var(--green);color:var(--green);}
 .staff-mgmt{background:var(--green-light);border-radius:8px;padding:12px;margin-bottom:14px;}
 .staff-mgmt-title{font-size:11px;font-weight:700;color:var(--green-dark);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;}
 .staff-list{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;}
-.staff-chip{display:inline-flex;align-items:center;gap:5px;background:white;border:1.5px solid var(--green-mid);border-radius:20px;padding:4px 10px 4px 12px;font-size:12px;font-weight:600;color:var(--text);}
-.staff-chip .remove-chip{background:none;border:none;color:#aaa;font-size:14px;cursor:pointer;padding:0;line-height:1;}
-.add-staff-form{display:flex;gap:8px;}
-.add-staff-form input{flex:1;padding:7px 10px;font-size:13px;}
-.add-staff-form button{padding:7px 14px;background:var(--green);color:white;border:none;border-radius:6px;font-size:13px;font-weight:700;font-family:'Montserrat',sans-serif;cursor:pointer;white-space:nowrap;}
-.roster-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.staff-chip{display:inline-flex;align-items:center;gap:5px;background:white;border:1.5px solid var(--green-mid);border-radius:20px;padding:4px 10px 4px 12px;font-size:12px;font-weight:600;}
+.staff-chip button{background:none;border:none;color:#aaa;font-size:14px;cursor:pointer;padding:0;line-height:1;}
+.add-staff-row{display:flex;gap:8px;}
+.add-staff-row input{flex:1;padding:7px 10px;font-size:13px;}
+.add-staff-row button{padding:7px 14px;background:var(--green);color:white;border:none;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;}
+.roster-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
 table.roster{width:100%;border-collapse:collapse;min-width:620px;font-size:13px;}
 table.roster thead tr.dept-banner th{background:var(--green);color:white;font-family:'Montserrat',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.5px;padding:8px 10px;text-align:left;}
-table.roster thead tr.day-header th{background:var(--green-light);color:var(--green-dark);font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;padding:7px 6px;text-align:center;border:1px solid var(--green-mid);white-space:nowrap;}
-table.roster thead tr.day-header th.name-col{text-align:left;min-width:140px;padding-left:10px;}
-table.roster thead tr.day-header th.total-col{background:var(--green);color:white;min-width:64px;}
-table.roster tbody tr{border-bottom:1px solid var(--border);}
-table.roster tbody tr:nth-child(even){background:#fbfdfb;}
+table.roster thead tr.day-hdr th{background:var(--green-light);color:var(--green-dark);font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;padding:7px 6px;text-align:center;border:1px solid var(--green-mid);white-space:nowrap;}
+table.roster thead tr.day-hdr th.namecol{text-align:left;min-width:140px;padding-left:10px;}
+table.roster thead tr.day-hdr th.totcol{background:var(--green);color:white;min-width:64px;}
 table.roster tbody td{padding:5px 4px;border:1px solid var(--border);text-align:center;vertical-align:middle;}
-table.roster tbody td.name-cell{text-align:left;padding:6px 8px;min-width:140px;font-size:13px;font-weight:600;}
-table.roster tbody td.total-cell{background:var(--green-light);font-family:'Montserrat',sans-serif;font-weight:700;font-size:12px;color:var(--green-dark);white-space:nowrap;}
-.shift-input{border:1px solid transparent;background:transparent;font-size:12px;font-family:'Open Sans',sans-serif;color:var(--text);width:100%;padding:5px 3px;text-align:center;border-radius:4px;min-width:72px;}
-.shift-input:focus{outline:none;border-color:var(--green);background:white;box-shadow:0 0 0 2px rgba(0,112,60,0.1);}
-.shift-input::placeholder{color:#ccc;}
-.shift-input.has-value{font-weight:600;}
-.shift-input.is-off{color:var(--muted);font-style:italic;}
-.net-hours{font-size:10px;font-weight:700;color:var(--green);display:block;margin-top:1px;}
+table.roster tbody td.namecell{text-align:left;padding:6px 8px;min-width:140px;font-size:13px;font-weight:600;}
+table.roster tbody td.totcell{background:var(--green-light);font-family:'Montserrat',sans-serif;font-weight:700;font-size:12px;color:var(--green-dark);white-space:nowrap;}
+table.roster tbody tr:nth-child(even){background:#fbfdfb;}
+.sinput{border:1px solid transparent;background:transparent;font-size:12px;font-family:'Open Sans',sans-serif;color:var(--text);width:100%;padding:5px 3px;text-align:center;border-radius:4px;min-width:72px;}
+.sinput:focus{outline:none;border-color:var(--green);background:white;}
+.sinput::placeholder{color:#ccc;}
+.net-h{font-size:10px;font-weight:700;color:var(--green);display:block;margin-top:1px;}
 .net-off{font-size:10px;color:#bbb;display:block;margin-top:1px;}
-.dept-totals-bar{display:flex;justify-content:flex-end;align-items:center;gap:16px;padding:10px 12px;background:var(--green);border-radius:7px;color:white;margin-top:10px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;}
-.dept-totals-bar .label{opacity:0.8;font-weight:400;font-size:12px;}
+.dept-total-bar{display:flex;justify-content:flex-end;align-items:center;gap:16px;padding:10px 12px;background:var(--green);border-radius:7px;color:white;margin-top:10px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;}
+.dept-total-bar .lbl{opacity:0.8;font-weight:400;font-size:12px;}
 .law-note{font-size:11px;color:var(--muted);background:#fffbe6;border-left:3px solid var(--accent);padding:8px 12px;border-radius:0 6px 6px 0;margin-top:12px;line-height:1.6;}
 .save-btn{width:100%;padding:14px;background:var(--green);color:white;border:none;border-radius:8px;font-size:16px;font-family:'Montserrat',sans-serif;font-weight:700;letter-spacing:1px;cursor:pointer;margin-top:8px;}
-.email-btn{width:100%;padding:14px;background:#1a1f18;color:white;border:none;border-radius:8px;font-size:16px;font-family:'Montserrat',sans-serif;font-weight:700;letter-spacing:1px;cursor:pointer;margin-top:8px;}
-.hint{font-size:11px;color:var(--muted);margin-top:4px;}
+.print-btn{width:100%;padding:14px;background:#1a1f18;color:white;border:none;border-radius:8px;font-size:16px;font-family:'Montserrat',sans-serif;font-weight:700;letter-spacing:1px;cursor:pointer;margin-top:8px;}
 .form-success{background:#e8f5e9;border:1px solid #a5d6a7;border-radius:8px;padding:11px 14px;font-size:14px;font-weight:600;color:#2e7d32;margin-bottom:12px;display:none;align-items:center;gap:8px;}
 .form-success.show{display:flex;}
-.db-status{font-size:11px;color:var(--muted);text-align:center;margin-bottom:12px;font-family:'Montserrat',monospace;}
+.db-status{font-size:11px;color:var(--muted);text-align:center;margin-bottom:12px;}
 .db-status.ok{color:var(--green);}
 .data-tools{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
-.data-tool-btn{background:white;border:1.5px solid var(--border);border-radius:10px;padding:12px;text-align:center;cursor:pointer;font-family:'Open Sans',sans-serif;}
-.data-tool-btn .dt-icon{font-size:22px;margin-bottom:5px;}
-.data-tool-btn .dt-label{font-size:12px;font-weight:700;color:var(--text);}
-.data-tool-btn .dt-sub{font-size:10px;color:var(--muted);margin-top:2px;}
+.data-tool-btn{background:white;border:1.5px solid var(--border);border-radius:10px;padding:12px;text-align:center;cursor:pointer;}
+.dt-icon{font-size:22px;margin-bottom:5px;}
+.dt-label{font-size:12px;font-weight:700;}
+.dt-sub{font-size:10px;color:var(--muted);margin-top:2px;}
 .record-group{margin-bottom:20px;}
-.record-group-header{background:var(--green);color:white;padding:9px 13px;border-radius:10px 10px 0 0;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;display:flex;justify-content:space-between;}
+.record-group-hdr{background:var(--green);color:white;padding:9px 13px;border-radius:10px 10px 0 0;font-size:11px;font-weight:700;text-transform:uppercase;display:flex;justify-content:space-between;}
 .record-item{background:white;border:1px solid var(--border);border-top:none;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;}
 .record-item:last-child{border-radius:0 0 10px 10px;}
-.record-item:active{background:#f0f8f0;}
 .rec-title{font-size:13px;font-weight:700;color:var(--green);font-family:'Montserrat',sans-serif;}
 .rec-meta{font-size:11px;color:var(--muted);margin-top:2px;}
 .rec-arrow{color:var(--border);font-size:20px;}
 .empty-state{text-align:center;padding:40px 20px;color:var(--muted);}
-.empty-state .icon{font-size:38px;margin-bottom:10px;}
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:1000;align-items:flex-end;}
 .modal-overlay.open{display:flex;}
-.modal{background:white;border-radius:20px 20px 0 0;padding:18px;width:100%;max-height:90vh;overflow-y:auto;-webkit-overflow-scrolling:touch;}
-.modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.modal{background:white;border-radius:20px 20px 0 0;padding:18px;width:100%;max-height:90vh;overflow-y:auto;}
+.modal-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
 .modal-title{font-size:15px;font-weight:700;font-family:'Montserrat',sans-serif;}
-.modal-close{background:none;border:none;font-size:22px;cursor:pointer;color:var(--muted);padding:4px;}
+.modal-close{background:none;border:none;font-size:22px;cursor:pointer;color:var(--muted);}
 .modal-actions{display:grid;grid-template-columns:auto 1fr 1fr;gap:8px;margin-top:16px;}
 .btn-sm{padding:7px 12px;font-size:12px;border-radius:8px;border:none;cursor:pointer;font-family:'Montserrat',sans-serif;font-weight:700;}
 .btn-danger{background:white;color:#c8102e;border:1.5px solid #c8102e;}
 .btn-dark{background:#1a1f18;color:white;}
-.btn-secondary{background:white;color:var(--green);border:1.5px solid var(--green);}
-.modal-dept{margin-bottom:16px;}
-.modal-dept-title{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:white;background:var(--green);padding:6px 10px;border-radius:5px 5px 0 0;}
-.modal-roster-table{width:100%;border-collapse:collapse;font-size:11px;overflow-x:auto;display:block;}
-.modal-roster-table th{background:var(--green-light);color:var(--green-dark);padding:5px 4px;text-align:center;border:1px solid var(--green-mid);font-size:10px;font-weight:700;white-space:nowrap;}
-.modal-roster-table th:first-child{text-align:left;min-width:120px;}
-.modal-roster-table td{border:1px solid var(--border);padding:4px;text-align:center;font-size:11px;}
-.modal-roster-table td:first-child{text-align:left;padding-left:8px;font-weight:600;}
-.modal-roster-table td.tot{background:var(--green-light);font-weight:700;color:var(--green-dark);}
-.modal-roster-table .off-cell{color:#bbb;font-style:italic;font-size:10px;}
-.modal-summary{background:var(--green);color:white;border-radius:7px;padding:10px 14px;margin-top:8px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;display:flex;justify-content:space-between;}
+.btn-sec{background:white;color:var(--green);border:1.5px solid var(--green);}
+.mdept-title{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:white;background:var(--green);padding:6px 10px;border-radius:5px 5px 0 0;}
+.mtable{width:100%;border-collapse:collapse;font-size:11px;display:block;overflow-x:auto;}
+.mtable th{background:var(--green-light);color:var(--green-dark);padding:5px 4px;text-align:center;border:1px solid var(--green-mid);font-size:10px;font-weight:700;white-space:nowrap;}
+.mtable th:first-child{text-align:left;min-width:120px;}
+.mtable td{border:1px solid var(--border);padding:4px;text-align:center;font-size:11px;}
+.mtable td:first-child{text-align:left;padding-left:8px;font-weight:600;}
+.mtable td.tot{background:var(--green-light);font-weight:700;color:var(--green-dark);}
+.mtable .offcell{color:#bbb;font-style:italic;font-size:10px;}
+.msummary{background:var(--green);color:white;border-radius:7px;padding:10px 14px;margin-top:8px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;display:flex;justify-content:space-between;}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
@@ -114,8 +107,8 @@ table.roster tbody td.total-cell{background:var(--green-light);font-family:'Mont
 </header>
 
 <div class="nav-tabs">
-  <div class="nav-tab active" onclick="showTab('form',this)">📋 Roster</div>
-  <div class="nav-tab" onclick="showTab('records',this)">📁 Records</div>
+  <div class="nav-tab active" id="tab-btn-form" onclick="showTab('form',this)">📋 Roster</div>
+  <div class="nav-tab" id="tab-btn-records" onclick="showTab('records',this)">📁 Records</div>
 </div>
 
 <div id="tab-form" class="tab-content active">
@@ -123,9 +116,9 @@ table.roster tbody td.total-cell{background:var(--green-light);font-family:'Mont
   <div class="card">
     <div class="card-title">Week Details</div>
     <div class="meta-grid">
-      <div><label>Week Starting (Sunday)</label><input type="date" id="weekStart" onchange="renderActiveDept()"></div>
+      <div><label>Week Starting (Sunday)</label><input type="date" id="weekStart" onchange="renderDept()"></div>
       <div><label>Store / Location</label>
-        <select id="storeName" onchange="onStoreChange()" style="width:100%;background:#f4f5f0;border:1.5px solid var(--border);border-radius:6px;padding:9px 11px;font-size:14px;font-family:'Open Sans',sans-serif;color:var(--text);-webkit-appearance:none;outline:none;">
+        <select id="storeName" onchange="onStoreChange()">
           <option value="Skerries">Skerries</option>
           <option value="Balbriggan">Balbriggan</option>
           <option value="Palmerstown">Palmerstown</option>
@@ -138,20 +131,20 @@ table.roster tbody td.total-cell{background:var(--green-light);font-family:'Mont
     <div class="card-title">Department Roster</div>
     <div class="dept-tabs" id="deptTabs"></div>
     <div id="rosterContainer"></div>
-    <div class="law-note">ℹ️ <strong>Irish Working Time Act 1997 — breaks auto-deducted:</strong> &nbsp;Under 4.5hrs = no break &nbsp;·&nbsp; 4.5–6hrs = 15 min &nbsp;·&nbsp; 6–8hrs = 30 min &nbsp;·&nbsp; 8hrs+ = 1 hour<br>Enter shifts as <strong>07:00-17:00</strong> or <strong>7-17</strong> or <strong>8-5</strong> (AM-PM auto-detected) · Type <strong>OFF</strong>, <strong>D/O</strong>, <strong>AL</strong> or <strong>HOLS</strong> for days off / leave.</div>
+    <div class="law-note">ℹ️ <strong>Irish Working Time Act 1997 — breaks auto-deducted:</strong> Under 4.5hrs = no break · 4.5–6hrs = 15 min · 6–8hrs = 30 min · 8hrs+ = 1 hour<br>Enter shifts as <strong>07:00-17:00</strong> or <strong>7-17</strong> or <strong>8-5</strong> (AM-PM auto-detected) · Type <strong>OFF</strong>, <strong>D/O</strong>, <strong>AL</strong> or <strong>HOLS</strong> for days off / leave.</div>
   </div>
   <div class="card">
     <div class="card-title">Save & Print</div>
     <button class="save-btn" onclick="saveRoster()">💾 Save Roster</button>
-    <button class="email-btn" style="margin-top:8px;" onclick="printRosterPDF()">🖨 Print / PDF</button>
+    <button class="print-btn" onclick="printPDF()">🖨 Print / PDF</button>
   </div>
 </div>
 
 <div id="tab-records" class="tab-content">
   <div class="db-status" id="db-status">Connecting...</div>
   <div class="data-tools">
-    <button class="data-tool-btn" onclick="exportJSON()"><div class="dt-icon">💾</div><div class="dt-label">Backup</div><div class="dt-sub">Download JSON</div></button>
-    <button class="data-tool-btn" onclick="document.getElementById('import-file').click()"><div class="dt-icon">📂</div><div class="dt-label">Restore</div><div class="dt-sub">Import JSON</div></button>
+    <div class="data-tool-btn" onclick="exportJSON()"><div class="dt-icon">💾</div><div class="dt-label">Backup</div><div class="dt-sub">Download JSON</div></div>
+    <div class="data-tool-btn" onclick="document.getElementById('import-file').click()"><div class="dt-icon">📂</div><div class="dt-label">Restore</div><div class="dt-sub">Import JSON</div></div>
   </div>
   <input type="file" id="import-file" accept=".json" style="display:none" onchange="importJSON(this)">
   <div id="records-list"></div>
@@ -159,253 +152,330 @@ table.roster tbody td.total-cell{background:var(--green-light);font-family:'Mont
 
 <div class="modal-overlay" id="recordModal">
   <div class="modal">
-    <div class="modal-header">
+    <div class="modal-hdr">
       <div class="modal-title" id="modal-title">Roster</div>
       <button class="modal-close" onclick="closeModal()">✕</button>
     </div>
     <div id="modal-body"></div>
     <div class="modal-actions">
       <button class="btn-sm btn-danger" onclick="deleteRecord()">🗑</button>
-      <button class="btn-sm btn-dark" onclick="loadRosterFromRecord()">📋 Load & Edit</button>
-      <button class="btn-sm btn-secondary" onclick="closeModal()">Close</button>
+      <button class="btn-sm btn-dark" onclick="loadRecord()">📋 Load & Edit</button>
+      <button class="btn-sm btn-sec" onclick="closeModal()">Close</button>
     </div>
   </div>
 </div>
 
 <script>
-// ================================================================
-// SUPABASE
-// ================================================================
+/* ===== SUPABASE ===== */
 var SB_URL='https://mnebkteiwjxbbmnfotse.supabase.co';
 var SB_KEY='sb_publishable_eutRHOftOW4ZJNlVrDKXOg_XtnBQ7cM';
-function sbFetch(path,method,body){return fetch(SB_URL+'/rest/v1/'+path,{method:method||'GET',headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':method==='POST'?'resolution=merge-duplicates':''},body:body?JSON.stringify(body):undefined});}
-function sbPush(r){return sbFetch('roster_records','POST',[{id:String(r.id),store:r.store||'',week_start:r.weekStart||'',saved_at:r.savedAt,data:r}]).catch(function(){});}
-async function sbLoadAll(){try{var res=await sbFetch('roster_records?order=saved_at.desc','GET');var rows=await res.json();if(!rows||rows.error)return null;return rows.map(function(r){return Object.assign({},r.data,{id:r.data.id||r.id});});}catch(e){return null;}}
+function sbFetch(path,method,body){
+  var h={'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json'};
+  if(method==='POST')h['Prefer']='resolution=merge-duplicates';
+  return fetch(SB_URL+'/rest/v1/'+path,{method:method||'GET',headers:h,body:body?JSON.stringify(body):undefined});
+}
+function sbPush(r){
+  sbFetch('roster_records','POST',[{id:String(r.id),store:r.store||'',week_start:r.weekStart||'',saved_at:r.savedAt,data:r}]).catch(function(){});
+}
+function sbLoadAll(){
+  return sbFetch('roster_records?order=saved_at.desc','GET').then(function(res){return res.json();}).then(function(rows){
+    if(!Array.isArray(rows))return null;
+    return rows.map(function(r){return Object.assign({},r.data,{id:r.data&&r.data.id?r.data.id:r.id});});
+  }).catch(function(){return null;});
+}
 
-// ================================================================
-// DB
-// ================================================================
-var DB_NAME='MoriartyRosters',DB_VERSION=1,STORE_NAME='rosters';
-var db=null,allRecords=[],activeRecordId=null;
-function openDB(){return new Promise(function(res,rej){var req=indexedDB.open(DB_NAME,DB_VERSION);req.onupgradeneeded=function(e){var d=e.target.result;if(!d.objectStoreNames.contains(STORE_NAME))d.createObjectStore(STORE_NAME,{keyPath:'id'});};req.onsuccess=function(e){db=e.target.result;res(db);};req.onerror=function(e){rej(e.target.error);};});}
-function dbPut(r){return new Promise(function(res,rej){var tx=db.transaction(STORE_NAME,'readwrite');tx.objectStore(STORE_NAME).put(r);tx.oncomplete=res;tx.onerror=function(e){rej(e.target.error);};});}
-function dbGetAll(){return new Promise(function(res,rej){var tx=db.transaction(STORE_NAME,'readonly');var req=tx.objectStore(STORE_NAME).getAll();req.onsuccess=function(e){res(e.target.result);};req.onerror=function(e){rej(e.target.error);};});}
-function dbDelete(id){return new Promise(function(res,rej){var tx=db.transaction(STORE_NAME,'readwrite');tx.objectStore(STORE_NAME).delete(id);tx.oncomplete=res;tx.onerror=function(e){rej(e.target.error);};});}
+/* ===== INDEXEDDB ===== */
+var DB_NAME='MoriartyRosters',DB_VER=1,STORE='rosters';
+var db=null;
+function openDB(){
+  return new Promise(function(res,rej){
+    var req=indexedDB.open(DB_NAME,DB_VER);
+    req.onupgradeneeded=function(e){var d=e.target.result;if(!d.objectStoreNames.contains(STORE))d.createObjectStore(STORE,{keyPath:'id'});};
+    req.onsuccess=function(e){db=e.target.result;res(db);};
+    req.onerror=function(e){rej(e.target.error);};
+  });
+}
+function dbPut(r){return new Promise(function(res,rej){var tx=db.transaction(STORE,'readwrite');tx.objectStore(STORE).put(r);tx.oncomplete=res;tx.onerror=function(e){rej(e.target.error);};});}
+function dbAll(){return new Promise(function(res,rej){var tx=db.transaction(STORE,'readonly');var req=tx.objectStore(STORE).getAll();req.onsuccess=function(e){res(e.target.result);};req.onerror=function(e){rej(e.target.error);};});}
+function dbDel(id){return new Promise(function(res,rej){var tx=db.transaction(STORE,'readwrite');tx.objectStore(STORE).delete(id);tx.oncomplete=res;tx.onerror=function(e){rej(e.target.error);};});}
 
-// ================================================================
-// ROSTER STATE
-// ================================================================
-var DEPARTMENTS=["Butchers","Deli","Shop Floor","Tills","Vans","Cash Office","HR"];
-var DAY_NAMES=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+/* ===== STATE ===== */
+var DEPTS=['Butchers','Deli','Shop Floor','Tills','Vans','Cash Office','HR'];
+var DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 var STORE_STAFF={
-  "Skerries":{
-    "Butchers":["Alexander Khalikov","Billy Peters","Ethan Forristal","Gregory Lynch","Liam Phillips","Stephen Heenan"],
-    "Deli":["Abigail Jaskan","Alice Ellis D","Holly O'Connor","Jessica Cox","Katie Gaffney","Natalin Chyshladdiy","Peter Kennon","Rowena Murphy","Shakira Panaghia","Sigita Sarkane"],
-    "Shop Floor":["Joe Fanning","Liam Lynam Nguyen","Luke Armstrong","Mark Mc Allister","Mark Keogh","Noel Morris","Rolands Zedlemi","Ross Ryan","William Byrne McClelland","Angelo Mendes","Andrea Pesce","Brian Grimes Snr","Brendan Walsh","Daniel Nico Vitan","David Hogan","Dylan McCarthy","Ellie Mcgee","Fiona Connell","Jack Crilly","Jake Branagan"],
-    "Tills":["Joyce Mc Garry","Mara O'Donohoe","Marriam Buffone","Maya Broderick","Nicole Byrne","Paula Nugent","Pauline Woodcock","Rachael McBride","Sarah El Shamy","Sophie Murny","Stella Moore","Alice Flood","Aoife Mc Kenna","Bridie Tulie","Caroline Young","Charlotte Joyce","Clara Monik","Clara Lindsay","Emilia Zedemi","Evan Burns"],
-    "Vans":[],"Cash Office":[],"HR":[]
+  'Skerries':{
+    'Butchers':['Alexander Khalikov','Billy Peters','Ethan Forristal','Gregory Lynch','Liam Phillips','Stephen Heenan'],
+    'Deli':['Abigail Jaskan','Alice Ellis D',"Holly O'Connor",'Jessica Cox','Katie Gaffney','Natalin Chyshladdiy','Peter Kennon','Rowena Murphy','Shakira Panaghia','Sigita Sarkane'],
+    'Shop Floor':['Joe Fanning','Liam Lynam Nguyen','Luke Armstrong','Mark Mc Allister','Mark Keogh','Noel Morris','Rolands Zedlemi','Ross Ryan','William Byrne McClelland','Angelo Mendes','Andrea Pesce','Brian Grimes Snr','Brendan Walsh','Daniel Nico Vitan','David Hogan','Dylan McCarthy','Ellie Mcgee','Fiona Connell','Jack Crilly','Jake Branagan'],
+    'Tills':['Joyce Mc Garry',"Mara O'Donohoe",'Marriam Buffone','Maya Broderick','Nicole Byrne','Paula Nugent','Pauline Woodcock','Rachael McBride','Sarah El Shamy','Sophie Murny','Stella Moore','Alice Flood',"Aoife Mc Kenna",'Bridie Tulie','Caroline Young','Charlotte Joyce','Clara Monik','Clara Lindsay','Emilia Zedemi','Evan Burns'],
+    'Vans':[],'Cash Office':[],'HR':[]
   },
-  "Balbriggan":{"Butchers":[],"Deli":[],"Shop Floor":[],"Tills":[],"Vans":[],"Cash Office":[],"HR":[]},
-  "Palmerstown":{"Butchers":[],"Deli":[],"Shop Floor":[],"Tills":[],"Vans":[],"Cash Office":[],"HR":[]}
+  'Balbriggan':{'Butchers':[],'Deli':[],'Shop Floor':[],'Tills':[],'Vans':[],'Cash Office':[],'HR':[]},
+  'Palmerstown':{'Butchers':[],'Deli':[],'Shop Floor':[],'Tills':[],'Vans':[],'Cash Office':[],'HR':[]}
 };
-var staffLists={},rosterShifts={},activeDept=DEPARTMENTS[0];
 
-// ================================================================
-// TIME PARSING — FIXED
-// ================================================================
-function parseTime(t){
+var staffLists={};
+var shifts={};
+var activeDept=DEPTS[0];
+var allRecords=[];
+var activeRecordId=null;
+
+/* ===== HELPERS ===== */
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function sid(name){return name.replace(/[^a-zA-Z0-9]/g,'_');}
+
+function isOff(v){
+  if(!v)return false;
+  var u=v.trim().toUpperCase();
+  return['OFF','D/O','RD','AL','SL','HOLS','LEAVE','-'].indexOf(u)!==-1;
+}
+
+function parseHour(t){
   t=t.trim();
-  // HH:MM or H:MM or HH.MM
-  var m=t.match(/^(\d{1,2})[:.](\d{2})$/);
-  if(m)return parseInt(m[1],10)+parseInt(m[2],10)/60;
-  // bare hour e.g. 7 or 17
-  m=t.match(/^(\d{1,2})$/);
-  if(m)return parseInt(m[1],10);
+  var m=t.match(/^(\d{1,2})[:.h](\d{2})$/);if(m)return parseInt(m[1],10)+parseInt(m[2],10)/60;
+  m=t.match(/^(\d{1,2})$/);if(m)return parseInt(m[1],10);
   return null;
 }
 
-function calcNet(val){
-  if(!val||!val.trim()||isOff(val))return null;
-  var raw=val.trim();
-  // Split on dash/en-dash — but not a leading minus
-  // Remove leading/trailing whitespace from each part
-  var parts=raw.split(/\s*[-–]\s*/);
+function calcNet(v){
+  if(!v||!v.trim()||isOff(v))return null;
+  var parts=v.trim().split(/\s*[-\u2013]\s*/);
   if(parts.length!==2)return null;
-  var s=parseTime(parts[0]);
-  var e=parseTime(parts[1]);
+  var s=parseHour(parts[0]);
+  var e=parseHour(parts[1]);
   if(s===null||e===null)return null;
-
-  // AM/PM heuristic:
-  // If end <= start AND end < 12, assume end is PM (add 12)
-  // e.g. 8-5 → 8:00 to 17:00 = 9 gross
-  // e.g. 7-3 → 7:00 to 15:00 = 8 gross
-  // e.g. 7-17 → already correct (17 >= 12)
-  // e.g. 22-6 → night shift, e < s but e < 12 → 6+12=18? No — night shifts end before noon
-  // Better rule: if end < start AND end <= 11, add 12 to end (PM interpretation)
-  // If end < start AND end > 11, it's a night shift crossing midnight
-  if(e<s){
-    if(e<=11){
-      // Likely PM e.g. 8-5 means 8am-5pm
-      e=e+12;
-    } else {
-      // Night shift crossing midnight
-      e=e+24;
-    }
-  }
-
+  // AM/PM heuristic: if end <= start and end <= 11, treat end as PM
+  if(e<s){if(e<=11)e+=12;else e+=24;}
   var gross=e-s;
   if(gross<=0||gross>24)return null;
-  return gross-calcBreak(gross);
+  var brk=gross>=8?1:gross>6?0.5:gross>=4.5?0.25:0;
+  return gross-brk;
 }
 
-function calcBreak(g){if(g>=8)return 1;if(g>6)return 0.5;if(g>=4.5)return 0.25;return 0;}
-
-function isOff(t){
-  if(!t)return false;
-  var u=t.trim().toUpperCase();
-  return["OFF","D/O","RD","AL","SL","HOLS","LEAVE","-"].indexOf(u)!==-1;
+function fmtH(h){
+  if(!h||isNaN(h)||h===0)return'';
+  var hr=Math.floor(h);var mn=Math.round((h-hr)*60);
+  return mn===0?hr+'h':hr+'h '+mn+'m';
 }
 
-function formatH(h){
-  if(h===null||h===undefined||isNaN(h)||h===0)return'';
-  var hrs=Math.floor(h);
-  var mins=Math.round((h-hrs)*60);
-  return mins===0?hrs+'h':hrs+'h '+mins+'m';
+function getWeekDays(){
+  var val=document.getElementById('weekStart').value;
+  if(!val)return DAYS.map(function(d){return d;});
+  var start=new Date(val);
+  return DAYS.map(function(d,i){var dt=new Date(start);dt.setDate(start.getDate()+i);return d+'<br><small>'+dt.getDate()+'/'+(dt.getMonth()+1)+'</small>';});
 }
 
-function safeId(name){return name.replace(/[^a-zA-Z0-9]/g,'_');}
-function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-
-// ================================================================
-// INIT
-// ================================================================
-async function init(){
-  DEPARTMENTS.forEach(function(d){
-    staffLists[d]=[].concat(STORE_STAFF['Skerries'][d]||[]);
-    rosterShifts[d]={};
-    staffLists[d].forEach(function(n){rosterShifts[d][n]=Array(7).fill('');});
+/* ===== INIT ===== */
+function init(){
+  DEPTS.forEach(function(d){
+    staffLists[d]=STORE_STAFF['Skerries'][d].slice();
+    shifts[d]={};
+    staffLists[d].forEach(function(n){shifts[d][n]=Array(7).fill('');});
   });
-  var today=new Date();var sunday=new Date(today);sunday.setDate(today.getDate()-today.getDay());
-  document.getElementById('weekStart').value=sunday.toISOString().split('T')[0];
-  try{
-    await openDB();
-    var sbData=await sbLoadAll();
-    if(sbData&&sbData.length){allRecords=sbData;for(var i=0;i<sbData.length;i++){try{await dbPut(sbData[i]);}catch(e){}}}
-    else{allRecords=await dbGetAll();}
-    updateDBStatus();
-  }catch(e){document.getElementById('db-status').textContent='⚠️ '+e.message;}
-  buildTabs();renderActiveDept();renderRecords();
+  var today=new Date();var sun=new Date(today);sun.setDate(today.getDate()-today.getDay());
+  document.getElementById('weekStart').value=sun.toISOString().split('T')[0];
+  openDB().then(function(){
+    return sbLoadAll();
+  }).then(function(sbData){
+    if(sbData&&sbData.length){
+      allRecords=sbData;
+      var chain=Promise.resolve();
+      sbData.forEach(function(r){chain=chain.then(function(){return dbPut(r).catch(function(){});});});
+      return chain;
+    }else{return dbAll().then(function(recs){allRecords=recs;});}
+  }).then(function(){
+    setDBStatus();buildTabs();renderDept();renderRecords();
+  }).catch(function(e){
+    document.getElementById('db-status').textContent='⚠️ '+e.message;
+    buildTabs();renderDept();renderRecords();
+  });
 }
 
-function updateDBStatus(){var el=document.getElementById('db-status');el.textContent='🟢 '+allRecords.length+' roster'+(allRecords.length!==1?'s':'')+' saved';el.className='db-status ok';}
-function showTab(name,el){document.querySelectorAll('.tab-content').forEach(function(t){t.classList.remove('active');});document.querySelectorAll('.nav-tab').forEach(function(t){t.classList.remove('active');});document.getElementById('tab-'+name).classList.add('active');el.classList.add('active');if(name==='records')renderRecords();}
+function setDBStatus(){
+  var el=document.getElementById('db-status');
+  el.textContent='🟢 '+allRecords.length+' roster'+(allRecords.length!==1?'s':'')+' saved';
+  el.className='db-status ok';
+}
 
+function showTab(name,el){
+  document.querySelectorAll('.tab-content').forEach(function(t){t.classList.remove('active');});
+  document.querySelectorAll('.nav-tab').forEach(function(t){t.classList.remove('active');});
+  document.getElementById('tab-'+name).classList.add('active');
+  el.classList.add('active');
+  if(name==='records')renderRecords();
+}
+
+/* ===== STORE CHANGE ===== */
 function onStoreChange(){
   var store=document.getElementById('storeName').value;
-  var defaults=STORE_STAFF[store]||STORE_STAFF['Skerries'];
-  if(!confirm('Load default staff list for '+store+'? This will replace the current staff list.'))return;
-  DEPARTMENTS.forEach(function(d){
-    staffLists[d]=[].concat(defaults[d]||[]);
-    rosterShifts[d]={};
-    staffLists[d].forEach(function(n){rosterShifts[d][n]=Array(7).fill('');});
+  if(!confirm('Load default staff for '+store+'? This replaces current staff lists.'))return;
+  var def=STORE_STAFF[store]||{};
+  DEPTS.forEach(function(d){
+    staffLists[d]=(def[d]||[]).slice();
+    shifts[d]={};
+    staffLists[d].forEach(function(n){shifts[d][n]=Array(7).fill('');});
   });
-  activeDept=DEPARTMENTS[0];buildTabs();renderActiveDept();
+  activeDept=DEPTS[0];buildTabs();renderDept();
 }
 
+/* ===== TABS ===== */
 function buildTabs(){
-  var wrap=document.getElementById('deptTabs');wrap.innerHTML='';
-  DEPARTMENTS.forEach(function(d){
+  var wrap=document.getElementById('deptTabs');
+  wrap.innerHTML='';
+  DEPTS.forEach(function(d){
     var btn=document.createElement('button');
     btn.className='dept-tab'+(d===activeDept?' active':'');
     btn.textContent=d+(staffLists[d].length?' ('+staffLists[d].length+')':'');
-    btn.onclick=(function(dept){return function(){saveCurrent();activeDept=dept;buildTabs();renderActiveDept();};})(d);
+    btn.setAttribute('data-dept',d);
+    btn.addEventListener('click',function(){
+      saveCurrent();
+      activeDept=d;
+      buildTabs();
+      renderDept();
+    });
     wrap.appendChild(btn);
   });
 }
 
-function getDayHeaders(){
-  var val=document.getElementById('weekStart').value;
-  if(!val)return DAY_NAMES.map(function(d){return'<span>'+d+'</span>';});
-  var start=new Date(val);
-  return DAY_NAMES.map(function(d,i){
-    var dt=new Date(start);dt.setDate(start.getDate()+i);
-    return d+'<br><span style="font-weight:400;font-size:10px">'+dt.getDate()+'/'+(dt.getMonth()+1)+'</span>';
-  });
-}
-
+/* ===== SAVE CURRENT DOM TO STATE ===== */
 function saveCurrent(){
-  DEPARTMENTS.forEach(function(dept){
-    (staffLists[dept]||[]).forEach(function(name){
-      if(!rosterShifts[dept])rosterShifts[dept]={};
-      if(!rosterShifts[dept][name])rosterShifts[dept][name]=Array(7).fill('');
+  DEPTS.forEach(function(d){
+    (staffLists[d]||[]).forEach(function(name){
+      if(!shifts[d][name])shifts[d][name]=Array(7).fill('');
       for(var i=0;i<7;i++){
-        var el=document.getElementById('shift_'+dept+'_'+safeId(name)+'_'+i);
-        if(el)rosterShifts[dept][name][i]=el.value;
+        var el=document.getElementById('s_'+d+'_'+sid(name)+'_'+i);
+        if(el)shifts[d][name][i]=el.value;
       }
     });
   });
 }
 
-function addStaffMember(dept){
-  var input=document.getElementById('newStaffInput_'+dept);if(!input)return;
+/* ===== RENDER DEPT ===== */
+function renderDept(){
+  var dept=activeDept;
+  var staff=staffLists[dept]||[];
+  var store=document.getElementById('storeName').value||'Store';
+  var week=document.getElementById('weekStart').value||'—';
+  var dayHdrs=getWeekDays();
+  var cont=document.getElementById('rosterContainer');
+
+  /* Staff management */
+  var smDiv=document.createElement('div');smDiv.className='staff-mgmt';
+  var titleDiv=document.createElement('div');titleDiv.className='staff-mgmt-title';
+  titleDiv.textContent='👥 Staff List — '+dept+' ('+staff.length+'/30)';
+  smDiv.appendChild(titleDiv);
+  var listDiv=document.createElement('div');listDiv.className='staff-list';
+  staff.forEach(function(name){
+    var chip=document.createElement('div');chip.className='staff-chip';
+    chip.appendChild(document.createTextNode(name+' '));
+    var rmBtn=document.createElement('button');rmBtn.textContent='×';
+    rmBtn.addEventListener('click',(function(n){return function(){removeStaff(dept,n);};})(name));
+    chip.appendChild(rmBtn);
+    listDiv.appendChild(chip);
+  });
+  smDiv.appendChild(listDiv);
+  var addRow=document.createElement('div');addRow.className='add-staff-row';
+  var addInput=document.createElement('input');addInput.type='text';addInput.id='newstaff_'+dept;addInput.placeholder='Add new staff member...';
+  addInput.addEventListener('keydown',function(e){if(e.key==='Enter')addStaff(dept);});
+  var addBtn=document.createElement('button');addBtn.textContent='+ Add';
+  addBtn.addEventListener('click',function(){addStaff(dept);});
+  addRow.appendChild(addInput);addRow.appendChild(addBtn);smDiv.appendChild(addRow);
+
+  /* Table */
+  var wrapDiv=document.createElement('div');wrapDiv.className='roster-wrap';
+  var table=document.createElement('table');table.className='roster';
+  var thead=document.createElement('thead');
+  /* Banner row */
+  var bannerTr=document.createElement('tr');bannerTr.className='dept-banner';
+  var bannerTh=document.createElement('th');bannerTh.colSpan=10;bannerTh.textContent=dept+'  ·  Week: '+week+'  ·  '+store;
+  bannerTr.appendChild(bannerTh);thead.appendChild(bannerTr);
+  /* Day header row */
+  var dayTr=document.createElement('tr');dayTr.className='day-hdr';
+  var nameTh=document.createElement('th');nameTh.className='namecol';nameTh.textContent='Name';dayTr.appendChild(nameTh);
+  dayHdrs.forEach(function(d){var th=document.createElement('th');th.innerHTML=d;dayTr.appendChild(th);});
+  var totTh=document.createElement('th');totTh.className='totcol';totTh.textContent='Total';dayTr.appendChild(totTh);
+  thead.appendChild(dayTr);table.appendChild(thead);
+
+  var tbody=document.createElement('tbody');
+  var deptTotal=0;
+  staff.forEach(function(name){
+    var tr=document.createElement('tr');
+    var nameTd=document.createElement('td');nameTd.className='namecell';nameTd.textContent=name;tr.appendChild(nameTd);
+    var rowTotal=0;
+    for(var i=0;i<7;i++){
+      var td=document.createElement('td');
+      var val=(shifts[dept][name]||[])[i]||'';
+      var net=calcNet(val);if(net!==null)rowTotal+=net;
+      var inp=document.createElement('input');inp.type='text';inp.className='sinput';
+      inp.id='s_'+dept+'_'+sid(name)+'_'+i;inp.value=val;inp.placeholder='—';
+      /* live update closure */
+      (function(d,n,idx){
+        inp.addEventListener('input',function(){liveUpdate(d,n,idx);});
+        inp.addEventListener('change',function(){liveUpdate(d,n,idx);});
+      })(dept,name,i);
+      var badge=document.createElement('span');badge.id='b_'+dept+'_'+sid(name)+'_'+i;
+      if(net!==null){badge.className='net-h';badge.textContent=fmtH(net);}
+      else if(isOff(val)){badge.className='net-off';badge.textContent=val.trim().toUpperCase();}
+      td.appendChild(inp);td.appendChild(badge);tr.appendChild(td);
+    }
+    deptTotal+=rowTotal;
+    var totTd=document.createElement('td');totTd.className='totcell';totTd.id='rt_'+dept+'_'+sid(name);
+    totTd.textContent=rowTotal>0?fmtH(rowTotal):'—';tr.appendChild(totTd);
+    tbody.appendChild(tr);
+  });
+  if(!staff.length){
+    var emptyTr=document.createElement('tr');
+    var emptyTd=document.createElement('td');emptyTd.colSpan=10;
+    emptyTd.style.cssText='text-align:center;padding:20px;color:#aaa;font-style:italic;';
+    emptyTd.textContent='No staff added yet';
+    emptyTr.appendChild(emptyTd);tbody.appendChild(emptyTr);
+  }
+  table.appendChild(tbody);wrapDiv.appendChild(table);
+
+  /* Dept total bar */
+  var bar=document.createElement('div');bar.className='dept-total-bar';
+  var lbl=document.createElement('span');lbl.className='lbl';lbl.textContent='Department Total Hours';
+  var tot=document.createElement('span');tot.id='dt_'+dept;tot.textContent=fmtH(deptTotal)||'0h';
+  bar.appendChild(lbl);bar.appendChild(tot);
+
+  cont.innerHTML='';
+  cont.appendChild(smDiv);cont.appendChild(wrapDiv);cont.appendChild(bar);
+}
+
+/* ===== LIVE UPDATE ===== */
+function liveUpdate(dept,name,i){
+  var el=document.getElementById('s_'+dept+'_'+sid(name)+'_'+i);if(!el)return;
+  if(!shifts[dept][name])shifts[dept][name]=Array(7).fill('');
+  shifts[dept][name][i]=el.value;
+  var val=el.value;var net=calcNet(val);var off=isOff(val);
+  var badge=document.getElementById('b_'+dept+'_'+sid(name)+'_'+i);
+  if(badge){
+    if(net!==null){badge.className='net-h';badge.textContent=fmtH(net);}
+    else if(off){badge.className='net-off';badge.textContent=val.trim().toUpperCase();}
+    else{badge.className='';badge.textContent='';}
+  }
+  var rowTotal=0;
+  for(var j=0;j<7;j++){var n=calcNet((shifts[dept][name]||[])[j]||'');if(n!==null)rowTotal+=n;}
+  var rtEl=document.getElementById('rt_'+dept+'_'+sid(name));if(rtEl)rtEl.textContent=rowTotal>0?fmtH(rowTotal):'—';
+  var deptTotal=0;
+  (staffLists[dept]||[]).forEach(function(nm){for(var j=0;j<7;j++){var n=calcNet((shifts[dept][nm]||[])[j]||'');if(n!==null)deptTotal+=n;}});
+  var dtEl=document.getElementById('dt_'+dept);if(dtEl)dtEl.textContent=fmtH(deptTotal)||'0h';
+}
+
+/* ===== STAFF MANAGEMENT ===== */
+function addStaff(dept){
+  var input=document.getElementById('newstaff_'+dept);if(!input)return;
   var name=input.value.trim();if(!name)return;
   if(staffLists[dept].indexOf(name)!==-1){input.value='';return;}
   if(staffLists[dept].length>=30){alert('Maximum 30 staff per department.');return;}
-  staffLists[dept].push(name);rosterShifts[dept][name]=Array(7).fill('');input.value='';buildTabs();renderActiveDept();
+  staffLists[dept].push(name);shifts[dept][name]=Array(7).fill('');input.value='';buildTabs();renderDept();
+}
+function removeStaff(dept,name){
+  saveCurrent();staffLists[dept]=staffLists[dept].filter(function(n){return n!==name;});delete shifts[dept][name];buildTabs();renderDept();
 }
 
-function removeStaffMember(dept,name){
-  saveCurrent();staffLists[dept]=staffLists[dept].filter(function(n){return n!==name;});delete rosterShifts[dept][name];buildTabs();renderActiveDept();
-}
-
-function renderActiveDept(){
-  var dept=activeDept;var dayHeaders=getDayHeaders();var staff=staffLists[dept]||[];
-  var store=document.getElementById('storeName').value||'Store';var week=document.getElementById('weekStart').value||'—';
-  var html='<div class="staff-mgmt"><div class="staff-mgmt-title">👥 Staff List — '+dept+' ('+staff.length+'/30)</div><div class="staff-list">';
-  staff.forEach(function(name){
-    html+='<div class="staff-chip">'+esc(name)+' <button class="remove-chip" onclick="removeStaffMember(\''+dept.replace(/'/g,"\\'")+"','"+(name.replace(/'/g,"\\'"))+"')">×</button></div>";
-  });
-  html+='</div><div class="add-staff-form"><input type="text" id="newStaffInput_'+dept+'" placeholder="Add new staff member..." onkeydown="if(event.key===\'Enter\') addStaffMember(\''+dept.replace(/'/g,"\\'")+'\')"><button onclick="addStaffMember(\''+dept.replace(/'/g,"\\'")+'\')">+ Add</button></div></div>';
-  html+='<div class="roster-table-wrap"><table class="roster"><thead><tr class="dept-banner"><th colspan="10" id="banner_text">'+dept+'  ·  Week: '+week+'  ·  '+store+'</th></tr><tr class="day-header"><th class="name-col">Name</th>'+dayHeaders.map(function(d){return'<th>'+d+'</th>';}).join('')+'<th class="total-col">Total</th></tr></thead><tbody>';
-  var deptTotal=0;
-  staff.forEach(function(name){
-    var shifts=rosterShifts[dept][name]||Array(7).fill('');var rowTotal=0;var dayCells='';
-    for(var i=0;i<7;i++){
-      var val=shifts[i]||'';var net=calcNet(val);if(net!==null)rowTotal+=net;var off=isOff(val);
-      var badge=net!==null?'<span class="net-hours">'+formatH(net)+'</span>':(off?'<span class="net-off">'+val.trim().toUpperCase()+'</span>':'');
-      dayCells+='<td><input class="shift-input'+(val?(off?' is-off':' has-value'):'')+'" id="shift_'+dept+'_'+safeId(name)+'_'+i+'" value="'+esc(val)+'" placeholder="—" oninput="liveUpdate(\''+dept.replace(/'/g,"\\'")+"','"+(name.replace(/'/g,"\\'"))+"',"+i+')" onchange="liveUpdate(\''+dept.replace(/'/g,"\\'")+"','"+(name.replace(/'/g,"\\'"))+"',"+i+')"><span id="net_'+dept+'_'+safeId(name)+'_'+i+'">'+badge+'</span></td>';
-    }
-    deptTotal+=rowTotal;
-    html+='<tr><td class="name-cell">'+esc(name)+'</td>'+dayCells+'<td class="total-cell" id="rowtotal_'+dept+'_'+safeId(name)+'">'+(rowTotal>0?formatH(rowTotal):'—')+'</td></tr>';
-  });
-  if(!staff.length)html+='<tr><td colspan="10" style="text-align:center;padding:20px;color:#aaa;font-style:italic;">No staff added yet</td></tr>';
-  html+='</tbody></table></div><div class="dept-totals-bar"><span class="label">Department Total Hours</span><span id="deptTotal_'+dept+'">'+(formatH(deptTotal)||'0h')+'</span></div>';
-  document.getElementById('rosterContainer').innerHTML=html;
-}
-
-function liveUpdate(dept,name,dayIndex){
-  var el=document.getElementById('shift_'+dept+'_'+safeId(name)+'_'+dayIndex);if(!el)return;
-  if(!rosterShifts[dept][name])rosterShifts[dept][name]=Array(7).fill('');
-  rosterShifts[dept][name][dayIndex]=el.value;
-  var val=el.value;var net=calcNet(val);var off=isOff(val);
-  var badge=document.getElementById('net_'+dept+'_'+safeId(name)+'_'+dayIndex);
-  if(badge){
-    if(net!==null)badge.innerHTML='<span class="net-hours">'+formatH(net)+'</span>';
-    else if(off)badge.innerHTML='<span class="net-off">'+val.trim().toUpperCase()+'</span>';
-    else badge.innerHTML='';
-  }
-  var rowTotal=0;
-  for(var i=0;i<7;i++){var n=calcNet(rosterShifts[dept][name][i]||'');if(n!==null)rowTotal+=n;}
-  var rowEl=document.getElementById('rowtotal_'+dept+'_'+safeId(name));if(rowEl)rowEl.textContent=rowTotal>0?formatH(rowTotal):'—';
-  var deptTotal=0;
-  (staffLists[dept]||[]).forEach(function(n){for(var i=0;i<7;i++){var nn=calcNet((rosterShifts[dept][n]||[])[i]||'');if(nn!==null)deptTotal+=nn;}});
-  var deptEl=document.getElementById('deptTotal_'+dept);if(deptEl)deptEl.textContent=formatH(deptTotal)||'0h';
-}
-
-// ================================================================
-// SAVE
-// ================================================================
-async function saveRoster(){
+/* ===== SAVE ===== */
+function saveRoster(){
   saveCurrent();
   var record={
     id:Date.now(),savedAt:new Date().toISOString(),
@@ -413,32 +483,32 @@ async function saveRoster(){
     weekStart:document.getElementById('weekStart').value,
     preparedBy:document.getElementById('preparedBy').value,
     staffLists:JSON.parse(JSON.stringify(staffLists)),
-    rosterShifts:JSON.parse(JSON.stringify(rosterShifts))
+    shifts:JSON.parse(JSON.stringify(shifts))
   };
-  try{
-    await dbPut(record);sbPush(record).catch(function(){});
-    allRecords=await dbGetAll();updateDBStatus();
+  dbPut(record).then(function(){
+    sbPush(record);
+    return dbAll();
+  }).then(function(recs){
+    allRecords=recs;setDBStatus();
     var msg=document.getElementById('form-success');msg.classList.add('show');setTimeout(function(){msg.classList.remove('show');},3000);
     renderRecords();
-  }catch(e){alert('Save failed: '+e.message);}
+  }).catch(function(e){alert('Save failed: '+e.message);});
 }
 
-// ================================================================
-// RECORDS
-// ================================================================
+/* ===== RECORDS ===== */
 function renderRecords(){
   var list=document.getElementById('records-list');
-  if(!allRecords.length){list.innerHTML='<div class="empty-state"><div class="icon">📁</div><p>No rosters saved yet.<br>Complete a roster and tap Save.</p></div>';return;}
+  if(!allRecords.length){list.innerHTML='<div class="empty-state"><div style="font-size:38px;margin-bottom:10px">📁</div><p>No rosters saved yet.</p></div>';return;}
   var sorted=allRecords.slice().sort(function(a,b){return b.id-a.id;});
   var grouped={};
-  sorted.forEach(function(r){var store=r.store||'Unknown Store';if(!grouped[store])grouped[store]=[];grouped[store].push(r);});
+  sorted.forEach(function(r){var s=r.store||'Unknown';if(!grouped[s])grouped[s]=[];grouped[s].push(r);});
   var html='';
   Object.keys(grouped).sort().forEach(function(store){
-    html+='<div class="record-group"><div class="record-group-header"><span>📍 '+esc(store)+'</span><span>'+grouped[store].length+' roster'+(grouped[store].length!==1?'s':'')+'</span></div>';
+    html+='<div class="record-group"><div class="record-group-hdr"><span>📍 '+esc(store)+'</span><span>'+grouped[store].length+' roster'+(grouped[store].length!==1?'s':'')+'</span></div>';
     grouped[store].forEach(function(r){
-      var deptCount=Object.values(r.staffLists||{}).filter(function(s){return s.length>0;}).length;
-      var totalStaff=Object.values(r.staffLists||{}).reduce(function(a,s){return a+s.length;},0);
-      html+='<div class="record-item" onclick="openRecord('+r.id+')"><div><div class="rec-title">w/c '+esc(r.weekStart||'—')+'</div><div class="rec-meta">'+deptCount+' dept'+(deptCount!==1?'s':'')+' · '+totalStaff+' staff · Saved '+new Date(r.savedAt).toLocaleDateString('en-IE')+(r.preparedBy?' · '+esc(r.preparedBy):'')+' </div></div><div class="rec-arrow">›</div></div>';
+      var dc=Object.values(r.staffLists||{}).filter(function(s){return s.length>0;}).length;
+      var sc=Object.values(r.staffLists||{}).reduce(function(a,s){return a+s.length;},0);
+      html+='<div class="record-item" onclick="openRecord('+r.id+')"><div><div class="rec-title">w/c '+esc(r.weekStart||'—')+'</div><div class="rec-meta">'+dc+' dept'+(dc!==1?'s':'')+' · '+sc+' staff · Saved '+new Date(r.savedAt).toLocaleDateString('en-IE')+(r.preparedBy?' · '+esc(r.preparedBy):'')+' </div></div><div class="rec-arrow">›</div></div>';
     });
     html+='</div>';
   });
@@ -449,166 +519,151 @@ function openRecord(id){
   var r=allRecords.find(function(x){return x.id===id;});if(!r)return;
   activeRecordId=id;
   document.getElementById('modal-title').textContent='Roster — w/c '+(r.weekStart||'—')+' · '+(r.store||'');
-  var days=DAY_NAMES.map(function(d,i){if(!r.weekStart)return d;var dt=new Date(r.weekStart);dt.setDate(dt.getDate()+i);return d+' '+dt.getDate()+'/'+(dt.getMonth()+1);});
-  var html='<div style="background:#1a1f18;color:white;border-radius:8px;padding:10px 14px;margin-bottom:14px;"><div style="font-size:10px;opacity:0.5;letter-spacing:0.1em;">WEEKLY ROSTER</div><div style="font-size:15px;font-weight:700;margin-top:2px;">'+esc(r.store||'')+' &nbsp;·&nbsp; w/c '+(r.weekStart||'—')+'</div>'+(r.preparedBy?'<div style="font-size:11px;opacity:0.6;margin-top:3px;">Prepared by: '+esc(r.preparedBy)+'</div>':'')+' </div>';
+  var rShifts=r.shifts||r.rosterShifts||{};
+  var days=DAYS.map(function(d,i){if(!r.weekStart)return d;var dt=new Date(r.weekStart);dt.setDate(dt.getDate()+i);return d+' '+dt.getDate()+'/'+(dt.getMonth()+1);});
+  var html='<div style="background:#1a1f18;color:white;border-radius:8px;padding:10px 14px;margin-bottom:14px;"><div style="font-size:10px;opacity:0.5">WEEKLY ROSTER</div><div style="font-size:15px;font-weight:700;margin-top:2px;">'+esc(r.store||'')+' · w/c '+(r.weekStart||'—')+'</div>'+(r.preparedBy?'<div style="font-size:11px;opacity:0.6;margin-top:3px;">Prepared by: '+esc(r.preparedBy)+'</div>':'')+' </div>';
   var grandTotal=0;
-  DEPARTMENTS.forEach(function(dept){
+  DEPTS.forEach(function(dept){
     var staff=(r.staffLists||{})[dept]||[];if(!staff.length)return;
     var deptTotal=0;
-    html+='<div class="modal-dept"><div class="modal-dept-title">'+esc(dept)+'</div><table class="modal-roster-table"><thead><tr><th>Name</th>'+days.map(function(d){return'<th>'+esc(d)+'</th>';}).join('')+'<th>Total</th></tr></thead><tbody>';
+    html+='<div style="margin-bottom:16px"><div class="mdept-title">'+esc(dept)+'</div><table class="mtable"><thead><tr><th>Name</th>'+days.map(function(d){return'<th>'+esc(d)+'</th>';}).join('')+'<th>Total</th></tr></thead><tbody>';
     staff.forEach(function(name){
-      var shifts=((r.rosterShifts||{})[dept]||{})[name]||Array(7).fill('');
+      var sArr=((rShifts)[dept]||{})[name]||Array(7).fill('');
       var rowTotal=0;
-      var cells=shifts.map(function(s){
-        var net=calcNet(s||'');if(net!==null)rowTotal+=net;var off=isOff(s);
-        return net!==null?'<td>'+esc(s)+'<br><span style="font-size:9px;color:var(--green);font-weight:700;">'+formatH(net)+'</span></td>':(off?'<td class="off-cell">'+esc(s||'').toUpperCase()+'</td>':'<td style="color:#ccc;">—</td>');
+      var cells=sArr.map(function(s){
+        var net=calcNet(s||'');if(net!==null)rowTotal+=net;
+        var off=isOff(s);
+        if(net!==null)return'<td>'+esc(s)+'<br><span style="font-size:9px;color:var(--green);font-weight:700">'+fmtH(net)+'</span></td>';
+        if(off)return'<td class="offcell">'+esc(s||'').toUpperCase()+'</td>';
+        return'<td style="color:#ccc">—</td>';
       }).join('');
       deptTotal+=rowTotal;
-      html+='<tr><td>'+esc(name)+'</td>'+cells+'<td class="tot">'+(rowTotal>0?formatH(rowTotal):'—')+'</td></tr>';
+      html+='<tr><td>'+esc(name)+'</td>'+cells+'<td class="tot">'+(rowTotal>0?fmtH(rowTotal):'—')+'</td></tr>';
     });
     grandTotal+=deptTotal;
-    html+='</tbody></table><div class="modal-summary"><span>'+esc(dept)+' Total</span><span>'+(formatH(deptTotal)||'0h')+'</span></div></div>';
+    html+='</tbody></table><div class="msummary"><span>'+esc(dept)+' Total</span><span>'+(fmtH(deptTotal)||'0h')+'</span></div></div>';
   });
-  html+='<div style="background:var(--green-dark);color:white;border-radius:8px;padding:12px 14px;margin-top:8px;display:flex;justify-content:space-between;font-family:\'Montserrat\',sans-serif;font-weight:700;font-size:15px;"><span>ALL DEPARTMENTS TOTAL</span><span>'+(formatH(grandTotal)||'0h')+'</span></div>';
+  html+='<div style="background:var(--green-dark);color:white;border-radius:8px;padding:12px 14px;margin-top:8px;display:flex;justify-content:space-between;font-weight:700;font-size:15px"><span>ALL DEPARTMENTS TOTAL</span><span>'+(fmtH(grandTotal)||'0h')+'</span></div>';
   document.getElementById('modal-body').innerHTML=html;
   document.getElementById('recordModal').classList.add('open');
 }
 
 function closeModal(){document.getElementById('recordModal').classList.remove('open');activeRecordId=null;}
 
-function loadRosterFromRecord(){
+function loadRecord(){
   var r=allRecords.find(function(x){return x.id===activeRecordId;});if(!r)return;
   closeModal();
   if(r.weekStart)document.getElementById('weekStart').value=r.weekStart;
   if(r.store)document.getElementById('storeName').value=r.store;
   if(r.preparedBy)document.getElementById('preparedBy').value=r.preparedBy;
   if(r.staffLists)staffLists=JSON.parse(JSON.stringify(r.staffLists));
-  if(r.rosterShifts)rosterShifts=JSON.parse(JSON.stringify(r.rosterShifts));
-  activeDept=DEPARTMENTS[0];buildTabs();renderActiveDept();
-  showTab('form',document.querySelector('.nav-tab'));
-  document.querySelectorAll('.nav-tab')[0].classList.add('active');
-  document.querySelectorAll('.nav-tab')[1].classList.remove('active');
+  var rShifts=r.shifts||r.rosterShifts||{};
+  shifts=JSON.parse(JSON.stringify(rShifts));
+  activeDept=DEPTS[0];buildTabs();renderDept();
+  showTab('form',document.getElementById('tab-btn-form'));
 }
 
-async function deleteRecord(){
-  if(!confirm('Delete this roster? This cannot be undone.'))return;
-  try{await dbDelete(activeRecordId);allRecords=await dbGetAll();updateDBStatus();closeModal();renderRecords();}catch(e){alert('Delete failed: '+e.message);}
+function deleteRecord(){
+  if(!confirm('Delete this roster?'))return;
+  dbDel(activeRecordId).then(function(){return dbAll();}).then(function(recs){
+    allRecords=recs;setDBStatus();closeModal();renderRecords();
+  }).catch(function(e){alert('Delete failed: '+e.message);});
 }
 
-// ================================================================
-// PRINT PDF — with dept totals + grand total on every page
-// ================================================================
-function printRosterPDF(){
+/* ===== PDF ===== */
+function printPDF(){
   saveCurrent();
   var jsPDF=window.jspdf&&window.jspdf.jsPDF;
-  if(!jsPDF){alert('PDF library not loaded. Please refresh and try again.');return;}
+  if(!jsPDF){alert('PDF library not loaded. Please refresh.');return;}
   var doc=new jsPDF({orientation:'landscape',unit:'mm',format:'a4'});
   var PW=297,PH=210,ML=8,MR=8;
   var store=document.getElementById('storeName').value||'Store';
   var weekStart=document.getElementById('weekStart').value||'';
   var prepBy=document.getElementById('preparedBy').value||'';
-  var days=DAY_NAMES.map(function(d,i){
-    if(!weekStart)return d;
-    var dt=new Date(weekStart);dt.setDate(dt.getDate()+i);
-    return d+' '+dt.getDate()+'/'+(dt.getMonth()+1);
-  });
+  var days=DAYS.map(function(d,i){if(!weekStart)return d;var dt=new Date(weekStart);dt.setDate(dt.getDate()+i);return d+' '+dt.getDate()+'/'+(dt.getMonth()+1);});
 
-  // Pre-calculate all dept totals and grand total for the summary line
+  /* Pre-calculate all totals */
   var deptTotals={};var grandTotal=0;
-  DEPARTMENTS.forEach(function(dept){
-    var staff=staffLists[dept]||[];var dt=0;
-    staff.forEach(function(name){
-      for(var i=0;i<7;i++){var n=calcNet((rosterShifts[dept][name]||[])[i]||'');if(n!==null)dt+=n;}
+  DEPTS.forEach(function(dept){
+    var t=0;
+    (staffLists[dept]||[]).forEach(function(name){
+      for(var i=0;i<7;i++){var n=calcNet((shifts[dept][name]||[])[i]||'');if(n!==null)t+=n;}
     });
-    deptTotals[dept]=dt;grandTotal+=dt;
+    deptTotals[dept]=t;grandTotal+=t;
   });
 
   var firstPage=true;
-  DEPARTMENTS.forEach(function(dept){
-    var staff=staffLists[dept]||[];
-    if(!staff.length)return;
-    if(!firstPage)doc.addPage();
-    firstPage=false;
+  DEPTS.forEach(function(dept){
+    var staff=staffLists[dept]||[];if(!staff.length)return;
+    if(!firstPage)doc.addPage();firstPage=false;
     var y=8;
+    var nameW=38,dayW=Math.floor((PW-ML-MR-nameW-16)/7),totalW=16;
 
-    // Page header
+    /* Header */
     doc.setFillColor(0,112,60);doc.rect(0,0,PW,18,'F');
-    doc.setTextColor(255,255,255);doc.setFontSize(14);doc.setFont('helvetica','bold');
-    doc.text('MORIARTY GROUP',ML,8);
+    doc.setTextColor(255,255,255);doc.setFontSize(14);doc.setFont('helvetica','bold');doc.text('MORIARTY GROUP',ML,8);
     doc.setFontSize(9);doc.setFont('helvetica','normal');doc.text('WEEKLY STAFF ROSTER',ML,14);
     doc.setFontSize(12);doc.setFont('helvetica','bold');doc.text(dept.toUpperCase(),PW/2,10,{align:'center'});
-    doc.setFontSize(8);doc.setFont('helvetica','normal');
-    doc.text('w/c '+weekStart+'  ·  '+store+(prepBy?'  ·  '+prepBy:''),PW/2,15,{align:'center'});
+    doc.setFontSize(8);doc.setFont('helvetica','normal');doc.text('w/c '+weekStart+'  ·  '+store+(prepBy?'  ·  '+prepBy:''),PW/2,15,{align:'center'});
     y=24;
 
-    // Column widths
-    var nameW=38;var dayW=Math.floor((PW-ML-MR-nameW-16)/7);var totalW=16;
-
-    // Day header row
+    /* Day header */
     doc.setFillColor(232,245,238);doc.rect(ML,y,PW-ML-MR,8,'F');
     doc.setDrawColor(0,112,60);doc.setLineWidth(0.3);
     doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(0,80,40);
     doc.text('NAME',ML+2,y+5.5);
     days.forEach(function(d,i){doc.text(d,ML+nameW+i*dayW+dayW/2,y+5.5,{align:'center'});});
     doc.text('TOTAL',ML+nameW+7*dayW+totalW/2,y+5.5,{align:'center'});
-    doc.rect(ML,y,PW-ML-MR,8);
-    y+=9;
+    doc.rect(ML,y,PW-ML-MR,8);y+=9;
 
     var deptTotal=0;
     staff.forEach(function(name,ri){
       if(y>PH-28){
-        // Add summary footer before new page
-        drawPageSummary(doc,y,ML,MR,PW,PH,deptTotals,grandTotal,DEPARTMENTS);
+        drawSummary(doc,y,ML,MR,PW,deptTotals,grandTotal);
         doc.addPage();y=10;
-        // Repeat column header
         doc.setFillColor(232,245,238);doc.rect(ML,y,PW-ML-MR,8,'F');
         doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(0,80,40);
         doc.text('NAME',ML+2,y+5.5);
         days.forEach(function(d,i){doc.text(d,ML+nameW+i*dayW+dayW/2,y+5.5,{align:'center'});});
         doc.text('TOTAL',ML+nameW+7*dayW+totalW/2,y+5.5,{align:'center'});
-        doc.rect(ML,y,PW-ML-MR,8);
-        y+=9;
+        doc.rect(ML,y,PW-ML-MR,8);y+=9;
       }
-      var shifts=(rosterShifts[dept]||{})[name]||[];
-      var rowTotal=0;
+      var sArr=shifts[dept][name]||[];var rowTotal=0;
       var bg=ri%2===0?[248,252,248]:[255,255,255];
       doc.setFillColor(bg[0],bg[1],bg[2]);doc.rect(ML,y,PW-ML-MR,9,'F');
       doc.setDrawColor(210,220,210);doc.setLineWidth(0.2);doc.rect(ML,y,PW-ML-MR,9);
       doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(26,26,26);
       doc.text(name,ML+2,y+6,{maxWidth:nameW-3});
-      shifts.forEach(function(s,i){
-        var net=calcNet(s||'');if(net!==null)rowTotal+=net;var off=isOff(s);
+      sArr.forEach(function(s,i){
+        var net=calcNet(s||'');if(net!==null)rowTotal+=net;
         var cx=ML+nameW+i*dayW;
         if(net!==null){
-          doc.setFont('helvetica','normal');doc.setFontSize(7.5);doc.setTextColor(26,26,26);
-          doc.text(s||'',cx+dayW/2,y+4,{align:'center'});
-          doc.setFont('helvetica','bold');doc.setFontSize(7);doc.setTextColor(0,112,60);
-          doc.text(formatH(net),cx+dayW/2,y+7.5,{align:'center'});
-        } else if(off){
-          doc.setFont('helvetica','italic');doc.setFontSize(7);doc.setTextColor(150,150,150);
-          doc.text((s||'').toUpperCase(),cx+dayW/2,y+5.5,{align:'center'});
+          doc.setFont('helvetica','normal');doc.setFontSize(7.5);doc.setTextColor(26,26,26);doc.text(s||'',cx+dayW/2,y+4,{align:'center'});
+          doc.setFont('helvetica','bold');doc.setFontSize(7);doc.setTextColor(0,112,60);doc.text(fmtH(net),cx+dayW/2,y+7.5,{align:'center'});
+        }else if(isOff(s)){
+          doc.setFont('helvetica','italic');doc.setFontSize(7);doc.setTextColor(150,150,150);doc.text((s||'').toUpperCase(),cx+dayW/2,y+5.5,{align:'center'});
         }
       });
       deptTotal+=rowTotal;
-      var totX=ML+nameW+7*dayW;
-      doc.setFillColor(232,245,238);doc.rect(totX,y,totalW,9,'F');
+      var tx=ML+nameW+7*dayW;
+      doc.setFillColor(232,245,238);doc.rect(tx,y,totalW,9,'F');
       doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(0,80,40);
-      doc.text(rowTotal>0?formatH(rowTotal):'—',totX+totalW/2,y+5.5,{align:'center'});
+      doc.text(rowTotal>0?fmtH(rowTotal):'—',tx+totalW/2,y+5.5,{align:'center'});
       y+=9;
     });
 
-    // Dept total bar
+    /* Dept total */
     y+=2;
     doc.setFillColor(0,112,60);doc.rect(ML,y,PW-ML-MR,8,'F');
     doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(255,255,255);
     doc.text('DEPARTMENT TOTAL — '+dept.toUpperCase(),ML+3,y+5.5);
-    doc.text(formatH(deptTotal)||'0h',PW-MR-3,y+5.5,{align:'right'});
+    doc.text(fmtH(deptTotal)||'0h',PW-MR-3,y+5.5,{align:'right'});
     y+=10;
 
-    // Store totals summary — all depts + grand total
-    drawPageSummary(doc,y,ML,MR,PW,PH,deptTotals,grandTotal,DEPARTMENTS);
+    /* Store summary */
+    drawSummary(doc,y,ML,MR,PW,deptTotals,grandTotal);
 
-    // Footer
+    /* Footer */
     doc.setFillColor(0,112,60);doc.rect(0,PH-8,PW,8,'F');
     doc.setFont('helvetica','normal');doc.setFontSize(7);doc.setTextColor(255,255,255);
     doc.text('Moriarty Group · SuperValu · Weekly Roster · '+dept+' · '+store+' · w/c '+weekStart,PW/2,PH-3,{align:'center'});
@@ -617,44 +672,40 @@ function printRosterPDF(){
   doc.save('Roster_'+store.replace(/\s+/g,'_')+'_'+weekStart+'.pdf');
 }
 
-function drawPageSummary(doc,y,ML,MR,PW,PH,deptTotals,grandTotal,DEPARTMENTS){
-  // Draw a compact summary bar showing all dept totals + store grand total
-  var summaryH=8;
-  doc.setFillColor(26,31,24);doc.rect(ML,y,PW-ML-MR,summaryH,'F');
+function drawSummary(doc,y,ML,MR,PW,deptTotals,grandTotal){
+  doc.setFillColor(26,31,24);doc.rect(ML,y,PW-ML-MR,8,'F');
   doc.setFont('helvetica','bold');doc.setFontSize(7);doc.setTextColor(255,255,255);
   doc.text('STORE TOTALS:',ML+2,y+5.5);
-  var activeDepts=DEPARTMENTS.filter(function(d){return deptTotals[d]>0;});
   var x=ML+24;
-  activeDepts.forEach(function(d){
-    var label=d+': '+formatH(deptTotals[d]);
-    doc.setTextColor(180,230,200);doc.setFont('helvetica','normal');
-    doc.text(label,x,y+5.5);
-    x+=doc.getTextWidth(label)+6;
+  DEPTS.forEach(function(d){
+    if(!deptTotals[d])return;
+    var lbl=d+': '+fmtH(deptTotals[d]);
+    doc.setFont('helvetica','normal');doc.setTextColor(180,230,200);
+    doc.text(lbl,x,y+5.5);x+=doc.getTextWidth(lbl)+5;
   });
   doc.setFont('helvetica','bold');doc.setTextColor(255,220,0);
-  doc.text('TOTAL: '+(formatH(grandTotal)||'0h'),PW-MR-3,y+5.5,{align:'right'});
+  doc.text('TOTAL: '+(fmtH(grandTotal)||'0h'),PW-MR-3,y+5.5,{align:'right'});
 }
 
-// ================================================================
-// BACKUP / RESTORE
-// ================================================================
-async function exportJSON(){
-  var records=await dbGetAll();
-  if(!records.length){alert('No rosters to export.');return;}
-  var blob=new Blob([JSON.stringify({version:1,exportedAt:new Date().toISOString(),records:records},null,2)],{type:'application/json'});
-  var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download='roster-backup-'+new Date().toISOString().split('T')[0]+'.json';a.click();URL.revokeObjectURL(url);
+/* ===== BACKUP / RESTORE ===== */
+function exportJSON(){
+  dbAll().then(function(records){
+    if(!records.length){alert('No rosters to export.');return;}
+    var blob=new Blob([JSON.stringify({version:1,exportedAt:new Date().toISOString(),records:records},null,2)],{type:'application/json'});
+    var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download='roster-backup-'+new Date().toISOString().split('T')[0]+'.json';a.click();URL.revokeObjectURL(url);
+  });
 }
-async function importJSON(input){
+function importJSON(input){
   var file=input.files[0];if(!file)return;
   var reader=new FileReader();
-  reader.onload=async function(e){
+  reader.onload=function(e){
     try{
       var data=JSON.parse(e.target.result);
       if(!data.records){alert('Invalid file.');return;}
-      var ok=confirm('Import '+data.records.length+' rosters?');if(!ok)return;
-      for(var i=0;i<data.records.length;i++)await dbPut(data.records[i]);
-      allRecords=await dbGetAll();updateDBStatus();renderRecords();
-      alert('✅ '+data.records.length+' rosters imported.');
+      if(!confirm('Import '+data.records.length+' rosters?'))return;
+      var chain=Promise.resolve();
+      data.records.forEach(function(r){chain=chain.then(function(){return dbPut(r);});});
+      chain.then(function(){return dbAll();}).then(function(recs){allRecords=recs;setDBStatus();renderRecords();alert('✅ '+data.records.length+' rosters imported.');});
     }catch(err){alert('Import failed: '+err.message);}
   };
   reader.readAsText(file);input.value='';
