@@ -64,7 +64,6 @@ table.roster tbody td.total-cell{background:var(--green-light);font-family:'Mont
 .hint{font-size:11px;color:var(--muted);margin-top:4px;}
 .form-success{background:#e8f5e9;border:1px solid #a5d6a7;border-radius:8px;padding:11px 14px;font-size:14px;font-weight:600;color:#2e7d32;margin-bottom:12px;display:none;align-items:center;gap:8px;}
 .form-success.show{display:flex;}
-/* Records */
 .db-status{font-size:11px;color:var(--muted);text-align:center;margin-bottom:12px;font-family:'Montserrat',monospace;}
 .db-status.ok{color:var(--green);}
 .data-tools{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
@@ -82,7 +81,6 @@ table.roster tbody td.total-cell{background:var(--green-light);font-family:'Mont
 .rec-arrow{color:var(--border);font-size:20px;}
 .empty-state{text-align:center;padding:40px 20px;color:var(--muted);}
 .empty-state .icon{font-size:38px;margin-bottom:10px;}
-/* Modal */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:1000;align-items:flex-end;}
 .modal-overlay.open{display:flex;}
 .modal{background:white;border-radius:20px 20px 0 0;padding:18px;width:100%;max-height:90vh;overflow-y:auto;-webkit-overflow-scrolling:touch;}
@@ -94,7 +92,6 @@ table.roster tbody td.total-cell{background:var(--green-light);font-family:'Mont
 .btn-danger{background:white;color:#c8102e;border:1.5px solid #c8102e;}
 .btn-dark{background:#1a1f18;color:white;}
 .btn-secondary{background:white;color:var(--green);border:1.5px solid var(--green);}
-/* Roster view in modal */
 .modal-dept{margin-bottom:16px;}
 .modal-dept-title{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:white;background:var(--green);padding:6px 10px;border-radius:5px 5px 0 0;}
 .modal-roster-table{width:100%;border-collapse:collapse;font-size:11px;overflow-x:auto;display:block;}
@@ -121,11 +118,8 @@ table.roster tbody td.total-cell{background:var(--green-light);font-family:'Mont
   <div class="nav-tab" onclick="showTab('records',this)">📁 Records</div>
 </div>
 
-<!-- ===== ROSTER TAB ===== -->
-
 <div id="tab-form" class="tab-content active">
   <div class="form-success" id="form-success">✅ Roster saved!</div>
-
   <div class="card">
     <div class="card-title">Week Details</div>
     <div class="meta-grid">
@@ -140,22 +134,18 @@ table.roster tbody td.total-cell{background:var(--green-light);font-family:'Mont
       <div class="full"><label>Prepared By</label><input type="text" id="preparedBy" placeholder="Department head name"></div>
     </div>
   </div>
-
   <div class="card">
     <div class="card-title">Department Roster</div>
     <div class="dept-tabs" id="deptTabs"></div>
     <div id="rosterContainer"></div>
-    <div class="law-note">ℹ️ <strong>Irish Working Time Act 1997 — breaks auto-deducted:</strong> &nbsp;Under 4.5hrs = no break &nbsp;·&nbsp; 4.5–6hrs = 15 min &nbsp;·&nbsp; 6–8hrs = 30 min &nbsp;·&nbsp; 8hrs+ = 1 hour<br>Enter shifts as <strong>07:00-17:00</strong> or <strong>7-17</strong> · Type <strong>OFF</strong>, <strong>D/O</strong>, <strong>AL</strong> or <strong>HOLS</strong> for days off / leave.</div>
+    <div class="law-note">ℹ️ <strong>Irish Working Time Act 1997 — breaks auto-deducted:</strong> &nbsp;Under 4.5hrs = no break &nbsp;·&nbsp; 4.5–6hrs = 15 min &nbsp;·&nbsp; 6–8hrs = 30 min &nbsp;·&nbsp; 8hrs+ = 1 hour<br>Enter shifts as <strong>07:00-17:00</strong> or <strong>7-17</strong> or <strong>8-5</strong> (AM-PM auto-detected) · Type <strong>OFF</strong>, <strong>D/O</strong>, <strong>AL</strong> or <strong>HOLS</strong> for days off / leave.</div>
   </div>
-
   <div class="card">
     <div class="card-title">Save & Print</div>
     <button class="save-btn" onclick="saveRoster()">💾 Save Roster</button>
     <button class="email-btn" style="margin-top:8px;" onclick="printRosterPDF()">🖨 Print / PDF</button>
   </div>
 </div>
-
-<!-- ===== RECORDS TAB ===== -->
 
 <div id="tab-records" class="tab-content">
   <div class="db-status" id="db-status">Connecting...</div>
@@ -166,8 +156,6 @@ table.roster tbody td.total-cell{background:var(--green-light);font-family:'Mont
   <input type="file" id="import-file" accept=".json" style="display:none" onchange="importJSON(this)">
   <div id="records-list"></div>
 </div>
-
-<!-- RECORD MODAL -->
 
 <div class="modal-overlay" id="recordModal">
   <div class="modal">
@@ -188,29 +176,28 @@ table.roster tbody td.total-cell{background:var(--green-light);font-family:'Mont
 // ================================================================
 // SUPABASE
 // ================================================================
-const SB_URL='https://mnebkteiwjxbbmnfotse.supabase.co';
-const SB_KEY='sb_publishable_eutRHOftOW4ZJNlVrDKXOg_XtnBQ7cM';
+var SB_URL='https://mnebkteiwjxbbmnfotse.supabase.co';
+var SB_KEY='sb_publishable_eutRHOftOW4ZJNlVrDKXOg_XtnBQ7cM';
 function sbFetch(path,method,body){return fetch(SB_URL+'/rest/v1/'+path,{method:method||'GET',headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':method==='POST'?'resolution=merge-duplicates':''},body:body?JSON.stringify(body):undefined});}
-function sbPush(r){return sbFetch('roster_records','POST',[{id:String(r.id),store:r.store||'',week_start:r.weekStart||'',saved_at:r.savedAt,data:r}]).catch(()=>{});}
-async function sbLoadAll(){try{const res=await sbFetch('roster_records?order=saved_at.desc','GET');const rows=await res.json();if(!rows||rows.error)return null;return rows.map(r=>({...r.data,id:r.data.id||r.id}));}catch(e){return null;}}
+function sbPush(r){return sbFetch('roster_records','POST',[{id:String(r.id),store:r.store||'',week_start:r.weekStart||'',saved_at:r.savedAt,data:r}]).catch(function(){});}
+async function sbLoadAll(){try{var res=await sbFetch('roster_records?order=saved_at.desc','GET');var rows=await res.json();if(!rows||rows.error)return null;return rows.map(function(r){return Object.assign({},r.data,{id:r.data.id||r.id});});}catch(e){return null;}}
 
 // ================================================================
 // DB
 // ================================================================
-const DB_NAME='MoriartyRosters',DB_VERSION=1,STORE_NAME='rosters';
-let db=null,allRecords=[],activeRecordId=null;
-function openDB(){return new Promise((res,rej)=>{const req=indexedDB.open(DB_NAME,DB_VERSION);req.onupgradeneeded=e=>{const d=e.target.result;if(!d.objectStoreNames.contains(STORE_NAME))d.createObjectStore(STORE_NAME,{keyPath:'id'});};req.onsuccess=e=>{db=e.target.result;res(db);};req.onerror=e=>rej(e.target.error);});}
-function dbPut(r){return new Promise((res,rej)=>{const tx=db.transaction(STORE_NAME,'readwrite');tx.objectStore(STORE_NAME).put(r);tx.oncomplete=res;tx.onerror=e=>rej(e.target.error);});}
-function dbGetAll(){return new Promise((res,rej)=>{const tx=db.transaction(STORE_NAME,'readonly');const req=tx.objectStore(STORE_NAME).getAll();req.onsuccess=e=>res(e.target.result);req.onerror=e=>rej(e.target.error);});}
-function dbDelete(id){return new Promise((res,rej)=>{const tx=db.transaction(STORE_NAME,'readwrite');tx.objectStore(STORE_NAME).delete(id);tx.oncomplete=res;tx.onerror=e=>rej(e.target.error);});}
+var DB_NAME='MoriartyRosters',DB_VERSION=1,STORE_NAME='rosters';
+var db=null,allRecords=[],activeRecordId=null;
+function openDB(){return new Promise(function(res,rej){var req=indexedDB.open(DB_NAME,DB_VERSION);req.onupgradeneeded=function(e){var d=e.target.result;if(!d.objectStoreNames.contains(STORE_NAME))d.createObjectStore(STORE_NAME,{keyPath:'id'});};req.onsuccess=function(e){db=e.target.result;res(db);};req.onerror=function(e){rej(e.target.error);};});}
+function dbPut(r){return new Promise(function(res,rej){var tx=db.transaction(STORE_NAME,'readwrite');tx.objectStore(STORE_NAME).put(r);tx.oncomplete=res;tx.onerror=function(e){rej(e.target.error);};});}
+function dbGetAll(){return new Promise(function(res,rej){var tx=db.transaction(STORE_NAME,'readonly');var req=tx.objectStore(STORE_NAME).getAll();req.onsuccess=function(e){res(e.target.result);};req.onerror=function(e){rej(e.target.error);};});}
+function dbDelete(id){return new Promise(function(res,rej){var tx=db.transaction(STORE_NAME,'readwrite');tx.objectStore(STORE_NAME).delete(id);tx.oncomplete=res;tx.onerror=function(e){rej(e.target.error);};});}
 
 // ================================================================
 // ROSTER STATE
 // ================================================================
-const DEPARTMENTS=["Butchers","Deli","Shop Floor","Tills","Vans","Cash Office","HR"];
-const DAY_NAMES=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-// Store-specific default staff lists
-const STORE_STAFF={
+var DEPARTMENTS=["Butchers","Deli","Shop Floor","Tills","Vans","Cash Office","HR"];
+var DAY_NAMES=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+var STORE_STAFF={
   "Skerries":{
     "Butchers":["Alexander Khalikov","Billy Peters","Ethan Forristal","Gregory Lynch","Liam Phillips","Stephen Heenan"],
     "Deli":["Abigail Jaskan","Alice Ellis D","Holly O'Connor","Jessica Cox","Katie Gaffney","Natalin Chyshladdiy","Peter Kennon","Rowena Murphy","Shakira Panaghia","Sigita Sarkane"],
@@ -218,63 +205,100 @@ const STORE_STAFF={
     "Tills":["Joyce Mc Garry","Mara O'Donohoe","Marriam Buffone","Maya Broderick","Nicole Byrne","Paula Nugent","Pauline Woodcock","Rachael McBride","Sarah El Shamy","Sophie Murny","Stella Moore","Alice Flood","Aoife Mc Kenna","Bridie Tulie","Caroline Young","Charlotte Joyce","Clara Monik","Clara Lindsay","Emilia Zedemi","Evan Burns"],
     "Vans":[],"Cash Office":[],"HR":[]
   },
-  "Balbriggan":{
-    "Butchers":[],"Deli":[],"Shop Floor":[],"Tills":[],"Vans":[],"Cash Office":[],"HR":[]
-  },
-  "Palmerstown":{
-    "Butchers":[],"Deli":[],"Shop Floor":[],"Tills":[],"Vans":[],"Cash Office":[],"HR":[]
-  }
+  "Balbriggan":{"Butchers":[],"Deli":[],"Shop Floor":[],"Tills":[],"Vans":[],"Cash Office":[],"HR":[]},
+  "Palmerstown":{"Butchers":[],"Deli":[],"Shop Floor":[],"Tills":[],"Vans":[],"Cash Office":[],"HR":[]}
 };
-const DEFAULT_STAFF=STORE_STAFF["Skerries"];
-let staffLists={},rosterShifts={},activeDept=DEPARTMENTS[0];
+var staffLists={},rosterShifts={},activeDept=DEPARTMENTS[0];
+
+// ================================================================
+// TIME PARSING — FIXED
+// ================================================================
+function parseTime(t){
+  t=t.trim();
+  // HH:MM or H:MM or HH.MM
+  var m=t.match(/^(\d{1,2})[:.](\d{2})$/);
+  if(m)return parseInt(m[1],10)+parseInt(m[2],10)/60;
+  // bare hour e.g. 7 or 17
+  m=t.match(/^(\d{1,2})$/);
+  if(m)return parseInt(m[1],10);
+  return null;
+}
+
+function calcNet(val){
+  if(!val||!val.trim()||isOff(val))return null;
+  var raw=val.trim();
+  // Split on dash/en-dash — but not a leading minus
+  // Remove leading/trailing whitespace from each part
+  var parts=raw.split(/\s*[-–]\s*/);
+  if(parts.length!==2)return null;
+  var s=parseTime(parts[0]);
+  var e=parseTime(parts[1]);
+  if(s===null||e===null)return null;
+
+  // AM/PM heuristic:
+  // If end <= start AND end < 12, assume end is PM (add 12)
+  // e.g. 8-5 → 8:00 to 17:00 = 9 gross
+  // e.g. 7-3 → 7:00 to 15:00 = 8 gross
+  // e.g. 7-17 → already correct (17 >= 12)
+  // e.g. 22-6 → night shift, e < s but e < 12 → 6+12=18? No — night shifts end before noon
+  // Better rule: if end < start AND end <= 11, add 12 to end (PM interpretation)
+  // If end < start AND end > 11, it's a night shift crossing midnight
+  if(e<s){
+    if(e<=11){
+      // Likely PM e.g. 8-5 means 8am-5pm
+      e=e+12;
+    } else {
+      // Night shift crossing midnight
+      e=e+24;
+    }
+  }
+
+  var gross=e-s;
+  if(gross<=0||gross>24)return null;
+  return gross-calcBreak(gross);
+}
+
+function calcBreak(g){if(g>=8)return 1;if(g>6)return 0.5;if(g>=4.5)return 0.25;return 0;}
+
+function isOff(t){
+  if(!t)return false;
+  var u=t.trim().toUpperCase();
+  return["OFF","D/O","RD","AL","SL","HOLS","LEAVE","-"].indexOf(u)!==-1;
+}
+
+function formatH(h){
+  if(h===null||h===undefined||isNaN(h)||h===0)return'';
+  var hrs=Math.floor(h);
+  var mins=Math.round((h-hrs)*60);
+  return mins===0?hrs+'h':hrs+'h '+mins+'m';
+}
+
+function safeId(name){return name.replace(/[^a-zA-Z0-9]/g,'_');}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
 // ================================================================
 // INIT
 // ================================================================
 async function init(){
-  DEPARTMENTS.forEach(d=>{staffLists[d]=[...(DEFAULT_STAFF[d]||[])];rosterShifts[d]={};staffLists[d].forEach(n=>{rosterShifts[d][n]=Array(7).fill('');});});
-  const today=new Date();const sunday=new Date(today);sunday.setDate(today.getDate()-today.getDay());
+  DEPARTMENTS.forEach(function(d){
+    staffLists[d]=[].concat(STORE_STAFF['Skerries'][d]||[]);
+    rosterShifts[d]={};
+    staffLists[d].forEach(function(n){rosterShifts[d][n]=Array(7).fill('');});
+  });
+  var today=new Date();var sunday=new Date(today);sunday.setDate(today.getDate()-today.getDay());
   document.getElementById('weekStart').value=sunday.toISOString().split('T')[0];
   try{
     await openDB();
-    const sbData=await sbLoadAll();
-    if(sbData&&sbData.length){allRecords=sbData;for(const r of sbData){try{await dbPut(r);}catch(e){}}}
+    var sbData=await sbLoadAll();
+    if(sbData&&sbData.length){allRecords=sbData;for(var i=0;i<sbData.length;i++){try{await dbPut(sbData[i]);}catch(e){}}}
     else{allRecords=await dbGetAll();}
     updateDBStatus();
   }catch(e){document.getElementById('db-status').textContent='⚠️ '+e.message;}
   buildTabs();renderActiveDept();renderRecords();
 }
 
-function updateDBStatus(){const el=document.getElementById('db-status');el.textContent='🟢 '+allRecords.length+' roster'+(allRecords.length!==1?'s':'')+' saved';el.className='db-status ok';}
-function showTab(name,el){document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));document.getElementById('tab-'+name).classList.add('active');el.classList.add('active');if(name==='records')renderRecords();}
-function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-
-// ================================================================
-// ROSTER LOGIC
-// ================================================================
-function calcBreak(g){if(g>=8)return 1;if(g>6)return 0.5;if(g>=4.5)return 0.25;return 0;}
-function isOff(t){if(!t)return false;const u=t.trim().toUpperCase();return["OFF","D/O","RD","AL","SL","HOLS","LEAVE","-"].includes(u);}
-function parseTime(t){
-  t=t.trim();
-  // formats: 07:00, 7:00, 7h00, 07, 7 (hour only)
-  var m=t.match(/^(\d{1,2})[:.h](\d{2})$/);
-  if(m)return parseInt(m[1])+parseInt(m[2])/60;
-  m=t.match(/^(\d{1,2})$/);
-  if(m)return parseInt(m[1]);
-  return null;
-}
-function calcNet(val){
-  if(!val||!val.trim()||isOff(val))return null;
-  var parts=val.trim().split(/[-–]/);
-  if(parts.length!==2)return null;
-  var s=parseTime(parts[0]);
-  var f=parseTime(parts[1]);
-  if(s===null||f===null)return null;
-  var g=f-s;if(g<0)g+=24;if(g<=0)return null;
-  return g-calcBreak(g);
-}
-function formatH(h){if(!h||isNaN(h)||h===0)return'';const hrs=Math.floor(h);const mins=Math.round((h-hrs)*60);return mins===0?`${hrs}h`:`${hrs}h ${mins}m`;}
-function safeId(name){return name.replace(/[^a-zA-Z0-9]/g,'_');}
+function updateDBStatus(){var el=document.getElementById('db-status');el.textContent='🟢 '+allRecords.length+' roster'+(allRecords.length!==1?'s':'')+' saved';el.className='db-status ok';}
+function showTab(name,el){document.querySelectorAll('.tab-content').forEach(function(t){t.classList.remove('active');});document.querySelectorAll('.nav-tab').forEach(function(t){t.classList.remove('active');});document.getElementById('tab-'+name).classList.add('active');el.classList.add('active');if(name==='records')renderRecords();}
 
 function onStoreChange(){
   var store=document.getElementById('storeName').value;
@@ -285,23 +309,31 @@ function onStoreChange(){
     rosterShifts[d]={};
     staffLists[d].forEach(function(n){rosterShifts[d][n]=Array(7).fill('');});
   });
-  activeDept=DEPARTMENTS[0];
-  buildTabs();renderActiveDept();
-  updateBanner();
+  activeDept=DEPARTMENTS[0];buildTabs();renderActiveDept();
 }
+
 function buildTabs(){
-  const wrap=document.getElementById('deptTabs');wrap.innerHTML='';
-  DEPARTMENTS.forEach(d=>{const btn=document.createElement('button');btn.className='dept-tab'+(d===activeDept?' active':'');btn.textContent=d+(staffLists[d].length?` (${staffLists[d].length})`:'');btn.onclick=()=>{saveCurrent();activeDept=d;buildTabs();renderActiveDept();};wrap.appendChild(btn);});
+  var wrap=document.getElementById('deptTabs');wrap.innerHTML='';
+  DEPARTMENTS.forEach(function(d){
+    var btn=document.createElement('button');
+    btn.className='dept-tab'+(d===activeDept?' active':'');
+    btn.textContent=d+(staffLists[d].length?' ('+staffLists[d].length+')':'');
+    btn.onclick=(function(dept){return function(){saveCurrent();activeDept=dept;buildTabs();renderActiveDept();};})(d);
+    wrap.appendChild(btn);
+  });
 }
 
 function getDayHeaders(){
-  const val=document.getElementById('weekStart').value;if(!val)return DAY_NAMES.map(d=>`<span>${d}</span>`);
-  const start=new Date(val);
-  return DAY_NAMES.map((d,i)=>{const dt=new Date(start);dt.setDate(start.getDate()+i);return `${d}<br><span style="font-weight:400;font-size:10px">${dt.getDate()}/${dt.getMonth()+1}</span>`;});
+  var val=document.getElementById('weekStart').value;
+  if(!val)return DAY_NAMES.map(function(d){return'<span>'+d+'</span>';});
+  var start=new Date(val);
+  return DAY_NAMES.map(function(d,i){
+    var dt=new Date(start);dt.setDate(start.getDate()+i);
+    return d+'<br><span style="font-weight:400;font-size:10px">'+dt.getDate()+'/'+(dt.getMonth()+1)+'</span>';
+  });
 }
 
 function saveCurrent(){
-  // Save all departments from DOM (only active dept has DOM elements, others rely on rosterShifts)
   DEPARTMENTS.forEach(function(dept){
     (staffLists[dept]||[]).forEach(function(name){
       if(!rosterShifts[dept])rosterShifts[dept]={};
@@ -315,61 +347,67 @@ function saveCurrent(){
 }
 
 function addStaffMember(dept){
-  const input=document.getElementById(`newStaffInput_${dept}`);if(!input)return;
-  const name=input.value.trim();if(!name)return;
-  if(staffLists[dept].includes(name)){input.value='';return;}
+  var input=document.getElementById('newStaffInput_'+dept);if(!input)return;
+  var name=input.value.trim();if(!name)return;
+  if(staffLists[dept].indexOf(name)!==-1){input.value='';return;}
   if(staffLists[dept].length>=30){alert('Maximum 30 staff per department.');return;}
   staffLists[dept].push(name);rosterShifts[dept][name]=Array(7).fill('');input.value='';buildTabs();renderActiveDept();
 }
 
 function removeStaffMember(dept,name){
-  saveCurrent();staffLists[dept]=staffLists[dept].filter(n=>n!==name);delete rosterShifts[dept][name];buildTabs();renderActiveDept();
+  saveCurrent();staffLists[dept]=staffLists[dept].filter(function(n){return n!==name;});delete rosterShifts[dept][name];buildTabs();renderActiveDept();
 }
 
-function updateBanner(){var el=document.getElementById('banner_text');if(el){var store=document.getElementById('storeName').value||'Store';var week=document.getElementById('weekStart').value||'—';el.textContent=activeDept+'  ·  Week: '+week+'  ·  '+store;}}
-
 function renderActiveDept(){
-  const dept=activeDept;const dayHeaders=getDayHeaders();const staff=staffLists[dept]||[];
-  const store=document.getElementById('storeName').value||'Store';const week=document.getElementById('weekStart').value||'—';
-  let html=`<div class="staff-mgmt"><div class="staff-mgmt-title">👥 Staff List — ${dept} (${staff.length}/30)</div><div class="staff-list">`;
-  staff.forEach(name=>{html+=`<div class="staff-chip">${esc(name)} <button class="remove-chip" onclick="removeStaffMember('${dept.replace(/'/g,"\\'")}','${name.replace(/'/g,"\\'")}')">×</button></div>`;});
-  html+=`</div><div class="add-staff-form"><input type="text" id="newStaffInput_${dept}" placeholder="Add new staff member..." onkeydown="if(event.key==='Enter') addStaffMember('${dept.replace(/'/g,"\\'")}')"><button onclick="addStaffMember('${dept.replace(/'/g,"\\'")}')">+ Add</button></div></div>`;
-  html+=`<div class="roster-table-wrap"><table class="roster"><thead><tr class="dept-banner"><th colspan="10" id="banner_text">${dept}  ·  Week: ${week}  ·  ${store}</th></tr><tr class="day-header"><th class="name-col">Name</th>${dayHeaders.map(d=>`<th>${d}</th>`).join('')}<th class="total-col">Total</th></tr></thead><tbody>`;
-  let deptTotal=0;
-  staff.forEach(name=>{
-    const shifts=rosterShifts[dept][name]||Array(7).fill('');let rowTotal=0;let dayCells='';
-    for(let i=0;i<7;i++){
-      const val=shifts[i]||'';const net=calcNet(val);if(net!==null)rowTotal+=net;const off=isOff(val);
-      const badge=net!==null?`<span class="net-hours">${formatH(net)}</span>`:(off?`<span class="net-off">${val.trim().toUpperCase()}</span>`:'');
-      dayCells+=`<td><input class="shift-input${val?(off?' is-off':' has-value'):''}" id="shift_${dept}_${safeId(name)}_${i}" value="${esc(val)}" placeholder="—" oninput="liveUpdate('${dept.replace(/'/g,"\\'")}','${name.replace(/'/g,"\\'")}',${i})" onchange="liveUpdate('${dept.replace(/'/g,"\\'")}','${name.replace(/'/g,"\\'")}',${i})"><span id="net_${dept}_${safeId(name)}_${i}">${badge}</span></td>`;
+  var dept=activeDept;var dayHeaders=getDayHeaders();var staff=staffLists[dept]||[];
+  var store=document.getElementById('storeName').value||'Store';var week=document.getElementById('weekStart').value||'—';
+  var html='<div class="staff-mgmt"><div class="staff-mgmt-title">👥 Staff List — '+dept+' ('+staff.length+'/30)</div><div class="staff-list">';
+  staff.forEach(function(name){
+    html+='<div class="staff-chip">'+esc(name)+' <button class="remove-chip" onclick="removeStaffMember(\''+dept.replace(/'/g,"\\'")+"','"+(name.replace(/'/g,"\\'"))+"')">×</button></div>";
+  });
+  html+='</div><div class="add-staff-form"><input type="text" id="newStaffInput_'+dept+'" placeholder="Add new staff member..." onkeydown="if(event.key===\'Enter\') addStaffMember(\''+dept.replace(/'/g,"\\'")+'\')"><button onclick="addStaffMember(\''+dept.replace(/'/g,"\\'")+'\')">+ Add</button></div></div>';
+  html+='<div class="roster-table-wrap"><table class="roster"><thead><tr class="dept-banner"><th colspan="10" id="banner_text">'+dept+'  ·  Week: '+week+'  ·  '+store+'</th></tr><tr class="day-header"><th class="name-col">Name</th>'+dayHeaders.map(function(d){return'<th>'+d+'</th>';}).join('')+'<th class="total-col">Total</th></tr></thead><tbody>';
+  var deptTotal=0;
+  staff.forEach(function(name){
+    var shifts=rosterShifts[dept][name]||Array(7).fill('');var rowTotal=0;var dayCells='';
+    for(var i=0;i<7;i++){
+      var val=shifts[i]||'';var net=calcNet(val);if(net!==null)rowTotal+=net;var off=isOff(val);
+      var badge=net!==null?'<span class="net-hours">'+formatH(net)+'</span>':(off?'<span class="net-off">'+val.trim().toUpperCase()+'</span>':'');
+      dayCells+='<td><input class="shift-input'+(val?(off?' is-off':' has-value'):'')+'" id="shift_'+dept+'_'+safeId(name)+'_'+i+'" value="'+esc(val)+'" placeholder="—" oninput="liveUpdate(\''+dept.replace(/'/g,"\\'")+"','"+(name.replace(/'/g,"\\'"))+"',"+i+')" onchange="liveUpdate(\''+dept.replace(/'/g,"\\'")+"','"+(name.replace(/'/g,"\\'"))+"',"+i+')"><span id="net_'+dept+'_'+safeId(name)+'_'+i+'">'+badge+'</span></td>';
     }
     deptTotal+=rowTotal;
-    html+=`<tr><td class="name-cell">${esc(name)}</td>${dayCells}<td class="total-cell" id="rowtotal_${dept}_${safeId(name)}">${rowTotal>0?formatH(rowTotal):'—'}</td></tr>`;
+    html+='<tr><td class="name-cell">'+esc(name)+'</td>'+dayCells+'<td class="total-cell" id="rowtotal_'+dept+'_'+safeId(name)+'">'+(rowTotal>0?formatH(rowTotal):'—')+'</td></tr>';
   });
-  if(!staff.length)html+=`<tr><td colspan="10" style="text-align:center;padding:20px;color:#aaa;font-style:italic;">No staff added yet</td></tr>`;
-  html+=`</tbody></table></div><div class="dept-totals-bar"><span class="label">Department Total Hours</span><span id="deptTotal_${dept}">${formatH(deptTotal)||'0h'}</span></div>`;
+  if(!staff.length)html+='<tr><td colspan="10" style="text-align:center;padding:20px;color:#aaa;font-style:italic;">No staff added yet</td></tr>';
+  html+='</tbody></table></div><div class="dept-totals-bar"><span class="label">Department Total Hours</span><span id="deptTotal_'+dept+'">'+(formatH(deptTotal)||'0h')+'</span></div>';
   document.getElementById('rosterContainer').innerHTML=html;
 }
 
 function liveUpdate(dept,name,dayIndex){
-  const el=document.getElementById(`shift_${dept}_${safeId(name)}_${dayIndex}`);if(!el)return;
+  var el=document.getElementById('shift_'+dept+'_'+safeId(name)+'_'+dayIndex);if(!el)return;
   if(!rosterShifts[dept][name])rosterShifts[dept][name]=Array(7).fill('');
   rosterShifts[dept][name][dayIndex]=el.value;
-  const val=el.value;const net=calcNet(val);const off=isOff(val);
-  const badge=document.getElementById(`net_${dept}_${safeId(name)}_${dayIndex}`);
-  if(badge){if(net!==null)badge.innerHTML=`<span class="net-hours">${formatH(net)}</span>`;else if(off)badge.innerHTML=`<span class="net-off">${val.trim().toUpperCase()}</span>`;else badge.innerHTML='';}
-  let rowTotal=0;for(let i=0;i<7;i++){const n=calcNet(rosterShifts[dept][name][i]||'');if(n!==null)rowTotal+=n;}
-  const rowEl=document.getElementById(`rowtotal_${dept}_${safeId(name)}`);if(rowEl)rowEl.textContent=rowTotal>0?formatH(rowTotal):'—';
-  let deptTotal=0;(staffLists[dept]||[]).forEach(n=>{for(let i=0;i<7;i++){const nn=calcNet((rosterShifts[dept][n]||[])[i]||'');if(nn!==null)deptTotal+=nn;}});
-  const deptEl=document.getElementById(`deptTotal_${dept}`);if(deptEl)deptEl.textContent=formatH(deptTotal)||'0h';
+  var val=el.value;var net=calcNet(val);var off=isOff(val);
+  var badge=document.getElementById('net_'+dept+'_'+safeId(name)+'_'+dayIndex);
+  if(badge){
+    if(net!==null)badge.innerHTML='<span class="net-hours">'+formatH(net)+'</span>';
+    else if(off)badge.innerHTML='<span class="net-off">'+val.trim().toUpperCase()+'</span>';
+    else badge.innerHTML='';
+  }
+  var rowTotal=0;
+  for(var i=0;i<7;i++){var n=calcNet(rosterShifts[dept][name][i]||'');if(n!==null)rowTotal+=n;}
+  var rowEl=document.getElementById('rowtotal_'+dept+'_'+safeId(name));if(rowEl)rowEl.textContent=rowTotal>0?formatH(rowTotal):'—';
+  var deptTotal=0;
+  (staffLists[dept]||[]).forEach(function(n){for(var i=0;i<7;i++){var nn=calcNet((rosterShifts[dept][n]||[])[i]||'');if(nn!==null)deptTotal+=nn;}});
+  var deptEl=document.getElementById('deptTotal_'+dept);if(deptEl)deptEl.textContent=formatH(deptTotal)||'0h';
 }
 
 // ================================================================
-// SAVE ROSTER
+// SAVE
 // ================================================================
 async function saveRoster(){
   saveCurrent();
-  const record={
+  var record={
     id:Date.now(),savedAt:new Date().toISOString(),
     store:document.getElementById('storeName').value,
     weekStart:document.getElementById('weekStart').value,
@@ -378,9 +416,9 @@ async function saveRoster(){
     rosterShifts:JSON.parse(JSON.stringify(rosterShifts))
   };
   try{
-    await dbPut(record);sbPush(record).catch(()=>{});
+    await dbPut(record);sbPush(record).catch(function(){});
     allRecords=await dbGetAll();updateDBStatus();
-    const msg=document.getElementById('form-success');msg.classList.add('show');setTimeout(()=>msg.classList.remove('show'),3000);
+    var msg=document.getElementById('form-success');msg.classList.add('show');setTimeout(function(){msg.classList.remove('show');},3000);
     renderRecords();
   }catch(e){alert('Save failed: '+e.message);}
 }
@@ -389,18 +427,18 @@ async function saveRoster(){
 // RECORDS
 // ================================================================
 function renderRecords(){
-  const list=document.getElementById('records-list');
+  var list=document.getElementById('records-list');
   if(!allRecords.length){list.innerHTML='<div class="empty-state"><div class="icon">📁</div><p>No rosters saved yet.<br>Complete a roster and tap Save.</p></div>';return;}
-  const sorted=allRecords.slice().sort((a,b)=>b.id-a.id);
-  const grouped={};
-  sorted.forEach(r=>{const store=r.store||'Unknown Store';if(!grouped[store])grouped[store]=[];grouped[store].push(r);});
-  let html='';
-  Object.keys(grouped).sort().forEach(store=>{
-    html+=`<div class="record-group"><div class="record-group-header"><span>📍 ${esc(store)}</span><span>${grouped[store].length} roster${grouped[store].length!==1?'s':''}</span></div>`;
-    grouped[store].forEach(r=>{
-      const deptCount=Object.values(r.staffLists||{}).filter(s=>s.length>0).length;
-      const totalStaff=Object.values(r.staffLists||{}).reduce((a,s)=>a+s.length,0);
-      html+=`<div class="record-item" onclick="openRecord(${r.id})"><div><div class="rec-title">w/c ${r.weekStart||'—'}</div><div class="rec-meta">${deptCount} dept${deptCount!==1?'s':''} · ${totalStaff} staff · Saved ${new Date(r.savedAt).toLocaleDateString('en-IE')}${r.preparedBy?' · '+esc(r.preparedBy):''}</div></div><div class="rec-arrow">›</div></div>`;
+  var sorted=allRecords.slice().sort(function(a,b){return b.id-a.id;});
+  var grouped={};
+  sorted.forEach(function(r){var store=r.store||'Unknown Store';if(!grouped[store])grouped[store]=[];grouped[store].push(r);});
+  var html='';
+  Object.keys(grouped).sort().forEach(function(store){
+    html+='<div class="record-group"><div class="record-group-header"><span>📍 '+esc(store)+'</span><span>'+grouped[store].length+' roster'+(grouped[store].length!==1?'s':'')+'</span></div>';
+    grouped[store].forEach(function(r){
+      var deptCount=Object.values(r.staffLists||{}).filter(function(s){return s.length>0;}).length;
+      var totalStaff=Object.values(r.staffLists||{}).reduce(function(a,s){return a+s.length;},0);
+      html+='<div class="record-item" onclick="openRecord('+r.id+')"><div><div class="rec-title">w/c '+esc(r.weekStart||'—')+'</div><div class="rec-meta">'+deptCount+' dept'+(deptCount!==1?'s':'')+' · '+totalStaff+' staff · Saved '+new Date(r.savedAt).toLocaleDateString('en-IE')+(r.preparedBy?' · '+esc(r.preparedBy):'')+' </div></div><div class="rec-arrow">›</div></div>';
     });
     html+='</div>';
   });
@@ -408,27 +446,30 @@ function renderRecords(){
 }
 
 function openRecord(id){
-  const r=allRecords.find(x=>x.id===id);if(!r)return;
+  var r=allRecords.find(function(x){return x.id===id;});if(!r)return;
   activeRecordId=id;
-  document.getElementById('modal-title').textContent=`Roster — w/c ${r.weekStart||'—'} · ${r.store||''}`;
-  const days=DAY_NAMES.map((d,i)=>{if(!r.weekStart)return d;const dt=new Date(r.weekStart);dt.setDate(dt.getDate()+i);return `${d} ${dt.getDate()}/${dt.getMonth()+1}`;});
-  let html=`<div style="background:#1a1f18;color:white;border-radius:8px;padding:10px 14px;margin-bottom:14px;"><div style="font-size:10px;opacity:0.5;letter-spacing:0.1em;">WEEKLY ROSTER</div><div style="font-size:15px;font-weight:700;margin-top:2px;">${esc(r.store||'')} &nbsp;·&nbsp; w/c ${r.weekStart||'—'}</div>${r.preparedBy?`<div style="font-size:11px;opacity:0.6;margin-top:3px;">Prepared by: ${esc(r.preparedBy)}</div>`:''}</div>`;
-  let grandTotal=0;
-  DEPARTMENTS.forEach(dept=>{
-    const staff=(r.staffLists||{})[dept]||[];if(!staff.length)return;
-    let deptTotal=0;
-    html+=`<div class="modal-dept"><div class="modal-dept-title">${esc(dept)}</div><table class="modal-roster-table"><thead><tr><th>Name</th>${days.map(d=>`<th>${esc(d)}</th>`).join('')}<th>Total</th></tr></thead><tbody>`;
-    staff.forEach(name=>{
-      const shifts=((r.rosterShifts||{})[dept]||{})[name]||Array(7).fill('');
-      let rowTotal=0;
-      const cells=shifts.map(s=>{const net=calcNet(s||'');if(net!==null)rowTotal+=net;const off=isOff(s);return net!==null?`<td>${esc(s)}<br><span style="font-size:9px;color:var(--green);font-weight:700;">${formatH(net)}</span></td>`:(off?`<td class="off-cell">${esc(s||'').toUpperCase()}</td>`:`<td style="color:#ccc;">—</td>`);}).join('');
+  document.getElementById('modal-title').textContent='Roster — w/c '+(r.weekStart||'—')+' · '+(r.store||'');
+  var days=DAY_NAMES.map(function(d,i){if(!r.weekStart)return d;var dt=new Date(r.weekStart);dt.setDate(dt.getDate()+i);return d+' '+dt.getDate()+'/'+(dt.getMonth()+1);});
+  var html='<div style="background:#1a1f18;color:white;border-radius:8px;padding:10px 14px;margin-bottom:14px;"><div style="font-size:10px;opacity:0.5;letter-spacing:0.1em;">WEEKLY ROSTER</div><div style="font-size:15px;font-weight:700;margin-top:2px;">'+esc(r.store||'')+' &nbsp;·&nbsp; w/c '+(r.weekStart||'—')+'</div>'+(r.preparedBy?'<div style="font-size:11px;opacity:0.6;margin-top:3px;">Prepared by: '+esc(r.preparedBy)+'</div>':'')+' </div>';
+  var grandTotal=0;
+  DEPARTMENTS.forEach(function(dept){
+    var staff=(r.staffLists||{})[dept]||[];if(!staff.length)return;
+    var deptTotal=0;
+    html+='<div class="modal-dept"><div class="modal-dept-title">'+esc(dept)+'</div><table class="modal-roster-table"><thead><tr><th>Name</th>'+days.map(function(d){return'<th>'+esc(d)+'</th>';}).join('')+'<th>Total</th></tr></thead><tbody>';
+    staff.forEach(function(name){
+      var shifts=((r.rosterShifts||{})[dept]||{})[name]||Array(7).fill('');
+      var rowTotal=0;
+      var cells=shifts.map(function(s){
+        var net=calcNet(s||'');if(net!==null)rowTotal+=net;var off=isOff(s);
+        return net!==null?'<td>'+esc(s)+'<br><span style="font-size:9px;color:var(--green);font-weight:700;">'+formatH(net)+'</span></td>':(off?'<td class="off-cell">'+esc(s||'').toUpperCase()+'</td>':'<td style="color:#ccc;">—</td>');
+      }).join('');
       deptTotal+=rowTotal;
-      html+=`<tr><td>${esc(name)}</td>${cells}<td class="tot">${rowTotal>0?formatH(rowTotal):'—'}</td></tr>`;
+      html+='<tr><td>'+esc(name)+'</td>'+cells+'<td class="tot">'+(rowTotal>0?formatH(rowTotal):'—')+'</td></tr>';
     });
     grandTotal+=deptTotal;
-    html+=`</tbody></table><div class="modal-summary"><span>${esc(dept)} Total</span><span>${formatH(deptTotal)||'0h'}</span></div></div>`;
+    html+='</tbody></table><div class="modal-summary"><span>'+esc(dept)+' Total</span><span>'+(formatH(deptTotal)||'0h')+'</span></div></div>';
   });
-  html+=`<div style="background:var(--green-dark);color:white;border-radius:8px;padding:12px 14px;margin-top:8px;display:flex;justify-content:space-between;font-family:'Montserrat',sans-serif;font-weight:700;font-size:15px;"><span>ALL DEPARTMENTS TOTAL</span><span>${formatH(grandTotal)||'0h'}</span></div>`;
+  html+='<div style="background:var(--green-dark);color:white;border-radius:8px;padding:12px 14px;margin-top:8px;display:flex;justify-content:space-between;font-family:\'Montserrat\',sans-serif;font-weight:700;font-size:15px;"><span>ALL DEPARTMENTS TOTAL</span><span>'+(formatH(grandTotal)||'0h')+'</span></div>';
   document.getElementById('modal-body').innerHTML=html;
   document.getElementById('recordModal').classList.add('open');
 }
@@ -436,7 +477,7 @@ function openRecord(id){
 function closeModal(){document.getElementById('recordModal').classList.remove('open');activeRecordId=null;}
 
 function loadRosterFromRecord(){
-  const r=allRecords.find(x=>x.id===activeRecordId);if(!r)return;
+  var r=allRecords.find(function(x){return x.id===activeRecordId;});if(!r)return;
   closeModal();
   if(r.weekStart)document.getElementById('weekStart').value=r.weekStart;
   if(r.store)document.getElementById('storeName').value=r.store;
@@ -455,19 +496,33 @@ async function deleteRecord(){
 }
 
 // ================================================================
-// PRINT PDF
+// PRINT PDF — with dept totals + grand total on every page
 // ================================================================
 function printRosterPDF(){
   saveCurrent();
   var jsPDF=window.jspdf&&window.jspdf.jsPDF;
   if(!jsPDF){alert('PDF library not loaded. Please refresh and try again.');return;}
   var doc=new jsPDF({orientation:'landscape',unit:'mm',format:'a4'});
-  var GREEN=[0,112,60],DARK=[26,26,26],MUTED=[102,102,102],LIGHT=[232,245,238];
   var PW=297,PH=210,ML=8,MR=8;
   var store=document.getElementById('storeName').value||'Store';
   var weekStart=document.getElementById('weekStart').value||'';
   var prepBy=document.getElementById('preparedBy').value||'';
-  var days=DAY_NAMES.map(function(d,i){if(!weekStart)return d;var dt=new Date(weekStart);dt.setDate(dt.getDate()+i);return d+' '+dt.getDate()+'/'+(dt.getMonth()+1);});
+  var days=DAY_NAMES.map(function(d,i){
+    if(!weekStart)return d;
+    var dt=new Date(weekStart);dt.setDate(dt.getDate()+i);
+    return d+' '+dt.getDate()+'/'+(dt.getMonth()+1);
+  });
+
+  // Pre-calculate all dept totals and grand total for the summary line
+  var deptTotals={};var grandTotal=0;
+  DEPARTMENTS.forEach(function(dept){
+    var staff=staffLists[dept]||[];var dt=0;
+    staff.forEach(function(name){
+      for(var i=0;i<7;i++){var n=calcNet((rosterShifts[dept][name]||[])[i]||'');if(n!==null)dt+=n;}
+    });
+    deptTotals[dept]=dt;grandTotal+=dt;
+  });
+
   var firstPage=true;
   DEPARTMENTS.forEach(function(dept){
     var staff=staffLists[dept]||[];
@@ -475,17 +530,21 @@ function printRosterPDF(){
     if(!firstPage)doc.addPage();
     firstPage=false;
     var y=8;
-    // Header
+
+    // Page header
     doc.setFillColor(0,112,60);doc.rect(0,0,PW,18,'F');
     doc.setTextColor(255,255,255);doc.setFontSize(14);doc.setFont('helvetica','bold');
     doc.text('MORIARTY GROUP',ML,8);
     doc.setFontSize(9);doc.setFont('helvetica','normal');doc.text('WEEKLY STAFF ROSTER',ML,14);
     doc.setFontSize(12);doc.setFont('helvetica','bold');doc.text(dept.toUpperCase(),PW/2,10,{align:'center'});
-    doc.setFontSize(8);doc.setFont('helvetica','normal');doc.text('w/c '+weekStart+'  ·  '+store+(prepBy?'  ·  '+prepBy:''),PW/2,15,{align:'center'});
+    doc.setFontSize(8);doc.setFont('helvetica','normal');
+    doc.text('w/c '+weekStart+'  ·  '+store+(prepBy?'  ·  '+prepBy:''),PW/2,15,{align:'center'});
     y=24;
+
     // Column widths
     var nameW=38;var dayW=Math.floor((PW-ML-MR-nameW-16)/7);var totalW=16;
-    // Header row
+
+    // Day header row
     doc.setFillColor(232,245,238);doc.rect(ML,y,PW-ML-MR,8,'F');
     doc.setDrawColor(0,112,60);doc.setLineWidth(0.3);
     doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(0,80,40);
@@ -494,9 +553,22 @@ function printRosterPDF(){
     doc.text('TOTAL',ML+nameW+7*dayW+totalW/2,y+5.5,{align:'center'});
     doc.rect(ML,y,PW-ML-MR,8);
     y+=9;
+
     var deptTotal=0;
     staff.forEach(function(name,ri){
-      if(y>PH-12){doc.addPage();y=10;}
+      if(y>PH-28){
+        // Add summary footer before new page
+        drawPageSummary(doc,y,ML,MR,PW,PH,deptTotals,grandTotal,DEPARTMENTS);
+        doc.addPage();y=10;
+        // Repeat column header
+        doc.setFillColor(232,245,238);doc.rect(ML,y,PW-ML-MR,8,'F');
+        doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(0,80,40);
+        doc.text('NAME',ML+2,y+5.5);
+        days.forEach(function(d,i){doc.text(d,ML+nameW+i*dayW+dayW/2,y+5.5,{align:'center'});});
+        doc.text('TOTAL',ML+nameW+7*dayW+totalW/2,y+5.5,{align:'center'});
+        doc.rect(ML,y,PW-ML-MR,8);
+        y+=9;
+      }
       var shifts=(rosterShifts[dept]||{})[name]||[];
       var rowTotal=0;
       var bg=ri%2===0?[248,252,248]:[255,255,255];
@@ -505,9 +577,7 @@ function printRosterPDF(){
       doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(26,26,26);
       doc.text(name,ML+2,y+6,{maxWidth:nameW-3});
       shifts.forEach(function(s,i){
-        var net=calcNet(s||'');
-        if(net!==null)rowTotal+=net;
-        var off=isOff(s);
+        var net=calcNet(s||'');if(net!==null)rowTotal+=net;var off=isOff(s);
         var cx=ML+nameW+i*dayW;
         if(net!==null){
           doc.setFont('helvetica','normal');doc.setFontSize(7.5);doc.setTextColor(26,26,26);
@@ -526,25 +596,69 @@ function printRosterPDF(){
       doc.text(rowTotal>0?formatH(rowTotal):'—',totX+totalW/2,y+5.5,{align:'center'});
       y+=9;
     });
+
     // Dept total bar
     y+=2;
     doc.setFillColor(0,112,60);doc.rect(ML,y,PW-ML-MR,8,'F');
     doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(255,255,255);
-    doc.text('DEPARTMENT TOTAL',ML+3,y+5.5);
+    doc.text('DEPARTMENT TOTAL — '+dept.toUpperCase(),ML+3,y+5.5);
     doc.text(formatH(deptTotal)||'0h',PW-MR-3,y+5.5,{align:'right'});
+    y+=10;
+
+    // Store totals summary — all depts + grand total
+    drawPageSummary(doc,y,ML,MR,PW,PH,deptTotals,grandTotal,DEPARTMENTS);
+
     // Footer
     doc.setFillColor(0,112,60);doc.rect(0,PH-8,PW,8,'F');
     doc.setFont('helvetica','normal');doc.setFontSize(7);doc.setTextColor(255,255,255);
     doc.text('Moriarty Group · SuperValu · Weekly Roster · '+dept+' · '+store+' · w/c '+weekStart,PW/2,PH-3,{align:'center'});
   });
+
   doc.save('Roster_'+store.replace(/\s+/g,'_')+'_'+weekStart+'.pdf');
+}
+
+function drawPageSummary(doc,y,ML,MR,PW,PH,deptTotals,grandTotal,DEPARTMENTS){
+  // Draw a compact summary bar showing all dept totals + store grand total
+  var summaryH=8;
+  doc.setFillColor(26,31,24);doc.rect(ML,y,PW-ML-MR,summaryH,'F');
+  doc.setFont('helvetica','bold');doc.setFontSize(7);doc.setTextColor(255,255,255);
+  doc.text('STORE TOTALS:',ML+2,y+5.5);
+  var activeDepts=DEPARTMENTS.filter(function(d){return deptTotals[d]>0;});
+  var x=ML+24;
+  activeDepts.forEach(function(d){
+    var label=d+': '+formatH(deptTotals[d]);
+    doc.setTextColor(180,230,200);doc.setFont('helvetica','normal');
+    doc.text(label,x,y+5.5);
+    x+=doc.getTextWidth(label)+6;
+  });
+  doc.setFont('helvetica','bold');doc.setTextColor(255,220,0);
+  doc.text('TOTAL: '+(formatH(grandTotal)||'0h'),PW-MR-3,y+5.5,{align:'right'});
 }
 
 // ================================================================
 // BACKUP / RESTORE
 // ================================================================
-async function exportJSON(){const records=await dbGetAll();if(!records.length){alert('No rosters to export.');return;}const blob=new Blob([JSON.stringify({version:1,exportedAt:new Date().toISOString(),records},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='roster-backup-'+new Date().toISOString().split('T')[0]+'.json';a.click();URL.revokeObjectURL(url);}
-async function importJSON(input){const file=input.files[0];if(!file)return;const reader=new FileReader();reader.onload=async e=>{try{const data=JSON.parse(e.target.result);if(!data.records){alert('Invalid file.');return;}const ok=confirm('Import '+data.records.length+' rosters?');if(!ok)return;for(const r of data.records)await dbPut(r);allRecords=await dbGetAll();updateDBStatus();renderRecords();alert('✅ '+data.records.length+' rosters imported.');}catch(err){alert('Import failed: '+err.message);}};reader.readAsText(file);input.value='';}
+async function exportJSON(){
+  var records=await dbGetAll();
+  if(!records.length){alert('No rosters to export.');return;}
+  var blob=new Blob([JSON.stringify({version:1,exportedAt:new Date().toISOString(),records:records},null,2)],{type:'application/json'});
+  var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download='roster-backup-'+new Date().toISOString().split('T')[0]+'.json';a.click();URL.revokeObjectURL(url);
+}
+async function importJSON(input){
+  var file=input.files[0];if(!file)return;
+  var reader=new FileReader();
+  reader.onload=async function(e){
+    try{
+      var data=JSON.parse(e.target.result);
+      if(!data.records){alert('Invalid file.');return;}
+      var ok=confirm('Import '+data.records.length+' rosters?');if(!ok)return;
+      for(var i=0;i<data.records.length;i++)await dbPut(data.records[i]);
+      allRecords=await dbGetAll();updateDBStatus();renderRecords();
+      alert('✅ '+data.records.length+' rosters imported.');
+    }catch(err){alert('Import failed: '+err.message);}
+  };
+  reader.readAsText(file);input.value='';
+}
 
 init();
 </script>
