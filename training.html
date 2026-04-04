@@ -28,13 +28,11 @@ body{font-family:'Inter',sans-serif;background:#f4f6f4;color:#1a1a1a;min-height:
 .form-name{font-size:14px;font-weight:600;color:#1a1a1a;}
 .form-desc{font-size:12px;color:#666;margin-top:2px;}
 .form-arrow{color:#666;font-size:16px;}
-/* Form screens */
 .form-screen{display:none;padding-bottom:60px;}
 .form-header{background:white;border-bottom:3px solid #00703c;padding:16px;}
 .form-header h2{font-size:17px;font-weight:700;color:#005a30;}
 .form-header p{font-size:12px;color:#666;margin-top:4px;}
 .form-body{padding:16px;}
-/* Training content */
 .training-content{background:white;border-radius:10px;border:1px solid #d0d0d0;padding:16px;margin-bottom:16px;font-size:13px;line-height:1.7;color:#1a1a1a;}
 .training-content h3{font-size:14px;font-weight:700;color:#005a30;margin:14px 0 6px;padding-bottom:4px;border-bottom:1px solid #e8f5ee;}
 .training-content h3:first-child{margin-top:0;}
@@ -43,8 +41,6 @@ body{font-family:'Inter',sans-serif;background:#f4f6f4;color:#1a1a1a;min-height:
 .training-content li{margin-bottom:4px;}
 .training-content .highlight{background:#e8f5ee;border-left:3px solid #00703c;padding:8px 10px;border-radius:4px;margin:10px 0;font-size:12px;}
 .training-content strong{color:#005a30;}
-.section-divider{border:none;border-top:2px solid #e8f5ee;margin:14px 0;}
-/* Fields */
 .section-title{font-size:13px;font-weight:700;color:#005a30;margin:18px 0 10px;padding-bottom:6px;border-bottom:2px solid #e8f5ee;}
 .field-group{margin-bottom:16px;}
 .field-label{font-size:12px;font-weight:600;color:#666;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;display:block;}
@@ -52,15 +48,12 @@ body{font-family:'Inter',sans-serif;background:#f4f6f4;color:#1a1a1a;min-height:
 .field-input:focus{outline:none;border-color:#00703c;}
 .field-row{display:flex;gap:10px;}
 .field-row .field-group{flex:1;}
-/* Sig */
 .sig-box{border:2px dashed #d0d0d0;border-radius:8px;background:white;position:relative;overflow:hidden;margin-bottom:8px;}
 .sig-box canvas{display:block;width:100%;touch-action:none;}
 .sig-clear{position:absolute;top:6px;right:8px;background:rgba(255,255,255,0.9);border:1px solid #d0d0d0;border-radius:5px;padding:3px 8px;font-size:11px;cursor:pointer;font-family:inherit;color:#d32f2f;}
-/* Buttons */
 .btn-save{background:#005a30;color:white;width:100%;padding:14px;border:none;border-radius:10px;font-size:15px;font-weight:600;font-family:inherit;cursor:pointer;margin-bottom:10px;margin-top:14px;display:block;}
 .btn-save:active{background:#003d20;}
 .btn-print{background:white;color:#005a30;width:100%;padding:12px;border:2px solid #005a30;border-radius:10px;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;margin-bottom:10px;}
-/* Records */
 .records-section{margin-top:20px;background:white;border-radius:10px;border:1px solid #d0d0d0;overflow:hidden;}
 .records-header{background:#1a1a1a;color:white;padding:10px 14px;font-size:12px;font-weight:700;letter-spacing:0.05em;}
 .record-item{padding:12px 14px;border-bottom:1px solid #eee;cursor:pointer;}
@@ -75,13 +68,13 @@ body{font-family:'Inter',sans-serif;background:#f4f6f4;color:#1a1a1a;min-height:
 .detail-row .dk{color:#888;width:45%;flex-shrink:0;}
 .detail-row .dv{font-weight:600;}
 .sig-thumb{height:36px;border:1px solid #ddd;border-radius:4px;margin:3px 2px 0 0;vertical-align:middle;}
-/* Toast */
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:#005a30;color:white;padding:12px 20px;border-radius:20px;font-size:13px;font-weight:500;z-index:9999;transition:transform 0.3s;white-space:nowrap;}
 .toast.show{transform:translateX(-50%) translateY(0);}
 .ack-box{background:#fff8e1;border:1px solid #f0c040;border-radius:8px;padding:12px 14px;font-size:12px;color:#7a5c00;margin-bottom:14px;line-height:1.6;}
 @media print{
   .top-nav,.btn-save,.btn-print,.records-section,.toast,.back-btn{display:none!important;}
-  .form-screen{display:block!important;}
+  .form-screen{display:none!important;}
+  .form-screen.printing{display:block!important;}
   #home{display:none!important;}
   body{background:white;}
   .form-body{padding:8px;}
@@ -102,9 +95,8 @@ body{font-family:'Inter',sans-serif;background:#f4f6f4;color:#1a1a1a;min-height:
   <div class="home-header">
     <div class="brand">MORIARTY GROUP</div>
     <div class="sub">SUPERVALU &#183; ESTD 1987</div>
-    <div class="title">&#128218; Staff Training & Directives</div>
+    <div class="title">&#128218; Staff Training &amp; Directives</div>
   </div>
-
   <div class="category-section">
     <div class="category-label">&#128101; Job Descriptions</div>
     <div class="form-grid">
@@ -115,11 +107,10 @@ body{font-family:'Inter',sans-serif;background:#f4f6f4;color:#1a1a1a;min-height:
       <div class="form-card" data-form="jd-cleaner" onclick=""><div class="form-icon" style="background:#e8f5ee">&#129529;</div><div class="form-info"><div class="form-name">Cleaner</div><div class="form-desc">Job description – cleaner</div></div><div class="form-arrow">&#8250;</div></div>
     </div>
   </div>
-
   <div class="category-section">
     <div class="category-label">&#128218; Training Directives</div>
     <div class="form-grid">
-      <div class="form-card" data-form="td-alcohol" onclick=""><div class="form-icon" style="background:#fff8e1">&#128286;</div><div class="form-info"><div class="form-name">Alcohol, Tobacco, Vapes & Paracetamol</div><div class="form-desc">Responsible sale – priority training directive 2025</div></div><div class="form-arrow">&#8250;</div></div>
+      <div class="form-card" data-form="td-alcohol" onclick=""><div class="form-icon" style="background:#fff8e1">&#128286;</div><div class="form-info"><div class="form-name">Alcohol, Tobacco, Vapes &amp; Paracetamol</div><div class="form-desc">Responsible sale – priority training directive 2025</div></div><div class="form-arrow">&#8250;</div></div>
       <div class="form-card" data-form="td-lotto" onclick=""><div class="form-icon" style="background:#fff8e1">&#127922;</div><div class="form-info"><div class="form-name">Lotto – Think 21 Campaign</div><div class="form-desc">Lottery product sales training directive</div></div><div class="form-arrow">&#8250;</div></div>
       <div class="form-card" data-form="td-pos" onclick=""><div class="form-icon" style="background:#fce4ec">&#128176;</div><div class="form-info"><div class="form-name">POS Awareness</div><div class="form-desc">Fake notes, money cons and till security</div></div><div class="form-arrow">&#8250;</div></div>
       <div class="form-card" data-form="td-sop" onclick=""><div class="form-icon" style="background:#e8f5ee">&#128218;</div><div class="form-info"><div class="form-name">Shopfloor SOP</div><div class="form-desc">Standard operating procedures – shopfloor training manual</div></div><div class="form-arrow">&#8250;</div></div>
@@ -128,7 +119,7 @@ body{font-family:'Inter',sans-serif;background:#f4f6f4;color:#1a1a1a;min-height:
   <div style="height:20px"></div>
 </div>
 
-<!-- ==================== JD: SHOPFLOOR ==================== -->
+<!-- JD: SHOPFLOOR -->
 
 <div id="jd-shopfloor" class="form-screen">
 <div class="form-header"><h2>&#128722; Job Description – Shopfloor Assistant</h2><p>Sales Assistant · Moriarty's SuperValu · Skerries</p></div>
@@ -184,7 +175,7 @@ body{font-family:'Inter',sans-serif;background:#f4f6f4;color:#1a1a1a;min-height:
 </div>
 </div>
 
-<!-- ==================== JD: CHECKOUT ==================== -->
+<!-- JD: CHECKOUT -->
 
 <div id="jd-checkout" class="form-screen">
 <div class="form-header"><h2>&#128184; Job Description – Checkout Assistant</h2><p>Sales Assistant · Moriarty's SuperValu · Skerries</p></div>
@@ -247,7 +238,7 @@ body{font-family:'Inter',sans-serif;background:#f4f6f4;color:#1a1a1a;min-height:
 </div>
 </div>
 
-<!-- ==================== JD: DELI ==================== -->
+<!-- JD: DELI -->
 
 <div id="jd-deli" class="form-screen">
 <div class="form-header"><h2>&#127859; Job Description – Deli Assistant</h2><p>Moriarty's SuperValu · Skerries</p></div>
@@ -303,7 +294,7 @@ body{font-family:'Inter',sans-serif;background:#f4f6f4;color:#1a1a1a;min-height:
 </div>
 </div>
 
-<!-- ==================== JD: MEAT ==================== -->
+<!-- JD: MEAT -->
 
 <div id="jd-meat" class="form-screen">
 <div class="form-header"><h2>&#129385; Job Description – Counter Hand (Meat Dept)</h2><p>Moriarty's SuperValu · Skerries</p></div>
@@ -358,7 +349,7 @@ body{font-family:'Inter',sans-serif;background:#f4f6f4;color:#1a1a1a;min-height:
 </div>
 </div>
 
-<!-- ==================== JD: CLEANER ==================== -->
+<!-- JD: CLEANER -->
 
 <div id="jd-cleaner" class="form-screen">
 <div class="form-header"><h2>&#129529; Job Description – Cleaner</h2><p>Moriarty's SuperValu · Balbriggan</p></div>
@@ -408,7 +399,7 @@ body{font-family:'Inter',sans-serif;background:#f4f6f4;color:#1a1a1a;min-height:
 </div>
 </div>
 
-<!-- ==================== TD: ALCOHOL/TOBACCO/VAPES ==================== -->
+<!-- TD: ALCOHOL -->
 
 <div id="td-alcohol" class="form-screen">
 <div class="form-header"><h2>&#128286; Alcohol, Tobacco, Vapes &amp; Paracetamol</h2><p>Priority Training Directive · HR Dept 2025</p></div>
@@ -467,7 +458,7 @@ body{font-family:'Inter',sans-serif;background:#f4f6f4;color:#1a1a1a;min-height:
 </div>
 </div>
 
-<!-- ==================== TD: LOTTO ==================== -->
+<!-- TD: LOTTO -->
 
 <div id="td-lotto" class="form-screen">
 <div class="form-header"><h2>&#127922; Lotto Training Directive</h2><p>Think 21 Campaign · HR Dept 2021</p></div>
@@ -492,14 +483,14 @@ body{font-family:'Inter',sans-serif;background:#f4f6f4;color:#1a1a1a;min-height:
 </div>
 </div>
 
-<!-- ==================== TD: POS AWARENESS ==================== -->
+<!-- TD: POS -->
 
 <div id="td-pos" class="form-screen">
 <div class="form-header"><h2>&#128176; POS Awareness</h2><p>Fake Notes, Money Cons &amp; Till Security</p></div>
 <div class="form-body">
   <div class="training-content">
     <h3>Fake Money Tendered for Goods</h3>
-    <p>Occasionally a customer will present a money note as payment for goods, and when the note is checked it will turn out to be a dud note (not legal tender, not a real note). This may be done knowingly or unknowingly. The best procedure to follow:</p>
+    <p>Occasionally a customer will present a money note as payment for goods, and when the note is checked it will turn out to be a dud note. This may be done knowingly or unknowingly. The best procedure to follow:</p>
     <ol>
       <li>Check the note using the note check marker if available. The mark will indicate if the note is not real. Or carry out the various visual checks for watermarks, paper quality and stand out indicators. The most common recent indicator states along the short end of the note that it is "MOVIE MONEY" and "USED FOR MOTION PROPS"</li>
       <li>Politely make the customer aware that the note is not genuine and explain how you know this. The customer will most likely offer you another note</li>
@@ -522,7 +513,7 @@ body{font-family:'Inter',sans-serif;background:#f4f6f4;color:#1a1a1a;min-height:
 </div>
 </div>
 
-<!-- ==================== TD: SHOPFLOOR SOP ==================== -->
+<!-- TD: SOP -->
 
 <div id="td-sop" class="form-screen">
 <div class="form-header"><h2>&#128218; Shopfloor SOP</h2><p>Standard Operating Procedures – Moriarty's SuperValu</p></div>
@@ -552,7 +543,7 @@ body{font-family:'Inter',sans-serif;background:#f4f6f4;color:#1a1a1a;min-height:
     <p>Every product on a shelf must have a label (SEL — Shelf Edge Label) which corresponds to it. If a product does not have a barcode it must have a PLU number.</p>
     <ul>
       <li><strong>SEL Positioning:</strong> The label must always be located on the front of the product to the left hand side</li>
-      <li><strong>3 Digit Code Check:</strong> When packing shelves you must always carry out a 3 digit code check — check the last 3 digits on the product's barcode with the last 3 digits on the SEL. These should match. If they don't match, leave one unit in the scanning office so that a new label can be produced</li>
+      <li><strong>3 Digit Code Check:</strong> When packing shelves you must always carry out a 3 digit code check — check the last 3 digits on the product's barcode with the last 3 digits on the SEL. These should match. If they don't match, leave one unit in the scanning office so a new label can be produced</li>
       <li>The 3 digit code check must be carried out on 1 item out of every case of stock — even stock you are familiar with, as product codes can change frequently</li>
       <li>The Competition and Consumer Protection Commission can administer fines for EVERY product that doesn't have a label in front of it on the shelf</li>
     </ul>
@@ -648,27 +639,18 @@ body{font-family:'Inter',sans-serif;background:#f4f6f4;color:#1a1a1a;min-height:
       <li>If the lift is out of service or in use, show any dead stock combis to a member of management or the back stores team</li>
     </ul>
     <h3>15. Communication with Management</h3>
-    <p>As the eyes and ears on the ground you will during the course of your shift encounter a number of issues that management may or may not be aware of. It is part of your duties to report ALL issues that arise during your shift to a member of management. These may include but are not limited to:</p>
-    <ul>
-      <li>Security issues</li>
-      <li>Customer complaints</li>
-      <li>Out of stocks</li>
-      <li>Spillages</li>
-      <li>Structural damage</li>
-      <li>Conduct of other staff members</li>
-      <li>Customer feedback</li>
-    </ul>
+    <p>It is part of your duties to report ALL issues that arise during your shift to a member of management. These may include but are not limited to: security issues, customer complaints, out of stocks, spillages, structural damage, conduct of other staff members, customer feedback.</p>
     <h3>16. Real Food Real People</h3>
-    <p>In 2007 Musgrave decided to update our brand identity. The focus is very much on our food and our people from Supplier ▶ Delivery Person ▶ Staff ▶ Customer. We promise sincerity, genuine, inspiration and commitment in our service and staff.</p>
+    <p>The focus is very much on our food and our people from Supplier ▶ Delivery Person ▶ Staff ▶ Customer. We promise sincerity, genuine, inspiration and commitment in our service and staff.</p>
     <h3>17. Goods Inwards</h3>
-    <p>All new staff will spend some time with our goods inwards managers to discuss basic standards to be observed: Returns, Cleaning Room, Back Stocking, Baler, Bin Segregation, Stacking Combis, Combi Use/Discipline, Back up fridges/freezers.</p>
+    <p>All new staff will spend some time with our goods inwards managers to discuss basic standards: Returns, Cleaning Room, Back Stocking, Baler, Bin Segregation, Stacking Combis, Combi Use/Discipline, Back up fridges/freezers.</p>
     <h3>18. Scanning Office</h3>
-    <p>All new staff will spend time with our scanning team regarding the disciplines in relation to labels/pricing: Labels, Labels wand, Price Checks, Importance of 3 digit code checks.</p>
+    <p>All new staff will spend time with our scanning team regarding: Labels, Labels wand, Price Checks, Importance of 3 digit code checks.</p>
     <h3>19. Checkouts</h3>
-    <p>All floor staff will receive basic till training so that they can support the department if it gets very busy. Managers will organise this with the checkout manager: General till operations, Open a till, Close up a till at end of night.</p>
+    <p>All floor staff will receive basic till training so they can support the department if it gets very busy: General till operations, Open a till, Close up a till at end of night.</p>
     <h3>20. The Super / The Valu</h3>
     <p>The training manager will explain to new staff the meaning behind "The Super The Valu" — at SuperValu we do both.</p>
-    <div class="highlight">I have received this Shop Floor SOP. I can confirm that the contents have been explained to me and that I understand the contents. I understand that non-adherence to the above will be managed through the stores disciplinary process. I have also been encouraged to ask as many questions as needed to increase my understanding of these contents.</div>
+    <div class="highlight">I have received this Shop Floor SOP. I can confirm that the contents have been explained to me and that I understand the contents. I understand that non-adherence to the above will be managed through the stores disciplinary process.</div>
   </div>
   <div id="ack-td-sop"></div>
   <div id="records-td-sop" class="records-section" style="display:none"><div class="records-header">&#128202; Acknowledgement Records</div><div id="records-list-td-sop"></div></div>
@@ -683,7 +665,6 @@ var SB_KEY='sb_publishable_eutRHOftOW4ZJNlVrDKXOg_XtnBQ7cM';
 var DB_NAME='MoriartyTraining',DB_VER=1,db=null;
 var currentForm=null,sigPads={};
 var _saving={};
-
 var FORM_IDS=['jd-shopfloor','jd-checkout','jd-deli','jd-meat','jd-cleaner','td-alcohol','td-lotto','td-pos','td-sop'];
 
 function sbFetch(path,method,body){
@@ -742,16 +723,17 @@ function buildAckSection(formId){
     '<label class="field-label">Manager Signature</label>'+
     '<div class="sig-box"><canvas id="sig-'+formId+'-mgr" height="80"></canvas><button class="sig-clear" type="button" data-sigid="sig-'+formId+'-mgr">Clear</button></div>'+
     '<button class="btn-save" type="button" id="save-'+formId+'">&#128190; Save Acknowledgement</button>'+
-    '<button class="btn-print" type="button" onclick="printForm()">&#128424; Print / PDF</button>';
+    '<button class="btn-print" type="button" id="print-'+formId+'">&#128424; Print / PDF</button>';
 
-  var saveBtn=document.getElementById('save-'+formId);
-  saveBtn.addEventListener('click',function(){
-    if(saveBtn.getAttribute('data-saving'))return;
-    saveBtn.setAttribute('data-saving','1');
-    saveBtn.style.opacity='0.6';
-    setTimeout(function(){saveBtn.removeAttribute('data-saving');saveBtn.style.opacity='';},3000);
+  document.getElementById('save-'+formId).addEventListener('click',function(){
+    var btn=document.getElementById('save-'+formId);
+    if(btn.getAttribute('data-saving'))return;
+    btn.setAttribute('data-saving','1');btn.style.opacity='0.6';
+    setTimeout(function(){btn.removeAttribute('data-saving');btn.style.opacity='';},3000);
     saveRecord(formId);
   });
+
+  document.getElementById('print-'+formId).addEventListener('click',function(){printForm();});
 
   var sigBtns=container.querySelectorAll('.sig-clear');
   for(var i=0;i<sigBtns.length;i++){
@@ -763,32 +745,24 @@ function saveRecord(formId){
   if(_saving[formId])return;
   _saving[formId]=true;
   var now=new Date();
-  var nameEl=document.getElementById(formId+'-name');
-  var staffName=nameEl?nameEl.value:'';
-  var dateEl=document.getElementById(formId+'-date');
-  var deptEl=document.getElementById(formId+'-dept');
-  var mgrnameEl=document.getElementById(formId+'-mgrname');
-  var mgrdateEl=document.getElementById(formId+'-mgrdate');
-  var staffSig=getSigData('sig-'+formId+'-staff');
-  var mgrSig=getSigData('sig-'+formId+'-mgr');
+  var staffName=(document.getElementById(formId+'-name')||{}).value||'';
   var fieldData={
     staffName:staffName,
-    date:dateEl?dateEl.value:'',
-    department:deptEl?deptEl.value:'',
-    managerName:mgrnameEl?mgrnameEl.value:'',
-    managerDate:mgrdateEl?mgrdateEl.value:''
+    date:(document.getElementById(formId+'-date')||{}).value||'',
+    department:(document.getElementById(formId+'-dept')||{}).value||'',
+    managerName:(document.getElementById(formId+'-mgrname')||{}).value||'',
+    managerDate:(document.getElementById(formId+'-mgrdate')||{}).value||''
   };
+  var staffSig=getSigData('sig-'+formId+'-staff');
+  var mgrSig=getSigData('sig-'+formId+'-mgr');
   var rec={id:now.getTime(),formId:formId,savedAt:now.toISOString(),staffName:staffName,fieldData:fieldData,staffSig:staffSig,mgrSig:mgrSig};
-  var sbRow={id:String(rec.id),form_id:formId,saved_at:rec.savedAt,data:{staffName:staffName,fieldData:fieldData,staffSig:staffSig?true:false,mgrSig:mgrSig?true:false}};
+  var sbRow={id:String(rec.id),form_id:formId,saved_at:rec.savedAt,data:{staffName:staffName,fieldData:fieldData,hasSig:!!staffSig,hasMgrSig:!!mgrSig}};
   dbPut(rec).then(function(){
     return sbFetch('training_records','POST',[sbRow]);
   }).then(function(){
-    _saving[formId]=false;
-    showToast('Saved!');
-    loadRecords(formId);
+    _saving[formId]=false;showToast('Saved!');loadRecords(formId);
   }).catch(function(e){
-    _saving[formId]=false;
-    showToast('Save failed: '+(e.message||e));
+    _saving[formId]=false;showToast('Save failed: '+(e.message||e));
   });
 }
 
@@ -879,15 +853,22 @@ function goBack(){
   document.getElementById('navTitle').textContent='Training Records';
   currentForm=null;window.scrollTo(0,0);
 }
-function printForm(){window.print();}
+function printForm(){
+  if(currentForm){
+    var scr=document.getElementById(currentForm);
+    if(scr)scr.classList.add('printing');
+  }
+  window.print();
+  if(currentForm){
+    var scr=document.getElementById(currentForm);
+    if(scr)scr.classList.remove('printing');
+  }
+}
 
 document.addEventListener('DOMContentLoaded',function(){
   openDB().catch(function(){});
-
   for(var fi=0;fi<FORM_IDS.length;fi++){buildAckSection(FORM_IDS[fi]);}
-
   document.getElementById('backBtn').addEventListener('click',goBack);
-
   var cards=document.querySelectorAll('.form-card');
   for(var ci=0;ci<cards.length;ci++){
     (function(card){
