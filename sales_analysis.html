@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -7,174 +6,52 @@
 <title>Sales Analysis – Moriarty Group</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-font-family: ‘Segoe UI’, Arial, sans-serif;
-background: #f4f6f8;
-color: #1a1a1a;
-min-height: 100vh;
-}
-
-/* ── Header ── */
-.header {
-background: #00703c;
-color: #fff;
-padding: 18px 24px;
-display: flex;
-align-items: center;
-justify-content: space-between;
-flex-wrap: wrap;
-gap: 12px;
-}
-.header h1 { font-size: 1.25rem; font-weight: 700; letter-spacing: .3px; }
-.header-meta { font-size: .8rem; opacity: .85; }
-
-/* ── Store slider ── */
-.store-bar {
-background: #fff;
-border-bottom: 2px solid #e0e0e0;
-padding: 0 24px;
-display: flex;
-gap: 0;
-}
-.store-tab {
-padding: 14px 28px;
-font-size: .92rem;
-font-weight: 600;
-color: #555;
-cursor: pointer;
-border-bottom: 3px solid transparent;
-transition: color .2s, border-color .2s;
-user-select: none;
-}
-.store-tab:hover { color: #00703c; }
-.store-tab.active {
-color: #00703c;
-border-bottom-color: #00703c;
-}
-
-/* ── Main layout ── */
-.main { padding: 24px; max-width: 1100px; margin: 0 auto; }
-
-/* ── Status banner ── */
-.status-bar {
-background: #fff;
-border: 1px solid #e0e0e0;
-border-radius: 8px;
-padding: 10px 18px;
-margin-bottom: 20px;
-font-size: .82rem;
-color: #555;
-display: flex;
-align-items: center;
-gap: 10px;
-}
-.status-dot {
-width: 9px; height: 9px;
-border-radius: 50%;
-background: #ccc;
-flex-shrink: 0;
-}
-.status-dot.ok  { background: #00703c; }
-.status-dot.err { background: #d32f2f; }
-
-/* ── Section cards ── */
-.section-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-gap: 18px;
-}
-
-.section-card {
-background: #fff;
-border: 1px solid #e0e0e0;
-border-radius: 10px;
-overflow: hidden;
-box-shadow: 0 1px 4px rgba(0,0,0,.06);
-}
-
-.section-title {
-background: #005a30;
-color: #fff;
-padding: 11px 16px;
-font-size: .82rem;
-font-weight: 700;
-letter-spacing: .4px;
-text-transform: uppercase;
-}
-
-/* ── Table inside card ── */
-.kpi-table {
-width: 100%;
-border-collapse: collapse;
-font-size: .83rem;
-}
-.kpi-table thead th {
-background: #f0f4f0;
-color: #005a30;
-font-weight: 700;
-padding: 8px 12px;
-text-align: right;
-border-bottom: 1px solid #ddd;
-font-size: .75rem;
-text-transform: uppercase;
-letter-spacing: .3px;
-}
-.kpi-table thead th:first-child { text-align: left; }
-
-.kpi-table tbody tr { border-bottom: 1px solid #f0f0f0; }
-.kpi-table tbody tr:last-child { border-bottom: none; }
-.kpi-table tbody tr:hover { background: #f8fcf8; }
-
-.kpi-table td {
-padding: 9px 12px;
-vertical-align: middle;
-}
-.kpi-table td:not(:first-child) { text-align: right; font-variant-numeric: tabular-nums; }
-
-.row-label { color: #333; font-weight: 500; }
-.row-label.section-header {
-color: #005a30;
-font-weight: 700;
-font-size: .78rem;
-text-transform: uppercase;
-letter-spacing: .3px;
-background: #f0f4f0;
-}
-
-.val-positive { color: #1b7e3e; }
-.val-negative { color: #c62828; }
-.val-neutral  { color: #555; }
-.val-nil      { color: #bbb; }
-
-/* ── Loading / error states ── */
-.loading-msg, .error-msg {
-text-align: center;
-padding: 60px 24px;
-font-size: 1rem;
-color: #888;
-}
-.error-msg { color: #c62828; }
-
-/* ── Responsive ── */
-@media (max-width: 600px) {
-.store-tab { padding: 12px 16px; font-size: .85rem; }
-.main { padding: 16px; }
-.section-grid { grid-template-columns: 1fr; }
-}
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f6f8; color: #1a1a1a; min-height: 100vh; }
+  .header { background: #00703c; color: #fff; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .header h1 { font-size: 1.25rem; font-weight: 700; }
+  .header-meta { font-size: .8rem; opacity: .85; }
+  .store-bar { background: #fff; border-bottom: 2px solid #e0e0e0; padding: 0 24px; display: flex; gap: 0; }
+  .store-tab { padding: 14px 28px; font-size: .92rem; font-weight: 600; color: #555; cursor: pointer; border-bottom: 3px solid transparent; transition: color .2s, border-color .2s; user-select: none; }
+  .store-tab:hover { color: #00703c; }
+  .store-tab.active { color: #00703c; border-bottom-color: #00703c; }
+  .main { padding: 24px; max-width: 1100px; margin: 0 auto; }
+  .status-bar { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 10px 18px; margin-bottom: 20px; font-size: .82rem; color: #555; display: flex; align-items: center; gap: 10px; }
+  .status-dot { width: 9px; height: 9px; border-radius: 50%; background: #ccc; flex-shrink: 0; }
+  .status-dot.ok { background: #00703c; }
+  .status-dot.err { background: #d32f2f; }
+  .section-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 18px; }
+  .section-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+  .section-title { background: #005a30; color: #fff; padding: 11px 16px; font-size: .82rem; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; }
+  .kpi-table { width: 100%; border-collapse: collapse; font-size: .83rem; }
+  .kpi-table thead th { background: #f0f4f0; color: #005a30; font-weight: 700; padding: 8px 12px; text-align: right; border-bottom: 1px solid #ddd; font-size: .75rem; text-transform: uppercase; letter-spacing: .3px; }
+  .kpi-table thead th:first-child { text-align: left; }
+  .kpi-table tbody tr { border-bottom: 1px solid #f0f0f0; }
+  .kpi-table tbody tr:last-child { border-bottom: none; }
+  .kpi-table tbody tr:hover { background: #f8fcf8; }
+  .kpi-table td { padding: 9px 12px; vertical-align: middle; }
+  .kpi-table td:not(:first-child) { text-align: right; font-variant-numeric: tabular-nums; }
+  .row-label { color: #333; font-weight: 500; }
+  .val-positive { color: #1b7e3e; }
+  .val-negative { color: #c62828; }
+  .val-neutral { color: #555; }
+  .val-nil { color: #bbb; }
+  .loading-msg, .error-msg { text-align: center; padding: 60px 24px; font-size: 1rem; color: #888; }
+  .error-msg { color: #c62828; }
+  @media (max-width: 600px) {
+    .store-tab { padding: 12px 16px; font-size: .85rem; }
+    .main { padding: 16px; }
+    .section-grid { grid-template-columns: 1fr; }
+  }
 </style>
-
 </head>
 <body>
 
 <div class="header">
-  <h1>📊 Sales Analysis – Moriarty Group</h1>
+  <h1>&#128202; Sales Analysis – Moriarty Group</h1>
   <div class="header-meta" id="headerMeta">Loading…</div>
 </div>
 
-<div class="store-bar" id="storeBar">
-  <!-- tabs injected by JS -->
-</div>
+<div class="store-bar" id="storeBar"></div>
 
 <div class="main">
   <div class="status-bar">
@@ -185,75 +62,54 @@ color: #888;
 </div>
 
 <script>
-// ── Config ──────────────────────────────────────────────
 var DATA_URL = 'https://raw.githubusercontent.com/aarondoyle2026/aarondoyle2026.github.io/main/kpi_data.json';
-
-
-var SECTION_LABELS = {
-  'RETAIL SALES ANALYSIS':       'Retail Sales',
-  'RETAIL SCAN MARGIN ANALYSIS': 'Scan Margin',
-  'WASTE & REDUCTION ANALYSIS':  'Waste & Reduction',
-  'TRANSACTION COUNT ANALYSIS':  'Transaction Count',
-  'AVERAGE SPEND ANALYSIS':      'Average Spend'
-};
-
 var STORE_ORDER = ['Palmerstown', 'Balbriggan', 'Skerries'];
-
-// ── State ─────────────────────────────────────────────
-var allData     = null;
+var SECTION_LABELS = {
+  'RETAIL SALES ANALYSIS': 'Retail Sales',
+  'RETAIL SCAN MARGIN ANALYSIS': 'Scan Margin',
+  'WASTE & REDUCTION ANALYSIS': 'Waste & Reduction',
+  'TRANSACTION COUNT ANALYSIS': 'Transaction Count',
+  'AVERAGE SPEND ANALYSIS': 'Average Spend'
+};
+var allData = null;
 var activeStore = null;
-var activeDate  = null;
+var activeDate = null;
 
-// ── Fetch ─────────────────────────────────────────────
 function fetchData() {
-  var url = DATA_URL + '?_=' + Date.now();
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', url, true);
+  xhr.open('GET', DATA_URL + '?_=' + Date.now(), true);
   xhr.onreadystatechange = function() {
     if (xhr.readyState !== 4) return;
     if (xhr.status === 200) {
       try {
         allData = JSON.parse(xhr.responseText);
-        setStatus('ok', 'Data loaded · updates daily at 5 AM');
+        setStatus('ok', 'Data loaded \u00b7 updates daily at 5 AM');
         init();
       } catch(e) {
-        setStatus('err', 'JSON parse error: ' + e.message);
+        setStatus('err', 'JSON parse error');
         showError('Could not parse kpi_data.json.');
       }
     } else {
-      setStatus('err', 'Could not fetch kpi_data.json (status ' + xhr.status + ')');
+      setStatus('err', 'Could not load data (status ' + xhr.status + ')');
       showError('Data file not found. Run the KPI scraper first.');
     }
   };
   xhr.send();
 }
 
-// ── Init ──────────────────────────────────────────────
 function init() {
-  // Latest date
   var dates = Object.keys(allData).sort();
   if (!dates.length) { showError('No dates in data file.'); return; }
   activeDate = dates[dates.length - 1];
-
   var dateStores = allData[activeDate] || {};
-
-  // Determine available stores in preferred order
   var available = STORE_ORDER.filter(function(s) { return dateStores[s]; });
   if (!available.length) { showError('No store data for latest date.'); return; }
-
-  if (!activeStore || available.indexOf(activeStore) === -1) {
-    activeStore = available[0];
-  }
-
+  if (!activeStore || available.indexOf(activeStore) === -1) activeStore = available[0];
   renderStoreTabs(available);
   renderContent(dateStores[activeStore]);
-
-  // Header meta
-  document.getElementById('headerMeta').textContent =
-    'Week of ' + activeDate + '  ·  ' + available.length + ' stores';
+  document.getElementById('headerMeta').textContent = 'Week of ' + activeDate + '  \u00b7  ' + available.length + ' stores';
 }
 
-// ── Store tabs ────────────────────────────────────────
 function renderStoreTabs(stores) {
   var bar = document.getElementById('storeBar');
   bar.innerHTML = '';
@@ -265,107 +121,64 @@ function renderStoreTabs(stores) {
       return function() {
         activeStore = s;
         renderStoreTabs(stores);
-        var dateStores = allData[activeDate] || {};
-        renderContent(dateStores[s]);
+        renderContent((allData[activeDate] || {})[s]);
       };
     })(store);
     bar.appendChild(tab);
   });
 }
 
-// ── Content render ────────────────────────────────────
 function renderContent(storeData) {
   var content = document.getElementById('content');
-
-  if (!storeData) {
-    content.innerHTML = '<div class="error-msg">No data for this store.</div>';
-    return;
-  }
-
-  if (storeData.error) {
-    content.innerHTML = '<div class="error-msg">Scrape error: ' + esc(storeData.error) + '</div>';
-    return;
-  }
-
+  if (!storeData) { content.innerHTML = '<div class="error-msg">No data for this store.</div>'; return; }
+  if (storeData.error) { content.innerHTML = '<div class="error-msg">Scrape error: ' + esc(storeData.error) + '</div>'; return; }
   var sections = storeData.sections || {};
   var keys = Object.keys(sections);
-
-  if (!keys.length) {
-    content.innerHTML = '<div class="error-msg">No KPI sections found in data.<br>Try running the scraper again.</div>';
-    return;
-  }
-
+  if (!keys.length) { content.innerHTML = '<div class="error-msg">No KPI sections found. Run the scraper first.</div>'; return; }
   var grid = document.createElement('div');
   grid.className = 'section-grid';
-
   keys.forEach(function(sectionKey) {
     var rows = sections[sectionKey];
     var rowKeys = Object.keys(rows || {});
     if (!rowKeys.length) return;
-
     var card = document.createElement('div');
     card.className = 'section-card';
-
     var title = document.createElement('div');
     title.className = 'section-title';
     title.textContent = SECTION_LABELS[sectionKey] || sectionKey;
     card.appendChild(title);
-
     var table = document.createElement('table');
     table.className = 'kpi-table';
-
-    // Header
-    var thead = document.createElement('thead');
-    thead.innerHTML =
-      '<tr>' +
-      '<th>Metric</th>' +
-      '<th>TY</th>' +
-      '<th>WTD</th>' +
-      '<th>YTD</th>' +
-      '</tr>';
-    table.appendChild(thead);
-
+    table.innerHTML = '<thead><tr><th>Metric</th><th>TY</th><th>WTD</th><th>YTD</th></tr></thead>';
     var tbody = document.createElement('tbody');
-
     rowKeys.forEach(function(rowKey) {
       var vals = rows[rowKey] || {};
       var tr = document.createElement('tr');
-
-      // Label cell
       var tdLabel = document.createElement('td');
       tdLabel.className = 'row-label';
       tdLabel.textContent = rowKey;
       tr.appendChild(tdLabel);
-
-      // Value cells
       ['TY', 'WTD', 'YTD'].forEach(function(col) {
         var td = document.createElement('td');
         var v = vals[col];
         if (v === null || v === undefined) {
-          td.className = 'val-nil';
-          td.textContent = '–';
+          td.className = 'val-nil'; td.textContent = '\u2013';
         } else if (typeof v === 'number') {
           td.textContent = formatNum(rowKey, v);
           td.className = v < 0 ? 'val-negative' : (v > 0 ? 'val-positive' : 'val-neutral');
         } else {
-          td.textContent = v;
-          td.className = 'val-neutral';
+          td.textContent = v; td.className = 'val-neutral';
         }
         tr.appendChild(td);
       });
-
       tbody.appendChild(tr);
     });
-
     table.appendChild(tbody);
     card.appendChild(table);
     grid.appendChild(card);
   });
-
   content.innerHTML = '';
   content.appendChild(grid);
-
-  // Scraped at
   if (storeData.scraped_at) {
     var meta = document.createElement('p');
     meta.style.cssText = 'text-align:right;font-size:.75rem;color:#aaa;margin-top:14px;';
@@ -374,22 +187,13 @@ function renderContent(storeData) {
   }
 }
 
-// ── Number formatting ─────────────────────────────────
 function formatNum(label, v) {
   var l = label.toLowerCase();
-  // Percentage rows
-  if (l.indexOf('%') !== -1 || l.indexOf('margin') !== -1) {
-    return (v >= 0 ? '+' : '') + v.toFixed(2) + '%';
-  }
-  // Transaction count (no decimals)
-  if (l.indexOf('count') !== -1 || l.indexOf('transaction') !== -1) {
-    return Math.round(v).toLocaleString();
-  }
-  // Currency
+  if (l.indexOf('%') !== -1 || l.indexOf('margin') !== -1) return (v >= 0 ? '+' : '') + v.toFixed(2) + '%';
+  if (l.indexOf('count') !== -1 || l.indexOf('transaction') !== -1) return Math.round(v).toLocaleString();
   return '\u20ac' + Math.abs(v).toLocaleString('en-IE', {minimumFractionDigits: 2, maximumFractionDigits: 2});
 }
 
-// ── Status / error helpers ────────────────────────────
 function setStatus(type, msg) {
   document.getElementById('statusDot').className = 'status-dot ' + (type === 'ok' ? 'ok' : 'err');
   document.getElementById('statusText').textContent = msg;
@@ -400,14 +204,10 @@ function showError(msg) {
 }
 
 function esc(s) {
-  return String(s)
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-// ── Boot ──────────────────────────────────────────────
 fetchData();
 </script>
-
 </body>
 </html>
