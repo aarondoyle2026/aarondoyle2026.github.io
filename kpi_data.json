@@ -3,7 +3,7 @@
     "Palmerstown": {
       "store": "Palmerstown",
       "code": "356",
-      "scraped_at": "2026-04-07T17:13:27.095801+01:00",
+      "scraped_at": "2026-04-07T17:20:40.378291+01:00",
       "date": "2026-04-07",
       "sections": {
         "RETAIL SALES ANALYSIS": {
@@ -106,110 +106,15 @@
     "Balbriggan": {
       "store": "Balbriggan",
       "code": "374 - BALBRIGGAN -MORIARTY",
-      "scraped_at": "2026-04-07T17:13:27.095801+01:00",
+      "scraped_at": "2026-04-07T17:20:40.378291+01:00",
       "date": "2026-04-07",
-      "sections": {
-        "RETAIL SALES ANALYSIS": {
-          "Measures": {
-            "TY": "06 Apr 2026",
-            "WTD": "06 Apr 2026",
-            "YTD": "06 Apr 2026"
-          },
-          "Retail Sales €": {
-            "TY": 27748.63,
-            "WTD": 63518.92,
-            "YTD": 4430674.63
-          },
-          "Retail Sales € TY LY Var": {
-            "TY": -11158.88,
-            "WTD": -11520.6,
-            "YTD": -93017.34
-          },
-          "Retail Sales € TY LY Var %": {
-            "TY": -0.2868052980003089,
-            "WTD": -0.15352710145267454,
-            "YTD": -0.020562262111759128
-          }
-        },
-        "RETAIL SCAN MARGIN ANALYSIS": {
-          "Retail Scan Margin €": {
-            "TY": 4607.97303,
-            "WTD": 10380.160620000002,
-            "YTD": 729701.0250000005
-          },
-          "Retail Scan Margin %": {
-            "TY": 0.1820133020602631,
-            "WTD": 0.18183929797406823,
-            "YTD": 0.1807236989412908
-          },
-          "Retail Scan Margin € TY LY Var": {
-            "TY": -2848.8996399999996,
-            "WTD": -3889.487309999993,
-            "YTD": -36040.20117999974
-          },
-          "Retail Scan Margin % TY LY Var": {
-            "TY": -0.026775277001047232,
-            "WTD": -0.02626029523186646,
-            "YTD": -0.004642157719739776
-          }
-        },
-        "WASTE & REDUCTION ANALYSIS": {
-          "Waste & Reduction €": {
-            "TY": 533.932,
-            "WTD": 651.6707,
-            "YTD": 61690.8533
-          },
-          "Waste & Reduction € TY LY Var": {
-            "TY": -82.7533,
-            "WTD": -590.5898,
-            "YTD": 11034.6092
-          },
-          "Waste & Reduction € TY LY Var %": {
-            "TY": -0.1341904858118071,
-            "WTD": -0.4754154221276455,
-            "YTD": 0.21783314961560682
-          }
-        },
-        "TRANSACTION COUNT ANALYSIS": {
-          "Retail Transaction Count": {
-            "TY": 1661.0,
-            "WTD": 3539.0,
-            "YTD": 236167.0
-          },
-          "Retail Transaction Count TY LY Var": {
-            "TY": -1082.0,
-            "WTD": -1178.0,
-            "YTD": -14498.0
-          },
-          "Retail Transaction Count TY LY Var %": {
-            "TY": -0.3944586219467736,
-            "WTD": -0.24973500105999577,
-            "YTD": -0.05783815051961782
-          }
-        },
-        "AVERAGE SPEND ANALYSIS": {
-          "Retail Sales Average Spend €": {
-            "TY": 16.894972907886814,
-            "WTD": 18.169059056230573,
-            "YTD": 18.975210042046516
-          },
-          "Retail Sales Average Spend € TY LY Var": {
-            "TY": 2.551892339166434,
-            "WTD": 2.080362851015394,
-            "YTD": 0.698328905868749
-          },
-          "Retail Sales Average Spend € TY LY Var %": {
-            "TY": 0.1779180091013113,
-            "WTD": 0.1293058694427359,
-            "YTD": 0.03820831905977969
-          }
-        }
-      }
+      "sections": {},
+      "error": "Could not select store '374 - BALBRIGGAN -MORIARTY - Balbriggan'. Last: None"
     },
     "Skerries": {
       "store": "Skerries",
       "code": "424",
-      "scraped_at": "2026-04-07T17:13:27.095801+01:00",
+      "scraped_at": "2026-04-07T17:20:40.378291+01:00",
       "date": "2026-04-07",
       "sections": {
         "RETAIL SALES ANALYSIS": {
