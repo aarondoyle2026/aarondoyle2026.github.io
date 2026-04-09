@@ -47,8 +47,8 @@
 <body>
 
 <div class="header">
-  <h1>&#128202; Sales Analysis – Moriarty Group</h1>
-  <div class="header-meta" id="headerMeta">Loading…</div>
+  <h1>&#128202; Sales Analysis &#8211; Moriarty Group</h1>
+  <div class="header-meta" id="headerMeta">Loading&#8230;</div>
 </div>
 
 <div class="store-bar" id="storeBar"></div>
@@ -56,9 +56,9 @@
 <div class="main">
   <div class="status-bar">
     <div class="status-dot" id="statusDot"></div>
-    <span id="statusText">Fetching data…</span>
+    <span id="statusText">Fetching data&#8230;</span>
   </div>
-  <div id="content"><div class="loading-msg">Loading KPI data…</div></div>
+  <div id="content"><div class="loading-msg">Loading KPI data&#8230;</div></div>
 </div>
 
 <script>
@@ -83,7 +83,7 @@ function fetchData() {
     if (xhr.status === 200) {
       try {
         allData = JSON.parse(xhr.responseText);
-        setStatus('ok', 'Data loaded \u00b7 updates daily at 5 AM');
+        setStatus('ok', 'Data loaded · updates daily at 5 AM');
         init();
       } catch(e) {
         setStatus('err', 'JSON parse error');
@@ -107,7 +107,7 @@ function init() {
   if (!activeStore || available.indexOf(activeStore) === -1) activeStore = available[0];
   renderStoreTabs(available);
   renderContent(dateStores[activeStore]);
-  document.getElementById('headerMeta').textContent = 'Week of ' + activeDate + '  \u00b7  ' + available.length + ' stores';
+  document.getElementById('headerMeta').textContent = 'Week of ' + activeDate + '  ·  ' + available.length + ' stores';
 }
 
 function renderStoreTabs(stores) {
@@ -160,14 +160,27 @@ function renderContent(storeData) {
       tr.appendChild(tdLabel);
       ['TY', 'WTD', 'YTD'].forEach(function(col) {
         var td = document.createElement('td');
-        var v = vals[col];
+        var cell = vals[col];
+
+        // Handle both old format (plain number) and new format ({v, t})
+        var v, t;
+        if (cell !== null && cell !== undefined && typeof cell === 'object' && 't' in cell) {
+          v = cell.v;
+          t = cell.t;
+        } else {
+          v = cell;
+          t = null;
+        }
+
         if (v === null || v === undefined) {
-          td.className = 'val-nil'; td.textContent = '\u2013';
+          td.className = 'val-nil';
+          td.textContent = '\u2013';
         } else if (typeof v === 'number') {
-          td.textContent = formatNum(rowKey, v);
+          td.textContent = formatNum(v, t);
           td.className = v < 0 ? 'val-negative' : (v > 0 ? 'val-positive' : 'val-neutral');
         } else {
-          td.textContent = v; td.className = 'val-neutral';
+          td.textContent = v;
+          td.className = 'val-neutral';
         }
         tr.appendChild(td);
       });
@@ -187,11 +200,15 @@ function renderContent(storeData) {
   }
 }
 
-function formatNum(label, v) {
-  var l = label.toLowerCase();
-  if (l.indexOf('%') !== -1 || l.indexOf('margin') !== -1) return (v >= 0 ? '+' : '') + v.toFixed(2) + '%';
-  if (l.indexOf('count') !== -1 || l.indexOf('transaction') !== -1) return Math.round(v).toLocaleString();
-  return '\u20ac' + Math.abs(v).toLocaleString('en-IE', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+function formatNum(v, t) {
+  if (t === 'pct') {
+    return (v >= 0 ? '+' : '') + v.toFixed(2) + '%';
+  }
+  if (t === 'count') {
+    return (v < 0 ? '-' : '') + Math.abs(Math.round(v)).toLocaleString();
+  }
+  // eur or unknown — show as currency
+  return (v < 0 ? '-' : '') + '\u20ac' + Math.abs(v).toLocaleString('en-IE', {minimumFractionDigits: 2, maximumFractionDigits: 2});
 }
 
 function setStatus(type, msg) {
