@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reports – Moriarty Group</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f6f8; color: #1a1a1a; min-height: 100vh; }
+
+  .header { background: #00703c; color: #fff; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+  .header h1 { font-size: 1.1rem; font-weight: 700; }
+  .header-meta { font-size: .78rem; opacity: .85; }
+
+  /* Report nav */
+  .report-nav { background: #005a30; padding: 0 16px; display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .report-nav::-webkit-scrollbar { height: 3px; }
+  .report-nav::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); }
+  .rnav-tab { padding: 12px 16px; font-size: .78rem; font-weight: 600; color: rgba(255,255,255,0.65); cursor: pointer; border-bottom: 3px solid transparent; white-space: nowrap; transition: color .2s, border-color .2s; }
+  .rnav-tab:hover { color: #fff; }
+  .rnav-tab.active { color: #fff; border-bottom-color: #4caf50; }
+
+  /* Store tabs */
+  .store-bar { background: #fff; border-bottom: 2px solid #e0e0e0; padding: 0 20px; display: flex; gap: 0; }
+  .store-tab { padding: 12px 24px; font-size: .88rem; font-weight: 600; color: #555; cursor: pointer; border-bottom: 3px solid transparent; transition: color .2s, border-color .2s; user-select: none; white-space: nowrap; }
+  .store-tab:hover { color: #00703c; }
+  .store-tab.active { color: #00703c; border-bottom-color: #00703c; }
+
+  .main { padding: 20px; max-width: 1200px; margin: 0 auto; }
+
+  .status-bar { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 10px 16px; margin-bottom: 16px; font-size: .8rem; color: #555; display: flex; align-items: center; gap: 10px; }
+  .status-dot { width: 9px; height: 9px; border-radius: 50%; background: #ccc; flex-shrink: 0; }
+  .status-dot.ok { background: #00703c; }
+  .status-dot.err { background: #d32f2f; }
+  .status-dot.loading { background: #ff9800; }
+
+  .table-wrap { background: #fff; border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.06); overflow-x: auto; }
+  .report-table { width: 100%; border-collapse: collapse; font-size: .82rem; min-width: 500px; }
+  .report-table thead th { background: #005a30; color: #fff; font-weight: 700; padding: 10px 12px; text-align: right; font-size: .75rem; text-transform: uppercase; letter-spacing: .3px; white-space: nowrap; }
+  .report-table thead th:first-child { text-align: left; min-width: 180px; }
+  .report-table tbody tr { border-bottom: 1px solid #f0f0f0; }
+  .report-table tbody tr:last-child { border-bottom: none; }
+  .report-table tbody tr:hover { background: #f8fcf8; }
+  .report-table tbody tr.total-row { background: #f0f4f0; font-weight: 700; }
+  .report-table td { padding: 9px 12px; vertical-align: middle; white-space: nowrap; }
+  .report-table td:first-child { text-align: left; white-space: normal; font-weight: 500; color: #333; }
+  .report-table td:not(:first-child) { text-align: right; font-variant-numeric: tabular-nums; }
+
+  .val-positive { color: #1b7e3e; }
+  .val-negative { color: #c62828; }
+  .val-neutral { color: #555; }
+  .val-nil { color: #bbb; }
+
+  .loading-msg, .error-msg { text-align: center; padding: 50px 20px; font-size: .95rem; color: #888; }
+  .error-msg { color: #c62828; }
+
+  @media (max-width: 600px) {
+    .store-tab { padding: 10px 14px; font-size: .82rem; }
+    .main { padding: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>&#128221; Reports – Moriarty Group</h1>
+  <div class="header-meta" id="headerMeta">Loading…</div>
+</div>
+
+<div class="report-nav" id="reportNav"></div>
+<div class="store-bar" id="storeBar"></div>
+
+<div class="main">
+  <div class="status-bar">
+    <div class="status-dot loading" id="statusDot"></div>
+    <span id="statusText">Loading…</span>
+  </div>
+  <div id="content"><div class="loading-msg">Select a report above.</div></div>
+</div>
+
+<script>
+var BASE_URL = 'https://raw.githubusercontent.com/aarondoyle2026/aarondoyle2026.github.io/main/';
+var STORE_ORDER = ['Palmerstown', 'Balbriggan', 'Skerries'];
+
+var REPORTS = [
+  { label: 'Meat Weekly',         file: 'meat_weekly_data.json' },
+  { label: 'Dairy Weekly',        file: 'dairy_weekly_data.json' },
+  { label: 'Bakery Weekly',       file: 'bakery_weekly_data.json' },
+  { label: 'Produce Weekly',      file: 'produce_weekly_data.json' },
+  { label: 'Deli Weekly',         file: 'deli_weekly_data.json' },
+  { label: 'Full MS Weekly',      file: 'full_ms_weekly_data.json' },
+  { label: 'Top Sellers',         file: 'top_sellers_data.json' },
+  { label: 'Top Cash Margin',     file: 'top_cash_margin_data.json' },
+  { label: 'Hourly Sales',        file: 'hourly_sales_data.json' },
+  { label: 'Dept Report Week',    file: 'dept_report_latest_data.json' },
+  { label: 'Dept Report YTD',     file: 'dept_report_ytd_data.json' },
+  { label: 'Ownbrand',            file: 'ownbrand_data.json' },
+];
+
+var cache = {};
+var activeReport = 0;
+var activeStore = 'Palmerstown';
+var activeDate = null;
+
+// ── Build report nav ──
+function buildReportNav() {
+  var nav = document.getElementById('reportNav');
+  nav.innerHTML = '';
+  REPORTS.forEach(function(r, i) {
+    var tab = document.createElement('div');
+    tab.className = 'rnav-tab' + (i === activeReport ? ' active' : '');
+    tab.textContent = r.label;
+    tab.onclick = (function(idx) {
+      return function() {
+        activeReport = idx;
+        buildReportNav();
+        loadReport(idx);
+      };
+    })(i);
+    nav.appendChild(tab);
+  });
+}
+
+// ── Load report data ──
+function loadReport(idx) {
+  var report = REPORTS[idx];
+  setStatus('loading', 'Loading ' + report.label + '…');
+  document.getElementById('content').innerHTML = '<div class="loading-msg">Loading…</div>';
+  document.getElementById('storeBar').innerHTML = '';
+
+  if (cache[report.file]) {
+    renderReport(cache[report.file]);
+    return;
+  }
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', BASE_URL + report.file + '?_=' + Date.now(), true);
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState !== 4) return;
+    if (xhr.status === 200) {
+      try {
+        var data = JSON.parse(xhr.responseText);
+        cache[report.file] = data;
+        renderReport(data);
+      } catch(e) {
+        setStatus('err', 'Parse error');
+        showError('Could not parse ' + report.file);
+      }
+    } else {
+      setStatus('err', 'Not found (run the scraper first)');
+      showError(report.label + ' data not found. Run the scraper first.');
+    }
+  };
+  xhr.send();
+}
+
+// ── Render report ──
+function renderReport(data) {
+  var dates = Object.keys(data).sort();
+  if (!dates.length) { showError('No data found.'); return; }
+  activeDate = dates[dates.length - 1];
+
+  var dateStores = data[activeDate] || {};
+  var available = STORE_ORDER.filter(function(s) { return dateStores[s]; });
+  if (!available.length) { showError('No store data for latest date.'); return; }
+  if (available.indexOf(activeStore) === -1) activeStore = available[0];
+
+  buildStoreBar(available, dateStores);
+  renderTable(dateStores[activeStore]);
+
+  var report = REPORTS[activeReport];
+  document.getElementById('headerMeta').textContent = report.label + ' · ' + activeDate;
+  setStatus('ok', 'Data loaded · updates daily at 5 AM');
+}
+
+// ── Store tabs ──
+function buildStoreBar(stores, dateStores) {
+  var bar = document.getElementById('storeBar');
+  bar.innerHTML = '';
+  stores.forEach(function(store) {
+    var tab = document.createElement('div');
+    tab.className = 'store-tab' + (store === activeStore ? ' active' : '');
+    tab.textContent = store;
+    tab.onclick = (function(s, ds) {
+      return function() {
+        activeStore = s;
+        buildStoreBar(stores, ds);
+        renderTable(ds[s]);
+      };
+    })(store, dateStores);
+    bar.appendChild(tab);
+  });
+}
+
+// ── Render table ──
+function renderTable(storeData) {
+  var content = document.getElementById('content');
+  if (!storeData) { showError('No data for this store.'); return; }
+  if (storeData.error) { showError('Scrape error: ' + esc(storeData.error)); return; }
+
+  var parsed = storeData.data || {};
+  var headers = parsed.headers || [];
+  var rows = parsed.rows || [];
+
+  if (!rows.length) { showError('No rows in data. Run the scraper first.'); return; }
+
+  var wrap = document.createElement('div');
+  wrap.className = 'table-wrap';
+
+  var table = document.createElement('table');
+  table.className = 'report-table';
+
+  // Header
+  var thead = document.createElement('thead');
+  var htr = document.createElement('tr');
+  headers.forEach(function(h) {
+    var th = document.createElement('th');
+    th.textContent = h || '';
+    htr.appendChild(th);
+  });
+  thead.appendChild(htr);
+  table.appendChild(thead);
+
+  // Body
+  var tbody = document.createElement('tbody');
+  rows.forEach(function(row) {
+    var tr = document.createElement('tr');
+    var firstVal = row[headers[0]];
+    if (firstVal && firstVal.v && String(firstVal.v).toLowerCase().indexOf('total') !== -1) {
+      tr.className = 'total-row';
+    }
+
+    headers.forEach(function(h) {
+      var td = document.createElement('td');
+      var cell = row[h] || {v: null, t: 'nil'};
+      var v = cell.v;
+      var t = cell.t;
+
+      if (v === null || v === undefined) {
+        td.className = 'val-nil';
+        td.textContent = '–';
+      } else if (t === 'str') {
+        td.textContent = v;
+        td.className = 'val-neutral';
+      } else if (t === 'pct') {
+        td.textContent = (v >= 0 ? '+' : '') + v.toFixed(2) + '%';
+        td.className = v < 0 ? 'val-negative' : 'val-positive';
+      } else if (t === 'num') {
+        // Determine if currency or count based on header
+        var hl = h.toLowerCase();
+        if (hl.indexOf('qty') !== -1 || hl.indexOf('count') !== -1 || hl.indexOf('units') !== -1) {
+          td.textContent = (v < 0 ? '-' : '') + Math.abs(Math.round(v)).toLocaleString();
+        } else {
+          td.textContent = (v < 0 ? '-' : '') + '\u20ac' + Math.abs(v).toLocaleString('en-IE', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        }
+        td.className = v < 0 ? 'val-negative' : (v > 0 ? 'val-positive' : 'val-neutral');
+      } else {
+        td.textContent = v;
+        td.className = 'val-neutral';
+      }
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+  wrap.appendChild(table);
+
+  // Scraped at
+  content.innerHTML = '';
+  content.appendChild(wrap);
+  if (storeData.scraped_at) {
+    var meta = document.createElement('p');
+    meta.style.cssText = 'text-align:right;font-size:.72rem;color:#aaa;margin-top:12px;';
+    meta.textContent = 'Scraped: ' + storeData.scraped_at.replace('T',' ').substring(0,19);
+    content.appendChild(meta);
+  }
+}
+
+function setStatus(type, msg) {
+  var dot = document.getElementById('statusDot');
+  dot.className = 'status-dot ' + type;
+  document.getElementById('statusText').textContent = msg;
+}
+
+function showError(msg) {
+  document.getElementById('content').innerHTML = '<div class="error-msg">' + esc(msg) + '</div>';
+}
+
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── Boot ──
+buildReportNav();
+loadReport(0);
+</script>
+</body>
+</html>
