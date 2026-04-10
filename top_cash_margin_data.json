@@ -4,33 +4,35 @@
       "store": "Palmerstown",
       "code": "356",
       "report": "top cash margin lines",
-      "scraped_at": "2026-04-10T14:31:03.511166+01:00",
+      "scraped_at": "2026-04-10T15:38:45.291654+01:00",
       "date": "2026-04-10",
       "data": {
         "headers": [
           "Merchandising Structure - Article SV TB",
-          "Week 14 2026",
-          "Week 14 2026",
-          "Week 14 2026",
-          "Week 14 2026"
+          "Retail Qty",
+          "Retail Sales €",
+          "Retail Scan Margin €",
+          "Retail Scan Margin %"
         ],
         "rows": [
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "Merchandising Structure - Article SV TB",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": "Retail Scan Margin %",
-              "t": "str"
-            }
-          },
           {
             "Merchandising Structure - Article SV TB": {
               "v": "1061356 000 PERSONALISED FLEXI-LOOP CARRIER 20K MOQ| 1PCE 5392000010222",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 1270.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 1257.3,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 765.6551199999999,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 74.903,
               "t": "pct"
             }
@@ -40,7 +42,19 @@
               "v": "1088017 000 CHICKEN FILLET BAGUETTE +2 FILLING| 1PCE 0212230000000",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 279.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 1442.95,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 671.4715900000001,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 52.8168,
               "t": "pct"
             }
@@ -50,7 +64,19 @@
               "v": "1106337 000 FRESH CREAM CAKE| 1PCE 0242840000000",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 537.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 1415.75,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 549.2568299999999,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 44.0337,
               "t": "pct"
             }
@@ -60,7 +86,19 @@
               "v": "1060853 000 DEMI BAGUETTES| 4PCE 5099839311727",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 280.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 700.0,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 408.79999999999995,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 58.4,
               "t": "pct"
             }
@@ -70,7 +108,19 @@
               "v": "1098412 000 FILLED BAGUETTE CHICKEN FILLET| 1PCE 0216490000000",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 189.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 850.5,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 348.65921000000003,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 46.5289,
               "t": "pct"
             }
@@ -80,7 +130,19 @@
               "v": "1090184 000 LARGE ROTISSERIE CHICKEN | 1PCE 0299830000000",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 193.18,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 1516.45,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 341.20229,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 25.5376,
               "t": "pct"
             }
@@ -90,7 +152,19 @@
               "v": "1088015 000 CHICKEN FILLET BAGUETTE +1 FILLING| 1PCE 0212240000000",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 142.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 710.0,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 324.51066000000003,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 51.876,
               "t": "pct"
             }
@@ -100,7 +174,19 @@
               "v": "1600217 000 SEANS BROWN SODA| 1PCE 5011050051091",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 234.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 672.84,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 321.84,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 47.8331,
               "t": "pct"
             }
@@ -110,7 +196,19 @@
               "v": "1013680 000 SV BANANAS  LOOSE NORMAL |1KGM 0287810000000",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 484.753,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 889.0,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 229.73592000000002,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 25.8421,
               "t": "pct"
             }
@@ -120,7 +218,19 @@
               "v": "1499543 000 FRANK & HONEST REG COFFEE| 1PCE 81434",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 143.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 499.5,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 201.27811,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 45.7359,
               "t": "pct"
             }
@@ -130,7 +240,19 @@
               "v": "1018502 000 BRENNANS WHITE SLICED PAN PP .| 800GRM 5011059000014",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 513.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 1072.17,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 148.77,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 13.8756,
               "t": "pct"
             }
@@ -140,7 +262,19 @@
               "v": "1060855 000 WHITE BATCH CRUSTY ROLLS| 4PCE 5099839311765",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 153.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 382.5,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 146.88,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 38.4,
               "t": "pct"
             }
@@ -150,7 +284,19 @@
               "v": "1683185 003 SIGNATURE TASTES BLUEBERRY | 200GRM 5099839732867",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 216.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 817.07,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 136.07168000000001,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 16.6536,
               "t": "pct"
             }
@@ -160,7 +306,19 @@
               "v": "1018392 000 A/MORE LOW FAT SUPERMILK [T T]| 1LTR 5011056020428",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 321.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 561.75,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 134.82,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 24.0,
               "t": "pct"
             }
@@ -170,7 +328,19 @@
               "v": "1020719 000 PREMIER MILK| 1LTR 5011024002050",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 360.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 572.4,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 133.2,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 23.2704,
               "t": "pct"
             }
@@ -180,7 +350,19 @@
               "v": "1051256 000 FRESH CREAM CAKE  | 1PCE 0223730000000",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 395.5,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 395.5,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 130.93314999999998,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 37.575,
               "t": "pct"
             }
@@ -190,7 +372,19 @@
               "v": "1020045 000 BREAKFAST SAUSAGES| 1PCE 0286870000000",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 236.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 224.2,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 105.49305000000001,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 53.4053,
               "t": "pct"
             }
@@ -200,7 +394,19 @@
               "v": "1310314 001 PARISIENNE LARGE WHITE BAGUETTE | 400GRM 3389",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 193.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 241.25,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 105.185,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 43.6,
               "t": "pct"
             }
@@ -210,7 +416,19 @@
               "v": "1630048 000 LOTTO PLUS YES 2 PANELS 1 DRAW| 1PCE 5391518926339",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 284.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 1704.0,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 102.24000000000001,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 6.0,
               "t": "pct"
             }
@@ -220,7 +438,19 @@
               "v": "1025460 000 SUPERVALU FRESH MILK| 2LTR 5099839041358",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 456.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 1026.0,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 86.63999999999999,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 8.4444,
               "t": "pct"
             }
@@ -230,7 +460,19 @@
               "v": "1020718 000 PREMIER MILK| 2LTR 5011024002463",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 165.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 460.35,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 80.85,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 17.5627,
               "t": "pct"
             }
@@ -240,7 +482,19 @@
               "v": "1009043 000 SUPERVALU FRESH MILK| 3LTR 5099839260230",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 153.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 497.25,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 76.8825,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 15.4615,
               "t": "pct"
             }
@@ -250,7 +504,19 @@
               "v": "1016164 000 BRENNANS WHITE HALF PAN | 390GRM 5011059001158",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 137.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 239.75,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 76.72,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 32.0,
               "t": "pct"
             }
@@ -260,7 +526,19 @@
               "v": "1535414 000 EUROM PLUS YES 2 PANELS 1 DRAW| 1PCE 5391518926032",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 158.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 1106.0,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 66.36,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 6.0,
               "t": "pct"
             }
@@ -270,7 +548,19 @@
               "v": "1024951 000 SUPERVALU LARGE FRESH IRISH EGGS| 6PCE 5099839044618",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 152.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 287.28,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 50.63576,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 17.6259,
               "t": "pct"
             }
@@ -280,7 +570,19 @@
               "v": "1025461 000 SUPERVALU LIGHT MILK | 2LTR 5099839041365",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 266.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 598.5,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 50.54,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 8.4444,
               "t": "pct"
             }
@@ -290,7 +592,19 @@
               "v": "1040062 000 SUPERVALU FRESH MILK | 1LTR 5099839287916",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 288.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 331.2,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 48.672,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 14.6957,
               "t": "pct"
             }
@@ -300,7 +614,19 @@
               "v": "1205515 006 WHITE FRUIT SCONE | 120 GRM 998394",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 168.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 164.35,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 44.00176999999999,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 30.3876,
               "t": "pct"
             }
@@ -310,7 +636,19 @@
               "v": "1042906 002 HARVESTER(BROWN) BATCH CRUSTY ROLLS |4PCE 5099839578427",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 54.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 135.0,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 43.74000000000001,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 32.4,
               "t": "pct"
             }
@@ -320,7 +658,19 @@
               "v": "1030326 000 SV WRAPPD BROCCOLI CROWN| 350GRM 5099839280481",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 142.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 239.98,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 43.26314000000001,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 18.0278,
               "t": "pct"
             }
@@ -330,7 +680,19 @@
               "v": "1205515 004 PLAIN SCONE | 120GRM 998392",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 164.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 154.84,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 38.02291,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 27.8714,
               "t": "pct"
             }
@@ -340,7 +702,19 @@
               "v": "1016514 000 SUPERVALU TOMATO TRAY| 6PCE 5099839070778",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 128.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 177.92,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 36.48,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 20.5036,
               "t": "pct"
             }
@@ -350,7 +724,19 @@
               "v": "1535412 000 EUROM PLUS YES 1 PANEL 1 DRAW| 1PCE 5391518926025",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 155.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 542.5,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 32.55,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 6.0,
               "t": "pct"
             }
@@ -360,7 +746,19 @@
               "v": "1000941 000 SUPERVALU IRISH CREAMERY BUTTER | 454GRM 5099839244650",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 133.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 397.67,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 29.83057,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 7.5013,
               "t": "pct"
             }
@@ -370,7 +768,19 @@
               "v": "1018670 000 DAIRYGOLD ORIGINAL| 454GRM 5011037611195",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 205.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 512.5,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 26.90625,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 5.25,
               "t": "pct"
             }
@@ -380,7 +790,19 @@
               "v": "1045844 000 SUPERVALU LIGHT MILK| 1LTR 5099839306396",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 150.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 172.5,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 25.349999999999998,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 14.6957,
               "t": "pct"
             }
@@ -390,7 +812,19 @@
               "v": "1022674 001 SUPERVALU CARROT BAG [IRISH] | 1KGM 5099839280665",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 222.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 175.38,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 23.671860000000002,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 13.4975,
               "t": "pct"
             }
@@ -400,7 +834,19 @@
               "v": "1026694 000 SUPERVALU SCALLIONS BUNCH | 1PCE 88227",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 198.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 176.22,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 22.936320000000002,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 13.0157,
               "t": "pct"
             }
@@ -410,7 +856,19 @@
               "v": "1076291 000 TELLY BINGO| 1PCE 5391518921600",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 150.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 375.0,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 22.5,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 6.0,
               "t": "pct"
             }
@@ -420,7 +878,19 @@
               "v": "1025220 000 SUPERVALU BAG FOR LIFE RECYCLED| 1PCE 5099839694455",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 48.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 47.52,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 21.248540000000002,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 54.9994,
               "t": "pct"
             }
@@ -430,7 +900,19 @@
               "v": "1802422 000 SV EASY PEELERS LOOSE|1PCE 3441",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 177.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 79.65,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 17.52654,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 22.0044,
               "t": "pct"
             }
@@ -440,7 +922,19 @@
               "v": "1021584 000 SUPERVALU PEARS LOOSE| 1PCE 4891",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 135.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 74.25,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 16.3458,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 22.0145,
               "t": "pct"
             }
@@ -450,7 +944,19 @@
               "v": "1667049 000 BULMERS GLASS 5027785801863",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 114.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 131.1,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 15.385360000000002,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 14.4348,
               "t": "pct"
             }
@@ -460,7 +966,19 @@
               "v": "1003575 001 SUPERVALU STILL WATER | 2L 5099839727269",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 237.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 139.83,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 11.3795,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 10.0099,
               "t": "pct"
             }
@@ -470,7 +988,19 @@
               "v": "1025921 000 SV CLOSED CUP MUSHROOMS| 250GRM 5099839045547",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 85.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 84.15,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 10.94375,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 13.0051,
               "t": "pct"
             }
@@ -480,7 +1010,19 @@
               "v": "1179723 000 SV PINK LADY LOOSE|1PCE 45773",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 96.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 52.8,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 9.50688,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 18.0055,
               "t": "pct"
             }
@@ -490,7 +1032,19 @@
               "v": "1004212 004 SV DOG TRAY TURKEY&CHICKEN | 150GRM 5099839292682",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 102.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 49.98,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 8.58983,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 21.1394,
               "t": "pct"
             }
@@ -500,7 +1054,19 @@
               "v": "1018820 000 SV ORANGES LOOSE LARGE | 1PCE 5099839642845",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 79.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 43.45,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 7.8154699999999995,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 17.9873,
               "t": "pct"
             }
@@ -510,7 +1076,19 @@
               "v": "1334913 000 BILL PAY OPEN|1PCE 8389",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 290.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 145.0,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 0.6669999999999999,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 0.46,
               "t": "pct"
             }
@@ -522,33 +1100,35 @@
       "store": "Balbriggan",
       "code": "374",
       "report": "top cash margin lines",
-      "scraped_at": "2026-04-10T14:31:03.511166+01:00",
+      "scraped_at": "2026-04-10T15:38:45.291654+01:00",
       "date": "2026-04-10",
       "data": {
         "headers": [
           "Merchandising Structure - Article SV TB",
-          "Week 14 2026",
-          "Week 14 2026",
-          "Week 14 2026",
-          "Week 14 2026"
+          "Retail Qty",
+          "Retail Sales €",
+          "Retail Scan Margin €",
+          "Retail Scan Margin %"
         ],
         "rows": [
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "Merchandising Structure - Article SV TB",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": "Retail Scan Margin %",
-              "t": "str"
-            }
-          },
           {
             "Merchandising Structure - Article SV TB": {
               "v": "1274097 000 VANILLA SLICE| 145 GRM 3599",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 530.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 1368.5,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 908.92686,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 75.3841,
               "t": "pct"
             }
@@ -558,7 +1138,19 @@
               "v": "1035192 000 HAPPY BIRTHDAY CAKES| 1PCE 0227810000000",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 1891.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 1891.0,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 720.57929,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 43.25,
               "t": "pct"
             }
@@ -568,7 +1160,19 @@
               "v": "1061356 000 PERSONALISED FLEXI-LOOP CARRIER 20K MOQ| 1PCE 5392000010222",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 1091.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 1080.09,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 657.7399500000001,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 74.903,
               "t": "pct"
             }
@@ -578,7 +1182,19 @@
               "v": "1600217 000 SEANS BROWN SODA| 1PCE 5099839645525",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 182.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 527.8,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 303.94,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 57.5862,
               "t": "pct"
             }
@@ -588,7 +1204,19 @@
               "v": "1295193 000 3 SAUSAGE ROLLS| 1PCE 0293930000000",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 203.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 446.6,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 261.53017,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 66.4659,
               "t": "pct"
             }
@@ -598,7 +1226,19 @@
               "v": "1600221 000 FRENCH STICK| 1PCE 5099839645549",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 169.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 338.0,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 219.70000000000002,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 65.0,
               "t": "pct"
             }
@@ -608,7 +1248,19 @@
               "v": "1499543 000 FRANK & HONEST REG COFFEE| 1PCE 81434",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 148.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 514.8,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 206.40828,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 45.5077,
               "t": "pct"
             }
@@ -618,7 +1270,19 @@
               "v": "1049989 000 CHICKEN FILLET 0223030000000",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 117.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 876.33,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 169.65,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 19.3591,
               "t": "pct"
             }
@@ -628,7 +1292,19 @@
               "v": "1060853 000 DEMI BAGUETTES| 4PCE 5099839311727",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 83.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 228.25,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 141.92999999999998,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 62.1818,
               "t": "pct"
             }
@@ -638,7 +1314,19 @@
               "v": "1020045 000 BREAKFAST SAUSAGES| 1PCE 0286870000000",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 314.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 298.3,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 140.35938,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 53.4053,
               "t": "pct"
             }
@@ -648,7 +1336,19 @@
               "v": "1683185 003 SIGNATURE TASTES BLUEBERRY | 200GRM 5099839732867",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 203.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 778.65,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 138.63769000000002,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 17.8049,
               "t": "pct"
             }
@@ -658,7 +1358,19 @@
               "v": "1616811 000 MEAL DEAL|1PCE 0271570000000",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 117.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 439.98,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 124.39757000000002,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 32.0904,
               "t": "pct"
             }
@@ -668,7 +1380,19 @@
               "v": "1905246 000 SUPERVALU LOOP HANDLE COMP SHOP BAG | 1PCE 5098732013325",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 249.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 246.51,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 110.22683,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 54.9994,
               "t": "pct"
             }
@@ -678,7 +1402,19 @@
               "v": "1025460 000 SUPERVALU FRESH MILK| 2LTR 5099839041358",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 502.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 1129.5,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 95.38,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 8.4444,
               "t": "pct"
             }
@@ -688,7 +1424,19 @@
               "v": "1009043 000 SUPERVALU FRESH MILK| 3LTR 5099839260230",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 184.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 598.0,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 92.46,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 15.4615,
               "t": "pct"
             }
@@ -698,7 +1446,19 @@
               "v": "1630048 000 LOTTO PLUS YES 2 PANELS 1 DRAW| 1PCE 5391518926339",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 242.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 1452.0,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 87.12,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 6.0,
               "t": "pct"
             }
@@ -708,7 +1468,19 @@
               "v": "1018502 000 BRENNANS WHITE SLICED PAN PP .| 800GRM 5011059000014",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 292.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 610.28,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 84.67999999999999,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 13.8756,
               "t": "pct"
             }
@@ -718,7 +1490,19 @@
               "v": "1013680 000 SV BANANAS  LOOSE NORMAL |1KGM 0287810000000",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 430.54400000000004,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 667.56,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 82.02016,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 12.2866,
               "t": "pct"
             }
@@ -728,7 +1512,19 @@
               "v": "1016164 000 BRENNANS WHITE HALF PAN | 390GRM 5011059001158",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 137.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 239.75,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 76.72,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 32.0,
               "t": "pct"
             }
@@ -738,7 +1534,19 @@
               "v": "1018392 000 A/MORE LOW FAT SUPERMILK [T T]| 1LTR 5011056020428",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 181.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 316.75,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 76.02000000000001,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 24.0,
               "t": "pct"
             }
@@ -748,7 +1556,19 @@
               "v": "1310257 001 ALL BUTTER CROISSANT | 70GRM 7005",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 127.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 169.31,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 74.24180999999999,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 49.7693,
               "t": "pct"
             }
@@ -758,7 +1578,19 @@
               "v": "1019313 000 JMOB TOASTIE WHITE.|800GRM 5099899001026",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 148.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 294.52,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 68.08,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 23.1156,
               "t": "pct"
             }
@@ -768,7 +1600,19 @@
               "v": "1700431 000 SIGNATURE CLEMENGOLD PUNNET| 750GRM 5099839677458",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 93.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 278.07,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 61.193999999999996,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 22.0067,
               "t": "pct"
             }
@@ -778,7 +1622,19 @@
               "v": "1030326 000 SV WRAPPD BROCCOLI CROWN| 350GRM 5099839280481",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 183.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 309.27,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 55.75461,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 18.0278,
               "t": "pct"
             }
@@ -788,7 +1644,19 @@
               "v": "1114693 000 SOFT DEMI BAGUETTE| 1PCE 61189",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 148.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 118.4,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 53.279999999999994,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 45.0,
               "t": "pct"
             }
@@ -798,7 +1666,19 @@
               "v": "1025461 000 SUPERVALU LIGHT MILK | 2LTR 5099839041365",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 255.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 573.75,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 48.449999999999996,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 8.4444,
               "t": "pct"
             }
@@ -808,7 +1688,19 @@
               "v": "1040062 000 SUPERVALU FRESH MILK | 1LTR 5099839287916",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 269.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 309.35,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 45.461,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 14.6957,
               "t": "pct"
             }
@@ -818,7 +1710,19 @@
               "v": "1018390 000 AVONMORE MILK CARTON| 1LTR 5011056020350",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 137.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 217.83,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 42.47,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 19.4969,
               "t": "pct"
             }
@@ -828,7 +1732,19 @@
               "v": "1064547 000 COOKIES| 1PCE 61780",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 167.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 208.75,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 40.30069999999999,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 21.912,
               "t": "pct"
             }
@@ -838,7 +1754,19 @@
               "v": "1000941 000 SUPERVALU IRISH CREAMERY BUTTER | 454GRM 5099839244650",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 177.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 529.23,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 39.69933,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 7.5013,
               "t": "pct"
             }
@@ -848,7 +1776,19 @@
               "v": "1019540 000 SUPERVALU CUCUMBER [IRISH] | 1PCE 5099839311444",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 161.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 143.29,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 33.004999999999995,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 23.0337,
               "t": "pct"
             }
@@ -858,7 +1798,19 @@
               "v": "1022674 001 SUPERVALU CARROT BAG [IRISH] | 1KGM 5099839280665",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 288.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 227.52,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 30.70944,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 13.4975,
               "t": "pct"
             }
@@ -868,7 +1820,19 @@
               "v": "1330248 000 PARTY CATERING|1PCE 0255990000000",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 61.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 61.0,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 30.5,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 50.0,
               "t": "pct"
             }
@@ -878,7 +1842,19 @@
               "v": "1535412 000 EUROM PLUS YES 1 PANEL 1 DRAW| 1PCE 5391518926025",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 131.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 458.5,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 27.509999999999998,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 6.0,
               "t": "pct"
             }
@@ -888,7 +1864,19 @@
               "v": "1018670 000 DAIRYGOLD ORIGINAL| 454GRM 5011037611195",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 182.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 455.0,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 23.8875,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 5.25,
               "t": "pct"
             }
@@ -898,7 +1886,19 @@
               "v": "1026694 000 SUPERVALU SCALLIONS BUNCH | 1PCE 3039",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 200.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 178.0,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 23.168,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 13.0157,
               "t": "pct"
             }
@@ -908,7 +1908,19 @@
               "v": "1016514 000 SUPERVALU TOMATO TRAY| 6PCE 5099839070778",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 136.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 173.41,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 23.130000000000003,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 13.3383,
               "t": "pct"
             }
@@ -918,7 +1930,19 @@
               "v": "1045844 000 SUPERVALU LIGHT MILK| 1LTR 5099839306396",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 133.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 152.95,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 22.476999999999997,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 14.6957,
               "t": "pct"
             }
@@ -928,7 +1952,19 @@
               "v": "1175416 000 SUPERVALU STILL WATER | 5LTR 5099839329067",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 179.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 259.55,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 20.68018,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 9.8003,
               "t": "pct"
             }
@@ -938,7 +1974,19 @@
               "v": "1670051 000 DB JUMBO KITCHEN TOWEL| 2ROLL 5099839668203",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 147.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 189.63,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 15.40274,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 9.9907,
               "t": "pct"
             }
@@ -948,7 +1996,19 @@
               "v": "1025921 000 SV CLOSED CUP MUSHROOMS| 250GRM 5099839045547",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 117.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 115.83,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 15.063749999999999,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 13.0051,
               "t": "pct"
             }
@@ -958,7 +2018,19 @@
               "v": "1000012 000 NON SCAN DELI & FOOD TO GO 912",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 1620.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 46.0,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 13.46341,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 36.0,
               "t": "pct"
             }
@@ -968,7 +2040,19 @@
               "v": "1018071 000 SV RED GRAPE SEEDLESS PNT | 500GRM 5099839095078",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 118.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 312.54,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 12.466000000000001,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 3.9886,
               "t": "pct"
             }
@@ -978,7 +2062,19 @@
               "v": "1380097 001 SUPERVALU ICE CUBES| 1.8KGM 5099839716614",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 128.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 125.44,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 10.07974,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 9.8837,
               "t": "pct"
             }
@@ -988,7 +2084,19 @@
               "v": "1026676 001 SV MILK CHOC DIGESTIVES| 300GRM 5099839338687",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 130.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 102.41,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 8.131870000000001,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 9.7668,
               "t": "pct"
             }
@@ -998,7 +2106,19 @@
               "v": "1003575 001 SUPERVALU STILL WATER | 2L 5099839727269",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 173.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 100.25,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 6.82688,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 8.3761,
               "t": "pct"
             }
@@ -1008,7 +2128,19 @@
               "v": "1401793 000 PP ELEC & GAS FEE | 1PCE 3497",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Qty": {
+              "v": 186.0,
+              "t": "num"
+            },
+            "Retail Sales €": {
+              "v": 93.0,
+              "t": "num"
+            },
+            "Retail Scan Margin €": {
+              "v": 0.9299999999999999,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
               "v": 1.0,
               "t": "pct"
             }
@@ -1020,469 +2152,13 @@
       "store": "Skerries",
       "code": "424",
       "report": "top cash margin lines",
-      "scraped_at": "2026-04-10T14:31:03.511166+01:00",
+      "scraped_at": "2026-04-10T15:38:45.291654+01:00",
       "date": "2026-04-10",
       "data": {
-        "headers": [
-          "Merchandising Structure - Article SV TB",
-          "Week 14 2026",
-          "Week 14 2026",
-          "Week 14 2026",
-          "Week 14 2026"
-        ],
-        "rows": [
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "Merchandising Structure - Article SV TB",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": "Retail Scan Margin %",
-              "t": "str"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1123802 000 CHICKEN FILLET ROLL LARGE | 1PCE 0251100000000",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 54.7057,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1150694 000 SV CHICKEN FILLETS 5FOR€6|125GRM 0290870000000",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 19.3591,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1386984 000 KEELINGS FAMILY PK STRAWBERRIES | 300GRM 53994356",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 12.5332,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1653589 000 PBOB CHICKEN SKEWERS | 1PCE 0249800000000",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 24.374,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1025220 000 SUPERVALU BAG FOR LIFE RECYCLED| 1PCE 5099839694455",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 54.9994,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1600350 000 SV FREE RANGE LARGE EGGS| 12PCE 5099839581724",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 20.9995,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1683185 003 SIGNATURE TASTES BLUEBERRY | 200GRM 5099839732867",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 16.014,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1040784 000 SAUSAGE ROLLS MULTI-BUY| 1PCE 0237890000000",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 57.4375,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1349780 001 SUPERQUINN PORK SAUSAGES| 480GRM 5099839584312",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 28.5227,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1148321 000 WASHED ROOSTER | 2.5KGM 5390563001572",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 33.1849,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1183884 001 AVONMORE LOW FAT SUPER MILK|1.75LTR 5011056021845",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 24.7458,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1035239 000 MEDIUM FRESH SALAD| 1PCE 61003",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 42.8351,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1858672 000 DEMI BAGUETTE| 130GRM 5099839724473",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 67.1253,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1018392 000 A/MORE LOW FAT SUPERMILK [T T]| 1LTR 5011056020428",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 24.0,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1013680 000 SV BANANAS  LOOSE NORMAL |1KGM 0287810000000",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 11.5708,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1183884 000 AVONMORE WHOLE SUPER MILK|1.75LTR 5011056021852",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 24.7458,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1018502 000 BRENNANS WHITE SLICED PAN PP .| 800GRM 5011059000014",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 13.8756,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1009043 000 SUPERVALU FRESH MILK| 3LTR 5099839260230",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 15.4615,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1016164 000 BRENNANS WHITE HALF PAN | 390GRM 5011059001158",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 32.0,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1118422 000 NOVELTY CAKE| 1PCE 0248200000000",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 43.25,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1310257 001 ALL BUTTER CROISSANT | 70GRM 7005",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 47.3129,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1000941 000 SUPERVALU IRISH CREAMERY BUTTER | 454GRM 5099839244650",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 7.5013,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1026343 000 SV FREE RANGE LARGE EGGS| 6PCE 5099839044380",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 12.9971,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1018390 000 AVONMORE MILK CARTON| 1LTR 5011056020350",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 19.4969,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1025460 000 SUPERVALU FRESH MILK| 2LTR 5099839041358",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 8.4444,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1008857 001 SV PINK LADY TRAY| 6PCE 5099839575327",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 13.4839,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1016345 000 SIG TASTES RASPBERRY| 125GRM 5099839255410",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 17.9931,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1020045 000 BREAKFAST SAUSAGES| 1PCE 0286870000000",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 65.3526,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1005787 000 AVONMORE FRESH MILK| 2LTR 5011056020053",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 14.4981,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1019540 000 SUPERVALU CUCUMBER [IRISH] | 1PCE 5099839311444",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 23.0337,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1025461 000 SUPERVALU LIGHT MILK | 2LTR 5099839041365",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 8.4444,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1040062 000 SUPERVALU FRESH MILK | 1LTR 5099839287916",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 14.6957,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1022674 001 SUPERVALU CARROT BAG [IRISH] | 1KGM 5099839280665",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 13.4975,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1021128 002 SIGNATURE TASTES CLEMENGOLD LOOSE| 1PCE 81983",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 22.0044,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1018071 000 SV RED GRAPE SEEDLESS PNT | 500GRM 5099839095078",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 10.9133,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1045844 000 SUPERVALU LIGHT MILK| 1LTR 5099839306396",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 14.6957,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1026694 000 SUPERVALU SCALLIONS BUNCH | 1PCE 88227",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 15.7303,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1176123 001 FIREBLOC FIRELOG 920G | 1PCE 8712483220180",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 9.0635,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1042892 005 PETIT PAIN LARGE | 74GRM 81302",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 60.9538,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1025921 000 SV CLOSED CUP MUSHROOMS| 250GRM 5099839045547",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 13.0051,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1021584 000 SUPERVALU PEARS LOOSE| 1PCE 4891",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 22.0145,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1018820 000 SV ORANGES LOOSE LARGE | 1PCE 5099839642845",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 17.9873,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1042883 001 WHITE BATCH CRUSTY ROLL| 90GRM 81300",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 54.5965,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "1134669 000 SUPERVALU RED PEPPERS| 1PCE 45822",
-              "t": "str"
-            },
-            "Week 14 2026": {
-              "v": 24.3119,
-              "t": "pct"
-            }
-          }
-        ]
-      }
+        "headers": [],
+        "rows": []
+      },
+      "error": "Could not select store '424 - Skerries'. Last: Locator.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"text=424\").first\n    - locator resolved to <div class=\"reportTitle\">Retail Qty, Retail Sales €, Retail Scan Margin €,…</div>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <input value=\"\" type=\"Text\" autocomplete=\"off\" placeholder=\"Search\" class=\"text-box-input\" id=\"text-box-inner-d20750f6-fd19-4378-9efe-17f0fc45e4a9\"/> from <div class=\"dropdown-container-tether drop-down-slicer-drop-down tether-element tether-enabled tether-element-attached-top tether-target-attached-bottom tether-abutted tether-abutted-left tether-element-attached-left tether-target-attached-left\">…</div> subtree intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <input value=\"\" type=\"Text\" autocomplete=\"off\" placeholder=\"Search\" class=\"text-box-input\" id=\"text-box-inner-d20750f6-fd19-4378-9efe-17f0fc45e4a9\"/> from <div class=\"dropdown-container-tether drop-down-slicer-drop-down tether-element tether-enabled tether-element-attached-top tether-target-attached-bottom tether-abutted tether-abutted-left tether-element-attached-left tether-target-attached-left\">…</div> subtree intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    9 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <input value=\"\" type=\"Text\" autocomplete=\"off\" placeholder=\"Search\" class=\"text-box-input\" id=\"text-box-inner-d20750f6-fd19-4378-9efe-17f0fc45e4a9\"/> from <div class=\"dropdown-container-tether drop-down-slicer-drop-down tether-element tether-enabled tether-element-attached-top tether-target-attached-bottom tether-abutted tether-abutted-left tether-element-attached-left tether-target-attached-left\">…</div> subtree intercepts pointer events\n    - retrying click action\n      - waiting 500ms\n"
     }
   }
 }
