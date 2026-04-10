@@ -4,7 +4,7 @@
       "store": "Palmerstown",
       "code": "356",
       "report": "meat weekly",
-      "scraped_at": "2026-04-10T16:20:14.489631+01:00",
+      "scraped_at": "2026-04-10T16:28:15.419487+01:00",
       "date": "2026-04-10",
       "data": {
         "headers": [],
@@ -16,7 +16,7 @@
       "store": "Balbriggan",
       "code": "374",
       "report": "meat weekly",
-      "scraped_at": "2026-04-10T16:20:14.489631+01:00",
+      "scraped_at": "2026-04-10T16:28:15.419487+01:00",
       "date": "2026-04-10",
       "data": {
         "headers": [],
@@ -28,13 +28,13 @@
       "store": "Skerries",
       "code": "424",
       "report": "meat weekly",
-      "scraped_at": "2026-04-10T16:20:14.489631+01:00",
+      "scraped_at": "2026-04-10T16:28:15.419487+01:00",
       "date": "2026-04-10",
       "data": {
         "headers": [],
         "rows": []
       },
-      "error": "Could not select store '424 - Skerries'. Last: None"
+      "error": "Page.wait_for_timeout: Target page, context or browser has been closed"
     }
   }
 }
