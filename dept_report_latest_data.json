@@ -4,16 +4,16 @@
       "store": "Palmerstown",
       "code": "356",
       "report": "department report latest week",
-      "scraped_at": "2026-04-10T14:31:03.511166+01:00",
+      "scraped_at": "2026-04-10T15:38:45.291654+01:00",
       "date": "2026-04-10",
       "data": {
         "headers": [
           "Merchandising Structure - Article SV TB",
-          "Week 14 2026",
-          "Week 14 2026",
-          "Week 14 2026",
-          "Week 14 2026",
-          "Week 14 2026"
+          "Retail Sales €",
+          "Retail Sales € TY LY Var",
+          "Retail Sales € TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
         ],
         "rows": [
           {
@@ -21,17 +21,23 @@
               "v": "Merchandising Structure - Article SV TB",
               "t": "str"
             },
-            "Week 14 2026": {
-              "v": "Retail Scan Margin % TY LY Var",
-              "t": "str"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "Merchandising Structure - Article SV TB",
+            "Retail Sales €": {
+              "v": "TY",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales € TY LY Var": {
+              "v": "TY",
+              "t": "str"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": "TY",
+              "t": "str"
+            },
+            "Retail Scan Margin %": {
+              "v": "TY",
+              "t": "str"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": "TY",
               "t": "str"
             }
@@ -41,7 +47,23 @@
               "v": "Total Merchandising Structure",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 399865.69,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 14787.5,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 3.8401,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.8351,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -0.6071,
               "t": "pct"
             }
@@ -51,7 +73,23 @@
               "v": "D0024 - GROCERY -  IMPULSE",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 75663.55,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 22019.8,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 41.0482,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 19.4044,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 2.0631,
               "t": "pct"
             }
@@ -61,7 +99,23 @@
               "v": "D0025 - GROCERY - EDIBLE",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 32687.98,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -1711.94,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -4.9766,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 13.1138,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -1.99,
               "t": "pct"
             }
@@ -71,7 +125,23 @@
               "v": "D0026 - GROCERY - NON FOOD",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 14521.86,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -2607.5,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -15.2224,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 15.2417,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 2.7179,
               "t": "pct"
             }
@@ -81,7 +151,23 @@
               "v": "D0027 - BABY & KIDS",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 2571.62,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -897.47,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -25.8705,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 10.1649,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 2.823,
               "t": "pct"
             }
@@ -91,7 +177,23 @@
               "v": "D0028 - PERSONAL CARE",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 6884.22,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -148.92,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -2.1174,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.1308,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -0.8889,
               "t": "pct"
             }
@@ -101,7 +203,23 @@
               "v": "D0029 - BEERS/WINES/SPIRITS",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 44762.54,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 3870.06,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 9.464,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 8.3385,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -3.0624,
               "t": "pct"
             }
@@ -111,7 +229,23 @@
               "v": "D0031 - TOBACCO",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 18732.8,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -269.34,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -1.4174,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 12.2529,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -0.8878,
               "t": "pct"
             }
@@ -121,7 +255,23 @@
               "v": "D0032 - PRODUCE",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 26177.3,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -6845.41,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -20.7294,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 20.3748,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 0.6215,
               "t": "pct"
             }
@@ -131,7 +281,23 @@
               "v": "D0033 - MEAT, POULTRY & FISH",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 29985.1,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 3070.94,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 11.4101,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.3252,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -2.1092,
               "t": "pct"
             }
@@ -141,7 +307,23 @@
               "v": "D0034 - DAIRY",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 27281.41,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -1775.0,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -6.1088,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.0529,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -0.8716,
               "t": "pct"
             }
@@ -151,7 +333,23 @@
               "v": "D0035 - BREAD AND CAKES",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 28038.2,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 407.28,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 1.474,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 32.7972,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -0.2787,
               "t": "pct"
             }
@@ -161,7 +359,23 @@
               "v": "D0036 - DELI  AND  FOOD TO GO",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 15722.83,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 348.7,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 2.2681,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 41.7385,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 1.1026,
               "t": "pct"
             }
@@ -171,7 +385,23 @@
               "v": "D0037 - PROVISIONS & CONVENIENCE",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 25332.58,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -3042.5,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -10.7224,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 21.2718,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -0.7777,
               "t": "pct"
             }
@@ -181,7 +411,23 @@
               "v": "D0038 - FROZEN FOODS",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 11540.69,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -692.46,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -5.6605,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 16.0258,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -1.4338,
               "t": "pct"
             }
@@ -191,7 +437,23 @@
               "v": "D0039 - NON FOOD - RETAIL",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 4755.19,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -364.83,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -7.1256,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 35.8569,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -3.2098,
               "t": "pct"
             }
@@ -201,7 +463,23 @@
               "v": "D0044 - NON FOOD - EXPENSE ITEMS & CONSUMER PROMOTIONS",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 1474.47,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 36.66,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 2.5497,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 73.0257,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 1.4726,
               "t": "pct"
             }
@@ -211,7 +489,23 @@
               "v": "D0045 - FUEL",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 421.72,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 288.05,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 215.4934,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 24.8411,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -4.4284,
               "t": "pct"
             }
@@ -221,7 +515,23 @@
               "v": "D0046 - NEWS & MAGS",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 3364.86,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -67.19,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -1.9577,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 24.6945,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 0.1905,
               "t": "pct"
             }
@@ -231,7 +541,23 @@
               "v": "D0047 - NON FOOD - INSTORE SERVICES",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 29942.78,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 3168.57,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 11.8344,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 2.51,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -0.5384,
               "t": "pct"
             }
@@ -241,7 +567,23 @@
               "v": "Unmatched - Unmatched",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 3.99,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 0.0,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 0.0,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 0.0,
               "t": "pct"
             }
@@ -253,16 +595,16 @@
       "store": "Balbriggan",
       "code": "374",
       "report": "department report latest week",
-      "scraped_at": "2026-04-10T14:31:03.511166+01:00",
+      "scraped_at": "2026-04-10T15:38:45.291654+01:00",
       "date": "2026-04-10",
       "data": {
         "headers": [
           "Merchandising Structure - Article SV TB",
-          "Week 14 2026",
-          "Week 14 2026",
-          "Week 14 2026",
-          "Week 14 2026",
-          "Week 14 2026"
+          "Retail Sales €",
+          "Retail Sales € TY LY Var",
+          "Retail Sales € TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
         ],
         "rows": [
           {
@@ -270,17 +612,23 @@
               "v": "Merchandising Structure - Article SV TB",
               "t": "str"
             },
-            "Week 14 2026": {
-              "v": "Retail Scan Margin % TY LY Var",
-              "t": "str"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "Merchandising Structure - Article SV TB",
+            "Retail Sales €": {
+              "v": "TY",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales € TY LY Var": {
+              "v": "TY",
+              "t": "str"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": "TY",
+              "t": "str"
+            },
+            "Retail Scan Margin %": {
+              "v": "TY",
+              "t": "str"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": "TY",
               "t": "str"
             }
@@ -290,7 +638,23 @@
               "v": "Total Merchandising Structure",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 341027.6,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 16149.04,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 4.9708,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.5419,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -1.5177,
               "t": "pct"
             }
@@ -300,7 +664,23 @@
               "v": "D0024 - GROCERY -  IMPULSE",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 55357.45,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 12067.56,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 27.8762,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.3011,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 1.8406,
               "t": "pct"
             }
@@ -310,7 +690,23 @@
               "v": "D0025 - GROCERY - EDIBLE",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 26901.67,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -1178.01,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -4.1952,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 13.6063,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -2.1215,
               "t": "pct"
             }
@@ -320,7 +716,23 @@
               "v": "D0026 - GROCERY - NON FOOD",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 13721.79,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -1235.77,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -8.2618,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 15.282,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 0.9329,
               "t": "pct"
             }
@@ -330,7 +742,23 @@
               "v": "D0027 - BABY & KIDS",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 2634.73,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -671.37,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -20.307,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 11.7495,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 10.5422,
               "t": "pct"
             }
@@ -340,7 +768,23 @@
               "v": "D0028 - PERSONAL CARE",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 6142.77,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -772.41,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -11.1698,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 16.3937,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -0.2801,
               "t": "pct"
             }
@@ -350,7 +794,23 @@
               "v": "D0029 - BEERS/WINES/SPIRITS",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 52284.86,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 10032.85,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 23.7453,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 7.774,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -3.5621,
               "t": "pct"
             }
@@ -360,7 +820,23 @@
               "v": "D0031 - TOBACCO",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 15092.75,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 1658.12,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 12.3421,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 9.208,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -1.2706,
               "t": "pct"
             }
@@ -370,7 +846,23 @@
               "v": "D0032 - PRODUCE",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 25956.32,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -2846.23,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -9.8819,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 19.1082,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -1.3077,
               "t": "pct"
             }
@@ -380,7 +872,23 @@
               "v": "D0033 - MEAT, POULTRY & FISH",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 30813.65,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 5677.57,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 22.5873,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.2847,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -3.1366,
               "t": "pct"
             }
@@ -390,7 +898,23 @@
               "v": "D0034 - DAIRY",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 23959.29,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -299.04,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -1.2327,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 15.7236,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -1.5356,
               "t": "pct"
             }
@@ -400,7 +924,23 @@
               "v": "D0035 - BREAD AND CAKES",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 25102.8,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -1759.38,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -6.5497,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 38.5637,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 1.3799,
               "t": "pct"
             }
@@ -410,7 +950,23 @@
               "v": "D0036 - DELI  AND  FOOD TO GO",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 10270.41,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -2239.34,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -17.9008,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 43.0948,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 0.2816,
               "t": "pct"
             }
@@ -420,7 +976,23 @@
               "v": "D0037 - PROVISIONS & CONVENIENCE",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 18984.64,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -1748.56,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -8.4336,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 21.2246,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -1.6486,
               "t": "pct"
             }
@@ -430,7 +1002,23 @@
               "v": "D0038 - FROZEN FOODS",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 9067.57,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 10.72,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 0.1184,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 14.8977,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -1.5576,
               "t": "pct"
             }
@@ -440,7 +1028,23 @@
               "v": "D0039 - NON FOOD - RETAIL",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 4216.83,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -286.77,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -6.3676,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 31.2599,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -5.5011,
               "t": "pct"
             }
@@ -450,7 +1054,23 @@
               "v": "D0044 - NON FOOD - EXPENSE ITEMS & CONSUMER PROMOTIONS",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 1440.6,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 1.07,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 0.0743,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 72.9965,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -0.867,
               "t": "pct"
             }
@@ -460,7 +1080,23 @@
               "v": "D0045 - FUEL",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 67.5,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -45.74,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -40.3921,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 4.9944,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -15.978,
               "t": "pct"
             }
@@ -470,7 +1106,23 @@
               "v": "D0046 - NEWS & MAGS",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 2477.27,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -69.86,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -2.7427,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 25.486,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 0.1673,
               "t": "pct"
             }
@@ -480,7 +1132,23 @@
               "v": "D0047 - NON FOOD - INSTORE SERVICES",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 16534.7,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -146.37,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -0.8775,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 3.9075,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 0.0202,
               "t": "pct"
             }
@@ -492,16 +1160,16 @@
       "store": "Skerries",
       "code": "424",
       "report": "department report latest week",
-      "scraped_at": "2026-04-10T14:31:03.511166+01:00",
+      "scraped_at": "2026-04-10T15:38:45.291654+01:00",
       "date": "2026-04-10",
       "data": {
         "headers": [
           "Merchandising Structure - Article SV TB",
-          "Week 14 2026",
-          "Week 14 2026",
-          "Week 14 2026",
-          "Week 14 2026",
-          "Week 14 2026"
+          "Retail Sales €",
+          "Retail Sales € TY LY Var",
+          "Retail Sales € TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
         ],
         "rows": [
           {
@@ -509,17 +1177,23 @@
               "v": "Merchandising Structure - Article SV TB",
               "t": "str"
             },
-            "Week 14 2026": {
-              "v": "Retail Scan Margin % TY LY Var",
-              "t": "str"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "Merchandising Structure - Article SV TB",
+            "Retail Sales €": {
+              "v": "TY",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales € TY LY Var": {
+              "v": "TY",
+              "t": "str"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": "TY",
+              "t": "str"
+            },
+            "Retail Scan Margin %": {
+              "v": "TY",
+              "t": "str"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": "TY",
               "t": "str"
             }
@@ -529,7 +1203,23 @@
               "v": "Total Merchandising Structure",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 414682.78,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 33511.23,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 8.7916,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.2431,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -1.193,
               "t": "pct"
             }
@@ -539,7 +1229,23 @@
               "v": "D0024 - GROCERY -  IMPULSE",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 67500.42,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 23211.41,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 52.409,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 19.3176,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 1.589,
               "t": "pct"
             }
@@ -549,7 +1255,23 @@
               "v": "D0025 - GROCERY - EDIBLE",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 44133.9,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 2797.73,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 6.7682,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 13.551,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -1.2356,
               "t": "pct"
             }
@@ -559,7 +1281,23 @@
               "v": "D0026 - GROCERY - NON FOOD",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 19116.02,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -1900.74,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -9.0439,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 14.933,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 0.8273,
               "t": "pct"
             }
@@ -569,7 +1307,23 @@
               "v": "D0027 - BABY & KIDS",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 3371.56,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -284.96,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -7.7932,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 11.8218,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 4.8227,
               "t": "pct"
             }
@@ -579,7 +1333,23 @@
               "v": "D0028 - PERSONAL CARE",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 8386.88,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -387.44,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -4.4156,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 16.2171,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -0.8204,
               "t": "pct"
             }
@@ -589,7 +1359,23 @@
               "v": "D0029 - BEERS/WINES/SPIRITS",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 55943.55,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 6199.3,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 12.4623,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 8.837,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -2.6322,
               "t": "pct"
             }
@@ -599,7 +1385,23 @@
               "v": "D0031 - TOBACCO",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 8896.9,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -486.55,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -5.1852,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 12.3941,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -1.1802,
               "t": "pct"
             }
@@ -609,7 +1411,23 @@
               "v": "D0032 - PRODUCE",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 40091.78,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -1748.77,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -4.1796,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 18.1283,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -2.0592,
               "t": "pct"
             }
@@ -619,7 +1437,23 @@
               "v": "D0033 - MEAT, POULTRY & FISH",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 40191.61,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 4164.34,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 11.5589,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 18.329,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -2.3061,
               "t": "pct"
             }
@@ -629,7 +1463,23 @@
               "v": "D0034 - DAIRY",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 36497.4,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 1972.55,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 5.7134,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 15.8064,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -0.8689,
               "t": "pct"
             }
@@ -639,7 +1489,23 @@
               "v": "D0035 - BREAD AND CAKES",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 22321.78,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -792.72,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -3.4295,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 28.3287,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -1.0978,
               "t": "pct"
             }
@@ -649,7 +1515,23 @@
               "v": "D0036 - DELI  AND  FOOD TO GO",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 8720.99,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -2959.11,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -25.3346,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 41.9312,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 0.5808,
               "t": "pct"
             }
@@ -659,7 +1541,23 @@
               "v": "D0037 - PROVISIONS & CONVENIENCE",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 27635.36,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 3427.89,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 14.1605,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 19.6967,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -0.8212,
               "t": "pct"
             }
@@ -669,7 +1567,23 @@
               "v": "D0038 - FROZEN FOODS",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 15128.82,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 920.41,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 6.4779,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 14.9067,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -1.2284,
               "t": "pct"
             }
@@ -679,7 +1593,23 @@
               "v": "D0039 - NON FOOD - RETAIL",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 4017.5,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -392.89,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -8.9083,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 38.2987,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -1.4925,
               "t": "pct"
             }
@@ -689,7 +1619,23 @@
               "v": "D0044 - NON FOOD - EXPENSE ITEMS & CONSUMER PROMOTIONS",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 863.94,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 59.65,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 7.4165,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 55.9192,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -5.3421,
               "t": "pct"
             }
@@ -699,7 +1645,23 @@
               "v": "D0045 - FUEL",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 645.44,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 526.49,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 442.6145,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 20.2859,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -0.5647,
               "t": "pct"
             }
@@ -709,7 +1671,23 @@
               "v": "D0046 - NEWS & MAGS",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 3551.05,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -292.67,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -7.6142,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 24.7463,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -0.2209,
               "t": "pct"
             }
@@ -719,7 +1697,23 @@
               "v": "D0047 - NON FOOD - INSTORE SERVICES",
               "t": "str"
             },
-            "Week 14 2026": {
+            "Retail Sales €": {
+              "v": 7667.88,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -522.69,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -6.3816,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 4.4226,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 0.5757,
               "t": "pct"
             }
