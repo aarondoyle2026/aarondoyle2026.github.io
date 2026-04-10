@@ -4,34 +4,40 @@
       "store": "Palmerstown",
       "code": "356",
       "report": "meat weekly",
-      "scraped_at": "2026-04-10T14:31:03.511166+01:00",
+      "scraped_at": "2026-04-10T15:38:45.291654+01:00",
       "date": "2026-04-10",
       "data": {
         "headers": [
           "Merchandising Structure - Article SV TB",
-          "Latest Calendar Week",
-          "Latest Calendar Week",
-          "Latest Calendar Week",
-          "Latest Calendar Week",
-          "Latest Calendar Week"
+          "Retail Sales €",
+          "Retail Sales € TY LY Var",
+          "Retail Sales € TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
         ],
         "rows": [
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "Merchandising Structure - Article SV TB",
-              "t": "str"
-            },
-            "Latest Calendar Week": {
-              "v": "Retail Scan Margin % TY LY Var",
-              "t": "str"
-            }
-          },
           {
             "Merchandising Structure - Article SV TB": {
               "v": "D0033 - MEAT, POULTRY & FISH",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 29985.1,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 3070.94,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 11.4101,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.3252,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -2.1092,
               "t": "pct"
             }
@@ -41,7 +47,23 @@
               "v": "S0075 - FISH SERVEOVER",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 1848.64,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 210.36,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 12.8403,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 19.3198,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -11.982,
               "t": "pct"
             }
@@ -51,7 +73,23 @@
               "v": "S0078 - LOOSE SAUSAGES, BACON & PUDDINGS",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 827.62,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 195.45,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 30.9173,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 44.3996,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 4.8461,
               "t": "pct"
             }
@@ -61,7 +99,23 @@
               "v": "C0738 - BEEF SERVEOVER",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 5484.13,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 825.22,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 17.7127,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 25.1444,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 0.5336,
               "t": "pct"
             }
@@ -71,7 +125,23 @@
               "v": "C0739 - LAMB SERVEOVER",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 1392.01,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 880.73,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 172.2598,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 24.2942,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -12.3145,
               "t": "pct"
             }
@@ -81,7 +151,23 @@
               "v": "C0740 - PORK SERVEOVER",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 990.18,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 115.76,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 13.2385,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 25.0475,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -8.7951,
               "t": "pct"
             }
@@ -91,7 +177,23 @@
               "v": "C0741 - BACON JOINTS SERVEOVER",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 32.86,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 32.86,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Scan Margin %": {
+              "v": 26.6358,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 26.6358,
               "t": "pct"
             }
@@ -101,7 +203,23 @@
               "v": "C0742 - CHICKEN SERVEOVER",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 1729.92,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -420.24,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -19.5446,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 24.9896,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -5.1177,
               "t": "pct"
             }
@@ -111,7 +229,23 @@
               "v": "C0743 - TURKEY SERVEOVER",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 408.63,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 408.63,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.5119,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 17.5119,
               "t": "pct"
             }
@@ -121,7 +255,23 @@
               "v": "C0746 - FRESHLY PREPARED BY INGREDIENTS",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 801.0,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 405.5,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 102.5284,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 20.573,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -27.3882,
               "t": "pct"
             }
@@ -131,7 +281,23 @@
               "v": "C0747 - BEEF PREPACK",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 5129.03,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 610.44,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 13.5095,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 10.4284,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -1.1828,
               "t": "pct"
             }
@@ -141,7 +307,23 @@
               "v": "C0748 - LAMB PREPACK",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 1402.79,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 521.31,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 59.1403,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 12.6679,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 0.578,
               "t": "pct"
             }
@@ -151,7 +333,23 @@
               "v": "C0749 - PORK PREPACK",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 504.75,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -85.36,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -14.4651,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 13.6713,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -0.3937,
               "t": "pct"
             }
@@ -161,7 +359,23 @@
               "v": "C0750 - BACON JOINTS PREPACK",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 1219.48,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -108.63,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -8.1793,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 11.4404,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -1.7891,
               "t": "pct"
             }
@@ -171,7 +385,23 @@
               "v": "C0751 - CHICKEN PREPACK",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 4530.37,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -480.29,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -9.5854,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 11.3189,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -1.3484,
               "t": "pct"
             }
@@ -181,7 +411,23 @@
               "v": "C0752 - TURKEY PREPACK",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 529.55,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 126.09,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 31.2522,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 15.0064,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -3.8472,
               "t": "pct"
             }
@@ -191,7 +437,23 @@
               "v": "C0753 - BRD POULTRY PREPACK",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 1067.31,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -39.07,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -3.5313,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 16.5038,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -0.6171,
               "t": "pct"
             }
@@ -201,7 +463,23 @@
               "v": "C0754 - GAME PREPACK",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 138.65,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 53.02,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 61.9176,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 4.3815,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 12.8667,
               "t": "pct"
             }
@@ -211,7 +489,23 @@
               "v": "S0157 - FISH PREPACK",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 1948.18,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -180.84,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -8.494,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 6.7873,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -3.458,
               "t": "pct"
             }
@@ -223,34 +517,40 @@
       "store": "Balbriggan",
       "code": "374",
       "report": "meat weekly",
-      "scraped_at": "2026-04-10T14:31:03.511166+01:00",
+      "scraped_at": "2026-04-10T15:38:45.291654+01:00",
       "date": "2026-04-10",
       "data": {
         "headers": [
           "Merchandising Structure - Article SV TB",
-          "Latest Calendar Week",
-          "Latest Calendar Week",
-          "Latest Calendar Week",
-          "Latest Calendar Week",
-          "Latest Calendar Week"
+          "Retail Sales €",
+          "Retail Sales € TY LY Var",
+          "Retail Sales € TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
         ],
         "rows": [
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "Merchandising Structure - Article SV TB",
-              "t": "str"
-            },
-            "Latest Calendar Week": {
-              "v": "Retail Scan Margin % TY LY Var",
-              "t": "str"
-            }
-          },
           {
             "Merchandising Structure - Article SV TB": {
               "v": "D0033 - MEAT, POULTRY & FISH",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 30813.65,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 5677.57,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 22.5873,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.2847,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -3.1366,
               "t": "pct"
             }
@@ -260,7 +560,23 @@
               "v": "S0075 - FISH SERVEOVER",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 1903.33,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 610.32,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 47.2015,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 15.5521,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -6.1943,
               "t": "pct"
             }
@@ -270,7 +586,23 @@
               "v": "S0078 - LOOSE SAUSAGES, BACON & PUDDINGS",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 448.04,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 275.08,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 159.0426,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 37.3841,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -2.2138,
               "t": "pct"
             }
@@ -280,7 +612,23 @@
               "v": "C0738 - BEEF SERVEOVER",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 7176.33,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 2090.65,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 41.1086,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 21.8048,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -9.3103,
               "t": "pct"
             }
@@ -290,7 +638,23 @@
               "v": "C0739 - LAMB SERVEOVER",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 1796.99,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 1022.9,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 132.1423,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 26.9355,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -6.8214,
               "t": "pct"
             }
@@ -300,7 +664,23 @@
               "v": "C0740 - PORK SERVEOVER",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 648.69,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -162.54,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -20.0362,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 24.6124,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 1.6392,
               "t": "pct"
             }
@@ -310,7 +690,23 @@
               "v": "C0742 - CHICKEN SERVEOVER",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 1747.42,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -279.6,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -13.7936,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 24.6323,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -1.2077,
               "t": "pct"
             }
@@ -320,7 +716,23 @@
               "v": "C0743 - TURKEY SERVEOVER",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 376.94,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 376.94,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Scan Margin %": {
+              "v": 20.089,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 20.089,
               "t": "pct"
             }
@@ -330,7 +742,23 @@
               "v": "C0744 - BRD POULTRY SERVEOVER",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -115.05,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -100.0,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -28.0678,
               "t": "pct"
             }
@@ -340,7 +768,23 @@
               "v": "C0746 - FRESHLY PREPARED BY INGREDIENTS",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 780.0,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 513.5,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 192.6829,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 27.2729,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -3.4288,
               "t": "pct"
             }
@@ -350,7 +794,23 @@
               "v": "C0747 - BEEF PREPACK",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 4593.08,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 404.26,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 9.6509,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 10.195,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -5.8571,
               "t": "pct"
             }
@@ -360,7 +820,23 @@
               "v": "C0748 - LAMB PREPACK",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 1577.2,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 923.49,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 141.2691,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 11.1078,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -1.9907,
               "t": "pct"
             }
@@ -370,7 +846,23 @@
               "v": "C0749 - PORK PREPACK",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 593.67,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -127.14,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -17.6385,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 12.663,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 1.8521,
               "t": "pct"
             }
@@ -380,7 +872,23 @@
               "v": "C0750 - BACON JOINTS PREPACK",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 1322.16,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 482.87,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 57.5332,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 11.892,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -3.9545,
               "t": "pct"
             }
@@ -390,7 +898,23 @@
               "v": "C0751 - CHICKEN PREPACK",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 5120.9,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -342.03,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -6.2609,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 13.1648,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -1.2736,
               "t": "pct"
             }
@@ -400,7 +924,23 @@
               "v": "C0752 - TURKEY PREPACK",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 269.72,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -49.96,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -15.6281,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 19.3171,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 1.8602,
               "t": "pct"
             }
@@ -410,7 +950,23 @@
               "v": "C0753 - BRD POULTRY PREPACK",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 971.63,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 117.15,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 13.7101,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 15.9881,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 1.8396,
               "t": "pct"
             }
@@ -420,7 +976,23 @@
               "v": "C0754 - GAME PREPACK",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 95.7,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -45.51,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -32.2286,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 14.7858,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -1.2577,
               "t": "pct"
             }
@@ -430,7 +1002,23 @@
               "v": "S0157 - FISH PREPACK",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 1391.85,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -17.76,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -1.2599,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 11.7515,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 0.5145,
               "t": "pct"
             }
@@ -442,34 +1030,40 @@
       "store": "Skerries",
       "code": "424",
       "report": "meat weekly",
-      "scraped_at": "2026-04-10T14:31:03.511166+01:00",
+      "scraped_at": "2026-04-10T15:38:45.291654+01:00",
       "date": "2026-04-10",
       "data": {
         "headers": [
           "Merchandising Structure - Article SV TB",
-          "Latest Calendar Week",
-          "Latest Calendar Week",
-          "Latest Calendar Week",
-          "Latest Calendar Week",
-          "Latest Calendar Week"
+          "Retail Sales €",
+          "Retail Sales € TY LY Var",
+          "Retail Sales € TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
         ],
         "rows": [
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "Merchandising Structure - Article SV TB",
-              "t": "str"
-            },
-            "Latest Calendar Week": {
-              "v": "Retail Scan Margin % TY LY Var",
-              "t": "str"
-            }
-          },
           {
             "Merchandising Structure - Article SV TB": {
               "v": "D0033 - MEAT, POULTRY & FISH",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 40191.61,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 4164.34,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 11.5589,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 18.329,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -2.3061,
               "t": "pct"
             }
@@ -479,7 +1073,23 @@
               "v": "S0075 - FISH SERVEOVER",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 3231.01,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 599.74,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 22.7928,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 15.6538,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -9.9031,
               "t": "pct"
             }
@@ -489,7 +1099,23 @@
               "v": "S0078 - LOOSE SAUSAGES, BACON & PUDDINGS",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 88.93,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 9.45,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 11.8898,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 40.7088,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 0.0089,
               "t": "pct"
             }
@@ -499,7 +1125,23 @@
               "v": "C0738 - BEEF SERVEOVER",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 6282.03,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 129.68,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 2.1078,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 27.9264,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -2.5505,
               "t": "pct"
             }
@@ -509,7 +1151,23 @@
               "v": "C0739 - LAMB SERVEOVER",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 2736.34,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 1802.73,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 193.0924,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 24.8587,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -8.6268,
               "t": "pct"
             }
@@ -519,7 +1177,23 @@
               "v": "C0740 - PORK SERVEOVER",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 854.95,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -268.59,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -23.9057,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 25.6559,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 3.4734,
               "t": "pct"
             }
@@ -529,7 +1203,23 @@
               "v": "C0742 - CHICKEN SERVEOVER",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 4227.82,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 575.09,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 15.7441,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 22.7881,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -6.7536,
               "t": "pct"
             }
@@ -539,7 +1229,23 @@
               "v": "C0743 - TURKEY SERVEOVER",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 327.48,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 275.48,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 529.7692,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 34.7871,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -4.5975,
               "t": "pct"
             }
@@ -549,7 +1255,23 @@
               "v": "C0746 - FRESHLY PREPARED BY INGREDIENTS",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 331.0,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 119.5,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 56.5012,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 20.5519,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -16.9651,
               "t": "pct"
             }
@@ -559,7 +1281,23 @@
               "v": "C0747 - BEEF PREPACK",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 7177.1,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 1061.84,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 17.3638,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 15.1428,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -1.4512,
               "t": "pct"
             }
@@ -569,7 +1307,23 @@
               "v": "C0748 - LAMB PREPACK",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 681.12,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 61.88,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 9.9929,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 19.1094,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -5.2933,
               "t": "pct"
             }
@@ -579,7 +1333,23 @@
               "v": "C0749 - PORK PREPACK",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 980.72,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 38.56,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 4.0927,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 14.6825,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 0.3511,
               "t": "pct"
             }
@@ -589,7 +1359,23 @@
               "v": "C0750 - BACON JOINTS PREPACK",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 1620.84,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 697.03,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 75.4517,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 9.6879,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -3.2165,
               "t": "pct"
             }
@@ -599,7 +1385,23 @@
               "v": "C0751 - CHICKEN PREPACK",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 5437.01,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -1256.79,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -18.7754,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 11.8296,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 0.3484,
               "t": "pct"
             }
@@ -609,7 +1411,23 @@
               "v": "C0752 - TURKEY PREPACK",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 511.53,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -123.82,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -19.4885,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 13.7284,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -5.4311,
               "t": "pct"
             }
@@ -619,7 +1437,23 @@
               "v": "C0753 - BRD POULTRY PREPACK",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 1922.41,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 171.65,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 9.8043,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.6793,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 0.7814,
               "t": "pct"
             }
@@ -629,7 +1463,23 @@
               "v": "C0754 - GAME PREPACK",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 170.72,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -103.27,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -37.6912,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 12.3204,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": 10.747,
               "t": "pct"
             }
@@ -639,7 +1489,23 @@
               "v": "S0157 - FISH PREPACK",
               "t": "str"
             },
-            "Latest Calendar Week": {
+            "Retail Sales €": {
+              "v": 3529.38,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 413.95,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 13.2871,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 11.6646,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
               "v": -2.9898,
               "t": "pct"
             }
