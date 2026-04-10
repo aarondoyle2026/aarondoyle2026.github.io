@@ -4,37 +4,241 @@
       "store": "Palmerstown",
       "code": "356",
       "report": "produce weekly",
-      "scraped_at": "2026-04-10T08:59:40.441051+01:00",
+      "scraped_at": "2026-04-10T10:15:11.540105+01:00",
       "date": "2026-04-10",
       "data": {
-        "headers": [],
-        "rows": []
-      },
-      "error": "Page.goto: Target page, context or browser has been closed"
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Latest Calendar Week",
+          "Latest Calendar Week",
+          "Latest Calendar Week",
+          "Latest Calendar Week",
+          "Latest Calendar Week"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "Merchandising Structure - Article SV TB",
+              "t": "str"
+            },
+            "Latest Calendar Week": {
+              "v": "Retail Scan Margin % TY LY Var",
+              "t": "str"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0032 - PRODUCE",
+              "t": "str"
+            },
+            "Latest Calendar Week": {
+              "v": 0.6215,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0058 - FRUIT",
+              "t": "str"
+            },
+            "Latest Calendar Week": {
+              "v": -1.5701,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0060 - CHILLED FRUIT",
+              "t": "str"
+            },
+            "Latest Calendar Week": {
+              "v": -1.4043,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0061 - ORGANIC PRODUCE",
+              "t": "str"
+            },
+            "Latest Calendar Week": {
+              "v": -2.6814,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0062 - POTATOES",
+              "t": "str"
+            },
+            "Latest Calendar Week": {
+              "v": -2.174,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0063 - VEG",
+              "t": "str"
+            },
+            "Latest Calendar Week": {
+              "v": -2.7967,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0064 - PREPARED PRODUCE",
+              "t": "str"
+            },
+            "Latest Calendar Week": {
+              "v": -2.9559,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0066 - HORTICULTURE",
+              "t": "str"
+            },
+            "Latest Calendar Week": {
+              "v": 12.9103,
+              "t": "pct"
+            }
+          }
+        ]
+      }
     },
     "Balbriggan": {
       "store": "Balbriggan",
       "code": "374",
       "report": "produce weekly",
-      "scraped_at": "2026-04-10T08:59:40.441051+01:00",
+      "scraped_at": "2026-04-10T10:15:11.540105+01:00",
       "date": "2026-04-10",
       "data": {
-        "headers": [],
-        "rows": []
-      },
-      "error": "Page.goto: Target page, context or browser has been closed"
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Latest Calendar Week",
+          "Latest Calendar Week",
+          "Latest Calendar Week",
+          "Latest Calendar Week",
+          "Latest Calendar Week"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "Merchandising Structure - Article SV TB",
+              "t": "str"
+            },
+            "Latest Calendar Week": {
+              "v": "Retail Scan Margin % TY LY Var",
+              "t": "str"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0032 - PRODUCE",
+              "t": "str"
+            },
+            "Latest Calendar Week": {
+              "v": -1.3077,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0058 - FRUIT",
+              "t": "str"
+            },
+            "Latest Calendar Week": {
+              "v": -3.245,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0060 - CHILLED FRUIT",
+              "t": "str"
+            },
+            "Latest Calendar Week": {
+              "v": -0.1148,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0061 - ORGANIC PRODUCE",
+              "t": "str"
+            },
+            "Latest Calendar Week": {
+              "v": 5.8231,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0062 - POTATOES",
+              "t": "str"
+            },
+            "Latest Calendar Week": {
+              "v": -0.4498,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0063 - VEG",
+              "t": "str"
+            },
+            "Latest Calendar Week": {
+              "v": -9.4978,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0064 - PREPARED PRODUCE",
+              "t": "str"
+            },
+            "Latest Calendar Week": {
+              "v": -4.3028,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0065 - SEASONAL PRODUCE",
+              "t": "str"
+            },
+            "Latest Calendar Week": {
+              "v": 44.7739,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0066 - HORTICULTURE",
+              "t": "str"
+            },
+            "Latest Calendar Week": {
+              "v": 5.1893,
+              "t": "pct"
+            }
+          }
+        ]
+      }
     },
     "Skerries": {
       "store": "Skerries",
       "code": "424",
       "report": "produce weekly",
-      "scraped_at": "2026-04-10T08:59:40.441051+01:00",
+      "scraped_at": "2026-04-10T10:15:11.540105+01:00",
       "date": "2026-04-10",
       "data": {
         "headers": [],
         "rows": []
       },
-      "error": "Page.goto: Target page, context or browser has been closed"
+      "error": "Could not select store '424 - Skerries'. Last: Locator.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"text=424\").first\n    - locator resolved to <div>5,424.36</div>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div data-col=\"6\" data-row=\"6\" data-format-type=\"gridData\" data-cartesian-positions=\"6,0\">…</div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div data-col=\"6\" data-row=\"6\" data-format-type=\"gridData\" data-cartesian-positions=\"6,0\">…</div> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    9 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div data-col=\"6\" data-row=\"6\" data-format-type=\"gridData\" data-cartesian-positions=\"6,0\">…</div> intercepts pointer events\n    - retrying click action\n      - waiting 500ms\n"
     }
   }
 }
