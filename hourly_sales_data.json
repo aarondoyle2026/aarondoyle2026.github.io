@@ -4,37 +4,187 @@
       "store": "Palmerstown",
       "code": "356",
       "report": "hourly sales",
-      "scraped_at": "2026-04-10T10:15:11.540105+01:00",
+      "scraped_at": "2026-04-10T13:59:55.574287+01:00",
       "date": "2026-04-10",
       "data": {
-        "headers": [],
-        "rows": []
-      },
-      "error": "Could not find favourite: 014. Hourly Sales"
+        "headers": [
+          "hourly sales"
+        ],
+        "rows": [
+          {
+            "hourly sales": {
+              "v": "Retail Sales Hourly €, Retail Transaction Count, Retail Sales Average Spend €, Retail Transaction Count TY LY Var, Retail Sales Average Spend € TY LY Var by Hour, Calendar (Consumer Offer No, Fuel No, Total Merchandising Structure, 374   - BALBRIGGAN -MORIARTY, TY)",
+              "t": "str"
+            }
+          },
+          {
+            "hourly sales": {
+              "v": "Measures",
+              "t": "str"
+            }
+          },
+          {
+            "hourly sales": {
+              "v": "Measures",
+              "t": "str"
+            }
+          },
+          {
+            "hourly sales": {
+              "v": "Retail Sales Hourly €",
+              "t": "str"
+            }
+          },
+          {
+            "hourly sales": {
+              "v": "Retail Transaction Count",
+              "t": "str"
+            }
+          },
+          {
+            "hourly sales": {
+              "v": "Retail Sales Average Spend €",
+              "t": "str"
+            }
+          },
+          {
+            "hourly sales": {
+              "v": "Retail Transaction Count TY LY Var",
+              "t": "str"
+            }
+          },
+          {
+            "hourly sales": {
+              "v": "Retail Sales Average Spend € TY LY Var",
+              "t": "str"
+            }
+          }
+        ]
+      }
     },
     "Balbriggan": {
       "store": "Balbriggan",
       "code": "374",
       "report": "hourly sales",
-      "scraped_at": "2026-04-10T10:15:11.540105+01:00",
+      "scraped_at": "2026-04-10T13:59:55.574287+01:00",
       "date": "2026-04-10",
       "data": {
-        "headers": [],
-        "rows": []
-      },
-      "error": "Could not find favourite: 014. Hourly Sales"
+        "headers": [
+          "hourly sales"
+        ],
+        "rows": [
+          {
+            "hourly sales": {
+              "v": "Retail Sales Hourly €, Retail Transaction Count, Retail Sales Average Spend €, Retail Transaction Count TY LY Var, Retail Sales Average Spend € TY LY Var by Hour, Calendar (Consumer Offer No, Fuel No, Total Merchandising Structure, 374   - BALBRIGGAN -MORIARTY, TY)",
+              "t": "str"
+            }
+          },
+          {
+            "hourly sales": {
+              "v": "Measures",
+              "t": "str"
+            }
+          },
+          {
+            "hourly sales": {
+              "v": "Measures",
+              "t": "str"
+            }
+          },
+          {
+            "hourly sales": {
+              "v": "Retail Sales Hourly €",
+              "t": "str"
+            }
+          },
+          {
+            "hourly sales": {
+              "v": "Retail Transaction Count",
+              "t": "str"
+            }
+          },
+          {
+            "hourly sales": {
+              "v": "Retail Sales Average Spend €",
+              "t": "str"
+            }
+          },
+          {
+            "hourly sales": {
+              "v": "Retail Transaction Count TY LY Var",
+              "t": "str"
+            }
+          },
+          {
+            "hourly sales": {
+              "v": "Retail Sales Average Spend € TY LY Var",
+              "t": "str"
+            }
+          }
+        ]
+      }
     },
     "Skerries": {
       "store": "Skerries",
       "code": "424",
       "report": "hourly sales",
-      "scraped_at": "2026-04-10T10:15:11.540105+01:00",
+      "scraped_at": "2026-04-10T13:59:55.574287+01:00",
       "date": "2026-04-10",
       "data": {
-        "headers": [],
-        "rows": []
-      },
-      "error": "Could not find favourite: 014. Hourly Sales"
+        "headers": [
+          "hourly sales"
+        ],
+        "rows": [
+          {
+            "hourly sales": {
+              "v": "Retail Sales Hourly €, Retail Transaction Count, Retail Sales Average Spend €, Retail Transaction Count TY LY Var, Retail Sales Average Spend € TY LY Var by Hour, Calendar (Consumer Offer No, Fuel No, Total Merchandising Structure, 374   - BALBRIGGAN -MORIARTY, TY)",
+              "t": "str"
+            }
+          },
+          {
+            "hourly sales": {
+              "v": "Measures",
+              "t": "str"
+            }
+          },
+          {
+            "hourly sales": {
+              "v": "Measures",
+              "t": "str"
+            }
+          },
+          {
+            "hourly sales": {
+              "v": "Retail Sales Hourly €",
+              "t": "str"
+            }
+          },
+          {
+            "hourly sales": {
+              "v": "Retail Transaction Count",
+              "t": "str"
+            }
+          },
+          {
+            "hourly sales": {
+              "v": "Retail Sales Average Spend €",
+              "t": "str"
+            }
+          },
+          {
+            "hourly sales": {
+              "v": "Retail Transaction Count TY LY Var",
+              "t": "str"
+            }
+          },
+          {
+            "hourly sales": {
+              "v": "Retail Sales Average Spend € TY LY Var",
+              "t": "str"
+            }
+          }
+        ]
+      }
     }
   }
 }
