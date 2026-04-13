@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Insights — Moriarty Group</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark: #0d2b1a;
+    --green-mid: #1a4a2e;
+    --green-accent: #2d7a4f;
+    --green-light: #3da066;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --cream: #f5f0e8;
+    --text-primary: #f0ede6;
+    --text-muted: #8fa899;
+    --red-flag: #e05555;
+    --card-bg: rgba(255,255,255,0.04);
+    --card-border: rgba(255,255,255,0.08);
+  }
+
+- { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+background: var(–green-dark);
+color: var(–text-primary);
+font-family: ‘DM Sans’, sans-serif;
+min-height: 100vh;
+background-image:
+radial-gradient(ellipse at 10% 20%, rgba(45,122,79,0.18) 0%, transparent 50%),
+radial-gradient(ellipse at 90% 80%, rgba(201,168,76,0.08) 0%, transparent 50%);
+}
+
+/* HEADER */
+.header {
+padding: 20px 20px 16px;
+display: flex;
+align-items: center;
+gap: 14px;
+border-bottom: 1px solid var(–card-border);
+}
+.header-back {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 36px;
+height: 36px;
+border-radius: 10px;
+background: var(–card-bg);
+border: 1px solid var(–card-border);
+color: var(–text-muted);
+text-decoration: none;
+font-size: 18px;
+flex-shrink: 0;
+}
+.header-titles { flex: 1; }
+.header-eyebrow {
+font-family: ‘DM Mono’, monospace;
+font-size: 10px;
+letter-spacing: 0.15em;
+color: var(–gold);
+text-transform: uppercase;
+margin-bottom: 2px;
+}
+.header-title {
+font-family: ‘DM Serif Display’, serif;
+font-size: 22px;
+line-height: 1.1;
+}
+.header-badge {
+display: flex;
+align-items: center;
+gap: 6px;
+background: rgba(45,122,79,0.2);
+border: 1px solid rgba(45,122,79,0.4);
+border-radius: 20px;
+padding: 4px 10px;
+font-size: 11px;
+color: var(–green-light);
+font-family: ‘DM Mono’, monospace;
+flex-shrink: 0;
+}
+.pulse {
+width: 7px; height: 7px;
+border-radius: 50%;
+background: var(–green-light);
+animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+0%,100% { opacity:1; transform:scale(1); }
+50%      { opacity:.4; transform:scale(.7); }
+}
+
+/* LOADING */
+.loading-screen { padding: 60px 20px; text-align: center; }
+.loading-orb {
+width: 72px; height: 72px;
+border-radius: 50%;
+background: radial-gradient(circle at 35% 35%, var(–green-light), var(–green-dark));
+margin: 0 auto 24px;
+animation: orbPulse 2.4s ease-in-out infinite;
+box-shadow: 0 0 40px rgba(45,122,79,.4);
+}
+@keyframes orbPulse {
+0%,100% { transform:scale(1);    box-shadow:0 0 40px rgba(45,122,79,.4); }
+50%      { transform:scale(1.08); box-shadow:0 0 70px rgba(45,122,79,.65); }
+}
+.loading-label {
+font-family: ‘DM Mono’, monospace;
+font-size: 10px; letter-spacing:.14em;
+color: var(–text-muted);
+text-transform: uppercase; margin-bottom: 8px;
+}
+.loading-step { font-size:13px; color:var(–green-light); min-height:20px; }
+.loading-bar-wrap {
+width:220px; height:3px;
+background:rgba(255,255,255,.07);
+border-radius:2px; margin:18px auto 0; overflow:hidden;
+}
+.loading-bar {
+height:100%;
+background:linear-gradient(90deg, var(–green-accent), var(–gold));
+border-radius:2px; width:0%; transition:width .5s ease;
+}
+
+/* ERROR */
+.error-card {
+margin:20px; padding:18px;
+background:rgba(224,85,85,.1);
+border:1px solid rgba(224,85,85,.3);
+border-radius:14px;
+font-size:13px; color:#f0b0b0; line-height:1.6;
+display:none;
+}
+
+/* CONTENT */
+.content { padding:20px; display:none; }
+
+/* FRESHNESS */
+.freshness-bar {
+display:flex; align-items:center; gap:8px;
+padding:10px 14px;
+background:var(–card-bg); border:1px solid var(–card-border);
+border-radius:10px; margin-bottom:22px;
+font-size:11px; color:var(–text-muted);
+font-family:‘DM Mono’,monospace;
+}
+.freshness-bar .val { color:var(–green-light); }
+
+/* SECTION LABEL */
+.section-label {
+font-family:‘DM Mono’,monospace;
+font-size:10px; letter-spacing:.14em;
+color:var(–gold); text-transform:uppercase;
+margin-bottom:12px;
+}
+
+/* OVERVIEW */
+.overview-card {
+background:linear-gradient(135deg,rgba(45,122,79,.14) 0%,rgba(201,168,76,.07) 100%);
+border:1px solid rgba(45,122,79,.28);
+border-radius:16px; padding:20px;
+margin-bottom:24px; position:relative; overflow:hidden;
+}
+.overview-card::before {
+content:’’; position:absolute; top:0;left:0;right:0; height:2px;
+background:linear-gradient(90deg,var(–green-accent),var(–gold),transparent);
+}
+.overview-text { font-size:14px; line-height:1.8; margin-bottom:16px; }
+
+/* FLAGS */
+.flags-wrap { display:flex; flex-direction:column; gap:8px; }
+.flag {
+display:flex; align-items:flex-start; gap:10px;
+padding:10px 12px; border-radius:10px;
+font-size:12px; line-height:1.55;
+}
+.flag.issue    { background:rgba(224,85,85,.1);  border:1px solid rgba(224,85,85,.25);  color:#f0b0b0; }
+.flag.positive { background:rgba(45,122,79,.12); border:1px solid rgba(45,122,79,.3);   color:#a0d4b4; }
+.flag.neutral  { background:rgba(74,158,187,.1); border:1px solid rgba(74,158,187,.25); color:#a0cfe0; }
+.flag-icon { font-size:14px; flex-shrink:0; margin-top:1px; }
+
+/* DIVIDER */
+.divider { height:1px; background:var(–card-border); margin:22px 0; }
+
+/* STORE TABS */
+.store-tabs {
+display:flex; gap:6px; margin-bottom:16px;
+overflow-x:auto; scrollbar-width:none; padding-bottom:2px;
+}
+.store-tabs::-webkit-scrollbar { display:none; }
+.store-tab {
+padding:8px 18px; border-radius:20px;
+font-size:12px; font-weight:500;
+border:1px solid var(–card-border);
+background:var(–card-bg); color:var(–text-muted);
+cursor:pointer; white-space:nowrap; transition:all .2s;
+-webkit-tap-highlight-color:transparent;
+}
+.store-tab.active {
+background:var(–green-mid);
+border-color:var(–green-accent);
+color:var(–text-primary);
+}
+.store-panel { display:none; }
+.store-panel.active { display:block; }
+
+/* STORE CARDS */
+.store-card {
+background:var(–card-bg); border:1px solid var(–card-border);
+border-radius:16px; padding:18px; margin-bottom:12px;
+}
+.store-card-title {
+font-family:‘DM Serif Display’,serif; font-size:16px;
+color:var(–gold-light); margin-bottom:12px;
+display:flex; align-items:center; gap:8px;
+}
+.store-card p { font-size:13px; line-height:1.75; }
+.anomaly-label {
+font-family:‘DM Mono’,monospace; font-size:10px;
+letter-spacing:.12em; color:var(–red-flag);
+text-transform:uppercase; margin:14px 0 8px;
+}
+
+/* ADVICE */
+.advice-list { display:flex; flex-direction:column; gap:8px; }
+.advice-item {
+display:flex; align-items:flex-start; gap:10px;
+padding:10px 12px;
+background:rgba(201,168,76,.08); border:1px solid rgba(201,168,76,.2);
+border-radius:10px; font-size:12px; line-height:1.55; color:var(–cream);
+}
+.advice-num {
+font-family:‘DM Mono’,monospace; font-size:10px;
+color:var(–gold); background:rgba(201,168,76,.15);
+border-radius:4px; padding:2px 5px; flex-shrink:0; margin-top:1px;
+}
+
+/* FOOTER NOTE */
+.refresh-note {
+text-align:center; font-family:‘DM Mono’,monospace;
+font-size:10px; color:var(–text-muted);
+letter-spacing:.1em; padding:10px 0 40px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="header">
+  <a href="index.html" class="header-back">←</a>
+  <div class="header-titles">
+    <div class="header-eyebrow">Moriarty Group</div>
+    <div class="header-title">AI Insights</div>
+  </div>
+  <div class="header-badge"><div class="pulse"></div>Daily</div>
+</div>
+
+<div class="loading-screen" id="loadingScreen">
+  <div class="loading-orb"></div>
+  <div class="loading-label">Analysing your stores</div>
+  <div class="loading-step" id="loadingStep">Fetching store data…</div>
+  <div class="loading-bar-wrap"><div class="loading-bar" id="loadingBar"></div></div>
+</div>
+
+<div class="error-card" id="errorCard"></div>
+
+<div class="content" id="mainContent">
+
+  <div class="freshness-bar">
+    <span>📅</span>
+    <span id="freshnessText">Loading…</span>
+  </div>
+
+  <div class="section-label">Group Overview</div>
+  <div class="overview-card">
+    <div class="overview-text" id="overviewText"></div>
+    <div class="flags-wrap" id="flagsWrap"></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-label">Store Deep-Dives</div>
+  <div class="store-tabs">
+    <div class="store-tab active" id="tab-palmerstown" onclick="switchStore('palmerstown')">Palmerstown</div>
+    <div class="store-tab" id="tab-balbriggan"  onclick="switchStore('balbriggan')">Balbriggan</div>
+    <div class="store-tab" id="tab-skerries"    onclick="switchStore('skerries')">Skerries</div>
+  </div>
+
+  <div class="store-panel active" id="panel-palmerstown"></div>
+  <div class="store-panel"        id="panel-balbriggan"></div>
+  <div class="store-panel"        id="panel-skerries"></div>
+
+  <div class="refresh-note">Analysis refreshes each time this page is opened</div>
+</div>
+
+<script>
+var REPO_RAW = 'https://raw.githubusercontent.com/aarondoyle2026/aarondoyle2026.github.io/main/';
+var JSON_FILES = [
+  { key:'kpi',             file:'kpi_data.json' },
+  { key:'meat_weekly',     file:'meat_weekly_data.json' },
+  { key:'dairy_weekly',    file:'dairy_weekly_data.json' },
+  { key:'bakery_weekly',   file:'bakery_weekly_data.json' },
+  { key:'produce_weekly',  file:'produce_weekly_data.json' },
+  { key:'deli_weekly',     file:'deli_weekly_data.json' },
+  { key:'full_ms_weekly',  file:'full_ms_weekly_data.json' },
+  { key:'top_sellers',     file:'top_sellers_data.json' },
+  { key:'top_cash_margin', file:'top_cash_margin_data.json' },
+  { key:'hourly_sales',    file:'hourly_sales_data.json' },
+  { key:'dept_latest',     file:'dept_report_latest_data.json' },
+  { key:'dept_ytd',        file:'dept_report_ytd_data.json' },
+  { key:'ownbrand',        file:'ownbrand_data.json' }
+];
+var allData = {};
+
+function setStep(msg, pct) {
+  document.getElementById('loadingStep').textContent = msg;
+  document.getElementById('loadingBar').style.width = pct + '%';
+}
+
+function esc(s) {
+  return String(s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function fetchJSON(url) {
+  return fetch(url + '?t=' + Date.now())
+    .then(function(r){ return r.ok ? r.json().catch(function(){ return null; }) : null; })
+    .catch(function(){ return null; });
+}
+
+function fetchAllData() {
+  var promises = JSON_FILES.map(function(item) {
+    return fetchJSON(REPO_RAW + item.file).then(function(data) {
+      if (data) allData[item.key] = data;
+    });
+  });
+  return Promise.all(promises).then(function() {
+    var n = Object.keys(allData).length;
+    if (n === 0) throw new Error('No data files could be loaded. Check the repository and network.');
+    setStep('Loaded ' + n + ' of ' + JSON_FILES.length + ' data sources', 42);
+  });
+}
+
+function buildPrompt() {
+  var p  = 'You are an AI retail performance analyst for Moriarty Group, a SuperValu operator with three stores in Ireland:\n';
+      p += '- Palmerstown (store 356)\n- Balbriggan (store 374)\n- Skerries (store 424)\n\n';
+      p += 'Analyse the store data and return ONLY valid JSON — no markdown, no preamble:\n\n';
+      p += '{\n';
+      p += '  "overview": "2-3 sentence plain-English group summary",\n';
+      p += '  "flags": [\n';
+      p += '    { "type": "issue|positive|neutral", "text": "specific observation with numbers" }\n';
+      p += '  ],\n';
+      p += '  "stores": {\n';
+      p += '    "palmerstown": {\n';
+      p += '      "summary": "2-3 sentence performance summary",\n';
+      p += '      "anomalies": ["specific anomaly with numbers"],\n';
+      p += '      "advice": ["specific actionable recommendation"]\n';
+      p += '    },\n';
+      p += '    "balbriggan": { "summary":"", "anomalies":[], "advice":[] },\n';
+      p += '    "skerries":   { "summary":"", "anomalies":[], "advice":[] }\n';
+      p += '  }\n}\n\n';
+      p += 'Rules: Use real figures from the data. Include 2-5 flags. Keep advice practical and retail-specific.\n\n';
+      p += '--- DATA ---\n';
+      p += JSON.stringify(allData, null, 0).slice(0, 28000);
+  return p;
+}
+
+function callClaude(prompt) {
+  return fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: 1000,
+      messages: [{ role:'user', content: prompt }]
+    })
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(d){
+    if (d.content && d.content[0] && d.content[0].text) return d.content[0].text;
+    throw new Error('Unexpected API response.');
+  });
+}
+
+function parseInsights(raw) {
+  var clean = raw.replace(/```json|```/g,'').trim();
+  try { return JSON.parse(clean); } catch(e) {
+    var m = clean.match(/\{[\s\S]*\}/);
+    if (m) return JSON.parse(m[0]);
+    throw new Error('Could not parse AI response.');
+  }
+}
+
+function renderFreshness() {
+  var kpi = allData.kpi;
+  var html = kpi && kpi.generated_at
+    ? 'Data generated <span class="val">' + esc(kpi.generated_at) + '</span>'
+    : 'Loaded at <span class="val">' + new Date().toLocaleString('en-IE') + '</span>';
+  document.getElementById('freshnessText').innerHTML = html;
+}
+
+function renderOverview(d) {
+  document.getElementById('overviewText').textContent = d.overview || '';
+  var wrap = document.getElementById('flagsWrap');
+  wrap.innerHTML = '';
+  (d.flags || []).forEach(function(f) {
+    var icon = f.type === 'issue' ? '⚠️' : f.type === 'positive' ? '✅' : 'ℹ️';
+    var div = document.createElement('div');
+    div.className = 'flag ' + (f.type || 'neutral');
+    div.innerHTML = '<span class="flag-icon">' + icon + '</span><span>' + esc(f.text) + '</span>';
+    wrap.appendChild(div);
+  });
+}
+
+function renderStorePanel(key, d) {
+  var panel = document.getElementById('panel-' + key);
+  if (!panel) return;
+  if (!d) { panel.innerHTML = '<div class="store-card"><p>No data available.</p></div>'; return; }
+
+  var anomHtml = '';
+  if (d.anomalies && d.anomalies.length) {
+    anomHtml = '<div class="anomaly-label">⚠ Anomalies</div><div class="flags-wrap">';
+    d.anomalies.forEach(function(a) {
+      anomHtml += '<div class="flag issue"><span class="flag-icon">⚠️</span><span>' + esc(a) + '</span></div>';
+    });
+    anomHtml += '</div>';
+  }
+
+  var advHtml = '';
+  if (d.advice && d.advice.length) {
+    advHtml = '<div class="advice-list">';
+    d.advice.forEach(function(item, i) {
+      advHtml += '<div class="advice-item"><span class="advice-num">0' + (i + 1) + '</span><span>' + esc(item) + '</span></div>';
+    });
+    advHtml += '</div>';
+  }
+
+  var html  = '<div class="store-card">';
+      html += '<div class="store-card-title"><span>📊</span> Performance Summary</div>';
+      html += '<p>' + esc(d.summary || 'No summary available.') + '</p>';
+      html += anomHtml + '</div>';
+  if (advHtml) {
+    html += '<div class="store-card"><div class="store-card-title"><span>💡</span> Recommended Actions</div>' + advHtml + '</div>';
+  }
+  panel.innerHTML = html;
+}
+
+function switchStore(key) {
+  ['palmerstown','balbriggan','skerries'].forEach(function(s) {
+    document.getElementById('tab-' + s).classList.remove('active');
+    document.getElementById('panel-' + s).classList.remove('active');
+  });
+  document.getElementById('tab-' + key).classList.add('active');
+  document.getElementById('panel-' + key).classList.add('active');
+}
+
+function showError(msg) {
+  document.getElementById('loadingScreen').style.display = 'none';
+  var el = document.getElementById('errorCard');
+  el.style.display = 'block';
+  el.innerHTML = '<strong>⚠️ Could not load insights</strong><br><br>' + esc(msg) + '<br><br>Check data files are published and try refreshing.';
+}
+
+function init() {
+  setStep('Fetching store data…', 5);
+  fetchAllData()
+    .then(function() {
+      setStep('Sending data to AI analyst…', 50);
+      return callClaude(buildPrompt());
+    })
+    .then(function(raw) {
+      setStep('Rendering insights…', 88);
+      var ins = parseInsights(raw);
+      renderFreshness();
+      renderOverview(ins);
+      var s = ins.stores || {};
+      renderStorePanel('palmerstown', s.palmerstown);
+      renderStorePanel('balbriggan',  s.balbriggan);
+      renderStorePanel('skerries',    s.skerries);
+      setStep('Done', 100);
+      setTimeout(function() {
+        document.getElementById('loadingScreen').style.display = 'none';
+        document.getElementById('mainContent').style.display = 'block';
+      }, 350);
+    })
+    .catch(function(err) { showError(err.message || String(err)); });
+}
+
+init();
+</script>
+
+</body>
+</html>
