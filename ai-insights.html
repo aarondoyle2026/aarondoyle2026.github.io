@@ -3,247 +3,259 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>AI Insights — Moriarty Group</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --green-dark: #0d2b1a;
-    --green-mid: #1a4a2e;
+    --bg:           #0d1f13;
+    --green-mid:    #1a4a2e;
     --green-accent: #2d7a4f;
-    --green-light: #3da066;
-    --gold: #c9a84c;
-    --gold-light: #e8c97a;
-    --cream: #f5f0e8;
-    --text-primary: #f0ede6;
-    --text-muted: #8fa899;
-    --red-flag: #e05555;
-    --card-bg: rgba(255,255,255,0.04);
-    --card-border: rgba(255,255,255,0.08);
+    --green-light:  #3da066;
+    --gold:         #c9a84c;
+    --gold-light:   #e8c97a;
+    --cream:        #f5f0e8;
+    --text:         #f0ede6;
+    --muted:        #8fa899;
+    --red:          #e05555;
+    --violet:       #7c5cbf;
+    --teal:         #2a9d8f;
+    --orange:       #e07d2a;
+    --card-bg:      rgba(255,255,255,0.04);
+    --card-border:  rgba(255,255,255,0.08);
   }
-
-- { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-background: var(–green-dark);
-color: var(–text-primary);
-font-family: ‘DM Sans’, sans-serif;
-min-height: 100vh;
-background-image:
-radial-gradient(ellipse at 10% 20%, rgba(45,122,79,0.18) 0%, transparent 50%),
-radial-gradient(ellipse at 90% 80%, rgba(201,168,76,0.08) 0%, transparent 50%);
-}
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    font-family:'DM Sans',sans-serif;
+    background:var(--bg); color:var(--text);
+    min-height:100vh;
+    background-image:
+      radial-gradient(ellipse at 15% 10%, rgba(45,122,79,0.15) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 85%, rgba(124,92,191,0.08) 0%, transparent 55%);
+  }
 
 /* HEADER */
 .header {
-padding: 20px 20px 16px;
-display: flex;
-align-items: center;
-gap: 14px;
-border-bottom: 1px solid var(–card-border);
+padding:20px 20px 16px;
+display:flex; align-items:center; gap:14px;
+border-bottom:1px solid var(–card-border);
 }
 .header-back {
-display: flex;
-align-items: center;
-justify-content: center;
-width: 36px;
-height: 36px;
-border-radius: 10px;
-background: var(–card-bg);
-border: 1px solid var(–card-border);
-color: var(–text-muted);
-text-decoration: none;
-font-size: 18px;
-flex-shrink: 0;
+width:36px; height:36px; border-radius:10px;
+background:var(–card-bg); border:1px solid var(–card-border);
+color:var(–muted); text-decoration:none;
+font-size:18px; display:flex; align-items:center; justify-content:center; flex-shrink:0;
 }
-.header-titles { flex: 1; }
+.header-titles { flex:1; }
 .header-eyebrow {
-font-family: ‘DM Mono’, monospace;
-font-size: 10px;
-letter-spacing: 0.15em;
-color: var(–gold);
-text-transform: uppercase;
-margin-bottom: 2px;
+font-family:‘DM Mono’,monospace; font-size:10px;
+letter-spacing:.15em; color:var(–gold); text-transform:uppercase; margin-bottom:2px;
 }
-.header-title {
-font-family: ‘DM Serif Display’, serif;
-font-size: 22px;
-line-height: 1.1;
-}
+.header-title { font-family:‘DM Serif Display’,serif; font-size:22px; line-height:1.1; }
 .header-badge {
-display: flex;
-align-items: center;
-gap: 6px;
-background: rgba(45,122,79,0.2);
-border: 1px solid rgba(45,122,79,0.4);
-border-radius: 20px;
-padding: 4px 10px;
-font-size: 11px;
-color: var(–green-light);
-font-family: ‘DM Mono’, monospace;
-flex-shrink: 0;
+display:flex; align-items:center; gap:6px;
+background:rgba(124,92,191,0.2); border:1px solid rgba(124,92,191,0.4);
+border-radius:20px; padding:4px 10px;
+font-size:11px; color:#b09de0; font-family:‘DM Mono’,monospace; flex-shrink:0;
 }
-.pulse {
-width: 7px; height: 7px;
-border-radius: 50%;
-background: var(–green-light);
-animation: pulse 2s ease-in-out infinite;
-}
-@keyframes pulse {
-0%,100% { opacity:1; transform:scale(1); }
-50%      { opacity:.4; transform:scale(.7); }
-}
+.pulse { width:7px; height:7px; border-radius:50%; background:#b09de0; animation:pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.4;transform:scale(.7);} }
 
 /* LOADING */
-.loading-screen { padding: 60px 20px; text-align: center; }
+.loading-screen { padding:60px 20px; text-align:center; }
 .loading-orb {
-width: 72px; height: 72px;
-border-radius: 50%;
-background: radial-gradient(circle at 35% 35%, var(–green-light), var(–green-dark));
-margin: 0 auto 24px;
-animation: orbPulse 2.4s ease-in-out infinite;
-box-shadow: 0 0 40px rgba(45,122,79,.4);
+width:80px; height:80px; border-radius:50%;
+background:radial-gradient(circle at 35% 35%, var(–green-light), var(–bg));
+margin:0 auto 24px; animation:orbPulse 2.4s ease-in-out infinite;
+box-shadow:0 0 50px rgba(45,122,79,.45);
 }
 @keyframes orbPulse {
-0%,100% { transform:scale(1);    box-shadow:0 0 40px rgba(45,122,79,.4); }
-50%      { transform:scale(1.08); box-shadow:0 0 70px rgba(45,122,79,.65); }
+0%,100%{transform:scale(1);box-shadow:0 0 50px rgba(45,122,79,.45);}
+50%{transform:scale(1.1);box-shadow:0 0 80px rgba(45,122,79,.7);}
 }
 .loading-label {
-font-family: ‘DM Mono’, monospace;
-font-size: 10px; letter-spacing:.14em;
-color: var(–text-muted);
-text-transform: uppercase; margin-bottom: 8px;
+font-family:‘DM Mono’,monospace; font-size:10px;
+letter-spacing:.14em; color:var(–muted); text-transform:uppercase; margin-bottom:8px;
 }
 .loading-step { font-size:13px; color:var(–green-light); min-height:20px; }
+.loading-sub { font-size:11px; color:var(–muted); margin-top:6px; min-height:16px; }
 .loading-bar-wrap {
-width:220px; height:3px;
-background:rgba(255,255,255,.07);
+width:240px; height:3px; background:rgba(255,255,255,.07);
 border-radius:2px; margin:18px auto 0; overflow:hidden;
 }
 .loading-bar {
-height:100%;
-background:linear-gradient(90deg, var(–green-accent), var(–gold));
-border-radius:2px; width:0%; transition:width .5s ease;
+height:100%; background:linear-gradient(90deg,var(–green-accent),var(–gold),var(–violet));
+border-radius:2px; width:0%; transition:width .6s ease;
 }
 
 /* ERROR */
 .error-card {
 margin:20px; padding:18px;
-background:rgba(224,85,85,.1);
-border:1px solid rgba(224,85,85,.3);
-border-radius:14px;
-font-size:13px; color:#f0b0b0; line-height:1.6;
-display:none;
+background:rgba(224,85,85,.1); border:1px solid rgba(224,85,85,.3);
+border-radius:14px; font-size:13px; color:#f0b0b0; line-height:1.6; display:none;
 }
 
 /* CONTENT */
-.content { padding:20px; display:none; }
+.content { display:none; }
 
 /* FRESHNESS */
 .freshness-bar {
 display:flex; align-items:center; gap:8px;
-padding:10px 14px;
-background:var(–card-bg); border:1px solid var(–card-border);
-border-radius:10px; margin-bottom:22px;
-font-size:11px; color:var(–text-muted);
-font-family:‘DM Mono’,monospace;
+margin:16px 16px 0;
+padding:10px 14px; background:var(–card-bg);
+border:1px solid var(–card-border); border-radius:10px;
+font-size:11px; color:var(–muted); font-family:‘DM Mono’,monospace;
 }
 .freshness-bar .val { color:var(–green-light); }
 
+/* MODE NAV */
+.mode-nav {
+display:flex; gap:0; overflow-x:auto; scrollbar-width:none;
+margin:16px 0 0; border-bottom:1px solid var(–card-border);
+padding:0 16px;
+}
+.mode-nav::-webkit-scrollbar { display:none; }
+.mode-btn {
+display:flex; flex-direction:column; align-items:center; gap:3px;
+padding:10px 14px 12px; border:none; background:none;
+color:var(–muted); cursor:pointer; white-space:nowrap;
+border-bottom:2px solid transparent; margin-bottom:-1px;
+transition:all .2s; -webkit-tap-highlight-color:transparent; flex-shrink:0;
+}
+.mode-btn .btn-icon { font-size:18px; }
+.mode-btn .btn-label { font-family:‘DM Mono’,monospace; font-size:9px; letter-spacing:.1em; text-transform:uppercase; }
+.mode-btn.active { color:var(–text); border-bottom-color:var(–gold); }
+
+/* PANELS */
+.mode-panel { display:none; padding:16px; }
+.mode-panel.active { display:block; }
+
 /* SECTION LABEL */
-.section-label {
-font-family:‘DM Mono’,monospace;
-font-size:10px; letter-spacing:.14em;
-color:var(–gold); text-transform:uppercase;
-margin-bottom:12px;
+.slabel {
+font-family:‘DM Mono’,monospace; font-size:10px;
+letter-spacing:.14em; color:var(–gold);
+text-transform:uppercase; margin-bottom:12px;
 }
 
-/* OVERVIEW */
-.overview-card {
-background:linear-gradient(135deg,rgba(45,122,79,.14) 0%,rgba(201,168,76,.07) 100%);
-border:1px solid rgba(45,122,79,.28);
-border-radius:16px; padding:20px;
-margin-bottom:24px; position:relative; overflow:hidden;
+/* DIRECTOR REPORT */
+.director-summary {
+background:linear-gradient(135deg,rgba(45,122,79,.14),rgba(201,168,76,.07));
+border:1px solid rgba(45,122,79,.28); border-radius:16px;
+padding:20px; margin-bottom:14px; position:relative; overflow:hidden;
 }
-.overview-card::before {
+.director-summary::before {
 content:’’; position:absolute; top:0;left:0;right:0; height:2px;
 background:linear-gradient(90deg,var(–green-accent),var(–gold),transparent);
 }
-.overview-text { font-size:14px; line-height:1.8; margin-bottom:16px; }
+.director-summary p { font-size:14px; line-height:1.8; }
 
-/* FLAGS */
-.flags-wrap { display:flex; flex-direction:column; gap:8px; }
-.flag {
-display:flex; align-items:flex-start; gap:10px;
-padding:10px 12px; border-radius:10px;
-font-size:12px; line-height:1.55;
+.store-compare { display:flex; flex-direction:column; gap:10px; margin-bottom:14px; }
+.store-row {
+background:var(–card-bg); border:1px solid var(–card-border);
+border-radius:12px; padding:14px;
 }
-.flag.issue    { background:rgba(224,85,85,.1);  border:1px solid rgba(224,85,85,.25);  color:#f0b0b0; }
-.flag.positive { background:rgba(45,122,79,.12); border:1px solid rgba(45,122,79,.3);   color:#a0d4b4; }
-.flag.neutral  { background:rgba(74,158,187,.1); border:1px solid rgba(74,158,187,.25); color:#a0cfe0; }
-.flag-icon { font-size:14px; flex-shrink:0; margin-top:1px; }
+.store-row-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
+.store-row-name { font-weight:600; font-size:13px; }
+.store-score {
+font-family:‘DM Mono’,monospace; font-size:11px;
+padding:3px 8px; border-radius:8px;
+}
+.store-score.high   { background:rgba(45,122,79,.2);  color:#a0d4b4; }
+.store-score.mid    { background:rgba(201,168,76,.2); color:var(–gold-light); }
+.store-score.low    { background:rgba(224,85,85,.2);  color:#f0b0b0; }
+.store-row-text { font-size:12px; line-height:1.6; color:rgba(240,237,230,.75); }
 
-/* DIVIDER */
-.divider { height:1px; background:var(–card-border); margin:22px 0; }
-
-/* STORE TABS */
-.store-tabs {
-display:flex; gap:6px; margin-bottom:16px;
-overflow-x:auto; scrollbar-width:none; padding-bottom:2px;
-}
-.store-tabs::-webkit-scrollbar { display:none; }
-.store-tab {
-padding:8px 18px; border-radius:20px;
-font-size:12px; font-weight:500;
-border:1px solid var(–card-border);
-background:var(–card-bg); color:var(–text-muted);
-cursor:pointer; white-space:nowrap; transition:all .2s;
--webkit-tap-highlight-color:transparent;
-}
-.store-tab.active {
-background:var(–green-mid);
-border-color:var(–green-accent);
-color:var(–text-primary);
-}
-.store-panel { display:none; }
-.store-panel.active { display:block; }
-
-/* STORE CARDS */
-.store-card {
+/* GENERIC CARD */
+.insight-card {
 background:var(–card-bg); border:1px solid var(–card-border);
 border-radius:16px; padding:18px; margin-bottom:12px;
 }
-.store-card-title {
+.insight-card-title {
 font-family:‘DM Serif Display’,serif; font-size:16px;
 color:var(–gold-light); margin-bottom:12px;
 display:flex; align-items:center; gap:8px;
 }
-.store-card p { font-size:13px; line-height:1.75; }
-.anomaly-label {
-font-family:‘DM Mono’,monospace; font-size:10px;
-letter-spacing:.12em; color:var(–red-flag);
-text-transform:uppercase; margin:14px 0 8px;
-}
+.insight-card p { font-size:13px; line-height:1.75; }
 
-/* ADVICE */
-.advice-list { display:flex; flex-direction:column; gap:8px; }
-.advice-item {
+/* FLAGS */
+.flags { display:flex; flex-direction:column; gap:8px; }
+.flag {
 display:flex; align-items:flex-start; gap:10px;
-padding:10px 12px;
-background:rgba(201,168,76,.08); border:1px solid rgba(201,168,76,.2);
-border-radius:10px; font-size:12px; line-height:1.55; color:var(–cream);
+padding:10px 12px; border-radius:10px; font-size:12px; line-height:1.55;
 }
-.advice-num {
+.flag.issue    { background:rgba(224,85,85,.1);   border:1px solid rgba(224,85,85,.25);   color:#f0b0b0; }
+.flag.positive { background:rgba(45,122,79,.12);  border:1px solid rgba(45,122,79,.3);    color:#a0d4b4; }
+.flag.neutral  { background:rgba(74,158,187,.1);  border:1px solid rgba(74,158,187,.25);  color:#a0cfe0; }
+.flag.warning  { background:rgba(224,125,42,.1);  border:1px solid rgba(224,125,42,.25);  color:#f0c898; }
+.flag-icon { font-size:14px; flex-shrink:0; margin-top:1px; }
+
+/* NUMBERED LIST */
+.num-list { display:flex; flex-direction:column; gap:8px; }
+.num-item {
+display:flex; align-items:flex-start; gap:10px;
+padding:10px 12px; border-radius:10px; font-size:12px; line-height:1.55;
+}
+.num-item.gold-item   { background:rgba(201,168,76,.08); border:1px solid rgba(201,168,76,.2);  color:var(–cream); }
+.num-item.red-item    { background:rgba(224,85,85,.08);  border:1px solid rgba(224,85,85,.2);   color:#f0c0c0; }
+.num-item.teal-item   { background:rgba(42,157,143,.08); border:1px solid rgba(42,157,143,.2);  color:#a8ddd7; }
+.num-item.orange-item { background:rgba(224,125,42,.08); border:1px solid rgba(224,125,42,.2);  color:#f0c898; }
+.num-badge {
 font-family:‘DM Mono’,monospace; font-size:10px;
-color:var(–gold); background:rgba(201,168,76,.15);
 border-radius:4px; padding:2px 5px; flex-shrink:0; margin-top:1px;
 }
+.gold-item .num-badge   { color:var(–gold);   background:rgba(201,168,76,.15); }
+.red-item .num-badge    { color:#e08080;        background:rgba(224,85,85,.15); }
+.teal-item .num-badge   { color:#60c4bc;        background:rgba(42,157,143,.15); }
+.orange-item .num-badge { color:var(–orange);  background:rgba(224,125,42,.15); }
 
-/* FOOTER NOTE */
+/* PROFIT LEAK */
+.leak-card {
+background:rgba(224,85,85,.06); border:1px solid rgba(224,85,85,.18);
+border-radius:14px; padding:14px; margin-bottom:10px;
+}
+.leak-header { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:8px; }
+.leak-title { font-weight:600; font-size:13px; color:#f0c0c0; flex:1; }
+.leak-impact {
+font-family:‘DM Mono’,monospace; font-size:10px;
+background:rgba(224,85,85,.2); color:#f0a0a0;
+padding:3px 8px; border-radius:8px; white-space:nowrap; flex-shrink:0;
+}
+.leak-fix { font-size:12px; line-height:1.6; color:rgba(240,237,230,.7); }
+.leak-fix strong { color:var(–gold-light); font-weight:500; }
+
+/* CROSS DEPT */
+.cross-card {
+background:linear-gradient(135deg,rgba(124,92,191,.1),rgba(42,157,143,.06));
+border:1px solid rgba(124,92,191,.22); border-radius:14px; padding:14px; margin-bottom:10px;
+}
+.cross-title { font-weight:600; font-size:13px; color:#c0b0e8; margin-bottom:6px; }
+.cross-why   { font-size:12px; color:var(–muted); line-height:1.6; margin-bottom:8px; }
+.cross-action { font-size:12px; color:rgba(240,237,230,.8); line-height:1.55; }
+.cross-action::before { content:’→ ’; color:var(–gold); }
+
+/* DIAGNOSIS */
+.diag-block {
+border-radius:14px; padding:16px; margin-bottom:10px;
+}
+.diag-block.wrong  { background:rgba(224,85,85,.08);  border:1px solid rgba(224,85,85,.2); }
+.diag-block.why    { background:rgba(201,168,76,.08); border:1px solid rgba(201,168,76,.2); }
+.diag-block.fix    { background:rgba(45,122,79,.1);   border:1px solid rgba(45,122,79,.25); }
+.diag-label {
+font-family:‘DM Mono’,monospace; font-size:9px; letter-spacing:.12em;
+text-transform:uppercase; margin-bottom:8px;
+}
+.diag-block.wrong .diag-label { color:#e08080; }
+.diag-block.why   .diag-label { color:var(–gold); }
+.diag-block.fix   .diag-label { color:var(–green-light); }
+.diag-text { font-size:13px; line-height:1.75; }
+
+/* DIVIDER */
+.divider { height:1px; background:var(–card-border); margin:16px 0; }
+
+/* FOOTER */
 .refresh-note {
 text-align:center; font-family:‘DM Mono’,monospace;
-font-size:10px; color:var(–text-muted);
-letter-spacing:.1em; padding:10px 0 40px;
+font-size:10px; color:var(–muted); letter-spacing:.1em; padding:10px 0 40px;
 }
 </style>
 
@@ -256,45 +268,117 @@ letter-spacing:.1em; padding:10px 0 40px;
     <div class="header-eyebrow">Moriarty Group</div>
     <div class="header-title">AI Insights</div>
   </div>
-  <div class="header-badge"><div class="pulse"></div>Daily</div>
+  <div class="header-badge"><div class="pulse"></div>AI Brain</div>
 </div>
+
+<!-- LOADING -->
 
 <div class="loading-screen" id="loadingScreen">
   <div class="loading-orb"></div>
-  <div class="loading-label">Analysing your stores</div>
-  <div class="loading-step" id="loadingStep">Fetching store data…</div>
+  <div class="loading-label">Running full analysis</div>
+  <div class="loading-step" id="loadingStep">Fetching all store data…</div>
+  <div class="loading-sub" id="loadingSub">Loading 13 data sources</div>
   <div class="loading-bar-wrap"><div class="loading-bar" id="loadingBar"></div></div>
 </div>
 
+<!-- ERROR -->
+
 <div class="error-card" id="errorCard"></div>
+
+<!-- CONTENT -->
 
 <div class="content" id="mainContent">
 
   <div class="freshness-bar">
-    <span>📅</span>
-    <span id="freshnessText">Loading…</span>
+    <span>📅</span><span id="freshnessText">Loading…</span>
   </div>
 
-  <div class="section-label">Group Overview</div>
-  <div class="overview-card">
-    <div class="overview-text" id="overviewText"></div>
-    <div class="flags-wrap" id="flagsWrap"></div>
+  <!-- MODE NAV -->
+
+  <div class="mode-nav">
+    <button type="button" class="mode-btn active" id="btn-director"   onclick="switchMode('director')">
+      <span class="btn-icon">📋</span><span class="btn-label">Director</span>
+    </button>
+    <button type="button" class="mode-btn" id="btn-leaks"      onclick="switchMode('leaks')">
+      <span class="btn-icon">💸</span><span class="btn-label">Profit Leaks</span>
+    </button>
+    <button type="button" class="mode-btn" id="btn-actions"    onclick="switchMode('actions')">
+      <span class="btn-icon">⚡</span><span class="btn-label">Today</span>
+    </button>
+    <button type="button" class="mode-btn" id="btn-cross"      onclick="switchMode('cross')">
+      <span class="btn-icon">🔗</span><span class="btn-label">Cross-Dept</span>
+    </button>
+    <button type="button" class="mode-btn" id="btn-diagnosis"  onclick="switchMode('diagnosis')">
+      <span class="btn-icon">🔍</span><span class="btn-label">Diagnosis</span>
+    </button>
   </div>
 
-  <div class="divider"></div>
+  <!-- DIRECTOR REPORT -->
 
-  <div class="section-label">Store Deep-Dives</div>
-  <div class="store-tabs">
-    <div class="store-tab active" id="tab-palmerstown" onclick="switchStore('palmerstown')">Palmerstown</div>
-    <div class="store-tab" id="tab-balbriggan"  onclick="switchStore('balbriggan')">Balbriggan</div>
-    <div class="store-tab" id="tab-skerries"    onclick="switchStore('skerries')">Skerries</div>
+  <div class="mode-panel active" id="panel-director">
+    <div class="slabel" style="margin-top:4px;">Weekly Director Report</div>
+    <div class="director-summary">
+      <div id="directorSummary"></div>
+    </div>
+    <div class="slabel">Store Performance</div>
+    <div class="store-compare" id="storeCompare"></div>
+    <div class="slabel">Key Drivers</div>
+    <div class="flags" id="directorDrivers"></div>
+    <div class="divider"></div>
+    <div class="slabel">Priority Actions — Next Week</div>
+    <div class="num-list" id="directorPriorities"></div>
+    <div class="refresh-note">Analysis refreshes each time this page is opened</div>
   </div>
 
-  <div class="store-panel active" id="panel-palmerstown"></div>
-  <div class="store-panel"        id="panel-balbriggan"></div>
-  <div class="store-panel"        id="panel-skerries"></div>
+  <!-- PROFIT LEAKS -->
 
-  <div class="refresh-note">Analysis refreshes each time this page is opened</div>
+  <div class="mode-panel" id="panel-leaks">
+    <div class="slabel" style="margin-top:4px;">Profit Leak Detection</div>
+    <div id="leaksList"></div>
+    <div class="refresh-note">Analysis refreshes each time this page is opened</div>
+  </div>
+
+  <!-- TODAY'S ACTIONS -->
+
+  <div class="mode-panel" id="panel-actions">
+    <div class="slabel" style="margin-top:4px;">Urgent Issues</div>
+    <div class="flags" id="urgentIssues"></div>
+    <div class="divider"></div>
+    <div class="slabel">Today's Action List</div>
+    <div class="num-list" id="todayActions"></div>
+    <div class="divider"></div>
+    <div class="slabel">Compliance Risks</div>
+    <div class="flags" id="complianceRisks"></div>
+    <div class="refresh-note">Analysis refreshes each time this page is opened</div>
+  </div>
+
+  <!-- CROSS DEPT -->
+
+  <div class="mode-panel" id="panel-cross">
+    <div class="slabel" style="margin-top:4px;">Cross-Department Insights</div>
+    <div id="crossInsights"></div>
+    <div class="refresh-note">Analysis refreshes each time this page is opened</div>
+  </div>
+
+  <!-- DIAGNOSIS -->
+
+  <div class="mode-panel" id="panel-diagnosis">
+    <div class="slabel" style="margin-top:4px;">Real-Time Diagnosis</div>
+    <div class="diag-block wrong">
+      <div class="diag-label">⚠ What's going wrong</div>
+      <div class="diag-text" id="diagWrong"></div>
+    </div>
+    <div class="diag-block why">
+      <div class="diag-label">🔎 Why it's happening</div>
+      <div class="diag-text" id="diagWhy"></div>
+    </div>
+    <div class="diag-block fix">
+      <div class="diag-label">✅ Fix immediately</div>
+      <div class="diag-text" id="diagFix"></div>
+    </div>
+    <div class="refresh-note">Analysis refreshes each time this page is opened</div>
+  </div>
+
 </div>
 
 <script>
@@ -315,9 +399,11 @@ var JSON_FILES = [
   { key:'ownbrand',        file:'ownbrand_data.json' }
 ];
 var allData = {};
+var MODES = ['director','leaks','actions','cross','diagnosis'];
 
-function setStep(msg, pct) {
+function setStep(msg, sub, pct) {
   document.getElementById('loadingStep').textContent = msg;
+  if (sub !== null) document.getElementById('loadingSub').textContent = sub;
   document.getElementById('loadingBar').style.width = pct + '%';
 }
 
@@ -341,43 +427,84 @@ function fetchAllData() {
   });
   return Promise.all(promises).then(function() {
     var n = Object.keys(allData).length;
-    if (n === 0) throw new Error('No data files could be loaded. Check the repository and network.');
-    setStep('Loaded ' + n + ' of ' + JSON_FILES.length + ' data sources', 42);
+    if (n === 0) throw new Error('No data files could be loaded. Check the repository and network connection.');
+    setStep('Loaded ' + n + ' of ' + JSON_FILES.length + ' data sources', 'Sending to AI analyst…', 40);
   });
 }
 
 function buildPrompt() {
-  var p  = 'You are an AI retail performance analyst for Moriarty Group, a SuperValu operator with three stores in Ireland:\n';
-      p += '- Palmerstown (store 356)\n- Balbriggan (store 374)\n- Skerries (store 424)\n\n';
-      p += 'Analyse the store data and return ONLY valid JSON — no markdown, no preamble:\n\n';
-      p += '{\n';
-      p += '  "overview": "2-3 sentence plain-English group summary",\n';
-      p += '  "flags": [\n';
-      p += '    { "type": "issue|positive|neutral", "text": "specific observation with numbers" }\n';
-      p += '  ],\n';
-      p += '  "stores": {\n';
-      p += '    "palmerstown": {\n';
-      p += '      "summary": "2-3 sentence performance summary",\n';
-      p += '      "anomalies": ["specific anomaly with numbers"],\n';
-      p += '      "advice": ["specific actionable recommendation"]\n';
-      p += '    },\n';
-      p += '    "balbriggan": { "summary":"", "anomalies":[], "advice":[] },\n';
-      p += '    "skerries":   { "summary":"", "anomalies":[], "advice":[] }\n';
-      p += '  }\n}\n\n';
-      p += 'Rules: Use real figures from the data. Include 2-5 flags. Keep advice practical and retail-specific.\n\n';
-      p += '--- DATA ---\n';
-      p += JSON.stringify(allData, null, 0).slice(0, 28000);
+  var p = '';
+  p += 'You are the AI operations brain for Moriarty Group, a SuperValu operator with three stores in Ireland:\n';
+  p += '- Palmerstown (store 356)\n- Balbriggan (store 374)\n- Skerries (store 424)\n\n';
+  p += 'You have access to all store data: KPI figures (WTD and YTD columns for sales, margin, waste, transactions, average spend) ';
+  p += 'and 12 department/category reports (meat, dairy, bakery, produce, deli, full market share, top sellers, top cash margin lines, hourly sales, department TY/LY latest, department TY/LY YTD, own brand).\n\n';
+
+  p += 'Perform ALL FIVE of the following analyses in a single response. Return ONLY valid JSON — no markdown, no preamble.\n\n';
+
+  p += 'JSON STRUCTURE:\n';
+  p += '{\n';
+
+  p += '  "director": {\n';
+  p += '    "summary": "3-4 sentence executive summary of the week — overall group health, trajectory vs YTD, headline finding",\n';
+  p += '    "stores": [\n';
+  p += '      { "name": "Palmerstown", "score": 0-100, "scoreLevel": "high|mid|low", "summary": "2-sentence store assessment" },\n';
+  p += '      { "name": "Balbriggan",  "score": 0-100, "scoreLevel": "high|mid|low", "summary": "2-sentence store assessment" },\n';
+  p += '      { "name": "Skerries",    "score": 0-100, "scoreLevel": "high|mid|low", "summary": "2-sentence store assessment" }\n';
+  p += '    ],\n';
+  p += '    "drivers": [\n';
+  p += '      { "type": "positive|issue|warning", "text": "specific driver or drag with actual figures" }\n';
+  p += '    ],\n';
+  p += '    "priorities": ["specific priority action for next week tied to a finding"]\n';
+  p += '  },\n';
+
+  p += '  "leaks": [\n';
+  p += '    { "title": "short leak name", "impact": "estimated € or % impact", "fix": "exact corrective action" }\n';
+  p += '  ],\n';
+
+  p += '  "actions": {\n';
+  p += '    "urgent": [\n';
+  p += '      { "type": "issue|warning", "text": "urgent issue description" }\n';
+  p += '    ],\n';
+  p += '    "today": ["specific action to complete today"],\n';
+  p += '    "compliance": [\n';
+  p += '      { "type": "issue|warning|neutral", "text": "compliance risk description" }\n';
+  p += '    ]\n';
+  p += '  },\n';
+
+  p += '  "cross": [\n';
+  p += '    { "title": "insight title", "why": "why this matters", "action": "recommended action" }\n';
+  p += '  ],\n';
+
+  p += '  "diagnosis": {\n';
+  p += '    "wrong": "what is going wrong right now — be specific with numbers",\n';
+  p += '    "why":   "why it is happening — root cause analysis",\n';
+  p += '    "fix":   "what to fix immediately — specific and actionable"\n';
+  p += '  }\n';
+
+  p += '}\n\n';
+
+  p += 'Critical rules:\n';
+  p += '- Every insight must reference actual figures from the data. No invented numbers.\n';
+  p += '- Director: include 3-5 drivers, 5 priorities, scores ordered best to worst.\n';
+  p += '- Leaks: identify top 5 profit leaks with estimated impact and exact fix.\n';
+  p += '- Actions: 2-3 urgent issues, 5 today actions, 2-3 compliance risks.\n';
+  p += '- Cross-dept: exactly 3 cross-department insights linking different data sources.\n';
+  p += '- Diagnosis: short, direct, punchy. Maximum 3 sentences per block.\n';
+  p += '- If a data source is missing, work with what is available.\n\n';
+
+  p += '--- ALL STORE DATA ---\n';
+  p += JSON.stringify(allData, null, 0).slice(0, 28000);
   return p;
 }
 
 function callClaude(prompt) {
   return fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 1000,
-      messages: [{ role:'user', content: prompt }]
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({
+      model:'claude-sonnet-4-20250514',
+      max_tokens:1000,
+      messages:[{ role:'user', content:prompt }]
     })
   })
   .then(function(r){ return r.json(); })
@@ -392,7 +519,7 @@ function parseInsights(raw) {
   try { return JSON.parse(clean); } catch(e) {
     var m = clean.match(/\{[\s\S]*\}/);
     if (m) return JSON.parse(m[0]);
-    throw new Error('Could not parse AI response.');
+    throw new Error('Could not parse AI response: ' + clean.slice(0,120));
   }
 }
 
@@ -404,58 +531,128 @@ function renderFreshness() {
   document.getElementById('freshnessText').innerHTML = html;
 }
 
-function renderOverview(d) {
-  document.getElementById('overviewText').textContent = d.overview || '';
-  var wrap = document.getElementById('flagsWrap');
-  wrap.innerHTML = '';
-  (d.flags || []).forEach(function(f) {
-    var icon = f.type === 'issue' ? '⚠️' : f.type === 'positive' ? '✅' : 'ℹ️';
+function renderDirector(d) {
+  if (!d) return;
+  // Summary
+  var sumEl = document.getElementById('directorSummary');
+  sumEl.innerHTML = '<p style="font-size:14px;line-height:1.8;">' + esc(d.summary || '') + '</p>';
+
+  // Stores
+  var sc = document.getElementById('storeCompare');
+  sc.innerHTML = '';
+  (d.stores || []).forEach(function(s) {
     var div = document.createElement('div');
-    div.className = 'flag ' + (f.type || 'neutral');
-    div.innerHTML = '<span class="flag-icon">' + icon + '</span><span>' + esc(f.text) + '</span>';
-    wrap.appendChild(div);
+    div.className = 'store-row';
+    div.innerHTML =
+      '<div class="store-row-header">' +
+        '<span class="store-row-name">' + esc(s.name) + '</span>' +
+        '<span class="store-score ' + esc(s.scoreLevel || 'mid') + '">' + esc(String(s.score)) + ' / 100</span>' +
+      '</div>' +
+      '<div class="store-row-text">' + esc(s.summary || '') + '</div>';
+    sc.appendChild(div);
+  });
+
+  // Drivers
+  var dd = document.getElementById('directorDrivers');
+  dd.innerHTML = '';
+  var driverIcons = { positive:'✅', issue:'⚠️', warning:'🔶' };
+  (d.drivers || []).forEach(function(dr) {
+    var div = document.createElement('div');
+    div.className = 'flag ' + (dr.type || 'neutral');
+    div.innerHTML = '<span class="flag-icon">' + (driverIcons[dr.type] || 'ℹ️') + '</span><span>' + esc(dr.text) + '</span>';
+    dd.appendChild(div);
+  });
+
+  // Priorities
+  var dp = document.getElementById('directorPriorities');
+  dp.innerHTML = '';
+  (d.priorities || []).forEach(function(item, i) {
+    var div = document.createElement('div');
+    div.className = 'num-item gold-item';
+    var num = (i + 1) < 10 ? '0' + (i + 1) : String(i + 1);
+    div.innerHTML = '<span class="num-badge">' + num + '</span><span>' + esc(item) + '</span>';
+    dp.appendChild(div);
   });
 }
 
-function renderStorePanel(key, d) {
-  var panel = document.getElementById('panel-' + key);
-  if (!panel) return;
-  if (!d) { panel.innerHTML = '<div class="store-card"><p>No data available.</p></div>'; return; }
-
-  var anomHtml = '';
-  if (d.anomalies && d.anomalies.length) {
-    anomHtml = '<div class="anomaly-label">⚠ Anomalies</div><div class="flags-wrap">';
-    d.anomalies.forEach(function(a) {
-      anomHtml += '<div class="flag issue"><span class="flag-icon">⚠️</span><span>' + esc(a) + '</span></div>';
-    });
-    anomHtml += '</div>';
-  }
-
-  var advHtml = '';
-  if (d.advice && d.advice.length) {
-    advHtml = '<div class="advice-list">';
-    d.advice.forEach(function(item, i) {
-      advHtml += '<div class="advice-item"><span class="advice-num">0' + (i + 1) + '</span><span>' + esc(item) + '</span></div>';
-    });
-    advHtml += '</div>';
-  }
-
-  var html  = '<div class="store-card">';
-      html += '<div class="store-card-title"><span>📊</span> Performance Summary</div>';
-      html += '<p>' + esc(d.summary || 'No summary available.') + '</p>';
-      html += anomHtml + '</div>';
-  if (advHtml) {
-    html += '<div class="store-card"><div class="store-card-title"><span>💡</span> Recommended Actions</div>' + advHtml + '</div>';
-  }
-  panel.innerHTML = html;
+function renderLeaks(leaks) {
+  var el = document.getElementById('leaksList');
+  el.innerHTML = '';
+  if (!leaks || !leaks.length) { el.innerHTML = '<p style="color:var(--muted);font-size:13px;">No significant leaks identified.</p>'; return; }
+  leaks.forEach(function(l) {
+    var div = document.createElement('div');
+    div.className = 'leak-card';
+    div.innerHTML =
+      '<div class="leak-header">' +
+        '<span class="leak-title">' + esc(l.title) + '</span>' +
+        '<span class="leak-impact">' + esc(l.impact) + '</span>' +
+      '</div>' +
+      '<div class="leak-fix"><strong>Fix: </strong>' + esc(l.fix) + '</div>';
+    el.appendChild(div);
+  });
 }
 
-function switchStore(key) {
-  ['palmerstown','balbriggan','skerries'].forEach(function(s) {
-    document.getElementById('tab-' + s).classList.remove('active');
-    document.getElementById('panel-' + s).classList.remove('active');
+function renderActions(a) {
+  if (!a) return;
+  var flagIcons = { issue:'⚠️', warning:'🔶', neutral:'ℹ️' };
+
+  var ui = document.getElementById('urgentIssues');
+  ui.innerHTML = '';
+  (a.urgent || []).forEach(function(item) {
+    var div = document.createElement('div');
+    div.className = 'flag ' + (item.type || 'issue');
+    div.innerHTML = '<span class="flag-icon">' + (flagIcons[item.type] || '⚠️') + '</span><span>' + esc(item.text) + '</span>';
+    ui.appendChild(div);
   });
-  document.getElementById('tab-' + key).classList.add('active');
+
+  var ta = document.getElementById('todayActions');
+  ta.innerHTML = '';
+  (a.today || []).forEach(function(item, i) {
+    var div = document.createElement('div');
+    div.className = 'num-item teal-item';
+    var num = (i + 1) < 10 ? '0' + (i + 1) : String(i + 1);
+    div.innerHTML = '<span class="num-badge">' + num + '</span><span>' + esc(item) + '</span>';
+    ta.appendChild(div);
+  });
+
+  var cr = document.getElementById('complianceRisks');
+  cr.innerHTML = '';
+  (a.compliance || []).forEach(function(item) {
+    var div = document.createElement('div');
+    div.className = 'flag ' + (item.type || 'warning');
+    div.innerHTML = '<span class="flag-icon">' + (flagIcons[item.type] || '🔶') + '</span><span>' + esc(item.text) + '</span>';
+    cr.appendChild(div);
+  });
+}
+
+function renderCross(cross) {
+  var el = document.getElementById('crossInsights');
+  el.innerHTML = '';
+  if (!cross || !cross.length) { el.innerHTML = '<p style="color:var(--muted);font-size:13px;">No cross-department insights available.</p>'; return; }
+  cross.forEach(function(c) {
+    var div = document.createElement('div');
+    div.className = 'cross-card';
+    div.innerHTML =
+      '<div class="cross-title">' + esc(c.title) + '</div>' +
+      '<div class="cross-why">' + esc(c.why) + '</div>' +
+      '<div class="cross-action">' + esc(c.action) + '</div>';
+    el.appendChild(div);
+  });
+}
+
+function renderDiagnosis(d) {
+  if (!d) return;
+  document.getElementById('diagWrong').textContent = d.wrong || '';
+  document.getElementById('diagWhy').textContent   = d.why   || '';
+  document.getElementById('diagFix').textContent   = d.fix   || '';
+}
+
+function switchMode(key) {
+  MODES.forEach(function(m) {
+    document.getElementById('btn-' + m).classList.remove('active');
+    document.getElementById('panel-' + m).classList.remove('active');
+  });
+  document.getElementById('btn-' + key).classList.add('active');
   document.getElementById('panel-' + key).classList.add('active');
 }
 
@@ -467,22 +664,22 @@ function showError(msg) {
 }
 
 function init() {
-  setStep('Fetching store data…', 5);
+  setStep('Fetching all store data…', 'Loading 13 data sources', 5);
   fetchAllData()
     .then(function() {
-      setStep('Sending data to AI analyst…', 50);
+      setStep('Running AI analysis…', 'Director report · Profit leaks · Actions · Cross-dept · Diagnosis', 50);
       return callClaude(buildPrompt());
     })
     .then(function(raw) {
-      setStep('Rendering insights…', 88);
+      setStep('Rendering insights…', 'Building all 5 analysis views', 88);
       var ins = parseInsights(raw);
       renderFreshness();
-      renderOverview(ins);
-      var s = ins.stores || {};
-      renderStorePanel('palmerstown', s.palmerstown);
-      renderStorePanel('balbriggan',  s.balbriggan);
-      renderStorePanel('skerries',    s.skerries);
-      setStep('Done', 100);
+      renderDirector(ins.director);
+      renderLeaks(ins.leaks);
+      renderActions(ins.actions);
+      renderCross(ins.cross);
+      renderDiagnosis(ins.diagnosis);
+      setStep('Done', '', 100);
       setTimeout(function() {
         document.getElementById('loadingScreen').style.display = 'none';
         document.getElementById('mainContent').style.display = 'block';
