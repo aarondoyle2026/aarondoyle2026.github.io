@@ -989,7 +989,7 @@
     "Palmerstown": {
       "store": "Palmerstown",
       "code": "356",
-      "scraped_at": "2026-04-14T09:00:43.022229+01:00",
+      "scraped_at": "2026-04-14T09:04:16.316836+01:00",
       "date": "2026-04-14",
       "sections": {},
       "error": "Could not select store '356 - Palmerstown'. Last: Locator.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"text=356\").first\n    - locator resolved to <div>14,356.40</div>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div data-row=\"1\" data-col=\"28\" data-format-type=\"gridData\" data-cartesian-positions=\"5,1\">…</div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div data-row=\"1\" data-col=\"28\" data-format-type=\"gridData\" data-cartesian-positions=\"5,1\">…</div> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    9 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div data-row=\"1\" data-col=\"28\" data-format-type=\"gridData\" data-cartesian-positions=\"5,1\">…</div> intercepts pointer events\n    - retrying click action\n      - waiting 500ms\n"
@@ -997,7 +997,7 @@
     "Balbriggan": {
       "store": "Balbriggan",
       "code": "374 - BALBRIGGAN -MORIARTY",
-      "scraped_at": "2026-04-14T09:00:43.022229+01:00",
+      "scraped_at": "2026-04-14T09:04:16.316836+01:00",
       "date": "2026-04-14",
       "sections": {
         "RETAIL SALES ANALYSIS": {
@@ -1253,7 +1253,7 @@
     "Skerries": {
       "store": "Skerries",
       "code": "424",
-      "scraped_at": "2026-04-14T09:00:43.022229+01:00",
+      "scraped_at": "2026-04-14T09:04:16.316836+01:00",
       "date": "2026-04-14",
       "sections": {
         "RETAIL SALES ANALYSIS": {
