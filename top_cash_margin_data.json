@@ -2160,5 +2160,43 @@
       },
       "error": "Could not select store '424 - Skerries'. Last: Locator.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"text=424\").first\n    - locator resolved to <div class=\"reportTitle\">Retail Qty, Retail Sales €, Retail Scan Margin €,…</div>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <input value=\"\" type=\"Text\" autocomplete=\"off\" placeholder=\"Search\" class=\"text-box-input\" id=\"text-box-inner-d20750f6-fd19-4378-9efe-17f0fc45e4a9\"/> from <div class=\"dropdown-container-tether drop-down-slicer-drop-down tether-element tether-enabled tether-element-attached-top tether-target-attached-bottom tether-abutted tether-abutted-left tether-element-attached-left tether-target-attached-left\">…</div> subtree intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <input value=\"\" type=\"Text\" autocomplete=\"off\" placeholder=\"Search\" class=\"text-box-input\" id=\"text-box-inner-d20750f6-fd19-4378-9efe-17f0fc45e4a9\"/> from <div class=\"dropdown-container-tether drop-down-slicer-drop-down tether-element tether-enabled tether-element-attached-top tether-target-attached-bottom tether-abutted tether-abutted-left tether-element-attached-left tether-target-attached-left\">…</div> subtree intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    9 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <input value=\"\" type=\"Text\" autocomplete=\"off\" placeholder=\"Search\" class=\"text-box-input\" id=\"text-box-inner-d20750f6-fd19-4378-9efe-17f0fc45e4a9\"/> from <div class=\"dropdown-container-tether drop-down-slicer-drop-down tether-element tether-enabled tether-element-attached-top tether-target-attached-bottom tether-abutted tether-abutted-left tether-element-attached-left tether-target-attached-left\">…</div> subtree intercepts pointer events\n    - retrying click action\n      - waiting 500ms\n"
     }
+  },
+  "2026-04-14": {
+    "Palmerstown": {
+      "store": "Palmerstown",
+      "code": "356",
+      "report": "top cash margin lines",
+      "scraped_at": "2026-04-14T08:21:08.845358+01:00",
+      "date": "2026-04-14",
+      "data": {
+        "headers": [],
+        "rows": []
+      },
+      "error": "Could not select store '356 - Palmerstown'. Last: None"
+    },
+    "Balbriggan": {
+      "store": "Balbriggan",
+      "code": "374",
+      "report": "top cash margin lines",
+      "scraped_at": "2026-04-14T08:21:08.845358+01:00",
+      "date": "2026-04-14",
+      "data": {
+        "headers": [],
+        "rows": []
+      },
+      "error": "Could not select store '374 - Balbriggan'. Last: None"
+    },
+    "Skerries": {
+      "store": "Skerries",
+      "code": "424",
+      "report": "top cash margin lines",
+      "scraped_at": "2026-04-14T08:21:08.845358+01:00",
+      "date": "2026-04-14",
+      "data": {
+        "headers": [],
+        "rows": []
+      },
+      "error": "Could not select store '424 - Skerries'. Last: None"
+    }
   }
 }
