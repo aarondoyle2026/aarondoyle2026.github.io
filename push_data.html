@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Push Data – Moriarty Group</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #0d1f13; color: white; min-height: 100vh; padding: 20px; }
+
+.header { text-align: center; padding: 24px 0 20px; }
+.logo { display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; background: #00703c; border-radius: 14px; font-size: 24px; margin-bottom: 12px; }
+h1 { font-size: 1.1rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+.sub { font-size: .75rem; color: rgba(255,255,255,0.4); margin-top: 4px; letter-spacing: 1px; }
+
+.card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.card h2 { font-size: .85rem; font-weight: 700; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; }
+
+.field { margin-bottom: 14px; }
+label { display: block; font-size: .78rem; color: rgba(255,255,255,0.5); margin-bottom: 6px; }
+input[type="text"], input[type="password"], select {
+    width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px; padding: 12px 14px; color: white; font-size: .9rem; outline: none;
+}
+input[type="file"] { display: none; }
+
+.file-btn { display: block; width: 100%; background: rgba(0,112,60,0.3); border: 1px dashed rgba(0,112,60,0.6);
+    border-radius: 10px; padding: 16px; text-align: center; cursor: pointer; font-size: .85rem;
+    color: rgba(255,255,255,0.7); transition: all .2s; }
+.file-btn:active { background: rgba(0,112,60,0.5); }
+.file-name { font-size: .78rem; color: #4caf50; margin-top: 8px; text-align: center; min-height: 18px; }
+
+.btn { display: block; width: 100%; background: #00703c; color: white; border: none; border-radius: 12px;
+    padding: 16px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background .2s; margin-top: 6px; }
+.btn:active { background: #005a30; }
+.btn:disabled { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.3); cursor: not-allowed; }
+
+.log { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px;
+    padding: 14px; font-size: .78rem; font-family: monospace; color: rgba(255,255,255,0.7);
+    min-height: 80px; max-height: 200px; overflow-y: auto; white-space: pre-wrap; word-break: break-all; }
+
+.status { text-align: center; padding: 10px; border-radius: 10px; font-size: .85rem; font-weight: 600; margin-top: 12px; display: none; }
+.status.ok { background: rgba(0,112,60,0.3); color: #4caf50; border: 1px solid rgba(0,112,60,0.4); }
+.status.err { background: rgba(198,40,40,0.3); color: #ef5350; border: 1px solid rgba(198,40,40,0.4); }
+.status.loading { background: rgba(255,152,0,0.2); color: #ffa726; border: 1px solid rgba(255,152,0,0.3); }
+
+.files-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.file-item { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px;
+    padding: 10px; cursor: pointer; transition: all .2s; text-align: center; }
+.file-item:active { background: rgba(0,112,60,0.2); border-color: rgba(0,112,60,0.4); }
+.file-item.selected { background: rgba(0,112,60,0.2); border-color: #00703c; }
+.file-icon { font-size: 20px; margin-bottom: 4px; }
+.file-label { font-size: .7rem; color: rgba(255,255,255,0.6); line-height: 1.3; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">📤</div>
+  <h1>Push Data</h1>
+  <div class="sub">Moriarty Group · Manual Upload</div>
+</div>
+
+<!-- GitHub Token -->
+<div class="card">
+  <h2>GitHub Token</h2>
+  <div class="field">
+    <label>Personal Access Token (GITHUB_PNL_TOKEN)</label>
+    <input type="password" id="token" placeholder="ghp_..." autocomplete="off">
+  </div>
+  <div style="font-size:.72rem;color:rgba(255,255,255,0.3);">Token is never stored — only used for this push.</div>
+</div>
+
+<!-- File Selection -->
+<div class="card">
+  <h2>Select File Type</h2>
+  <div class="files-grid" id="fileGrid">
+    <div class="file-item selected" data-file="kpi_data.json" onclick="selectFileType(this)">
+      <div class="file-icon">📊</div>
+      <div class="file-label">KPI Data</div>
+    </div>
+    <div class="file-item" data-file="meat_weekly_data.json" onclick="selectFileType(this)">
+      <div class="file-icon">🥩</div>
+      <div class="file-label">Meat Weekly</div>
+    </div>
+    <div class="file-item" data-file="dairy_weekly_data.json" onclick="selectFileType(this)">
+      <div class="file-icon">🥛</div>
+      <div class="file-label">Dairy Weekly</div>
+    </div>
+    <div class="file-item" data-file="bakery_weekly_data.json" onclick="selectFileType(this)">
+      <div class="file-icon">🍞</div>
+      <div class="file-label">Bakery Weekly</div>
+    </div>
+    <div class="file-item" data-file="produce_weekly_data.json" onclick="selectFileType(this)">
+      <div class="file-icon">🥦</div>
+      <div class="file-label">Produce Weekly</div>
+    </div>
+    <div class="file-item" data-file="deli_weekly_data.json" onclick="selectFileType(this)">
+      <div class="file-icon">🥪</div>
+      <div class="file-label">Deli Weekly</div>
+    </div>
+    <div class="file-item" data-file="full_ms_weekly_data.json" onclick="selectFileType(this)">
+      <div class="file-icon">🏪</div>
+      <div class="file-label">Full MS Weekly</div>
+    </div>
+    <div class="file-item" data-file="top_sellers_data.json" onclick="selectFileType(this)">
+      <div class="file-icon">⭐</div>
+      <div class="file-label">Top Sellers</div>
+    </div>
+    <div class="file-item" data-file="top_cash_margin_data.json" onclick="selectFileType(this)">
+      <div class="file-icon">💰</div>
+      <div class="file-label">Top Cash Margin</div>
+    </div>
+    <div class="file-item" data-file="hourly_sales_data.json" onclick="selectFileType(this)">
+      <div class="file-icon">🕐</div>
+      <div class="file-label">Hourly Sales</div>
+    </div>
+    <div class="file-item" data-file="dept_report_latest_data.json" onclick="selectFileType(this)">
+      <div class="file-icon">📋</div>
+      <div class="file-label">Dept Report Week</div>
+    </div>
+    <div class="file-item" data-file="dept_report_ytd_data.json" onclick="selectFileType(this)">
+      <div class="file-icon">📅</div>
+      <div class="file-label">Dept Report YTD</div>
+    </div>
+    <div class="file-item" data-file="ownbrand_data.json" onclick="selectFileType(this)">
+      <div class="file-icon">🏷️</div>
+      <div class="file-label">Ownbrand</div>
+    </div>
+  </div>
+</div>
+
+<!-- Upload File -->
+<div class="card">
+  <h2>Upload JSON File</h2>
+  <label class="file-btn" for="fileInput">
+    📁 Tap to select JSON file from phone
+  </label>
+  <input type="file" id="fileInput" accept=".json,application/json" onchange="fileSelected(this)">
+  <div class="file-name" id="fileName">No file selected</div>
+</div>
+
+<!-- Push Button -->
+<button class="btn" id="pushBtn" onclick="pushToGitHub()" disabled>Push to GitHub</button>
+
+<div class="status" id="status"></div>
+
+<div class="card" style="margin-top:16px;">
+  <h2>Log</h2>
+  <div class="log" id="log">Ready.\n</div>
+</div>
+
+<script>
+var selectedFileName = 'kpi_data.json';
+var fileContent = null;
+
+var REPO = 'aarondoyle2026/aarondoyle2026.github.io';
+var BRANCH = 'main';
+
+function selectFileType(el) {
+    document.querySelectorAll('.file-item').forEach(function(i) { i.classList.remove('selected'); });
+    el.classList.add('selected');
+    selectedFileName = el.getAttribute('data-file');
+    addLog('Selected file type: ' + selectedFileName);
+    checkReady();
+}
+
+function fileSelected(input) {
+    var file = input.files[0];
+    if (!file) return;
+    document.getElementById('fileName').textContent = file.name;
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            JSON.parse(e.target.result); // Validate JSON
+            fileContent = e.target.result;
+            addLog('File loaded: ' + file.name + ' (' + (file.size / 1024).toFixed(1) + ' KB)');
+            checkReady();
+        } catch(err) {
+            addLog('ERROR: Invalid JSON file — ' + err.message);
+            fileContent = null;
+            checkReady();
+        }
+    };
+    reader.readAsText(file);
+}
+
+function checkReady() {
+    var token = document.getElementById('token').value.trim();
+    document.getElementById('pushBtn').disabled = !(token && fileContent && selectedFileName);
+}
+
+document.getElementById('token').addEventListener('input', checkReady);
+
+function addLog(msg) {
+    var el = document.getElementById('log');
+    var time = new Date().toLocaleTimeString('en-IE', {hour:'2-digit', minute:'2-digit', second:'2-digit'});
+    el.textContent += '[' + time + '] ' + msg + '\n';
+    el.scrollTop = el.scrollHeight;
+}
+
+function setStatus(type, msg) {
+    var el = document.getElementById('status');
+    el.className = 'status ' + type;
+    el.textContent = msg;
+    el.style.display = 'block';
+}
+
+async function pushToGitHub() {
+    var token = document.getElementById('token').value.trim();
+    if (!token || !fileContent || !selectedFileName) return;
+
+    var btn = document.getElementById('pushBtn');
+    btn.disabled = true;
+    btn.textContent = 'Pushing...';
+    setStatus('loading', 'Pushing to GitHub...');
+
+    var apiUrl = 'https://api.github.com/repos/' + REPO + '/contents/' + selectedFileName;
+    addLog('Pushing ' + selectedFileName + ' to GitHub...');
+
+    try {
+        // Get existing SHA
+        var sha = null;
+        try {
+            var getResp = await fetch(apiUrl + '?ref=' + BRANCH, {
+                headers: {
+                    'Authorization': 'Bearer ' + token,
+                    'Accept': 'application/vnd.github+json',
+                    'X-GitHub-Api-Version': '2022-11-28'
+                }
+            });
+            if (getResp.ok) {
+                var existing = await getResp.json();
+                sha = existing.sha;
+                addLog('Found existing file (SHA: ' + sha.substring(0,7) + ')');
+            }
+        } catch(e) {
+            addLog('No existing file — will create new.');
+        }
+
+        // Encode content
+        var encoded = btoa(unescape(encodeURIComponent(fileContent)));
+
+        // Build commit
+        var body = {
+            message: selectedFileName + ' manual push - ' + new Date().toISOString().split('T')[0],
+            content: encoded,
+            branch: BRANCH
+        };
+        if (sha) body.sha = sha;
+
+        var putResp = await fetch(apiUrl, {
+            method: 'PUT',
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Accept': 'application/vnd.github+json',
+                'X-GitHub-Api-Version': '2022-11-28',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        });
+
+        if (putResp.ok) {
+            addLog('SUCCESS — ' + selectedFileName + ' pushed to GitHub.');
+            setStatus('ok', '✓ Pushed successfully');
+        } else {
+            var err = await putResp.json();
+            addLog('ERROR: ' + (err.message || putResp.status));
+            setStatus('err', '✗ Push failed: ' + (err.message || putResp.status));
+        }
+    } catch(e) {
+        addLog('ERROR: ' + e.message);
+        setStatus('err', '✗ ' + e.message);
+    }
+
+    btn.disabled = false;
+    btn.textContent = 'Push to GitHub';
+}
+</script>
+</body>
+</html>
