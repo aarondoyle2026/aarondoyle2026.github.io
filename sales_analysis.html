@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -98,7 +99,12 @@ function fetchData() {
 }
 
 function init() {
-  var dates = Object.keys(allData).sort();
+  // FIX: only treat keys that look like YYYY-MM-DD as dates
+  // (guards against root-level store name keys from malformed scraper runs)
+  var dates = Object.keys(allData).filter(function(k) {
+    return /^\d{4}-\d{2}-\d{2}$/.test(k);
+  }).sort();
+
   if (!dates.length) { showError('No dates in data file.'); return; }
   activeDate = dates[dates.length - 1];
   var dateStores = allData[activeDate] || {};
@@ -141,6 +147,11 @@ function renderContent(storeData) {
     var rows = sections[sectionKey];
     var rowKeys = Object.keys(rows || {});
     if (!rowKeys.length) return;
+
+    // Skip the header-only "Measures" row — it's not a real KPI metric
+    rowKeys = rowKeys.filter(function(k) { return k !== 'Measures'; });
+    if (!rowKeys.length) return;
+
     var card = document.createElement('div');
     card.className = 'section-card';
     var title = document.createElement('div');
@@ -162,13 +173,30 @@ function renderContent(storeData) {
         var td = document.createElement('td');
         var cell = vals[col];
 
-        // Handle both old format (plain number) and new format ({v, t})
+        // Handle new format {v, t}, old format (plain number/string),
+        // and legacy old format where cell is a raw number directly
         var v, t;
         if (cell !== null && cell !== undefined && typeof cell === 'object' && 't' in cell) {
+          // New format: {v: 44881.93, t: "eur"}
           v = cell.v;
           t = cell.t;
-        } else {
+        } else if (cell !== null && cell !== undefined) {
+          // Old format: raw number or string
           v = cell;
+          // Infer type from row key for old-format data
+          if (typeof v === 'number') {
+            if (rowKey.indexOf('%') !== -1) {
+              t = 'pct';
+            } else if (rowKey.toLowerCase().indexOf('count') !== -1) {
+              t = 'count';
+            } else {
+              t = 'eur';
+            }
+          } else {
+            t = 'str';
+          }
+        } else {
+          v = null;
           t = null;
         }
 
@@ -177,7 +205,13 @@ function renderContent(storeData) {
           td.textContent = '\u2013';
         } else if (typeof v === 'number') {
           td.textContent = formatNum(v, t);
-          td.className = v < 0 ? 'val-negative' : (v > 0 ? 'val-positive' : 'val-neutral');
+          // For variance rows, colour by sign; for absolute rows always neutral
+          var isVar = rowKey.indexOf('Var') !== -1;
+          if (isVar) {
+            td.className = v < 0 ? 'val-negative' : (v > 0 ? 'val-positive' : 'val-neutral');
+          } else {
+            td.className = 'val-neutral';
+          }
         } else {
           td.textContent = v;
           td.className = 'val-neutral';
@@ -202,10 +236,13 @@ function renderContent(storeData) {
 
 function formatNum(v, t) {
   if (t === 'pct') {
-    return (v >= 0 ? '+' : '') + v.toFixed(2) + '%';
+    // Old format pct values are stored as decimals (0.18), new format as whole numbers (17.58)
+    // Detect by magnitude: if absolute value < 2 and not a known whole-number pct, treat as decimal
+    var display = (Math.abs(v) < 2 && v !== Math.round(v)) ? v * 100 : v;
+    return (display >= 0 ? '+' : '') + display.toFixed(2) + '%';
   }
   if (t === 'count') {
-    return (v < 0 ? '-' : '') + Math.abs(Math.round(v)).toLocaleString();
+    return (v < 0 ? '' : '') + Math.round(v).toLocaleString();
   }
   // eur or unknown — show as currency
   return (v < 0 ? '-' : '') + '\u20ac' + Math.abs(v).toLocaleString('en-IE', {minimumFractionDigits: 2, maximumFractionDigits: 2});
@@ -226,5 +263,6 @@ function esc(s) {
 
 fetchData();
 </script>
+
 </body>
 </html>
