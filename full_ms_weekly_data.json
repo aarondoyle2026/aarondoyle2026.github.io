@@ -42,37 +42,37 @@
       "store": "Palmerstown",
       "code": "356",
       "report": "full ms weekly",
-      "scraped_at": "2026-04-14T08:21:08.845358+01:00",
+      "scraped_at": "2026-04-14T09:47:18.592450+01:00",
       "date": "2026-04-14",
       "data": {
         "headers": [],
         "rows": []
       },
-      "error": "Could not select store '356 - Palmerstown'. Last: None"
+      "error": "Page.goto: Target page, context or browser has been closed"
     },
     "Balbriggan": {
       "store": "Balbriggan",
       "code": "374",
       "report": "full ms weekly",
-      "scraped_at": "2026-04-14T08:21:08.845358+01:00",
+      "scraped_at": "2026-04-14T09:47:18.592450+01:00",
       "date": "2026-04-14",
       "data": {
         "headers": [],
         "rows": []
       },
-      "error": "Could not select store '374 - Balbriggan'. Last: None"
+      "error": "Page.goto: Target page, context or browser has been closed"
     },
     "Skerries": {
       "store": "Skerries",
       "code": "424",
       "report": "full ms weekly",
-      "scraped_at": "2026-04-14T08:21:08.845358+01:00",
+      "scraped_at": "2026-04-14T09:47:18.592450+01:00",
       "date": "2026-04-14",
       "data": {
         "headers": [],
         "rows": []
       },
-      "error": "Could not select store '424 - Skerries'. Last: None"
+      "error": "Page.goto: Target page, context or browser has been closed"
     }
   }
 }
