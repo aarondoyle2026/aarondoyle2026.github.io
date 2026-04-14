@@ -1721,5 +1721,1728 @@
         ]
       }
     }
+  },
+  "2026-04-14": {
+    "Palmerstown": {
+      "store": "Palmerstown",
+      "code": "356",
+      "report": "department report latest week",
+      "scraped_at": "2026-04-14T08:21:08.845358+01:00",
+      "date": "2026-04-14",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales €",
+          "Retail Sales € TY LY Var",
+          "Retail Sales € TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "Merchandising Structure - Article SV TB",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": "TY",
+              "t": "str"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": "TY",
+              "t": "str"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": "TY",
+              "t": "str"
+            },
+            "Retail Scan Margin %": {
+              "v": "TY",
+              "t": "str"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": "TY",
+              "t": "str"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "Total Merchandising Structure",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 345697.6,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -34991.7,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -9.1917,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.4818,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.5067,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0024 - GROCERY -  IMPULSE",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 39444.58,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -18738.56,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -32.2062,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.9698,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -2.3833,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0025 - GROCERY - EDIBLE",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 31312.92,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -2659.93,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -7.8296,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 11.7242,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -2.9316,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0026 - GROCERY - NON FOOD",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 15249.31,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -318.91,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -2.0485,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 14.993,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.881,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0027 - BABY & KIDS",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 2679.34,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -212.81,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -7.3582,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 4.3835,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -7.6623,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0028 - PERSONAL CARE",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 7096.32,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -229.92,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -3.1383,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.9185,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.5087,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0029 - BEERS/WINES/SPIRITS",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 40732.78,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -3295.77,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -7.4855,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 10.0367,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.213,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0031 - TOBACCO",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 18274.2,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -54.98,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -0.3,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 12.4342,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.8176,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0032 - PRODUCE",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 25154.2,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -1605.6,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -6.0,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 21.2617,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 1.7155,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0033 - MEAT, POULTRY & FISH",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 26198.25,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -731.27,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -2.7155,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.63,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -2.6364,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0034 - DAIRY",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 27215.35,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -1335.29,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -4.6769,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 16.5452,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.5439,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0035 - BREAD AND CAKES",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 24205.65,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -3788.76,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -13.534,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 33.0401,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.271,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0036 - DELI  AND  FOOD TO GO",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 14198.8,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -2240.6,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -13.6295,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 41.5676,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.2406,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0037 - PROVISIONS & CONVENIENCE",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 24347.41,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -3647.79,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -13.0301,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 21.7885,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.4721,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0038 - FROZEN FOODS",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 10805.75,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -1822.88,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -14.4345,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 16.021,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.8002,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0039 - NON FOOD - RETAIL",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 4663.1,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 132.96,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 2.935,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 33.2353,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -3.5349,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0044 - NON FOOD - EXPENSE ITEMS & CONSUMER PROMOTIONS",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 1252.93,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -178.53,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -12.4719,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 69.4933,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.1845,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0045 - FUEL",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 438.82,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 363.93,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 485.9527,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 26.7978,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -4.0626,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0046 - NEWS & MAGS",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 3556.68,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 143.07,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 4.1912,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 24.6913,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.2582,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0047 - NON FOOD - INSTORE SERVICES",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 28871.21,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 5229.94,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 22.1221,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 2.5501,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.5352,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    },
+    "Balbriggan": {
+      "store": "Balbriggan",
+      "code": "374",
+      "report": "department report latest week",
+      "scraped_at": "2026-04-14T08:21:08.845358+01:00",
+      "date": "2026-04-14",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales €",
+          "Retail Sales € TY LY Var",
+          "Retail Sales € TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "Merchandising Structure - Article SV TB",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": "TY",
+              "t": "str"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": "TY",
+              "t": "str"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": "TY",
+              "t": "str"
+            },
+            "Retail Scan Margin %": {
+              "v": "TY",
+              "t": "str"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": "TY",
+              "t": "str"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "Total Merchandising Structure",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 292672.96,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -31601.18,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -9.7452,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.6765,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.5166,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0024 - GROCERY -  IMPULSE",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 32984.89,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -14517.93,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -30.5622,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 18.6189,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.2523,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0025 - GROCERY - EDIBLE",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 25118.41,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -1097.2,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -4.1853,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 13.3361,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.9458,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0026 - GROCERY - NON FOOD",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 13355.86,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -988.4,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -6.8906,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 15.3505,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.0218,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0027 - BABY & KIDS",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 2890.41,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 263.85,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 10.0455,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 5.6661,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -6.9155,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0028 - PERSONAL CARE",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 6017.45,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -448.86,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -6.9415,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 16.262,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.0906,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0029 - BEERS/WINES/SPIRITS",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 46246.42,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 190.27,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 0.4131,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 9.703,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.5451,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0031 - TOBACCO",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 14168.95,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 507.51,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 3.7149,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 9.6454,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.36,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0032 - PRODUCE",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 22682.37,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -3849.64,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -14.5094,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 18.4057,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -2.4626,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0033 - MEAT, POULTRY & FISH",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 24960.33,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -1092.75,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -4.1943,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.7449,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -3.5183,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0034 - DAIRY",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 22458.05,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -1015.84,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -4.3275,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 15.0181,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.6216,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0035 - BREAD AND CAKES",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 21581.44,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -4074.39,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -15.881,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 38.1109,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 1.508,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0036 - DELI  AND  FOOD TO GO",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 10669.56,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -1927.97,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -15.3043,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 42.1851,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.6095,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0037 - PROVISIONS & CONVENIENCE",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 17811.62,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -2722.42,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -13.2581,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 21.1368,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.6384,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0038 - FROZEN FOODS",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 8282.48,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -1213.79,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -12.7818,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 14.7266,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -2.5802,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0039 - NON FOOD - RETAIL",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 3185.28,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -854.02,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -21.1428,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 34.1612,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.6597,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0044 - NON FOOD - EXPENSE ITEMS & CONSUMER PROMOTIONS",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 1281.19,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -140.54,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -9.8851,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 71.6839,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -4.0601,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0045 - FUEL",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 97.5,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 77.51,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 387.7439,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": -1.2252,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -23.7937,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0046 - NEWS & MAGS",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 2237.01,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -204.24,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -8.3662,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 25.6528,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.3017,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0047 - NON FOOD - INSTORE SERVICES",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 16631.74,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 1495.67,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 9.8815,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 3.6367,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.1187,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "Unmatched - Unmatched",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 12.0,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 12.0,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Scan Margin %": {
+              "v": 0.0,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.0,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    },
+    "Skerries": {
+      "store": "Skerries",
+      "code": "424",
+      "report": "department report latest week",
+      "scraped_at": "2026-04-14T08:21:08.845358+01:00",
+      "date": "2026-04-14",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales €",
+          "Retail Sales € TY LY Var",
+          "Retail Sales € TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "Merchandising Structure - Article SV TB",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": "TY",
+              "t": "str"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": "TY",
+              "t": "str"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": "TY",
+              "t": "str"
+            },
+            "Retail Scan Margin %": {
+              "v": "TY",
+              "t": "str"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": "TY",
+              "t": "str"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "Total Merchandising Structure",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 350633.48,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -32148.4,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -8.3986,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 16.9805,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.2564,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0024 - GROCERY -  IMPULSE",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 34228.11,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -11561.84,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -25.2497,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 18.6387,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.8163,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0025 - GROCERY - EDIBLE",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 41568.53,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 41.82,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 0.1007,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 12.776,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.4599,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0026 - GROCERY - NON FOOD",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 20615.44,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 1267.78,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 6.5526,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 14.3474,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.0318,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0027 - BABY & KIDS",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 3114.77,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -679.82,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -17.9155,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 8.4674,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -4.1202,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0028 - PERSONAL CARE",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 8430.63,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -222.67,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -2.5732,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 16.462,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.3312,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0029 - BEERS/WINES/SPIRITS",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 47735.55,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -5159.34,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -9.7539,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 10.1861,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.6361,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0031 - TOBACCO",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 7769.51,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -1961.88,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -20.1603,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 12.4011,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -2.1912,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0032 - PRODUCE",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 37410.47,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -2798.25,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -6.9593,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 18.2886,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.9501,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0033 - MEAT, POULTRY & FISH",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 33968.94,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -3439.28,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -9.1939,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.9238,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -3.3078,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0034 - DAIRY",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 33400.55,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -1038.58,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -3.0157,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 15.4403,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.7824,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0035 - BREAD AND CAKES",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 20161.97,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -2430.08,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -10.7564,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 28.74,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.5394,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0036 - DELI  AND  FOOD TO GO",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 8228.5,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -3378.25,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -29.1059,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 40.7352,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.4721,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0037 - PROVISIONS & CONVENIENCE",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 24360.02,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -588.94,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -2.3606,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 18.8917,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.9016,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0038 - FROZEN FOODS",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 13366.04,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -1412.37,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -9.557,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 15.0589,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.7446,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0039 - NON FOOD - RETAIL",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 3890.98,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -302.23,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -7.2076,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 36.4458,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.097,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0044 - NON FOOD - EXPENSE ITEMS & CONSUMER PROMOTIONS",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 786.49,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": -23.87,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -2.9456,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 55.9733,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -4.6456,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0045 - FUEL",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 727.18,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 662.9,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 1031.2694,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 20.2216,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.5686,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0046 - NEWS & MAGS",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 3660.4,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 138.19,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 3.9234,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 24.9254,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.2851,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0047 - NON FOOD - INSTORE SERVICES",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 7209.4,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var": {
+              "v": 738.31,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 11.4094,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 4.5752,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.4242,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    }
   }
 }
