@@ -930,5 +930,43 @@
         ]
       }
     }
+  },
+  "2026-04-14": {
+    "Palmerstown": {
+      "store": "Palmerstown",
+      "code": "356",
+      "report": "hourly sales",
+      "scraped_at": "2026-04-14T08:21:08.845358+01:00",
+      "date": "2026-04-14",
+      "data": {
+        "headers": [],
+        "rows": []
+      },
+      "error": "Could not select store '356 - Palmerstown'. Last: None"
+    },
+    "Balbriggan": {
+      "store": "Balbriggan",
+      "code": "374",
+      "report": "hourly sales",
+      "scraped_at": "2026-04-14T08:21:08.845358+01:00",
+      "date": "2026-04-14",
+      "data": {
+        "headers": [],
+        "rows": []
+      },
+      "error": "Could not select store '374 - Balbriggan'. Last: None"
+    },
+    "Skerries": {
+      "store": "Skerries",
+      "code": "424",
+      "report": "hourly sales",
+      "scraped_at": "2026-04-14T08:21:08.845358+01:00",
+      "date": "2026-04-14",
+      "data": {
+        "headers": [],
+        "rows": []
+      },
+      "error": "Could not select store '424 - Skerries'. Last: None"
+    }
   }
 }
