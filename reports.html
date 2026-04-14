@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reports – Moriarty Group</title>
+<title>Reports - Moriarty Group</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f6f8; color: #1a1a1a; min-height: 100vh; }
@@ -12,7 +12,6 @@
   .header h1 { font-size: 1.1rem; font-weight: 700; }
   .header-meta { font-size: .78rem; opacity: .85; }
 
-  /* Report nav */
   .report-nav { background: #005a30; padding: 0 16px; display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .report-nav::-webkit-scrollbar { height: 3px; }
   .report-nav::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); }
@@ -20,7 +19,6 @@
   .rnav-tab:hover { color: #fff; }
   .rnav-tab.active { color: #fff; border-bottom-color: #4caf50; }
 
-  /* Store tabs */
   .store-bar { background: #fff; border-bottom: 2px solid #e0e0e0; padding: 0 20px; display: flex; gap: 0; }
   .store-tab { padding: 12px 24px; font-size: .88rem; font-weight: 600; color: #555; cursor: pointer; border-bottom: 3px solid transparent; transition: color .2s, border-color .2s; user-select: none; white-space: nowrap; }
   .store-tab:hover { color: #00703c; }
@@ -63,8 +61,8 @@
 <body>
 
 <div class="header">
-  <h1>&#128221; Reports – Moriarty Group</h1>
-  <div class="header-meta" id="headerMeta">Loading…</div>
+  <h1>&#128221; Reports - Moriarty Group</h1>
+  <div class="header-meta" id="headerMeta">Loading...</div>
 </div>
 
 <div class="report-nav" id="reportNav"></div>
@@ -73,7 +71,7 @@
 <div class="main">
   <div class="status-bar">
     <div class="status-dot loading" id="statusDot"></div>
-    <span id="statusText">Loading…</span>
+    <span id="statusText">Loading...</span>
   </div>
   <div id="content"><div class="loading-msg">Select a report above.</div></div>
 </div>
@@ -102,7 +100,6 @@ var activeReport = 0;
 var activeStore = 'Palmerstown';
 var activeDate = null;
 
-// ── Build report nav ──
 function buildReportNav() {
   var nav = document.getElementById('reportNav');
   nav.innerHTML = '';
@@ -121,11 +118,10 @@ function buildReportNav() {
   });
 }
 
-// ── Load report data ──
 function loadReport(idx) {
   var report = REPORTS[idx];
-  setStatus('loading', 'Loading ' + report.label + '…');
-  document.getElementById('content').innerHTML = '<div class="loading-msg">Loading…</div>';
+  setStatus('loading', 'Loading ' + report.label + '...');
+  document.getElementById('content').innerHTML = '<div class="loading-msg">Loading...</div>';
   document.getElementById('storeBar').innerHTML = '';
 
   if (cache[report.file]) {
@@ -154,7 +150,6 @@ function loadReport(idx) {
   xhr.send();
 }
 
-// ── Render report ──
 function renderReport(data) {
   var dates = Object.keys(data).sort();
   if (!dates.length) { showError('No data found.'); return; }
@@ -173,7 +168,6 @@ function renderReport(data) {
   setStatus('ok', 'Data loaded · updates daily at 5 AM');
 }
 
-// ── Store tabs ──
 function buildStoreBar(stores, dateStores) {
   var bar = document.getElementById('storeBar');
   bar.innerHTML = '';
@@ -192,17 +186,43 @@ function buildStoreBar(stores, dateStores) {
   });
 }
 
-// ── Render table ──
+// FIX: deduplicate headers — if two columns have the same name, append _2, _3 etc
+function dedupeHeaders(headers) {
+  var seen = {};
+  return headers.map(function(h) {
+    if (!h) return h;
+    if (!seen[h]) {
+      seen[h] = 1;
+      return h;
+    } else {
+      seen[h]++;
+      return h + ' _' + seen[h];
+    }
+  });
+}
+
+// FIX: check if a value should be formatted as a count rather than currency
+// checks both the column header AND the row label (first column value)
+function isCountField(colHeader, rowLabel) {
+  var combined = ((colHeader || '') + ' ' + (rowLabel || '')).toLowerCase();
+  return combined.indexOf('qty') !== -1 ||
+         combined.indexOf('count') !== -1 ||
+         combined.indexOf('units') !== -1;
+}
+
 function renderTable(storeData) {
   var content = document.getElementById('content');
   if (!storeData) { showError('No data for this store.'); return; }
   if (storeData.error) { showError('Scrape error: ' + esc(storeData.error)); return; }
 
   var parsed = storeData.data || {};
-  var headers = parsed.headers || [];
+  var rawHeaders = parsed.headers || [];
   var rows = parsed.rows || [];
 
   if (!rows.length) { showError('No rows in data. Run the scraper first.'); return; }
+
+  // Deduplicate headers for display and lookup
+  var headers = dedupeHeaders(rawHeaders);
 
   var wrap = document.createElement('div');
   wrap.className = 'table-wrap';
@@ -210,12 +230,13 @@ function renderTable(storeData) {
   var table = document.createElement('table');
   table.className = 'report-table';
 
-  // Header
+  // Header row
   var thead = document.createElement('thead');
   var htr = document.createElement('tr');
   headers.forEach(function(h) {
     var th = document.createElement('th');
-    th.textContent = h || '';
+    // Strip the dedup suffix for display
+    th.textContent = (h || '').replace(/ _\d+$/, '');
     htr.appendChild(th);
   });
   thead.appendChild(htr);
@@ -225,20 +246,29 @@ function renderTable(storeData) {
   var tbody = document.createElement('tbody');
   rows.forEach(function(row) {
     var tr = document.createElement('tr');
-    var firstVal = row[headers[0]];
-    if (firstVal && firstVal.v && String(firstVal.v).toLowerCase().indexOf('total') !== -1) {
+
+    // Get row label from first raw header for total-row detection
+    var firstCell = row[rawHeaders[0]];
+    var firstVal = firstCell ? firstCell.v : null;
+    if (firstVal && String(firstVal).toLowerCase().indexOf('total') !== -1) {
       tr.className = 'total-row';
     }
 
-    headers.forEach(function(h) {
+    // Get row label text for count detection
+    var rowLabel = firstVal ? String(firstVal) : '';
+
+    headers.forEach(function(h, colIdx) {
       var td = document.createElement('td');
-      var cell = row[h] || {v: null, t: 'nil'};
+      // Look up by original header name (before dedup) for first occurrence,
+      // or deduped name — rows are keyed by original header so use rawHeaders
+      var rawH = rawHeaders[colIdx] || h;
+      var cell = row[rawH] || {v: null, t: 'nil'};
       var v = cell.v;
       var t = cell.t;
 
       if (v === null || v === undefined) {
         td.className = 'val-nil';
-        td.textContent = '–';
+        td.textContent = '-';
       } else if (t === 'str') {
         td.textContent = v;
         td.className = 'val-neutral';
@@ -246,10 +276,9 @@ function renderTable(storeData) {
         td.textContent = (v >= 0 ? '+' : '') + v.toFixed(2) + '%';
         td.className = v < 0 ? 'val-negative' : 'val-positive';
       } else if (t === 'num') {
-        // Determine if currency or count based on header
-        var hl = h.toLowerCase();
-        if (hl.indexOf('qty') !== -1 || hl.indexOf('count') !== -1 || hl.indexOf('units') !== -1) {
-          td.textContent = (v < 0 ? '-' : '') + Math.abs(Math.round(v)).toLocaleString();
+        // FIX: check both column header and row label for count/qty keywords
+        if (isCountField(h, colIdx === 0 ? '' : rowLabel)) {
+          td.textContent = Math.round(v).toLocaleString();
         } else {
           td.textContent = (v < 0 ? '-' : '') + '\u20ac' + Math.abs(v).toLocaleString('en-IE', {minimumFractionDigits: 2, maximumFractionDigits: 2});
         }
@@ -265,7 +294,6 @@ function renderTable(storeData) {
   table.appendChild(tbody);
   wrap.appendChild(table);
 
-  // Scraped at
   content.innerHTML = '';
   content.appendChild(wrap);
   if (storeData.scraped_at) {
@@ -290,7 +318,6 @@ function esc(s) {
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-// ── Boot ──
 buildReportNav();
 loadReport(0);
 </script>
