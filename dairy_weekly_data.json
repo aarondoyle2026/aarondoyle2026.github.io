@@ -620,5 +620,589 @@
         ]
       }
     }
+  },
+  "2026-04-16": {
+    "Palmerstown": {
+      "store": "Palmerstown",
+      "code": "356",
+      "report": "dairy weekly",
+      "scraped_at": "2026-04-16T09:09:54.142088+01:00",
+      "date": "2026-04-16",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales €",
+          "Retail Sales € TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0034 - DAIRY",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 27215.35,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -4.6769,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 16.5452,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.5439,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0080 - YOGURTS & DESSERTS",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 6225.76,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -8.5215,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.7575,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.1542,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0081 - MILK & CREAM",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 8815.6,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -4.236,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 18.1091,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.8884,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0082 - BUTTERS AND SPREADS",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 2895.84,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -12.2358,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 8.204,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -4.1504,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0083 - PREPACK CHEESE",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 3231.72,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -13.3648,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 12.3001,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.9049,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0084 - TAKE HOME CHILLED JUICE",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 1187.77,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -3.9145,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 12.6049,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -3.6424,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0085 - EGGS",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 3809.61,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 17.1777,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 22.6993,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.9273,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0153 - PP SPECIALITY CHEESE",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 1049.05,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 2.6217,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 13.6211,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -5.3137,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    },
+    "Balbriggan": {
+      "store": "Balbriggan",
+      "code": "374",
+      "report": "dairy weekly",
+      "scraped_at": "2026-04-16T09:09:54.142088+01:00",
+      "date": "2026-04-16",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales €",
+          "Retail Sales € TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0034 - DAIRY",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 22458.05,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -4.3275,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 15.0181,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.6216,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0080 - YOGURTS & DESSERTS",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 4379.28,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -8.3844,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 15.0808,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.1916,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0081 - MILK & CREAM",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 6965.0,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -7.1035,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 16.4554,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.0659,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0082 - BUTTERS AND SPREADS",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 2651.14,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -6.1653,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 9.8138,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.8621,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0083 - PREPACK CHEESE",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 3241.08,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -0.5929,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 12.4785,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.3403,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0084 - TAKE HOME CHILLED JUICE",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 1511.87,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -11.4156,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 13.8638,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.6193,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0085 - EGGS",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 3045.49,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 10.8491,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 18.9554,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -5.9982,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0153 - PP SPECIALITY CHEESE",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 664.19,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 1.1899,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 16.733,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.4487,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    },
+    "Skerries": {
+      "store": "Skerries",
+      "code": "424",
+      "report": "dairy weekly",
+      "scraped_at": "2026-04-16T09:09:54.142088+01:00",
+      "date": "2026-04-16",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales €",
+          "Retail Sales € TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0034 - DAIRY",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 33400.55,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -3.0157,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 15.4403,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.7824,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0080 - YOGURTS & DESSERTS",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 7152.3,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -3.7515,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 16.9343,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 1.069,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0081 - MILK & CREAM",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 9605.55,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -2.0421,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.1662,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.1926,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0082 - BUTTERS AND SPREADS",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 4083.78,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -6.1744,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 9.6473,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -2.9259,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0083 - PREPACK CHEESE",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 4087.8,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -9.5415,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 12.0455,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.7969,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0084 - TAKE HOME CHILLED JUICE",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 1902.04,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -3.7302,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 10.2361,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -4.2298,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0085 - EGGS",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 4585.19,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": 8.2107,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 19.0851,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -2.4683,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0153 - PP SPECIALITY CHEESE",
+              "t": "str"
+            },
+            "Retail Sales €": {
+              "v": 1983.89,
+              "t": "num"
+            },
+            "Retail Sales € TY LY Var %": {
+              "v": -6.3204,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 16.2152,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.3548,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    }
   }
 }
