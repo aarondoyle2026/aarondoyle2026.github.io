@@ -1,0 +1,144 @@
+{
+  "generated_at": "2026-04-17",
+  "generated_time": "19:47",
+  "insights": {
+    "director": {
+      "summary": "All three Moriarty Group stores are underperforming versus last year this week, with a combined WTD sales decline of approximately €97,385 across the group. Palmerstown is the most severely impacted on a daily basis, down -29.2% TY vs LY today and -18.7% WTD, while Balbriggan is down -28.3% today and Skerries is the most resilient at -22.9% today and positive YTD (+0.65%). Waste and reduction costs are escalating dangerously across all three stores, with Skerries recording a shocking +227% daily waste spike, eroding already-compressed scan margins. The group's average basket spend is declining materially, particularly in Balbriggan (-28.6% today at €16.66), signalling a combination of footfall loss and customer trade-down.",
+      "stores": [
+        {
+          "name": "Palmerstown",
+          "score": 38,
+          "scoreLevel": "low",
+          "summary": "Palmerstown is the weakest performer this week, with WTD sales of €220,525 down -€50,713 (-18.7%) versus last year and a YTD deficit of -€310,443. Transaction count is down -7.7% WTD and average spend has collapsed -17.9% today to €19.22, pointing to both footfall loss and significant basket shrinkage."
+        },
+        {
+          "name": "Balbriggan",
+          "score": 44,
+          "scoreLevel": "low",
+          "summary": "Balbriggan shows a WTD sales decline of -€25,952 (-11.9%) with today's daily sales down a severe -28.3% at €44,472, though WTD transaction count is actually up +7.4% suggesting a promotional or mix issue driving lower average spend of €16.26 WTD. YTD the store is down -€139,050 (-2.8%) with scan margin of 17.5% WTD under pressure from rising waste, up +59.6% WTD."
+        },
+        {
+          "name": "Skerries",
+          "score": 57,
+          "scoreLevel": "mid",
+          "summary": "Skerries is the best-performing store with a positive YTD sales variance of +€37,489 (+0.65%) and the highest average spend at €22.42 WTD, though today's daily sales are down -22.9% at €51,955. The critical concern is today's waste spike of +227% versus last year (€599.69 today), which combined with a WTD scan margin decline of -0.91pp to 16.58% represents a meaningful profit risk."
+        }
+      ],
+      "drivers": [
+        {
+          "type": "issue",
+          "text": "Group-wide WTD sales are down approximately €97,385 combined (Palmerstown -€50,713, Balbriggan -€25,952, Skerries -€20,720), with all three stores negative versus last year this week."
+        },
+        {
+          "type": "issue",
+          "text": "Skerries waste has spiked +227% today (€599.69 vs approximately €183 LY) and is up +35.5% WTD to €3,461, directly compressing the store's already-below-group scan margin of 16.58% WTD."
+        },
+        {
+          "type": "warning",
+          "text": "Balbriggan average spend has fallen to €16.26 WTD (-17.9% vs LY) and €16.66 today (-28.6% vs LY), the lowest of all three stores, suggesting significant customer trade-down or promotional mix shift despite transaction count being up +7.4% WTD."
+        },
+        {
+          "type": "positive",
+          "text": "Skerries is the only store with a positive YTD sales trend at +€37,489 (+0.65%) and maintains the highest average basket spend at €23.97 YTD, up +€0.42 versus last year."
+        },
+        {
+          "type": "warning",
+          "text": "Palmerstown YTD scan margin is down -€80,404 in absolute terms versus last year, with a YTD margin rate of 17.63% declining -0.55pp, indicating structural margin erosion beyond the sales volume impact alone."
+        }
+      ],
+      "priorities": [
+        "Conduct an immediate waste audit at Skerries to identify the categories driving the +227% daily waste spike and implement same-day corrective ordering and markdown protocols.",
+        "Investigate the root cause of Palmerstown's -29.2% daily sales decline — review promotional execution, staffing levels, and on-shelf availability to determine if a specific department or event is driving the drop.",
+        "Address Balbriggan's basket spend collapse: with average spend down -28.6% today despite positive transaction count, review the promotional mix and whether deep-discount lines are cannibalising full-price sales.",
+        "Review and tighten waste management procedures across all three stores given YTD waste is up +42.6% at Palmerstown (€70,791), +26.4% at Balbriggan (€69,881) and +7.6% at Skerries (€70,786), representing a combined YTD waste cost of over €211,000.",
+        "Benchmark Palmerstown's YTD sales deficit of -€310,443 (-5.25%) against category-level data and implement a targeted recovery plan focusing on the highest-volume departments to close the gap in Q2."
+      ]
+    },
+    "leaks": [
+      {
+        "title": "Palmerstown YTD Sales & Margin Erosion",
+        "impact": "-€310,443 YTD sales and -€80,404 YTD scan margin versus last year",
+        "fix": "Conduct a full category review of Palmerstown's top 10 departments by sales contribution, identify where volume has been lost versus LY, and implement targeted promotional and availability recovery actions within 48 hours."
+      },
+      {
+        "title": "Group-Wide Waste Escalation",
+        "impact": "€211,458 combined YTD waste cost; Palmerstown up +42.6% YTD (+€21,141 vs LY), Balbriggan up +26.4% YTD (+€14,580 vs LY), Skerries up +7.6% YTD (+€4,987 vs LY)",
+        "fix": "Implement daily waste reporting reviews at store manager level, enforce markdown trigger points at defined time windows for perishables, and review ordering patterns versus actual sales trends for fresh categories."
+      },
+      {
+        "title": "Balbriggan Average Basket Collapse",
+        "impact": "Average spend down -€3.55 WTD to €16.26 (-17.9% vs LY); at 12,009 WTD transactions this equates to approximately -€42,650 in lost spend versus prior year basket levels",
+        "fix": "Audit the Balbriggan promotional plan for the current week to identify if loss-leader or deep-discount promotions are distorting the mix; review upselling and meal-deal mechanics at checkout and deli."
+      },
+      {
+        "title": "Skerries Scan Margin Decline",
+        "impact": "WTD scan margin at 16.58% (-0.91pp vs LY); YTD margin rate down -1.00pp representing approximately -€46,827 in lost margin versus last year",
+        "fix": "Review Skerries' promotional markdown depth and frequency, cross-check category margin reports particularly in meat and fresh where margin dilution is most likely, and ensure shrinkage and waste are being correctly coded."
+      },
+      {
+        "title": "Palmerstown Transaction Count Decline",
+        "impact": "WTD transactions down -1,003 (-7.7% vs LY); YTD transactions down -18,287 (-6.3% vs LY), representing a structural footfall problem costing an estimated -€43,000+ in YTD sales at current average spend",
+        "fix": "Review Palmerstown's local marketing activity, car park and entrance footfall data, and competitor activity in the catchment area; consider targeted leaflet drop or digital promotion to drive footfall recovery."
+      }
+    ],
+    "actions": {
+      "urgent": [
+        {
+          "type": "issue",
+          "text": "Skerries waste has surged +227.4% today versus last year (€599.69 TY vs ~€183 LY) — store manager must conduct an immediate department-by-department waste walk today to identify the source and apply emergency markdowns to salvageable stock."
+        },
+        {
+          "type": "issue",
+          "text": "Palmerstown daily sales are down -29.2% (-€19,943) versus last year today — escalate to area manager, verify there are no operational issues (system outages, staffing gaps, availability failures) and confirm promotional plan is fully executed on the shop floor."
+        },
+        {
+          "type": "warning",
+          "text": "Balbriggan WTD waste is up +59.6% (+€1,447 vs LY) to €3,874 — initiate a same-day review of fresh and deli ordering volumes relative to current depressed sales levels of €192,983 WTD to prevent further over-ordering."
+        }
+      ],
+      "today": [
+        "Palmerstown: Call store manager by 11:00 to diagnose the -29.2% daily sales variance — check promotional compliance, key department availability (especially BWS, deli, and meat), and confirm tills are fully operational.",
+        "Skerries: Complete a full waste and reduction log review before close of business today; identify top 3 waste-generating categories and adjust tomorrow's orders accordingly to prevent recurrence.",
+        "Balbriggan: Review this week's promotional activity versus the planned promotional grid — with average spend down -28.6% today, confirm whether high-volume low-margin promotions are distorting the sales mix and adjust if necessary.",
+        "All stores: Ensure daily waste markdown protocols are being executed at the correct trigger times (e.g. bakery, deli, produce) given group-wide waste is running significantly above last year across all three sites.",
+        "Group: Pull category-level sales reports for Palmerstown to identify which specific departments are driving the -€50,713 WTD variance and brief department managers on recovery targets for the remainder of the week."
+      ],
+      "compliance": [
+        {
+          "type": "issue",
+          "text": "Skerries waste at +227% today suggests potential food safety compliance risk — over-ordered or poorly rotated perishable stock may be at or beyond use-by dates; a FIFO and date-code audit should be completed today across chilled and fresh categories."
+        },
+        {
+          "type": "warning",
+          "text": "Palmerstown YTD scan margin is running at 17.63% with a -€80,404 absolute variance versus last year — this level of margin erosion should trigger a review of any manual price overrides, void transactions, or shrinkage patterns that may indicate internal loss or scanning errors."
+        },
+        {
+          "type": "warning",
+          "text": "Group-wide waste and reduction costs of €211,458 YTD (up ~€40,700 combined vs LY) may indicate inadequate stock management processes — ensure all three stores are documenting waste correctly per SuperValu compliance requirements and that waste is not masking unrecorded shrinkage."
+        }
+      ]
+    },
+    "cross": [
+      {
+        "title": "Waste Surge is Directly Compressing Scan Margin Across All Stores",
+        "why": "Skerries' WTD scan margin of 16.58% is the lowest in the group and has fallen -0.91pp versus LY; simultaneously its WTD waste is up +35.5% to €3,461. Palmerstown's YTD margin is down -0.55pp while waste is up +42.6% YTD. The correlation indicates that uncontrolled waste writeoffs are flowing directly through to margin deterioration, compounding the impact of the sales decline.",
+        "action": "Establish a daily waste-to-margin tracking dashboard for all three stores; set a waste-as-percentage-of-sales threshold alert (e.g. >1.5%) and require manager sign-off on any day where waste exceeds that threshold, with same-day corrective action logged."
+      },
+      {
+        "title": "Balbriggan's Rising Transaction Count with Collapsing Average Spend Signals a Promotional Mix Problem",
+        "why": "Balbriggan is the only store with a positive WTD transaction count variance (+7.4%, +832 transactions vs LY) yet its WTD average spend of €16.26 is down -17.9% versus last year and is the lowest across the group. More customers are visiting but spending significantly less — this disconnect between footfall and revenue points to a promotional strategy that is driving traffic through heavily discounted lines without generating basket growth.",
+        "action": "Review Balbriggan's current promotional mechanic: assess whether meal deals, multibuys, or category promotions are anchoring the basket at low price points. Introduce upsell prompts at self-checkout and staffed tills, and review whether high-frequency low-value transactions (e.g. single-item purchases) can be converted through bundling or impulse placement near the checkout zone."
+      },
+      {
+        "title": "Palmerstown's Transaction Count Decline is a Long-Term Structural Risk Requiring a Footfall Recovery Strategy",
+        "why": "Palmerstown has lost -18,287 transactions YTD (-6.3% vs LY) and -1,003 WTD (-7.7%). Unlike Balbriggan where transactions are recovering, Palmerstown's customer count is in sustained decline. Combined with a YTD sales deficit of -€310,443 and rising waste costs (+€21,141 YTD), the store risks entering a negative spiral where lower footfall leads to more waste from over-ordered stock, further eroding profitability.",
+        "action": "Commission a footfall recovery plan for Palmerstown including: a review of local competitor activity, a targeted digital and in-store marketing campaign, a loyalty programme push to reactivate lapsed customers, and a staffing and availability audit to ensure the in-store experience is not a contributing factor to customer attrition."
+      }
+    ],
+    "diagnosis": {
+      "wrong": "The Moriarty Group is experiencing a broad-based sales decline this week with all three stores negative WTD: Palmerstown -€50,713 (-18.7%), Balbriggan -€25,952 (-11.9%), Skerries -€20,720 (-8.0%). Today's daily declines are even steeper at -29.2%, -28.3%, and -22.9% respectively, suggesting an accelerating trend rather than a stabilising one. Simultaneously, group waste costs are running €40,700 above last year YTD and waste margins are compressing, with Skerries' scan margin at 16.58% WTD — the lowest in the group.",
+      "why": "The simultaneous decline across all three stores on the same day (-22% to -29%) points to a common external factor — likely a calendar or trading pattern effect (e.g. a bank holiday, Good Friday trading restriction, or a significant local event in the prior year that inflated the LY comparator) rather than three independent operational failures. However, the YTD deficits at Palmerstown (-€310,443) and Balbriggan (-€139,050) indicate underlying structural issues including sustained footfall loss and basket spend decline that predate this week. Rising waste costs suggest ordering disciplines have not been adjusted to reflect lower current sales volumes.",
+      "fix": "Immediately verify whether today's sharp declines are partially explained by a favourable LY comparator date (e.g. pre-Easter trading spike last year) and adjust management expectations accordingly. For structural issues, prioritise Palmerstown with a formal recovery plan targeting footfall and basket spend, reduce ordering volumes at all stores to align with current depressed sales levels to arrest waste growth, and implement a weekly cross-store margin and waste review chaired by the group director."
+    }
+  }
+}
