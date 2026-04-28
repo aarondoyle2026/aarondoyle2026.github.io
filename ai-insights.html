@@ -243,24 +243,25 @@
 
   <div class="mode-panel" id="panel-chat">
     <div class="slabel" style="margin-top:4px;">Ask the AI</div>
-    <div class="chat-intro">
-      Ask anything about this week's performance. <strong>Context-aware</strong> — I know this week's data and Irish retail patterns including Easter shifts, bank holidays, weather and sporting events.
-    </div>
-    <div class="chat-suggestions" id="chatSuggestions">
-      <div class="chat-suggestion" onclick="useSuggestion(this)">Which store performed best?</div>
-      <div class="chat-suggestion" onclick="useSuggestion(this)">What's our biggest profit leak?</div>
-      <div class="chat-suggestion" onclick="useSuggestion(this)">How is Deli performing?</div>
-      <div class="chat-suggestion" onclick="useSuggestion(this)">Compare Palmerstown vs Skerries</div>
-      <div class="chat-suggestion" onclick="useSuggestion(this)">Why might sales be up this week?</div>
-      <div class="chat-suggestion" onclick="useSuggestion(this)">Any compliance issues?</div>
-    </div>
-    <div class="chat-wrap">
-      <div class="chat-messages" id="chatMessages"></div>
-      <div class="chat-input-row">
-        <input type="text" class="chat-input" id="chatInput" placeholder="Ask about any store or metric…" onkeydown="handleChatKey(event)" autocomplete="off" autocorrect="off" spellcheck="false">
-        <button type="button" class="chat-send" id="chatSend" onclick="sendChat()">↑</button>
-      </div>
-    </div>
+
+```
+<div class="chat-suggestions" id="chatSuggestions">
+  <div class="chat-suggestion" onclick="useSuggestion(this)">Which store performed best?</div>
+  <div class="chat-suggestion" onclick="useSuggestion(this)">What's our biggest profit leak?</div>
+  <div class="chat-suggestion" onclick="useSuggestion(this)">How is Deli performing?</div>
+  <div class="chat-suggestion" onclick="useSuggestion(this)">Compare Palmerstown vs Skerries</div>
+  <div class="chat-suggestion" onclick="useSuggestion(this)">Why might sales be up this week?</div>
+  <div class="chat-suggestion" onclick="useSuggestion(this)">Any compliance issues?</div>
+</div>
+<div class="chat-wrap">
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="chat-input-row">
+    <input type="text" class="chat-input" id="chatInput" placeholder="Ask about any store or metric…" onkeydown="handleChatKey(event)" autocomplete="off" autocorrect="off" spellcheck="false">
+    <button type="button" class="chat-send" id="chatSend" onclick="sendChat()">↑</button>
+  </div>
+</div>
+```
+
   </div>
 </div>
 
