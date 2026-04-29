@@ -1,0 +1,2252 @@
+{
+  "2026-04-29": {
+    "Palmerstown": {
+      "store": "Palmerstown",
+      "code": "356",
+      "report": "waste top 50",
+      "scraped_at": "2026-04-29T17:05:23.475842+01:00",
+      "date": "2026-04-29",
+      "data": {
+        "headers": [],
+        "rows": []
+      },
+      "error": "Could not select store '356 - Palmerstown'. Last: Locator.click: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"[class*='drop-down'], [class*='dropdown-text'], [class*='filter-card']\").first\n    - locator resolved to <div class=\"drop-down has-pop-up\">…</div>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"css-1kfdb0e\"></div> from <div class=\"portal-select-dropdown css-gyb4pq\">…</div> subtree intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"css-1kfdb0e\"></div> from <div class=\"portal-select-dropdown css-gyb4pq\">…</div> subtree intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    5 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"css-1kfdb0e\"></div> from <div class=\"portal-select-dropdown css-gyb4pq\">…</div> subtree intercepts pointer events\n    - retrying click action\n      - waiting 500ms\n"
+    },
+    "Balbriggan": {
+      "store": "Balbriggan",
+      "code": "374",
+      "report": "waste top 50",
+      "scraped_at": "2026-04-29T17:05:23.475842+01:00",
+      "date": "2026-04-29",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Waste Qty",
+          "Waste & Reduction €",
+          "Reduction Qty",
+          "Retail Qty"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1023995 001 MALTESERS WHITE CHOCOLATE BAG | 32GRM 5000159572125",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 161.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 301.057,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 20.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1514104 001 TWIX SALTED CARAMEL BAR| 46GRM 5000159556873",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 47.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 87.886,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 2.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1666618 001 M&M'S SALTED CARAMEL POUCH| 102GRM 5900951291661",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 38.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 132.846,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 6.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1514104 003 TWIX BAR | 50GRM 5900951313592",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 32.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 59.837,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 17.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1003221 002 SV BABY LEAF SALAD | 100GRM 5099839661150",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 20.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 25.45,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 1.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 31.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1004003 001 MAX TWISTER PEAR VANILLA STWBRY| 80MLS 8711327627420",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 20.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 27.642,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Qty": {
+              "v": null,
+              "t": "nil"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1908736 000 PEDIGREE IMMUNITY MULTIVITAMINS | 180GRM 5010394006255",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 19.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 100.407,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Qty": {
+              "v": null,
+              "t": "nil"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1090874 001 SV ASPARAGUS TIPS| 100GRM 5099839697593",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 17.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 28.73,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 8.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1016308 000 SMITHS SCAMPI FRIES| 27GRM 5000328149035",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 15.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 14.634,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 2.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1310425 001 MALT TEASERS BAR | 35GRM 5000159462129",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 14.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 26.179,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 22.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1982260 000 PEKISH CHICKEN POPS | 290GRM 5391548650228",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 12.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 47.88,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 5.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1489361 000 SCHAR GF SWEET BRIOCHE ROLLS| 200GRM 8008698001059",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 11.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 34.793,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Qty": {
+              "v": null,
+              "t": "nil"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1992873 000 SUPERVALU PINEAPPLE CHUNKS | 450GRM 5099839751585",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 11.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 53.17,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 3.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 21.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1366243 001 SUPERVALU BROCCOLI FLORETS | 250GRM 5099839742088",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 11.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 24.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 2.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 12.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1712279 000 ASSORTED TARTLETS |1PCE 5391520481208",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 11.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 48.361,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 28.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1905370 000 KRI KRI MY AUTHENTIC GREEK YOGURT | 500G 5202234620329",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 10.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 24.9,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 21.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1012938 000 HERTA FRANKFURTERS| 350GRM 3154230045984",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 10.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 36.9,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 7.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1347473 007 SNICKERS CREAMY PEANUT BUTTER 2P| 36.5GRM 5900951310379",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 9.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 16.829,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 21.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1030231 001 SV CARROT CAULIFLOWER BROCCOLI MIX | 350GRM 5099839741203",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 9.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 21.87,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 4.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 15.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1012463 002 BENECOL DAIRY FREE TROPICAL YOGURT DRINK| 405GRM 5055940100599",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 9.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 53.91,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 3.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1881992 000 GLENILEN FARM KIDS VANILLA YOGHURT | 90GRM 5391508961784",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 9.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 8.01,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 24.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1983138 001 MR KIPLING VANILLA BDAY CAKE TARTS | 174GRM 5000221609322",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 9.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 30.846,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Qty": {
+              "v": null,
+              "t": "nil"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1060853 000 DEMI BAGUETTES| 4PCE 5099839311727",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 9.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 24.75,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 147.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1102005 000 BONELESS SEA BASS FILLETS [S/O | 100GRM 0282980000000",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 8.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 27.92,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 19.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1378226 000 SILVERHILL CRISPY DUCK & PANCK PRO| 600GRM 5099459760127",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 8.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 77.52,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 2.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1022947 000 GALTEE PUDDING WHITE| 200GRM 5011037922017",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 8.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 14.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 2.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1514104 002 TWIX WHITE CHOCOLATE BAR | 46GRM 5000159557191",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 7.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 13.089,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 2.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1286674 000 SUPERVALU BROCCOLI EDAMAME STIR FRY | 280GRM 5099839745959",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 7.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 25.82,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 5.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 15.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1819940 000 COCONUT & JAM QUEENCAKES 5033456731100",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 7.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 24.67,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 15.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1671571 000 DENNY HAND CRUMBED WAFERTHIN IR/H| 80GRM 5000342000541",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 7.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 14.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Qty": {
+              "v": null,
+              "t": "nil"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1944100 000 SUPERVALU APPLE ANTIBAC CLEANSER | 750MLS 5099839716843",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 6.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 4.878,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 7.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1731100 000 SUPERVALU ORGANIC ROOSTER| 2KGM 5099839692789",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 6.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 25.14,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Qty": {
+              "v": null,
+              "t": "nil"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1024770 000 COS LETTUCE [ ROMAINE| 1PCE 5099839592614",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 6.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 9.54,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Qty": {
+              "v": null,
+              "t": "nil"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1352286 000 PP  ITALIAN STYLE BEEF MEATBALLS|1PCE 0275550000000",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 6.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 42.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 41.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1388507 000 SV LEAN DICED BEEF | 380GRM 5099839597442",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 6.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 30.6,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 12.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1323450 001 SV FRESH IRISH CHICKEN FILLET| 500 GRM 5099839661730",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 6.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 35.34,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 113.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1809339 000 SUPERVALU FRESH IRISH CHICKEN LEGS|800GRM 5099839717680",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 6.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 20.94,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 26.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1998490 000 SUPERVALU IRISH WHOLE CHICKEN | 1.3KGM 5099839753435",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 6.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 26.34,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 10.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1085079 003 SV FREE RANGE CHICKEN FILLETS| 220 GRM 5099839661792",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 6.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 25.5,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 27.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1966610 000 SV SIGNATURE TASTES FISH SNACK BOX | 370GRM 5099839744501",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 6.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 58.43,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 1.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 7.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1347649 000 SIGNATURE COOLEENEY| 200GRM 5099839584022",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 6.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 25.2,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Qty": {
+              "v": null,
+              "t": "nil"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1310290 000 MULTI SEED DEMI BAGUETTE| 150GRM 0232960000000",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 6.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 6.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Qty": {
+              "v": null,
+              "t": "nil"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "2008380 000 CLEAN CUT STH FRIED CHICKEN & MASH | 400GRM 5099839754883",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 6.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 33.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 5.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1011197 000 HB KING CONE| 260MLS 8721274817447",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 6.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 17.561,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Qty": {
+              "v": null,
+              "t": "nil"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1022694 001 GALAXY RIPPLE| 30GRM 5000159553834",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 5.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 9.35,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 2.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1576368 009 TAYTO HUNKY DORYS CHEESE & ONION | 130GRM 5011096012131",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 5.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 11.748,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 10.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1025852 000 SV GOLDEN WONDER POTATO P/P| 2KGM 5099839043376",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 5.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 18.95,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 1.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1465745 000 GARDEN OF EDEN SAGE| 25GRM 5390741201060",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 5.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 9.95,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Qty": {
+              "v": null,
+              "t": "nil"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1828946 001 LIVING TRIPLE SELECTION LETTUCE | 1PCE 5391540670033",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 5.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 7.95,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 24.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1030252 001 SUPERVALU DICED WHITE ONION | 200GRM 5099839741197",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 5.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 7.5,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 6.0,
+              "t": "num"
+            }
+          }
+        ]
+      }
+    },
+    "Skerries": {
+      "store": "Skerries",
+      "code": "424",
+      "report": "waste top 50",
+      "scraped_at": "2026-04-29T17:05:23.475842+01:00",
+      "date": "2026-04-29",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Waste Qty",
+          "Waste & Reduction €",
+          "Reduction Qty",
+          "Retail Qty"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1030326 000 SV WRAPPD BROCCOLI CROWN| 350GRM 4088600074597",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 29.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 29.01,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Qty": {
+              "v": null,
+              "t": "nil"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1830203 000 CHIVERS REAL DAIRY SPRAY CREAM| 250GRM 5098732012458",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 28.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 92.12,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 3.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1883043 000 JML BOWL STEW BEEF 104G 6921555551851",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 15.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 33.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Qty": {
+              "v": null,
+              "t": "nil"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1013680 000 SV BANANAS  LOOSE NORMAL |1KGM 0287810000000",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 12.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 25.011,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 16.255000000000003,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 758.8600000000001,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1003221 002 SV BABY LEAF SALAD | 100GRM 5099839661150",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 12.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 19.5,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 6.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 70.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1193153 000 BASIL | 50GRM 5390741270011",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 11.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 17.49,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 104.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1826115 000 BRADY FAMILY FAMILYPACK CRUMB HAM| 120GRM 5391542670062",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 11.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 52.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 4.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 20.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1531632 006 BRADY FAMILY TRADITIONAL HAM| 80GRM 5391512929800",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 10.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 32.5,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 6.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 73.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1975176 000 SUPERVALU SIG TASTES TURKEY GRAVY | 500GRM 5099839748189",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 10.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 50.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Qty": {
+              "v": null,
+              "t": "nil"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1541695 000 MR KIPLING LEMON FLATPACK SLICES 6 PK| 202GRM 5000221601906",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 9.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 35.604,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Qty": {
+              "v": null,
+              "t": "nil"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1372251 000 FINGALS FINEST FREE RANGE EGGS|18PCE 610696080868",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 8.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 41.6,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 32.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1520185 000 CHIVERS 9 CAL STRAWBERRY JELLY POT|150GRM 5098732004330",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 7.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 7.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 1.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1218464 000 SV PINK LADY LOOSE APPLES | 1PCE 3307",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 7.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 3.85,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 204.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1329000 000 SUPERVALU SKIM MILK| 1LTR 5099839575815",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 7.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 8.05,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 23.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1026381 000 SV FREE RANGE MEDIUM EGGS| 6PCE 5099839044397",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 7.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 14.63,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 131.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1035065 000 MR KIPLING JAM TARTS 6PK| 210GRM 5000221002253",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 7.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 26.829,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 1.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1900887 000 SUPERVALU GREEN JALAPENO CHILLI| 65GRM 5099839731266",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 6.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 6.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 10.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1803784 000 LOOSE COURGETTE|1PCE 5099839716287",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 6.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 4.5,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 116.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1959396 000 BUYERS FLOWERS 6152409527542",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 6.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 47.524,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 22.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1026611 000 UNION HALL SMOKED MACKEREL| 150GRM 5391097000215",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 6.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 28.53,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 1.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 8.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1026492 000 HOT BREADED CHICKEN FILLET | 1PCE 0286970000000",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 6.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 18.502,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 46.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1362419 004 THE HAPPY PEAR SPICY RED PEPPR PESTO| 135GRM 5099839723179",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 6.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 26.7,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 6.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1225978 002 COW & GATE GROWING UP MILK 3| 1LTR 5051594002227",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 5.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 22.45,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Qty": {
+              "v": null,
+              "t": "nil"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "2008000 000 SV CARROT BROCCOLI BABY POTATO TRAY | 900GRM 5099839755293",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 5.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 10.95,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Qty": {
+              "v": null,
+              "t": "nil"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1917751 000 LOOSE RED PEPPER | 1PCE 5099839734816",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 5.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 4.95,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 288.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1917761 000 LOOSE YELLOW PEPPER | 1PCE 5099839734830",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 5.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 4.95,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 76.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1024916 000 SV  COURGETTE TWINPACK| 2PCE 5099368552028",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 5.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 4.95,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Qty": {
+              "v": null,
+              "t": "nil"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1028811 000 SV SMOKED KIPPERS .|160GRM 5099839276422",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 5.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 12.45,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 1.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1997854 000 SEAFOOD SUPPERS TROUT TEMPTATION|200GRM 5392001040006",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 5.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 27.5,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 1.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 15.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1944641 002 SUPERVALU BLUEBERRY MINI MUFFINS | 330GRM 5099839740497",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 5.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 12.555,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 3.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1040784 000 SAUSAGE ROLLS MULTI-BUY| 1PCE 0237890000000",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 5.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 8.81,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 231.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1112721 000 LARGE SAUSAGE ROLL| 1PCE 0244600000000",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 5.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 9.692,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 24.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1998092 000 EASY MEALS CAULIFLOWER &LENTIL DAHL | 300GRM 5099839752278",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 5.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 19.95,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Qty": {
+              "v": null,
+              "t": "nil"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1889907 002 KEOGHS SHAMROCK & SOUR CREAM CRISP | 45GRM 5391527732334",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 4.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 5.203,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 15.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1386485 000 CHIVERS 9 CAL MANGO & PINEAPL JELLY| 150GRM 5011022051968",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 4.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 4.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 1.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1015786 000 SUPERVALU LIMES LOOSE| 1PCE 5099839579233",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 4.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 1.96,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 64.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1031270 000 SV FRUIT SALAD| 200GRM 5099839285837",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 4.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 21.66,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 10.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 20.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1592795 002 SUPERVALU FRESH BASIL |20GRM 5099839650178",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 4.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 4.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 15.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1917741 000 LOOSE GREEN PEPPER | 1PCE 5099839734823",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 4.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 3.96,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 59.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1030237 000 SV CARROT & TURNIP DICED| 500GRM 5099839282478",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 4.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 7.96,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 6.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1286674 000 SUPERVALU BROCCOLI EDAMAME STIR FRY | 280GRM 5099839745959",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 4.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 20.11,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 5.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 13.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1634317 001 SIG TASTES EXTRA FINE BEANS|200GRM 5099839697623",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 4.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 7.56,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Qty": {
+              "v": null,
+              "t": "nil"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1600814 000 FUNKY BOUQUET| 1PCE 5391511376278",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 4.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 38.731,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Qty": {
+              "v": null,
+              "t": "nil"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1334670 000 SUPERVALU RICOTTA| 250GRM 5099839575600",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 4.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 5.2,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 1.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1954710 000 BEST WISHES LEMON CAKE | 950GRM 5099839741838",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 4.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 42.29,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Qty": {
+              "v": null,
+              "t": "nil"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1153708 000 SUPERVALU PORK ONION & TOMATO SLICES | 200GRM 5099839326295",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 4.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 7.8,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 10.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1005879 000 MASH DIRECT MASHED CHAMP| 400GRM 5060072990024",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 4.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 15.6,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 4.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 6.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1466126 001 AVONMORE MARKET VEG WITH ITA PARSLY| 400GRM 5011056073035",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 4.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 11.56,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 1.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1970846 000 SRIRACHA COLESLAW | 250GRM 5099839745072",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 4.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 8.95,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 1.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 5.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1314784 000 LEVONI COPPA STAGIONATA | 80GRM 8004767003924",
+              "t": "str"
+            },
+            "Waste Qty": {
+              "v": 4.0,
+              "t": "num"
+            },
+            "Waste & Reduction €": {
+              "v": 21.16,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            },
+            "Retail Qty": {
+              "v": 2.0,
+              "t": "num"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
