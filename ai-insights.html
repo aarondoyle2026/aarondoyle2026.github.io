@@ -106,8 +106,24 @@
 .diag-block.fix   .diag-label{color:var(–green-light);}
 .diag-text{font-size:13px;line-height:1.75;}
 
-.divider{height:1px;background:var(–card-border);margin:16px 0;}
-.refresh-note{text-align:center;font-family:‘DM Mono’,monospace;font-size:10px;color:var(–muted);letter-spacing:.1em;padding:10px 0 40px;}
+.waste-summary{background:linear-gradient(135deg,rgba(224,85,85,.1),rgba(201,168,76,.05));border:1px solid rgba(224,85,85,.25);border-radius:16px;padding:18px;margin-bottom:14px;position:relative;overflow:hidden;}
+.waste-summary::before{content:’’;position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(–red),var(–orange),transparent);}
+.waste-summary p{font-size:13px;line-height:1.8;}
+.waste-store-block{background:var(–card-bg);border:1px solid var(–card-border);border-radius:14px;padding:14px;margin-bottom:12px;}
+.waste-store-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.waste-store-name{font-weight:600;font-size:14px;}
+.waste-store-total{font-family:‘DM Mono’,monospace;font-size:11px;background:rgba(224,85,85,.2);color:#f0a0a0;padding:3px 10px;border-radius:8px;}
+.waste-offender{background:rgba(224,85,85,.06);border:1px solid rgba(224,85,85,.15);border-radius:10px;padding:10px 12px;margin-bottom:8px;}
+.waste-offender-header{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:5px;}
+.waste-offender-name{font-size:12px;font-weight:600;color:#f0c0c0;flex:1;line-height:1.4;}
+.waste-offender-euro{font-family:‘DM Mono’,monospace;font-size:11px;color:#f0a0a0;white-space:nowrap;flex-shrink:0;}
+.waste-offender-stats{display:flex;gap:8px;margin-bottom:5px;flex-wrap:wrap;}
+.waste-stat{font-family:‘DM Mono’,monospace;font-size:10px;padding:2px 7px;border-radius:6px;background:rgba(255,255,255,.06);color:var(–muted);}
+.waste-offender-insight{font-size:11px;line-height:1.5;color:rgba(240,237,230,.65);}
+.waste-category{font-size:12px;line-height:1.6;color:rgba(240,237,230,.7);margin:8px 0;}
+.waste-action{background:rgba(45,122,79,.1);border:1px solid rgba(45,122,79,.25);border-radius:10px;padding:10px 12px;font-size:12px;line-height:1.55;color:#a0d4b4;margin-top:8px;}
+.waste-action::before{content:’→ ’;color:var(–green-light);}
+.waste-group-actions{display:flex;flex-direction:column;gap:8px;}
 
 /* CHAT */
 .chat-wrap{display:block;}
@@ -182,6 +198,9 @@
     <button type="button" class="mode-btn" id="btn-diagnosis" onclick="switchMode('diagnosis')">
       <span class="btn-icon">🔍</span><span class="btn-label">Diagnosis</span>
     </button>
+    <button type="button" class="mode-btn" id="btn-waste" onclick="switchMode('waste')">
+      <span class="btn-icon">🗑️</span><span class="btn-label">Waste</span>
+    </button>
     <button type="button" class="mode-btn" id="btn-chat" onclick="switchMode('chat')">
       <span class="btn-icon">💬</span><span class="btn-label">Ask AI</span>
     </button>
@@ -241,6 +260,17 @@
     <div class="refresh-note">Insights updated every Monday at 5 AM</div>
   </div>
 
+  <div class="mode-panel" id="panel-waste">
+    <div class="slabel" style="margin-top:4px;">Waste Analysis</div>
+    <div class="waste-summary"><div id="wasteSummary"></div></div>
+    <div class="slabel">Store Breakdown</div>
+    <div id="wasteStores"></div>
+    <div class="divider"></div>
+    <div class="slabel">Group-Wide Actions</div>
+    <div class="waste-group-actions" id="wasteGroupActions"></div>
+    <div class="refresh-note">Insights updated every Monday at 5 AM</div>
+  </div>
+
   <div class="mode-panel" id="panel-chat">
     <div class="slabel" style="margin-top:4px;">Ask the AI</div>
 
@@ -273,7 +303,7 @@ var SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 // ^ This is your PUBLIC anon key — already used across all your other tools, safe to commit.
 // The ANTHROPIC_API_KEY lives only inside Supabase as a secret — never in this file.
 
-var MODES = ['director','leaks','actions','cross','diagnosis','chat'];
+var MODES = ['director','leaks','actions','cross','diagnosis','waste','chat'];
 
 // Aaron hardwire — checked before any API call is made
 var AARON_TRIGGERS = [
@@ -420,6 +450,49 @@ function renderDiagnosis(d) {
   document.getElementById('diagWhy').textContent   = d.why   || '';
   document.getElementById('diagFix').textContent   = d.fix   || '';
 }
+function renderWaste(w) {
+  if (!w) return;
+  document.getElementById('wasteSummary').innerHTML = '<p style="font-size:13px;line-height:1.8;">' + esc(w.summary || '') + '</p>';
+
+  var ws = document.getElementById('wasteStores');
+  ws.innerHTML = '';
+  (w.stores || []).forEach(function(s) {
+    var block = document.createElement('div');
+    block.className = 'waste-store-block';
+    var html = '<div class="waste-store-header">';
+    html += '<span class="waste-store-name">' + esc(s.name) + '</span>';
+    html += '<span class="waste-store-total">' + esc(s.total_waste_euro || '') + '</span>';
+    html += '</div>';
+    (s.top_offenders || []).forEach(function(o) {
+      html += '<div class="waste-offender">';
+      html += '<div class="waste-offender-header">';
+      html += '<span class="waste-offender-name">' + esc(o.product || '') + '</span>';
+      html += '<span class="waste-offender-euro">' + esc(o.waste_euro || '') + '</span>';
+      html += '</div>';
+      html += '<div class="waste-offender-stats">';
+      if (o.waste_qty)     html += '<span class="waste-stat">Wasted: ' + esc(String(o.waste_qty)) + '</span>';
+      if (o.reduction_qty) html += '<span class="waste-stat">Reduced: ' + esc(String(o.reduction_qty)) + '</span>';
+      if (o.retail_qty)    html += '<span class="waste-stat">Sold: ' + esc(String(o.retail_qty)) + '</span>';
+      html += '</div>';
+      if (o.insight) html += '<div class="waste-offender-insight">' + esc(o.insight) + '</div>';
+      html += '</div>';
+    });
+    if (s.category_breakdown) html += '<div class="waste-category">' + esc(s.category_breakdown) + '</div>';
+    if (s.action) html += '<div class="waste-action">' + esc(s.action) + '</div>';
+    block.innerHTML = html;
+    ws.appendChild(block);
+  });
+
+  var ga = document.getElementById('wasteGroupActions');
+  ga.innerHTML = '';
+  (w.group_actions || []).forEach(function(item, i) {
+    var div = document.createElement('div');
+    div.className = 'num-item teal-item';
+    var n = (i + 1) < 10 ? '0' + (i + 1) : String(i + 1);
+    div.innerHTML = '<span class="num-badge">' + n + '</span><span>' + esc(item) + '</span>';
+    ga.appendChild(div);
+  });
+}
 function showError(msg) {
   document.getElementById('loadingScreen').style.display = 'none';
   var el = document.getElementById('errorCard');
@@ -528,6 +601,7 @@ function init() {
       renderActions(ins.actions);
       renderCross(ins.cross);
       renderDiagnosis(ins.diagnosis);
+      renderWaste(ins.waste);
       setStep('Done', '', 100);
       setTimeout(function() {
         document.getElementById('loadingScreen').style.display = 'none';
