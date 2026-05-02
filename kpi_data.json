@@ -4615,7 +4615,7 @@
     "Palmerstown": {
       "store": "Palmerstown",
       "code": "356",
-      "scraped_at": "2026-05-02T14:03:51.226829+01:00",
+      "scraped_at": "2026-05-02T15:00:03.265117+01:00",
       "date": "2026-05-02",
       "sections": {
         "RETAIL SALES ANALYSIS": {
@@ -4871,18 +4871,266 @@
     "Balbriggan": {
       "store": "Balbriggan",
       "code": "374",
-      "scraped_at": "2026-05-02T14:03:51.226829+01:00",
+      "scraped_at": "2026-05-02T15:00:03.265117+01:00",
       "date": "2026-05-02",
-      "sections": {},
-      "error": "Could not select store '374 - Balbriggan'. Last: None"
+      "sections": {
+        "RETAIL SALES ANALYSIS": {
+          "Measures": {
+            "TY": {
+              "v": "TY",
+              "t": "str"
+            },
+            "WTD": {
+              "v": "WTD",
+              "t": "str"
+            },
+            "YTD": {
+              "v": "YTD",
+              "t": "str"
+            }
+          },
+          "Retail Sales €": {
+            "TY": {
+              "v": 59226.67,
+              "t": "eur"
+            },
+            "WTD": {
+              "v": 256181.78,
+              "t": "eur"
+            },
+            "YTD": {
+              "v": 5522377.62,
+              "t": "eur"
+            }
+          },
+          "Retail Sales € TY LY Var": {
+            "TY": {
+              "v": -2963.59,
+              "t": "eur"
+            },
+            "WTD": {
+              "v": -13959.68,
+              "t": "eur"
+            },
+            "YTD": {
+              "v": -164927.11,
+              "t": "eur"
+            }
+          },
+          "Retail Sales € TY LY Var %": {
+            "TY": {
+              "v": -4.7654,
+              "t": "pct"
+            },
+            "WTD": {
+              "v": -5.1675,
+              "t": "pct"
+            },
+            "YTD": {
+              "v": -2.8999,
+              "t": "pct"
+            }
+          }
+        },
+        "RETAIL SCAN MARGIN ANALYSIS": {
+          "Retail Scan Margin €": {
+            "TY": {
+              "v": 8928.65242,
+              "t": "eur"
+            },
+            "WTD": {
+              "v": 43098.79075,
+              "t": "eur"
+            },
+            "YTD": {
+              "v": 907623.6862100004,
+              "t": "eur"
+            }
+          },
+          "Retail Scan Margin %": {
+            "TY": {
+              "v": 16.662,
+              "t": "pct"
+            },
+            "WTD": {
+              "v": 18.4817,
+              "t": "pct"
+            },
+            "YTD": {
+              "v": 18.0366,
+              "t": "pct"
+            }
+          },
+          "Retail Scan Margin € TY LY Var": {
+            "TY": {
+              "v": -490.92701999999736,
+              "t": "eur"
+            },
+            "WTD": {
+              "v": -3770.699640000006,
+              "t": "eur"
+            },
+            "YTD": {
+              "v": -52334.77648999961,
+              "t": "eur"
+            }
+          },
+          "Retail Scan Margin % TY LY Var": {
+            "TY": {
+              "v": -0.078,
+              "t": "pct"
+            },
+            "WTD": {
+              "v": -0.5561,
+              "t": "pct"
+            },
+            "YTD": {
+              "v": -0.4687,
+              "t": "pct"
+            }
+          }
+        },
+        "WASTE & REDUCTION ANALYSIS": {
+          "Waste & Reduction €": {
+            "TY": {
+              "v": 1194.4478,
+              "t": "eur"
+            },
+            "WTD": {
+              "v": 3608.8288,
+              "t": "eur"
+            },
+            "YTD": {
+              "v": 78851.2544,
+              "t": "eur"
+            }
+          },
+          "Waste & Reduction € TY LY Var": {
+            "TY": {
+              "v": 322.1462,
+              "t": "eur"
+            },
+            "WTD": {
+              "v": 237.9822,
+              "t": "eur"
+            },
+            "YTD": {
+              "v": 13948.4764,
+              "t": "eur"
+            }
+          },
+          "Waste & Reduction € TY LY Var %": {
+            "TY": {
+              "v": 36.9306,
+              "t": "pct"
+            },
+            "WTD": {
+              "v": 7.06,
+              "t": "pct"
+            },
+            "YTD": {
+              "v": 21.4913,
+              "t": "pct"
+            }
+          }
+        },
+        "TRANSACTION COUNT ANALYSIS": {
+          "Retail Transaction Count": {
+            "TY": {
+              "v": 3093.0,
+              "t": "count"
+            },
+            "WTD": {
+              "v": 15391.0,
+              "t": "count"
+            },
+            "YTD": {
+              "v": 299162.0,
+              "t": "count"
+            }
+          },
+          "Retail Transaction Count TY LY Var": {
+            "TY": {
+              "v": -165.0,
+              "t": "count"
+            },
+            "WTD": {
+              "v": -1087.0,
+              "t": "count"
+            },
+            "YTD": {
+              "v": -14275.0,
+              "t": "count"
+            }
+          },
+          "Retail Transaction Count TY LY Var %": {
+            "TY": {
+              "v": -5.0645,
+              "t": "pct"
+            },
+            "WTD": {
+              "v": -6.5967,
+              "t": "pct"
+            },
+            "YTD": {
+              "v": -4.5543,
+              "t": "pct"
+            }
+          }
+        },
+        "AVERAGE SPEND ANALYSIS": {
+          "Retail Sales Average Spend €": {
+            "TY": {
+              "v": 19.44433236340123,
+              "t": "eur"
+            },
+            "WTD": {
+              "v": 16.86719836267949,
+              "t": "eur"
+            },
+            "YTD": {
+              "v": 18.67438073685829,
+              "t": "eur"
+            }
+          },
+          "Retail Sales Average Spend € TY LY Var": {
+            "TY": {
+              "v": 0.055885463462619356,
+              "t": "eur"
+            },
+            "WTD": {
+              "v": 0.24508584902492103,
+              "t": "eur"
+            },
+            "YTD": {
+              "v": 0.29902744417108096,
+              "t": "eur"
+            }
+          },
+          "Retail Sales Average Spend € TY LY Var %": {
+            "TY": {
+              "v": 0.2882,
+              "t": "pct"
+            },
+            "WTD": {
+              "v": 1.4745,
+              "t": "pct"
+            },
+            "YTD": {
+              "v": 1.6273,
+              "t": "pct"
+            }
+          }
+        }
+      }
     },
     "Skerries": {
       "store": "Skerries",
       "code": "424",
-      "scraped_at": "2026-05-02T14:03:51.226829+01:00",
+      "scraped_at": "2026-05-02T15:00:03.265117+01:00",
       "date": "2026-05-02",
       "sections": {},
-      "error": "Could not select store '424 - Skerries'. Last: None"
+      "error": "Could not select store '424 - Skerries'. Last: Locator.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"div\").nth(713)\n    - locator resolved to <div>…</div>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <rect x=\"0\" y=\"0\" width=\"709\" height=\"692\" stroke=\"grey\" stroke-width=\"0\" class=\"visualsPlotArea\"></rect> from <svg y=\"0\" x=\"50\" width=\"709\" height=\"692\" class=\"plot-style\" data-format-type=\"plotArea\">…</svg> subtree intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <rect x=\"0\" y=\"0\" width=\"709\" height=\"692\" stroke=\"grey\" stroke-width=\"0\" class=\"visualsPlotArea\"></rect> from <svg y=\"0\" x=\"50\" width=\"709\" height=\"692\" class=\"plot-style\" data-format-type=\"plotArea\">…</svg> subtree intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    9 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <rect x=\"0\" y=\"0\" width=\"709\" height=\"692\" stroke=\"grey\" stroke-width=\"0\" class=\"visualsPlotArea\"></rect> from <svg y=\"0\" x=\"50\" width=\"709\" height=\"692\" class=\"plot-style\" data-format-type=\"plotArea\">…</svg> subtree intercepts pointer events\n    - retrying click action\n      - waiting 500ms\n"
     }
   }
 }
