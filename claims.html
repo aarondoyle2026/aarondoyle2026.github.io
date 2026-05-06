@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claims | Moriarty Group</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f4f6f8; color: #1a1a1a; }
+
+  .header { background: #00703c; color: white; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; }
+  .header h1 { font-size: 20px; font-weight: 700; }
+  .header .sub { font-size: 12px; opacity: 0.85; margin-top: 2px; }
+  .back-btn { background: rgba(255,255,255,0.2); color: white; border: none; padding: 8px 14px; border-radius: 6px; font-size: 13px; cursor: pointer; text-decoration: none; }
+
+  .meta { background: #005a30; color: rgba(255,255,255,0.8); padding: 8px 20px; font-size: 12px; }
+
+  .container { padding: 16px; max-width: 1200px; margin: 0 auto; }
+
+  .summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+  .summary-card { background: white; border-radius: 10px; padding: 14px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  .summary-card .store-name { font-size: 13px; font-weight: 600; color: #00703c; margin-bottom: 10px; border-bottom: 2px solid #e8f5ee; padding-bottom: 8px; }
+  .summary-card .stat { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+  .summary-card .stat-label { font-size: 12px; color: #666; }
+  .summary-card .stat-value { font-size: 13px; font-weight: 600; }
+  .summary-card .total { margin-top: 8px; padding-top: 8px; border-top: 1px solid #f0f0f0; display: flex; justify-content: space-between; }
+  .summary-card .total-label { font-size: 12px; font-weight: 600; color: #333; }
+  .summary-card .total-value { font-size: 14px; font-weight: 700; color: #00703c; }
+
+  .section-title { font-size: 16px; font-weight: 700; color: #1a1a1a; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .badge { background: #00703c; color: white; border-radius: 12px; padding: 2px 8px; font-size: 11px; font-weight: 600; }
+  .badge.red { background: #d32f2f; }
+  .badge.amber { background: #e65100; }
+
+  .store-section { margin-bottom: 20px; }
+  .store-header { background: #00703c; color: white; padding: 10px 14px; border-radius: 8px 8px 0 0; font-size: 14px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
+  .store-header .store-total { font-size: 13px; opacity: 0.9; }
+
+  .claims-table { width: 100%; background: white; border-collapse: collapse; box-shadow: 0 1px 4px rgba(0,0,0,0.08); border-radius: 0 0 8px 8px; overflow: hidden; }
+  .claims-table th { background: #f8f9fa; padding: 10px 12px; text-align: left; font-size: 11px; font-weight: 600; color: #555; text-transform: uppercase; letter-spacing: 0.3px; border-bottom: 1px solid #e8e8e8; }
+  .claims-table td { padding: 10px 12px; font-size: 12px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+  .claims-table tr:last-child td { border-bottom: none; }
+  .claims-table tr:hover td { background: #f8fffe; }
+
+  .status-badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+  .status-received { background: #e3f2fd; color: #1565c0; }
+  .status-held { background: #fff3e0; color: #e65100; }
+  .status-approved { background: #e8f5e9; color: #2e7d32; }
+  .status-rejected { background: #ffebee; color: #c62828; }
+
+  .due-overdue { color: #c62828; font-weight: 600; }
+  .due-soon { color: #e65100; font-weight: 600; }
+  .due-ok { color: #2e7d32; }
+
+  .claim-value { font-weight: 600; color: #1a1a1a; }
+  .claim-type { font-size: 11px; color: #666; }
+
+  .no-claims { background: white; border-radius: 8px; padding: 30px; text-align: center; color: #888; font-size: 14px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+
+  .loading { text-align: center; padding: 40px; color: #888; }
+
+  .filter-row { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+  .filter-btn { background: white; border: 1px solid #ddd; padding: 6px 12px; border-radius: 16px; font-size: 12px; cursor: pointer; }
+  .filter-btn.active { background: #00703c; color: white; border-color: #00703c; }
+
+  .group-total { background: #f8f9fa; padding: 10px 14px; border-top: 2px solid #00703c; display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; border-radius: 0 0 8px 8px; }
+
+  @media (max-width: 600px) {
+    .summary-grid { grid-template-columns: 1fr; }
+    .claims-table th:nth-child(4),
+    .claims-table td:nth-child(4),
+    .claims-table th:nth-child(6),
+    .claims-table td:nth-child(6) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>eClaims</h1>
+    <div class="sub">Moriarty Group — Open Claims Dashboard</div>
+  </div>
+  <a href="index.html" class="back-btn">Dashboard</a>
+</div>
+<div class="meta" id="metaBar">Loading...</div>
+
+<div class="container">
+  <div id="summaryGrid" class="summary-grid"></div>
+
+  <div class="section-title">
+    <span>Open Claims</span>
+    <span class="badge" id="totalBadge">0</span>
+    <span class="badge red" id="overdueBadge" style="display:none">0 Overdue</span>
+    <span class="badge amber" id="dueSoonBadge" style="display:none">0 Due Soon</span>
+  </div>
+
+  <div class="filter-row" id="filterRow"></div>
+
+  <div id="claimsContent"><div class="loading">Loading claims...</div></div>
+</div>
+
+<script>
+var DATA_URL = "https://aarondoyle2026.github.io/claims_data.json?_=" + Date.now();
+var allClaims = [];
+var activeFilter = "All";
+
+function getStoreShort(storeNo) {
+  if (!storeNo) return "Unknown";
+  var s = storeNo.toUpperCase();
+  if (s.indexOf("PALMERSTOWN") !== -1 || s.indexOf("356") !== -1) return "Palmerstown";
+  if (s.indexOf("BALBRIGGAN") !== -1 || s.indexOf("374") !== -1) return "Balbriggan";
+  if (s.indexOf("SKERRIES") !== -1 || s.indexOf("424") !== -1) return "Skerries";
+  return storeNo;
+}
+
+function parseDate(str) {
+  if (!str) return null;
+  var parts = str.split("/");
+  if (parts.length === 3) return new Date(parts[2], parts[1] - 1, parts[0]);
+  return null;
+}
+
+function getDueClass(dueDateStr) {
+  var d = parseDate(dueDateStr);
+  if (!d) return "";
+  var today = new Date();
+  today.setHours(0,0,0,0);
+  var diff = Math.floor((d - today) / 86400000);
+  if (diff < 0) return "due-overdue";
+  if (diff <= 3) return "due-soon";
+  return "due-ok";
+}
+
+function getStatusClass(status) {
+  if (!status) return "";
+  var s = status.toLowerCase();
+  if (s.indexOf("received") !== -1) return "status-received";
+  if (s.indexOf("held") !== -1) return "status-held";
+  if (s.indexOf("approved") !== -1) return "status-approved";
+  if (s.indexOf("rejected") !== -1) return "status-rejected";
+  return "";
+}
+
+function formatValue(v) {
+  var n = parseFloat(v);
+  if (isNaN(n)) return v;
+  return "\u20ac" + n.toFixed(2);
+}
+
+function buildSummary(claims) {
+  var stores = ["Palmerstown", "Balbriggan", "Skerries"];
+  var grid = document.getElementById("summaryGrid");
+  grid.innerHTML = "";
+
+  stores.forEach(function(store) {
+    var storeClaims = claims.filter(function(c) { return getStoreShort(c["Store No"]) === store; });
+    var total = storeClaims.reduce(function(sum, c) { return sum + (parseFloat(c["Claim Value"]) || 0); }, 0);
+    var overdue = storeClaims.filter(function(c) { return getDueClass(c["Due Date"]) === "due-overdue"; }).length;
+    var held = storeClaims.filter(function(c) { return (c["Claim Status"] || "").toLowerCase().indexOf("held") !== -1; }).length;
+    var shortage = storeClaims.filter(function(c) { return (c["Claim Type"] || "").toLowerCase().indexOf("shortage") !== -1; }).length;
+
+    var card = document.createElement("div");
+    card.className = "summary-card";
+    card.innerHTML =
+      '<div class="store-name">' + store + '</div>' +
+      '<div class="stat"><span class="stat-label">Open Claims</span><span class="stat-value">' + storeClaims.length + '</span></div>' +
+      '<div class="stat"><span class="stat-label">Shortages</span><span class="stat-value">' + shortage + '</span></div>' +
+      '<div class="stat"><span class="stat-label">Claims Held</span><span class="stat-value" style="color:' + (held > 0 ? "#e65100" : "#333") + '">' + held + '</span></div>' +
+      '<div class="stat"><span class="stat-label">Overdue</span><span class="stat-value" style="color:' + (overdue > 0 ? "#c62828" : "#333") + '">' + overdue + '</span></div>' +
+      '<div class="total"><span class="total-label">Total Value</span><span class="total-value">' + formatValue(total.toFixed(2)) + '</span></div>';
+    grid.appendChild(card);
+  });
+}
+
+function buildFilters(claims) {
+  var stores = ["All", "Palmerstown", "Balbriggan", "Skerries"];
+  var row = document.getElementById("filterRow");
+  row.innerHTML = "";
+  stores.forEach(function(store) {
+    var btn = document.createElement("button");
+    btn.className = "filter-btn" + (store === activeFilter ? " active" : "");
+    var count = store === "All" ? claims.length : claims.filter(function(c) { return getStoreShort(c["Store No"]) === store; }).length;
+    btn.textContent = store + " (" + count + ")";
+    btn.onclick = function() {
+      activeFilter = store;
+      buildFilters(claims);
+      buildClaimsTable(claims);
+    };
+    row.appendChild(btn);
+  });
+}
+
+function buildClaimsTable(claims) {
+  var filtered = activeFilter === "All" ? claims : claims.filter(function(c) { return getStoreShort(c["Store No"]) === activeFilter; });
+  var content = document.getElementById("claimsContent");
+
+  if (filtered.length === 0) {
+    content.innerHTML = '<div class="no-claims">No open claims found.</div>';
+    return;
+  }
+
+  var stores = activeFilter === "All" ? ["Palmerstown", "Balbriggan", "Skerries"] : [activeFilter];
+  var html = "";
+
+  stores.forEach(function(store) {
+    var storeClaims = filtered.filter(function(c) { return getStoreShort(c["Store No"]) === store; });
+    if (storeClaims.length === 0) return;
+
+    var storeTotal = storeClaims.reduce(function(sum, c) { return sum + (parseFloat(c["Claim Value"]) || 0); }, 0);
+
+    html += '<div class="store-section">';
+    html += '<div class="store-header"><span>' + store + '</span><span class="store-total">' + storeClaims.length + ' claims — ' + formatValue(storeTotal.toFixed(2)) + '</span></div>';
+    html += '<table class="claims-table"><thead><tr>';
+    html += '<th>Claim No</th><th>Product</th><th>Type</th><th>Status</th><th>Due Date</th><th>Invoice Date</th><th>Value</th>';
+    html += '</tr></thead><tbody>';
+
+    storeClaims.forEach(function(c) {
+      var dueClass = getDueClass(c["Due Date"]);
+      var statusClass = getStatusClass(c["Claim Status"]);
+      html += '<tr>';
+      html += '<td>' + (c["Claim No"] || "") + '</td>';
+      html += '<td>' + (c["Product"] || "") + '<br><span class="claim-type">' + (c["6 Digit"] || "") + '</span></td>';
+      html += '<td><span class="claim-type">' + (c["Claim Type"] || "") + '</span></td>';
+      html += '<td><span class="status-badge ' + statusClass + '">' + (c["Claim Status"] || "") + '</span></td>';
+      html += '<td><span class="' + dueClass + '">' + (c["Due Date"] || "") + '</span></td>';
+      html += '<td>' + (c["Invoice Date"] || "") + '</td>';
+      html += '<td class="claim-value">' + formatValue(c["Claim Value"] || "0") + '</td>';
+      html += '</tr>';
+    });
+
+    html += '</tbody></table>';
+    html += '<div class="group-total"><span>Store Total</span><span>' + formatValue(storeTotal.toFixed(2)) + '</span></div>';
+    html += '</div>';
+  });
+
+  content.innerHTML = html;
+}
+
+function updateBadges(claims) {
+  var today = new Date();
+  today.setHours(0,0,0,0);
+  var overdue = claims.filter(function(c) {
+    var d = parseDate(c["Due Date"]);
+    return d && d < today;
+  }).length;
+  var dueSoon = claims.filter(function(c) {
+    var d = parseDate(c["Due Date"]);
+    if (!d) return false;
+    var diff = Math.floor((d - today) / 86400000);
+    return diff >= 0 && diff <= 3;
+  }).length;
+
+  document.getElementById("totalBadge").textContent = claims.length;
+  if (overdue > 0) {
+    var ob = document.getElementById("overdueBadge");
+    ob.style.display = "inline-block";
+    ob.textContent = overdue + " Overdue";
+  }
+  if (dueSoon > 0) {
+    var db = document.getElementById("dueSoonBadge");
+    db.style.display = "inline-block";
+    db.textContent = dueSoon + " Due Soon";
+  }
+}
+
+fetch(DATA_URL)
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    document.getElementById("metaBar").textContent = "Last updated: " + (data.date || "") + " at " + (data.time || "") + " — " + (data.claim_summary ? data.claim_summary.length : 0) + " open claims";
+
+    allClaims = (data.claim_summary || []).concat(data.open_claims || []);
+
+    buildSummary(allClaims);
+    updateBadges(allClaims);
+    buildFilters(allClaims);
+    buildClaimsTable(allClaims);
+  })
+  .catch(function(err) {
+    document.getElementById("claimsContent").innerHTML = '<div class="no-claims">Could not load claims data. ' + err + '</div>';
+  });
+</script>
+</body>
+</html>
