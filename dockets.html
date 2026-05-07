@@ -65,31 +65,41 @@ textarea{resize:vertical;min-height:72px;}
 .photo-thumb img{width:100%;height:100%;object-fit:cover;}
 .photo-thumb .rm{position:absolute;top:2px;right:2px;background:rgba(0,0,0,0.6);color:white;border:none;border-radius:50%;width:18px;height:18px;font-size:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;}
 .timestamp-badge{background:#f4f5f0;border:1px solid #d8dbd2;border-radius:6px;padding:8px 12px;font-family:'DM Mono',monospace;font-size:11px;color:#6b7266;margin-top:6px;}
-.form-success{background:#e8f5e9;border:1px solid #a5d6a7;border-radius:8px;padding:11px 14px;font-size:14px;font-weight:600;color:#2e7d32;margin-bottom:12px;display:none;align-items:center;gap:8px;}
-.form-success.show{display:flex;}
+.save-spinner{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:2000;align-items:center;justify-content:center;}
+.save-spinner.show{display:flex;}
+.save-spinner-box{background:white;border-radius:16px;padding:24px 32px;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,0.2);}
+.save-spinner-icon{font-size:36px;margin-bottom:8px;}
+.save-spinner-text{font-size:15px;font-weight:700;color:#1a5e2a;}
+.save-spinner-sub{font-size:12px;color:#6b7266;margin-top:4px;font-family:'DM Mono',monospace;}
 .sub-tabs{display:flex;background:#f4f5f0;border-radius:10px;padding:4px;margin-bottom:14px;gap:4px;}
 .sub-tab{flex:1;padding:8px 4px;font-size:11px;font-weight:700;color:#6b7266;text-align:center;border-radius:8px;cursor:pointer;transition:all 0.15s;letter-spacing:0.03em;}
 .sub-tab.active{background:white;color:#1a5e2a;box-shadow:0 1px 4px rgba(0,0,0,0.1);}
+.running-sheet{background:white;border-radius:12px;border:1px solid #d8dbd2;margin-bottom:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08);}
+.running-sheet-header{background:#1a5e2a;color:white;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;}
+.running-sheet-title{font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;}
+.running-sheet-meta{font-size:11px;opacity:0.75;}
+.running-sheet-table{width:100%;border-collapse:collapse;font-size:11px;}
+.running-sheet-table th{background:#f0f7f2;color:#1a5e2a;padding:6px 5px;font-size:9px;font-weight:700;text-align:center;letter-spacing:0.04em;border-bottom:2px solid #1a5e2a;white-space:nowrap;}
+.running-sheet-table td{padding:5px 4px;text-align:center;border-bottom:1px solid #e8ece8;font-size:11px;}
+.running-sheet-table tr:nth-child(even) td{background:#f9fbf9;}
+.running-sheet-totals td{background:#e8f5e9!important;font-weight:700;color:#1a5e2a;border-top:2px solid #1a5e2a;font-size:11px;padding:6px 4px;}
+.running-sheet-grand{background:#1a5e2a;color:white;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;}
+.running-sheet-grand-label{font-size:11px;font-weight:700;letter-spacing:0.06em;}
+.running-sheet-grand-total{font-size:18px;font-weight:700;}
 .ts-docket-block{background:white;border:1px solid #d8dbd2;border-radius:10px;margin-bottom:12px;overflow:hidden;}
-.ts-docket-header{background:#1a5e2a;color:white;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;}
+.ts-docket-header{background:#1a5e2a;color:white;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;}
 .ts-docket-header-info{font-size:13px;font-weight:700;}
 .ts-docket-header-meta{font-size:10px;opacity:0.75;margin-top:2px;font-family:'DM Mono',monospace;}
 .ts-docket-header-right{text-align:right;}
 .ts-docket-header-total{font-size:16px;font-weight:700;}
-.ts-docket-header-stamp{font-size:9px;opacity:0.7;font-family:'DM Mono',monospace;margin-top:2px;}
 .ts-docket-body{padding:12px;}
 .ts-docket-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px;}
 .ts-docket-photo{border-radius:8px;overflow:hidden;border:1px solid #d8dbd2;aspect-ratio:1;cursor:pointer;position:relative;}
 .ts-docket-photo img{width:100%;height:100%;object-fit:cover;}
 .ts-docket-photo-stamp{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.6);color:white;font-size:8px;padding:3px 4px;font-family:'DM Mono',monospace;}
-.ts-edit-btn{background:none;border:1px solid #d8dbd2;border-radius:6px;padding:5px 10px;font-size:11px;font-weight:700;color:#1a5e2a;cursor:pointer;font-family:'DM Sans',sans-serif;}
-.ts-delete-btn{background:none;border:1px solid #c8102e;border-radius:6px;padding:5px 10px;font-size:11px;font-weight:700;color:#c8102e;cursor:pointer;font-family:'DM Sans',sans-serif;}
-.ts-summary-bar{background:#1a1f18;color:white;border-radius:10px;padding:14px 16px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;}
-.ts-summary-label{font-size:10px;font-weight:700;letter-spacing:0.1em;opacity:0.6;}
-.ts-summary-total{font-size:24px;font-weight:700;}
-.ts-summary-count{font-size:11px;opacity:0.5;margin-top:2px;}
+.ts-edit-btn{background:none;border:1px solid rgba(255,255,255,0.5);border-radius:6px;padding:5px 10px;font-size:11px;font-weight:700;color:white;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.ts-delete-btn{background:none;border:1px solid rgba(255,100,100,0.6);border-radius:6px;padding:5px 10px;font-size:11px;font-weight:700;color:#ffaaaa;cursor:pointer;font-family:'DM Sans',sans-serif;}
 .signoff-card{background:white;border:1.5px solid #1a5e2a;border-radius:12px;padding:14px;margin-bottom:12px;}
-.signoff-card .card-title::before{background:#1a5e2a;}
 .empty-ts{text-align:center;padding:40px 20px;color:#6b7266;}
 .empty-ts .icon{font-size:38px;margin-bottom:10px;}
 .empty-ts p{font-size:14px;}
@@ -153,9 +163,17 @@ textarea{resize:vertical;min-height:72px;}
   <div class="nav-tab" onclick="showTab('review',this)">📋 Records</div>
 </div>
 
+<!-- SAVE CONFIRMATION OVERLAY -->
+<div class="save-spinner" id="saveSpinner">
+  <div class="save-spinner-box">
+    <div class="save-spinner-icon">✅</div>
+    <div class="save-spinner-text">Docket Saved</div>
+    <div class="save-spinner-sub" id="saveSpinnerSub"></div>
+  </div>
+</div>
+
 <!-- AMBIENT -->
 <div id="tab-weekly" class="section active">
-  <div class="form-success" id="success-weekly">✅ Ambient Dockets saved!</div>
   <div class="card">
     <div class="card-title">Ambient Docket Register</div>
     <div class="row-2">
@@ -193,7 +211,6 @@ textarea{resize:vertical;min-height:72px;}
 
 <!-- CHILLED -->
 <div id="tab-docketlog" class="section">
-  <div class="form-success" id="success-docketlog">✅ Chilled Dockets saved!</div>
   <div class="card">
     <div class="card-title">Chilled Docket Register</div>
     <div class="row-2">
@@ -231,7 +248,6 @@ textarea{resize:vertical;min-height:72px;}
 
 <!-- RETURNS -->
 <div id="tab-returns" class="section">
-  <div class="form-success" id="success-returns">✅ Returns Docket saved!</div>
   <div class="card">
     <div class="card-title">Returns / Credit Docket</div>
     <div class="row-2">
@@ -276,7 +292,6 @@ textarea{resize:vertical;min-height:72px;}
 
 <!-- TRANSFER -->
 <div id="tab-transfer" class="section">
-  <div class="form-success" id="success-transfer">✅ Transfer Docket saved!</div>
   <div class="card">
     <div class="card-title">Inter-Store Transfer Docket</div>
     <div class="row-2">
@@ -338,7 +353,7 @@ textarea{resize:vertical;min-height:72px;}
 <!-- PAST WEEKS -->
 <div id="tab-pastweeks" class="section">
   <div style="font-size:15px;font-weight:700;margin-bottom:12px;">Weekly Top Sheets</div>
-  <div id="pw-list"><div class="empty-ts"><div class="icon">📅</div><p>No completed weeks yet.</p></div></div>
+  <div id="pw-list"><div class="empty-ts"><div class="icon">📅</div><p>Past weeks are saved as PDFs when you close each top sheet.</p></div></div>
 </div>
 
 <!-- RECORDS -->
@@ -388,6 +403,7 @@ var currentStore='Balbriggan';
 var allRecords=[];
 var activeEditId=null;
 var currentSubTab='ambient';
+var isSaving=false;
 
 function sbFetch(path,method,body){
   return fetch(SB_URL+'/rest/v1/'+path,{method:method||'GET',headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':method==='POST'?'resolution=merge-duplicates':''},body:body?JSON.stringify(body):undefined});
@@ -467,14 +483,14 @@ document.addEventListener('DOMContentLoaded',function(){
     renderAllTopSheets();
   }).catch(function(e){
     var el=document.getElementById('db-status');
-    el.textContent='⚠️ '+e.message;
+    el.textContent='\u26a0\ufe0f '+e.message;
     el.className='db-status err';
   });
 });
 
 function updateDBStatus(){
   var el=document.getElementById('db-status');
-  el.textContent='🟢 Storage active · '+allRecords.length+' record'+(allRecords.length!==1?'s':'')+' saved';
+  el.textContent='\ud83d\udfe2 Storage active \u00b7 '+allRecords.length+' record'+(allRecords.length!==1?'s':'')+' saved';
   el.className='db-status ok';
 }
 
@@ -502,7 +518,6 @@ function showTab(name,el){
   syncStoreFields();
   if(name==='review')renderReview();
   if(name==='topsheet')renderAllTopSheets();
-  if(name==='pastweeks')renderPastWeeks();
 }
 
 function showSubTab(name,el){
@@ -556,7 +571,15 @@ function getSaturdayMidnight(weekKey){
   return sat;
 }
 
-// TABLE ROWS
+function showSaveConfirmation(type){
+  var typeLabels={weekly:'Ambient Dockets',docketlog:'Chilled Dockets',returns:'Returns Docket',transfer:'Transfer Docket'};
+  var sub=document.getElementById('saveSpinnerSub');
+  if(sub)sub.textContent=typeLabels[type]+' \u00b7 '+currentStore+' \u00b7 '+new Date().toLocaleTimeString('en-IE');
+  var spinner=document.getElementById('saveSpinner');
+  if(spinner)spinner.classList.add('show');
+  setTimeout(function(){if(spinner)spinner.classList.remove('show');},2000);
+}
+
 function addWRRow(){
   var tbody=document.getElementById('wr-tbody');
   var cols=['date','supplier','docket','groc','cigs','wine','beers','spirits','nonfood','news','promo','expense','total','comments'];
@@ -651,7 +674,6 @@ function calcCHTotals(){
   });
 }
 
-// SIGNATURES
 function initSig(id){
   var canvas=document.getElementById(id);
   if(!canvas)return;
@@ -707,7 +729,6 @@ function getSigData(id){
   return hasContent?canvas.toDataURL('image/png'):null;
 }
 
-// PHOTOS
 function previewPhotos(inputId,previewId){
   var input=document.getElementById(inputId);
   var preview=document.getElementById(previewId);
@@ -744,8 +765,9 @@ function closePhoto(){
   document.getElementById('photoFullscreenImg').src='';
 }
 
-// SAVE
 function saveRecord(type){
+  if(isSaving)return;
+  isSaving=true;
   var now=new Date();
   var record={id:now.getTime(),type:type,store:currentStore,savedAt:now.toISOString(),originalSavedAt:now.toISOString()};
   if(type==='weekly'){
@@ -815,15 +837,17 @@ function saveRecord(type){
     return dbGetAll();
   }).then(function(recs){
     allRecords=recs;
+    isSaving=false;
     updateDBStatus();
-    var msg=document.getElementById('success-'+type);
-    if(msg){msg.classList.add('show');setTimeout(function(){msg.classList.remove('show');},3000);}
+    showSaveConfirmation(type);
     renderReview();
     renderAllTopSheets();
-  }).catch(function(e){alert('Save failed: '+e.message);});
+  }).catch(function(e){
+    isSaving=false;
+    alert('Save failed: '+e.message);
+  });
 }
 
-// TOP SHEET RENDERING
 function renderAllTopSheets(){
   renderTopSheetFor('ambient','weekly');
   renderTopSheetFor('chilled','docketlog');
@@ -831,27 +855,37 @@ function renderAllTopSheets(){
   renderTopSheetFor('transfers','transfer');
 }
 
+function getWeekRecords(recordType){
+  var wk=getWeekKey();
+  var sun=new Date(wk+'T00:00:00');
+  var closes=getSaturdayMidnight(wk);
+  return allRecords.filter(function(r){
+    var saved=new Date(r.savedAt);
+    return r.type===recordType&&r.store===currentStore&&saved>=sun&&saved<=closes;
+  }).sort(function(a,b){return a.id-b.id;});
+}
+
 function renderTopSheetFor(subTabId,recordType){
   var container=document.getElementById('subtab-'+subTabId);
   if(!container)return;
   var wk=getWeekKey();
-  var sun=new Date(wk+'T00:00:00');
-  var closes=getSaturdayMidnight(wk);
   var typeLabels={weekly:'Ambient',docketlog:'Chilled',returns:'Returns',transfer:'Transfer'};
-  var records=allRecords.filter(function(r){
-    var saved=new Date(r.savedAt);
-    return r.type===recordType && r.store===currentStore && saved>=sun && saved<=closes;
-  });
+  var records=getWeekRecords(recordType);
   var html='';
+
   // Week banner
   html+='<div style="background:#1a5e2a;color:white;border-radius:10px;padding:12px 14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;">';
-  html+='<div><div style="font-size:10px;font-weight:700;letter-spacing:0.08em;opacity:0.8;">'+currentStore.toUpperCase()+' · '+typeLabels[recordType].toUpperCase()+'</div>';
+  html+='<div><div style="font-size:10px;font-weight:700;letter-spacing:0.08em;opacity:0.8;">'+currentStore.toUpperCase()+' \u00b7 '+typeLabels[recordType].toUpperCase()+'</div>';
   html+='<div style="font-size:14px;font-weight:700;">'+getWeekLabel(wk)+'</div></div>';
-  html+='<div style="text-align:right;"><div style="font-size:11px;opacity:0.7;">'+records.length+' docket'+(records.length!==1?'s':'')+'</div></div></div>';
+  html+='<div style="text-align:right;"><div style="font-size:13px;font-weight:700;">'+records.length+' docket'+(records.length!==1?'s':'')+'</div></div></div>';
+
   if(!records.length){
     html+='<div class="empty-ts"><div class="icon">📋</div><p>No '+typeLabels[recordType].toLowerCase()+' dockets this week.</p></div>';
   } else {
-    records.sort(function(a,b){return a.id-b.id;});
+    // RUNNING TOP SHEET TABLE
+    html+=buildRunningSheet(records,recordType,typeLabels[recordType]);
+    // INDIVIDUAL DOCKET BLOCKS
+    html+='<div style="font-size:11px;font-weight:700;color:#6b7266;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;margin-top:4px;">Individual Dockets</div>';
     records.forEach(function(r){
       html+=buildDocketBlock(r,recordType);
     });
@@ -862,7 +896,7 @@ function renderTopSheetFor(subTabId,recordType){
     html+='<label>Signature</label>';
     html+='<div class="sig-wrap"><canvas id="sig-signoff-'+subTabId+'"></canvas><div class="sig-placeholder">Sign here with finger</div></div>';
     html+='<div class="sig-actions"><button class="btn btn-secondary btn-sm" onclick="clearSig(\'sig-signoff-'+subTabId+'\')">Clear</button></div>';
-    html+='<div class="timestamp-badge" style="margin-top:8px;" id="signoff-stamp-'+subTabId+'">'+new Date().toLocaleString('en-IE')+'</div>';
+    html+='<div class="timestamp-badge" style="margin-top:8px;">'+new Date().toLocaleString('en-IE')+'</div>';
     html+='<button class="btn btn-primary" style="margin-top:12px;" onclick="closeWeekTopSheet(\''+subTabId+'\',\''+recordType+'\')">📥 Close Week & Save PDF</button>';
     html+='</div>';
   }
@@ -872,18 +906,109 @@ function renderTopSheetFor(subTabId,recordType){
   }
 }
 
+function buildRunningSheet(records,recordType,label){
+  var html='<div class="running-sheet">';
+  html+='<div class="running-sheet-header"><div class="running-sheet-title">'+label+' Register \u2013 Running Total</div><div class="running-sheet-meta">'+records.length+' docket'+(records.length!==1?'s':'')+'</div></div>';
+  html+='<div style="overflow-x:auto;">';
+  html+='<table class="running-sheet-table">';
+
+  if(recordType==='weekly'){
+    var cols=['date','supplier','docket','groc','cigs','wine','beers','spirits','nonfood','news','promo','expense','total'];
+    var heads=['Date','Supplier','Docket #','Groc','Cigs','Wine','Beers','Spirits','Non Food','News','Promo','Expense','Total'];
+    var numCols=['groc','cigs','wine','beers','spirits','nonfood','news','promo','expense','total'];
+    html+='<thead><tr>';
+    heads.forEach(function(h){html+='<th>'+h+'</th>';});
+    html+='</tr></thead><tbody>';
+    var tots={};
+    numCols.forEach(function(c){tots[c]=0;});
+    records.forEach(function(r,ri){
+      (r.rows||[]).forEach(function(row,rowi){
+        html+='<tr>';
+        cols.forEach(function(c){
+          var v=row[c]||'';
+          html+='<td>'+v+'</td>';
+          if(numCols.indexOf(c)>-1)tots[c]+=parseFloat(v)||0;
+        });
+        html+='</tr>';
+      });
+    });
+    html+='</tbody>';
+    html+='<tfoot><tr class="running-sheet-totals"><td colspan="3" style="text-align:left;padding-left:6px;font-size:10px;">TOTALS</td>';
+    numCols.forEach(function(c){
+      html+='<td>'+(tots[c]>0?tots[c].toFixed(2):'')+'</td>';
+    });
+    html+='</tr></tfoot>';
+    var grandTotal=tots['total']||0;
+    html+='</table></div>';
+    html+='<div class="running-sheet-grand"><div class="running-sheet-grand-label">WEEKLY TOTAL</div><div class="running-sheet-grand-total">\u20ac'+grandTotal.toFixed(2)+'</div></div>';
+
+  } else if(recordType==='docketlog'){
+    var cols=['date','supplier','docket','beef','lamb','pork','poultry','produce','frozen','provisions','deli','bakery','total'];
+    var heads=['Date','Supplier','Docket #','Beef','Lamb','Pork','Poultry','Produce','Frozen','Provisions','Deli','Bakery','Total'];
+    var numCols=['beef','lamb','pork','poultry','produce','frozen','provisions','deli','bakery','total'];
+    html+='<thead><tr>';
+    heads.forEach(function(h){html+='<th>'+h+'</th>';});
+    html+='</tr></thead><tbody>';
+    var tots={};
+    numCols.forEach(function(c){tots[c]=0;});
+    records.forEach(function(r){
+      (r.rows||[]).forEach(function(row){
+        html+='<tr>';
+        cols.forEach(function(c){
+          var v=row[c]||'';
+          html+='<td>'+v+'</td>';
+          if(numCols.indexOf(c)>-1)tots[c]+=parseFloat(v)||0;
+        });
+        html+='</tr>';
+      });
+    });
+    html+='</tbody>';
+    html+='<tfoot><tr class="running-sheet-totals"><td colspan="3" style="text-align:left;padding-left:6px;font-size:10px;">TOTALS</td>';
+    numCols.forEach(function(c){
+      html+='<td>'+(tots[c]>0?tots[c].toFixed(2):'')+'</td>';
+    });
+    html+='</tr></tfoot>';
+    var grandTotal=tots['total']||0;
+    html+='</table></div>';
+    html+='<div class="running-sheet-grand"><div class="running-sheet-grand-label">WEEKLY TOTAL</div><div class="running-sheet-grand-total">\u20ac'+grandTotal.toFixed(2)+'</div></div>';
+
+  } else if(recordType==='returns'||recordType==='transfer'){
+    var heads=['Supplier / From','Ref #','Docket #','Qty','Description','Cost \u20ac','Retail \u20ac','Total \u20ac'];
+    html+='<thead><tr>';
+    heads.forEach(function(h){html+='<th>'+h+'</th>';});
+    html+='</tr></thead><tbody>';
+    var grandTotal=0;
+    records.forEach(function(r){
+      var supplier=recordType==='returns'?(r.to||''):(r.from||'')+'\u2192'+(r.toStore||'');
+      (r.rows||[]).forEach(function(row){
+        if(!Array.isArray(row))return;
+        var rowTotal=parseFloat(row[4])||0;
+        grandTotal+=rowTotal;
+        html+='<tr><td>'+supplier+'</td><td>'+(r.ref||r.docket||'')+'</td><td>'+(r.docket||'')+'</td>';
+        row.forEach(function(v){html+='<td>'+(v||'')+'</td>';});
+        html+='</tr>';
+      });
+    });
+    html+='</tbody>';
+    html+='</table></div>';
+    html+='<div class="running-sheet-grand"><div class="running-sheet-grand-label">WEEKLY TOTAL</div><div class="running-sheet-grand-total">\u20ac'+grandTotal.toFixed(2)+'</div></div>';
+  }
+
+  html+='</div>';
+  return html;
+}
+
 function buildDocketBlock(r,recordType){
   var stamp=r.originalSavedAt||r.savedAt;
   var stampStr=new Date(stamp).toLocaleString('en-IE',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
   var ref=r.ref||r.docket||'';
   var supplier='';
   if(recordType==='returns')supplier=r.to||'';
-  if(recordType==='transfer')supplier=(r.from||'')+' \u2192 '+(r.toStore||'');
+  else if(recordType==='transfer')supplier=(r.from||'')+' \u2192 '+(r.toStore||'');
   var total=calcRecordTotal(r,recordType);
   var html='<div class="ts-docket-block">';
-  // Header
   html+='<div class="ts-docket-header">';
-  html+='<div><div class="ts-docket-header-info">'+(supplier||r.weekEnding||r.date||'')+(ref?' · #'+ref:'')+'</div>';
+  html+='<div><div class="ts-docket-header-info">'+(supplier||r.weekEnding||r.date||'')+(ref?' \u00b7 #'+ref:'')+'</div>';
   html+='<div class="ts-docket-header-meta">'+stampStr+'</div></div>';
   html+='<div class="ts-docket-header-right">';
   if(total>0)html+='<div class="ts-docket-header-total">\u20ac'+total.toFixed(2)+'</div>';
@@ -891,10 +1016,8 @@ function buildDocketBlock(r,recordType){
   html+='<button class="ts-edit-btn" onclick="openEditModal('+r.id+')">✏️ Edit</button>';
   html+='<button class="ts-delete-btn" onclick="deleteFromTopSheet('+r.id+')">🗑</button>';
   html+='</div></div></div>';
-  // Body
   html+='<div class="ts-docket-body">';
   html+=buildDocketTable(r,recordType);
-  // Signature
   var sigs=[];
   if(r.signature)sigs.push({img:r.signature,label:'Manager'});
   if(r.sigStaff)sigs.push({img:r.sigStaff,label:'Staff'});
@@ -910,15 +1033,13 @@ function buildDocketBlock(r,recordType){
     });
     html+='</div>';
   }
-  // Photos
   if(r.photos&&r.photos.length){
     html+='<div style="margin-top:10px;"><div style="font-size:10px;font-weight:700;color:#6b7266;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">Photos ('+r.photos.length+')</div>';
     html+='<div class="ts-docket-photos">';
     r.photos.forEach(function(p){
       var src=typeof p==='object'?p.src:p;
       var pstamp=typeof p==='object'?p.stamp:'';
-      html+='<div class="ts-docket-photo" onclick="openPhoto(\''+src.replace(/'/g,"\\'")+'\')">';
-      html+='<img src="'+src+'">';
+      html+='<div class="ts-docket-photo" onclick="openPhoto(\''+src.replace(/'/g,"\\'")+'\')"><img src="'+src+'">';
       if(pstamp)html+='<div class="ts-docket-photo-stamp">'+pstamp+'</div>';
       html+='</div>';
     });
@@ -952,18 +1073,9 @@ function buildDocketTable(r,recordType){
       cols.forEach(function(c){html+='<td style="padding:4px;border:1px solid #eee;text-align:center;">'+(row[c]||'')+'</td>';});
       html+='</tr>';
     });
-  } else if(recordType==='returns'){
+  } else {
     html+='<thead><tr style="background:#1a5e2a;color:white;">';
-    ['Qty','Description','Cost €','Retail €','Total €'].forEach(function(h){html+='<th style="padding:5px 4px;text-align:center;font-size:9px;">'+h+'</th>';});
-    html+='</tr></thead><tbody>';
-    (r.rows||[]).forEach(function(row,i){
-      html+='<tr style="background:'+(i%2===0?'#f9faf7':'white')+';">';
-      (Array.isArray(row)?row:[]).forEach(function(v){html+='<td style="padding:4px;border:1px solid #eee;text-align:center;">'+(v||'')+'</td>';});
-      html+='</tr>';
-    });
-  } else if(recordType==='transfer'){
-    html+='<thead><tr style="background:#1a5e2a;color:white;">';
-    ['Qty','Description','Cost €','Retail €','Total €'].forEach(function(h){html+='<th style="padding:5px 4px;text-align:center;font-size:9px;">'+h+'</th>';});
+    ['Qty','Description','Cost \u20ac','Retail \u20ac','Total \u20ac'].forEach(function(h){html+='<th style="padding:5px 4px;text-align:center;font-size:9px;">'+h+'</th>';});
     html+='</tr></thead><tbody>';
     (r.rows||[]).forEach(function(row,i){
       html+='<tr style="background:'+(i%2===0?'#f9faf7':'white')+';">';
@@ -979,7 +1091,7 @@ function calcRecordTotal(r,recordType){
   var total=0;
   if(recordType==='weekly'||recordType==='docketlog'){
     (r.rows||[]).forEach(function(row){total+=parseFloat(row.total)||0;});
-  } else if(recordType==='returns'||recordType==='transfer'){
+  } else {
     (r.rows||[]).forEach(function(row){
       if(Array.isArray(row))total+=parseFloat(row[4])||0;
     });
@@ -999,36 +1111,26 @@ function deleteFromTopSheet(id){
   }).catch(function(e){alert('Delete failed: '+e.message);});
 }
 
-// EDIT MODAL
 function openEditModal(id){
   var r=allRecords.find(function(x){return x.id===id;});
   if(!r)return;
   activeEditId=id;
   var typeLabels={weekly:'Ambient Dockets',docketlog:'Chilled Dockets',returns:'Returns Docket',transfer:'Transfer Docket'};
-  document.getElementById('edit-modal-title').textContent='Edit · '+typeLabels[r.type];
+  document.getElementById('edit-modal-title').textContent='Edit \u00b7 '+typeLabels[r.type];
   var html='';
   if(r.type==='weekly'||r.type==='docketlog'){
     var dateId=r.type==='weekly'?'edit-weekending':'edit-dl-date';
     html+='<label>Week Ending</label><input type="date" id="'+dateId+'" value="'+(r.weekEnding||r.date||'')+'">';
     html+='<label>Reference No.</label><input type="text" id="edit-ref" value="'+(r.ref||'')+'">';
     html+='<label>Manager</label><input type="text" id="edit-mgr" value="'+(r.manager||'')+'">';
-    html+='<div style="margin-top:12px;font-size:11px;font-weight:700;color:#6b7266;text-transform:uppercase;letter-spacing:0.06em;">Rows</div>';
-    html+='<div style="overflow-x:auto;margin-top:6px;"><table class="docket-table" id="edit-rows-table">';
-    if(r.type==='weekly'){
-      var cols=['date','supplier','docket','groc','cigs','wine','beers','spirits','nonfood','news','promo','expense','total','comments'];
-      var heads=['Date','Supplier','Docket #','Groc','Cigs','Wine','Beers','Spirits','Non Food','News','Promo','Expense','Total','Comments'];
-    } else {
-      var cols=['date','supplier','docket','beef','lamb','pork','poultry','produce','frozen','provisions','deli','bakery','total','comments'];
-      var heads=['Date','Supplier','Docket #','Beef','Lamb','Pork','Poultry','Produce','Frozen','Provisions','Deli','Bakery','Total','Comments'];
-    }
-    html+='<thead><tr>';
+    var cols=r.type==='weekly'?['date','supplier','docket','groc','cigs','wine','beers','spirits','nonfood','news','promo','expense','total','comments']:['date','supplier','docket','beef','lamb','pork','poultry','produce','frozen','provisions','deli','bakery','total','comments'];
+    var heads=r.type==='weekly'?['Date','Supplier','Docket #','Groc','Cigs','Wine','Beers','Spirits','Non Food','News','Promo','Expense','Total','Comments']:['Date','Supplier','Docket #','Beef','Lamb','Pork','Poultry','Produce','Frozen','Provisions','Deli','Bakery','Total','Comments'];
+    html+='<div style="overflow-x:auto;margin-top:10px;"><table class="docket-table"><thead><tr>';
     heads.forEach(function(h){html+='<th>'+h+'</th>';});
     html+='</tr></thead><tbody id="edit-tbody">';
     (r.rows||[]).forEach(function(row){
       html+='<tr>';
-      cols.forEach(function(c){
-        html+='<td><input type="text" data-col="'+c+'" value="'+(row[c]||'')+'" style="min-width:50px;"></td>';
-      });
+      cols.forEach(function(c){html+='<td><input type="text" data-col="'+c+'" value="'+(row[c]||'')+'" style="min-width:50px;"></td>';});
       html+='</tr>';
     });
     html+='</tbody></table></div>';
@@ -1040,7 +1142,7 @@ function openEditModal(id){
     html+='<label>Ref #</label><input type="text" id="edit-ret-ref" value="'+(r.ref||'')+'">';
     html+='<label>Docket #</label><input type="text" id="edit-ret-docket" value="'+(r.docket||'')+'">';
     html+='<label>Reason</label><textarea id="edit-ret-reason">'+(r.reason||'')+'</textarea>';
-    html+='<div style="overflow-x:auto;margin-top:10px;"><table class="docket-table"><thead><tr><th>Qty</th><th>Description</th><th>Cost €</th><th>Retail €</th><th>Total €</th></tr></thead><tbody id="edit-tbody">';
+    html+='<div style="overflow-x:auto;margin-top:10px;"><table class="docket-table"><thead><tr><th>Qty</th><th>Description</th><th>Cost \u20ac</th><th>Retail \u20ac</th><th>Total \u20ac</th></tr></thead><tbody id="edit-tbody">';
     (r.rows||[]).forEach(function(row){
       html+='<tr>';
       (Array.isArray(row)?row:['','','','']).forEach(function(v){html+='<td><input type="text" value="'+(v||'')+'"></td>';});
@@ -1055,7 +1157,7 @@ function openEditModal(id){
     html+='<label>Dept</label><input type="text" id="edit-tr-dept" value="'+(r.dept||'')+'">';
     html+='<label>Ref #</label><input type="text" id="edit-tr-ref" value="'+(r.ref||'')+'">';
     html+='<label>Docket #</label><input type="text" id="edit-tr-docket" value="'+(r.docket||'')+'">';
-    html+='<div style="overflow-x:auto;margin-top:10px;"><table class="docket-table"><thead><tr><th>Qty</th><th>Description</th><th>Cost €</th><th>Retail €</th><th>Total €</th></tr></thead><tbody id="edit-tbody">';
+    html+='<div style="overflow-x:auto;margin-top:10px;"><table class="docket-table"><thead><tr><th>Qty</th><th>Description</th><th>Cost \u20ac</th><th>Retail \u20ac</th><th>Total \u20ac</th></tr></thead><tbody id="edit-tbody">';
     (r.rows||[]).forEach(function(row){
       html+='<tr>';
       (Array.isArray(row)?row:['','','','']).forEach(function(v){html+='<td><input type="text" value="'+(v||'')+'"></td>';});
@@ -1076,9 +1178,7 @@ function addEditRow(type){
   cols.forEach(function(c){
     var td=document.createElement('td');
     var inp=document.createElement('input');
-    inp.type='text';
-    inp.dataset.col=c;
-    inp.style.minWidth='50px';
+    inp.type='text';inp.dataset.col=c;inp.style.minWidth='50px';
     td.appendChild(inp);tr.appendChild(td);
   });
   tbody.appendChild(tr);
@@ -1100,7 +1200,7 @@ function addEditRowSimple(){
 function saveEdit(){
   var r=allRecords.find(function(x){return x.id===activeEditId;});
   if(!r)return;
-  var updated=Object.assign({},r,{savedAt:r.savedAt,originalSavedAt:r.originalSavedAt||r.savedAt});
+  var updated=Object.assign({},r,{originalSavedAt:r.originalSavedAt||r.savedAt});
   if(r.type==='weekly'){
     updated.weekEnding=document.getElementById('edit-weekending').value;
     updated.ref=document.getElementById('edit-ref').value;
@@ -1167,7 +1267,6 @@ function closeEditModal(){
   activeEditId=null;
 }
 
-// WEEK CLOSE & PDF
 function closeWeekTopSheet(subTabId,recordType){
   var mgrEl=document.getElementById('signoff-mgr-'+subTabId);
   var mgr=mgrEl?mgrEl.value:'';
@@ -1184,29 +1283,23 @@ function generateTopSheetPDF(subTabId,recordType,mgr,sig,stamp){
   var PW=297,ML=8,MR=8,y=8;
   var typeLabels={weekly:'Ambient',docketlog:'Chilled',returns:'Returns',transfer:'Transfer'};
   var wk=getWeekKey();
-  var records=allRecords.filter(function(r){
-    var saved=new Date(r.savedAt);
-    var sun=new Date(wk+'T00:00:00');
-    var closes=getSaturdayMidnight(wk);
-    return r.type===recordType&&r.store===currentStore&&saved>=sun&&saved<=closes;
-  });
-  // Header
+  var records=getWeekRecords(recordType);
   doc.setFillColor(26,94,42);doc.rect(0,0,PW,22,'F');
   doc.setTextColor(255,255,255);doc.setFontSize(14);doc.setFont('helvetica','bold');
-  doc.text('Moriarty Group · SuperValu',ML,10);
+  doc.text('Moriarty Group \u00b7 SuperValu',ML,10);
   doc.setFontSize(9);doc.setFont('helvetica','normal');
-  doc.text(typeLabels[recordType]+' Docket Register · '+currentStore+' · '+getWeekLabel(wk),ML,17);
+  doc.text(typeLabels[recordType]+' Docket Register \u00b7 '+currentStore+' \u00b7 '+getWeekLabel(wk),ML,17);
   doc.setFontSize(8);doc.text(stamp,PW-MR,17,{align:'right'});
   y=28;
   records.forEach(function(r,idx){
-    if(y>180){doc.addPage();y=10;}
+    if(y>175){doc.addPage();y=10;}
     var rStamp=new Date(r.originalSavedAt||r.savedAt).toLocaleString('en-IE');
     doc.setFillColor(240,244,240);doc.rect(ML,y,PW-ML-MR,7,'F');
     doc.setFontSize(8);doc.setFont('helvetica','bold');doc.setTextColor(26,94,42);
-    var label='Docket '+(idx+1);
-    if(r.ref)label+=' · Ref: '+r.ref;
-    if(r.weekEnding)label+=' · Week: '+r.weekEnding;
-    doc.text(label,ML+2,y+5);
+    var dlabel='Docket '+(idx+1);
+    if(r.ref)dlabel+=' \u00b7 Ref: '+r.ref;
+    if(r.weekEnding)dlabel+=' \u00b7 Week: '+r.weekEnding;
+    doc.text(dlabel,ML+2,y+5);
     doc.setFont('helvetica','normal');doc.setTextColor(100,100,100);
     doc.text('Saved: '+rStamp,PW-MR-2,y+5,{align:'right'});
     y+=9;
@@ -1226,7 +1319,7 @@ function generateTopSheetPDF(subTabId,recordType,mgr,sig,stamp){
         y+=5;
       });
     } else {
-      var heads2=['Qty','Description','Cost €','Retail €','Total €'];
+      var heads2=['Qty','Description','Cost \u20ac','Retail \u20ac','Total \u20ac'];
       var cw2=(PW-ML-MR)/5;
       doc.setFillColor(50,50,50);doc.rect(ML,y,PW-ML-MR,6,'F');
       doc.setFontSize(6);doc.setFont('helvetica','bold');doc.setTextColor(255,255,255);
@@ -1242,12 +1335,11 @@ function generateTopSheetPDF(subTabId,recordType,mgr,sig,stamp){
     }
     y+=4;
   });
-  // Sign off
   if(y>170){doc.addPage();y=10;}
   y+=4;
   doc.setFillColor(26,94,42);doc.rect(ML,y,PW-ML-MR,8,'F');
   doc.setFontSize(8);doc.setFont('helvetica','bold');doc.setTextColor(255,255,255);
-  doc.text('Week Sign-Off · Manager: '+mgr+' · '+stamp,ML+3,y+5.5);
+  doc.text('Week Sign-Off \u00b7 Manager: '+mgr+' \u00b7 '+stamp,ML+3,y+5.5);
   y+=12;
   if(sig){
     try{doc.addImage(sig,'PNG',ML,y,60,20);}catch(e){}
@@ -1257,40 +1349,32 @@ function generateTopSheetPDF(subTabId,recordType,mgr,sig,stamp){
   doc.save(filename);
 }
 
-// PAST WEEKS (simplified)
-function renderPastWeeks(){
-  var list=document.getElementById('pw-list');
-  list.innerHTML='<div class="empty-ts"><div class="icon">📅</div><p>Past weeks are saved as PDFs when you close each top sheet.</p></div>';
-}
-
-// RECORDS
 function renderReview(){
   var filter=document.getElementById('review-filter').value;
   var list=document.getElementById('review-list');
   var filtered=filter==='all'?allRecords:allRecords.filter(function(r){return r.store===filter;});
-  if(!filtered.length){list.innerHTML='<div class="empty-ts"><div class="icon">📋</div><p>No records saved yet.</p></div>';return;}
+  if(!filtered.length){list.innerHTML='<div class="empty-ts"><div class="icon">\ud83d\udccb</div><p>No records saved yet.</p></div>';return;}
   var typeLabels={weekly:'Ambient Dockets',returns:'Returns Docket',transfer:'Transfer Docket',docketlog:'Chilled Dockets'};
   var stores=['Balbriggan','Palmerstown','Skerries'];
   var html='';
   stores.forEach(function(store){
     var recs=filtered.filter(function(r){return r.store===store;}).sort(function(a,b){return b.id-a.id;});
     if(!recs.length)return;
-    html+='<div class="store-group"><div class="store-group-header"><span>📍 '+store+'</span><span>'+recs.length+' record'+(recs.length!==1?'s':'')+'</span></div>';
+    html+='<div class="store-group"><div class="store-group-header"><span>\ud83d\udccd '+store+'</span><span>'+recs.length+' record'+(recs.length!==1?'s':'')+'</span></div>';
     recs.forEach(function(r){
       var date=r.weekEnding||r.date||r.savedAt.split('T')[0];
-      var sub=r.ref||r.docket||(r.from&&r.toStore?r.from+' → '+r.toStore:'')||'';
-      var photoCount=r.photos&&r.photos.length?'  📷'+r.photos.length:'';
+      var sub=r.ref||r.docket||(r.from&&r.toStore?r.from+' \u2192 '+r.toStore:'')||'';
+      var photoCount=r.photos&&r.photos.length?'  \ud83d\udcf7'+r.photos.length:'';
       html+='<div class="record-item" onclick="openEditModal('+r.id+')">';
       html+='<div><div class="rec-type">'+typeLabels[r.type]+'<span class="badge badge-'+r.type+'">'+r.type+'</span></div>';
-      html+='<div class="rec-meta">'+date+(sub?'  ·  '+sub:'')+photoCount+'</div></div>';
-      html+='<div class="rec-arrow">›</div></div>';
+      html+='<div class="rec-meta">'+date+(sub?'  \u00b7  '+sub:'')+photoCount+'</div></div>';
+      html+='<div class="rec-arrow">\u203a</div></div>';
     });
     html+='</div>';
   });
   list.innerHTML=html;
 }
 
-// BACKUP/RESTORE
 function exportJSON(){
   dbGetAll().then(function(records){
     if(!records.length){alert('No records to export yet.');return;}
@@ -1321,7 +1405,7 @@ function importJSON(input){
         updateDBStatus();
         renderReview();
         renderAllTopSheets();
-        alert('✅ Import complete. '+data.records.length+' records restored.');
+        alert('\u2705 Import complete. '+data.records.length+' records restored.');
       });
     }catch(err){alert('Import failed: '+err.message);}
   };
