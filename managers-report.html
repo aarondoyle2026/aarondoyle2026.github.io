@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Moriarty Group – Managers Report</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+:root{--sv-green:#00703c;--sv-green-dark:#005a30;--bg:#f4f5f0;--card:#ffffff;--border:#d8dbd2;--text:#1a1f18;--muted:#6b7266;}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+body{font-family:'DM Sans',sans-serif;background:#f4f5f0;color:#1a1f18;min-height:100vh;padding-bottom:40px;}
+.app-header{background:#00703c;color:white;padding:14px 16px 12px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.2);}
+.app-header .brand{font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;}
+.app-header .sub{font-size:11px;opacity:0.7;margin-top:1px;}
+.app-header .logo-row{display:flex;align-items:center;justify-content:space-between;}
+.sv-badge{background:white;color:#00703c;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;letter-spacing:0.05em;}
+.store-bar{background:#005a30;padding:8px 14px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;}
+.store-bar::-webkit-scrollbar{display:none;}
+.store-btn{background:rgba(255,255,255,0.18);border:1.5px solid rgba(255,255,255,0.35);color:white;padding:6px 16px;border-radius:20px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;white-space:nowrap;cursor:pointer;transition:all 0.15s;}
+.store-btn.active{background:white;color:#00703c;border-color:white;}
+.store-btn.disabled{opacity:0.4;cursor:not-allowed;}
+.content{padding:14px;}
+.loading{text-align:center;padding:60px 20px;color:#6b7266;}
+.loading .spin{font-size:32px;margin-bottom:12px;animation:spin 1s linear infinite;display:inline-block;}
+@keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+.error-state{text-align:center;padding:40px 20px;color:#c8102e;}
+.card{background:white;border-radius:12px;border:1px solid #d8dbd2;padding:14px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+.card-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#6b7266;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.card-title::before{content:'';display:block;width:3px;height:13px;background:#00703c;border-radius:2px;}
+.kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
+.kpi-card{background:white;border-radius:10px;border:1px solid #d8dbd2;padding:12px;text-align:center;}
+.kpi-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#6b7266;margin-bottom:4px;}
+.kpi-value{font-size:22px;font-weight:700;color:#1a1f18;}
+.kpi-value.green{color:#00703c;}
+.kpi-value.red{color:#c8102e;}
+.kpi-sub{font-size:10px;color:#6b7266;margin-top:2px;}
+.week-banner{background:#00703c;color:white;border-radius:10px;padding:14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;}
+.week-banner-label{font-size:10px;font-weight:700;letter-spacing:0.08em;opacity:0.8;text-transform:uppercase;}
+.week-banner-value{font-size:16px;font-weight:700;margin-top:2px;}
+.week-banner-right{text-align:right;}
+.week-banner-store{font-size:11px;opacity:0.75;}
+.week-banner-gen{font-size:10px;opacity:0.6;margin-top:4px;font-family:'DM Mono',monospace;}
+.section-list{list-style:none;padding:0;}
+.section-list li{padding:9px 0;border-bottom:1px solid #f0f2ee;font-size:14px;line-height:1.5;padding-left:14px;position:relative;}
+.section-list li:last-child{border-bottom:none;}
+.section-list li::before{content:'\2022';position:absolute;left:0;color:#00703c;font-weight:700;}
+.action-list{list-style:none;padding:0;counter-reset:action-counter;}
+.action-list li{padding:9px 0 9px 28px;border-bottom:1px solid #f0f2ee;font-size:14px;line-height:1.5;position:relative;counter-increment:action-counter;}
+.action-list li:last-child{border-bottom:none;}
+.action-list li::before{content:counter(action-counter);position:absolute;left:0;top:9px;background:#00703c;color:white;width:20px;height:20px;border-radius:50%;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;line-height:20px;text-align:center;}
+.no-data{text-align:center;padding:30px 20px;color:#6b7266;font-size:14px;}
+.generated-badge{background:#f4f5f0;border:1px solid #d8dbd2;border-radius:6px;padding:6px 10px;font-family:'DM Mono',monospace;font-size:10px;color:#6b7266;text-align:center;margin-bottom:12px;}
+.coming-soon{text-align:center;padding:60px 20px;}
+.coming-soon .icon{font-size:40px;margin-bottom:12px;}
+.coming-soon h3{font-size:16px;font-weight:700;color:#1a1f18;margin-bottom:6px;}
+.coming-soon p{font-size:13px;color:#6b7266;}
+</style>
+</head>
+<body>
+
+<div class="app-header">
+  <div class="logo-row">
+    <div><div class="brand">Moriarty Group</div><div class="sub">SuperValu · Managers Report</div></div>
+    <div class="sv-badge">SUPERVALU</div>
+  </div>
+</div>
+
+<div class="store-bar">
+  <button class="store-btn disabled">Palmerstown</button>
+  <button class="store-btn disabled">Balbriggan</button>
+  <button class="store-btn active" onclick="selectStore('Skerries',this)">Skerries</button>
+</div>
+
+<div class="content" id="main-content">
+  <div class="loading"><div class="spin">⚙</div><div>Loading report...</div></div>
+</div>
+
+<script>
+var currentStore = 'Skerries';
+var reportData = null;
+
+var DATA_URL = 'https://aarondoyle2026.github.io/data/managers_report_ai.json';
+
+function selectStore(store, btn) {
+  if (btn.classList.contains('disabled')) return;
+  currentStore = store;
+  document.querySelectorAll('.store-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  renderReport();
+}
+
+function loadData() {
+  var el = document.getElementById('main-content');
+  el.innerHTML = '<div class="loading"><div class="spin">⚙</div><div>Loading report...</div></div>';
+  fetch(DATA_URL + '?t=' + Date.now())
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      reportData = data;
+      renderReport();
+    })
+    .catch(function(e) {
+      el.innerHTML = '<div class="error-state"><div style="font-size:32px;margin-bottom:12px;">⚠️</div><div style="font-size:15px;font-weight:700;">Could not load report</div><div style="font-size:13px;margin-top:6px;color:#6b7266;">Run the script to generate the latest report</div></div>';
+    });
+}
+
+function fmt(n) {
+  if (n === null || n === undefined) return '—';
+  return '\u20ac' + Number(n).toLocaleString('en-IE', {minimumFractionDigits:2, maximumFractionDigits:2});
+}
+
+function fmtPct(n) {
+  if (n === null || n === undefined) return '—';
+  return Number(n).toFixed(2) + '%';
+}
+
+function fmtDate(str) {
+  if (!str) return '—';
+  try {
+    return new Date(str).toLocaleString('en-IE', {day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
+  } catch(e) { return str; }
+}
+
+function renderReport() {
+  var el = document.getElementById('main-content');
+  if (!reportData) { loadData(); return; }
+
+  var d = reportData;
+  var html = '';
+
+  // Week banner
+  html += '<div class="week-banner">';
+  html += '<div><div class="week-banner-label">Week Ending</div><div class="week-banner-value">' + (d.week_ending || '—') + '</div></div>';
+  html += '<div class="week-banner-right"><div class="week-banner-store">' + (d.store || 'Skerries') + '</div><div class="week-banner-gen">Generated: ' + fmtDate(d.generated_at) + '</div></div>';
+  html += '</div>';
+
+  // KPIs
+  html += '<div class="kpi-grid">';
+  html += '<div class="kpi-card"><div class="kpi-label">Sales Inc VAT</div><div class="kpi-value green">' + fmt(d.weekly_sales_inc_vat) + '</div></div>';
+  html += '<div class="kpi-card"><div class="kpi-label">Sales Ex VAT</div><div class="kpi-value">' + fmt(d.weekly_sales_ex_vat) + '</div></div>';
+  html += '<div class="kpi-card"><div class="kpi-label">Overall Margin</div><div class="kpi-value ' + (d.overall_margin_pct && d.overall_margin_pct > 18 ? 'green' : 'red') + '">' + fmtPct(d.overall_margin_pct) + '</div></div>';
+  html += '<div class="kpi-card"><div class="kpi-label">Waste %</div><div class="kpi-value ' + (d.waste_pct && d.waste_pct < 1.5 ? 'green' : 'red') + '">' + fmtPct(d.waste_pct) + '</div></div>';
+  html += '</div>';
+
+  if (d.generated_at) {
+    html += '<div class="generated-badge">AI analysis generated: ' + fmtDate(d.generated_at) + '</div>';
+  }
+
+  // Executive Summary
+  if (d.executive_summary && d.executive_summary.length) {
+    html += '<div class="card"><div class="card-title">Executive Summary</div>';
+    html += '<ul class="section-list">';
+    d.executive_summary.forEach(function(b) { html += '<li>' + b + '</li>'; });
+    html += '</ul></div>';
+  }
+
+  // Biggest Wins
+  if (d.biggest_wins && d.biggest_wins.length) {
+    html += '<div class="card"><div class="card-title">Biggest Wins</div>';
+    html += '<ul class="section-list">';
+    d.biggest_wins.forEach(function(b) { html += '<li>' + b + '</li>'; });
+    html += '</ul></div>';
+  }
+
+  // Biggest Risks
+  if (d.biggest_risks && d.biggest_risks.length) {
+    html += '<div class="card"><div class="card-title">Risks & Issues</div>';
+    html += '<ul class="section-list">';
+    d.biggest_risks.forEach(function(b) { html += '<li>' + b + '</li>'; });
+    html += '</ul></div>';
+  }
+
+  // Department Callouts
+  if (d.department_callouts && d.department_callouts.length) {
+    html += '<div class="card"><div class="card-title">Department Call-Outs</div>';
+    html += '<ul class="section-list">';
+    d.department_callouts.forEach(function(b) { html += '<li>' + b + '</li>'; });
+    html += '</ul></div>';
+  }
+
+  // Action Plan
+  if (d.action_plan && d.action_plan.length) {
+    html += '<div class="card"><div class="card-title">Action Plan — Next Week</div>';
+    html += '<ol class="action-list">';
+    d.action_plan.forEach(function(a) { html += '<li>' + a + '</li>'; });
+    html += '</ol></div>';
+  }
+
+  el.innerHTML = html;
+}
+
+loadData();
+</script>
+</body>
+</html>
