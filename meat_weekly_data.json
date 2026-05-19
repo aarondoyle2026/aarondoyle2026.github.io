@@ -47,9 +47,9 @@
       "data": {
         "headers": [
           "Merchandising Structure - Article SV TB",
-          "Retail Sales €",
-          "Retail Sales € TY LY Var",
-          "Retail Sales € TY LY Var %",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
           "Retail Scan Margin %",
           "Retail Scan Margin % TY LY Var"
         ],
@@ -59,15 +59,15 @@
               "v": "D0033 - MEAT, POULTRY & FISH",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 26198.25,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -731.27,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -2.7155,
               "t": "pct"
             },
@@ -85,15 +85,15 @@
               "v": "S0075 - FISH SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1181.54,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -281.18,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -19.2231,
               "t": "pct"
             },
@@ -111,15 +111,15 @@
               "v": "S0078 - LOOSE SAUSAGES, BACON & PUDDINGS",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 644.53,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -42.63,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -6.2038,
               "t": "pct"
             },
@@ -137,15 +137,15 @@
               "v": "C0738 - BEEF SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 4703.84,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 196.2,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 4.3526,
               "t": "pct"
             },
@@ -163,15 +163,15 @@
               "v": "C0739 - LAMB SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 591.22,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -116.11,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -16.4153,
               "t": "pct"
             },
@@ -189,15 +189,15 @@
               "v": "C0740 - PORK SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 764.47,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -131.54,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -14.6806,
               "t": "pct"
             },
@@ -215,15 +215,15 @@
               "v": "C0741 - BACON JOINTS SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 4.86,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 4.86,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": null,
               "t": "nil"
             },
@@ -241,15 +241,15 @@
               "v": "C0742 - CHICKEN SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1920.26,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -674.86,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -26.005,
               "t": "pct"
             },
@@ -267,15 +267,15 @@
               "v": "C0743 - TURKEY SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 157.37,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 97.37,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 162.2833,
               "t": "pct"
             },
@@ -293,15 +293,15 @@
               "v": "C0746 - FRESHLY PREPARED BY INGREDIENTS",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 813.0,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 232.0,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 39.9312,
               "t": "pct"
             },
@@ -319,15 +319,15 @@
               "v": "C0747 - BEEF PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 4825.22,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 420.42,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 9.5446,
               "t": "pct"
             },
@@ -345,15 +345,15 @@
               "v": "C0748 - LAMB PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 935.4,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 149.55,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 19.0303,
               "t": "pct"
             },
@@ -371,15 +371,15 @@
               "v": "C0749 - PORK PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 612.12,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -17.9,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -2.8412,
               "t": "pct"
             },
@@ -397,15 +397,15 @@
               "v": "C0750 - BACON JOINTS PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 903.02,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -101.49,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -10.1034,
               "t": "pct"
             },
@@ -423,15 +423,15 @@
               "v": "C0751 - CHICKEN PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 4584.31,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -225.11,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -4.6806,
               "t": "pct"
             },
@@ -449,15 +449,15 @@
               "v": "C0752 - TURKEY PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 405.79,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -32.82,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -7.4827,
               "t": "pct"
             },
@@ -475,15 +475,15 @@
               "v": "C0753 - BRD POULTRY PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1132.68,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -140.97,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -11.0682,
               "t": "pct"
             },
@@ -501,15 +501,15 @@
               "v": "C0754 - GAME PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 164.4,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 100.96,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 159.1425,
               "t": "pct"
             },
@@ -527,15 +527,15 @@
               "v": "S0157 - FISH PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1854.22,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -168.02,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -8.3086,
               "t": "pct"
             },
@@ -560,9 +560,9 @@
       "data": {
         "headers": [
           "Merchandising Structure - Article SV TB",
-          "Retail Sales €",
-          "Retail Sales € TY LY Var",
-          "Retail Sales € TY LY Var %",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
           "Retail Scan Margin %",
           "Retail Scan Margin % TY LY Var"
         ],
@@ -572,15 +572,15 @@
               "v": "D0033 - MEAT, POULTRY & FISH",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 24960.33,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -1092.75,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -4.1943,
               "t": "pct"
             },
@@ -598,15 +598,15 @@
               "v": "S0075 - FISH SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1257.02,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -162.85,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -11.4694,
               "t": "pct"
             },
@@ -624,15 +624,15 @@
               "v": "S0078 - LOOSE SAUSAGES, BACON & PUDDINGS",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 406.15,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 203.26,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 100.1824,
               "t": "pct"
             },
@@ -650,15 +650,15 @@
               "v": "C0738 - BEEF SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 5050.4,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -542.06,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -9.6927,
               "t": "pct"
             },
@@ -676,15 +676,15 @@
               "v": "C0739 - LAMB SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 854.08,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 27.11,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 3.2782,
               "t": "pct"
             },
@@ -702,15 +702,15 @@
               "v": "C0740 - PORK SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 788.57,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -92.29,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -10.4773,
               "t": "pct"
             },
@@ -728,15 +728,15 @@
               "v": "C0741 - BACON JOINTS SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 2.0,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 2.0,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": null,
               "t": "nil"
             },
@@ -754,15 +754,15 @@
               "v": "C0742 - CHICKEN SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1803.39,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -405.89,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -18.372,
               "t": "pct"
             },
@@ -780,15 +780,15 @@
               "v": "C0743 - TURKEY SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 56.24,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 56.24,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": null,
               "t": "nil"
             },
@@ -806,15 +806,15 @@
               "v": "C0744 - BRD POULTRY SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": null,
               "t": "nil"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -100.3,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -100.0,
               "t": "pct"
             },
@@ -832,15 +832,15 @@
               "v": "C0746 - FRESHLY PREPARED BY INGREDIENTS",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 856.0,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 577.5,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 207.3609,
               "t": "pct"
             },
@@ -858,15 +858,15 @@
               "v": "C0747 - BEEF PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 4632.37,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 920.7,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 24.8055,
               "t": "pct"
             },
@@ -884,15 +884,15 @@
               "v": "C0748 - LAMB PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 638.28,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -218.43,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -25.4964,
               "t": "pct"
             },
@@ -910,15 +910,15 @@
               "v": "C0749 - PORK PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 631.73,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -125.07,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -16.5262,
               "t": "pct"
             },
@@ -936,15 +936,15 @@
               "v": "C0750 - BACON JOINTS PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1021.18,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 207.14,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 25.4459,
               "t": "pct"
             },
@@ -962,15 +962,15 @@
               "v": "C0751 - CHICKEN PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 4623.17,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -744.98,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -13.8778,
               "t": "pct"
             },
@@ -988,15 +988,15 @@
               "v": "C0752 - TURKEY PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 239.85,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -63.67,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -20.9772,
               "t": "pct"
             },
@@ -1014,15 +1014,15 @@
               "v": "C0753 - BRD POULTRY PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 873.86,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -170.24,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -16.305,
               "t": "pct"
             },
@@ -1040,15 +1040,15 @@
               "v": "C0754 - GAME PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 57.24,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -70.37,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -55.1446,
               "t": "pct"
             },
@@ -1066,15 +1066,15 @@
               "v": "S0157 - FISH PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1168.8,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -390.55,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -25.0457,
               "t": "pct"
             },
@@ -1099,9 +1099,9 @@
       "data": {
         "headers": [
           "Merchandising Structure - Article SV TB",
-          "Retail Sales €",
-          "Retail Sales € TY LY Var",
-          "Retail Sales € TY LY Var %",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
           "Retail Scan Margin %",
           "Retail Scan Margin % TY LY Var"
         ],
@@ -1111,15 +1111,15 @@
               "v": "D0033 - MEAT, POULTRY & FISH",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 33968.94,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -3439.28,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -9.1939,
               "t": "pct"
             },
@@ -1137,15 +1137,15 @@
               "v": "S0075 - FISH SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 2345.45,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -557.33,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -19.1999,
               "t": "pct"
             },
@@ -1163,15 +1163,15 @@
               "v": "S0078 - LOOSE SAUSAGES, BACON & PUDDINGS",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 73.84,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -15.37,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -17.229,
               "t": "pct"
             },
@@ -1189,15 +1189,15 @@
               "v": "C0738 - BEEF SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 4881.75,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -1515.35,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -23.6881,
               "t": "pct"
             },
@@ -1215,15 +1215,15 @@
               "v": "C0739 - LAMB SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1056.95,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 102.03,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 10.6847,
               "t": "pct"
             },
@@ -1241,15 +1241,15 @@
               "v": "C0740 - PORK SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 724.82,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -237.07,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -24.6463,
               "t": "pct"
             },
@@ -1267,15 +1267,15 @@
               "v": "C0742 - CHICKEN SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 4544.64,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -16.44,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -0.3604,
               "t": "pct"
             },
@@ -1293,15 +1293,15 @@
               "v": "C0743 - TURKEY SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 82.16,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 68.16,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 486.8571,
               "t": "pct"
             },
@@ -1319,15 +1319,15 @@
               "v": "C0746 - FRESHLY PREPARED BY INGREDIENTS",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 244.48,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -76.02,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -23.7192,
               "t": "pct"
             },
@@ -1345,15 +1345,15 @@
               "v": "C0747 - BEEF PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 7109.27,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 708.99,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 11.0775,
               "t": "pct"
             },
@@ -1371,15 +1371,15 @@
               "v": "C0748 - LAMB PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 432.57,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -303.13,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -41.2029,
               "t": "pct"
             },
@@ -1397,15 +1397,15 @@
               "v": "C0749 - PORK PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1057.85,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 264.45,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 33.3312,
               "t": "pct"
             },
@@ -1423,15 +1423,15 @@
               "v": "C0750 - BACON JOINTS PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1130.28,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -57.02,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -4.8025,
               "t": "pct"
             },
@@ -1449,15 +1449,15 @@
               "v": "C0751 - CHICKEN PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 5002.37,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -1413.16,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -22.0272,
               "t": "pct"
             },
@@ -1475,15 +1475,15 @@
               "v": "C0752 - TURKEY PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 493.58,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 2.45,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 0.4988,
               "t": "pct"
             },
@@ -1501,15 +1501,15 @@
               "v": "C0753 - BRD POULTRY PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1796.1,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -189.5,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -9.5437,
               "t": "pct"
             },
@@ -1527,15 +1527,15 @@
               "v": "C0754 - GAME PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 134.67,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -49.82,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -27.0042,
               "t": "pct"
             },
@@ -1553,15 +1553,15 @@
               "v": "S0157 - FISH PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 2792.99,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -93.4,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -3.2359,
               "t": "pct"
             },
@@ -1588,9 +1588,9 @@
       "data": {
         "headers": [
           "Merchandising Structure - Article SV TB",
-          "Retail Sales €",
-          "Retail Sales € TY LY Var",
-          "Retail Sales € TY LY Var %",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
           "Retail Scan Margin %",
           "Retail Scan Margin % TY LY Var"
         ],
@@ -1600,15 +1600,15 @@
               "v": "D0033 - MEAT, POULTRY & FISH",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 26198.25,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -731.27,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -2.7155,
               "t": "pct"
             },
@@ -1626,15 +1626,15 @@
               "v": "S0075 - FISH SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1181.54,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -281.18,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -19.2231,
               "t": "pct"
             },
@@ -1652,15 +1652,15 @@
               "v": "S0078 - LOOSE SAUSAGES, BACON & PUDDINGS",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 644.53,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -42.63,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -6.2038,
               "t": "pct"
             },
@@ -1678,15 +1678,15 @@
               "v": "C0738 - BEEF SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 4703.84,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 196.2,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 4.3526,
               "t": "pct"
             },
@@ -1704,15 +1704,15 @@
               "v": "C0739 - LAMB SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 591.22,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -116.11,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -16.4153,
               "t": "pct"
             },
@@ -1730,15 +1730,15 @@
               "v": "C0740 - PORK SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 764.47,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -131.54,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -14.6806,
               "t": "pct"
             },
@@ -1756,15 +1756,15 @@
               "v": "C0741 - BACON JOINTS SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 4.86,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 4.86,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": null,
               "t": "nil"
             },
@@ -1782,15 +1782,15 @@
               "v": "C0742 - CHICKEN SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1920.26,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -674.86,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -26.005,
               "t": "pct"
             },
@@ -1808,15 +1808,15 @@
               "v": "C0743 - TURKEY SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 157.37,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 97.37,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 162.2833,
               "t": "pct"
             },
@@ -1834,15 +1834,15 @@
               "v": "C0746 - FRESHLY PREPARED BY INGREDIENTS",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 813.0,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 232.0,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 39.9312,
               "t": "pct"
             },
@@ -1860,15 +1860,15 @@
               "v": "C0747 - BEEF PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 4825.22,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 420.42,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 9.5446,
               "t": "pct"
             },
@@ -1886,15 +1886,15 @@
               "v": "C0748 - LAMB PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 935.4,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 149.55,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 19.0303,
               "t": "pct"
             },
@@ -1912,15 +1912,15 @@
               "v": "C0749 - PORK PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 612.12,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -17.9,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -2.8412,
               "t": "pct"
             },
@@ -1938,15 +1938,15 @@
               "v": "C0750 - BACON JOINTS PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 903.02,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -101.49,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -10.1034,
               "t": "pct"
             },
@@ -1964,15 +1964,15 @@
               "v": "C0751 - CHICKEN PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 4584.31,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -225.11,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -4.6806,
               "t": "pct"
             },
@@ -1990,15 +1990,15 @@
               "v": "C0752 - TURKEY PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 405.79,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -32.82,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -7.4827,
               "t": "pct"
             },
@@ -2016,15 +2016,15 @@
               "v": "C0753 - BRD POULTRY PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1132.68,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -140.97,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -11.0682,
               "t": "pct"
             },
@@ -2042,15 +2042,15 @@
               "v": "C0754 - GAME PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 164.4,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 100.96,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 159.1425,
               "t": "pct"
             },
@@ -2068,15 +2068,15 @@
               "v": "S0157 - FISH PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1854.22,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -168.02,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -8.3086,
               "t": "pct"
             },
@@ -2101,9 +2101,9 @@
       "data": {
         "headers": [
           "Merchandising Structure - Article SV TB",
-          "Retail Sales €",
-          "Retail Sales € TY LY Var",
-          "Retail Sales € TY LY Var %",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
           "Retail Scan Margin %",
           "Retail Scan Margin % TY LY Var"
         ],
@@ -2113,15 +2113,15 @@
               "v": "D0033 - MEAT, POULTRY & FISH",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 24960.33,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -1092.75,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -4.1943,
               "t": "pct"
             },
@@ -2139,15 +2139,15 @@
               "v": "S0075 - FISH SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1257.02,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -162.85,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -11.4694,
               "t": "pct"
             },
@@ -2165,15 +2165,15 @@
               "v": "S0078 - LOOSE SAUSAGES, BACON & PUDDINGS",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 406.15,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 203.26,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 100.1824,
               "t": "pct"
             },
@@ -2191,15 +2191,15 @@
               "v": "C0738 - BEEF SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 5050.4,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -542.06,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -9.6927,
               "t": "pct"
             },
@@ -2217,15 +2217,15 @@
               "v": "C0739 - LAMB SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 854.08,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 27.11,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 3.2782,
               "t": "pct"
             },
@@ -2243,15 +2243,15 @@
               "v": "C0740 - PORK SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 788.57,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -92.29,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -10.4773,
               "t": "pct"
             },
@@ -2269,15 +2269,15 @@
               "v": "C0741 - BACON JOINTS SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 2.0,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 2.0,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": null,
               "t": "nil"
             },
@@ -2295,15 +2295,15 @@
               "v": "C0742 - CHICKEN SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1803.39,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -405.89,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -18.372,
               "t": "pct"
             },
@@ -2321,15 +2321,15 @@
               "v": "C0743 - TURKEY SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 56.24,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 56.24,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": null,
               "t": "nil"
             },
@@ -2347,15 +2347,15 @@
               "v": "C0744 - BRD POULTRY SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": null,
               "t": "nil"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -100.3,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -100.0,
               "t": "pct"
             },
@@ -2373,15 +2373,15 @@
               "v": "C0746 - FRESHLY PREPARED BY INGREDIENTS",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 856.0,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 577.5,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 207.3609,
               "t": "pct"
             },
@@ -2399,15 +2399,15 @@
               "v": "C0747 - BEEF PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 4632.37,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 920.7,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 24.8055,
               "t": "pct"
             },
@@ -2425,15 +2425,15 @@
               "v": "C0748 - LAMB PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 638.28,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -218.43,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -25.4964,
               "t": "pct"
             },
@@ -2451,15 +2451,15 @@
               "v": "C0749 - PORK PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 631.73,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -125.07,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -16.5262,
               "t": "pct"
             },
@@ -2477,15 +2477,15 @@
               "v": "C0750 - BACON JOINTS PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1021.18,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 207.14,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 25.4459,
               "t": "pct"
             },
@@ -2503,15 +2503,15 @@
               "v": "C0751 - CHICKEN PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 4623.17,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -744.98,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -13.8778,
               "t": "pct"
             },
@@ -2529,15 +2529,15 @@
               "v": "C0752 - TURKEY PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 239.85,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -63.67,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -20.9772,
               "t": "pct"
             },
@@ -2555,15 +2555,15 @@
               "v": "C0753 - BRD POULTRY PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 873.86,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -170.24,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -16.305,
               "t": "pct"
             },
@@ -2581,15 +2581,15 @@
               "v": "C0754 - GAME PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 57.24,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -70.37,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -55.1446,
               "t": "pct"
             },
@@ -2607,15 +2607,15 @@
               "v": "S0157 - FISH PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1168.8,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -390.55,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -25.0457,
               "t": "pct"
             },
@@ -2640,9 +2640,9 @@
       "data": {
         "headers": [
           "Merchandising Structure - Article SV TB",
-          "Retail Sales €",
-          "Retail Sales € TY LY Var",
-          "Retail Sales € TY LY Var %",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
           "Retail Scan Margin %",
           "Retail Scan Margin % TY LY Var"
         ],
@@ -2652,15 +2652,15 @@
               "v": "D0033 - MEAT, POULTRY & FISH",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 33968.94,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -3439.28,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -9.1939,
               "t": "pct"
             },
@@ -2678,15 +2678,15 @@
               "v": "S0075 - FISH SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 2345.45,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -557.33,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -19.1999,
               "t": "pct"
             },
@@ -2704,15 +2704,15 @@
               "v": "S0078 - LOOSE SAUSAGES, BACON & PUDDINGS",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 73.84,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -15.37,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -17.229,
               "t": "pct"
             },
@@ -2730,15 +2730,15 @@
               "v": "C0738 - BEEF SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 4881.75,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -1515.35,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -23.6881,
               "t": "pct"
             },
@@ -2756,15 +2756,15 @@
               "v": "C0739 - LAMB SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1056.95,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 102.03,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 10.6847,
               "t": "pct"
             },
@@ -2782,15 +2782,15 @@
               "v": "C0740 - PORK SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 724.82,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -237.07,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -24.6463,
               "t": "pct"
             },
@@ -2808,15 +2808,15 @@
               "v": "C0742 - CHICKEN SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 4544.64,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -16.44,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -0.3604,
               "t": "pct"
             },
@@ -2834,15 +2834,15 @@
               "v": "C0743 - TURKEY SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 82.16,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 68.16,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 486.8571,
               "t": "pct"
             },
@@ -2860,15 +2860,15 @@
               "v": "C0746 - FRESHLY PREPARED BY INGREDIENTS",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 244.48,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -76.02,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -23.7192,
               "t": "pct"
             },
@@ -2886,15 +2886,15 @@
               "v": "C0747 - BEEF PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 7109.27,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 708.99,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 11.0775,
               "t": "pct"
             },
@@ -2912,15 +2912,15 @@
               "v": "C0748 - LAMB PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 432.57,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -303.13,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -41.2029,
               "t": "pct"
             },
@@ -2938,15 +2938,15 @@
               "v": "C0749 - PORK PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1057.85,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 264.45,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 33.3312,
               "t": "pct"
             },
@@ -2964,15 +2964,15 @@
               "v": "C0750 - BACON JOINTS PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1130.28,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -57.02,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -4.8025,
               "t": "pct"
             },
@@ -2990,15 +2990,15 @@
               "v": "C0751 - CHICKEN PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 5002.37,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -1413.16,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -22.0272,
               "t": "pct"
             },
@@ -3016,15 +3016,15 @@
               "v": "C0752 - TURKEY PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 493.58,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 2.45,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 0.4988,
               "t": "pct"
             },
@@ -3042,15 +3042,15 @@
               "v": "C0753 - BRD POULTRY PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1796.1,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -189.5,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -9.5437,
               "t": "pct"
             },
@@ -3068,15 +3068,15 @@
               "v": "C0754 - GAME PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 134.67,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -49.82,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -27.0042,
               "t": "pct"
             },
@@ -3094,15 +3094,15 @@
               "v": "S0157 - FISH PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 2792.99,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -93.4,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -3.2359,
               "t": "pct"
             },
@@ -3129,9 +3129,9 @@
       "data": {
         "headers": [
           "Merchandising Structure - Article SV TB",
-          "Retail Sales €",
-          "Retail Sales € TY LY Var",
-          "Retail Sales € TY LY Var %",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
           "Retail Scan Margin %",
           "Retail Scan Margin % TY LY Var"
         ],
@@ -3141,15 +3141,15 @@
               "v": "D0033 - MEAT, POULTRY & FISH",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 26302.79,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 278.91,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 1.0717,
               "t": "pct"
             },
@@ -3167,15 +3167,15 @@
               "v": "S0075 - FISH SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1477.0,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 115.61,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 8.4921,
               "t": "pct"
             },
@@ -3193,15 +3193,15 @@
               "v": "S0078 - LOOSE SAUSAGES, BACON & PUDDINGS",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 612.51,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -46.15,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -7.0066,
               "t": "pct"
             },
@@ -3219,15 +3219,15 @@
               "v": "C0738 - BEEF SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 4821.33,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 142.91,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 3.0547,
               "t": "pct"
             },
@@ -3245,15 +3245,15 @@
               "v": "C0739 - LAMB SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 461.25,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -372.3,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -44.6644,
               "t": "pct"
             },
@@ -3271,15 +3271,15 @@
               "v": "C0740 - PORK SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 802.39,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -215.57,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -21.1767,
               "t": "pct"
             },
@@ -3297,15 +3297,15 @@
               "v": "C0741 - BACON JOINTS SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 11.43,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 11.43,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": null,
               "t": "nil"
             },
@@ -3323,15 +3323,15 @@
               "v": "C0742 - CHICKEN SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 2075.66,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -10.41,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -0.499,
               "t": "pct"
             },
@@ -3349,15 +3349,15 @@
               "v": "C0743 - TURKEY SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 6.5,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -152.72,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -95.9176,
               "t": "pct"
             },
@@ -3375,15 +3375,15 @@
               "v": "C0746 - FRESHLY PREPARED BY INGREDIENTS",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 708.5,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -135.5,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -16.0545,
               "t": "pct"
             },
@@ -3401,15 +3401,15 @@
               "v": "C0747 - BEEF PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 4927.73,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 1061.7,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 27.4623,
               "t": "pct"
             },
@@ -3427,15 +3427,15 @@
               "v": "C0748 - LAMB PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 854.32,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 200.93,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 30.7519,
               "t": "pct"
             },
@@ -3453,15 +3453,15 @@
               "v": "C0749 - PORK PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 597.88,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 57.97,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 10.737,
               "t": "pct"
             },
@@ -3479,15 +3479,15 @@
               "v": "C0750 - BACON JOINTS PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 680.66,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -507.38,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -42.7073,
               "t": "pct"
             },
@@ -3505,15 +3505,15 @@
               "v": "C0751 - CHICKEN PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 4849.75,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 184.76,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 3.9606,
               "t": "pct"
             },
@@ -3531,15 +3531,15 @@
               "v": "C0752 - TURKEY PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 411.75,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -23.87,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -5.4795,
               "t": "pct"
             },
@@ -3557,15 +3557,15 @@
               "v": "C0753 - BRD POULTRY PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1117.14,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -92.0,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -7.6087,
               "t": "pct"
             },
@@ -3583,15 +3583,15 @@
               "v": "C0754 - GAME PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 78.91,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 26.43,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 50.362,
               "t": "pct"
             },
@@ -3609,15 +3609,15 @@
               "v": "S0157 - FISH PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1808.08,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 33.07,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 1.8631,
               "t": "pct"
             },
@@ -3642,9 +3642,9 @@
       "data": {
         "headers": [
           "Merchandising Structure - Article SV TB",
-          "Retail Sales €",
-          "Retail Sales € TY LY Var",
-          "Retail Sales € TY LY Var %",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
           "Retail Scan Margin %",
           "Retail Scan Margin % TY LY Var"
         ],
@@ -3654,15 +3654,15 @@
               "v": "D0033 - MEAT, POULTRY & FISH",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 27177.3,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 2347.53,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 9.4545,
               "t": "pct"
             },
@@ -3680,15 +3680,15 @@
               "v": "S0075 - FISH SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1340.64,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 186.47,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 16.1562,
               "t": "pct"
             },
@@ -3706,15 +3706,15 @@
               "v": "S0078 - LOOSE SAUSAGES, BACON & PUDDINGS",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 279.69,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 39.96,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 16.6688,
               "t": "pct"
             },
@@ -3732,15 +3732,15 @@
               "v": "C0738 - BEEF SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 5926.04,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 111.67,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 1.9206,
               "t": "pct"
             },
@@ -3758,15 +3758,15 @@
               "v": "C0739 - LAMB SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 629.45,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -143.63,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -18.5789,
               "t": "pct"
             },
@@ -3784,15 +3784,15 @@
               "v": "C0740 - PORK SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 732.61,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -185.25,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -20.1828,
               "t": "pct"
             },
@@ -3810,15 +3810,15 @@
               "v": "C0742 - CHICKEN SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 2027.97,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 259.95,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 14.7029,
               "t": "pct"
             },
@@ -3836,15 +3836,15 @@
               "v": "C0743 - TURKEY SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 13.5,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -64.93,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -82.7872,
               "t": "pct"
             },
@@ -3862,15 +3862,15 @@
               "v": "C0744 - BRD POULTRY SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": null,
               "t": "nil"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -85.55,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -100.0,
               "t": "pct"
             },
@@ -3888,15 +3888,15 @@
               "v": "C0746 - FRESHLY PREPARED BY INGREDIENTS",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 880.0,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 238.5,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 37.1785,
               "t": "pct"
             },
@@ -3914,15 +3914,15 @@
               "v": "C0747 - BEEF PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 4833.05,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 1053.87,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 27.8862,
               "t": "pct"
             },
@@ -3940,15 +3940,15 @@
               "v": "C0748 - LAMB PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 787.91,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 247.22,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 45.7231,
               "t": "pct"
             },
@@ -3966,15 +3966,15 @@
               "v": "C0749 - PORK PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 730.36,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 151.93,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 26.2659,
               "t": "pct"
             },
@@ -3992,15 +3992,15 @@
               "v": "C0750 - BACON JOINTS PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 977.68,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 127.73,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 15.0279,
               "t": "pct"
             },
@@ -4018,15 +4018,15 @@
               "v": "C0751 - CHICKEN PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 5392.11,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 292.35,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 5.7326,
               "t": "pct"
             },
@@ -4044,15 +4044,15 @@
               "v": "C0752 - TURKEY PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 290.53,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 5.57,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 1.9547,
               "t": "pct"
             },
@@ -4070,15 +4070,15 @@
               "v": "C0753 - BRD POULTRY PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1013.51,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 158.05,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 18.4754,
               "t": "pct"
             },
@@ -4096,15 +4096,15 @@
               "v": "C0754 - GAME PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 66.88,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -47.18,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -41.3642,
               "t": "pct"
             },
@@ -4122,15 +4122,15 @@
               "v": "S0157 - FISH PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1255.37,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 0.8,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 0.0638,
               "t": "pct"
             },
@@ -4155,9 +4155,9 @@
       "data": {
         "headers": [
           "Merchandising Structure - Article SV TB",
-          "Retail Sales €",
-          "Retail Sales € TY LY Var",
-          "Retail Sales € TY LY Var %",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
           "Retail Scan Margin %",
           "Retail Scan Margin % TY LY Var"
         ],
@@ -4167,15 +4167,15 @@
               "v": "D0033 - MEAT, POULTRY & FISH",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 37244.07,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 3090.79,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 9.0498,
               "t": "pct"
             },
@@ -4193,15 +4193,15 @@
               "v": "S0075 - FISH SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 2506.21,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 192.44,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 8.3172,
               "t": "pct"
             },
@@ -4219,15 +4219,15 @@
               "v": "S0078 - LOOSE SAUSAGES, BACON & PUDDINGS",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 77.32,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -7.59,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -8.9389,
               "t": "pct"
             },
@@ -4245,15 +4245,15 @@
               "v": "C0738 - BEEF SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 5426.55,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -411.16,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -7.0432,
               "t": "pct"
             },
@@ -4271,15 +4271,15 @@
               "v": "C0739 - LAMB SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 696.84,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -8.21,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -1.1645,
               "t": "pct"
             },
@@ -4297,15 +4297,15 @@
               "v": "C0740 - PORK SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 937.64,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 161.89,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 20.8688,
               "t": "pct"
             },
@@ -4323,15 +4323,15 @@
               "v": "C0742 - CHICKEN SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 5042.77,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 1485.86,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 41.7739,
               "t": "pct"
             },
@@ -4349,15 +4349,15 @@
               "v": "C0743 - TURKEY SERVEOVER",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 66.66,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -90.7,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -57.6385,
               "t": "pct"
             },
@@ -4375,15 +4375,15 @@
               "v": "C0746 - FRESHLY PREPARED BY INGREDIENTS",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 264.0,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 30.0,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 12.8205,
               "t": "pct"
             },
@@ -4401,15 +4401,15 @@
               "v": "C0747 - BEEF PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 7494.25,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 458.04,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 6.5098,
               "t": "pct"
             },
@@ -4427,15 +4427,15 @@
               "v": "C0748 - LAMB PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 729.91,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 363.07,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 98.9723,
               "t": "pct"
             },
@@ -4453,15 +4453,15 @@
               "v": "C0749 - PORK PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 775.83,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -56.86,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -6.8285,
               "t": "pct"
             },
@@ -4479,15 +4479,15 @@
               "v": "C0750 - BACON JOINTS PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1048.91,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 158.74,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 17.8325,
               "t": "pct"
             },
@@ -4505,15 +4505,15 @@
               "v": "C0751 - CHICKEN PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 5787.47,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -391.76,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -6.3399,
               "t": "pct"
             },
@@ -4531,15 +4531,15 @@
               "v": "C0752 - TURKEY PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 611.37,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 175.17,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 40.1582,
               "t": "pct"
             },
@@ -4557,15 +4557,15 @@
               "v": "C0753 - BRD POULTRY PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 1992.07,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 276.47,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 16.1151,
               "t": "pct"
             },
@@ -4583,15 +4583,15 @@
               "v": "C0754 - GAME PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 157.9,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": -102.61,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": -39.3881,
               "t": "pct"
             },
@@ -4609,15 +4609,15 @@
               "v": "S0157 - FISH PREPACK",
               "t": "str"
             },
-            "Retail Sales €": {
+            "Retail Sales \u20ac": {
               "v": 3542.12,
               "t": "num"
             },
-            "Retail Sales € TY LY Var": {
+            "Retail Sales \u20ac TY LY Var": {
               "v": 821.21,
               "t": "num"
             },
-            "Retail Sales € TY LY Var %": {
+            "Retail Sales \u20ac TY LY Var %": {
               "v": 30.1814,
               "t": "pct"
             },
@@ -4632,6 +4632,44 @@
           }
         ]
       }
+    }
+  },
+  "2026-05-19": {
+    "Palmerstown": {
+      "store": "Palmerstown",
+      "code": "356",
+      "report": "meat weekly",
+      "scraped_at": "2026-05-19T12:14:33.856867+01:00",
+      "date": "2026-05-19",
+      "data": {
+        "headers": [],
+        "rows": []
+      },
+      "error": "Page.goto: Target page, context or browser has been closed"
+    },
+    "Balbriggan": {
+      "store": "Balbriggan",
+      "code": "374",
+      "report": "meat weekly",
+      "scraped_at": "2026-05-19T12:14:33.856867+01:00",
+      "date": "2026-05-19",
+      "data": {
+        "headers": [],
+        "rows": []
+      },
+      "error": "Page.goto: Target page, context or browser has been closed"
+    },
+    "Skerries": {
+      "store": "Skerries",
+      "code": "424",
+      "report": "meat weekly",
+      "scraped_at": "2026-05-19T12:14:33.856867+01:00",
+      "date": "2026-05-19",
+      "data": {
+        "headers": [],
+        "rows": []
+      },
+      "error": "Page.goto: Target page, context or browser has been closed"
     }
   }
 }
