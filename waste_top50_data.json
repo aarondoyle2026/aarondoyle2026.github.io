@@ -10,7 +10,7 @@
         "headers": [],
         "rows": []
       },
-      "error": "Could not select store '356 - Palmerstown'. Last: Locator.click: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"[class*='drop-down'], [class*='dropdown-text'], [class*='filter-card']\").first\n    - locator resolved to <div class=\"drop-down has-pop-up\">…</div>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"css-1kfdb0e\"></div> from <div class=\"portal-select-dropdown css-gyb4pq\">…</div> subtree intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"css-1kfdb0e\"></div> from <div class=\"portal-select-dropdown css-gyb4pq\">…</div> subtree intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    5 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"css-1kfdb0e\"></div> from <div class=\"portal-select-dropdown css-gyb4pq\">…</div> subtree intercepts pointer events\n    - retrying click action\n      - waiting 500ms\n"
+      "error": "Could not select store '356 - Palmerstown'. Last: Locator.click: Timeout 3000ms exceeded.\nCall log:\n  - waiting for locator(\"[class*='drop-down'], [class*='dropdown-text'], [class*='filter-card']\").first\n    - locator resolved to <div class=\"drop-down has-pop-up\">\u2026</div>\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"css-1kfdb0e\"></div> from <div class=\"portal-select-dropdown css-gyb4pq\">\u2026</div> subtree intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"css-1kfdb0e\"></div> from <div class=\"portal-select-dropdown css-gyb4pq\">\u2026</div> subtree intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    5 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"css-1kfdb0e\"></div> from <div class=\"portal-select-dropdown css-gyb4pq\">\u2026</div> subtree intercepts pointer events\n    - retrying click action\n      - waiting 500ms\n"
     },
     "Balbriggan": {
       "store": "Balbriggan",
@@ -22,7 +22,7 @@
         "headers": [
           "Merchandising Structure - Article SV TB",
           "Waste Qty",
-          "Waste & Reduction €",
+          "Waste & Reduction \u20ac",
           "Reduction Qty",
           "Retail Qty"
         ],
@@ -36,7 +36,7 @@
               "v": 161.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 301.057,
               "t": "num"
             },
@@ -58,7 +58,7 @@
               "v": 47.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 87.886,
               "t": "num"
             },
@@ -80,7 +80,7 @@
               "v": 38.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 132.846,
               "t": "num"
             },
@@ -102,7 +102,7 @@
               "v": 32.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 59.837,
               "t": "num"
             },
@@ -124,7 +124,7 @@
               "v": 20.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 25.45,
               "t": "num"
             },
@@ -146,7 +146,7 @@
               "v": 20.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 27.642,
               "t": "num"
             },
@@ -168,7 +168,7 @@
               "v": 19.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 100.407,
               "t": "num"
             },
@@ -190,7 +190,7 @@
               "v": 17.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 28.73,
               "t": "num"
             },
@@ -212,7 +212,7 @@
               "v": 15.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 14.634,
               "t": "num"
             },
@@ -234,7 +234,7 @@
               "v": 14.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 26.179,
               "t": "num"
             },
@@ -256,7 +256,7 @@
               "v": 12.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 47.88,
               "t": "num"
             },
@@ -278,7 +278,7 @@
               "v": 11.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 34.793,
               "t": "num"
             },
@@ -300,7 +300,7 @@
               "v": 11.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 53.17,
               "t": "num"
             },
@@ -322,7 +322,7 @@
               "v": 11.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 24.0,
               "t": "num"
             },
@@ -344,7 +344,7 @@
               "v": 11.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 48.361,
               "t": "num"
             },
@@ -366,7 +366,7 @@
               "v": 10.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 24.9,
               "t": "num"
             },
@@ -388,7 +388,7 @@
               "v": 10.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 36.9,
               "t": "num"
             },
@@ -410,7 +410,7 @@
               "v": 9.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 16.829,
               "t": "num"
             },
@@ -432,7 +432,7 @@
               "v": 9.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 21.87,
               "t": "num"
             },
@@ -454,7 +454,7 @@
               "v": 9.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 53.91,
               "t": "num"
             },
@@ -476,7 +476,7 @@
               "v": 9.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 8.01,
               "t": "num"
             },
@@ -498,7 +498,7 @@
               "v": 9.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 30.846,
               "t": "num"
             },
@@ -520,7 +520,7 @@
               "v": 9.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 24.75,
               "t": "num"
             },
@@ -542,7 +542,7 @@
               "v": 8.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 27.92,
               "t": "num"
             },
@@ -564,7 +564,7 @@
               "v": 8.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 77.52,
               "t": "num"
             },
@@ -586,7 +586,7 @@
               "v": 8.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 14.0,
               "t": "num"
             },
@@ -608,7 +608,7 @@
               "v": 7.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 13.089,
               "t": "num"
             },
@@ -630,7 +630,7 @@
               "v": 7.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 25.82,
               "t": "num"
             },
@@ -652,7 +652,7 @@
               "v": 7.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 24.67,
               "t": "num"
             },
@@ -674,7 +674,7 @@
               "v": 7.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 14.0,
               "t": "num"
             },
@@ -696,7 +696,7 @@
               "v": 6.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 4.878,
               "t": "num"
             },
@@ -718,7 +718,7 @@
               "v": 6.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 25.14,
               "t": "num"
             },
@@ -740,7 +740,7 @@
               "v": 6.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 9.54,
               "t": "num"
             },
@@ -762,7 +762,7 @@
               "v": 6.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 42.0,
               "t": "num"
             },
@@ -784,7 +784,7 @@
               "v": 6.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 30.6,
               "t": "num"
             },
@@ -806,7 +806,7 @@
               "v": 6.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 35.34,
               "t": "num"
             },
@@ -828,7 +828,7 @@
               "v": 6.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 20.94,
               "t": "num"
             },
@@ -850,7 +850,7 @@
               "v": 6.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 26.34,
               "t": "num"
             },
@@ -872,7 +872,7 @@
               "v": 6.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 25.5,
               "t": "num"
             },
@@ -894,7 +894,7 @@
               "v": 6.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 58.43,
               "t": "num"
             },
@@ -916,7 +916,7 @@
               "v": 6.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 25.2,
               "t": "num"
             },
@@ -938,7 +938,7 @@
               "v": 6.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 6.0,
               "t": "num"
             },
@@ -960,7 +960,7 @@
               "v": 6.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 33.0,
               "t": "num"
             },
@@ -982,7 +982,7 @@
               "v": 6.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 17.561,
               "t": "num"
             },
@@ -1004,7 +1004,7 @@
               "v": 5.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 9.35,
               "t": "num"
             },
@@ -1026,7 +1026,7 @@
               "v": 5.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 11.748,
               "t": "num"
             },
@@ -1048,7 +1048,7 @@
               "v": 5.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 18.95,
               "t": "num"
             },
@@ -1070,7 +1070,7 @@
               "v": 5.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 9.95,
               "t": "num"
             },
@@ -1092,7 +1092,7 @@
               "v": 5.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 7.95,
               "t": "num"
             },
@@ -1114,7 +1114,7 @@
               "v": 5.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 7.5,
               "t": "num"
             },
@@ -1140,7 +1140,7 @@
         "headers": [
           "Merchandising Structure - Article SV TB",
           "Waste Qty",
-          "Waste & Reduction €",
+          "Waste & Reduction \u20ac",
           "Reduction Qty",
           "Retail Qty"
         ],
@@ -1154,7 +1154,7 @@
               "v": 29.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 29.01,
               "t": "num"
             },
@@ -1176,7 +1176,7 @@
               "v": 28.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 92.12,
               "t": "num"
             },
@@ -1198,7 +1198,7 @@
               "v": 15.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 33.0,
               "t": "num"
             },
@@ -1220,7 +1220,7 @@
               "v": 12.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 25.011,
               "t": "num"
             },
@@ -1242,7 +1242,7 @@
               "v": 12.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 19.5,
               "t": "num"
             },
@@ -1264,7 +1264,7 @@
               "v": 11.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 17.49,
               "t": "num"
             },
@@ -1286,7 +1286,7 @@
               "v": 11.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 52.0,
               "t": "num"
             },
@@ -1308,7 +1308,7 @@
               "v": 10.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 32.5,
               "t": "num"
             },
@@ -1330,7 +1330,7 @@
               "v": 10.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 50.0,
               "t": "num"
             },
@@ -1352,7 +1352,7 @@
               "v": 9.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 35.604,
               "t": "num"
             },
@@ -1374,7 +1374,7 @@
               "v": 8.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 41.6,
               "t": "num"
             },
@@ -1396,7 +1396,7 @@
               "v": 7.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 7.0,
               "t": "num"
             },
@@ -1418,7 +1418,7 @@
               "v": 7.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 3.85,
               "t": "num"
             },
@@ -1440,7 +1440,7 @@
               "v": 7.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 8.05,
               "t": "num"
             },
@@ -1462,7 +1462,7 @@
               "v": 7.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 14.63,
               "t": "num"
             },
@@ -1484,7 +1484,7 @@
               "v": 7.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 26.829,
               "t": "num"
             },
@@ -1506,7 +1506,7 @@
               "v": 6.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 6.0,
               "t": "num"
             },
@@ -1528,7 +1528,7 @@
               "v": 6.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 4.5,
               "t": "num"
             },
@@ -1550,7 +1550,7 @@
               "v": 6.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 47.524,
               "t": "num"
             },
@@ -1572,7 +1572,7 @@
               "v": 6.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 28.53,
               "t": "num"
             },
@@ -1594,7 +1594,7 @@
               "v": 6.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 18.502,
               "t": "num"
             },
@@ -1616,7 +1616,7 @@
               "v": 6.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 26.7,
               "t": "num"
             },
@@ -1638,7 +1638,7 @@
               "v": 5.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 22.45,
               "t": "num"
             },
@@ -1660,7 +1660,7 @@
               "v": 5.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 10.95,
               "t": "num"
             },
@@ -1682,7 +1682,7 @@
               "v": 5.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 4.95,
               "t": "num"
             },
@@ -1704,7 +1704,7 @@
               "v": 5.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 4.95,
               "t": "num"
             },
@@ -1726,7 +1726,7 @@
               "v": 5.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 4.95,
               "t": "num"
             },
@@ -1748,7 +1748,7 @@
               "v": 5.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 12.45,
               "t": "num"
             },
@@ -1770,7 +1770,7 @@
               "v": 5.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 27.5,
               "t": "num"
             },
@@ -1792,7 +1792,7 @@
               "v": 5.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 12.555,
               "t": "num"
             },
@@ -1814,7 +1814,7 @@
               "v": 5.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 8.81,
               "t": "num"
             },
@@ -1836,7 +1836,7 @@
               "v": 5.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 9.692,
               "t": "num"
             },
@@ -1858,7 +1858,7 @@
               "v": 5.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 19.95,
               "t": "num"
             },
@@ -1880,7 +1880,7 @@
               "v": 4.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 5.203,
               "t": "num"
             },
@@ -1902,7 +1902,7 @@
               "v": 4.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 4.0,
               "t": "num"
             },
@@ -1924,7 +1924,7 @@
               "v": 4.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 1.96,
               "t": "num"
             },
@@ -1946,7 +1946,7 @@
               "v": 4.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 21.66,
               "t": "num"
             },
@@ -1968,7 +1968,7 @@
               "v": 4.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 4.0,
               "t": "num"
             },
@@ -1990,7 +1990,7 @@
               "v": 4.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 3.96,
               "t": "num"
             },
@@ -2012,7 +2012,7 @@
               "v": 4.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 7.96,
               "t": "num"
             },
@@ -2034,7 +2034,7 @@
               "v": 4.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 20.11,
               "t": "num"
             },
@@ -2056,7 +2056,7 @@
               "v": 4.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 7.56,
               "t": "num"
             },
@@ -2078,7 +2078,7 @@
               "v": 4.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 38.731,
               "t": "num"
             },
@@ -2100,7 +2100,7 @@
               "v": 4.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 5.2,
               "t": "num"
             },
@@ -2122,7 +2122,7 @@
               "v": 4.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 42.29,
               "t": "num"
             },
@@ -2144,7 +2144,7 @@
               "v": 4.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 7.8,
               "t": "num"
             },
@@ -2166,7 +2166,7 @@
               "v": 4.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 15.6,
               "t": "num"
             },
@@ -2188,7 +2188,7 @@
               "v": 4.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 11.56,
               "t": "num"
             },
@@ -2210,7 +2210,7 @@
               "v": 4.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 8.95,
               "t": "num"
             },
@@ -2232,7 +2232,7 @@
               "v": 4.0,
               "t": "num"
             },
-            "Waste & Reduction €": {
+            "Waste & Reduction \u20ac": {
               "v": 21.16,
               "t": "num"
             },
@@ -2247,6 +2247,44 @@
           }
         ]
       }
+    }
+  },
+  "2026-05-19": {
+    "Palmerstown": {
+      "store": "Palmerstown",
+      "code": "356",
+      "report": "waste top 50",
+      "scraped_at": "2026-05-19T12:14:33.856867+01:00",
+      "date": "2026-05-19",
+      "data": {
+        "headers": [],
+        "rows": []
+      },
+      "error": "Page.goto: Target page, context or browser has been closed"
+    },
+    "Balbriggan": {
+      "store": "Balbriggan",
+      "code": "374",
+      "report": "waste top 50",
+      "scraped_at": "2026-05-19T12:14:33.856867+01:00",
+      "date": "2026-05-19",
+      "data": {
+        "headers": [],
+        "rows": []
+      },
+      "error": "Page.goto: Target page, context or browser has been closed"
+    },
+    "Skerries": {
+      "store": "Skerries",
+      "code": "424",
+      "report": "waste top 50",
+      "scraped_at": "2026-05-19T12:14:33.856867+01:00",
+      "date": "2026-05-19",
+      "data": {
+        "headers": [],
+        "rows": []
+      },
+      "error": "Page.goto: Target page, context or browser has been closed"
     }
   }
 }
