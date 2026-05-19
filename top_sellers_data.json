@@ -2082,37 +2082,679 @@
       "store": "Palmerstown",
       "code": "356",
       "report": "top sellers",
-      "scraped_at": "2026-05-19T12:14:33.856867+01:00",
+      "scraped_at": "2026-05-19T17:20:23.574140+01:00",
       "date": "2026-05-19",
       "data": {
-        "headers": [],
-        "rows": []
-      },
-      "error": "Page.goto: Target page, context or browser has been closed"
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Qty",
+          "Retail Qty"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "Merchandising Structure - Article SV TB",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": "Sum Last 4 Weeks",
+              "t": "str"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1009004 003 COCA COLA ZERO BOTTLE | 2LTR 5000112630978",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 802.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1988227 004 SUPERVALU WINE GUMS | 200GRM 5099839746062",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 935.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1003575 001 SUPERVALU STILL WATER | 2L 5099839727269",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 896.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1939888 000 PEPSI MAX CAN \u20ac1.35 | 330MLS 4062139013562",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 656.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1249952 001 BALLYGOWAN STILL WATER| 750MLS 5391521836878",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 668.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1470834 018 MONSTER ENERGY ULTRA ZERO CAN| 500MLS 5061013942980",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 638.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1009117 003 COCA COLA BOTTLE | 2LTR 5000112667240",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 383.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1008371 001 BALLYGOWAN STILL WATER | 500MLS 5391521836823",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 453.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1830789 001 SUPERVALU STILL WATER 12 PACK | 500MLS 5099839726996",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 587.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1740360 003 LUCOZADE ENERGY ORIG BTL \u20ac2.20  | 500MLS 5054267014022",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 399.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1009130 004 COCA COLA CAN | 330MLS 5000112626940",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 496.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1019740 001 BALLYGOWAN STILL WATER| 1LTR 5391521836809",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 505.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1362359 008 MALTESERS CHOCOLATE POUCH | 93GRM 5000159571401",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 199.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1222815 001 COCA COLA ZERO CAN | 330MLS 5000112630664",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 348.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1012826 006 RED BULL ENERGY DRINK CAN | 250ML 90456374",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 407.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1978284 000 ENERGISE ENERGY MANGO MAGIC CAN \u20ac1 | 330MLS 5391521851499",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 237.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1175416 000 SUPERVALU STILL WATER | 5LTR 5099839329067",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 320.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1016995 007 COCA COLA BOTTLE | 500MLS 5000112627091",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 376.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1676327 001 SUPERVALU STILL WATER 24PK| 500MLS 5099839727009",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 300.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1009453 008 7UP ZERO LEMON & LIME BOTTLE| 2LTR 4062139008803",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 499.0,
+              "t": "num"
+            }
+          }
+        ]
+      }
     },
     "Balbriggan": {
       "store": "Balbriggan",
       "code": "374",
       "report": "top sellers",
-      "scraped_at": "2026-05-19T12:14:33.856867+01:00",
+      "scraped_at": "2026-05-19T17:20:23.574140+01:00",
       "date": "2026-05-19",
       "data": {
-        "headers": [],
-        "rows": []
-      },
-      "error": "Page.goto: Target page, context or browser has been closed"
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Qty",
+          "Retail Qty"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "Merchandising Structure - Article SV TB",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": "Sum Last 4 Weeks",
+              "t": "str"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1175432 001 SUPERVALU STILL WATER| 500MLS 5099839727221",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 1731.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1988227 004 SUPERVALU WINE GUMS | 200GRM 5099839746062",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 1127.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1175416 000 SUPERVALU STILL WATER | 5LTR 5099839329067",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 896.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1009004 003 COCA COLA ZERO BOTTLE | 2LTR 5000112630978",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 648.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1003575 001 SUPERVALU STILL WATER | 2L 5099839727269",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 821.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1080497 014 HARIBO TANGFASTICS BAG| 160GRM 5012035963484",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 416.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1009130 004 COCA COLA CAN | 330MLS 5000112626940",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 597.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1080497 012 HARIBO STARMIX BAG| 160GRM 5012035963460",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 299.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1080497 015 HARIBO GIANT STRAWBS BAG| 160GRM 5012035962135",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 204.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1080497 013 HARIBO SUPERMIX BAG| 160GRM 5012035962197",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 218.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1019958 001 SUPERVALU SPARKLING WATER| 2LTR 5099839727085",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 455.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1016995 007 COCA COLA BOTTLE | 500MLS 5000112627091",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 358.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1012826 006 RED BULL ENERGY DRINK CAN | 250ML 90456374",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 233.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1740360 003 LUCOZADE ENERGY ORIG BTL \u20ac2.20  | 500MLS 5054267014022",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 329.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1470834 018 MONSTER ENERGY ULTRA ZERO CAN| 500MLS 5061013942980",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 316.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1023917 003 DIET COKE BOTTLE| 2LTR 5000112633818",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 318.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1024005 000 SV POPCORN 6 PACK | 30GRM 5099839212260",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 329.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1175280 001 SUPERVALU STILL WATER | 1LTR 5099839727245",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 354.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1222815 001 COCA COLA ZERO CAN | 330MLS 5000112630664",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 341.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1470834 017 MONSTER JUICED MANGO LOCO ENRG CAN| 500MLS 5061013942454",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 291.0,
+              "t": "num"
+            }
+          }
+        ]
+      }
     },
     "Skerries": {
       "store": "Skerries",
       "code": "424",
       "report": "top sellers",
-      "scraped_at": "2026-05-19T12:14:33.856867+01:00",
+      "scraped_at": "2026-05-19T17:20:23.574140+01:00",
       "date": "2026-05-19",
       "data": {
-        "headers": [],
-        "rows": []
-      },
-      "error": "Page.goto: Target page, context or browser has been closed"
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Qty",
+          "Retail Qty"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "Merchandising Structure - Article SV TB",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": "Sum Last 4 Weeks",
+              "t": "str"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1019958 001 SUPERVALU SPARKLING WATER| 2LTR 5099839727085",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 897.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1988227 004 SUPERVALU WINE GUMS | 200GRM 5099839746062",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 811.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1003575 001 SUPERVALU STILL WATER | 2L 5099839727269",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 586.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1915692 000 WATER SELL OFF [DRS 15C|1PCE 82464",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 346.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1175432 001 SUPERVALU STILL WATER| 500MLS 5099839727221",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 535.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1046422 000 SINGLE CRISPS| 1PCE 64568",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 447.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1009004 003 COCA COLA ZERO BOTTLE | 2LTR 5000112630978",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 545.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1576368 009 TAYTO HUNKY DORYS CHEESE & ONION | 130GRM 5011096012131",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 326.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1362359 008 MALTESERS CHOCOLATE POUCH | 93GRM 5000159571401",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 272.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1830789 001 SUPERVALU STILL WATER 12 PACK | 500MLS 5099839726996",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 417.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1305032 000 SUPERVALU CRUNCHY BISCUITS & CAR BARS 5PK|210GRM 5099839362095",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 332.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1175416 000 SUPERVALU STILL WATER | 5LTR 5099839329067",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 451.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1024005 000 SV POPCORN 6 PACK | 30GRM 5099839212260",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 335.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1346837 006 CADBURY DAIRY MILK BISCOFF BAR | 54GRM 7622202311697",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 238.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1222815 001 COCA COLA ZERO CAN | 330MLS 5000112630664",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 379.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1045378 000 SUPERVALU TORTILLA CHIP SALTED | 200GRM 5099839310157",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 240.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1362331 009 GALAXY MINSTRELS POUCH | 118GRM 5000159571203",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 190.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1023917 003 DIET COKE BOTTLE| 2LTR 5000112633818",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 296.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1034895 005 CADBURY DAIRYMILK BARS MULTI PACKS| 39GRM 7622202010033",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 220.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1025920 000 CHUPA CHUPS [ WHEEL DISPLAY| 12GRM 49814521",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 231.0,
+              "t": "num"
+            }
+          }
+        ]
+      }
     }
   }
 }
