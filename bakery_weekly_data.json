@@ -1389,37 +1389,448 @@
       "store": "Palmerstown",
       "code": "356",
       "report": "bakery weekly",
-      "scraped_at": "2026-05-19T12:14:33.856867+01:00",
+      "scraped_at": "2026-05-19T17:20:23.574140+01:00",
       "date": "2026-05-19",
       "data": {
-        "headers": [],
-        "rows": []
-      },
-      "error": "Page.goto: Target page, context or browser has been closed"
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0035 - BREAD AND CAKES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 25438.9,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -2514.47,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -8.9952,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 34.2693,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.1934,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0228 - WRAPPED BREAD",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 9978.03,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -701.21,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -6.5661,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 24.3928,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.425,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0229 - PACKAGED CAKE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 2809.48,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -434.37,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -13.3906,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 20.3712,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -5.083,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0231 - FRESH BAKERY",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 5237.77,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -20.06,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -0.3815,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 40.8285,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.8026,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0232 - SCRATCH BAKERY",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 7413.62,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -1358.83,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -15.4897,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 49.2571,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 6.393,
+              "t": "pct"
+            }
+          }
+        ]
+      }
     },
     "Balbriggan": {
       "store": "Balbriggan",
       "code": "374",
       "report": "bakery weekly",
-      "scraped_at": "2026-05-19T12:14:33.856867+01:00",
+      "scraped_at": "2026-05-19T17:20:23.574140+01:00",
       "date": "2026-05-19",
       "data": {
-        "headers": [],
-        "rows": []
-      },
-      "error": "Page.goto: Target page, context or browser has been closed"
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0035 - BREAD AND CAKES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 24796.49,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -1873.96,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -7.0264,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 38.7659,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 1.7737,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0228 - WRAPPED BREAD",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 7547.73,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -1061.35,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -12.3283,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 23.6945,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.2221,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0229 - PACKAGED CAKE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 2425.16,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -367.25,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -13.1517,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 20.8736,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -4.3927,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0231 - FRESH BAKERY",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 4640.63,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 87.92,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 1.9312,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 46.2822,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 5.3958,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0232 - SCRATCH BAKERY",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 10182.97,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -533.28,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -4.9764,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 51.6506,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 1.5341,
+              "t": "pct"
+            }
+          }
+        ]
+      }
     },
     "Skerries": {
       "store": "Skerries",
       "code": "424",
       "report": "bakery weekly",
-      "scraped_at": "2026-05-19T12:14:33.856867+01:00",
+      "scraped_at": "2026-05-19T17:20:23.574140+01:00",
       "date": "2026-05-19",
       "data": {
-        "headers": [],
-        "rows": []
-      },
-      "error": "Page.goto: Target page, context or browser has been closed"
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0035 - BREAD AND CAKES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 21356.12,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -1489.83,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -6.5212,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 28.2459,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.1175,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0228 - WRAPPED BREAD",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 11743.15,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -908.47,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -7.1807,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 24.1581,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.0096,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0229 - PACKAGED CAKE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 2767.83,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 105.33,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 3.9561,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 20.9178,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -2.1638,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0231 - FRESH BAKERY",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 4964.09,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -433.95,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -8.039,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 36.3484,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.4168,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0232 - SCRATCH BAKERY",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1881.05,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -252.74,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -11.8447,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 44.0792,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -3.7097,
+              "t": "pct"
+            }
+          }
+        ]
+      }
     }
   }
 }
