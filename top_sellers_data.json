@@ -153,7 +153,7 @@
           },
           {
             "Merchandising Structure - Article SV TB": {
-              "v": "1939888 000 PEPSI MAX CAN €1.35 | 330MLS 4062139013562",
+              "v": "1939888 000 PEPSI MAX CAN \u20ac1.35 | 330MLS 4062139013562",
               "t": "str"
             },
             "Retail Qty": {
@@ -223,7 +223,7 @@
           },
           {
             "Merchandising Structure - Article SV TB": {
-              "v": "1228819 009 LUCOZADE SPORT ORANGE €2.50 | 750MLS 5054267015456",
+              "v": "1228819 009 LUCOZADE SPORT ORANGE \u20ac2.50 | 750MLS 5054267015456",
               "t": "str"
             },
             "Retail Qty": {
@@ -379,7 +379,7 @@
           },
           {
             "Merchandising Structure - Article SV TB": {
-              "v": "1748825 001 RED BULL CAN €2.20| 250ML 90456367",
+              "v": "1748825 001 RED BULL CAN \u20ac2.20| 250ML 90456367",
               "t": "str"
             },
             "Retail Qty": {
@@ -615,7 +615,7 @@
           },
           {
             "Merchandising Structure - Article SV TB": {
-              "v": "1772920 007 TAYTO CHEESE & ONION 10PK €4 | 25GRM 5011096012056",
+              "v": "1772920 007 TAYTO CHEESE & ONION 10PK \u20ac4 | 25GRM 5011096012056",
               "t": "str"
             },
             "Retail Qty": {
@@ -833,7 +833,7 @@
           },
           {
             "Merchandising Structure - Article SV TB": {
-              "v": "1939888 000 PEPSI MAX CAN €1.35 | 330MLS 4062139013562",
+              "v": "1939888 000 PEPSI MAX CAN \u20ac1.35 | 330MLS 4062139013562",
               "t": "str"
             },
             "Retail Qty": {
@@ -903,7 +903,7 @@
           },
           {
             "Merchandising Structure - Article SV TB": {
-              "v": "1228819 009 LUCOZADE SPORT ORANGE €2.50 | 750MLS 5054267015456",
+              "v": "1228819 009 LUCOZADE SPORT ORANGE \u20ac2.50 | 750MLS 5054267015456",
               "t": "str"
             },
             "Retail Qty": {
@@ -1059,7 +1059,7 @@
           },
           {
             "Merchandising Structure - Article SV TB": {
-              "v": "1748825 001 RED BULL CAN €2.20| 250ML 90456367",
+              "v": "1748825 001 RED BULL CAN \u20ac2.20| 250ML 90456367",
               "t": "str"
             },
             "Retail Qty": {
@@ -1295,7 +1295,7 @@
           },
           {
             "Merchandising Structure - Article SV TB": {
-              "v": "1772920 007 TAYTO CHEESE & ONION 10PK €4 | 25GRM 5011096012056",
+              "v": "1772920 007 TAYTO CHEESE & ONION 10PK \u20ac4 | 25GRM 5011096012056",
               "t": "str"
             },
             "Retail Qty": {
@@ -1483,7 +1483,7 @@
           },
           {
             "Merchandising Structure - Article SV TB": {
-              "v": "1939888 000 PEPSI MAX CAN €1.35 | 330MLS 4062139013562",
+              "v": "1939888 000 PEPSI MAX CAN \u20ac1.35 | 330MLS 4062139013562",
               "t": "str"
             },
             "Retail Qty": {
@@ -1543,7 +1543,7 @@
           },
           {
             "Merchandising Structure - Article SV TB": {
-              "v": "1772920 007 TAYTO CHEESE & ONION 10PK €4 | 25GRM 5011096012056",
+              "v": "1772920 007 TAYTO CHEESE & ONION 10PK \u20ac4 | 25GRM 5011096012056",
               "t": "str"
             },
             "Retail Qty": {
@@ -1593,7 +1593,7 @@
           },
           {
             "Merchandising Structure - Article SV TB": {
-              "v": "1978213 000 ENERGISE ENERGY F/WHT ZERO CAN €1 | 330MLS 5391521851468",
+              "v": "1978213 000 ENERGISE ENERGY F/WHT ZERO CAN \u20ac1 | 330MLS 5391521851468",
               "t": "str"
             },
             "Retail Qty": {
@@ -1739,7 +1739,7 @@
           },
           {
             "Merchandising Structure - Article SV TB": {
-              "v": "1748825 001 RED BULL CAN €2.20| 250ML 90456367",
+              "v": "1748825 001 RED BULL CAN \u20ac2.20| 250ML 90456367",
               "t": "str"
             },
             "Retail Qty": {
@@ -1779,7 +1779,7 @@
           },
           {
             "Merchandising Structure - Article SV TB": {
-              "v": "1772920 007 TAYTO CHEESE & ONION 10PK €4 | 25GRM 5011096012056",
+              "v": "1772920 007 TAYTO CHEESE & ONION 10PK \u20ac4 | 25GRM 5011096012056",
               "t": "str"
             },
             "Retail Qty": {
@@ -1925,7 +1925,7 @@
           },
           {
             "Merchandising Structure - Article SV TB": {
-              "v": "1772920 007 TAYTO CHEESE & ONION 10PK €4 | 25GRM 5011096012056",
+              "v": "1772920 007 TAYTO CHEESE & ONION 10PK \u20ac4 | 25GRM 5011096012056",
               "t": "str"
             },
             "Retail Qty": {
@@ -2075,6 +2075,44 @@
           }
         ]
       }
+    }
+  },
+  "2026-05-19": {
+    "Palmerstown": {
+      "store": "Palmerstown",
+      "code": "356",
+      "report": "top sellers",
+      "scraped_at": "2026-05-19T12:14:33.856867+01:00",
+      "date": "2026-05-19",
+      "data": {
+        "headers": [],
+        "rows": []
+      },
+      "error": "Page.goto: Target page, context or browser has been closed"
+    },
+    "Balbriggan": {
+      "store": "Balbriggan",
+      "code": "374",
+      "report": "top sellers",
+      "scraped_at": "2026-05-19T12:14:33.856867+01:00",
+      "date": "2026-05-19",
+      "data": {
+        "headers": [],
+        "rows": []
+      },
+      "error": "Page.goto: Target page, context or browser has been closed"
+    },
+    "Skerries": {
+      "store": "Skerries",
+      "code": "424",
+      "report": "top sellers",
+      "scraped_at": "2026-05-19T12:14:33.856867+01:00",
+      "date": "2026-05-19",
+      "data": {
+        "headers": [],
+        "rows": []
+      },
+      "error": "Page.goto: Target page, context or browser has been closed"
     }
   }
 }
