@@ -1,36 +1,173 @@
 {
   "week_ending": "2026-05-16",
-  "store": "Skerries",
+  "store": "Skerries (424)",
   "weekly_sales_inc_vat": 368436.45,
   "weekly_sales_ex_vat": 340018.57,
   "overall_margin_pct": 17.53,
-  "total_waste": 7270.02,
-  "waste_pct": 2.14,
+  "total_waste": 8111.35,
+  "waste_pct": 2.39,
+  "departments": {
+    "Cigarettes": {
+      "sales": 1284.42,
+      "purchases": null,
+      "opening": 102500.77,
+      "closing": 823.9,
+      "cos": 101676.87,
+      "profit": -100392.45,
+      "margin_pct": -7816.16,
+      "scan_pct": 12.37
+    },
+    "Beef": {
+      "sales": 12520.9,
+      "purchases": null,
+      "opening": 10553.06,
+      "closing": 9782.19,
+      "cos": 770.87,
+      "profit": 11750.03,
+      "margin_pct": 93.84,
+      "scan_pct": 20.51
+    },
+    "Lamb": {
+      "sales": 1591.76,
+      "purchases": null,
+      "opening": 1275.48,
+      "closing": 1305.81,
+      "cos": -30.33,
+      "profit": 1622.09,
+      "margin_pct": 101.91,
+      "scan_pct": 24.47
+    },
+    "Pork": {
+      "sales": 1709.43,
+      "purchases": null,
+      "opening": 1486.35,
+      "closing": 1278.54,
+      "cos": 207.81,
+      "profit": 1501.62,
+      "margin_pct": 87.84,
+      "scan_pct": 20.65
+    },
+    "Bacon & Loose S.R.P": {
+      "sales": 1125.56,
+      "purchases": null,
+      "opening": 843.39,
+      "closing": 1044.86,
+      "cos": -201.47,
+      "profit": 1327.03,
+      "margin_pct": 117.9,
+      "scan_pct": 11.62
+    },
+    "Poultry": {
+      "sales": 25390.16,
+      "purchases": null,
+      "opening": 3004.79,
+      "closing": 2733.67,
+      "cos": 271.12,
+      "profit": 25119.04,
+      "margin_pct": 98.93,
+      "scan_pct": 16.41
+    },
+    "Fish": {
+      "sales": 6083.82,
+      "purchases": null,
+      "opening": 2314.45,
+      "closing": 2280.55,
+      "cos": 33.9,
+      "profit": 6049.92,
+      "margin_pct": 99.44,
+      "scan_pct": 19.18
+    },
+    "Produce": {
+      "sales": 6547.11,
+      "purchases": null,
+      "opening": 9107.02,
+      "closing": 9900.54,
+      "cos": -793.52,
+      "profit": 7340.63,
+      "margin_pct": 112.12,
+      "scan_pct": 19.13
+    },
+    "Deli": {
+      "sales": 1488.52,
+      "purchases": null,
+      "opening": 3715.48,
+      "closing": null,
+      "cos": 3715.48,
+      "profit": -2226.96,
+      "margin_pct": -149.61,
+      "scan_pct": 41.51
+    },
+    "Provisions": {
+      "sales": 4358.19,
+      "purchases": null,
+      "opening": 162.68,
+      "closing": 107.03,
+      "cos": 55.65,
+      "profit": 4302.54,
+      "margin_pct": 98.72,
+      "scan_pct": 19.71
+    },
+    "TOTAL": {
+      "sales": 62099.87,
+      "purchases": 0.0,
+      "opening": 134963.47,
+      "closing": 29257.09,
+      "cos": 105706.38,
+      "profit": -43606.51,
+      "margin_pct": -70.22,
+      "scan_pct": null
+    }
+  },
   "executive_summary": [
-    "Sales for week ending 16 May 2026 totalled 368,436 inc VAT.",
-    "Overall margin of 17.53% achieved for the week.",
-    "Total waste of 7,270 recorded across all departments."
+    "Store total sales Inc VAT for week ending 2026-05-16 were 368,436.45 with an overall achieved margin of 17.53%, which requires investigation against budgeted margin targets.",
+    "Total department P&L as reported shows a combined loss of -43,606.51 on departmental sales of 62,099.87, driven almost entirely by a catastrophic Cigarettes CoS anomaly of 101,676.87 against sales of only 1,284.42, suggesting a critical stock file, opening stock, or data input error that must be resolved immediately.",
+    "Total waste for the week was 8,111.35, representing 2.39% of sales ex VAT; this is a material figure with Deli (1,253.18), Provisions (1,136.11), Fish (862.65), and Produce (1,393.82) as the four largest waste contributors accounting for approximately 56% of total waste.",
+    "Multiple departments are reporting margins well in excess of 100% including Lamb at 101.91%, Bacon & Loose S.R.P at 117.90%, Produce at 112.12%, Poultry at 98.93%, and Fish at 99.44%; these are not credible achieved margins and point to stock count errors, missing closing stock entries, or incorrect purchase postings across these departments.",
+    "The Deli department has no closing stock recorded, a CoS equal to its full opening stock of 3,715.48, and has generated a loss of -2,226.96 at a margin of -149.61%; a closing stock count must be completed and posted without delay.",
+    "Scan margins across the majority of departments are materially lower than reported P&L margins, which is a further indicator that the P&L figures this week are unreliable and stock-count-driven rather than reflective of true trading performance.",
+    "The gap between departmental total sales of 62,099.87 and store total sales ex VAT of 340,018.57 indicates that not all departments are included in the detailed P&L breakdown provided; the overall 17.53% margin should be used as the primary trading benchmark pending full P&L reconciliation."
   ],
   "biggest_wins": [
-    "Strong poultry and produce sales recorded.",
-    "Waste within acceptable range for the week."
+    "Poultry delivered the strongest sales contribution in the department breakdown at 25,390.16, with a scan margin of 16.41% which, while lower than the overstated P&L margin, indicates solid trading performance and tight stock management given a low CoS of 271.12.",
+    "Provisions recorded sales of 4,358.19 with a very low CoS of 55.65 and a scan margin of 19.71%, suggesting well-controlled stock levels, minimal waste exposure at 1,136.11 notwithstanding, and strong sell-through of fresh provisions lines.",
+    "Beef generated sales of 12,520.90 with a scan margin of 20.51%, the highest credible scan margin in the meat categories, and waste of 84.07 which is well controlled relative to the sales volume, indicating good ordering and rotation discipline.",
+    "Fish achieved sales of 6,083.82 with a scan margin of 19.18%; despite high waste of 862.65, the underlying scan margin is acceptable and suggests the category is trading well when stock file integrity is applied.",
+    "Produce posted sales of 6,547.11 with a scan margin of 19.13% and, while the negative CoS of -793.52 flags a stock count issue, the scan margin performance is in line with department expectations."
   ],
   "biggest_risks": [
-    "Fish margin requires monitoring.",
-    "Deli cost of sales elevated this week."
+    "Cigarettes: The opening stock of 102,500.77 against a closing stock of 823.90 and sales of only 1,284.42 has produced a CoS of 101,676.87 and a loss of -100,392.45 at a margin of -7,816.16%; this is unequivocally a data or stock entry error and represents the single highest priority issue in this report. A full Cigarettes stock count and stock file audit must be completed before the next trading day.",
+    "Deli: No closing stock has been recorded for the week. The full opening stock value of 3,715.48 has fallen through as CoS, producing a loss of -2,226.96 at -149.61% margin. Waste of 1,253.18 is also the second highest waste figure in the store. A closing stock count is mandatory and the waste figure must be reviewed against production records.",
+    "Provisions: Waste of 1,136.11 against sales of 4,358.19 represents a waste rate of approximately 26% within this department, which is critically high. Immediate review of ordering volumes, production quantities, date code management, and markdown activity is required.",
+    "Fish: Waste of 862.65 against sales of 6,083.82 equates to a departmental waste rate of approximately 14.2%, which is significantly above acceptable thresholds for a fresh fish counter or chilled fish department. Ordering frequency, portion sizing, and end-of-day markdown protocols must be reviewed.",
+    "Produce: Negative CoS of -793.52 indicates that closing stock exceeds opening stock by 793.52 without corresponding purchase postings being visible in the data. This suggests either purchases were not posted during the week or a stock count discrepancy exists. This must be reconciled before the next stock count.",
+    "Lamb and Bacon & Loose S.R.P: Both departments are reporting negative CoS figures (-30.33 and -201.47 respectively), which is arithmetically impossible in normal trading and points to stock count overstatement on closing stock, unposted credits, or data entry errors that will distort the following week's figures.",
+    "Overall scan margin vs P&L margin disconnect: The majority of fresh departments are showing P&L margins between 88% and 118% versus scan margins of 11% to 25%. This scale of divergence across multiple departments in a single week indicates systemic stock count reliability issues that will undermine period-end P&L accuracy if not addressed."
   ],
   "department_callouts": [
-    "Produce: strong week with good margin.",
-    "Deli: review cost of sales.",
-    "Meat: solid performance across beef and poultry.",
-    "Provisions: margin in line with target."
+    "Cigarettes: Opening stock of 102,500.77 is completely inconsistent with a department generating weekly sales of 1,284.42; this is almost certainly a misfiled stock count or system posting error and requires immediate correction - do not allow this to roll into next week's opening stock.",
+    "Beef: Scan margin of 20.51% is the strongest in the meat aisle and waste of 84.07 is well controlled; ordering and rotation practices in this section should be noted as a benchmark for other meat sub-departments.",
+    "Lamb: Negative CoS of -30.33 and a margin of 101.91% are not credible; closing stock of 1,305.81 exceeding opening stock of 1,275.48 with no visible purchase receipts posted suggests either a purchase delivery was not booked in or the stock count is overstated.",
+    "Pork: Scan margin of 20.65% is healthy; waste of 81.87 is acceptable. The reported P&L margin of 87.84% remains overstated versus scan but the department is trending in the right direction relative to other meat categories.",
+    "Bacon & Loose S.R.P: Negative CoS of -201.47 and a margin of 117.90% are not credible. The scan margin of 11.62% is the lowest in the meat group and should be investigated for potential scan or pricing file issues in addition to the stock count anomaly.",
+    "Poultry: Highest sales volume department in the breakdown at 25,390.16; waste of 202.38 is proportionate to turnover. The scan margin of 16.41% is slightly below category target and should be monitored; check for any promotional mix impact on achieved margin.",
+    "Fish: Waste of 862.65 is disproportionate to sales of 6,083.82; the department manager must review end-of-day markdown procedures, production scheduling, and whether ordering is being adjusted in line with actual weekly demand patterns.",
+    "Produce: Negative CoS and a closing stock higher than opening without posted purchases requires reconciliation; the scan margin of 19.13% is a more reliable indicator of true department performance this week.",
+    "Deli: Missing closing stock is a fundamental reporting failure; combined with waste of 1,253.18 and a -149.61% margin this department needs both an immediate stock count and a production waste review before next week's trading commences.",
+    "Provisions: The waste figure of 1,136.11 on sales of 4,358.19 is the most urgent operational issue outside of data integrity problems; a line-by-line waste log review with the department manager should be scheduled for the coming week."
   ],
   "action_plan": [
-    "Review deli cost of sales with department manager.",
-    "Monitor fish margin closely next week.",
-    "Confirm waste reduction actions are in place.",
-    "Review poultry ordering levels given strong sales.",
-    "Set ANTHROPIC_API_KEY to enable automated AI summaries going forward."
+    "Cigarettes - URGENT: Conduct a full physical stock count of the Cigarettes department before the next trading day and reconcile against the opening stock value of 102,500.77; identify whether this is a misfiled count, a system duplication, or an unresolved prior week carry-forward and correct the posting immediately.",
+    "Deli - URGENT: Complete and post a closing stock count for the Deli department for week ending 2026-05-16; without this the CoS is wholly inaccurate. Also review the waste log of 1,253.18 line by line with the Deli manager and identify the top five wasted lines by value.",
+    "Provisions: Schedule a meeting with the Provisions manager this week to review the waste figure of 1,136.11 in detail; identify whether this is production waste, date code clearance, or ordering over-supply and introduce a daily waste recording discipline with corrective ordering adjustments effective immediately.",
+    "Fish: Review the Fish department waste figure of 862.65 against the weekly order quantities and production schedule; implement end-of-day markdown triggers at a minimum of three hours before close and adjust the weekly order by a minimum of 10% downward pending further review.",
+    "Lamb and Bacon & Loose S.R.P: Investigate negative CoS figures in both departments (-30.33 and -201.47 respectively); confirm whether purchase deliveries were received but not booked in, or whether closing stock counts are overstated, and correct before these values roll into next week's opening figures.",
+    "Produce: Reconcile the Produce department stock position; confirm all purchase deliveries for the week have been posted against the department and recount closing stock if necessary to resolve the negative CoS of -793.52.",
+    "Scan Margins: Request a full scan margin vs P&L margin comparison report for all fresh departments from the category or IT support team; where the gap exceeds 20 percentage points a root cause analysis on stock counts, purchase postings, and wastage recording must be completed.",
+    "Waste overall: Total waste of 8,111.35 at 2.39% of sales is above the acceptable threshold; hold a cross-departmental waste review meeting with all fresh department managers this week, focusing on Deli, Provisions, Fish, and Produce which together account for 4,645.76 or 57.3% of total store waste.",
+    "Bacon & Loose S.R.P scan margin: At 11.62% this is significantly below the meat department average; check the pricing file for all Bacon and Loose S.R.P lines to confirm selling prices are correctly mapped and that no promotional pricing has been left active in error.",
+    "Poultry scan margin: Monitor the 16.41% scan margin in Poultry this coming week; review promotional mix and confirm that all poultry lines are scanning at the correct retail price, particularly any multi-buy or meal deal promotional SKUs.",
+    "Stock count integrity: Implement a manager sign-off protocol for all department stock counts before they are posted to the system; no count should be submitted without a second check by a duty manager where the resulting P&L margin falls outside a defined acceptable range, suggested at minus 5% to plus 40%.",
+    "Overall margin: The achieved store margin of 17.53% must be benchmarked against budget and prior year equivalent week; once the Cigarettes and Deli data errors are corrected, rerun the weekly P&L and present the restated margin to the store manager before the next management review meeting."
   ],
-  "generated_at": "2026-05-20T13:00:00"
+  "generated_at": "2026-05-20T17:19:00.135168"
 }
