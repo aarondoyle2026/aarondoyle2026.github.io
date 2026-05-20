@@ -6,7 +6,6 @@
 <title>Moriarty Group – Managers Report</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
-:root{--sv-green:#00703c;--sv-green-dark:#005a30;--bg:#f4f5f0;--card:#ffffff;--border:#d8dbd2;--text:#1a1f18;--muted:#6b7266;}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 body{font-family:'DM Sans',sans-serif;background:#f4f5f0;color:#1a1f18;min-height:100vh;padding-bottom:40px;}
 .app-header{background:#00703c;color:white;padding:14px 16px 12px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.2);}
@@ -33,7 +32,6 @@ body{font-family:'DM Sans',sans-serif;background:#f4f5f0;color:#1a1f18;min-heigh
 .kpi-value{font-size:22px;font-weight:700;color:#1a1f18;}
 .kpi-value.green{color:#00703c;}
 .kpi-value.red{color:#c8102e;}
-.kpi-sub{font-size:10px;color:#6b7266;margin-top:2px;}
 .week-banner{background:#00703c;color:white;border-radius:10px;padding:14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;}
 .week-banner-label{font-size:10px;font-weight:700;letter-spacing:0.08em;opacity:0.8;text-transform:uppercase;}
 .week-banner-value{font-size:16px;font-weight:700;margin-top:2px;}
@@ -48,12 +46,26 @@ body{font-family:'DM Sans',sans-serif;background:#f4f5f0;color:#1a1f18;min-heigh
 .action-list li{padding:9px 0 9px 28px;border-bottom:1px solid #f0f2ee;font-size:14px;line-height:1.5;position:relative;counter-increment:action-counter;}
 .action-list li:last-child{border-bottom:none;}
 .action-list li::before{content:counter(action-counter);position:absolute;left:0;top:9px;background:#00703c;color:white;width:20px;height:20px;border-radius:50%;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;line-height:20px;text-align:center;}
-.no-data{text-align:center;padding:30px 20px;color:#6b7266;font-size:14px;}
 .generated-badge{background:#f4f5f0;border:1px solid #d8dbd2;border-radius:6px;padding:6px 10px;font-family:'DM Mono',monospace;font-size:10px;color:#6b7266;text-align:center;margin-bottom:12px;}
-.coming-soon{text-align:center;padding:60px 20px;}
-.coming-soon .icon{font-size:40px;margin-bottom:12px;}
-.coming-soon h3{font-size:16px;font-weight:700;color:#1a1f18;margin-bottom:6px;}
-.coming-soon p{font-size:13px;color:#6b7266;}
+.pnl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -2px;}
+.pnl-table{width:100%;border-collapse:collapse;font-size:11px;min-width:700px;}
+.pnl-table th{background:#00703c;color:white;padding:7px 8px;text-align:right;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;white-space:nowrap;}
+.pnl-table th:first-child{text-align:left;position:sticky;left:0;background:#00703c;z-index:2;}
+.pnl-table td{padding:7px 8px;border-bottom:1px solid #f0f2ee;text-align:right;white-space:nowrap;font-family:'DM Mono',monospace;font-size:11px;}
+.pnl-table td:first-child{text-align:left;font-family:'DM Sans',sans-serif;font-weight:600;font-size:12px;position:sticky;left:0;background:white;z-index:1;}
+.pnl-table tr:nth-child(even) td{background:#fafbf9;}
+.pnl-table tr:nth-child(even) td:first-child{background:#fafbf9;}
+.pnl-table tr.total-row td{background:#f0f2ee;font-weight:700;border-top:2px solid #00703c;font-family:'DM Mono',monospace;}
+.pnl-table tr.total-row td:first-child{background:#f0f2ee;font-family:'DM Sans',sans-serif;font-weight:700;}
+.pnl-table .pos{color:#00703c;}
+.pnl-table .neg{color:#c8102e;}
+.week-glance{background:#005a30;color:white;border-radius:10px;padding:14px;margin-bottom:12px;}
+.week-glance-title{font-size:10px;font-weight:700;letter-spacing:0.08em;opacity:0.8;text-transform:uppercase;margin-bottom:10px;}
+.week-glance-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.week-glance-item{background:rgba(255,255,255,0.12);border-radius:8px;padding:10px;}
+.week-glance-label{font-size:9px;opacity:0.75;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px;}
+.week-glance-val{font-size:16px;font-weight:700;}
+.week-glance-val.red{color:#ff6b6b;}
 </style>
 </head>
 <body>
@@ -78,7 +90,6 @@ body{font-family:'DM Sans',sans-serif;background:#f4f5f0;color:#1a1f18;min-heigh
 <script>
 var currentStore = 'Skerries';
 var reportData = null;
-
 var DATA_URL = 'https://aarondoyle2026.github.io/data/managers_report_ai.json';
 
 function selectStore(store, btn) {
@@ -94,52 +105,100 @@ function loadData() {
   el.innerHTML = '<div class="loading"><div class="spin">⚙</div><div>Loading report...</div></div>';
   fetch(DATA_URL + '?t=' + Date.now())
     .then(function(r) { return r.json(); })
-    .then(function(data) {
-      reportData = data;
-      renderReport();
-    })
-    .catch(function(e) {
+    .then(function(data) { reportData = data; renderReport(); })
+    .catch(function() {
       el.innerHTML = '<div class="error-state"><div style="font-size:32px;margin-bottom:12px;">⚠️</div><div style="font-size:15px;font-weight:700;">Could not load report</div><div style="font-size:13px;margin-top:6px;color:#6b7266;">Run the script to generate the latest report</div></div>';
     });
 }
 
 function fmt(n) {
-  if (n === null || n === undefined) return '—';
-  return '\u20ac' + Number(n).toLocaleString('en-IE', {minimumFractionDigits:2, maximumFractionDigits:2});
+  if (n === null || n === undefined || n === '') return '—';
+  var v = Number(n);
+  if (isNaN(v)) return '—';
+  return '\u20ac' + v.toLocaleString('en-IE', {minimumFractionDigits:2, maximumFractionDigits:2});
 }
 
 function fmtPct(n) {
-  if (n === null || n === undefined) return '—';
-  return Number(n).toFixed(2) + '%';
+  if (n === null || n === undefined || n === '') return '—';
+  var v = Number(n);
+  if (isNaN(v)) return '—';
+  return (v * 1 > 1 ? v.toFixed(2) : (v * 100).toFixed(2)) + '%';
 }
 
 function fmtDate(str) {
   if (!str) return '—';
-  try {
-    return new Date(str).toLocaleString('en-IE', {day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
-  } catch(e) { return str; }
+  try { return new Date(str).toLocaleString('en-IE', {day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}); }
+  catch(e) { return str; }
+}
+
+function colorClass(n) {
+  if (n === null || n === undefined) return '';
+  return Number(n) >= 0 ? 'pos' : 'neg';
+}
+
+function renderPnlTable(deps) {
+  if (!deps || !deps.length) return '';
+  var cols = [
+    {key:'purchases', label:'Purchases'},
+    {key:'opening_stock', label:'Opening'},
+    {key:'closing_stock', label:'Closing'},
+    {key:'sales_ex_vat', label:'Sales Ex VAT'},
+    {key:'transfers', label:'Transfers'},
+    {key:'cost_of_sales', label:'Cost of Sales'},
+    {key:'profit', label:'Profit'},
+    {key:'act_margin_pct', label:'Act Margin'},
+    {key:'scan_margin_pct', label:'Scan Margin'}
+  ];
+  var html = '<div class="pnl-wrap"><table class="pnl-table">';
+  html += '<thead><tr><th>Dept</th>';
+  cols.forEach(function(c) { html += '<th>' + c.label + '</th>'; });
+  html += '</tr></thead><tbody>';
+  deps.forEach(function(row) {
+    var isTotal = row.dept === 'TOTAL';
+    html += '<tr' + (isTotal ? ' class="total-row"' : '') + '>';
+    html += '<td>' + (row.dept || '') + '</td>';
+    cols.forEach(function(c) {
+      var v = row[c.key];
+      var cls = (c.key === 'profit') ? colorClass(v) : '';
+      if (c.key === 'act_margin_pct' || c.key === 'scan_margin_pct') {
+        html += '<td class="' + colorClass(v) + '">' + (v !== null && v !== undefined ? fmtPct(v) : '—') + '</td>';
+      } else {
+        html += '<td class="' + cls + '">' + fmt(v) + '</td>';
+      }
+    });
+    html += '</tr>';
+  });
+  html += '</tbody></table></div>';
+  return html;
 }
 
 function renderReport() {
   var el = document.getElementById('main-content');
   if (!reportData) { loadData(); return; }
-
   var d = reportData;
   var html = '';
 
   // Week banner
   html += '<div class="week-banner">';
   html += '<div><div class="week-banner-label">Week Ending</div><div class="week-banner-value">' + (d.week_ending || '—') + '</div></div>';
-  html += '<div class="week-banner-right"><div class="week-banner-store">' + (d.store || 'Skerries') + '</div><div class="week-banner-gen">Generated: ' + fmtDate(d.generated_at) + '</div></div>';
+  html += '<div class="week-banner-right"><div class="week-banner-store">' + (d.store || 'Skerries') + '</div>';
+  html += '<div class="week-banner-gen">Generated: ' + fmtDate(d.generated_at) + '</div></div>';
   html += '</div>';
 
-  // KPIs
-  html += '<div class="kpi-grid">';
-  html += '<div class="kpi-card"><div class="kpi-label">Sales Inc VAT</div><div class="kpi-value green">' + fmt(d.weekly_sales_inc_vat) + '</div></div>';
-  html += '<div class="kpi-card"><div class="kpi-label">Sales Ex VAT</div><div class="kpi-value">' + fmt(d.weekly_sales_ex_vat) + '</div></div>';
-  html += '<div class="kpi-card"><div class="kpi-label">Overall Margin</div><div class="kpi-value ' + (d.overall_margin_pct && d.overall_margin_pct > 18 ? 'green' : 'red') + '">' + fmtPct(d.overall_margin_pct) + '</div></div>';
-  html += '<div class="kpi-card"><div class="kpi-label">Waste %</div><div class="kpi-value ' + (d.waste_pct && d.waste_pct < 1.5 ? 'green' : 'red') + '">' + fmtPct(d.waste_pct) + '</div></div>';
-  html += '</div>';
+  // Week at a glance
+  html += '<div class="week-glance"><div class="week-glance-title">Week at a Glance</div><div class="week-glance-grid">';
+  html += '<div class="week-glance-item"><div class="week-glance-label">Sales Inc VAT</div><div class="week-glance-val">' + fmt(d.weekly_sales_inc_vat) + '</div></div>';
+  html += '<div class="week-glance-item"><div class="week-glance-label">Sales Ex VAT</div><div class="week-glance-val">' + fmt(d.weekly_sales_ex_vat) + '</div></div>';
+  html += '<div class="week-glance-item"><div class="week-glance-label">Overall Margin</div><div class="week-glance-val' + (d.overall_margin_pct && d.overall_margin_pct > 18 ? '' : ' red') + '">' + fmtPct(d.overall_margin_pct) + '</div></div>';
+  html += '<div class="week-glance-item"><div class="week-glance-label">Waste</div><div class="week-glance-val' + (d.waste_pct && d.waste_pct < 1.5 ? '' : ' red') + '">' + fmt(d.total_waste) + '</div></div>';
+  html += '</div></div>';
+
+  // P&L Table
+  if (d.departments && d.departments.length) {
+    html += '<div class="card"><div class="card-title">P&L — Department Breakdown</div>';
+    html += renderPnlTable(d.departments);
+    html += '</div>';
+  }
 
   if (d.generated_at) {
     html += '<div class="generated-badge">AI analysis generated: ' + fmtDate(d.generated_at) + '</div>';
@@ -161,7 +220,7 @@ function renderReport() {
     html += '</ul></div>';
   }
 
-  // Biggest Risks
+  // Risks
   if (d.biggest_risks && d.biggest_risks.length) {
     html += '<div class="card"><div class="card-title">Risks & Issues</div>';
     html += '<ul class="section-list">';
