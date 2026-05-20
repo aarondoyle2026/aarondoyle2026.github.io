@@ -47,18 +47,6 @@ body{font-family:'DM Sans',sans-serif;background:#f4f5f0;color:#1a1f18;min-heigh
 .action-list li:last-child{border-bottom:none;}
 .action-list li::before{content:counter(action-counter);position:absolute;left:0;top:9px;background:#00703c;color:white;width:20px;height:20px;border-radius:50%;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;line-height:20px;text-align:center;}
 .generated-badge{background:#f4f5f0;border:1px solid #d8dbd2;border-radius:6px;padding:6px 10px;font-family:'DM Mono',monospace;font-size:10px;color:#6b7266;text-align:center;margin-bottom:12px;}
-.pnl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -2px;}
-.pnl-table{width:100%;border-collapse:collapse;font-size:11px;min-width:700px;}
-.pnl-table th{background:#00703c;color:white;padding:7px 8px;text-align:right;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;white-space:nowrap;}
-.pnl-table th:first-child{text-align:left;position:sticky;left:0;background:#00703c;z-index:2;}
-.pnl-table td{padding:7px 8px;border-bottom:1px solid #f0f2ee;text-align:right;white-space:nowrap;font-family:'DM Mono',monospace;font-size:11px;}
-.pnl-table td:first-child{text-align:left;font-family:'DM Sans',sans-serif;font-weight:600;font-size:12px;position:sticky;left:0;background:white;z-index:1;}
-.pnl-table tr:nth-child(even) td{background:#fafbf9;}
-.pnl-table tr:nth-child(even) td:first-child{background:#fafbf9;}
-.pnl-table tr.total-row td{background:#f0f2ee;font-weight:700;border-top:2px solid #00703c;font-family:'DM Mono',monospace;}
-.pnl-table tr.total-row td:first-child{background:#f0f2ee;font-family:'DM Sans',sans-serif;font-weight:700;}
-.pnl-table .pos{color:#00703c;}
-.pnl-table .neg{color:#c8102e;}
 .week-glance{background:#005a30;color:white;border-radius:10px;padding:14px;margin-bottom:12px;}
 .week-glance-title{font-size:10px;font-weight:700;letter-spacing:0.08em;opacity:0.8;text-transform:uppercase;margin-bottom:10px;}
 .week-glance-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
@@ -66,6 +54,18 @@ body{font-family:'DM Sans',sans-serif;background:#f4f5f0;color:#1a1f18;min-heigh
 .week-glance-label{font-size:9px;opacity:0.75;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px;}
 .week-glance-val{font-size:16px;font-weight:700;}
 .week-glance-val.red{color:#ff6b6b;}
+.pnl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -2px;}
+.pnl-table{width:100%;border-collapse:collapse;font-size:11px;min-width:750px;}
+.pnl-table th{background:#00703c;color:white;padding:8px 8px;text-align:right;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;white-space:nowrap;}
+.pnl-table th:first-child{text-align:left;position:sticky;left:0;background:#00703c;z-index:2;}
+.pnl-table td{padding:8px 8px;border-bottom:1px solid #f0f2ee;text-align:right;white-space:nowrap;font-family:'DM Mono',monospace;font-size:11px;}
+.pnl-table td:first-child{text-align:left;font-family:'DM Sans',sans-serif;font-weight:600;font-size:12px;position:sticky;left:0;background:white;z-index:1;min-width:120px;}
+.pnl-table tr:nth-child(even) td{background:#fafbf9;}
+.pnl-table tr:nth-child(even) td:first-child{background:#fafbf9;}
+.pnl-table tr.total-row td{background:#e8f0eb;font-weight:700;border-top:2px solid #00703c;}
+.pnl-table tr.total-row td:first-child{background:#e8f0eb;font-family:'DM Sans',sans-serif;font-weight:700;}
+.pnl-table .pos{color:#00703c;}
+.pnl-table .neg{color:#c8102e;}
 </style>
 </head>
 <body>
@@ -122,7 +122,7 @@ function fmtPct(n) {
   if (n === null || n === undefined || n === '') return '—';
   var v = Number(n);
   if (isNaN(v)) return '—';
-  return (v * 1 > 1 ? v.toFixed(2) : (v * 100).toFixed(2)) + '%';
+  return v.toFixed(2) + '%';
 }
 
 function fmtDate(str) {
@@ -131,41 +131,36 @@ function fmtDate(str) {
   catch(e) { return str; }
 }
 
-function colorClass(n) {
-  if (n === null || n === undefined) return '';
-  return Number(n) >= 0 ? 'pos' : 'neg';
-}
-
 function renderPnlTable(deps) {
   if (!deps || !deps.length) return '';
-  var cols = [
-    {key:'purchases', label:'Purchases'},
-    {key:'opening_stock', label:'Opening'},
-    {key:'closing_stock', label:'Closing'},
-    {key:'sales_ex_vat', label:'Sales Ex VAT'},
-    {key:'transfers', label:'Transfers'},
-    {key:'cost_of_sales', label:'Cost of Sales'},
-    {key:'profit', label:'Profit'},
-    {key:'act_margin_pct', label:'Act Margin'},
-    {key:'scan_margin_pct', label:'Scan Margin'}
-  ];
   var html = '<div class="pnl-wrap"><table class="pnl-table">';
-  html += '<thead><tr><th>Dept</th>';
-  cols.forEach(function(c) { html += '<th>' + c.label + '</th>'; });
+  html += '<thead><tr>';
+  html += '<th>Dept</th>';
+  html += '<th>Purchases</th>';
+  html += '<th>Opening</th>';
+  html += '<th>Closing</th>';
+  html += '<th>Sales Ex VAT</th>';
+  html += '<th>Transfers</th>';
+  html += '<th>Cost of Sales</th>';
+  html += '<th>Profit</th>';
+  html += '<th>Act Margin</th>';
+  html += '<th>Scan Margin</th>';
   html += '</tr></thead><tbody>';
   deps.forEach(function(row) {
     var isTotal = row.dept === 'TOTAL';
     html += '<tr' + (isTotal ? ' class="total-row"' : '') + '>';
     html += '<td>' + (row.dept || '') + '</td>';
-    cols.forEach(function(c) {
-      var v = row[c.key];
-      var cls = (c.key === 'profit') ? colorClass(v) : '';
-      if (c.key === 'act_margin_pct' || c.key === 'scan_margin_pct') {
-        html += '<td class="' + colorClass(v) + '">' + (v !== null && v !== undefined ? fmtPct(v) : '—') + '</td>';
-      } else {
-        html += '<td class="' + cls + '">' + fmt(v) + '</td>';
-      }
-    });
+    html += '<td>' + fmt(row.purchases) + '</td>';
+    html += '<td>' + fmt(row.opening_stock) + '</td>';
+    html += '<td>' + fmt(row.closing_stock) + '</td>';
+    html += '<td>' + fmt(row.sales_ex_vat) + '</td>';
+    html += '<td>' + fmt(row.transfers) + '</td>';
+    html += '<td>' + fmt(row.cost_of_sales) + '</td>';
+    var profitClass = row.profit !== null && row.profit !== undefined ? (Number(row.profit) >= 0 ? 'pos' : 'neg') : '';
+    html += '<td class="' + profitClass + '">' + fmt(row.profit) + '</td>';
+    var mgClass = row.act_margin_pct !== null && row.act_margin_pct !== undefined ? (Number(row.act_margin_pct) >= 0 ? 'pos' : 'neg') : '';
+    html += '<td class="' + mgClass + '">' + fmtPct(row.act_margin_pct) + '</td>';
+    html += '<td>' + fmtPct(row.scan_margin_pct) + '</td>';
     html += '</tr>';
   });
   html += '</tbody></table></div>';
@@ -178,22 +173,19 @@ function renderReport() {
   var d = reportData;
   var html = '';
 
-  // Week banner
   html += '<div class="week-banner">';
   html += '<div><div class="week-banner-label">Week Ending</div><div class="week-banner-value">' + (d.week_ending || '—') + '</div></div>';
   html += '<div class="week-banner-right"><div class="week-banner-store">' + (d.store || 'Skerries') + '</div>';
   html += '<div class="week-banner-gen">Generated: ' + fmtDate(d.generated_at) + '</div></div>';
   html += '</div>';
 
-  // Week at a glance
   html += '<div class="week-glance"><div class="week-glance-title">Week at a Glance</div><div class="week-glance-grid">';
   html += '<div class="week-glance-item"><div class="week-glance-label">Sales Inc VAT</div><div class="week-glance-val">' + fmt(d.weekly_sales_inc_vat) + '</div></div>';
   html += '<div class="week-glance-item"><div class="week-glance-label">Sales Ex VAT</div><div class="week-glance-val">' + fmt(d.weekly_sales_ex_vat) + '</div></div>';
   html += '<div class="week-glance-item"><div class="week-glance-label">Overall Margin</div><div class="week-glance-val' + (d.overall_margin_pct && d.overall_margin_pct > 18 ? '' : ' red') + '">' + fmtPct(d.overall_margin_pct) + '</div></div>';
-  html += '<div class="week-glance-item"><div class="week-glance-label">Waste</div><div class="week-glance-val' + (d.waste_pct && d.waste_pct < 1.5 ? '' : ' red') + '">' + fmt(d.total_waste) + '</div></div>';
+  html += '<div class="week-glance-item"><div class="week-glance-label">Total Waste</div><div class="week-glance-val' + (d.waste_pct && d.waste_pct < 1.5 ? '' : ' red') + '">' + fmt(d.total_waste) + '</div></div>';
   html += '</div></div>';
 
-  // P&L Table
   if (d.departments && d.departments.length) {
     html += '<div class="card"><div class="card-title">P&L — Department Breakdown</div>';
     html += renderPnlTable(d.departments);
@@ -204,42 +196,32 @@ function renderReport() {
     html += '<div class="generated-badge">AI analysis generated: ' + fmtDate(d.generated_at) + '</div>';
   }
 
-  // Executive Summary
   if (d.executive_summary && d.executive_summary.length) {
-    html += '<div class="card"><div class="card-title">Executive Summary</div>';
-    html += '<ul class="section-list">';
+    html += '<div class="card"><div class="card-title">Executive Summary</div><ul class="section-list">';
     d.executive_summary.forEach(function(b) { html += '<li>' + b + '</li>'; });
     html += '</ul></div>';
   }
 
-  // Biggest Wins
   if (d.biggest_wins && d.biggest_wins.length) {
-    html += '<div class="card"><div class="card-title">Biggest Wins</div>';
-    html += '<ul class="section-list">';
+    html += '<div class="card"><div class="card-title">Biggest Wins</div><ul class="section-list">';
     d.biggest_wins.forEach(function(b) { html += '<li>' + b + '</li>'; });
     html += '</ul></div>';
   }
 
-  // Risks
   if (d.biggest_risks && d.biggest_risks.length) {
-    html += '<div class="card"><div class="card-title">Risks & Issues</div>';
-    html += '<ul class="section-list">';
+    html += '<div class="card"><div class="card-title">Risks & Issues</div><ul class="section-list">';
     d.biggest_risks.forEach(function(b) { html += '<li>' + b + '</li>'; });
     html += '</ul></div>';
   }
 
-  // Department Callouts
   if (d.department_callouts && d.department_callouts.length) {
-    html += '<div class="card"><div class="card-title">Department Call-Outs</div>';
-    html += '<ul class="section-list">';
+    html += '<div class="card"><div class="card-title">Department Call-Outs</div><ul class="section-list">';
     d.department_callouts.forEach(function(b) { html += '<li>' + b + '</li>'; });
     html += '</ul></div>';
   }
 
-  // Action Plan
   if (d.action_plan && d.action_plan.length) {
-    html += '<div class="card"><div class="card-title">Action Plan — Next Week</div>';
-    html += '<ol class="action-list">';
+    html += '<div class="card"><div class="card-title">Action Plan — Next Week</div><ol class="action-list">';
     d.action_plan.forEach(function(a) { html += '<li>' + a + '</li>'; });
     html += '</ol></div>';
   }
