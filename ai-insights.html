@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -18,52 +17,52 @@
     background-image:radial-gradient(ellipse at 15% 10%,rgba(45,122,79,.15) 0%,transparent 55%),
     radial-gradient(ellipse at 85% 85%,rgba(124,92,191,.08) 0%,transparent 55%);}
 
-.header{padding:20px 20px 16px;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(–card-border);}
-.header-back{width:36px;height:36px;border-radius:10px;background:var(–card-bg);border:1px solid var(–card-border);color:var(–muted);text-decoration:none;font-size:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.header{padding:20px 20px 16px;display:flex;align-items:center;gap:14px;border-bottom:1px solid rgba(255,255,255,0.08);}
+.header-back{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:#8fa899;text-decoration:none;font-size:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .header-titles{flex:1;}
-.header-eyebrow{font-family:‘DM Mono’,monospace;font-size:10px;letter-spacing:.15em;color:var(–gold);text-transform:uppercase;margin-bottom:2px;}
-.header-title{font-family:‘DM Serif Display’,serif;font-size:22px;line-height:1.1;}
-.header-badge{display:flex;align-items:center;gap:6px;background:rgba(124,92,191,.2);border:1px solid rgba(124,92,191,.4);border-radius:20px;padding:4px 10px;font-size:11px;color:#b09de0;font-family:‘DM Mono’,monospace;flex-shrink:0;}
+.header-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.15em;color:#c9a84c;text-transform:uppercase;margin-bottom:2px;}
+.header-title{font-family:'DM Serif Display',serif;font-size:22px;line-height:1.1;}
+.header-badge{display:flex;align-items:center;gap:6px;background:rgba(124,92,191,.2);border:1px solid rgba(124,92,191,.4);border-radius:20px;padding:4px 10px;font-size:11px;color:#b09de0;font-family:'DM Mono',monospace;flex-shrink:0;}
 .pulse{width:7px;height:7px;border-radius:50%;background:#b09de0;animation:pulse 2s ease-in-out infinite;}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.7);}}
 
 .loading-screen{padding:60px 20px;text-align:center;}
-.loading-orb{width:80px;height:80px;border-radius:50%;background:radial-gradient(circle at 35% 35%,var(–green-light),var(–bg));margin:0 auto 24px;animation:orbPulse 2.4s ease-in-out infinite;box-shadow:0 0 50px rgba(45,122,79,.45);}
+.loading-orb{width:80px;height:80px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#3da066,#0d1f13);margin:0 auto 24px;animation:orbPulse 2.4s ease-in-out infinite;box-shadow:0 0 50px rgba(45,122,79,.45);}
 @keyframes orbPulse{0%,100%{transform:scale(1);box-shadow:0 0 50px rgba(45,122,79,.45);}50%{transform:scale(1.1);box-shadow:0 0 80px rgba(45,122,79,.7);}}
-.loading-label{font-family:‘DM Mono’,monospace;font-size:10px;letter-spacing:.14em;color:var(–muted);text-transform:uppercase;margin-bottom:8px;}
-.loading-step{font-size:13px;color:var(–green-light);min-height:20px;}
-.loading-sub{font-size:11px;color:var(–muted);margin-top:6px;min-height:16px;}
+.loading-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;color:#8fa899;text-transform:uppercase;margin-bottom:8px;}
+.loading-step{font-size:13px;color:#3da066;min-height:20px;}
+.loading-sub{font-size:11px;color:#8fa899;margin-top:6px;min-height:16px;}
 .loading-bar-wrap{width:240px;height:3px;background:rgba(255,255,255,.07);border-radius:2px;margin:18px auto 0;overflow:hidden;}
-.loading-bar{height:100%;background:linear-gradient(90deg,var(–green-accent),var(–gold),var(–violet));border-radius:2px;width:0%;transition:width .6s ease;}
+.loading-bar{height:100%;background:linear-gradient(90deg,#2d7a4f,#c9a84c,#7c5cbf);border-radius:2px;width:0%;transition:width .6s ease;}
 
 .error-card{margin:20px;padding:18px;background:rgba(224,85,85,.1);border:1px solid rgba(224,85,85,.3);border-radius:14px;font-size:13px;color:#f0b0b0;line-height:1.6;display:none;}
 .content{display:none;}
 
-.freshness-bar{display:flex;align-items:center;gap:8px;margin:16px 16px 0;padding:10px 14px;background:var(–card-bg);border:1px solid var(–card-border);border-radius:10px;font-size:11px;color:var(–muted);font-family:‘DM Mono’,monospace;}
-.freshness-bar .val{color:var(–green-light);}
-.stale-bar{display:none;align-items:center;gap:8px;margin:8px 16px 0;padding:10px 14px;background:rgba(224,125,42,.08);border:1px solid rgba(224,125,42,.25);border-radius:10px;font-size:11px;color:#f0c898;font-family:‘DM Mono’,monospace;}
+.freshness-bar{display:flex;align-items:center;gap:8px;margin:16px 16px 0;padding:10px 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;font-size:11px;color:#8fa899;font-family:'DM Mono',monospace;}
+.freshness-bar .val{color:#3da066;}
+.stale-bar{display:none;align-items:center;gap:8px;margin:8px 16px 0;padding:10px 14px;background:rgba(224,125,42,.08);border:1px solid rgba(224,125,42,.25);border-radius:10px;font-size:11px;color:#f0c898;font-family:'DM Mono',monospace;}
 
-.mode-nav{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;margin:16px 0 0;border-bottom:1px solid var(–card-border);padding:0 16px;}
+.mode-nav{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;margin:16px 0 0;border-bottom:1px solid rgba(255,255,255,0.08);padding:0 16px;}
 .mode-nav::-webkit-scrollbar{display:none;}
-.mode-btn{display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 14px 12px;border:none;background:none;color:var(–muted);cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s;-webkit-tap-highlight-color:transparent;flex-shrink:0;}
+.mode-btn{display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 14px 12px;border:none;background:none;color:#8fa899;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s;-webkit-tap-highlight-color:transparent;flex-shrink:0;}
 .mode-btn .btn-icon{font-size:18px;}
-.mode-btn .btn-label{font-family:‘DM Mono’,monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;}
-.mode-btn.active{color:var(–text);border-bottom-color:var(–gold);}
+.mode-btn .btn-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;}
+.mode-btn.active{color:#f0ede6;border-bottom-color:#c9a84c;}
 
 .mode-panel{display:none;padding:16px;}
 .mode-panel.active{display:block;}
-.slabel{font-family:‘DM Mono’,monospace;font-size:10px;letter-spacing:.14em;color:var(–gold);text-transform:uppercase;margin-bottom:12px;}
+.slabel{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;color:#c9a84c;text-transform:uppercase;margin-bottom:12px;}
 
 .director-summary{background:linear-gradient(135deg,rgba(45,122,79,.14),rgba(201,168,76,.07));border:1px solid rgba(45,122,79,.28);border-radius:16px;padding:20px;margin-bottom:14px;position:relative;overflow:hidden;}
-.director-summary::before{content:’’;position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(–green-accent),var(–gold),transparent);}
+.director-summary::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#2d7a4f,#c9a84c,transparent);}
 .director-summary p{font-size:14px;line-height:1.8;}
 .store-compare{display:flex;flex-direction:column;gap:10px;margin-bottom:14px;}
-.store-row{background:var(–card-bg);border:1px solid var(–card-border);border-radius:12px;padding:14px;}
+.store-row{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:14px;}
 .store-row-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
 .store-row-name{font-weight:600;font-size:13px;}
-.store-score{font-family:‘DM Mono’,monospace;font-size:11px;padding:3px 8px;border-radius:8px;}
+.store-score{font-family:'DM Mono',monospace;font-size:11px;padding:3px 8px;border-radius:8px;}
 .store-score.high{background:rgba(45,122,79,.2);color:#a0d4b4;}
-.store-score.mid{background:rgba(201,168,76,.2);color:var(–gold-light);}
+.store-score.mid{background:rgba(201,168,76,.2);color:#e8c97a;}
 .store-score.low{background:rgba(224,85,85,.2);color:#f0b0b0;}
 .store-row-text{font-size:12px;line-height:1.6;color:rgba(240,237,230,.75);}
 
@@ -77,61 +76,60 @@
 
 .num-list{display:flex;flex-direction:column;gap:8px;}
 .num-item{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:10px;font-size:12px;line-height:1.55;}
-.num-item.gold-item{background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);color:var(–cream);}
+.num-item.gold-item{background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);color:#f5f0e8;}
 .num-item.teal-item{background:rgba(42,157,143,.08);border:1px solid rgba(42,157,143,.2);color:#a8ddd7;}
-.num-badge{font-family:‘DM Mono’,monospace;font-size:10px;border-radius:4px;padding:2px 5px;flex-shrink:0;margin-top:1px;}
-.gold-item .num-badge{color:var(–gold);background:rgba(201,168,76,.15);}
+.num-badge{font-family:'DM Mono',monospace;font-size:10px;border-radius:4px;padding:2px 5px;flex-shrink:0;margin-top:1px;}
+.gold-item .num-badge{color:#c9a84c;background:rgba(201,168,76,.15);}
 .teal-item .num-badge{color:#60c4bc;background:rgba(42,157,143,.15);}
 
 .leak-card{background:rgba(224,85,85,.06);border:1px solid rgba(224,85,85,.18);border-radius:14px;padding:14px;margin-bottom:10px;}
 .leak-header{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px;}
 .leak-title{font-weight:600;font-size:13px;color:#f0c0c0;flex:1;}
-.leak-impact{font-family:‘DM Mono’,monospace;font-size:10px;background:rgba(224,85,85,.2);color:#f0a0a0;padding:3px 8px;border-radius:8px;white-space:nowrap;flex-shrink:0;}
+.leak-impact{font-family:'DM Mono',monospace;font-size:10px;background:rgba(224,85,85,.2);color:#f0a0a0;padding:3px 8px;border-radius:8px;white-space:nowrap;flex-shrink:0;}
 .leak-fix{font-size:12px;line-height:1.6;color:rgba(240,237,230,.7);}
-.leak-fix strong{color:var(–gold-light);font-weight:500;}
+.leak-fix strong{color:#e8c97a;font-weight:500;}
 
 .cross-card{background:linear-gradient(135deg,rgba(124,92,191,.1),rgba(42,157,143,.06));border:1px solid rgba(124,92,191,.22);border-radius:14px;padding:14px;margin-bottom:10px;}
 .cross-title{font-weight:600;font-size:13px;color:#c0b0e8;margin-bottom:6px;}
-.cross-why{font-size:12px;color:var(–muted);line-height:1.6;margin-bottom:8px;}
+.cross-why{font-size:12px;color:#8fa899;line-height:1.6;margin-bottom:8px;}
 .cross-action{font-size:12px;color:rgba(240,237,230,.8);line-height:1.55;}
-.cross-action::before{content:’→ ’;color:var(–gold);}
+.cross-action::before{content:'-> ';color:#c9a84c;}
 
 .diag-block{border-radius:14px;padding:16px;margin-bottom:10px;}
 .diag-block.wrong{background:rgba(224,85,85,.08);border:1px solid rgba(224,85,85,.2);}
 .diag-block.why{background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);}
 .diag-block.fix{background:rgba(45,122,79,.1);border:1px solid rgba(45,122,79,.25);}
-.diag-label{font-family:‘DM Mono’,monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;}
+.diag-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;}
 .diag-block.wrong .diag-label{color:#e08080;}
-.diag-block.why   .diag-label{color:var(–gold);}
-.diag-block.fix   .diag-label{color:var(–green-light);}
+.diag-block.why .diag-label{color:#c9a84c;}
+.diag-block.fix .diag-label{color:#3da066;}
 .diag-text{font-size:13px;line-height:1.75;}
 
 .waste-summary{background:linear-gradient(135deg,rgba(224,85,85,.1),rgba(201,168,76,.05));border:1px solid rgba(224,85,85,.25);border-radius:16px;padding:18px;margin-bottom:14px;position:relative;overflow:hidden;}
-.waste-summary::before{content:’’;position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(–red),var(–orange),transparent);}
+.waste-summary::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#e05555,#e07d2a,transparent);}
 .waste-summary p{font-size:13px;line-height:1.8;}
-.waste-store-block{background:var(–card-bg);border:1px solid var(–card-border);border-radius:14px;padding:14px;margin-bottom:12px;}
+.waste-store-block{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:14px;margin-bottom:12px;}
 .waste-store-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
 .waste-store-name{font-weight:600;font-size:14px;}
-.waste-store-total{font-family:‘DM Mono’,monospace;font-size:11px;background:rgba(224,85,85,.2);color:#f0a0a0;padding:3px 10px;border-radius:8px;}
+.waste-store-total{font-family:'DM Mono',monospace;font-size:11px;background:rgba(224,85,85,.2);color:#f0a0a0;padding:3px 10px;border-radius:8px;}
 .waste-offender{background:rgba(224,85,85,.06);border:1px solid rgba(224,85,85,.15);border-radius:10px;padding:10px 12px;margin-bottom:8px;}
 .waste-offender-header{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:5px;}
 .waste-offender-name{font-size:12px;font-weight:600;color:#f0c0c0;flex:1;line-height:1.4;}
-.waste-offender-euro{font-family:‘DM Mono’,monospace;font-size:11px;color:#f0a0a0;white-space:nowrap;flex-shrink:0;}
+.waste-offender-euro{font-family:'DM Mono',monospace;font-size:11px;color:#f0a0a0;white-space:nowrap;flex-shrink:0;}
 .waste-offender-stats{display:flex;gap:8px;margin-bottom:5px;flex-wrap:wrap;}
-.waste-stat{font-family:‘DM Mono’,monospace;font-size:10px;padding:2px 7px;border-radius:6px;background:rgba(255,255,255,.06);color:var(–muted);}
+.waste-stat{font-family:'DM Mono',monospace;font-size:10px;padding:2px 7px;border-radius:6px;background:rgba(255,255,255,.06);color:#8fa899;}
 .waste-offender-insight{font-size:11px;line-height:1.5;color:rgba(240,237,230,.65);}
 .waste-category{font-size:12px;line-height:1.6;color:rgba(240,237,230,.7);margin:8px 0;}
 .waste-action{background:rgba(45,122,79,.1);border:1px solid rgba(45,122,79,.25);border-radius:10px;padding:10px 12px;font-size:12px;line-height:1.55;color:#a0d4b4;margin-top:8px;}
-.waste-action::before{content:’→ ’;color:var(–green-light);}
+.waste-action::before{content:'-> ';color:#3da066;}
 .waste-group-actions{display:flex;flex-direction:column;gap:8px;}
 
-/* CHAT */
 .chat-wrap{display:block;}
 .chat-intro{background:linear-gradient(135deg,rgba(124,92,191,.12),rgba(45,122,79,.08));border:1px solid rgba(124,92,191,.2);border-radius:14px;padding:14px 16px;margin-bottom:12px;font-size:12px;line-height:1.65;color:rgba(240,237,230,.8);}
-.chat-intro strong{color:var(–gold-light);}
+.chat-intro strong{color:#e8c97a;}
 .chat-suggestions{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
-.chat-suggestion{background:var(–card-bg);border:1px solid var(–card-border);border-radius:20px;padding:6px 12px;font-size:11px;color:var(–muted);cursor:pointer;-webkit-tap-highlight-color:transparent;transition:all .15s;}
-.chat-suggestion:active{background:rgba(45,122,79,.15);border-color:var(–green-accent);color:var(–green-light);}
+.chat-suggestion{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:6px 12px;font-size:11px;color:#8fa899;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:all .15s;}
+.chat-suggestion:active{background:rgba(45,122,79,.15);border-color:#2d7a4f;color:#3da066;}
 .chat-messages{display:flex;flex-direction:column;gap:10px;padding-bottom:8px;min-height:20px;}
 .chat-messages::-webkit-scrollbar{width:3px;}
 .chat-messages::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px;}
@@ -139,28 +137,27 @@
 .msg.user{flex-direction:row-reverse;}
 .msg-avatar{width:28px;height:28px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;}
 .msg.user .msg-avatar{background:rgba(201,168,76,.2);border:1px solid rgba(201,168,76,.3);}
-.msg.ai   .msg-avatar{background:rgba(124,92,191,.2);border:1px solid rgba(124,92,191,.3);}
+.msg.ai .msg-avatar{background:rgba(124,92,191,.2);border:1px solid rgba(124,92,191,.3);}
 .msg-bubble{max-width:82%;padding:10px 13px;border-radius:12px;font-size:13px;line-height:1.65;}
-.msg.user .msg-bubble{background:rgba(45,122,79,.2);border:1px solid rgba(45,122,79,.3);color:var(–text);border-bottom-right-radius:3px;}
-.msg.ai   .msg-bubble{background:var(–card-bg);border:1px solid var(–card-border);color:var(–text);border-bottom-left-radius:3px;}
-.thinking-dots span{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(–muted);margin:0 2px;animation:dotBounce 1.2s ease-in-out infinite;}
+.msg.user .msg-bubble{background:rgba(45,122,79,.2);border:1px solid rgba(45,122,79,.3);color:#f0ede6;border-bottom-right-radius:3px;}
+.msg.ai .msg-bubble{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:#f0ede6;border-bottom-left-radius:3px;}
+.thinking-dots span{display:inline-block;width:5px;height:5px;border-radius:50%;background:#8fa899;margin:0 2px;animation:dotBounce 1.2s ease-in-out infinite;}
 .thinking-dots span:nth-child(2){animation-delay:.2s;}
 .thinking-dots span:nth-child(3){animation-delay:.4s;}
 @keyframes dotBounce{0%,80%,100%{transform:translateY(0);}40%{transform:translateY(-5px);}}
-.chat-input-row{display:flex;gap:8px;padding-top:10px;border-top:1px solid var(–card-border);margin-top:12px;position:relative;z-index:10;}
-.chat-input{flex:1;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:12px;padding:12px 14px;color:#ffffff;font-family:‘DM Sans’,sans-serif;font-size:16px;outline:none;height:44px;-webkit-appearance:none;appearance:none;-webkit-user-select:text;user-select:text;}
+.chat-input-row{display:flex;gap:8px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.08);margin-top:12px;position:relative;z-index:10;}
+.chat-input{flex:1;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:12px;padding:12px 14px;color:#ffffff;font-family:'DM Sans',sans-serif;font-size:16px;outline:none;height:44px;-webkit-appearance:none;appearance:none;-webkit-user-select:text;user-select:text;}
 .chat-input:focus{border-color:rgba(45,122,79,.8);background:rgba(255,255,255,0.1);}
 .chat-input::placeholder{color:rgba(255,255,255,0.4);}
-.chat-send{width:42px;height:42px;border-radius:12px;flex-shrink:0;background:var(–green-accent);border:none;color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;transition:background .15s;}
-.chat-send:active{background:var(–green-light);}
-.chat-send:disabled{background:var(–green-mid);opacity:.5;cursor:default;}
+.chat-send{width:42px;height:42px;border-radius:12px;flex-shrink:0;background:#2d7a4f;border:none;color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;transition:background .15s;}
+.chat-send:active{background:#3da066;}
+.chat-send:disabled{background:#1a4a2e;opacity:.5;cursor:default;}
 </style>
-
 </head>
 <body>
 
 <div class="header">
-  <a href="index.html" class="header-back">←</a>
+  <a href="index.html" class="header-back">&#8592;</a>
   <div class="header-titles">
     <div class="header-eyebrow">Moriarty Group</div>
     <div class="header-title">AI Insights</div>
@@ -171,7 +168,7 @@
 <div class="loading-screen" id="loadingScreen">
   <div class="loading-orb"></div>
   <div class="loading-label">Loading insights</div>
-  <div class="loading-step" id="loadingStep">Fetching latest analysis…</div>
+  <div class="loading-step" id="loadingStep">Fetching latest analysis...</div>
   <div class="loading-sub" id="loadingSub">Generated weekly by AI</div>
   <div class="loading-bar-wrap"><div class="loading-bar" id="loadingBar"></div></div>
 </div>
@@ -179,30 +176,30 @@
 <div class="error-card" id="errorCard"></div>
 
 <div class="content" id="mainContent">
-  <div class="freshness-bar"><span>📅</span><span id="freshnessText">Loading…</span></div>
-  <div class="stale-bar" id="staleBar"><span>⚠️</span><span id="staleText"></span></div>
+  <div class="freshness-bar"><span>&#128197;</span><span id="freshnessText">Loading...</span></div>
+  <div class="stale-bar" id="staleBar"><span>&#9888;&#65039;</span><span id="staleText"></span></div>
 
   <div class="mode-nav">
     <button type="button" class="mode-btn active" id="btn-director" onclick="switchMode('director')">
-      <span class="btn-icon">📋</span><span class="btn-label">Director</span>
+      <span class="btn-icon">&#128203;</span><span class="btn-label">Director</span>
     </button>
     <button type="button" class="mode-btn" id="btn-leaks" onclick="switchMode('leaks')">
-      <span class="btn-icon">💸</span><span class="btn-label">Leaks</span>
+      <span class="btn-icon">&#128176;</span><span class="btn-label">Leaks</span>
     </button>
     <button type="button" class="mode-btn" id="btn-actions" onclick="switchMode('actions')">
-      <span class="btn-icon">⚡</span><span class="btn-label">Today</span>
+      <span class="btn-icon">&#9889;</span><span class="btn-label">Today</span>
     </button>
     <button type="button" class="mode-btn" id="btn-cross" onclick="switchMode('cross')">
-      <span class="btn-icon">🔗</span><span class="btn-label">Cross-Dept</span>
+      <span class="btn-icon">&#128279;</span><span class="btn-label">Cross-Dept</span>
     </button>
     <button type="button" class="mode-btn" id="btn-diagnosis" onclick="switchMode('diagnosis')">
-      <span class="btn-icon">🔍</span><span class="btn-label">Diagnosis</span>
+      <span class="btn-icon">&#128269;</span><span class="btn-label">Diagnosis</span>
     </button>
     <button type="button" class="mode-btn" id="btn-waste" onclick="switchMode('waste')">
-      <span class="btn-icon">🗑️</span><span class="btn-label">Waste</span>
+      <span class="btn-icon">&#128465;&#65039;</span><span class="btn-label">Waste</span>
     </button>
     <button type="button" class="mode-btn" id="btn-chat" onclick="switchMode('chat')">
-      <span class="btn-icon">💬</span><span class="btn-label">Ask AI</span>
+      <span class="btn-icon">&#128172;</span><span class="btn-label">Ask AI</span>
     </button>
   </div>
 
@@ -213,51 +210,43 @@
     <div class="store-compare" id="storeCompare"></div>
     <div class="slabel">Key Drivers</div>
     <div class="flags" id="directorDrivers"></div>
-    <div class="divider"></div>
-    <div class="slabel">Priority Actions — Next Week</div>
+    <div class="slabel">Priority Actions - Next Week</div>
     <div class="num-list" id="directorPriorities"></div>
-    <div class="refresh-note">Insights updated every Monday at 5 AM</div>
   </div>
 
   <div class="mode-panel" id="panel-leaks">
     <div class="slabel" style="margin-top:4px;">Profit Leak Detection</div>
     <div id="leaksList"></div>
-    <div class="refresh-note">Insights updated every Monday at 5 AM</div>
   </div>
 
   <div class="mode-panel" id="panel-actions">
     <div class="slabel" style="margin-top:4px;">Urgent Issues</div>
     <div class="flags" id="urgentIssues"></div>
-    <div class="divider"></div>
     <div class="slabel">Today's Action List</div>
     <div class="num-list" id="todayActions"></div>
-    <div class="divider"></div>
     <div class="slabel">Compliance Risks</div>
     <div class="flags" id="complianceRisks"></div>
-    <div class="refresh-note">Insights updated every Monday at 5 AM</div>
   </div>
 
   <div class="mode-panel" id="panel-cross">
     <div class="slabel" style="margin-top:4px;">Cross-Department Insights</div>
     <div id="crossInsights"></div>
-    <div class="refresh-note">Insights updated every Monday at 5 AM</div>
   </div>
 
   <div class="mode-panel" id="panel-diagnosis">
     <div class="slabel" style="margin-top:4px;">Real-Time Diagnosis</div>
     <div class="diag-block wrong">
-      <div class="diag-label">⚠ What's going wrong</div>
+      <div class="diag-label">What's going wrong</div>
       <div class="diag-text" id="diagWrong"></div>
     </div>
     <div class="diag-block why">
-      <div class="diag-label">🔎 Why it's happening</div>
+      <div class="diag-label">Why it's happening</div>
       <div class="diag-text" id="diagWhy"></div>
     </div>
     <div class="diag-block fix">
-      <div class="diag-label">✅ Fix immediately</div>
+      <div class="diag-label">Fix immediately</div>
       <div class="diag-text" id="diagFix"></div>
     </div>
-    <div class="refresh-note">Insights updated every Monday at 5 AM</div>
   </div>
 
   <div class="mode-panel" id="panel-waste">
@@ -265,47 +254,37 @@
     <div class="waste-summary"><div id="wasteSummary"></div></div>
     <div class="slabel">Store Breakdown</div>
     <div id="wasteStores"></div>
-    <div class="divider"></div>
     <div class="slabel">Group-Wide Actions</div>
     <div class="waste-group-actions" id="wasteGroupActions"></div>
-    <div class="refresh-note">Insights updated every Monday at 5 AM</div>
   </div>
 
   <div class="mode-panel" id="panel-chat">
     <div class="slabel" style="margin-top:4px;">Ask the AI</div>
-
-```
-<div class="chat-suggestions" id="chatSuggestions">
-  <div class="chat-suggestion" onclick="useSuggestion(this)">Which store performed best?</div>
-  <div class="chat-suggestion" onclick="useSuggestion(this)">What's our biggest profit leak?</div>
-  <div class="chat-suggestion" onclick="useSuggestion(this)">How is Deli performing?</div>
-  <div class="chat-suggestion" onclick="useSuggestion(this)">Compare Palmerstown vs Skerries</div>
-  <div class="chat-suggestion" onclick="useSuggestion(this)">Why might sales be up this week?</div>
-  <div class="chat-suggestion" onclick="useSuggestion(this)">Any compliance issues?</div>
-</div>
-<div class="chat-wrap">
-  <div class="chat-messages" id="chatMessages"></div>
-  <div class="chat-input-row">
-    <input type="text" class="chat-input" id="chatInput" placeholder="Ask about any store or metric…" onkeydown="handleChatKey(event)" autocomplete="off" autocorrect="off" spellcheck="false">
-    <button type="button" class="chat-send" id="chatSend" onclick="sendChat()">↑</button>
-  </div>
-</div>
-```
-
+    <div class="chat-suggestions" id="chatSuggestions">
+      <div class="chat-suggestion" onclick="useSuggestion(this)">Which store performed best?</div>
+      <div class="chat-suggestion" onclick="useSuggestion(this)">What's our biggest profit leak?</div>
+      <div class="chat-suggestion" onclick="useSuggestion(this)">How is Deli performing?</div>
+      <div class="chat-suggestion" onclick="useSuggestion(this)">Compare Palmerstown vs Skerries</div>
+      <div class="chat-suggestion" onclick="useSuggestion(this)">Why might sales be up this week?</div>
+      <div class="chat-suggestion" onclick="useSuggestion(this)">Any compliance issues?</div>
+    </div>
+    <div class="chat-wrap">
+      <div class="chat-messages" id="chatMessages"></div>
+      <div class="chat-input-row">
+        <input type="text" class="chat-input" id="chatInput" placeholder="Ask about any store or metric..." onkeydown="handleChatKey(event)" autocomplete="off" autocorrect="off" spellcheck="false">
+        <button type="button" class="chat-send" id="chatSend" onclick="sendChat()">&#8593;</button>
+      </div>
+    </div>
   </div>
 </div>
 
 <script>
-// ── CONFIG — no secret keys in this file ──────────────────
 var INSIGHTS_URL  = 'https://raw.githubusercontent.com/aarondoyle2026/aarondoyle2026.github.io/main/ai_insights.json';
 var CHAT_ENDPOINT = 'https://mnebkteiwjxbbmnfotse.supabase.co/functions/v1/ai-chat';
 var SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1uZWJrdGVpd2p4YmJtbmZvdHNlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ2MTgwODAsImV4cCI6MjA5MDE5NDA4MH0.cTQbQqoxagmGm4crdpMhFbzlwid1OMMo6UOyhvtbhxA';
-// ^ This is your PUBLIC anon key — already used across all your other tools, safe to commit.
-// The ANTHROPIC_API_KEY lives only inside Supabase as a secret — never in this file.
 
 var MODES = ['director','leaks','actions','cross','diagnosis','waste','chat'];
 
-// Aaron hardwire — checked before any API call is made
 var AARON_TRIGGERS = [
   'who made','who built','who created','who developed','who wrote','who designed',
   'who coded','who programmed','how was this built','how was this made',
@@ -337,20 +316,14 @@ function switchMode(key) {
   document.getElementById('btn-'   + key).classList.add('active');
   document.getElementById('panel-' + key).classList.add('active');
 }
-function autoResize(el) {
-  el.style.height = 'auto';
-  el.style.height = Math.min(el.scrollHeight, 100) + 'px';
-}
 function handleChatKey(e) {
   if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChat(); }
 }
 function useSuggestion(el) {
   var input = document.getElementById('chatInput');
   input.value = el.textContent;
-  autoResize(input);
   sendChat();
 }
-
 function renderFreshness(generatedAt, generatedTime) {
   var text = 'Week of <span class="val">' + esc(generatedAt) + '</span>';
   if (generatedTime) text += ' at <span class="val">' + esc(generatedTime) + '</span>';
@@ -376,7 +349,7 @@ function renderDirector(d) {
   });
   var dd = document.getElementById('directorDrivers');
   dd.innerHTML = '';
-  var icons = { positive:'✅', issue:'⚠️', warning:'🔶' };
+  var icons = { positive:'&#9989;', issue:'&#9888;&#65039;', warning:'&#128310;' };
   (d.drivers || []).forEach(function(dr) {
     var div = document.createElement('div');
     div.className = 'flag ' + (dr.type || 'neutral');
@@ -396,7 +369,7 @@ function renderDirector(d) {
 function renderLeaks(leaks) {
   var el = document.getElementById('leaksList');
   el.innerHTML = '';
-  if (!leaks || !leaks.length) { el.innerHTML = '<p style="color:var(--muted);font-size:13px;">No significant leaks identified.</p>'; return; }
+  if (!leaks || !leaks.length) { el.innerHTML = '<p style="color:#8fa899;font-size:13px;">No significant leaks identified.</p>'; return; }
   leaks.forEach(function(l) {
     var div = document.createElement('div');
     div.className = 'leak-card';
@@ -406,13 +379,13 @@ function renderLeaks(leaks) {
 }
 function renderActions(a) {
   if (!a) return;
-  var icons = { issue:'⚠️', warning:'🔶', neutral:'ℹ️' };
+  var icons = { issue:'&#9888;&#65039;', warning:'&#128310;', neutral:'ℹ️' };
   var ui = document.getElementById('urgentIssues');
   ui.innerHTML = '';
   (a.urgent || []).forEach(function(item) {
     var div = document.createElement('div');
     div.className = 'flag ' + (item.type || 'issue');
-    div.innerHTML = '<span class="flag-icon">' + (icons[item.type] || '⚠️') + '</span><span>' + esc(item.text) + '</span>';
+    div.innerHTML = '<span class="flag-icon">' + (icons[item.type] || '&#9888;&#65039;') + '</span><span>' + esc(item.text) + '</span>';
     ui.appendChild(div);
   });
   var ta = document.getElementById('todayActions');
@@ -429,14 +402,14 @@ function renderActions(a) {
   (a.compliance || []).forEach(function(item) {
     var div = document.createElement('div');
     div.className = 'flag ' + (item.type || 'warning');
-    div.innerHTML = '<span class="flag-icon">' + (icons[item.type] || '🔶') + '</span><span>' + esc(item.text) + '</span>';
+    div.innerHTML = '<span class="flag-icon">' + (icons[item.type] || '&#128310;') + '</span><span>' + esc(item.text) + '</span>';
     cr.appendChild(div);
   });
 }
 function renderCross(cross) {
   var el = document.getElementById('crossInsights');
   el.innerHTML = '';
-  if (!cross || !cross.length) { el.innerHTML = '<p style="color:var(--muted);font-size:13px;">No cross-department insights available.</p>'; return; }
+  if (!cross || !cross.length) { el.innerHTML = '<p style="color:#8fa899;font-size:13px;">No cross-department insights available.</p>'; return; }
   cross.forEach(function(c) {
     var div = document.createElement('div');
     div.className = 'cross-card';
@@ -453,7 +426,6 @@ function renderDiagnosis(d) {
 function renderWaste(w) {
   if (!w) return;
   document.getElementById('wasteSummary').innerHTML = '<p style="font-size:13px;line-height:1.8;">' + esc(w.summary || '') + '</p>';
-
   var ws = document.getElementById('wasteStores');
   ws.innerHTML = '';
   (w.stores || []).forEach(function(s) {
@@ -482,7 +454,6 @@ function renderWaste(w) {
     block.innerHTML = html;
     ws.appendChild(block);
   });
-
   var ga = document.getElementById('wasteGroupActions');
   ga.innerHTML = '';
   (w.group_actions || []).forEach(function(item, i) {
@@ -497,10 +468,8 @@ function showError(msg) {
   document.getElementById('loadingScreen').style.display = 'none';
   var el = document.getElementById('errorCard');
   el.style.display = 'block';
-  el.innerHTML = '<strong>⚠️ Could not load insights</strong><br><br>' + esc(msg) + '<br><br>Insights are generated every Monday when the KPI scraper runs.';
+  el.innerHTML = '<strong>Could not load insights</strong><br><br>' + esc(msg) + '<br><br>Insights are generated every Monday when the KPI scraper runs.';
 }
-
-// ── CHAT ─────────────────────────────────────────────────
 function isAaronQuestion(text) {
   var lower = text.toLowerCase();
   var i;
@@ -513,7 +482,7 @@ function addMessage(role, text, isThinking) {
   var msgs = document.getElementById('chatMessages');
   var div  = document.createElement('div');
   div.className = 'msg ' + role;
-  var avatar = role === 'user' ? '👤' : '🤖';
+  var avatar = role === 'user' ? '&#128100;' : '&#129302;';
   var bubble = isThinking
     ? '<div class="thinking-dots"><span></span><span></span><span></span></div>'
     : esc(text).replace(/\n/g, '<br>');
@@ -526,17 +495,12 @@ function sendChat() {
   var input = document.getElementById('chatInput');
   var text  = input.value.trim();
   if (!text) return;
-
   document.getElementById('chatSuggestions').style.display = 'none';
   addMessage('user', text, false);
   input.value = '';
-  input.style.height = 'auto';
-
   var btn = document.getElementById('chatSend');
   btn.disabled = true;
   chatHistory.push({ role: 'user', content: text });
-
-  // Aaron hardwire — intercept before any API call
   if (isAaronQuestion(text)) {
     setTimeout(function() {
       addMessage('ai', AARON_RESPONSE, false);
@@ -545,9 +509,7 @@ function sendChat() {
     }, 350);
     return;
   }
-
   var thinking = addMessage('ai', '', true);
-
   fetch(CHAT_ENDPOINT, {
     method: 'POST',
     headers: {
@@ -556,6 +518,10 @@ function sendChat() {
       'Authorization': 'Bearer ' + SUPABASE_ANON
     },
     body: JSON.stringify({
+      question:        text,
+      store_code:      '356',
+      store_name:      'Palmerstown',
+      role:            'staff',
       messages:        chatHistory,
       insightsContext: insightsData
     })
@@ -564,10 +530,10 @@ function sendChat() {
   .then(function(data) {
     thinking.remove();
     var reply = '';
-    if (data && data.content && data.content[0] && data.content[0].text) {
-      reply = data.content[0].text;
+    if (data && data.answer) {
+      reply = data.answer;
     } else if (data && data.error) {
-      reply = 'Error: ' + (data.error.message || JSON.stringify(data.error));
+      reply = 'Error: ' + data.error;
     } else {
       reply = 'Sorry, no response received.';
     }
@@ -577,21 +543,19 @@ function sendChat() {
   })
   .catch(function() {
     thinking.remove();
-    addMessage('ai', 'Connection error — the AI chat function may not be deployed on Supabase yet.', false);
+    addMessage('ai', 'Connection error — please try again.', false);
     btn.disabled = false;
   });
 }
-
-// ── INIT ─────────────────────────────────────────────────
 function init() {
-  setStep('Fetching latest analysis…', 'Generated weekly by AI', 20);
+  setStep('Fetching latest analysis...', 'Generated weekly by AI', 20);
   fetch(INSIGHTS_URL + '?t=' + Date.now())
     .then(function(r) {
       if (!r.ok) throw new Error('ai_insights.json not found (status ' + r.status + '). Run the KPI scraper on Monday.');
       return r.json();
     })
     .then(function(data) {
-      setStep('Rendering insights…', '', 80);
+      setStep('Rendering insights...', '', 80);
       insightsData = data;
       var ins = data.insights;
       if (!ins) throw new Error('Insights file is empty or malformed.');
@@ -610,9 +574,7 @@ function init() {
     })
     .catch(function(err) { showError(err.message || String(err)); });
 }
-
 init();
 </script>
-
 </body>
 </html>
