@@ -6,14 +6,8 @@
 <title>AI Insights — Moriarty Group</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg:#0d1f13;--green-mid:#1a4a2e;--green-accent:#2d7a4f;--green-light:#3da066;
-    --gold:#c9a84c;--gold-light:#e8c97a;--cream:#f5f0e8;--text:#f0ede6;--muted:#8fa899;
-    --red:#e05555;--violet:#7c5cbf;--teal:#2a9d8f;--orange:#e07d2a;
-    --card-bg:rgba(255,255,255,0.04);--card-border:rgba(255,255,255,0.08);
-  }
   *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;
+  body{font-family:'DM Sans',sans-serif;background:#0d1f13;color:#f0ede6;min-height:100vh;
     background-image:radial-gradient(ellipse at 15% 10%,rgba(45,122,79,.15) 0%,transparent 55%),
     radial-gradient(ellipse at 85% 85%,rgba(124,92,191,.08) 0%,transparent 55%);}
 
@@ -124,15 +118,18 @@
 .waste-action::before{content:'-> ';color:#3da066;}
 .waste-group-actions{display:flex;flex-direction:column;gap:8px;}
 
+.store-selector{display:flex;gap:8px;margin-bottom:14px;}
+.store-btn{flex:1;padding:10px 8px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.04);color:#8fa899;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;text-align:center;transition:all .2s;-webkit-tap-highlight-color:transparent;}
+.store-btn.active{background:rgba(45,122,79,.2);border-color:#2d7a4f;color:#3da066;}
+.store-btn:active{opacity:.7;}
+.selected-store-bar{display:flex;align-items:center;gap:8px;padding:8px 12px;background:rgba(45,122,79,.1);border:1px solid rgba(45,122,79,.25);border-radius:10px;margin-bottom:12px;font-size:12px;color:#a0d4b4;}
+.selected-store-bar .store-dot{width:7px;height:7px;border-radius:50%;background:#3da066;flex-shrink:0;}
+
 .chat-wrap{display:block;}
-.chat-intro{background:linear-gradient(135deg,rgba(124,92,191,.12),rgba(45,122,79,.08));border:1px solid rgba(124,92,191,.2);border-radius:14px;padding:14px 16px;margin-bottom:12px;font-size:12px;line-height:1.65;color:rgba(240,237,230,.8);}
-.chat-intro strong{color:#e8c97a;}
 .chat-suggestions{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
 .chat-suggestion{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:6px 12px;font-size:11px;color:#8fa899;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:all .15s;}
 .chat-suggestion:active{background:rgba(45,122,79,.15);border-color:#2d7a4f;color:#3da066;}
 .chat-messages{display:flex;flex-direction:column;gap:10px;padding-bottom:8px;min-height:20px;}
-.chat-messages::-webkit-scrollbar{width:3px;}
-.chat-messages::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px;}
 .msg{display:flex;gap:8px;align-items:flex-start;}
 .msg.user{flex-direction:row-reverse;}
 .msg-avatar{width:28px;height:28px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;}
@@ -260,14 +257,27 @@
 
   <div class="mode-panel" id="panel-chat">
     <div class="slabel" style="margin-top:4px;">Ask the AI</div>
+
+    <div class="store-selector">
+      <button type="button" class="store-btn active" id="storeBtn356" onclick="selectStore('356','Palmerstown')">Palmerstown</button>
+      <button type="button" class="store-btn" id="storeBtn374" onclick="selectStore('374','Balbriggan')">Balbriggan</button>
+      <button type="button" class="store-btn" id="storeBtn424" onclick="selectStore('424','Skerries')">Skerries</button>
+    </div>
+
+    <div class="selected-store-bar" id="selectedStoreBar">
+      <div class="store-dot"></div>
+      <span id="selectedStoreLabel">Asking about Palmerstown (356)</span>
+    </div>
+
     <div class="chat-suggestions" id="chatSuggestions">
-      <div class="chat-suggestion" onclick="useSuggestion(this)">Which store performed best?</div>
+      <div class="chat-suggestion" onclick="useSuggestion(this)">How is this store performing?</div>
       <div class="chat-suggestion" onclick="useSuggestion(this)">What's our biggest profit leak?</div>
       <div class="chat-suggestion" onclick="useSuggestion(this)">How is Deli performing?</div>
-      <div class="chat-suggestion" onclick="useSuggestion(this)">Compare Palmerstown vs Skerries</div>
-      <div class="chat-suggestion" onclick="useSuggestion(this)">Why might sales be up this week?</div>
+      <div class="chat-suggestion" onclick="useSuggestion(this)">What is the waste situation?</div>
+      <div class="chat-suggestion" onclick="useSuggestion(this)">Any open claims issues?</div>
       <div class="chat-suggestion" onclick="useSuggestion(this)">Any compliance issues?</div>
     </div>
+
     <div class="chat-wrap">
       <div class="chat-messages" id="chatMessages"></div>
       <div class="chat-input-row">
@@ -294,10 +304,28 @@ var AARON_TRIGGERS = [
   'how to create something like','tell me about yourself','what are you',
   'how do you work','how does this system work','how was this system'
 ];
-var AARON_RESPONSE = 'Aaron made me. 🟢';
+var AARON_RESPONSE = 'Aaron made me. &#x1F7E2;';
 
 var insightsData = null;
 var chatHistory  = [];
+var selectedStoreCode = '356';
+var selectedStoreName = 'Palmerstown';
+
+function selectStore(code, name) {
+  selectedStoreCode = code;
+  selectedStoreName = name;
+  var btns = ['356','374','424'];
+  var i;
+  for (i = 0; i < btns.length; i++) {
+    document.getElementById('storeBtn' + btns[i]).classList.remove('active');
+  }
+  document.getElementById('storeBtn' + code).classList.add('active');
+  document.getElementById('selectedStoreLabel').textContent = 'Asking about ' + name + ' (' + code + ')';
+  chatHistory = [];
+  var msgs = document.getElementById('chatMessages');
+  msgs.innerHTML = '';
+  document.getElementById('chatSuggestions').style.display = 'flex';
+}
 
 function setStep(msg, sub, pct) {
   document.getElementById('loadingStep').textContent = msg;
@@ -332,7 +360,7 @@ function renderFreshness(generatedAt, generatedTime) {
     var diff = Math.floor((new Date() - new Date(generatedAt)) / 86400000);
     if (diff > 8) {
       document.getElementById('staleBar').style.display = 'flex';
-      document.getElementById('staleText').textContent = 'Insights are ' + diff + ' days old — run the KPI scraper on Monday to refresh.';
+      document.getElementById('staleText').textContent = 'Insights are ' + diff + ' days old - run the KPI scraper on Monday to refresh.';
     }
   } catch(e) {}
 }
@@ -353,7 +381,7 @@ function renderDirector(d) {
   (d.drivers || []).forEach(function(dr) {
     var div = document.createElement('div');
     div.className = 'flag ' + (dr.type || 'neutral');
-    div.innerHTML = '<span class="flag-icon">' + (icons[dr.type] || 'ℹ️') + '</span><span>' + esc(dr.text) + '</span>';
+    div.innerHTML = '<span class="flag-icon">' + (icons[dr.type] || 'i') + '</span><span>' + esc(dr.text) + '</span>';
     dd.appendChild(div);
   });
   var dp = document.getElementById('directorPriorities');
@@ -379,7 +407,7 @@ function renderLeaks(leaks) {
 }
 function renderActions(a) {
   if (!a) return;
-  var icons = { issue:'&#9888;&#65039;', warning:'&#128310;', neutral:'ℹ️' };
+  var icons = { issue:'&#9888;&#65039;', warning:'&#128310;', neutral:'i' };
   var ui = document.getElementById('urgentIssues');
   ui.innerHTML = '';
   (a.urgent || []).forEach(function(item) {
@@ -519,8 +547,8 @@ function sendChat() {
     },
     body: JSON.stringify({
       question:        text,
-      store_code:      '356',
-      store_name:      'Palmerstown',
+      store_code:      selectedStoreCode,
+      store_name:      selectedStoreName,
       role:            'staff',
       messages:        chatHistory,
       insightsContext: insightsData
@@ -543,7 +571,7 @@ function sendChat() {
   })
   .catch(function() {
     thinking.remove();
-    addMessage('ai', 'Connection error — please try again.', false);
+    addMessage('ai', 'Connection error - please try again.', false);
     btn.disabled = false;
   });
 }
