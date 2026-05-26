@@ -1,311 +1,256 @@
 {
-  "generated_at": "2026-05-19",
-  "generated_time": "17:45",
+  "generated_at": "2026-05-26",
+  "generated_time": "11:38",
   "insights": {
     "director": {
-      "summary": "Week 20 (ending 19 May 2026) shows a concerning trend across all three stores with overall sales down 6.0% (Palmerstown), 7.0% (Balbriggan), and flat +0.2% (Skerries). The pattern indicates weather/seasonal headwinds rather than operational failure—produce is down 14.6%, 14.1%, and flat respectively, suggesting cool/wet conditions suppressing fresh categories. Skerries significantly outperforms peers despite similar pressures, posting strong growth in edible grocery (+9.6% YTD) and modest weekly decline. Palmerstown and Balbriggan face deeper structural challenges with meat margin erosion (-2.99% and -3.79%), deli weakness (-18.8% at Skerries, -3.6% Palmerstown, -2.5% Balbriggan), and bakery underperformance (-9.0%, -7.0%, -6.5%). Margin deterioration across serveover meat and critical margin categories poses the biggest threat to profitability.",
+      "summary": "Week 21 (ending 26 May 2026) shows broad-based weakness across all three stores, with total sales down 5.2% YoY at group level. This is NOT a calendar distortion—late May 2025 had no major holidays, making YoY comparison reliable. The weakness spans meat (-5.5% avg), produce (-7.5% avg), and bakery (-4.0% avg), suggesting demand headwinds rather than operational failure. However, patterns differ sharply by store: Skerries remains resilient (-3.6% total), Palmerstown struggles hardest (-6.5%), and Balbriggan faces margin pressure despite holding volume. Beer/wine/spirits down 13.5% group-wide is a red flag—possible weather impact (warm spell reducing spirits demand) or competitor activity. Fresh produce shows catastrophic chilled fruit decline (-21% Palmerstown, -24% Balbriggan), pointing to supply, quality, or seasonality issues rather than pricing.",
       "stores": [
         {
           "name": "Palmerstown",
-          "score": 72,
+          "score": 68,
           "scoreLevel": "mid",
-          "summary": "Dublin commuter store down 6.0% weekly (-€22k), reflecting weak lunchtime trade and margin compression in meat (-2.99 pp) and bakery. Own-brand solid at -6.7% but impulse grocery cratering at -7.3%. YTD -5.4% indicates consistent underperformance. Critical weakness in pork serveover (-26.3%) and prepared produce (-10.8%) suggests category mix issues or promotional erosion."
+          "summary": "Worst performer this week at -6.5% total sales. Meat down 7.7%, produce down 7.2%, and personal care cratering at -16.9%. Margin compression across meat (-3.1pp) and bakery scratch (-weak sell-through). Deli is sole bright spot (+4.8%, +7.9% hot food), suggesting lunchtime commuter trade holding. Commuter footfall may be dampened by school holidays or mid-week work patterns. Own-brand weakness (-4.5%) indicates basket trading down or format shift."
         },
         {
           "name": "Balbriggan",
-          "score": 68,
+          "score": 72,
           "scoreLevel": "mid",
-          "summary": "North Dublin family store down 7.0% weekly (-€23k), worst performer. Severe lamb serveover collapse (-31.5%), beef serveover decline (-8.3%), and chicken weakness (-13.0%) signal pricing or quality perception issues. Deli meats down 38.4%, prepack discontinued. Waste profile (1.1% vs peer average 1.2%) suggests demand-driven destock rather than spoilage. YTD -3.3% shows recent deterioration."
+          "summary": "Down 5.5% total sales, but more concerning is produce collapse (-14.8%, worst in group) and deli implosion (-10.6%). Chilled fruit specifically down 23.8%—identical pattern to Palmerstown suggests supply or quality issue, not local. Beer/wine down 11.2%. However, edible grocery +4.8% and non-food +6.6% show some resilience; family basket holding better than Palmerstown. Fresh bakery +15.4% is anomaly—possible category reset or new supplier. Waste at 1.51% (highest) may indicate aging stock or poor forecasting."
         },
         {
           "name": "Skerries",
-          "score": 79,
+          "score": 76,
           "scoreLevel": "mid",
-          "summary": "Coastal village store near flat weekly (-€0.2%, only -€868), best resilience despite -6.5% bakery and -18.8% deli decline. Edible grocery +9.6% YTD and produce near-flat demonstrate strong basket discipline. Fruit sales +15.4% counter produce overall softness. Waste low at 1.1%, margin profile stable. Tourist/summer seasonality likely to drive recovery; execution solid."
+          "summary": "Outperforms peers at -3.6% total, with edible grocery actually +8.1% YoY and chicken serveover +9.4%. Produce stable (-0.7% vs peers at -8%). Chilled fruit is outlier +2.8%, suggesting stronger tourist/affluent demographic or better supply chain. Deli down 19.5% (anomalous), driven by huge delicatessen meats drop (-37.6%)—possible staffing or product issue worth investigating. Beer/wine down 13.8% (in line). YTD data shows Skerries +0.34%, only store tracking flat/positive—momentum builder if sustained."
         }
       ],
       "drivers": [
         {
           "type": "positive",
-          "text": "Skerries edible grocery +9.6% YTD and fruit +15.4% weekly show seasonal uptick and strong promotional elasticity in defensive categories."
-        },
-        {
-          "type": "positive",
-          "text": "Fish serveover at Palmerstown +38.3% weekly (+€477) signals successful promotion or category refresh; leverage model across estate."
+          "text": "Skerries edible grocery +8.1% and chicken +9.4% show category strength in right conditions; Balbriggan fresh bakery +15.4% signals successful promotional or supply reset."
         },
         {
           "type": "issue",
-          "text": "Meat department margin collapse: Palmerstown -2.99 pp, Balbriggan -3.79 pp on total category. Serveover pork particularly weak (Palmerstown -26.3%, Skerries -26.0%). Indicates aggressive competitor pricing or internal cost increase not passed through."
+          "text": "Chilled fruit down 21-24% at Palmerstown and Balbriggan in parallel—not store-specific. Likely supply shortage, quality decline, or seasonal shift (berries availability). Impacts margin and basket health."
         },
         {
           "type": "issue",
-          "text": "Bakery down 6.5–9.0% across all stores; scratch bakery down 15.5% at Palmerstown. Chilled fruit crash -24.4% (Palmerstown), -25.0% (Balbriggan) confirms weather headwind (cold = fruit demand down, hot food up, but hot food margin weak)."
-        },
-        {
-          "type": "issue",
-          "text": "Deli & Food to Go structural decline: Skerries -18.8% weekly, Balbriggan deli meats -38.4%, Palmerstown prepack -45.7%. Prepack category discontinued at Balbriggan/Skerries suggests margin/waste crisis on ambient food-to-go."
+          "text": "Beer/wine/spirits down 13-15% group-wide despite no calendar excuse—suggests competitor promotion, warm weather reducing spirits mix, or promotional pullback by head office."
         },
         {
           "type": "warning",
-          "text": "Transaction count down 9.7–15.1% at Palmerstown/Balbriggan 10am–11am (lunchtime core), indicating footfall loss in commuter peak. Bank holiday or school holiday calendar shift should be verified."
+          "text": "Meat margin compression: Palmerstown -3.1pp, Balbriggan -3.9pp on serveover lines. Beef serveover down 18% Balbriggan, -24% Skerries (labour cost? product quality?). Watch for deli labour cost overrun."
         },
         {
           "type": "warning",
-          "text": "Own-brand penetration declining: Palmerstown -6.7%, Balbriggan -3.3%, despite category focus. Private label margin (22.5–22.8%) not offsetting branded decline, suggesting consumers trading down to value lines or competitors' house brands."
+          "text": "Deli inconsistency: Palmerstown +4.8%, Balbriggan -10.6%, Skerries -19.5%. Skerries deli meats collapse (-37.6%) unexplained. Staff rostering or supply issue to diagnose immediately."
         }
       ],
       "priorities": [
-        "Stabilise meat serveover margin (pork, lamb, chicken) – audit competitive pricing & cost variance immediately.",
-        "Investigate lunchtime footfall collapse (Palmerstown/Balbriggan) – calendar, roadworks, competitor opening, or loss of corporate accounts.",
-        "Deli & Food to Go: kill or fix prepack line; refresh hot food range to boost margins & volumes.",
-        "Weather-proof produce & bakery: confirm cold/wet forecast; prepare seasonal bundle promos (soups, stews, baked goods).",
-        "Replicate Skerries' edible grocery success (fresh/chilled buying) across Dublin stores within 2 weeks."
+        "ROOT CAUSE: Chilled fruit decline—contact HQ supply team to identify if category-wide issue (imports, quality, substitution strategy).",
+        "INVESTIGATE: Deli performance collapse at Skerries (delicatessen meats -37.6%) and weak Balbriggan deli (-10.6%). Check staffing, product age, cold chain.",
+        "ANALYSE: Beer/wine drop across all stores—is this competitor, weather, or promotional calendar? Align with commercial team.",
+        "MARGIN RECOVERY: Meat margin compression especially Balbriggan beef. Review pricing, waste, and labour scheduling vs. previous year.",
+        "FORECAST: Produce demand weakness may persist if chilled fruit supply constrained through summer. Prepare promotional contingency."
       ]
     },
     "leaks": [
       {
-        "title": "Meat Serveover Margin Bleed",
-        "impact": "€600–900 / week per store (2–3% margin loss on €5–6k weekly category sales)",
-        "fix": "Immediate audit: (1) Compare cost of goods vs. last year same week; (2) Review promotional cadence vs. Dunnes/Tesco; (3) Check portion/yield specs in training; (4) If cost-driven, escalate to buying; if promotion-driven, reposition premium lines and reduce depth discounts on beef."
+        "title": "Chilled fruit category meltdown",
+        "impact": "€2,000–2,500 / week lost contribution",
+        "fix": "1. Contact supply chain for root cause (import delays, quality fail, grower shortage). 2. Check Balbriggan/Palmerstown planograms—are facings still allocated to 21%+ YoY down? 3. If supply constrained, shift space to stable lines (regular fruit, organic). 4. Review promotional pricing—test elasticity with 10% discount on next order. 5. Communicate to deli: substitute with fruit platters if fresh fruit shortage confirmed."
       },
       {
-        "title": "Deli Prepack Discontinuation & Ambient Food Crisis",
-        "impact": "€400–500 / week (45–100% decline on -€79 Balbriggan, -€70 Skerries)",
-        "fix": "(1) Assess shelf life & waste data from past 8 weeks; (2) If waste >15%, do not resume; (3) If demand/margin issue, pivot to fresh deli sandwiches or hot prepack (baked goods, not chilled); (4) Train deli to upsell 'made today' messaging."
+        "title": "Skerries deli meats collapse (-37.6%)",
+        "impact": "€600–800 / week margin loss",
+        "fix": "1. Audit deli staffing schedule vs. last year—check if hours cut or turnover. 2. Inspect delicatessen counter stock age; sample sliced meats for quality (oxidation, odour). 3. Review category mix—did planogram change? Did premium lines get de-listed? 4. If staffing issue, reinstate or hire temp; if product issue, escalate to supplier QA. 5. Promote deli platters at food-to-go till point to recover footfall."
       },
       {
-        "title": "Chilled Fruit Seasonal Cliff",
-        "impact": "€2,000–2,400 / week (23–25% decline across all stores)",
-        "fix": "(1) Confirm weather (cold spell forecast to break by late May); (2) Prepare summer berry campaigns (Signature berries up-sell at Skerries); (3) Reduce import fruit intake; (4) Bundle chilled fruit with summer salads/Greek yogurt cross-promotions by week 21."
+        "title": "Meat serveover margin erosion (Balbriggan beef -24%, -7.8pp margin)",
+        "impact": "€400–600 / week opportunity cost",
+        "fix": "1. Analyse labour cost per transaction—is deli counter overstaffed on slow shifts? 2. Check waste: are cuts being trimmed too aggressively or dating too conservatively? 3. Review pricing vs. LY—if held flat despite cost inflation, escalate to pricing committee. 4. Bench-mark Palmerstown/Skerries pricing to confirm Balbriggan alignment. 5. Test bundle promotions (e.g., beef + ready-made sides) to drive volume and basket."
       },
       {
-        "title": "Palmerstown/Balbriggan Lunchtime Footfall Loss",
-        "impact": "€1,500–2,000 / week (9–15% transaction drop 10–11am vs LY)",
-        "fix": "(1) Pull foot traffic data from door counter for past 4 weeks, compare to calendar (bank holidays, school breaks); (2) Check Waze/Google traffic near store; (3) Canvass corporate accounts (banks, offices) for churn; (4) If no calendar shift, run competitor mystery shop; (5) Consider lunch bundle promo (meal deal) if footfall is truly lost, not deferred."
+        "title": "Personal care steep decline (Palmerstown -16.9%, Balbriggan -17.9%)",
+        "impact": "€800–1,000 / week sales loss",
+        "fix": "1. Cross-check with impulse data (D0024 also down -8.5%, -4.1%)—may indicate broader shrinkflation/OOH. 2. Audit planogram compliance—confirm sizes/ranges facing are current. 3. Contact category manager—any delistings or supplier changes last 6 weeks? 4. Check competitor promotional activity (Dunnes, Tesco) on shampoo/deodorant. 5. Flag to merchandising: personal care needs refresh or promotional support."
       },
       {
-        "title": "Own-Brand Volume Leakage Despite Margin Focus",
-        "impact": "€4,600–8,000 / week YTD (own-brand qty down 3–11%, sales down 1–7%, but margin not recovering margin gap)",
-        "fix": "(1) Category-level analysis: which own-brand SKUs driving decline? (confectionery, dairy, grocery?); (2) Compare own-brand price delta vs. leading competitor; if >2%, reposition; (3) Check shelf visibility & signage at Palmerstown (lowest performance); (4) Trial premium own-brand line (Signature range) to offset volume."
+        "title": "Beer/wine/spirits systematic underperformance (-13–15%)",
+        "impact": "€6,000–7,000 / week group-wide",
+        "fix": "1. Pull competitor mystery shop data (Dunnes, Tesco, Lidl) for spirits/beer pricing week of 19–25 May. 2. Check if HQ ran simultaneous promotion elsewhere (e.g., online, cash&carry) cannibalizing store footfall. 3. Review store promotions log—confirm on-shelf pricing matches advertised. 4. Analyse mix: are customers trading down to cider/RTD? Check impulse soft drinks data (also weak). 5. Escalate to commercial: is category facing external demand shock (weather, competitor launch) or internal issue?"
       }
     ],
     "actions": {
       "urgent": [
         {
           "type": "issue",
-          "text": "Pull meat department cost variance report (YoY, this week) vs. selling prices by line (pork, beef, lamb, chicken, fish) by EOD; escalate to buying if cost >2% adverse."
-        },
-        {
-          "type": "issue",
-          "text": "Audit deli prepack waste data (Balbriggan/Skerries last 8 weeks); if >20%, do not re-list; if <15%, trial small restock Mon/Wed/Fri with fresh baking angle."
+          "text": "DELI SUPPLY AUDIT: Skerries manager to inspect delicatessen meats stock quality, shelf life, and staffing schedule TODAY. If quality fail confirmed, escalate to supply chain; if staffing issue, submit emergency hours request."
         },
         {
           "type": "warning",
-          "text": "Confirm Week 20 calendar (bank holiday, school break, GAA/sporting event) vs. footfall variance; cross-check vs. competitor promotions and own email blast/ loyalty data."
+          "text": "CHILLED FRUIT ROOT CAUSE: Finance/Supply to contact HQ within 24 hours re: chilled fruit import status. If supply constrained through summer, request contingency planogram and promotional ceiling for June–August."
         }
       ],
       "today": [
-        "Circulate meat serveover pricing audit request to store managers (pork, beef, lamb line-by-line, cost & RRP vs. LY same week); due 9am tomorrow.",
-        "Request weather forecast & confirmed chilled fruit intake plan for week 21–22 from supply chain; brief traders by 2pm.",
-        "Pull top 10 own-brand SKUs by loss (Palmerstown, Balbriggan) and run shelf audit (visibility, pricing, signage) this afternoon; photo evidence required.",
-        "Book call with Palmerstown store manager to review 10–11am foot traffic data (door counter) past 4 weeks and validate calendar/competitor factors by 3pm.",
-        "Email all three stores: confirm deli strategy (prepack Y/N, hot prepack focus, made-fresh messaging) by EOD; gather any local insight on customer feedback.",
-        "Schedule analyst deep-dive on Skerries edible grocery +9.6% success factors (promotions, category mix, supply timing) for replication brief Wed morning."
+        "Palmerstown: Audit personal care facing/range—confirm planogram current, check competitor pricing on deodorant/shampoo.",
+        "Balbriggan: Measure deli meats shelf life and waste %—compare to same week last year; request any recent delistings from category manager.",
+        "Skerries: Deep-dive deli labour cost—pull shift-by-shift payroll for week 21 vs. week 21 LY; identify if hours cut.",
+        "GROUP: Pull beer/wine promotional calendar for week of 19–25 May 2025 and week 21 2026—identify any changes or competitor activity.",
+        "GROUP: Request chilled fruit suppliers' SLA compliance report—confirm lead times and quality scores vs. last year.",
+        "Palmerstown: Review deli hot food +7.9%—interview deli manager on what's driving success; replicate at Balbriggan/Skerries."
       ],
       "compliance": [
         {
           "type": "warning",
-          "text": "Food Safety: Deli prepack discontinuation may indicate shelf-life or labelling issue; confirm HACCP review completed and document any corrective action taken before any re-listing."
+          "text": "WASTE THRESHOLD: Balbriggan dairy waste at 1.51% (above typical 1.2% benchmark). Audit waste reporting—confirm counts accurate and not masking shrink. Escalate to store manager if trend continues."
         },
         {
           "type": "warning",
-          "text": "Promotions Governance: Meat serveover margin collapse may reflect undocumented or unapproved promotional activity (e.g., store-level markdown beyond corporate approval). Audit promotional authority and POS override logs at Palmerstown/Balbriggan."
+          "text": "SHELF LIFE RISK: Produce and deli margin compression + weak sales may indicate aggressive date management. Confirm all marked-down stock is correctly signed/priced per SuperValu regs. Risk: customer complaint, brand damage."
         }
       ]
     },
     "cross": [
       {
-        "title": "Produce–Bakery–Deli Weather Cascade",
-        "why": "Cold/wet weather historically drives hot food (bakery, soup, coffee) UP and fresh produce DOWN. Current data shows produce -14.6% (Palmerstown), bakery -9.0%, deli -3.6%. This counter-intuitive pattern (hot food also down) suggests weather alone is not the driver—possible loss of tourist/weekend footfall at Skerries and corporate lunch volume at Dublin stores.",
-        "action": "Segment sales by daypart (lunchtime vs. evening, weekday vs. weekend) for past 4 weeks. If weekend/tourist soft, confirm summer holiday patterns and front-load summer promos (BBQ, picnic bundles) to Skerries for week 21. If lunch soft, execute corporate account recovery calls by Friday."
+        "title": "Deli–Produce–Bakery triangle: freshness chain integrity",
+        "why": "Weak deli (esp. Skerries -19.5%), weak chilled fruit (-21–24%), and soft bakery suggest common root—either supply cold-chain failure, or store environment (chiller temps). If one fails, all three suffer margin & waste.",
+        "action": "Facilities check: temperature data for deli chiller, produce ambient, and bakery proof box for week of 19–25 May. If any 0.5°C above spec, escalate to maintenance. Parallel: ask deli team re: any comments on produce/fruit condition on delivery."
       },
       {
-        "title": "Margin Architecture Stress: Own-Brand & Serveover Both Failing",
-        "why": "Palmerstown own-brand down 6.7% (qty -11.2%), meat serveover margin -2.99 pp, bakery scratch bakery down 15.5%. Margin expansion via own-brand and premium food-to-go should be offsetting volume decline, but both are simultaneously weak. Suggests pricing power loss across categories, not category mix issue.",
-        "action": "Conduct competitive price benchmark (Dunnes, Tesco, local competitors) on 5 key SKUs in each department (own-brand, meat serveover, bakery) by Thursday. If Moriarty is 2%+ higher on own-brand, reposition; if higher on meat, confirm quality/freshness perception with shopper feedback."
+        "title": "Impulse vs. structured grocery split",
+        "why": "Impulse (D0024) weak across all stores (-3 to -8.5%), but edible grocery (D0025) mixed: Palmerstown -1.4%, Balbriggan +4.8%, Skerries +8.1%. Suggests either impulse shelving issue (planogram, facing) or basket trading down from impulse to budget edible (own-brand driving Skerries +1.2%).",
+        "action": "Audit impulse displays (confectionery, crisps, soft drinks) at each store vs. planogram photo. Confirm facings, rotation, and price signage current. Check if competitor Lidl/Aldi impulse endcaps are better positioned. If Skerries edible +8.1% driven by own-brand, test branded tier reduction at other stores."
       },
       {
-        "title": "Skerries Resilience Playbook",
-        "why": "Skerries flat weekly (-0.2%) while Dublin stores down 6–7%, despite similar product mix and market conditions. Edible grocery +9.6% YTD, fruit +15.4% weekly, waste low at 1.07%, own-brand stable at -1.2%. Indicates superior promotional execution, supply discipline, or community loyalty.",
-        "action": "Export Skerries promo calendar, supply spec (freshness lead times, local sourcing %), and loyalty redemption rate to category teams. Trial top 3 Skerries promos at Palmerstown/Balbriggan in weeks 21–22. Survey Skerries customers on top 3 reasons for visit to benchmark against Dublin stores."
+        "title": "Deli synergy leverage: Palmerstown success model",
+        "why": "Palmerstown deli +4.8% (hot food +7.9%, sandwiches +34.6%) vs. Balbriggan -10.6% and Skerries -19.5%. Palmerstown's commuter lunchtime play is working; deli manager or team driving incremental sales. Knowledge leakage = missed £6k+ opportunity.",
+        "action": "1. Interview Palmerstown deli team: what changed in past 8 weeks (staff, menu, merchandising, pricing)? 2. Document best-practice: sample menu, promotion, labour scheduling. 3. Replicate at Balbriggan (family audiences) and Skerries (tourist season footfall). 4. Escalate to Regional: consider deli manager rotation or secondment of high performer."
       },
       {
-        "title": "Transaction Elasticity & Lunchtime Peak Vulnerability",
-        "why": "Palmerstown/Balbriggan transaction count down 181–172 units (9–15%) in 10–11am slot; average spend also down €0.80–0.96. Suggests simultaneous loss of shopper count AND basket size in commuter prime time. Skerries shows flat transactions & spend, indicating no footfall pressure.",
-        "action": "Map Palmerstown/Balbriggan lunchtime promotions vs. Skerries equivalent week. If Skerries running stronger lunch bundles, replicate immediately. If not, run urgent discount test (meal deal or bundle) Mon–Fri week 21 and measure transaction lift. Link back to any corporate account/office openings/closures in catchment."
+        "title": "Own-brand momentum at Skerries (+1.2%) vs. decline elsewhere",
+        "why": "Skerries own-brand +1.2% sales, Palmerstown -4.5%, Balbriggan -5.0%. Skerries customer base or store environment appears more receptive. May indicate affluent/price-insensitive (premium own-brand) or strong private label penetration strategy locally.",
+        "action": "Pull own-brand mix by line (D0025, D0026) for Skerries vs. peers. Identify which SKUs outperforming (e.g., signature ranges, organic, premium). Test top 5 Skerries performers at Balbriggan with local promotion. If Skerries has better own-brand display/signage, replicate planogram at other stores."
       }
     ],
     "diagnosis": {
-      "wrong": "Across-the-board margin collapse in meat serveover (especially pork, lamb, chicken) combined with structural deli discontinuation and lunchtime footfall loss at Dublin stores suggests neither weather nor promotion but rather a competitive pricing shock or loss of customer traffic from offices/corporate accounts.",
-      "why": "If weather were the sole driver, hot food (bakery, deli, coffee) should be UP. Instead, all three categories are DOWN. Skerries' resilience (flat sales, stable margin, strong edible grocery) despite identical weather proves the issue is localised to Dublin stores. Lunchtime transaction collapse (-15% at Palmerstown 10–11am) points to commuter footfall loss, not basket size weakness. Meat margin bleed across all three stores (even Skerries) indicates either (a) competitor opened/expanded with aggressive pricing in North Dublin/Dublin region, or (b) corporate cost increase (e.g., labour, supply chain) that corporate margin policy has not yet authorised pass-through on.",
-      "fix": "Immediate action plan: (1) Audit Palmerstown/Balbriggan competitive pricing on beef, pork, lamb vs. Dunnes/Tesco by EOD Thursday; (2) Pull Palmerstown/Balbriggan foot traffic data (door counter, loyalty app logins) for past 6 weeks, overlay with calendar (bank holidays, school breaks, competitors' ad spend) to confirm footfall loss is real and date-correlated; (3) If footfall confirmed lost, execute corporate account outreach (call top 20 office parks/banks) to identify churn and run retention bundle promo; (4) If competitor pricing confirmed aggressive, submit emergency repricing request for beef/pork/lamb to buying; interim mark-down on top 3 SKUs allowed within margin tolerance (max 1.5 pp loss authorised); (5) Restart deli prepack only if waste <15% and margin >25%; otherwise shift resources to made-fresh sandwiches and hot prepack to recapture deli revenue; (6) Brief all three store managers on summer seasonal opportunity (Skerries playbook) and lock down week 21 promotional calendar by Friday."
+      "wrong": "Broad-based demand collapse (-5.2% group, -6.5% Palmerstown) masking store-specific operational failures in deli (Skerries -37.6% meats), produce supply (chilled fruit -21–24%), and margin compression (meat -3–4pp). Not a pricing or format issue—transaction counts weak across all stores (hourly data shows -29 to -138 transactions YoY), confirming footfall loss.",
+      "why": "EXTERNAL: Late May typically warm/dry in Ireland (promotes fresh produce, BBQ, soft drinks)—yet produce DOWN and beer/wine DOWN, suggesting either (a) supply shortage masking demand, (b) competitor major promotion or opening nearby, or (c) calendar shift in customer behaviour (e.g., school holiday shopping earlier/online). INTERNAL: Deli margin erosion and staffing gaps (Skerries meats collapse, Balbriggan deli -10.6%) point to rostering cuts or labour cost controls post-budget. Chilled fruit decline is parallel across Palmerstown and Balbriggan—unlikely coincidence, suggests supply or quality issue not captured in alerts.",
+      "fix": "IMMEDIATE (Today–48hrs): (1) Skerries deli manager inspect meats stock quality and age; pull 6-week labour cost trend vs. LY. (2) Contact HQ supply re: chilled fruit import/quality status; request week 21 2025 supplier SLA compliance. (3) Pull beer/wine promotional calendar and competitor mystery shop. (4) Palmerstown deli team debrief: document what's working (lunchtime focus, menu, pricing), prepare replication pack. (5) Audit impulse planograms vs. standard—check Skerries own-brand driving growth vs. impulse weakness. SHORT-TERM (Week of 27 May): (1) Implement chilled fruit contingency—test promotional discount 10% if supply adequate, or shift space if constrained. (2) Deli labour productivity reset: Balbriggan/Skerries align hours to Palmerstown lunchtime peak model. (3) Beef margin recovery: review pricing vs. competitors; trial bundle (beef + sides) to drive volume. (4) Personal care refresh: coordinate with category manager on delistings, test promotional tier. (5) Beer/wine: confirm no internal pricing/promo conflict; escalate to commercial if external competitor action confirmed."
     },
     "waste": {
-      "summary": "Total waste across the Moriarty Group for the week of 2026-05-19 reached €3,847.86, with Palmerstown accounting for €1,324.48, Balbriggan €1,156.64, and Skerries €1,366.74. Produce categories (fresh herbs, vegetables, salads, and fruit) are the primary waste drivers across all stores, followed by dairy and prepared meals. Critical ordering and demand forecasting failures are evident, particularly with high-value items showing minimal retail sales despite significant waste quantities.",
-      "summary_paragraph_2": "Markdown dependency is particularly severe in Balbriggan where butter products (Connacht Gold, Avonmore) show 33-16 units wasted with only 3-5 units sold at full price, indicating chronic overstock. Palmerstown and Skerries demonstrate similar patterns with specialty products like fresh mozzarella, organic salmon, and prepared meals being ordered in excess of store demand. Immediate action required on product ordering protocols, shelf-life management for perishables, and demand-led purchasing to prevent further margin erosion.",
+      "summary": "Balbriggan and Skerries stores generated significant waste during the week of 2026-05-26, with combined losses exceeding €1,400. Balbriggan's waste is driven by pet food (Whiskas, €279), bakery items (demi baguettes, €143), and confectionery with poor sell-through (Cadbury Caramel, Charleville Cheddar). Skerries shows acute produce and deli waste, particularly salad bar (€149 on 11 units), fresh stuffing (€45 waste despite 55 retail sales), and black pudding (€54 waste against only 4 retail units). Palmerstown provided no data for analysis.",
       "stores": [
         {
           "name": "Palmerstown",
-          "total_waste_euro": "1324.48",
-          "top_offenders": [
-            {
-              "product": "1755585 000 SUPERVALU FRESH IRISH BUFFALO STYLE MOZZARELLA | 600GRM",
-              "waste_qty": 30,
-              "waste_euro": "119.70",
-              "reduction_qty": 0,
-              "retail_qty": 1,
-              "insight": "CRITICAL ORDERING FAILURE: 30 units wasted with only 1 unit sold at retail. This high-value specialty cheese has zero markdown usage. Immediate action: reduce standing order by 90%, implement demand forecasting review, consider removing from permanent range if demand cannot support stocking."
-            },
-            {
-              "product": "1608093 000 FILL TO THE BRIM €5.25 PREPARED MEAL | 1 PCE",
-              "waste_qty": 20,
-              "waste_euro": "92.51",
-              "reduction_qty": 0,
-              "retail_qty": 0,
-              "insight": "TOTAL SELL-THROUGH FAILURE: 20 units wasted, zero retail sales. This meal has no customer traction. Action: discontinue ordering immediately, review shelf placement and visibility, or replace with alternative prepared meals that have proven sales velocity."
-            },
-            {
-              "product": "1093167 000 SV MUSHROOMS | 400GRM",
-              "waste_qty": 23,
-              "waste_euro": "34.98",
-              "reduction_qty": 6,
-              "retail_qty": 53,
-              "insight": "POSITIVE PATTERN: Despite 23 units waste, strong retail sales of 53 units indicate this is a legitimate fresh produce item with expected spoilage. However, waste-to-retail ratio of 4:10 is high. Action: review delivery frequency, shift to 300g packs, or reduce weekly order by 15%."
-            },
-            {
-              "product": "1033061 000 SV ORGANIC LEAF SPINACH | 200G",
-              "waste_qty": 15,
-              "waste_euro": "43.35",
-              "reduction_qty": 0,
-              "retail_qty": 0,
-              "insight": "HIGH-VALUE WASTE WITH ZERO SALES: 15 units completely wasted, suggesting either expired stock or display issues. Action: audit current stock immediately, implement date-rotation protocols, consider switching to pre-packed salads with longer shelf-life."
-            },
-            {
-              "product": "1637220 001 SV FRESH IRISH CHICKEN FILLET PORTION | 1KGM",
-              "waste_qty": 15,
-              "waste_euro": "166.35",
-              "reduction_qty": 0,
-              "retail_qty": 10,
-              "insight": "MARKDOWN AVOIDANCE PROBLEM: High waste value (€166) with minimal retail sales (10 units) and zero reductions suggest poor sell-through and no promotional action taken. Action: implement automated markdown protocols at 48-hour mark, review packaging size (1kg may be too large), reduce daily order quantity."
-            }
-          ],
-          "category_breakdown": "Produce (mushrooms, spinach, apples, pears, grapes, broccoli) accounts for approximately 35% of Palmerstown's waste. Dairy and specialty items (mozzarella, prepared meals) represent 28% of waste value despite lower unit counts due to high price points. Bakery items (batch rolls, pasta) show reasonable sell-through rates relative to waste. Meat products (chicken, lamb kofta, duck) demonstrate strong value waste (€530+) with insufficient retail sales, indicating ordering disconnected from store demand patterns.",
-          "action": "PRIORITY 1 - Implement daily order review for high-value items (mozzarella, chicken fillets, prepared meals) with retail sales data mandatory before ordering. PRIORITY 2 - Activate automatic 50% markdown at 48-hour mark for all fresh produce to prevent waste escalation. PRIORITY 3 - Audit standing orders on specialty items (organic spinach, buffalo mozzarella) and reduce by 40% pending 3-week sales trend analysis."
+          "total_waste_euro": "No data available",
+          "top_offenders": [],
+          "category_breakdown": "Unable to assess - no waste data provided for this store.",
+          "action": "URGENT: Obtain waste data for Palmerstown (356) to complete waste analysis and identify store-specific ordering issues."
         },
         {
           "name": "Balbriggan",
-          "total_waste_euro": "1156.64",
+          "total_waste_euro": "€1,099.59",
           "top_offenders": [
             {
-              "product": "1017950 001 CONNACHT GOLD UNSALTED BUTTER | 227GRM",
-              "waste_qty": 33,
-              "waste_euro": "95.37",
+              "product": "WHISKAS RICH IN CHICKEN 3 STICKS 18GRM",
+              "waste_qty": 114,
+              "waste_euro": "€278.98",
+              "reduction_qty": null,
+              "retail_qty": null,
+              "insight": "Critical ordering problem - 114 units wasted with zero retail sales indicates severe overstock of pet food. No markdown activity suggests product not positioned or promoted. Reduce order quantities immediately and review shelf allocation."
+            },
+            {
+              "product": "DEMI BAGUETTES 4PCE",
+              "waste_qty": 51,
+              "waste_euro": "€142.80",
               "reduction_qty": 0,
-              "retail_qty": 5,
-              "insight": "SEVERE MARKDOWN DEPENDENCY FAILURE: 33 units wasted with only 5 retail sales and ZERO reduction markdowns applied. Store is choosing to waste €95 rather than reduce price. Action: eliminate standing butter orders immediately, implement 3-for-2 promotional strategy, shift to smaller 200g packs, audit competitor butter pricing."
+              "retail_qty": 132,
+              "insight": "High bakery waste (27% waste rate) despite decent retail sales of 132 units. Suggests over-ordering relative to demand patterns. Review daily production quantities and consider shorter shelf-life planning for bakery items."
             },
             {
-              "product": "1003221 002 SV BABY LEAF SALAD | 100GRM",
-              "waste_qty": 45,
-              "waste_euro": "56.25",
-              "reduction_qty": 0,
-              "retail_qty": 54,
-              "insight": "MIXED SIGNAL: High waste (45 units) but strong retail sales (54 units). This appears to be a legitimate fresh salad with inherent spoilage. However, waste represents 45% of volume. Action: reduce order frequency from daily to 5x weekly, implement end-of-day markdown protocol at 20% to clear aging stock."
-            },
-            {
-              "product": "1018395 000 AVONMORE 100% IRISH CREAMERY BUTTER | 454GRM",
-              "waste_qty": 16,
-              "waste_euro": "79.84",
-              "reduction_qty": 0,
-              "retail_qty": 3,
-              "insight": "MARKDOWN AVOIDANCE - PREMIUM SIZE FAILURE: 16 units wasted with only 3 retail sales. The 454g format is too large for Balbriggan customer base. No reductions applied. Action: discontinue 454g format immediately, stock only 227g, implement 25% markdown on any remaining oversized units today."
-            },
-            {
-              "product": "1003336 000 SUPERVALU CAESAR SALAD BAG | 220GRM",
-              "waste_qty": 28,
-              "waste_euro": "59.74",
-              "reduction_qty": 18,
-              "retail_qty": 62,
-              "insight": "POSITIVE MARKDOWN DISCIPLINE: 28 waste units but 18 reductions applied and 62 retail sales shows active inventory management. Waste-to-sales ratio of 31% is acceptable for fresh salads. Action: maintain current ordering but monitor daily to ensure reductions triggered at optimal time windows."
-            },
-            {
-              "product": "1699269 000 ROSIE & JIM GF GARLIC KIEV TRAYPACK | 300GRM",
-              "waste_qty": 17,
-              "waste_euro": "91.63",
+              "product": "CADBURY CARAMEL BAR 45GRM",
+              "waste_qty": 21,
+              "waste_euro": "€38.42",
               "reduction_qty": 0,
               "retail_qty": 1,
-              "insight": "COMPLETE ORDERING MISMATCH: 17 units wasted with only 1 retail sale. Gluten-free prepared meal has no customer demand at Balbriggan. Action: cease all orders immediately, review customer demographic data, remove from planogram, reallocate shelf space to proven sellers like chicken fillets."
+              "insight": "Extreme ordering failure - 21 units wasted vs. only 1 retail sale. Confectionery with poor demand. Remove from standard order or reduce to single-unit replenishment until demand stabilizes."
+            },
+            {
+              "product": "CHARLEVILLE SELECT WHITE CHEDDAR 200GRM",
+              "waste_qty": 20,
+              "waste_euro": "€72.00",
+              "reduction_qty": 0,
+              "retail_qty": 2,
+              "insight": "Specialty cheese with 10:1 waste-to-sales ratio indicates poor shelf placement, low visibility or wrong customer profile. Consider discontinuation or trial smaller pack sizes with promotional markdown."
+            },
+            {
+              "product": "M&MS PEANUT CHOCOLATE POUCH 112GRM",
+              "waste_qty": 29,
+              "waste_euro": "€82.52",
+              "reduction_qty": 0,
+              "retail_qty": 29,
+              "insight": "100% waste rate with retail sales equal to waste suggests excessive opening of multi-packs or short shelf-life issues. Monitor display and rotation closely; consider reducing case order depth."
             }
           ],
-          "category_breakdown": "Dairy (butter, cheese) dominates Balbriggan waste at 43% by euro value, with systematic failure to apply markdowns on premium formats. Fresh salads and produce account for 32% of waste but show better retail sales conversion, indicating inherent perishability rather than ordering failure. Prepared meals (soups, Kiev) represent 18% waste with near-zero sell-through, suggesting severe demand forecasting disconnect. Bakery items perform well relative to waste indicating appropriate stock levels.",
-          "action": "PRIORITY 1 - IMMEDIATE: Halt all butter orders (all formats) for 2 weeks; conduct customer demographic analysis to determine if premium butter range is appropriate for Balbriggan store size (374 units). PRIORITY 2 - Remove all prepared specialty items (Rosie & Jim, Happy Pear creamy soups) from standing orders and implement 30-day trial periods with daily P&L review before restocking. PRIORITY 3 - Implement mandatory markdown protocol: salads at 48hrs/20% off, perishables at 72hrs/30% off to prevent waste accumulation."
+          "category_breakdown": "Pet food and confectionery dominate waste (€361.50 combined), followed by bakery (€142.80) and specialty groceries. Pet food waste is critical - suggests wrong category stocking approach. Confectionery waste points to poor demand forecasting or shelf management in impulse categories. Bakery waste typical but controllable through production scheduling.",
+          "action": "Immediately halt standard ordering of Whiskas pet food and implement daily-only replenishment based on actual sales. Audit Cadbury Caramel and Charleville Cheddar SKU placement and customer demand - consider delisting if not core to store format."
         },
         {
           "name": "Skerries",
-          "total_waste_euro": "1366.74",
+          "total_waste_euro": "€793.56",
           "top_offenders": [
             {
-              "product": "1193153 000 BASIL | 50GRM",
-              "waste_qty": 32,
-              "waste_euro": "50.88",
+              "product": "SALAD BAR 1KGM",
+              "waste_qty": 11.05,
+              "waste_euro": "€149.06",
               "reduction_qty": 0,
-              "retail_qty": 81,
-              "insight": "ACCEPTABLE FRESH HERB WASTE: Despite 32 units wasted, strong retail sales of 81 units indicates this is expected spoilage for fresh herbs. Waste-to-sales ratio of 28% is normal for herbs. Action: maintain current ordering but implement twice-daily stock rotation, relocate to high-traffic area if not already, consider promotional bundling with other herbs."
+              "retail_qty": 1.4,
+              "insight": "CRITICAL: €149 waste on 11 units with only 1.4 retail sales is the highest-value waste item in group. Produce/fresh category operating at catastrophic loss. Immediately reduce daily prep quantities, review shelf-life, or consider outsourced salad bar service."
             },
             {
-              "product": "1026492 000 HOT BREADED CHICKEN FILLET | 1PCE",
-              "waste_qty": 30,
-              "waste_euro": "92.51",
+              "product": "DENNY PUDDING CHUBB BLACK 199GRM",
+              "waste_qty": 36,
+              "waste_euro": "€54.00",
               "reduction_qty": 0,
-              "retail_qty": 31,
-              "insight": "NEAR-BALANCED BUT CONCERNING: 30 units wasted with 31 retail sales indicates near 50% waste rate. This prepared hot item requires tighter production scheduling. Action: shift to on-demand preparation model, implement 4-hour shelf-life limit with mandatory markdowns at 2-hour mark, reduce batch sizes by 30%."
+              "retail_qty": 4,
+              "insight": "9:1 waste-to-sales ratio on meat/deli specialty item. Black pudding has poor demand at this location. Reduce order to 2-3 units weekly and test pricing/placement adjustments before full discontinuation."
             },
             {
-              "product": "1010111 000 SV APPLE TRAY [IRISH] | 6PCE",
-              "waste_qty": 20,
-              "waste_euro": "45.00",
-              "reduction_qty": 0,
-              "retail_qty": 1,
-              "insight": "CRITICAL ORDERING FAILURE: 20 units wasted with only 1 retail sale. Multi-pack format not suited to Skerries customer base. Action: discontinue apple trays immediately, shift to loose apples (single piece) which show better sell-through, audit all multi-packs for similar underperformance."
+              "product": "FRESH STUFFING 1PCE",
+              "waste_qty": 21,
+              "waste_euro": "€44.88",
+              "reduction_qty": 15,
+              "retail_qty": 55,
+              "insight": "Bakery/fresh category with 27% waste rate despite 55 retail sales and 15 reductions. Shows markdown dependency - customers only buy when reduced. Consider lower initial price point or reduce order quantities to align with unmarkdowned demand only."
             },
             {
-              "product": "1552293 003 THE HAPPY PEAR CREAMY ROOT VEG SOUP | 400GRM",
-              "waste_qty": 9,
-              "waste_euro": "26.91",
-              "reduction_qty": 0,
-              "retail_qty": 1,
-              "insight": "ZERO DEMAND PREPARED MEAL: 9 units wasted with only 1 retail sale across two stores (also in Balbriggan). This artisanal soup brand has no traction. Action: remove from all three stores immediately, identify 5 alternative ready-meal suppliers with proven sales history in comparable stores."
+              "product": "SV BANANAS LOOSE NORMAL 1KGM",
+              "waste_qty": 12,
+              "waste_euro": "€45.52",
+              "reduction_qty": 28.87,
+              "retail_qty": 886.45,
+              "insight": "Produce category with strong sales (886 units) but 3% waste and heavy reduction dependency (28.87 units). Indicates ripening/quality issues rather than demand problem. Review supply chain temperature control and delivery frequency."
             },
             {
-              "product": "1959413 000 BUYERS FLOWERS",
+              "product": "SV SMOKED BACON EYE LOIN 650GRM",
               "waste_qty": 11,
-              "waste_euro": "67.75",
+              "waste_euro": "€71.39",
               "reduction_qty": 0,
-              "retail_qty": 0,
-              "insight": "COMPLETE FLOWER RANGE DISCONNECT: 11 units wasted with zero retail sales. Flowers require daily demand that Skerries (424 units) cannot sustain. Action: discontinue flowers entirely or reduce to 2x weekly flower deliveries on Thu/Sat only, focus on patio plants which show positive sales (Palmerstown: 5 units sold)."
+              "retail_qty": 1,
+              "insight": "Premium meat product with 11:1 waste-to-sales ratio. Suggests wrong pack size or customer profile mismatch at this store. Trial smaller 300-400g packs or remove from standard order."
             }
           ],
-          "category_breakdown": "Produce and fresh herbs account for 38% of Skerries waste (basil, apples, strawberries, cherry tomatoes) with mixed results - herbs show strong sales while packaged fruits (apple trays) show zero traction. Prepared meals and specialty items (soups, pestos, flowers) represent 28% of waste with near-total sell-through failure, indicating category mismatch with store demographics. Meat/deli products (chicken fillets, bacon, ham) show 22% waste with reasonable retail sales, suggesting portion-size or production-volume calibration issues. Non-perishable items (pasta, breadcrumbs) perform well relative to waste.",
-          "action": "PRIORITY 1 - Audit entire 'specialty prepared meals' and 'artisanal products' category (Happy Pear soups, pestos, flowers) across all three stores; discontinue items with less than 3:1 retail-to-waste ratio. PRIORITY 2 - Shift Skerries ordering to 'smaller format, higher velocity' model: single-piece produce instead of multi-packs, limit prepared hot items to on-demand production, reduce specialty cheese range by 40%. PRIORITY 3 - Implement store-specific demand models: Skerries clearly favors convenience items (batch rolls, sausage rolls, loose items) over premium/specialty; recalibrate planograms accordingly."
+          "category_breakdown": "Produce and fresh items dominate waste (€245+ including salad bar, bananas, herbs), followed by meat/deli (€160+ including black pudding, bacon, ham products), and bakery/fresh prepared (€87). Skerries shows pattern of over-ordering fresh/perishable items with poor demand forecasting. Produce category particularly problematic with high waste despite good sales volume.",
+          "action": "Immediately scale back salad bar daily preparation - target 50% of current volume and test demand response. Audit all fresh prepared items (stuffing, salads, deli meats) for shelf-life and reorder points. Implement daily ordering for produce to reduce spoilage, particularly bananas showing 3% waste rate."
         }
       ],
       "group_actions": [
-        "DEMAND FORECASTING OVERHAUL: Implement store-specific demand models using 12-week sales history. All three stores show ordering disconnected from retail sales velocity. Require category managers to validate orders weekly against actual Retail Qty data before placement.",
-        "MARKDOWN PROTOCOL STANDARDIZATION: Establish automatic markdown triggers: 48hrs old = 25% off, 72hrs old = 50% off, 96hrs old = donation/waste. Balbriggan's butter waste demonstrates systematic failure to apply markdowns. Non-negotiable implementation across all stores with daily compliance reporting.",
-        "SPECIALTY/PREMIUM CATEGORY RATIONALIZATION: 'The Happy Pear' soups, premium butter formats, gluten-free specialty items, and flowers show zero-to-minimal sell-through across stores. Conduct immediate SKU audit and remove bottom 15% of prepared meals, specialty items, and premium formats. Reallocate shelf space to proven high-velocity items (batch rolls, sausage rolls, loose produce showing 80%+ retail sales).",
-        "FRESH PRODUCE ORDERING CALIBRATION: Herbs, salads, and vegetables show 25-45% waste rates across stores. Shift to 5x weekly delivery cycles instead of daily for all fresh produce, implement end-of-day markdown protocol (20% at 6pm, 40% at 8pm), and reduce initial order quantities by 25% pending 3-week stabilization period.",
-        "PERISHABLE PRODUCTION CONTROLS: Hot prepared items (breaded chicken, rotisserie chicken) and baked goods show 25-30% waste rates. Implement on-demand production model: produce to order based on hourly sales history, set 4-hour maximum shelf-life with mandatory 50% markdown at 2-hour mark. Track production waste separately from ordering waste.",
-        "CROSS-STORE PRODUCT HARMONIZATION: Buffalo mozzarella (wasted 30 units in Palmerstown, 12 in Balbriggan) and Happy Pear soups show consistent failure across multiple stores, indicating brand/product category mismatch with store demographics. Establish single 'hold' list of products failing across 2+ stores pending 30-day removal review. Prevent repeat ordering of proven non-sellers."
+        "Implement store-level waste tracking in Palmerstown immediately to identify ordering failures; current data gap prevents group-wide benchmarking.",
+        "Audit and realign SKU ordering for pet food (Balbriggan), specialty cheeses, and premium meats across all stores - high waste suggests wrong customer format assumptions or poor shelf placement rather than demand.",
+        "Review fresh/produce supply chain: Skerries and Balbriggan show patterns of over-preparation and over-ordering of perishables. Introduce daily ordering/preparation for salad bar, bakery, and fresh cut items rather than bulk weekly prep.",
+        "Establish markdown dependency audit - flag items like Fresh Stuffing and Bananas where reduction qty is high; implement testing of lower entry prices vs. deeper markdowns to reduce total waste/reduction cost.",
+        "Pilot SKU rationalization for poor-performing specialty items (Cadbury Caramel, Charleville Cheddar, Denny Black Pudding, Smoked Bacon Eye Loin) - consider delisting or pack-size changes at stores showing <5 units/week demand."
       ]
     }
   }
