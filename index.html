@@ -60,26 +60,7 @@ body{font-family:'DM Sans',sans-serif;background:#0d1f13;color:white;min-height:
 </style>
 </head>
 <body>
-<script>
-(function() {
-  var raw = localStorage.getItem('portal_session');
-  if (!raw) { window.location.href = 'https://aarondoyle2026.github.io/login.html'; return; }
-  var session;
-  try { session = JSON.parse(raw); } catch(e) {
-    localStorage.removeItem('portal_session');
-    window.location.href = 'https://aarondoyle2026.github.io/login.html';
-    return;
-  }
-  if (!session || !session.user) {
-    window.location.href = 'https://aarondoyle2026.github.io/login.html';
-    return;
-  }
-  window.PORTAL_USER = session.user;
-  window.PORTAL_ROLE = session.user.role;
-  window.PORTAL_STORE = session.user.store_code;
-  window.PORTAL_STORES = session.user.allowed_stores || [];
-})();
-</script>
+
 
 <div class="header">
   <div class="logo-mark">🛒</div>
