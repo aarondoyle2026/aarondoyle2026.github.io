@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <script>
-(function(){if(!localStorage.getItem('portal_session')){window.location.replace('https://aarondoyle2026.github.io/login.html');}})();
+(function(){var a=sessionStorage.getItem('portal_auth_token');if(a){sessionStorage.removeItem('portal_auth_token');}else{localStorage.removeItem('portal_session');window.location.replace('https://aarondoyle2026.github.io/login.html?to='+encodeURIComponent(window.location.href));}})();
 </script>
 
 <meta charset="UTF-8">
@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:'DM Sans',sans-serif;background:#0d1f13;color:#f0ede6;min-height:100vh;
+  body{font-family:'DM Sans',sans-serif;background:#1a0000;color:#f0ede6;min-height:100vh;
     background-image:radial-gradient(ellipse at 15% 10%,rgba(45,122,79,.15) 0%,transparent 55%),
     radial-gradient(ellipse at 85% 85%,rgba(124,92,191,.08) 0%,transparent 55%);}
 
@@ -25,7 +25,7 @@
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.7);}}
 
 .loading-screen{padding:60px 20px;text-align:center;}
-.loading-orb{width:80px;height:80px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#3da066,#0d1f13);margin:0 auto 24px;animation:orbPulse 2.4s ease-in-out infinite;box-shadow:0 0 50px rgba(45,122,79,.45);}
+.loading-orb{width:80px;height:80px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#3da066,#1a0000);margin:0 auto 24px;animation:orbPulse 2.4s ease-in-out infinite;box-shadow:0 0 50px rgba(45,122,79,.45);}
 @keyframes orbPulse{0%,100%{transform:scale(1);box-shadow:0 0 50px rgba(45,122,79,.45);}50%{transform:scale(1.1);box-shadow:0 0 80px rgba(45,122,79,.7);}}
 .loading-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;color:#8fa899;text-transform:uppercase;margin-bottom:8px;}
 .loading-step{font-size:13px;color:#3da066;min-height:20px;}
