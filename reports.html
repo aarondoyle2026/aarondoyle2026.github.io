@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <script>
-(function(){if(!localStorage.getItem('portal_session')){window.location.replace('https://aarondoyle2026.github.io/login.html');}})();
+(function(){var a=sessionStorage.getItem('portal_auth_token');if(a){sessionStorage.removeItem('portal_auth_token');}else{localStorage.removeItem('portal_session');window.location.replace('https://aarondoyle2026.github.io/login.html?to='+encodeURIComponent(window.location.href));}})();
 </script>
 
 <meta charset="UTF-8">
@@ -12,11 +12,11 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f6f8; color: #1a1a1a; min-height: 100vh; }
 
-  .header { background: #00703c; color: #fff; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+  .header { background: #e41e26; color: #fff; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
   .header h1 { font-size: 1.1rem; font-weight: 700; }
   .header-meta { font-size: .78rem; opacity: .85; }
 
-  .report-nav { background: #005a30; padding: 0 16px; display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .report-nav { background: #c0161c; padding: 0 16px; display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .report-nav::-webkit-scrollbar { height: 3px; }
   .report-nav::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); }
   .rnav-tab { padding: 12px 16px; font-size: .78rem; font-weight: 600; color: rgba(255,255,255,0.65); cursor: pointer; border-bottom: 3px solid transparent; white-space: nowrap; transition: color .2s, border-color .2s; }
@@ -25,20 +25,20 @@
 
   .store-bar { background: #fff; border-bottom: 2px solid #e0e0e0; padding: 0 20px; display: flex; gap: 0; }
   .store-tab { padding: 12px 24px; font-size: .88rem; font-weight: 600; color: #555; cursor: pointer; border-bottom: 3px solid transparent; transition: color .2s, border-color .2s; user-select: none; white-space: nowrap; }
-  .store-tab:hover { color: #00703c; }
-  .store-tab.active { color: #00703c; border-bottom-color: #00703c; }
+  .store-tab:hover { color: #e41e26; }
+  .store-tab.active { color: #e41e26; border-bottom-color: #e41e26; }
 
   .main { padding: 20px; max-width: 1200px; margin: 0 auto; }
 
   .status-bar { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 10px 16px; margin-bottom: 16px; font-size: .8rem; color: #555; display: flex; align-items: center; gap: 10px; }
   .status-dot { width: 9px; height: 9px; border-radius: 50%; background: #ccc; flex-shrink: 0; }
-  .status-dot.ok { background: #00703c; }
+  .status-dot.ok { background: #e41e26; }
   .status-dot.err { background: #d32f2f; }
   .status-dot.loading { background: #ff9800; }
 
   .table-wrap { background: #fff; border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.06); overflow-x: auto; }
   .report-table { width: 100%; border-collapse: collapse; font-size: .82rem; min-width: 500px; }
-  .report-table thead th { background: #005a30; color: #fff; font-weight: 700; padding: 10px 12px; text-align: right; font-size: .75rem; text-transform: uppercase; letter-spacing: .3px; white-space: nowrap; }
+  .report-table thead th { background: #c0161c; color: #fff; font-weight: 700; padding: 10px 12px; text-align: right; font-size: .75rem; text-transform: uppercase; letter-spacing: .3px; white-space: nowrap; }
   .report-table thead th:first-child { text-align: left; min-width: 180px; }
   .report-table tbody tr { border-bottom: 1px solid #f0f0f0; }
   .report-table tbody tr:last-child { border-bottom: none; }
