@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <script>
-(function(){localStorage.removeItem('portal_session');window.location.replace('https://aarondoyle2026.github.io/login.html');})();
+(function(){if(!localStorage.getItem('portal_session')){window.location.replace('https://aarondoyle2026.github.io/login.html');}})();
 </script>
 
 <meta charset="UTF-8">
