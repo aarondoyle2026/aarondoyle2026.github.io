@@ -7,56 +7,56 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Moriarty Group – Docket System</title>
+<title>SuperValu – Docket System</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
-:root{--sv-green:#1a5e2a;--sv-green-light:#2d7a3e;--sv-red:#c8102e;--bg:#f4f5f0;--card:#ffffff;--border:#d8dbd2;--text:#1a1f18;--muted:#6b7266;--radius:12px;--shadow:0 2px 12px rgba(0,0,0,0.08);}
+:root{--sv-green:#e41e26;--sv-green-light:#c0161c;--sv-red:#c8102e;--bg:#f4f5f0;--card:#ffffff;--border:#d8dbd2;--text:#1a1f18;--muted:#6b7266;--radius:12px;--shadow:0 2px 12px rgba(0,0,0,0.08);}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 body{font-family:'DM Sans',sans-serif;background:#f4f5f0;color:#1a1f18;min-height:100vh;padding-bottom:120px;}
-.app-header{background:#1a5e2a;color:white;padding:14px 16px 12px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.2);}
+.app-header{background:#e41e26;color:white;padding:14px 16px 12px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.2);}
 .app-header .logo-row{display:flex;align-items:center;justify-content:space-between;}
 .app-header .brand{font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;}
 .app-header .sub{font-size:11px;opacity:0.7;margin-top:1px;}
-.sv-badge{background:white;color:#1a5e2a;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;letter-spacing:0.05em;}
-.store-bar{background:#2d7a3e;padding:8px 14px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;}
+.sv-badge{background:white;color:#e41e26;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;letter-spacing:0.05em;}
+.store-bar{background:#c0161c;padding:8px 14px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;}
 .store-bar::-webkit-scrollbar{display:none;}
 .store-btn{background:rgba(255,255,255,0.18);border:1.5px solid rgba(255,255,255,0.35);color:white;padding:6px 16px;border-radius:20px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;white-space:nowrap;cursor:pointer;transition:all 0.15s;}
-.store-btn.active{background:white;color:#1a5e2a;border-color:white;}
+.store-btn.active{background:white;color:#e41e26;border-color:white;}
 .nav-tabs{display:flex;background:white;border-bottom:2px solid #d8dbd2;overflow-x:auto;scrollbar-width:none;position:sticky;top:84px;z-index:90;}
 .nav-tabs::-webkit-scrollbar{display:none;}
 .nav-tab{padding:11px 14px;font-size:11px;font-weight:700;color:#6b7266;cursor:pointer;white-space:nowrap;border-bottom:2.5px solid transparent;margin-bottom:-2px;transition:all 0.15s;letter-spacing:0.04em;text-transform:uppercase;}
-.nav-tab.active{color:#1a5e2a;border-bottom-color:#1a5e2a;}
+.nav-tab.active{color:#e41e26;border-bottom-color:#e41e26;}
 .section{display:none;padding:14px;}
 .section.active{display:block;}
 .card{background:#ffffff;border-radius:12px;border:1px solid #d8dbd2;padding:14px;margin-bottom:12px;box-shadow:0 2px 12px rgba(0,0,0,0.08);}
 .card-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#6b7266;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
-.card-title::before{content:'';display:block;width:3px;height:13px;background:#1a5e2a;border-radius:2px;}
+.card-title::before{content:'';display:block;width:3px;height:13px;background:#e41e26;border-radius:2px;}
 label{display:block;font-size:10px;font-weight:700;color:#6b7266;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;margin-top:11px;}
 label:first-child{margin-top:0;}
 input[type="text"],input[type="date"],input[type="number"],input[type="time"],select,textarea{width:100%;background:#f4f5f0;border:1.5px solid #d8dbd2;border-radius:8px;padding:10px 12px;font-family:'DM Sans',sans-serif;font-size:15px;color:#1a1f18;outline:none;transition:border-color 0.15s;-webkit-appearance:none;}
-input:focus,select:focus,textarea:focus{border-color:#1a5e2a;background:white;}
+input:focus,select:focus,textarea:focus{border-color:#e41e26;background:white;}
 textarea{resize:vertical;min-height:72px;}
 .row-2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
 .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:8px;}
 .docket-table{width:100%;border-collapse:collapse;font-size:12px;min-width:700px;}
-.docket-table th{background:#1a5e2a;color:white;padding:7px 5px;font-size:9px;font-weight:700;text-align:center;letter-spacing:0.04em;white-space:nowrap;}
+.docket-table th{background:#e41e26;color:white;padding:7px 5px;font-size:9px;font-weight:700;text-align:center;letter-spacing:0.04em;white-space:nowrap;}
 .docket-table td{border-bottom:1px solid #d8dbd2;padding:2px;}
 .docket-table input{border:none;background:transparent;padding:6px 4px;font-size:12px;width:100%;text-align:center;border-radius:4px;min-width:50px;font-family:'DM Sans',sans-serif;}
-.docket-table input:focus{background:#e8f5e9;outline:none;}
-.docket-table tr:nth-child(even){background:#f9faf7;}
-.total-row td{font-weight:700;background:#e8f5e9!important;border-top:2px solid #1a5e2a;}
+.docket-table input:focus{background:#fdecea;outline:none;}
+.docket-table tr:nth-child(even){background:#fafafa;}
+.total-row td{font-weight:700;background:#fdecea!important;border-top:2px solid #e41e26;}
 .add-row-btn{background:none;border:1.5px dashed #d8dbd2;color:#6b7266;border-radius:8px;padding:8px;width:100%;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;margin-top:8px;transition:all 0.15s;}
-.add-row-btn:active{border-color:#1a5e2a;color:#1a5e2a;}
+.add-row-btn:active{border-color:#e41e26;color:#e41e26;}
 .sig-wrap{border:1.5px solid #d8dbd2;border-radius:8px;background:white;margin-top:6px;position:relative;overflow:hidden;touch-action:none;}
 .sig-wrap canvas{display:block;width:100%;height:110px;}
 .sig-placeholder{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:12px;color:#ccc;pointer-events:none;transition:opacity 0.2s;white-space:nowrap;}
 .sig-actions{display:flex;gap:8px;margin-top:6px;}
 .btn{display:block;width:100%;padding:13px;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;border:none;transition:all 0.15s;text-align:center;letter-spacing:0.02em;}
-.btn-primary{background:#1a5e2a;color:white;}
+.btn-primary{background:#e41e26;color:white;}
 .btn-primary:active{opacity:0.85;transform:scale(0.98);}
-.btn-secondary{background:white;color:#1a5e2a;border:1.5px solid #1a5e2a;padding:8px;font-size:13px;}
+.btn-secondary{background:white;color:#e41e26;border:1.5px solid #e41e26;padding:8px;font-size:13px;}
 .btn-sm{padding:7px 12px;font-size:12px;width:auto;border-radius:8px;}
 .btn-danger{background:white;color:#c8102e;border:1.5px solid #c8102e;}
 .btn-dark{background:#1a1f18;color:white;}
@@ -73,25 +73,25 @@ textarea{resize:vertical;min-height:72px;}
 .save-spinner.show{display:flex;}
 .save-spinner-box{background:white;border-radius:16px;padding:24px 32px;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,0.2);}
 .save-spinner-icon{font-size:36px;margin-bottom:8px;}
-.save-spinner-text{font-size:15px;font-weight:700;color:#1a5e2a;}
+.save-spinner-text{font-size:15px;font-weight:700;color:#e41e26;}
 .save-spinner-sub{font-size:12px;color:#6b7266;margin-top:4px;font-family:'DM Mono',monospace;}
 .sub-tabs{display:flex;background:#f4f5f0;border-radius:10px;padding:4px;margin-bottom:14px;gap:4px;}
 .sub-tab{flex:1;padding:8px 4px;font-size:11px;font-weight:700;color:#6b7266;text-align:center;border-radius:8px;cursor:pointer;transition:all 0.15s;letter-spacing:0.03em;}
-.sub-tab.active{background:white;color:#1a5e2a;box-shadow:0 1px 4px rgba(0,0,0,0.1);}
+.sub-tab.active{background:white;color:#e41e26;box-shadow:0 1px 4px rgba(0,0,0,0.1);}
 .running-sheet{background:white;border-radius:12px;border:1px solid #d8dbd2;margin-bottom:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08);}
-.running-sheet-header{background:#1a5e2a;color:white;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;}
+.running-sheet-header{background:#e41e26;color:white;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;}
 .running-sheet-title{font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;}
 .running-sheet-meta{font-size:11px;opacity:0.75;}
 .running-sheet-table{width:100%;border-collapse:collapse;font-size:11px;}
-.running-sheet-table th{background:#f0f7f2;color:#1a5e2a;padding:6px 5px;font-size:9px;font-weight:700;text-align:center;letter-spacing:0.04em;border-bottom:2px solid #1a5e2a;white-space:nowrap;}
+.running-sheet-table th{background:#f0f7f2;color:#e41e26;padding:6px 5px;font-size:9px;font-weight:700;text-align:center;letter-spacing:0.04em;border-bottom:2px solid #e41e26;white-space:nowrap;}
 .running-sheet-table td{padding:5px 4px;text-align:center;border-bottom:1px solid #e8ece8;font-size:11px;}
 .running-sheet-table tr:nth-child(even) td{background:#f9fbf9;}
-.running-sheet-totals td{background:#e8f5e9!important;font-weight:700;color:#1a5e2a;border-top:2px solid #1a5e2a;font-size:11px;padding:6px 4px;}
-.running-sheet-grand{background:#1a5e2a;color:white;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;}
+.running-sheet-totals td{background:#fdecea!important;font-weight:700;color:#e41e26;border-top:2px solid #e41e26;font-size:11px;padding:6px 4px;}
+.running-sheet-grand{background:#e41e26;color:white;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;}
 .running-sheet-grand-label{font-size:11px;font-weight:700;letter-spacing:0.06em;}
 .running-sheet-grand-total{font-size:18px;font-weight:700;}
 .ts-docket-block{background:white;border:1px solid #d8dbd2;border-radius:10px;margin-bottom:12px;overflow:hidden;}
-.ts-docket-header{background:#1a5e2a;color:white;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;}
+.ts-docket-header{background:#e41e26;color:white;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;}
 .ts-docket-header-info{font-size:13px;font-weight:700;}
 .ts-docket-header-meta{font-size:10px;opacity:0.75;margin-top:2px;font-family:'DM Mono',monospace;}
 .ts-docket-header-right{text-align:right;}
@@ -103,7 +103,7 @@ textarea{resize:vertical;min-height:72px;}
 .ts-docket-photo-stamp{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.6);color:white;font-size:8px;padding:3px 4px;font-family:'DM Mono',monospace;}
 .ts-edit-btn{background:none;border:1px solid rgba(255,255,255,0.5);border-radius:6px;padding:5px 10px;font-size:11px;font-weight:700;color:white;cursor:pointer;font-family:'DM Sans',sans-serif;}
 .ts-delete-btn{background:none;border:1px solid rgba(255,100,100,0.6);border-radius:6px;padding:5px 10px;font-size:11px;font-weight:700;color:#ffaaaa;cursor:pointer;font-family:'DM Sans',sans-serif;}
-.signoff-card{background:white;border:1.5px solid #1a5e2a;border-radius:12px;padding:14px;margin-bottom:12px;}
+.signoff-card{background:white;border:1.5px solid #e41e26;border-radius:12px;padding:14px;margin-bottom:12px;}
 .empty-ts{text-align:center;padding:40px 20px;color:#6b7266;}
 .empty-ts .icon{font-size:38px;margin-bottom:10px;}
 .empty-ts p{font-size:14px;}
@@ -120,15 +120,15 @@ textarea{resize:vertical;min-height:72px;}
 .photo-fullscreen img{max-width:95vw;max-height:90vh;object-fit:contain;}
 .photo-fullscreen-close{position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.2);border:none;color:white;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;}
 .store-group{margin-bottom:20px;}
-.store-group-header{background:#1a5e2a;color:white;padding:9px 13px;border-radius:8px 8px 0 0;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center;}
+.store-group-header{background:#e41e26;color:white;padding:9px 13px;border-radius:8px 8px 0 0;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center;}
 .record-item{background:white;border:1px solid #d8dbd2;border-top:none;padding:11px 13px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;}
 .record-item:last-child{border-radius:0 0 8px 8px;}
 .record-item:active{background:#f0f4f0;}
-.rec-type{font-size:12px;font-weight:700;color:#1a5e2a;text-transform:uppercase;letter-spacing:0.04em;}
+.rec-type{font-size:12px;font-weight:700;color:#e41e26;text-transform:uppercase;letter-spacing:0.04em;}
 .rec-meta{font-size:11px;color:#6b7266;margin-top:2px;font-family:'DM Mono',monospace;}
 .rec-arrow{color:#d8dbd2;font-size:20px;margin-left:8px;}
 .badge{display:inline-block;padding:2px 7px;border-radius:20px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin-left:7px;}
-.badge-weekly{background:#e8f5e9;color:#2e7d32;}
+.badge-weekly{background:#fdecea;color:#2e7d32;}
 .badge-returns{background:#fff3e0;color:#e65100;}
 .badge-transfer{background:#e3f2fd;color:#1565c0;}
 .badge-docketlog{background:#f3e5f5;color:#6a1b9a;}
@@ -147,7 +147,7 @@ textarea{resize:vertical;min-height:72px;}
 
 <div class="app-header">
   <div class="logo-row">
-    <div><div class="brand">Moriarty Group</div><div class="sub">SuperValu · Docket System</div></div>
+    <div><div class="brand">SuperValu</div><div class="sub">SuperValu · Docket System</div></div>
     <div class="sv-badge">SUPERVALU</div>
   </div>
 </div>
@@ -193,7 +193,7 @@ textarea{resize:vertical;min-height:72px;}
       <table class="docket-table">
         <thead><tr><th>Date</th><th>Supplier</th><th>Docket #</th><th>Groc</th><th>Cigs</th><th>Wine</th><th>Beers</th><th>Spirits</th><th>Non Food</th><th>News</th><th>Promo</th><th>Expense</th><th>Total</th><th>Comments</th></tr></thead>
         <tbody id="wr-tbody"></tbody>
-        <tfoot><tr class="total-row"><td colspan="3" style="padding:6px 8px;font-size:10px;font-weight:700;">TOTALS</td><td><input id="tot-groc" readonly style="font-weight:700;"></td><td><input id="tot-cigs" readonly style="font-weight:700;"></td><td><input id="tot-wine" readonly style="font-weight:700;"></td><td><input id="tot-beers" readonly style="font-weight:700;"></td><td><input id="tot-spirits" readonly style="font-weight:700;"></td><td><input id="tot-nonfood" readonly style="font-weight:700;"></td><td><input id="tot-news" readonly style="font-weight:700;"></td><td><input id="tot-promo" readonly style="font-weight:700;"></td><td><input id="tot-expense" readonly style="font-weight:700;"></td><td><input id="tot-total" readonly style="font-weight:700;color:#1a5e2a;"></td><td></td></tr></tfoot>
+        <tfoot><tr class="total-row"><td colspan="3" style="padding:6px 8px;font-size:10px;font-weight:700;">TOTALS</td><td><input id="tot-groc" readonly style="font-weight:700;"></td><td><input id="tot-cigs" readonly style="font-weight:700;"></td><td><input id="tot-wine" readonly style="font-weight:700;"></td><td><input id="tot-beers" readonly style="font-weight:700;"></td><td><input id="tot-spirits" readonly style="font-weight:700;"></td><td><input id="tot-nonfood" readonly style="font-weight:700;"></td><td><input id="tot-news" readonly style="font-weight:700;"></td><td><input id="tot-promo" readonly style="font-weight:700;"></td><td><input id="tot-expense" readonly style="font-weight:700;"></td><td><input id="tot-total" readonly style="font-weight:700;color:#e41e26;"></td><td></td></tr></tfoot>
       </table>
     </div>
     <button class="add-row-btn" onclick="addWRRow()">+ Add Row</button>
@@ -230,7 +230,7 @@ textarea{resize:vertical;min-height:72px;}
       <table class="docket-table">
         <thead><tr><th>Date</th><th>Supplier</th><th>Docket #</th><th>Beef</th><th>Lamb</th><th>Pork</th><th>Poultry</th><th>Produce</th><th>Frozen</th><th>Provisions</th><th>Deli</th><th>Bakery</th><th>Total</th><th>Comments</th></tr></thead>
         <tbody id="dl-tbody"></tbody>
-        <tfoot><tr class="total-row"><td colspan="3" style="padding:6px 8px;font-size:10px;font-weight:700;">TOTALS</td><td><input id="chtot-beef" readonly style="font-weight:700;"></td><td><input id="chtot-lamb" readonly style="font-weight:700;"></td><td><input id="chtot-pork" readonly style="font-weight:700;"></td><td><input id="chtot-poultry" readonly style="font-weight:700;"></td><td><input id="chtot-produce" readonly style="font-weight:700;"></td><td><input id="chtot-frozen" readonly style="font-weight:700;"></td><td><input id="chtot-provisions" readonly style="font-weight:700;"></td><td><input id="chtot-deli" readonly style="font-weight:700;"></td><td><input id="chtot-bakery" readonly style="font-weight:700;"></td><td><input id="chtot-total" readonly style="font-weight:700;color:#1a5e2a;"></td><td></td></tr></tfoot>
+        <tfoot><tr class="total-row"><td colspan="3" style="padding:6px 8px;font-size:10px;font-weight:700;">TOTALS</td><td><input id="chtot-beef" readonly style="font-weight:700;"></td><td><input id="chtot-lamb" readonly style="font-weight:700;"></td><td><input id="chtot-pork" readonly style="font-weight:700;"></td><td><input id="chtot-poultry" readonly style="font-weight:700;"></td><td><input id="chtot-produce" readonly style="font-weight:700;"></td><td><input id="chtot-frozen" readonly style="font-weight:700;"></td><td><input id="chtot-provisions" readonly style="font-weight:700;"></td><td><input id="chtot-deli" readonly style="font-weight:700;"></td><td><input id="chtot-bakery" readonly style="font-weight:700;"></td><td><input id="chtot-total" readonly style="font-weight:700;color:#e41e26;"></td><td></td></tr></tfoot>
       </table>
     </div>
     <button class="add-row-btn" onclick="addCHRow()">+ Add Row</button>
@@ -688,7 +688,7 @@ function initSig(id){
   canvas.height=110*dpr;
   var ctx=canvas.getContext('2d');
   ctx.scale(dpr,dpr);
-  ctx.strokeStyle='#1a5e2a';ctx.lineWidth=2.5;ctx.lineCap='round';ctx.lineJoin='round';
+  ctx.strokeStyle='#e41e26';ctx.lineWidth=2.5;ctx.lineCap='round';ctx.lineJoin='round';
   var drawing=false,lastX=0,lastY=0,hasDrawn=false;
   function getPos(e){
     var r=canvas.getBoundingClientRect();
@@ -879,7 +879,7 @@ function renderTopSheetFor(subTabId,recordType){
   var html='';
 
   // Week banner
-  html+='<div style="background:#1a5e2a;color:white;border-radius:10px;padding:12px 14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;">';
+  html+='<div style="background:#e41e26;color:white;border-radius:10px;padding:12px 14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;">';
   html+='<div><div style="font-size:10px;font-weight:700;letter-spacing:0.08em;opacity:0.8;">'+currentStore.toUpperCase()+' \u00b7 '+typeLabels[recordType].toUpperCase()+'</div>';
   html+='<div style="font-size:14px;font-weight:700;">'+getWeekLabel(wk)+'</div></div>';
   html+='<div style="text-align:right;"><div style="font-size:13px;font-weight:700;">'+records.length+' docket'+(records.length!==1?'s':'')+'</div></div></div>';
@@ -1059,31 +1059,31 @@ function buildDocketTable(r,recordType){
   if(recordType==='weekly'){
     var cols=['date','supplier','docket','groc','cigs','wine','beers','spirits','nonfood','news','promo','expense','total','comments'];
     var heads=['Date','Supplier','Docket #','Groc','Cigs','Wine','Beers','Spirits','Non Food','News','Promo','Expense','Total','Comments'];
-    html+='<thead><tr style="background:#1a5e2a;color:white;">';
+    html+='<thead><tr style="background:#e41e26;color:white;">';
     heads.forEach(function(h){html+='<th style="padding:5px 4px;text-align:center;font-size:9px;">'+h+'</th>';});
     html+='</tr></thead><tbody>';
     (r.rows||[]).forEach(function(row,i){
-      html+='<tr style="background:'+(i%2===0?'#f9faf7':'white')+';">';
+      html+='<tr style="background:'+(i%2===0?'#fafafa':'white')+';">';
       cols.forEach(function(c){html+='<td style="padding:4px;border:1px solid #eee;text-align:center;">'+(row[c]||'')+'</td>';});
       html+='</tr>';
     });
   } else if(recordType==='docketlog'){
     var cols=['date','supplier','docket','beef','lamb','pork','poultry','produce','frozen','provisions','deli','bakery','total','comments'];
     var heads=['Date','Supplier','Docket #','Beef','Lamb','Pork','Poultry','Produce','Frozen','Provisions','Deli','Bakery','Total','Comments'];
-    html+='<thead><tr style="background:#1a5e2a;color:white;">';
+    html+='<thead><tr style="background:#e41e26;color:white;">';
     heads.forEach(function(h){html+='<th style="padding:5px 4px;text-align:center;font-size:9px;">'+h+'</th>';});
     html+='</tr></thead><tbody>';
     (r.rows||[]).forEach(function(row,i){
-      html+='<tr style="background:'+(i%2===0?'#f9faf7':'white')+';">';
+      html+='<tr style="background:'+(i%2===0?'#fafafa':'white')+';">';
       cols.forEach(function(c){html+='<td style="padding:4px;border:1px solid #eee;text-align:center;">'+(row[c]||'')+'</td>';});
       html+='</tr>';
     });
   } else {
-    html+='<thead><tr style="background:#1a5e2a;color:white;">';
+    html+='<thead><tr style="background:#e41e26;color:white;">';
     ['Qty','Description','Cost \u20ac','Retail \u20ac','Total \u20ac'].forEach(function(h){html+='<th style="padding:5px 4px;text-align:center;font-size:9px;">'+h+'</th>';});
     html+='</tr></thead><tbody>';
     (r.rows||[]).forEach(function(row,i){
-      html+='<tr style="background:'+(i%2===0?'#f9faf7':'white')+';">';
+      html+='<tr style="background:'+(i%2===0?'#fafafa':'white')+';">';
       (Array.isArray(row)?row:[]).forEach(function(v){html+='<td style="padding:4px;border:1px solid #eee;text-align:center;">'+(v||'')+'</td>';});
       html+='</tr>';
     });
@@ -1291,7 +1291,7 @@ function generateTopSheetPDF(subTabId,recordType,mgr,sig,stamp){
   var records=getWeekRecords(recordType);
   doc.setFillColor(26,94,42);doc.rect(0,0,PW,22,'F');
   doc.setTextColor(255,255,255);doc.setFontSize(14);doc.setFont('helvetica','bold');
-  doc.text('Moriarty Group \u00b7 SuperValu',ML,10);
+  doc.text('SuperValu \u00b7 SuperValu',ML,10);
   doc.setFontSize(9);doc.setFont('helvetica','normal');
   doc.text(typeLabels[recordType]+' Docket Register \u00b7 '+currentStore+' \u00b7 '+getWeekLabel(wk),ML,17);
   doc.setFontSize(8);doc.text(stamp,PW-MR,17,{align:'right'});
