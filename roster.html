@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <script>
-(function(){if(!localStorage.getItem('portal_session')){window.location.replace('https://aarondoyle2026.github.io/login.html');}})();
+(function(){var a=sessionStorage.getItem('portal_auth_token');if(a){sessionStorage.removeItem('portal_auth_token');}else{localStorage.removeItem('portal_session');window.location.replace('https://aarondoyle2026.github.io/login.html?to='+encodeURIComponent(window.location.href));}})();
 </script>
 
 <meta charset="UTF-8">
@@ -11,7 +11,7 @@
 <title>Moriarty Group – Weekly Roster</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap');
-:root{--green:#00703c;--green-dark:#005a30;--green-light:#e8f5ee;--green-mid:#c2e0ce;--accent:#ffcc00;--text:#1a1a1a;--muted:#666;--border:#d0d0d0;--bg:#f0f4f1;--white:#ffffff;}
+:root{--green:#e41e26;--green-dark:#c0161c;--green-light:#e8f5ee;--green-mid:#c2e0ce;--accent:#ffcc00;--text:#1a1a1a;--muted:#666;--border:#d0d0d0;--bg:#f0f4f1;--white:#ffffff;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Open Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding-bottom:80px;}
 header{background:var(--green);color:white;padding:16px 20px 12px;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.2);}
@@ -23,13 +23,13 @@ header{background:var(--green);color:white;padding:16px 20px 12px;text-align:cen
 .nav-tab.active{color:var(--green);border-bottom-color:var(--green);}
 .tab-content{display:none;padding:14px;max-width:960px;margin:0 auto;}
 .tab-content.active{display:block;}
-.card{background:var(--white);border-radius:10px;padding:16px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,112,60,0.08);}
+.card{background:var(--white);border-radius:10px;padding:16px;margin-bottom:12px;box-shadow:0 2px 8px rgba(228,30,38,0.08);}
 .card-title{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--green);margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--green-light);}
 .meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .meta-grid .full{grid-column:1/-1;}
 label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.8px;display:block;margin-bottom:4px;}
 input[type=text],input[type=date]{width:100%;padding:9px 11px;border:1.5px solid var(--border);border-radius:6px;font-size:14px;font-family:'Open Sans',sans-serif;color:var(--text);background:white;}
-input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(0,112,60,0.1);}
+input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(228,30,38,0.1);}
 select{width:100%;background:white;border:1.5px solid var(--border);border-radius:6px;padding:9px 11px;font-size:14px;font-family:'Open Sans',sans-serif;color:var(--text);-webkit-appearance:none;outline:none;}
 .dept-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
 .dept-tab{padding:7px 13px;border-radius:20px;border:2px solid var(--border);background:white;font-size:12px;font-weight:700;cursor:pointer;font-family:'Montserrat',sans-serif;color:var(--muted);letter-spacing:0.5px;}
