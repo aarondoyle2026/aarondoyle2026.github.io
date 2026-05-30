@@ -263,7 +263,7 @@
   <div class="mode-panel" id="panel-chat">
     <div class="slabel" style="margin-top:4px;">Ask the AI</div>
 
-    <div class="store-selector">
+    <div class="store-selector" id="chatStoreSelector">
       <button type="button" class="store-btn active" id="storeBtn356" onclick="selectStore('356','Palmerstown')">Palmerstown</button>
       <button type="button" class="store-btn" id="storeBtn374" onclick="selectStore('374','Balbriggan')">Balbriggan</button>
       <button type="button" class="store-btn" id="storeBtn424" onclick="selectStore('424','Skerries')">Skerries</button>
@@ -315,6 +315,12 @@ var insightsData = null;
 var chatHistory  = [];
 var selectedStoreCode = '356';
 var selectedStoreName = 'Palmerstown';
+
+var _session=null;try{_session=JSON.parse(localStorage.getItem('portal_session'));}catch(e){}
+var _userRole=_session?(_session.role||''):'';
+var _userStore=_session?(_session.store_code||''):'';
+var _storeMap={palmerstown:{code:'356',name:'Palmerstown'},balbriggan:{code:'374',name:'Balbriggan'},skerries:{code:'424',name:'Skerries'}};
+var _userStoreInfo=_storeMap[_userStore]||null;
 
 function selectStore(code, name) {
   selectedStoreCode = code;
@@ -374,7 +380,11 @@ function renderDirector(d) {
   document.getElementById('directorSummary').innerHTML = '<p style="font-size:14px;line-height:1.8;">' + esc(d.summary || '') + '</p>';
   var sc = document.getElementById('storeCompare');
   sc.innerHTML = '';
-  (d.stores || []).forEach(function(s) {
+  var stores = d.stores || [];
+  if (_userRole !== 'admin' && _userStoreInfo) {
+    stores = stores.filter(function(s) { return s.name === _userStoreInfo.name; });
+  }
+  stores.forEach(function(s) {
     var div = document.createElement('div');
     div.className = 'store-row';
     div.innerHTML = '<div class="store-row-header"><span class="store-row-name">' + esc(s.name) + '</span><span class="store-score ' + esc(s.scoreLevel || 'mid') + '">' + esc(String(s.score)) + ' / 100</span></div><div class="store-row-text">' + esc(s.summary || '') + '</div>';
@@ -461,7 +471,11 @@ function renderWaste(w) {
   document.getElementById('wasteSummary').innerHTML = '<p style="font-size:13px;line-height:1.8;">' + esc(w.summary || '') + '</p>';
   var ws = document.getElementById('wasteStores');
   ws.innerHTML = '';
-  (w.stores || []).forEach(function(s) {
+  var wasteStores = w.stores || [];
+  if (_userRole !== 'admin' && _userStoreInfo) {
+    wasteStores = wasteStores.filter(function(s) { return s.name === _userStoreInfo.name; });
+  }
+  wasteStores.forEach(function(s) {
     var block = document.createElement('div');
     block.className = 'waste-store-block';
     var html = '<div class="waste-store-header">';
@@ -581,6 +595,12 @@ function sendChat() {
   });
 }
 function init() {
+  // Lock chat store to the user's own store for non-admin
+  if (_userRole !== 'admin' && _userStoreInfo) {
+    document.getElementById('chatStoreSelector').style.display = 'none';
+    selectStore(_userStoreInfo.code, _userStoreInfo.name);
+  }
+
   setStep('Fetching latest analysis...', 'Generated weekly by AI', 20);
   fetch(INSIGHTS_URL + '?t=' + Date.now())
     .then(function(r) {
