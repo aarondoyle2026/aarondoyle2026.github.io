@@ -105,6 +105,12 @@ var activeReport = 0;
 var activeStore = 'Palmerstown';
 var activeDate = null;
 
+var _session=null;try{_session=JSON.parse(localStorage.getItem('portal_session'));}catch(e){}
+var _userRole=_session?(_session.role||''):'';
+var _userStore=_session?(_session.store_code||''):'';
+var _storeMap={palmerstown:'Palmerstown',balbriggan:'Balbriggan',skerries:'Skerries'};
+var _userStoreName=_storeMap[_userStore]||'';
+
 function buildReportNav() {
   var nav = document.getElementById('reportNav');
   nav.innerHTML = '';
@@ -163,13 +169,20 @@ function renderReport(data) {
   var dateStores = data[activeDate] || {};
   var available = STORE_ORDER.filter(function(s) { return dateStores[s]; });
   if (!available.length) { showError('No store data for latest date.'); return; }
+
+  if (_userRole !== 'admin' && _userStoreName) {
+    available = available.filter(function(s) { return s === _userStoreName; });
+    document.getElementById('storeBar').style.display = 'none';
+  }
+
+  if (!available.length) { showError('No data available for your store.'); return; }
   if (available.indexOf(activeStore) === -1) activeStore = available[0];
 
   buildStoreBar(available, dateStores);
   renderTable(dateStores[activeStore]);
 
   var report = REPORTS[activeReport];
-  document.getElementById('headerMeta').textContent = report.label + ' · ' + activeDate;
+  document.getElementById('headerMeta').textContent = report.label + ' · ' + activeDate + (_userRole !== 'admin' && _userStoreName ? ' · ' + _userStoreName : '');
   setStatus('ok', 'Data loaded · updates daily at 5 AM');
 }
 
@@ -285,7 +298,7 @@ function renderTable(storeData) {
         if (isCountField(h, colIdx === 0 ? '' : rowLabel)) {
           td.textContent = Math.round(v).toLocaleString();
         } else {
-          td.textContent = (v < 0 ? '-' : '') + '\u20ac' + Math.abs(v).toLocaleString('en-IE', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+          td.textContent = (v < 0 ? '-' : '') + '€' + Math.abs(v).toLocaleString('en-IE', {minimumFractionDigits: 2, maximumFractionDigits: 2});
         }
         td.className = v < 0 ? 'val-negative' : (v > 0 ? 'val-positive' : 'val-neutral');
       } else {
