@@ -76,7 +76,7 @@ body{font-family:'DM Sans',sans-serif;background:#f4f5f0;color:#1a1f18;min-heigh
   </div>
 </div>
 
-<div class="store-bar">
+<div class="store-bar" id="storeBar">
   <button class="store-btn disabled">Palmerstown</button>
   <button class="store-btn disabled">Balbriggan</button>
   <button class="store-btn active" onclick="selectStore('Skerries',this)">Skerries</button>
@@ -90,6 +90,10 @@ body{font-family:'DM Sans',sans-serif;background:#f4f5f0;color:#1a1f18;min-heigh
 var currentStore = 'Skerries';
 var reportData = null;
 var DATA_URL = 'https://aarondoyle2026.github.io/data/managers_report_ai.json';
+
+var _session=null;try{_session=JSON.parse(localStorage.getItem('portal_session'));}catch(e){}
+var _userRole=_session?(_session.role||''):'';
+if(_userRole!=='admin'){document.getElementById('storeBar').style.display='none';}
 
 function selectStore(store, btn) {
   if (btn.classList.contains('disabled')) return;
@@ -114,7 +118,7 @@ function fmt(n) {
   if (n === null || n === undefined || n === '') return '—';
   var v = Number(n);
   if (isNaN(v)) return '—';
-  return '\u20ac' + v.toLocaleString('en-IE', {minimumFractionDigits:2, maximumFractionDigits:2});
+  return '€' + v.toLocaleString('en-IE', {minimumFractionDigits:2, maximumFractionDigits:2});
 }
 
 function fmtPct(n) {
