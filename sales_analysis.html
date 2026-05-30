@@ -81,6 +81,12 @@ var allData = null;
 var activeStore = null;
 var activeDate = null;
 
+var _session=null;try{_session=JSON.parse(localStorage.getItem('portal_session'));}catch(e){}
+var _userRole=_session?(_session.role||''):'';
+var _userStore=_session?(_session.store_code||''):'';
+var _storeMap={palmerstown:'Palmerstown',balbriggan:'Balbriggan',skerries:'Skerries'};
+var _userStoreName=_storeMap[_userStore]||'';
+
 function fetchData() {
   var xhr = new XMLHttpRequest();
   xhr.open('GET', DATA_URL + '?_=' + Date.now(), true);
@@ -113,10 +119,17 @@ function init() {
   var dateStores = allData[activeDate] || {};
   var available = STORE_ORDER.filter(function(s) { return dateStores[s]; });
   if (!available.length) { showError('No store data for latest date.'); return; }
+
+  if (_userRole !== 'admin' && _userStoreName) {
+    available = available.filter(function(s) { return s === _userStoreName; });
+    document.getElementById('storeBar').style.display = 'none';
+  }
+
+  if (!available.length) { showError('No data available for your store.'); return; }
   if (!activeStore || available.indexOf(activeStore) === -1) activeStore = available[0];
   renderStoreTabs(available);
   renderContent(dateStores[activeStore]);
-  document.getElementById('headerMeta').textContent = 'Week of ' + activeDate + '  \u00b7  ' + available.length + ' stores';
+  document.getElementById('headerMeta').textContent = 'Week of ' + activeDate + '  ·  ' + (_userRole !== 'admin' && _userStoreName ? _userStoreName : available.length + ' stores');
 }
 
 function renderStoreTabs(stores) {
@@ -199,7 +212,7 @@ function renderContent(storeData) {
 
         if (v === null || v === undefined) {
           td.className = 'val-nil';
-          td.textContent = '\u2013';
+          td.textContent = '–';
         } else if (typeof v === 'number') {
           td.textContent = formatNum(v, t);
           var isVar = rowKey.indexOf('Var') !== -1;
@@ -237,7 +250,7 @@ function formatNum(v, t) {
   if (t === 'count') {
     return Math.round(v).toLocaleString();
   }
-  return (v < 0 ? '-' : '') + '\u20ac' + Math.abs(v).toLocaleString('en-IE', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  return (v < 0 ? '-' : '') + '€' + Math.abs(v).toLocaleString('en-IE', {minimumFractionDigits: 2, maximumFractionDigits: 2});
 }
 
 function setStatus(type, msg) {
