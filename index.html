@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
 <script>
-(function(){var a=sessionStorage.getItem('portal_auth_token');if(a){sessionStorage.removeItem('portal_auth_token');}else{localStorage.removeItem('portal_session');window.location.replace('https://aarondoyle2026.github.io/login.html?to='+encodeURIComponent(window.location.href));}})();
+(function(){
+var s=localStorage.getItem('portal_session');
+if(!s){window.location.replace('https://aarondoyle2026.github.io/login.html');return;}
+try{var p=JSON.parse(s);if(!p||!p.user){throw new Error();}}catch(e){localStorage.removeItem('portal_session');window.location.replace('https://aarondoyle2026.github.io/login.html');}
+})();
 </script>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>SuperValu – Store Systems</title>
@@ -51,7 +54,6 @@ body{font-family:'DM Sans',sans-serif;background:#f5f0f0;color:#1a1a1a;min-heigh
 </style>
 </head>
 <body>
-
 
 <div class="header">
   <div class="logo-mark">🛒</div>
@@ -120,7 +122,7 @@ body{font-family:'DM Sans',sans-serif;background:#f5f0f0;color:#1a1a1a;min-heigh
 <div class="section">
   <div class="section-label">📦 Store Operations</div>
   <div class="app-grid">
-    <a class="app-card blue" href="https://aarondoyle2026.github.io/dockets.html">
+    <a class="app-card blue" href="https://aarondoyle2026.github.io/dockets.html" data-roles="admin,store_manager,duty,shopfloor">
       <span class="app-icon">🧾</span>
       <div class="app-name">Docket System</div>
       <div class="app-desc">Ambient & chilled registers, returns, inter-store transfers</div>
@@ -180,35 +182,37 @@ updateClock();setInterval(updateClock,1000);
 (function(){
   var session=null;
   try{session=JSON.parse(localStorage.getItem('portal_session'));}catch(e){}
-  if(!session)return;
-  var role=session.role||'';
-  var storeCode=session.store_code||'';
-  var storeNames={palmerstown:'Palmerstown',balbriggan:'Balbriggan',skerries:'Skerries'};
+  if(!session||!session.user)return;
+  var role=session.user.role||'';
+  var storeCode=session.user.store_code||'';
+  var storeNames={'356':'Palmerstown','374':'Balbriggan','424':'Skerries'};
 
-  // Show store name in status strip for non-admin users
   if(role!=='admin'&&storeCode){
     var sn=storeNames[storeCode]||storeCode;
     var el=document.getElementById('status-text');
     if(el)el.innerHTML='<strong>'+sn+'</strong> · All systems live';
   }
 
-  // Hide tiles the user's role cannot access
+  if(role==='admin')return;
+
   var cards=document.querySelectorAll('[data-roles]');
   for(var i=0;i<cards.length;i++){
-    if(cards[i].getAttribute('data-roles').split(',').indexOf(role)===-1){
-      cards[i].style.display='none';
+    var allowed=cards[i].getAttribute('data-roles').split(',');
+    var found=false;
+    for(var j=0;j<allowed.length;j++){
+      if(allowed[j]===role){found=true;break;}
     }
+    if(!found)cards[i].style.display='none';
   }
 
-  // Hide sections where every card is hidden
   var sections=document.querySelectorAll('.section');
-  for(var j=0;j<sections.length;j++){
-    var allCards=sections[j].querySelectorAll('.app-card');
+  for(var a=0;a<sections.length;a++){
+    var allCards=sections[a].querySelectorAll('.app-card');
     var hasVisible=false;
-    for(var k=0;k<allCards.length;k++){
-      if(allCards[k].style.display!=='none'){hasVisible=true;break;}
+    for(var b=0;b<allCards.length;b++){
+      if(allCards[b].style.display!=='none'){hasVisible=true;break;}
     }
-    if(!hasVisible)sections[j].style.display='none';
+    if(!hasVisible)sections[a].style.display='none';
   }
 })();
 </script>
