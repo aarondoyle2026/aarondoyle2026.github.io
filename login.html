@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Login – SuperValu</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+html{background:#f5f0f0;}
+body{font-family:'DM Sans',sans-serif;background:#f5f0f0;color:#1a1a1a;min-height:100vh;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;padding:32px 20px;}
+.brand{text-align:center;margin-bottom:28px;}
+.logo-mark{display:-webkit-inline-flex;display:inline-flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;width:64px;height:64px;background:#e41e26;border-radius:16px;font-size:28px;margin-bottom:14px;box-shadow:0 8px 32px rgba(228,30,38,0.3);}
+.brand-name{font-size:18px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#1a1a1a;}
+.brand-sub{font-size:11px;letter-spacing:2px;color:rgba(0,0,0,0.45);margin-top:4px;text-transform:uppercase;}
+.card{background:white;border:1px solid rgba(0,0,0,0.08);border-radius:20px;padding:24px 20px;width:100%;max-width:340px;box-shadow:0 2px 16px rgba(0,0,0,0.08);}
+.field{margin-bottom:20px;}
+.field label{display:block;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(0,0,0,0.45);margin-bottom:8px;}
+.field input{width:100%;background:white;border:1px solid #ddd;border-radius:10px;padding:13px 14px;font-size:16px;color:#1a1a1a;font-family:inherit;outline:none;-webkit-appearance:none;appearance:none;}
+.field input:focus{border-color:#e41e26;outline:none;}
+.field input::-webkit-input-placeholder{color:rgba(0,0,0,0.3);}
+.field input::placeholder{color:rgba(0,0,0,0.3);}
+.dots{display:-webkit-flex;display:flex;-webkit-justify-content:center;justify-content:center;gap:16px;margin-bottom:24px;}
+.pin-dot{width:14px;height:14px;border-radius:50%;background:rgba(0,0,0,0.08);border:2px solid rgba(0,0,0,0.15);-webkit-transition:all 0.15s;transition:all 0.15s;}
+.pin-dot.filled{background:#e41e26;border-color:#e41e26;box-shadow:0 0 8px rgba(228,30,38,0.4);}
+.keypad{display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;gap:10px;margin-bottom:16px;}
+.key{-webkit-flex:0 0 calc(33.333% - 7px);flex:0 0 calc(33.333% - 7px);background:white;border:1px solid rgba(0,0,0,0.1);border-radius:12px;padding:16px 8px;font-size:20px;font-weight:600;color:#1a1a1a;cursor:pointer;text-align:center;font-family:inherit;-webkit-appearance:none;appearance:none;touch-action:manipulation;-webkit-transition:background 0.1s;transition:background 0.1s;}
+.key:active{background:rgba(228,30,38,0.1);}
+.key.action{font-size:14px;font-weight:700;color:rgba(0,0,0,0.4);}
+#loginBtn{width:100%;background:#e41e26;border:none;border-radius:12px;padding:16px;font-size:16px;font-weight:700;color:white;font-family:inherit;cursor:pointer;touch-action:manipulation;-webkit-transition:opacity 0.2s;transition:opacity 0.2s;-webkit-appearance:none;appearance:none;}
+#loginBtn:disabled{opacity:0.3;cursor:default;}
+#loginBtn:active{opacity:0.75;}
+.error{display:none;background:rgba(228,30,38,0.08);border:1px solid rgba(228,30,38,0.2);border-radius:8px;padding:10px 14px;font-size:13px;color:#c0161c;text-align:center;margin-top:12px;}
+.error.show{display:block;}
+.loading{display:none;text-align:center;margin-top:14px;font-size:13px;color:rgba(0,0,0,0.45);letter-spacing:0.5px;}
+.loading.show{display:block;}
+</style>
+</head>
+<body>
+<div class="brand">
+  <div class="logo-mark">&#127978;</div>
+  <div class="brand-name">SuperValu</div>
+  <div class="brand-sub">Real Food, Real People</div>
+</div>
+<div class="card">
+  <div class="field">
+    <label for="username">Username</label>
+    <input type="text" id="username" placeholder="Enter your username" autocomplete="username" autocorrect="off" autocapitalize="off" spellcheck="false">
+  </div>
+  <div class="dots">
+    <div class="pin-dot" id="pd0"></div>
+    <div class="pin-dot" id="pd1"></div>
+    <div class="pin-dot" id="pd2"></div>
+    <div class="pin-dot" id="pd3"></div>
+  </div>
+  <div class="keypad">
+    <button class="key" id="pk1">1</button>
+    <button class="key" id="pk2">2</button>
+    <button class="key" id="pk3">3</button>
+    <button class="key" id="pk4">4</button>
+    <button class="key" id="pk5">5</button>
+    <button class="key" id="pk6">6</button>
+    <button class="key" id="pk7">7</button>
+    <button class="key" id="pk8">8</button>
+    <button class="key" id="pk9">9</button>
+    <button class="key action" id="pkClear">CLR</button>
+    <button class="key" id="pk0">0</button>
+    <button class="key action" id="pkDel">&#9003;</button>
+  </div>
+  <button id="loginBtn" disabled>Sign In</button>
+  <div class="error" id="errorBox"></div>
+  <div class="loading" id="loadingBox">Signing in…</div>
+</div>
+<script>
+localStorage.removeItem('portal_session');
+var SB_URL = 'https://mnebkteiwjxbbmnfotse.supabase.co';
+var SB_KEY = 'sb_publishable_eutRHOftOW4ZJNlVrDKXOg_XtnBQ7cM';
+var pin = '';
+var busy = false;
+
+function hashPin(p) {
+  var msgBuffer = new TextEncoder().encode(p);
+  return window.crypto.subtle.digest('SHA-256', msgBuffer).then(function(hashBuffer) {
+    var hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(function(b) {
+      var hex = b.toString(16);
+      return hex.length === 1 ? '0' + hex : hex;
+    }).join('');
+  });
+}
+
+function updateDots() {
+  for (var i = 0; i < 4; i++) {
+    var dot = document.getElementById('pd' + i);
+    if (dot) dot.className = i < pin.length ? 'pin-dot filled' : 'pin-dot';
+  }
+  var btn = document.getElementById('loginBtn');
+  var username = document.getElementById('username').value.trim();
+  btn.disabled = pin.length < 4 || !username || busy;
+}
+
+function pressKey(digit) {
+  if (pin.length >= 4 || busy) return;
+  pin += digit;
+  updateDots();
+  if (pin.length === 4) { setTimeout(function() { tryLogin(); }, 150); }
+}
+
+function delKey() {
+  if (busy) return;
+  pin = pin.slice(0, -1);
+  updateDots();
+}
+
+function clearPin() {
+  if (busy) return;
+  pin = '';
+  updateDots();
+}
+
+function showError(msg) {
+  var el = document.getElementById('errorBox');
+  el.textContent = msg;
+  el.className = 'error show';
+  document.getElementById('loadingBox').className = 'loading';
+}
+
+function resetLogin() {
+  busy = false;
+  pin = '';
+  updateDots();
+  document.getElementById('loadingBox').className = 'loading';
+}
+
+function tryLogin() {
+  var username = document.getElementById('username').value.trim().toLowerCase();
+  if (!username || pin.length < 4 || busy) return;
+  busy = true;
+  document.getElementById('loginBtn').disabled = true;
+  document.getElementById('errorBox').className = 'error';
+  document.getElementById('loadingBox').className = 'loading show';
+
+  var currentPin = pin;
+
+  hashPin(currentPin).then(function(pinHash) {
+    return fetch(SB_URL + '/rest/v1/portal_users?username=eq.' + encodeURIComponent(username) + '&pin_hash=eq.' + pinHash + '&active=eq.true&select=id,username,group_id,store_code,role,display_name', {
+      headers: {
+        'apikey': SB_KEY,
+        'Authorization': 'Bearer ' + SB_KEY
+      }
+    });
+  }).then(function(r) {
+    if (!r.ok) { throw new Error('Auth query failed: ' + r.status); }
+    return r.json();
+  }).then(function(users) {
+    if (!users || users.length === 0) {
+      resetLogin();
+      showError('Invalid username or PIN');
+      return;
+    }
+    var user = users[0];
+    return fetch(SB_URL + '/rest/v1/group_stores?group_id=eq.' + user.group_id + (user.role !== 'admin' ? '&store_code=eq.' + user.store_code : '') + '&select=store_code,store_name', {
+      headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY }
+    }).then(function(r) {
+      if (!r.ok) { throw new Error('Stores query failed: ' + r.status); }
+      return r.json();
+    }).then(function(stores) {
+      var moduleAccess = {
+        admin:         { haccp:true,  kpi:true,  reports:true,  pnl:true,  ai:true,  operations:true  },
+        store_manager: { haccp:true,  kpi:true,  reports:true,  pnl:true,  ai:true,  operations:true  },
+        duty:          { haccp:true,  kpi:true,  reports:true,  pnl:true,  ai:true,  operations:true  },
+        deli:          { haccp:true,  kpi:false, reports:false, pnl:false, ai:false, operations:false },
+        butcher:       { haccp:true,  kpi:false, reports:false, pnl:false, ai:false, operations:false },
+        shopfloor:     { haccp:true,  kpi:false, reports:false, pnl:false, ai:false, operations:false },
+        fv:            { haccp:true,  kpi:false, reports:false, pnl:false, ai:false, operations:false },
+        hr:            { haccp:false, kpi:false, reports:false, pnl:false, ai:false, operations:true  }
+      };
+      localStorage.setItem('portal_session', JSON.stringify({
+        session_id: user.id,
+        user: {
+          username: user.username,
+          display_name: user.display_name,
+          role: user.role,
+          group_id: user.group_id,
+          store_code: user.store_code,
+          allowed_stores: stores || [],
+          access: moduleAccess[user.role] || moduleAccess.shopfloor
+        }
+      }));
+      sessionStorage.setItem('portal_auth_token','1');
+      var toUrl=(function(){var s=window.location.search;if(s){var p=s.substring(1).split('&');for(var i=0;i<p.length;i++){if(p[i].indexOf('to=')===0){return decodeURIComponent(p[i].substring(3));}}}return 'https://aarondoyle2026.github.io/index.html';})();
+      window.location.href=toUrl;
+    });
+  }).catch(function(e) {
+    resetLogin();
+    showError(e && e.message ? e.message : 'Connection error. Please try again.');
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var keys = ['1','2','3','4','5','6','7','8','9','0'];
+  keys.forEach(function(k) {
+    var btn = document.getElementById('pk' + k);
+    if (btn) btn.addEventListener('click', function() { pressKey(k); });
+  });
+  document.getElementById('pkDel').addEventListener('click', delKey);
+  document.getElementById('pkClear').addEventListener('click', clearPin);
+  document.getElementById('loginBtn').addEventListener('click', tryLogin);
+  document.getElementById('username').addEventListener('input', updateDots);
+});
+</script>
+</body>
+</html>

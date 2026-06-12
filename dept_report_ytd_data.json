@@ -8743,5 +8743,2345 @@
         ]
       }
     }
+  },
+  "2026-05-26": {
+    "Palmerstown": {
+      "store": "Palmerstown",
+      "code": "356",
+      "report": "department report ytd",
+      "scraped_at": "2026-05-26T11:12:50.725143+01:00",
+      "date": "2026-05-26",
+      "data": {
+        "headers": [],
+        "rows": []
+      },
+      "error": "Could not select store '356 - Palmerstown'. Last: None"
+    },
+    "Balbriggan": {
+      "store": "Balbriggan",
+      "code": "374",
+      "report": "department report ytd",
+      "scraped_at": "2026-05-26T11:12:50.725143+01:00",
+      "date": "2026-05-26",
+      "data": {
+        "headers": [],
+        "rows": []
+      },
+      "error": "Export file never appeared."
+    },
+    "Skerries": {
+      "store": "Skerries",
+      "code": "424",
+      "report": "department report ytd",
+      "scraped_at": "2026-05-26T11:12:50.725143+01:00",
+      "date": "2026-05-26",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "Merchandising Structure - Article SV TB",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": "YTD",
+              "t": "str"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": "YTD",
+              "t": "str"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": "YTD",
+              "t": "str"
+            },
+            "Retail Scan Margin %": {
+              "v": "YTD",
+              "t": "str"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": "YTD",
+              "t": "str"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "Total Merchandising Structure",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 7758860.57,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 26299.56,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 0.3401,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.3107,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.9063,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0024 - GROCERY -  IMPULSE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 806025.09,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 4839.37,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 0.604,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.7074,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.4692,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0025 - GROCERY - EDIBLE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 924409.98,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 40073.06,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 4.5314,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 13.0486,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.1669,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0026 - GROCERY - NON FOOD",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 422163.63,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -4166.09,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -0.9772,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 13.4887,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.0436,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0027 - BABY & KIDS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 74705.73,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -2210.13,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -2.8734,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 9.974,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.7494,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0028 - PERSONAL CARE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 178272.7,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -2258.92,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -1.2513,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 16.5697,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.5051,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0029 - BEERS/WINES/SPIRITS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 972951.19,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -24342.98,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -2.4409,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 10.2553,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.6754,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0031 - TOBACCO",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 189944.97,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 532.35,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 0.2811,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 12.3144,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.3314,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0032 - PRODUCE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 824984.81,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 5538.72,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 0.6759,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 18.7415,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -2.102,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0033 - MEAT, POULTRY & FISH",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 786392.68,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 17232.6,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 2.2404,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 20.0928,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.4905,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0034 - DAIRY",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 743326.61,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 12858.78,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 1.7603,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 15.3805,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.6298,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0035 - BREAD AND CAKES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 444718.54,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -23848.56,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -5.0897,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 28.0496,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.0206,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0036 - DELI  AND  FOOD TO GO",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 184413.6,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -39981.74,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -17.8175,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 42.6628,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 1.5078,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0037 - PROVISIONS & CONVENIENCE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 543902.54,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 15695.18,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 2.9714,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 19.2234,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.1775,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0038 - FROZEN FOODS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 298118.37,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 8444.52,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 2.9152,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 15.335,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.1069,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0039 - NON FOOD - RETAIL",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 94758.67,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -5180.82,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -5.184,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 36.9396,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.187,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0044 - NON FOOD - EXPENSE ITEMS & CONSUMER PROMOTIONS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 18349.09,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 681.13,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 3.8552,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 56.288,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -4.9579,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0045 - FUEL",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 11918.87,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 4715.73,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 65.4677,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 20.2715,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.2358,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0046 - NEWS & MAGS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 73596.12,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -194.9,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -0.2641,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 24.904,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.0987,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0047 - NON FOOD - INSTORE SERVICES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 165907.38,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 17872.26,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 12.073,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 4.3796,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.1758,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "2026-06-04": {
+    "Palmerstown": {
+      "store": "Palmerstown",
+      "code": "356",
+      "report": "department report ytd",
+      "scraped_at": "2026-06-04T10:28:40.822441+01:00",
+      "date": "2026-06-04",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "Merchandising Structure - Article SV TB",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": "YTD",
+              "t": "str"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": "YTD",
+              "t": "str"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": "YTD",
+              "t": "str"
+            },
+            "Retail Scan Margin %": {
+              "v": "YTD",
+              "t": "str"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": "YTD",
+              "t": "str"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "Total Merchandising Structure",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 7982363.17,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -280042.44,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -3.3894,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.744,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.5073,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0024 - GROCERY -  IMPULSE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 988059.24,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -37244.28,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -3.6325,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.4296,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.2354,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0025 - GROCERY - EDIBLE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 736834.25,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -41672.35,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -5.3529,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 12.0542,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.3727,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0026 - GROCERY - NON FOOD",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 341657.26,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -22983.22,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -6.303,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 13.1477,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.3732,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0027 - BABY & KIDS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 60438.83,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -8348.15,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -12.1362,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 8.3228,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.0731,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0028 - PERSONAL CARE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 155910.91,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -7651.9,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -4.6783,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.623,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.2259,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0029 - BEERS/WINES/SPIRITS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 880111.14,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -27589.76,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -3.0395,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 10.0939,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.4895,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0031 - TOBACCO",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 405499.26,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -2659.47,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -0.6516,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 11.8954,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.1226,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0032 - PRODUCE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 577139.64,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -22695.47,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -3.7836,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 20.6168,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.67,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0033 - MEAT, POULTRY & FISH",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 611901.37,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 40.81,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 0.0067,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 19.1898,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.737,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0034 - DAIRY",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 613279.45,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -23162.43,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -3.6394,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 16.6823,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.6649,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0035 - BREAD AND CAKES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 567487.72,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -39080.91,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -6.4429,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 33.5552,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.3846,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0036 - DELI  AND  FOOD TO GO",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 349731.93,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 10290.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 3.0314,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 41.5736,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.0972,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0037 - PROVISIONS & CONVENIENCE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 555050.41,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -58951.38,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -9.6012,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 21.4914,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.679,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0038 - FROZEN FOODS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 253540.19,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -10112.26,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -3.8355,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 15.9912,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.631,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0039 - NON FOOD - RETAIL",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 116107.49,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -4519.57,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -3.7467,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 37.0273,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 1.0465,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0044 - NON FOOD - EXPENSE ITEMS & CONSUMER PROMOTIONS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 29188.02,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -800.49,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -2.6693,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 73.5025,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.7943,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0045 - FUEL",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 8942.74,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 2963.08,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 49.5527,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 24.1474,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.0319,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0046 - NEWS & MAGS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 77714.23,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -425.57,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -0.5446,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 24.4897,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.0631,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0047 - NON FOOD - INSTORE SERVICES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 653740.1,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 14560.61,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 2.278,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 2.7302,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.0548,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "Unmatched - Unmatched",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 28.99,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 0.27,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 0.9401,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 0.0,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.0,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    },
+    "Balbriggan": {
+      "store": "Balbriggan",
+      "code": "374",
+      "report": "department report ytd",
+      "scraped_at": "2026-06-04T10:28:40.822441+01:00",
+      "date": "2026-06-04",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "Merchandising Structure - Article SV TB",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": "YTD",
+              "t": "str"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": "YTD",
+              "t": "str"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": "YTD",
+              "t": "str"
+            },
+            "Retail Scan Margin %": {
+              "v": "YTD",
+              "t": "str"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": "YTD",
+              "t": "str"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "Total Merchandising Structure",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 6810560.3,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -221481.12,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -3.1496,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 18.0873,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.5074,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0024 - GROCERY -  IMPULSE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 833100.07,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -18461.29,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -2.1679,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.0667,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.5286,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0025 - GROCERY - EDIBLE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 599047.24,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -3163.85,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -0.5254,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 13.0433,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.6552,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0026 - GROCERY - NON FOOD",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 311294.42,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -20243.76,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -6.106,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 13.7863,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.588,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0027 - BABY & KIDS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 61824.47,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -5080.69,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -7.5939,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 7.8349,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 1.315,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0028 - PERSONAL CARE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 143106.47,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -8127.38,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -5.374,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 16.2999,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.601,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0029 - BEERS/WINES/SPIRITS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 951710.65,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -24000.79,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -2.4598,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 9.9239,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.8109,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0031 - TOBACCO",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 301881.9,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -16667.1,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -5.2322,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 9.3593,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.6186,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0032 - PRODUCE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 548457.81,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -38311.26,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -6.5292,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 19.4835,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.1321,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0033 - MEAT, POULTRY & FISH",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 600119.87,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 12112.12,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 2.0599,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 19.0182,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.3946,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0034 - DAIRY",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 517733.66,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -9605.02,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -1.8214,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 15.3445,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.8989,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0035 - BREAD AND CAKES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 531592.61,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -21819.74,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -3.9428,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 38.5907,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 1.8084,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0036 - DELI  AND  FOOD TO GO",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 248672.41,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -9866.96,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -3.8164,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 43.0068,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.0815,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0037 - PROVISIONS & CONVENIENCE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 410842.88,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -43477.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -9.5697,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 20.9292,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.2789,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0038 - FROZEN FOODS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 198881.32,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -3363.92,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -1.6633,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 15.079,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.8665,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0039 - NON FOOD - RETAIL",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 93843.56,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 771.65,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 0.8291,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 34.5977,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.0609,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0044 - NON FOOD - EXPENSE ITEMS & CONSUMER PROMOTIONS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 29555.38,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -1762.19,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -5.6268,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 72.0715,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.741,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0045 - FUEL",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 4582.39,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 105.62,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 2.3593,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 12.9267,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -6.5419,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0046 - NEWS & MAGS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 50556.28,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -4689.89,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -8.4891,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 25.3785,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.69,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0047 - NON FOOD - INSTORE SERVICES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 373705.31,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -5881.27,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -1.5494,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 3.6907,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.0186,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "Unmatched - Unmatched",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 51.6,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 51.6,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Scan Margin %": {
+              "v": 0.0,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.0,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    },
+    "Skerries": {
+      "store": "Skerries",
+      "code": "424",
+      "report": "department report ytd",
+      "scraped_at": "2026-06-04T10:28:40.822441+01:00",
+      "date": "2026-06-04",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "Merchandising Structure - Article SV TB",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": "YTD",
+              "t": "str"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": "YTD",
+              "t": "str"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": "YTD",
+              "t": "str"
+            },
+            "Retail Scan Margin %": {
+              "v": "YTD",
+              "t": "str"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": "YTD",
+              "t": "str"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "Total Merchandising Structure",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 8160692.5,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 56550.87,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 0.6978,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.2956,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.8958,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0024 - GROCERY -  IMPULSE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 847012.42,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 8368.78,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 0.9979,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.6391,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.5173,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0025 - GROCERY - EDIBLE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 966732.17,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 41459.16,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 4.4807,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 12.9967,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.1936,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0026 - GROCERY - NON FOOD",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 443394.05,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -3072.49,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -0.6882,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 13.4665,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.0339,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0027 - BABY & KIDS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 78365.52,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -1690.32,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -2.1114,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 10.0425,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.734,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0028 - PERSONAL CARE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 187406.49,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -1667.12,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -0.8817,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 16.5479,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.5024,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0029 - BEERS/WINES/SPIRITS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1032937.22,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -17646.15,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -1.6797,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 10.2734,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.6517,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0031 - TOBACCO",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 199072.76,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 275.46,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 0.1386,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 12.2999,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.3349,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0032 - PRODUCE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 870201.34,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 10923.01,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 1.2712,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 18.7602,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -2.0399,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0033 - MEAT, POULTRY & FISH",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 825431.09,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 20343.46,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 2.5269,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 19.9726,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.6687,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0034 - DAIRY",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 778316.68,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 13836.87,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 1.81,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 15.3915,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.6062,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0035 - BREAD AND CAKES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 467349.63,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -23228.45,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -4.7349,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 28.0763,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.9971,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0036 - DELI  AND  FOOD TO GO",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 195366.8,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -39761.83,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -16.9107,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 42.6268,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 1.5114,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0037 - PROVISIONS & CONVENIENCE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 571048.69,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 17855.75,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 3.2278,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 19.2491,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.1359,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0038 - FROZEN FOODS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 316797.59,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 12433.66,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 4.0851,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 15.3978,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.0123,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0039 - NON FOOD - RETAIL",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 99259.65,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -5238.72,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -5.0132,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 36.8273,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.2587,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0044 - NON FOOD - EXPENSE ITEMS & CONSUMER PROMOTIONS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 19436.71,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 954.69,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 5.1655,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 56.2676,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -4.8297,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0045 - FUEL",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 11984.93,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 4730.29,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 65.2036,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 20.2717,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.2337,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0046 - NEWS & MAGS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 77164.38,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -31.94,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -0.0414,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 24.8856,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.0999,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0047 - NON FOOD - INSTORE SERVICES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 173414.38,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 17706.76,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 11.3718,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 4.429,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.2096,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    }
   }
 }

@@ -3418,5 +3418,1657 @@
         ]
       }
     }
+  },
+  "2026-05-26": {
+    "Palmerstown": {
+      "store": "Palmerstown",
+      "code": "356",
+      "report": "deli weekly",
+      "scraped_at": "2026-05-26T11:12:50.725143+01:00",
+      "date": "2026-05-26",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0036 - DELI  AND  FOOD TO GO",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 17258.01,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 787.02,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 4.7782,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 42.3223,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.5087,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0091 - FOOD TO GO DELI SANDWICHES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 2170.5,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 558.45,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 34.6422,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 47.9081,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.7762,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0092 - FOOD TO GO PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 497.9,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -415.35,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -45.4804,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 30.1245,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 1.9833,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0094 - FOOD TO GO HOT BEVERAGES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1084.46,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 179.45,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 19.8285,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 49.6661,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 1.1468,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0095 - FOOD TO GO HOT FOOD",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 11249.34,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 823.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 7.8935,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 42.9615,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.7425,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0096 - FOOD TO GO PIZZA",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 16.47,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 16.47,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Scan Margin %": {
+              "v": 24.5224,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 24.5224,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0097 - DELICATESSEN MEATS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1109.15,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -127.68,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -10.3232,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 23.5867,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.5151,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0098 - DELICATESSEN CHEESE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 78.37,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 16.63,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 26.9355,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 20.8743,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -3.0598,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0099 - GOURMET TO GO SALADS & VEG",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 636.62,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -299.56,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -31.9981,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 47.5427,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.5799,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0100 - MEALS & SAVOURIES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 415.2,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 35.61,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 9.3812,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 41.9605,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 1.4194,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    },
+    "Balbriggan": {
+      "store": "Balbriggan",
+      "code": "374",
+      "report": "deli weekly",
+      "scraped_at": "2026-05-26T11:12:50.725143+01:00",
+      "date": "2026-05-26",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0036 - DELI  AND  FOOD TO GO",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 12507.25,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -1484.27,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -10.6084,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 42.5805,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.4626,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0091 - FOOD TO GO DELI SANDWICHES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 2503.66,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -292.04,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -10.446,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 41.6747,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.8682,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0094 - FOOD TO GO HOT BEVERAGES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 892.3,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -95.1,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -9.6314,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 51.3908,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.8473,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0095 - FOOD TO GO HOT FOOD",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 6768.37,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 425.27,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 6.7045,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 44.5131,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.4268,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0096 - FOOD TO GO PIZZA",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 57.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -3.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -5.0,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": -10.7373,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -27.4873,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0097 - DELICATESSEN MEATS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 611.49,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -96.48,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -13.6277,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 41.9904,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.1042,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0098 - DELICATESSEN CHEESE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 201.27,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 29.51,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 17.181,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": -10.7656,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -48.3676,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0099 - GOURMET TO GO SALADS & VEG",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1009.29,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -242.53,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -19.3742,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 47.3293,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 1.4697,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0100 - MEALS & SAVOURIES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 421.27,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 141.55,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 50.6042,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 25.1255,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 3.3466,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    },
+    "Skerries": {
+      "store": "Skerries",
+      "code": "424",
+      "report": "deli weekly",
+      "scraped_at": "2026-05-26T11:12:50.725143+01:00",
+      "date": "2026-05-26",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0036 - DELI  AND  FOOD TO GO",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 9475.67,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -2288.99,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -19.4565,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 42.977,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 1.9142,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0091 - FOOD TO GO DELI SANDWICHES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 703.35,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 67.47,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 10.6105,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 42.8555,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -8.2218,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0092 - FOOD TO GO PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -75.13,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -100.0,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -42.4065,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0094 - FOOD TO GO HOT BEVERAGES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 541.9,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 67.3,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 14.1804,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 51.9861,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 1.9777,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0095 - FOOD TO GO HOT FOOD",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 5166.74,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -175.98,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -3.2938,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 47.8445,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 2.366,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0096 - FOOD TO GO PIZZA",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 112.5,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 73.5,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 188.4615,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 27.4449,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 2.0603,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0097 - DELICATESSEN MEATS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1094.66,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -659.99,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -37.6138,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 29.5223,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.3845,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0098 - DELICATESSEN CHEESE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 579.74,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -295.78,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -33.7834,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 34.0596,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.3538,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0099 - GOURMET TO GO SALADS & VEG",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 660.81,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -931.94,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -58.5114,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 41.5284,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -2.2469,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0100 - MEALS & SAVOURIES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 658.95,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -315.46,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -32.3745,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 36.8784,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 4.976,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0243 - DELICATESSEN OLIVES & ANTIPASTI",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": -42.98,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -42.98,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Scan Margin %": {
+              "v": 40.0221,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 40.0221,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "2026-06-04": {
+    "Palmerstown": {
+      "store": "Palmerstown",
+      "code": "356",
+      "report": "deli weekly",
+      "scraped_at": "2026-06-04T10:28:40.822441+01:00",
+      "date": "2026-06-04",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0036 - DELI  AND  FOOD TO GO",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 23985.47,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 7995.87,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 50.0067,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 41.5945,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.1684,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0091 - FOOD TO GO DELI SANDWICHES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 2594.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 1031.55,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 66.0213,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 47.9744,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.1223,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0092 - FOOD TO GO PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1040.3,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 26.27,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 2.5907,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 27.6449,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.0308,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0094 - FOOD TO GO HOT BEVERAGES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1089.41,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 237.86,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 27.9326,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 46.4403,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -2.2102,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0095 - FOOD TO GO HOT FOOD",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 15564.11,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 5491.57,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 54.5202,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 42.3611,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.2321,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0097 - DELICATESSEN MEATS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1576.05,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 220.06,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 16.2287,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 24.8112,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 1.2575,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0098 - DELICATESSEN CHEESE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 108.35,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 56.07,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 107.2494,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 20.892,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.3375,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0099 - GOURMET TO GO SALADS & VEG",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1326.95,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 594.36,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 81.1313,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 49.2683,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.598,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0100 - MEALS & SAVOURIES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 686.3,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 338.13,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 97.1164,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 43.1794,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 6.7862,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    },
+    "Balbriggan": {
+      "store": "Balbriggan",
+      "code": "374",
+      "report": "deli weekly",
+      "scraped_at": "2026-06-04T10:28:40.822441+01:00",
+      "date": "2026-06-04",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0036 - DELI  AND  FOOD TO GO",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 13977.89,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 1561.75,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 12.5784,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 42.6011,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.1058,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0091 - FOOD TO GO DELI SANDWICHES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 2851.93,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 218.93,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 8.3148,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 42.0272,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.6921,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0094 - FOOD TO GO HOT BEVERAGES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 830.11,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -125.69,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -13.1502,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 51.058,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 1.5345,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0095 - FOOD TO GO HOT FOOD",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 7091.73,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 496.35,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 7.5257,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 43.862,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.4263,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0096 - FOOD TO GO PIZZA",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 144.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 73.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 102.8169,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": -7.8591,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -25.8784,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0097 - DELICATESSEN MEATS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 774.38,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 91.76,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 13.4423,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 42.0462,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.6969,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0098 - DELICATESSEN CHEESE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 246.93,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 115.24,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 87.5085,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 22.8211,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -12.825,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0099 - GOURMET TO GO SALADS & VEG",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1545.31,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 563.8,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 57.4421,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 47.6869,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 1.7077,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0100 - MEALS & SAVOURIES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 412.9,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 121.96,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 41.9193,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 23.5666,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 10.7371,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    },
+    "Skerries": {
+      "store": "Skerries",
+      "code": "424",
+      "report": "deli weekly",
+      "scraped_at": "2026-06-04T10:28:40.822441+01:00",
+      "date": "2026-06-04",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0036 - DELI  AND  FOOD TO GO",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 10953.2,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 219.91,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 2.0489,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 42.0257,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 1.7362,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0091 - FOOD TO GO DELI SANDWICHES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 787.9,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 254.95,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 47.8375,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 44.4345,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -3.0991,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0092 - FOOD TO GO PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -48.25,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -100.0,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -46.4249,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0094 - FOOD TO GO HOT BEVERAGES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 377.71,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -86.5,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -18.6338,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 51.7226,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.7171,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0095 - FOOD TO GO HOT FOOD",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 5740.85,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 625.17,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 12.2207,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 46.9558,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 2.1818,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0096 - FOOD TO GO PIZZA",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 135.75,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 67.5,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 98.9011,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 21.8178,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 7.0925,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0097 - DELICATESSEN MEATS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1479.15,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -342.43,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -18.7985,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 28.8805,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.4695,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0098 - DELICATESSEN CHEESE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 738.91,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -57.75,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -7.249,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 35.5066,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.3124,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0099 - GOURMET TO GO SALADS & VEG",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1130.68,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 53.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 4.918,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 41.9038,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.661,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0100 - MEALS & SAVOURIES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 568.25,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -239.78,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -29.6746,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 36.674,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 3.2087,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0243 - DELICATESSEN OLIVES & ANTIPASTI",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": -6.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -6.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Scan Margin %": {
+              "v": 40.05,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 40.05,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    }
   }
 }
