@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Moriarty Group – Select Store</title>
-<script>if(localStorage.getItem('mg_auth')!=='mg_ok_1916'){location.replace('login.html');}</script>
+<script>if(!localStorage.getItem('portal_session')){location.replace('login.html');}</script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
@@ -54,12 +54,36 @@ document.addEventListener('DOMContentLoaded', function() {
     { code: '424', name: 'Skerries',    sub: 'SuperValu Skerries',    href: 'index-424.html' }
   ];
 
+  var session = null;
+  try {
+    session = JSON.parse(localStorage.getItem('portal_session') || 'null');
+  } catch (e) {
+    session = null;
+  }
+  if (!session || !session.user) {
+    location.replace('login.html');
+    return;
+  }
+
+  var allowed = [];
+  var i;
+  if (session.user.role === 'admin') {
+    allowed = ['356', '374', '424'];
+  } else if (session.user.allowed_stores && session.user.allowed_stores.length) {
+    for (i = 0; i < session.user.allowed_stores.length; i++) {
+      allowed.push(String(session.user.allowed_stores[i].store_code));
+    }
+  } else if (session.user.store_code) {
+    allowed = [String(session.user.store_code)];
+  }
+
   var lastCode = localStorage.getItem('user_store') || '';
   var container = document.getElementById('store-list');
   var html = '';
 
-  for (var i = 0; i < stores.length; i++) {
+  for (i = 0; i < stores.length; i++) {
     var s = stores[i];
+    if (allowed.length && allowed.indexOf(s.code) === -1) { continue; }
     var isLast = (s.code === lastCode);
     html += '<a class="store-tile' + (isLast ? ' last-visited' : '') + '"';
     html += ' href="' + s.href + '"';
@@ -78,7 +102,9 @@ document.addEventListener('DOMContentLoaded', function() {
   container.innerHTML = html;
 
   document.getElementById('signout-link').onclick = function() {
-    localStorage.removeItem('mg_auth');
+    localStorage.removeItem('portal_session');
+    localStorage.removeItem('user_store');
+    sessionStorage.removeItem('portal_auth_token');
     location.replace('login.html');
   };
 });
