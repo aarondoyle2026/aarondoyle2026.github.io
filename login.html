@@ -38,38 +38,38 @@ body{font-family:'DM Sans',sans-serif;background:#f5f0f0;color:#1a1a1a;min-heigh
 </head>
 <body>
 <div class="brand">
-  <div class="logo-mark">&#127978;</div>
-  <div class="brand-name">SuperValu</div>
-  <div class="brand-sub">Real Food, Real People</div>
+ <div class="logo-mark">&#127978;</div>
+ <div class="brand-name">SuperValu</div>
+ <div class="brand-sub">Real Food, Real People</div>
 </div>
 <div class="card">
-  <div class="field">
-    <label for="username">Username</label>
-    <input type="text" id="username" placeholder="Enter your username" autocomplete="username" autocorrect="off" autocapitalize="off" spellcheck="false">
-  </div>
-  <div class="dots">
-    <div class="pin-dot" id="pd0"></div>
-    <div class="pin-dot" id="pd1"></div>
-    <div class="pin-dot" id="pd2"></div>
-    <div class="pin-dot" id="pd3"></div>
-  </div>
-  <div class="keypad">
-    <button class="key" id="pk1">1</button>
-    <button class="key" id="pk2">2</button>
-    <button class="key" id="pk3">3</button>
-    <button class="key" id="pk4">4</button>
-    <button class="key" id="pk5">5</button>
-    <button class="key" id="pk6">6</button>
-    <button class="key" id="pk7">7</button>
-    <button class="key" id="pk8">8</button>
-    <button class="key" id="pk9">9</button>
-    <button class="key action" id="pkClear">CLR</button>
-    <button class="key" id="pk0">0</button>
-    <button class="key action" id="pkDel">&#9003;</button>
-  </div>
-  <button id="loginBtn" disabled>Sign In</button>
-  <div class="error" id="errorBox"></div>
-  <div class="loading" id="loadingBox">Signing in…</div>
+ <div class="field">
+   <label for="username">Username</label>
+   <input type="text" id="username" placeholder="Enter your username" autocomplete="username" autocorrect="off" autocapitalize="off" spellcheck="false">
+ </div>
+ <div class="dots">
+   <div class="pin-dot" id="pd0"></div>
+   <div class="pin-dot" id="pd1"></div>
+   <div class="pin-dot" id="pd2"></div>
+   <div class="pin-dot" id="pd3"></div>
+ </div>
+ <div class="keypad">
+   <button class="key" type="button" id="pk1">1</button>
+   <button class="key" type="button" id="pk2">2</button>
+   <button class="key" type="button" id="pk3">3</button>
+   <button class="key" type="button" id="pk4">4</button>
+   <button class="key" type="button" id="pk5">5</button>
+   <button class="key" type="button" id="pk6">6</button>
+   <button class="key" type="button" id="pk7">7</button>
+   <button class="key" type="button" id="pk8">8</button>
+   <button class="key" type="button" id="pk9">9</button>
+   <button class="key action" type="button" id="pkClear">CLR</button>
+   <button class="key" type="button" id="pk0">0</button>
+   <button class="key action" type="button" id="pkDel">&#9003;</button>
+ </div>
+ <button type="button" id="loginBtn" disabled>Sign In</button>
+ <div class="error" id="errorBox"></div>
+ <div class="loading" id="loadingBox">Signing in…</div>
 </div>
 <script>
 localStorage.removeItem('portal_session');
@@ -79,134 +79,145 @@ var pin = '';
 var busy = false;
 
 function hashPin(p) {
-  var msgBuffer = new TextEncoder().encode(p);
-  return window.crypto.subtle.digest('SHA-256', msgBuffer).then(function(hashBuffer) {
-    var hashArray = Array.from(new Uint8Array(hashBuffer));
-    return hashArray.map(function(b) {
-      var hex = b.toString(16);
-      return hex.length === 1 ? '0' + hex : hex;
-    }).join('');
-  });
+ var msgBuffer = new TextEncoder().encode(p);
+ return window.crypto.subtle.digest('SHA-256', msgBuffer).then(function(hashBuffer) {
+   var hashArray = Array.from(new Uint8Array(hashBuffer));
+   return hashArray.map(function(b) {
+     var hex = b.toString(16);
+     return hex.length === 1 ? '0' + hex : hex;
+   }).join('');
+ });
 }
 
 function updateDots() {
-  for (var i = 0; i < 4; i++) {
-    var dot = document.getElementById('pd' + i);
-    if (dot) dot.className = i < pin.length ? 'pin-dot filled' : 'pin-dot';
-  }
-  var btn = document.getElementById('loginBtn');
-  var username = document.getElementById('username').value.trim();
-  btn.disabled = pin.length < 4 || !username || busy;
+ for (var i = 0; i < 4; i++) {
+   var dot = document.getElementById('pd' + i);
+   if (dot) dot.className = i < pin.length ? 'pin-dot filled' : 'pin-dot';
+ }
+ var btn = document.getElementById('loginBtn');
+ var username = document.getElementById('username').value.trim();
+ btn.disabled = pin.length < 4 || !username || busy;
 }
 
 function pressKey(digit) {
-  if (pin.length >= 4 || busy) return;
-  pin += digit;
-  updateDots();
-  if (pin.length === 4) { setTimeout(function() { tryLogin(); }, 150); }
+ if (pin.length >= 4 || busy) return;
+ pin += digit;
+ updateDots();
+ if (pin.length === 4) { setTimeout(function() { tryLogin(); }, 150); }
 }
 
 function delKey() {
-  if (busy) return;
-  pin = pin.slice(0, -1);
-  updateDots();
+ if (busy) return;
+ pin = pin.slice(0, -1);
+ updateDots();
 }
 
 function clearPin() {
-  if (busy) return;
-  pin = '';
-  updateDots();
+ if (busy) return;
+ pin = '';
+ updateDots();
 }
 
 function showError(msg) {
-  var el = document.getElementById('errorBox');
-  el.textContent = msg;
-  el.className = 'error show';
-  document.getElementById('loadingBox').className = 'loading';
+ var el = document.getElementById('errorBox');
+ el.textContent = msg;
+ el.className = 'error show';
+ document.getElementById('loadingBox').className = 'loading';
 }
 
 function resetLogin() {
-  busy = false;
-  pin = '';
-  updateDots();
-  document.getElementById('loadingBox').className = 'loading';
+ busy = false;
+ pin = '';
+ updateDots();
+ document.getElementById('loadingBox').className = 'loading';
 }
 
 function tryLogin() {
-  var username = document.getElementById('username').value.trim().toLowerCase();
-  if (!username || pin.length < 4 || busy) return;
-  busy = true;
-  document.getElementById('loginBtn').disabled = true;
-  document.getElementById('errorBox').className = 'error';
-  document.getElementById('loadingBox').className = 'loading show';
+ var username = document.getElementById('username').value.trim().toLowerCase();
+ if (!username || pin.length < 4 || busy) return;
+ busy = true;
+ document.getElementById('loginBtn').disabled = true;
+ document.getElementById('errorBox').className = 'error';
+ document.getElementById('loadingBox').className = 'loading show';
 
-  var currentPin = pin;
+ var currentPin = pin;
 
-  hashPin(currentPin).then(function(pinHash) {
-    return fetch(SB_URL + '/rest/v1/portal_users?username=eq.' + encodeURIComponent(username) + '&pin_hash=eq.' + pinHash + '&active=eq.true&select=id,username,group_id,store_code,role,display_name', {
-      headers: {
-        'apikey': SB_KEY,
-        'Authorization': 'Bearer ' + SB_KEY
-      }
-    });
-  }).then(function(r) {
-    if (!r.ok) { throw new Error('Auth query failed: ' + r.status); }
-    return r.json();
-  }).then(function(users) {
-    if (!users || users.length === 0) {
-      resetLogin();
-      showError('Invalid username or PIN');
-      return;
-    }
-    var user = users[0];
-    return fetch(SB_URL + '/rest/v1/group_stores?group_id=eq.' + user.group_id + (user.role !== 'admin' ? '&store_code=eq.' + user.store_code : '') + '&select=store_code,store_name', {
-      headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY }
-    }).then(function(r) {
-      if (!r.ok) { throw new Error('Stores query failed: ' + r.status); }
-      return r.json();
-    }).then(function(stores) {
-      var moduleAccess = {
-        admin:         { haccp:true,  kpi:true,  reports:true,  pnl:true,  ai:true,  operations:true  },
-        store_manager: { haccp:true,  kpi:true,  reports:true,  pnl:true,  ai:true,  operations:true  },
-        duty:          { haccp:true,  kpi:true,  reports:true,  pnl:true,  ai:true,  operations:true  },
-        deli:          { haccp:true,  kpi:false, reports:false, pnl:false, ai:false, operations:false },
-        butcher:       { haccp:true,  kpi:false, reports:false, pnl:false, ai:false, operations:false },
-        shopfloor:     { haccp:true,  kpi:false, reports:false, pnl:false, ai:false, operations:false },
-        fv:            { haccp:true,  kpi:false, reports:false, pnl:false, ai:false, operations:false },
-        hr:            { haccp:false, kpi:false, reports:false, pnl:false, ai:false, operations:true  }
-      };
-      localStorage.setItem('portal_session', JSON.stringify({
-        session_id: user.id,
-        user: {
-          username: user.username,
-          display_name: user.display_name,
-          role: user.role,
-          group_id: user.group_id,
-          store_code: user.store_code,
-          allowed_stores: stores || [],
-          access: moduleAccess[user.role] || moduleAccess.shopfloor
-        }
-      }));
-      sessionStorage.setItem('portal_auth_token','1');
-      var toUrl=(function(){var s=window.location.search;if(s){var p=s.substring(1).split('&');for(var i=0;i<p.length;i++){if(p[i].indexOf('to=')===0){return decodeURIComponent(p[i].substring(3));}}}return 'https://aarondoyle2026.github.io/index.html';})();
-      window.location.href=toUrl;
-    });
-  }).catch(function(e) {
-    resetLogin();
-    showError(e && e.message ? e.message : 'Connection error. Please try again.');
-  });
+ hashPin(currentPin).then(function(pinHash) {
+   return fetch(SB_URL + '/rest/v1/portal_users?username=eq.' + encodeURIComponent(username) + '&pin_hash=eq.' + pinHash + '&select=id,username,group_id,store_code,role,display_name', {
+     headers: {
+       'apikey': SB_KEY,
+       'Authorization': 'Bearer ' + SB_KEY
+     }
+   });
+ }).then(function(r) {
+   if (!r.ok) { throw new Error('Auth query failed: ' + r.status); }
+   return r.json();
+ }).then(function(users) {
+   if (!users || users.length === 0) {
+     resetLogin();
+     showError('Invalid username or PIN');
+     return;
+   }
+   var user = users[0];
+   return fetch(SB_URL + '/rest/v1/group_stores?group_id=eq.' + user.group_id + (user.role !== 'admin' ? '&store_code=eq.' + user.store_code : '') + '&select=store_code,store_name', {
+     headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY }
+   }).then(function(r) {
+     if (!r.ok) { throw new Error('Stores query failed: ' + r.status); }
+     return r.json();
+   }).then(function(stores) {
+     var moduleAccess = {
+       admin:         { haccp:true,  kpi:true,  reports:true,  pnl:true,  ai:true,  operations:true  },
+       store_manager: { haccp:true,  kpi:true,  reports:true,  pnl:true,  ai:true,  operations:true  },
+       duty:          { haccp:true,  kpi:true,  reports:true,  pnl:true,  ai:true,  operations:true  },
+       deli:          { haccp:true,  kpi:false, reports:false, pnl:false, ai:false, operations:false },
+       butcher:       { haccp:true,  kpi:false, reports:false, pnl:false, ai:false, operations:false },
+       shopfloor:     { haccp:true,  kpi:false, reports:false, pnl:false, ai:false, operations:false },
+       fv:            { haccp:true,  kpi:false, reports:false, pnl:false, ai:false, operations:false },
+       hr:            { haccp:false, kpi:false, reports:false, pnl:false, ai:false, operations:true  }
+     };
+     localStorage.setItem('portal_session', JSON.stringify({
+       session_id: user.id,
+       user: {
+         username: user.username,
+         display_name: user.display_name,
+         role: user.role,
+         group_id: user.group_id,
+         store_code: user.store_code,
+         allowed_stores: stores || [],
+         access: moduleAccess[user.role] || moduleAccess.shopfloor
+       }
+     }));
+     sessionStorage.setItem('portal_auth_token','1');
+     var toUrl = (function() {
+       var s = window.location.search;
+       if (s) {
+         var p = s.substring(1).split('&');
+         for (var i = 0; i < p.length; i++) {
+           if (p[i].indexOf('to=') === 0) {
+             return decodeURIComponent(p[i].substring(3));
+           }
+         }
+       }
+       return 'https://aarondoyle2026.github.io/index.html';
+     })();
+     window.location.href = toUrl;
+   });
+ }).catch(function(e) {
+   resetLogin();
+   showError(e && e.message ? e.message : 'Connection error. Please try again.');
+ });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  var keys = ['1','2','3','4','5','6','7','8','9','0'];
-  keys.forEach(function(k) {
-    var btn = document.getElementById('pk' + k);
-    if (btn) btn.addEventListener('click', function() { pressKey(k); });
-  });
-  document.getElementById('pkDel').addEventListener('click', delKey);
-  document.getElementById('pkClear').addEventListener('click', clearPin);
-  document.getElementById('loginBtn').addEventListener('click', tryLogin);
-  document.getElementById('username').addEventListener('input', updateDots);
+ var keys = ['1','2','3','4','5','6','7','8','9','0'];
+ keys.forEach(function(k) {
+   var btn = document.getElementById('pk' + k);
+   if (btn) btn.addEventListener('click', function() { pressKey(k); });
+ });
+ document.getElementById('pkDel').addEventListener('click', delKey);
+ document.getElementById('pkClear').addEventListener('click', clearPin);
+ document.getElementById('loginBtn').addEventListener('click', tryLogin);
+ document.getElementById('username').addEventListener('input', updateDots);
 });
 </script>
 </body>
