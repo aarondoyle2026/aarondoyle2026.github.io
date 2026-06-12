@@ -3,192 +3,89 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Moriarty Group – Store Systems</title>
+<title>Moriarty Group – Select Store</title>
+<script>if(localStorage.getItem('mg_auth')!=='mg_ok_1916'){location.replace('login.html');}</script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
-body{font-family:'DM Sans',sans-serif;background:#0d1f13;color:white;min-height:100vh;}
-.header{padding:40px 24px 28px;text-align:center;position:relative;overflow:hidden;}
-.header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(0,112,60,0.5) 0%,transparent 70%);pointer-events:none;}
-.logo-mark{display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;background:#00703c;border-radius:16px;font-size:28px;margin-bottom:16px;box-shadow:0 8px 32px rgba(0,112,60,0.5);}
-.brand{font-size:22px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:white;}
-.estd{font-size:10px;letter-spacing:3px;color:rgba(255,255,255,0.4);margin-top:4px;text-transform:uppercase;}
-.tagline{font-size:12px;color:rgba(255,255,255,0.5);margin-top:10px;letter-spacing:1px;}
-.section{padding:0 14px 10px;}
-.section-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.35);margin-bottom:10px;padding-left:2px;}
-.app-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;}
-.app-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px 14px;cursor:pointer;text-decoration:none;transition:all 0.2s;display:block;position:relative;overflow:hidden;}
-.app-card::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity 0.2s;}
-.app-card:active{transform:scale(0.97);}
-.app-card.green::before{background:radial-gradient(circle at top left,rgba(0,112,60,0.3),transparent);}
-.app-card.blue::before{background:radial-gradient(circle at top left,rgba(21,101,192,0.3),transparent);}
-.app-card.orange::before{background:radial-gradient(circle at top left,rgba(230,81,0,0.3),transparent);}
-.app-card.red::before{background:radial-gradient(circle at top left,rgba(198,40,40,0.3),transparent);}
-.app-card.purple::before{background:radial-gradient(circle at top left,rgba(106,27,154,0.3),transparent);}
-.app-card.teal::before{background:radial-gradient(circle at top left,rgba(0,121,107,0.3),transparent);}
-.app-card.indigo::before{background:radial-gradient(circle at top left,rgba(48,63,159,0.3),transparent);}
-.app-card.gold::before{background:radial-gradient(circle at top left,rgba(180,140,0,0.3),transparent);}
-.app-card.violet::before{background:radial-gradient(circle at top left,rgba(90,50,180,0.3),transparent);}
-.app-card.amber::before{background:radial-gradient(circle at top left,rgba(200,100,0,0.3),transparent);}
-.app-card.emerald::before{background:radial-gradient(circle at top left,rgba(0,150,80,0.3),transparent);}
-.app-card:hover::before,.app-card:active::before{opacity:1;}
-.app-card.wide{grid-column:1/-1;}
-.app-icon{font-size:32px;margin-bottom:10px;display:block;}
-.app-name{font-size:14px;font-weight:700;color:white;margin-bottom:3px;line-height:1.2;}
-.app-desc{font-size:11px;color:rgba(255,255,255,0.45);line-height:1.4;}
-.app-badge{position:absolute;top:12px;right:12px;background:rgba(0,112,60,0.8);color:white;font-size:8px;font-weight:700;letter-spacing:0.5px;padding:2px 6px;border-radius:10px;text-transform:uppercase;}
-.app-card.green{border-color:rgba(0,112,60,0.3);}
-.app-card.blue{border-color:rgba(21,101,192,0.3);}
-.app-card.orange{border-color:rgba(230,81,0,0.3);}
-.app-card.red{border-color:rgba(198,40,40,0.3);}
-.app-card.purple{border-color:rgba(106,27,154,0.3);}
-.app-card.teal{border-color:rgba(0,121,107,0.3);}
-.app-card.indigo{border-color:rgba(48,63,159,0.3);}
-.app-card.gold{border-color:rgba(180,140,0,0.3);}
-.app-card.violet{border-color:rgba(90,50,180,0.3);}
-.app-card.amber{border-color:rgba(200,100,0,0.3);}
-.app-card.emerald{border-color:rgba(0,150,80,0.3);}
-.status-strip{margin:0 14px 20px;background:rgba(0,112,60,0.15);border:1px solid rgba(0,112,60,0.3);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:10px;}
-.status-dot{width:8px;height:8px;background:#4caf50;border-radius:50%;flex-shrink:0;box-shadow:0 0 8px rgba(76,175,80,0.8);animation:pulse 2s infinite;}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
-.status-text{font-size:12px;color:rgba(255,255,255,0.6);}
-.status-text strong{color:white;}
-.footer{text-align:center;padding:20px 14px 40px;font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:1px;text-transform:uppercase;}
-.time-widget{text-align:center;margin-bottom:24px;}
-.time-display{font-size:36px;font-weight:300;color:white;letter-spacing:2px;font-variant-numeric:tabular-nums;}
-.date-display{font-size:12px;color:rgba(255,255,255,0.4);margin-top:4px;letter-spacing:1px;}
+body{font-family:'DM Sans',sans-serif;background:#111111;color:white;min-height:100vh;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;}
+.header{padding:44px 24px 32px;text-align:center;}
+.logo-mark{display:-webkit-inline-flex;display:inline-flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;width:68px;height:68px;background:#E41E26;border-radius:18px;font-size:30px;margin-bottom:16px;box-shadow:0 8px 32px rgba(228,30,38,0.45);}
+.brand{font-size:20px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:white;}
+.estd{font-size:10px;letter-spacing:3px;color:rgba(255,255,255,0.35);margin-top:4px;text-transform:uppercase;}
+.select-label{font-size:13px;color:rgba(255,255,255,0.45);margin-top:18px;letter-spacing:0.5px;}
+.stores{padding:8px 16px 20px;}
+.store-tile{display:block;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);border-radius:16px;padding:22px 20px;margin-bottom:14px;text-decoration:none;color:white;position:relative;overflow:hidden;}
+.store-tile:active{background:rgba(228,30,38,0.15);border-color:rgba(228,30,38,0.5);}
+.store-tile.last-visited{border-color:#E41E26;background:rgba(228,30,38,0.1);}
+.store-code{font-size:10px;font-weight:700;color:rgba(255,255,255,0.38);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:5px;}
+.store-name{font-size:24px;font-weight:700;letter-spacing:0.5px;}
+.store-sub{font-size:12px;color:rgba(255,255,255,0.42);margin-top:5px;}
+.store-arrow{position:absolute;right:20px;top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%);font-size:26px;color:rgba(255,255,255,0.22);}
+.store-tile.last-visited .store-arrow{color:#E41E26;}
+.last-badge{position:absolute;top:14px;right:14px;background:#E41E26;color:white;font-size:9px;font-weight:700;letter-spacing:0.08em;padding:3px 9px;border-radius:10px;text-transform:uppercase;}
+.divider{height:1px;background:rgba(255,255,255,0.07);margin:4px 16px 18px;}
+.footer{text-align:center;padding:16px 14px 36px;font-size:10px;color:rgba(255,255,255,0.18);letter-spacing:1px;text-transform:uppercase;margin-top:auto;}
 </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="logo-mark">🛒</div>
+  <div class="logo-mark">&#128722;</div>
   <div class="brand">Moriarty Group</div>
-  <div class="estd">SuperValu · Est. 1987</div>
-  <div class="tagline">Store Management Systems</div>
+  <div class="estd">SuperValu &middot; Est. 1987</div>
+  <div class="select-label">Select your store to continue</div>
 </div>
 
-<div class="time-widget">
-  <div class="time-display" id="clock">--:--</div>
-  <div class="date-display" id="dateline">Loading...</div>
-</div>
+<div class="stores" id="store-list"></div>
 
-<div class="status-strip">
-  <div class="status-dot"></div>
-  <div class="status-text"><strong>All systems live</strong> · Data synced across all devices</div>
-</div>
-
-<!-- PERFORMANCE & REPORTING -->
-<div class="section">
-  <div class="section-label">📊 Performance & Reporting</div>
-  <div class="app-grid">
-    <a class="app-card emerald wide" href="https://aarondoyle2026.github.io/managers-report.html">
-      <span class="app-icon">📊</span>
-      <div class="app-name">Managers Report</div>
-      <div class="app-desc">Weekly P&L · AI analysis · Sales, margin, waste & department performance by store</div>
-      <div class="app-badge">Weekly</div>
-    </a>
-    <a class="app-card gold wide" href="https://aarondoyle2026.github.io/sales_analysis.html">
-      <span class="app-icon">📈</span>
-      <div class="app-name">Sales Analysis</div>
-      <div class="app-desc">KPI overview — sales, margin, waste, transactions & average spend across all 3 stores</div>
-      <div class="app-badge">Daily</div>
-    </a>
-    <a class="app-card teal wide" href="https://aarondoyle2026.github.io/reports.html">
-      <span class="app-icon">📋</span>
-      <div class="app-name">Reports</div>
-      <div class="app-desc">Meat, Dairy, Bakery, Produce, Deli, Top Sellers, Hourly Sales, Department & Ownbrand reports across all 3 stores</div>
-      <div class="app-badge">12 Reports</div>
-    </a>
-    <a class="app-card violet wide" href="https://aarondoyle2026.github.io/ai-insights.html">
-      <span class="app-icon">🤖</span>
-      <div class="app-name">AI Insights</div>
-      <div class="app-desc">Daily AI analysis of all store data — performance summary, anomaly flags & recommended actions</div>
-      <div class="app-badge">AI</div>
-    </a>
-    <a class="app-card amber wide" href="https://aarondoyle2026.github.io/claims.html">
-      <span class="app-icon">🧾</span>
-      <div class="app-name">eClaims</div>
-      <div class="app-desc">Open claims by store — shortages, quality & uplifts with due dates, values & status tracking</div>
-      <div class="app-badge">Daily</div>
-    </a>
-  </div>
-</div>
-
-<!-- FOOD SAFETY -->
-<div class="section">
-  <div class="section-label">🌡 Food Safety & Compliance</div>
-  <div class="app-grid">
-    <a class="app-card green wide" href="https://aarondoyle2026.github.io/haccp-system/">
-      <span class="app-icon">🌡️</span>
-      <div class="app-name">HACCP System</div>
-      <div class="app-desc">Temperature checks, deli, cleaning schedules, traceability & all compliance forms</div>
-      <div class="app-badge">41 Forms</div>
-    </a>
-  </div>
-</div>
-
-<!-- STORE OPERATIONS -->
-<div class="section">
-  <div class="section-label">📦 Store Operations</div>
-  <div class="app-grid">
-    <a class="app-card blue" href="https://aarondoyle2026.github.io/dockets.html">
-      <span class="app-icon">🧾</span>
-      <div class="app-name">Docket System</div>
-      <div class="app-desc">Ambient & chilled registers, returns, inter-store transfers</div>
-    </a>
-    <a class="app-card teal" href="https://aarondoyle2026.github.io/roster.html">
-      <span class="app-icon">📅</span>
-      <div class="app-name">Weekly Roster</div>
-      <div class="app-desc">Staff scheduling with hours, breaks & email to HR</div>
-    </a>
-  </div>
-</div>
-
-<!-- HR & SAFETY -->
-<div class="section">
-  <div class="section-label">👤 HR & Safety</div>
-  <div class="app-grid">
-    <a class="app-card orange" href="https://aarondoyle2026.github.io/Incident-report/">
-      <span class="app-icon">⚠️</span>
-      <div class="app-name">Incident Report</div>
-      <div class="app-desc">Accident & incident reporting with photos, statements & PDF</div>
-    </a>
-    <a class="app-card red" href="https://aarondoyle2026.github.io/fire-drill.html">
-      <span class="app-icon">🔥</span>
-      <div class="app-name">Fire Drill</div>
-      <div class="app-desc">Evacuation reports, staff lists, effectiveness & sign-off</div>
-    </a>
-    <a class="app-card purple" href="https://aarondoyle2026.github.io/rtw_form.html">
-      <span class="app-icon">🏥</span>
-      <div class="app-name">Return to Work Form</div>
-      <div class="app-desc">Employee return from absence, COVID section, doctor clearance & dual signatures</div>
-    </a>
-    <a class="app-card green" href="https://aarondoyle2026.github.io/appraisals.html">
-      <span class="app-icon">📋</span>
-      <div class="app-name">Appraisals</div>
-      <div class="app-desc">3-month, 6-month probation, annual employee & manager reviews</div>
-    </a>
-    <a class="app-card indigo wide" href="https://aarondoyle2026.github.io/training.html">
-      <span class="app-icon">📚</span>
-      <div class="app-name">Training Records</div>
-      <div class="app-desc">Job descriptions, training directives & staff acknowledgements — alcohol, lotto, POS, shopfloor SOP</div>
-      <div class="app-badge">9 Docs</div>
-    </a>
-  </div>
-</div>
+<div class="divider"></div>
 
 <div class="footer">
-  Moriarty Group · SuperValu · Internal Use Only
+  Moriarty Group &middot; SuperValu &middot; Internal Use Only<br>
+  <span id="signout-link" style="cursor:pointer;color:rgba(255,255,255,0.28);text-decoration:underline;font-size:10px;">Sign Out</span>
 </div>
 
 <script>
-function updateClock(){
-  var now=new Date();
-  document.getElementById('clock').textContent=now.toLocaleTimeString('en-IE',{hour:'2-digit',minute:'2-digit',hour12:false});
-  document.getElementById('dateline').textContent=now.toLocaleDateString('en-IE',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+document.addEventListener('DOMContentLoaded', function() {
+  var stores = [
+    { code: '356', name: 'Palmerstown', sub: 'SuperValu Palmerstown', href: 'index-356.html' },
+    { code: '374', name: 'Balbriggan',  sub: 'SuperValu Balbriggan',  href: 'index-374.html' },
+    { code: '424', name: 'Skerries',    sub: 'SuperValu Skerries',    href: 'index-424.html' }
+  ];
+
+  var lastCode = localStorage.getItem('user_store') || '';
+  var container = document.getElementById('store-list');
+  var html = '';
+
+  for (var i = 0; i < stores.length; i++) {
+    var s = stores[i];
+    var isLast = (s.code === lastCode);
+    html += '<a class="store-tile' + (isLast ? ' last-visited' : '') + '"';
+    html += ' href="' + s.href + '"';
+    html += ' onclick="selectStore(\'' + s.code + '\')">';
+    html += '<div class="store-code">Store ' + s.code + '</div>';
+    html += '<div class="store-name">' + s.name + '</div>';
+    html += '<div class="store-sub">' + s.sub + '</div>';
+    if (isLast) {
+      html += '<div class="last-badge">Last Visited</div>';
+    } else {
+      html += '<div class="store-arrow">&#8250;</div>';
+    }
+    html += '</a>';
+  }
+
+  container.innerHTML = html;
+
+  document.getElementById('signout-link').onclick = function() {
+    localStorage.removeItem('mg_auth');
+    location.replace('login.html');
+  };
+});
+
+function selectStore(code) {
+  localStorage.setItem('user_store', code);
 }
-updateClock();setInterval(updateClock,1000);
 </script>
 
 </body>

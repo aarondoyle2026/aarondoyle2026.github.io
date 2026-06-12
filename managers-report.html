@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Moriarty Group – Managers Report</title>
+<script>if(localStorage.getItem('mg_auth')!=='mg_ok_1916'){location.replace('login.html');}</script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
@@ -71,10 +72,10 @@ body{font-family:'DM Sans',sans-serif;background:#f4f5f0;color:#1a1f18;min-heigh
   </div>
 </div>
 
-<div class="store-bar">
-  <button class="store-btn disabled">Palmerstown</button>
-  <button class="store-btn disabled">Balbriggan</button>
-  <button class="store-btn active" onclick="selectStore('Skerries',this)">Skerries</button>
+<div class="store-bar" id="store-bar">
+  <button class="store-btn" onclick="selectStore('356',this)">Palmerstown</button>
+  <button class="store-btn" onclick="selectStore('374',this)">Balbriggan</button>
+  <button class="store-btn" onclick="selectStore('424',this)">Skerries</button>
 </div>
 
 <div class="content" id="main-content">
@@ -82,16 +83,34 @@ body{font-family:'DM Sans',sans-serif;background:#f4f5f0;color:#1a1f18;min-heigh
 </div>
 
 <script>
-var currentStore = 'Skerries';
-var reportData = null;
-var DATA_URL = 'https://aarondoyle2026.github.io/data/managers_report_ai.json';
+var storeCode = localStorage.getItem('user_store') || '424';
+var jsonMap = {
+  '424': 'data/managers_report_ai.json',
+  '374': 'data/managers_report_balbriggan_ai.json',
+  '356': 'data/managers_report_palmerstown_ai.json'
+};
+var reportJsonPath = jsonMap[storeCode] || jsonMap['424'];
 
-function selectStore(store, btn) {
-  if (btn.classList.contains('disabled')) return;
-  currentStore = store;
+var currentStore = storeCode;
+var reportData = null;
+var DATA_URL = 'https://aarondoyle2026.github.io/' + reportJsonPath;
+
+(function initStoreBar() {
+  document.querySelectorAll('.store-btn').forEach(function(btn) {
+    var code = btn.getAttribute('onclick').match(/'(\d+)'/)[1];
+    if (code === storeCode) btn.classList.add('active');
+  });
+})();
+
+function selectStore(code, btn) {
+  currentStore = code;
+  storeCode = code;
+  localStorage.setItem('user_store', code);
+  DATA_URL = 'https://aarondoyle2026.github.io/' + (jsonMap[code] || jsonMap['424']);
   document.querySelectorAll('.store-btn').forEach(function(b) { b.classList.remove('active'); });
   btn.classList.add('active');
-  renderReport();
+  reportData = null;
+  loadData();
 }
 
 function loadData() {
