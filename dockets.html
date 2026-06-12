@@ -143,15 +143,9 @@ textarea{resize:vertical;min-height:72px;}
 
 <div class="app-header">
   <div class="logo-row">
-    <div><div class="brand">Moriarty Group</div><div class="sub">SuperValu · Docket System</div></div>
+    <div><div class="brand">Moriarty Group</div><div class="sub" id="header-sub">SuperValu · Docket System</div></div>
     <div class="sv-badge">SUPERVALU</div>
   </div>
-</div>
-
-<div class="store-bar">
-  <button class="store-btn active" onclick="selectStore('Balbriggan',this)">Balbriggan</button>
-  <button class="store-btn" onclick="selectStore('Palmerstown',this)">Palmerstown</button>
-  <button class="store-btn" onclick="selectStore('Skerries',this)">Skerries</button>
 </div>
 
 <div class="nav-tabs">
@@ -367,12 +361,6 @@ textarea{resize:vertical;min-height:72px;}
   <input type="file" id="import-file" accept=".json" style="display:none" onchange="importJSON(this)">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
     <div style="font-size:15px;font-weight:700;">Records</div>
-    <select id="review-filter" onchange="renderReview()" style="width:auto;padding:6px 10px;font-size:12px;">
-      <option value="all">All Stores</option>
-      <option value="Balbriggan">Balbriggan</option>
-      <option value="Palmerstown">Palmerstown</option>
-      <option value="Skerries">Skerries</option>
-    </select>
   </div>
   <div id="review-list"></div>
 </div>
@@ -463,6 +451,10 @@ function dbDelete(id){
 }
 
 document.addEventListener('DOMContentLoaded',function(){
+  var STORE_CODE=localStorage.getItem('user_store')||'424';
+  var STORE_NAMES={'424':'Skerries','374':'Balbriggan','356':'Palmerstown'};
+  currentStore=STORE_NAMES[STORE_CODE]||'Skerries';
+  document.getElementById('header-sub').textContent='SuperValu · Docket System · '+currentStore;
   openDB().then(function(){
     return sbLoadAll();
   }).then(function(sbData){
@@ -496,14 +488,6 @@ function updateDBStatus(){
   var el=document.getElementById('db-status');
   el.textContent='\ud83d\udfe2 Storage active \u00b7 '+allRecords.length+' record'+(allRecords.length!==1?'s':'')+' saved';
   el.className='db-status ok';
-}
-
-function selectStore(s,btn){
-  currentStore=s;
-  document.querySelectorAll('.store-btn').forEach(function(b){b.classList.remove('active');});
-  btn.classList.add('active');
-  syncStoreFields();
-  renderAllTopSheets();
 }
 
 function syncStoreFields(){
@@ -1394,12 +1378,11 @@ function generateTopSheetPDF(subTabId,recordType,mgr,sig,stamp){
 }
 
 function renderReview(){
-  var filter=document.getElementById('review-filter').value;
   var list=document.getElementById('review-list');
-  var filtered=filter==='all'?allRecords:allRecords.filter(function(r){return r.store===filter;});
+  var filtered=allRecords.filter(function(r){return r.store===currentStore;});
   if(!filtered.length){list.innerHTML='<div class="empty-ts"><div class="icon">\ud83d\udccb</div><p>No records saved yet.</p></div>';return;}
   var typeLabels={weekly:'Ambient Dockets',returns:'Returns Docket',transfer:'Transfer Docket',docketlog:'Chilled Dockets'};
-  var stores=['Balbriggan','Palmerstown','Skerries'];
+  var stores=[currentStore];
   var html='';
   stores.forEach(function(store){
     var recs=filtered.filter(function(r){return r.store===store;}).sort(function(a,b){return b.id-a.id;});
