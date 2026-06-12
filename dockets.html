@@ -466,14 +466,15 @@ document.addEventListener('DOMContentLoaded',function(){
   openDB().then(function(){
     return sbLoadAll();
   }).then(function(sbData){
+    var puts=[];
     if(sbData&&sbData.length){
-      allRecords=sbData;
-      var puts=sbData.map(function(r){return dbPut(r).catch(function(){});});
-      return Promise.all(puts);
-    } else {
-      return dbGetAll().then(function(recs){allRecords=recs;});
+      puts=sbData.map(function(r){return dbPut(r).catch(function(){});});
     }
+    return Promise.all(puts);
   }).then(function(){
+    return dbGetAll();
+  }).then(function(recs){
+    allRecords=recs;
     updateDBStatus();
     setTimestamps();
     syncStoreFields();
@@ -572,6 +573,45 @@ function getSaturdayMidnight(weekKey){
   sat.setDate(sat.getDate()+6);
   sat.setHours(23,59,59,0);
   return sat;
+}
+
+function resetForm(type){
+  if(type==='weekly'){
+    document.getElementById('wr-ref').value='';
+    document.getElementById('wr-mgr').value='';
+    clearSig('sig-wr');
+    document.getElementById('prev-wr').innerHTML='';
+    document.getElementById('wr-tbody').innerHTML='';
+    addWRRow();addWRRow();addWRRow();
+    calcWRTotals();
+  }else if(type==='docketlog'){
+    document.getElementById('dl-ref').value='';
+    document.getElementById('dl-mgr').value='';
+    clearSig('sig-dl');
+    document.getElementById('prev-dl').innerHTML='';
+    document.getElementById('dl-tbody').innerHTML='';
+    addCHRow();addCHRow();addCHRow();
+    calcCHTotals();
+  }else if(type==='returns'){
+    document.getElementById('ret-to').value='';
+    document.getElementById('ret-dept').value='';
+    document.getElementById('ret-ref').value='';
+    document.getElementById('ret-docket').value='';
+    document.getElementById('ret-reason').value='';
+    clearSig('sig-ret-staff');clearSig('sig-ret-mgr');
+    document.getElementById('prev-ret').innerHTML='';
+    document.getElementById('ret-tbody').innerHTML='';
+    addRetRow();addRetRow();
+  }else if(type==='transfer'){
+    document.getElementById('tr-dept').value='';
+    document.getElementById('tr-ref').value='';
+    document.getElementById('tr-docket').value='';
+    document.getElementById('tr-sig-out-name').value='';
+    clearSig('sig-tr-out');clearSig('sig-tr-mgr-out');clearSig('sig-tr-mgr-in');
+    document.getElementById('prev-tr').innerHTML='';
+    document.getElementById('tr-tbody').innerHTML='';
+    addTrRow();addTrRow();
+  }
 }
 
 function showSaveConfirmation(type){
@@ -845,6 +885,7 @@ function saveRecord(type){
     showSaveConfirmation(type);
     renderReview();
     renderAllTopSheets();
+    resetForm(type);
   }).catch(function(e){
     isSaving=false;
     alert('Save failed: '+e.message);
