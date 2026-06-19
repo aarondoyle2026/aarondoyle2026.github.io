@@ -4446,5 +4446,714 @@
         ]
       }
     }
+  },
+  "2026-06-19": {
+    "Palmerstown": {
+      "store": "Palmerstown",
+      "code": "356",
+      "report": "produce weekly",
+      "scraped_at": "2026-06-19T20:24:18.437637+01:00",
+      "date": "2026-06-19",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0032 - PRODUCE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 25129.03,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -676.17,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -2.6203,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 19.5813,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.2092,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0058 - FRUIT",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 4596.27,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 182.63,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 4.1379,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 21.8658,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 1.489,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0060 - CHILLED FRUIT",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 8101.97,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -322.52,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -3.8284,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 15.1515,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.3228,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0061 - ORGANIC PRODUCE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 325.29,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -175.1,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -34.9927,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 19.3114,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.9044,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0062 - POTATOES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 2832.81,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 173.53,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 6.5255,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 23.3564,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.9307,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0063 - VEG",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 3034.49,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -1.27,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -0.0418,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 18.8896,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -2.739,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0064 - PREPARED PRODUCE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1741.03,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 308.86,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 21.5659,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 18.3262,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.9286,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0066 - HORTICULTURE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 2425.55,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -1074.39,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -30.6974,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 26.9698,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 3.4845,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    },
+    "Balbriggan": {
+      "store": "Balbriggan",
+      "code": "374",
+      "report": "produce weekly",
+      "scraped_at": "2026-06-19T20:24:18.437637+01:00",
+      "date": "2026-06-19",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0032 - PRODUCE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 25281.45,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -923.22,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -3.5231,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 20.3998,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.397,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0058 - FRUIT",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 4768.54,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 98.3,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 2.1048,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 20.8561,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.5021,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0060 - CHILLED FRUIT",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 7507.38,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -1375.19,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -15.4819,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 15.4952,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.0797,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0061 - ORGANIC PRODUCE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 787.2,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -7.19,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -0.9051,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 21.2049,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 2.1672,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0062 - POTATOES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 3332.6,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 66.01,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 2.0208,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 24.7618,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 4.1794,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0063 - VEG",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 3903.37,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 84.3,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 2.2073,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 22.1168,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.2889,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0064 - PREPARED PRODUCE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1561.49,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 117.12,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 8.1087,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 14.1409,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -2.1958,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0065 - SEASONAL PRODUCE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 3.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -14.91,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -83.2496,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 10.0,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -44.7739,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0066 - HORTICULTURE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1402.03,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -30.87,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -2.1544,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 27.6375,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 5.3485,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    },
+    "Skerries": {
+      "store": "Skerries",
+      "code": "424",
+      "report": "produce weekly",
+      "scraped_at": "2026-06-19T20:24:18.437637+01:00",
+      "date": "2026-06-19",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0032 - PRODUCE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 39847.31,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 1117.24,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 2.8847,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 19.1564,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.3324,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0058 - FRUIT",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 8001.75,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 643.64,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 8.7474,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 20.3952,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.4118,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0060 - CHILLED FRUIT",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 13170.34,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 572.34,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 4.5431,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 15.7854,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.1917,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0061 - ORGANIC PRODUCE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1349.73,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 358.3,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 36.1397,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 20.5219,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.3081,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0062 - POTATOES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 3613.08,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -188.37,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -4.9552,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 20.7991,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.2124,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0063 - VEG",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 6354.94,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -702.32,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -9.9517,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 20.7844,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.5666,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0064 - PREPARED PRODUCE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 2532.73,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 113.69,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 4.6998,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 16.2502,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -2.8147,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0066 - HORTICULTURE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1223.97,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 238.74,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 24.2319,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 26.2782,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 6.4417,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    }
   }
 }
