@@ -10693,5 +10693,1546 @@
         ]
       }
     }
+  },
+  "2026-06-23": {
+    "Palmerstown": {
+      "store": "Palmerstown",
+      "code": "356",
+      "report": "meat weekly",
+      "scraped_at": "2026-06-23T12:11:00.421965+01:00",
+      "date": "2026-06-23",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0033 - MEAT, POULTRY & FISH",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 26626.24,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 1953.02,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 7.9155,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.5572,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -3.6592,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0075 - FISH SERVEOVER",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1141.43,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -159.13,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -12.2355,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 23.6212,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -3.9255,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0078 - LOOSE SAUSAGES, BACON & PUDDINGS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 800.52,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 237.8,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 42.259,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 43.328,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 4.6185,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0738 - BEEF SERVEOVER",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 4597.52,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 614.85,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 15.4381,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 23.8409,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -10.4496,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0739 - LAMB SERVEOVER",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 421.55,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -96.25,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -18.5883,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 30.4761,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -7.7028,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0740 - PORK SERVEOVER",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 855.62,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -359.32,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -29.5751,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 27.8733,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -7.1545,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0741 - BACON JOINTS SERVEOVER",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 3.58,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 3.58,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Scan Margin %": {
+              "v": 20.9665,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 20.9665,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0742 - CHICKEN SERVEOVER",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1942.1,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -184.4,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -8.6715,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 25.62,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -5.1137,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0743 - TURKEY SERVEOVER",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -49.51,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -100.0,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -40.4706,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0746 - FRESHLY PREPARED BY INGREDIENTS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 715.5,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 84.5,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 13.3914,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 22.003,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -20.6183,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0747 - BEEF PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 6106.46,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 1059.79,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 20.9998,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 12.7749,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 2.0398,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0748 - LAMB PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 482.02,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -171.3,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -26.2199,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 11.0573,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.8971,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0749 - PORK PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 646.37,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -37.64,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -5.5028,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 14.0735,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 2.366,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0750 - BACON JOINTS PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1002.01,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 252.92,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 33.7636,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 10.7747,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -2.2436,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0751 - CHICKEN PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 4538.22,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 682.23,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 17.6927,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 11.5316,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.8379,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0752 - TURKEY PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 439.13,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 252.11,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 134.8038,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 13.2134,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -3.425,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0753 - BRD POULTRY PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1102.17,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 21.5,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 1.9895,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 15.1915,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -3.317,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0754 - GAME PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 107.85,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 67.38,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 166.4937,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 4.4275,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 22.8362,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0157 - FISH PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1724.19,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -266.09,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -13.3695,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 8.913,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.3326,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    },
+    "Balbriggan": {
+      "store": "Balbriggan",
+      "code": "374",
+      "report": "meat weekly",
+      "scraped_at": "2026-06-23T12:11:00.421965+01:00",
+      "date": "2026-06-23",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0033 - MEAT, POULTRY & FISH",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 26077.42,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 803.95,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 3.181,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.6996,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -3.7218,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0075 - FISH SERVEOVER",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1043.49,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -401.54,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -27.7877,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 24.9389,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 2.6429,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0078 - LOOSE SAUSAGES, BACON & PUDDINGS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 236.14,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 90.69,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 62.3513,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 38.1481,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -3.3667,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0738 - BEEF SERVEOVER",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 5871.45,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 842.32,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 16.7488,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 20.7065,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -11.6172,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0739 - LAMB SERVEOVER",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 567.21,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -237.84,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -29.5435,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 33.2549,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.3503,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0740 - PORK SERVEOVER",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 506.26,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -240.08,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -32.1676,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 26.2287,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 1.0566,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0741 - BACON JOINTS SERVEOVER",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -9.98,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -100.0,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -26.6822,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0742 - CHICKEN SERVEOVER",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1791.18,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -435.74,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -19.5669,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 24.9963,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -10.782,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0743 - TURKEY SERVEOVER",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -77.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -100.0,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -38.5974,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0744 - BRD POULTRY SERVEOVER",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -50.15,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -100.0,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -28.0678,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0746 - FRESHLY PREPARED BY INGREDIENTS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 720.5,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -81.5,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -10.1621,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 27.742,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.6865,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0747 - BEEF PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 5872.27,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 1579.1,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 36.7817,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 14.368,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 4.2493,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0748 - LAMB PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 470.24,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -32.48,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -6.4609,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 12.3498,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.9157,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0749 - PORK PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 622.56,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -253.4,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -28.9283,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 11.7415,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.5518,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0750 - BACON JOINTS PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 846.37,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 32.82,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 4.0342,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 11.9882,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.9744,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0751 - CHICKEN PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 4992.1,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 327.27,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 7.0157,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 13.0143,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -3.1106,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0752 - TURKEY PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 260.64,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -18.68,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -6.6877,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 16.9698,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 2.6837,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0753 - BRD POULTRY PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 898.75,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -35.15,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -3.7638,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 16.9257,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -2.2984,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0754 - GAME PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 150.24,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 113.55,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 309.4849,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 10.0106,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -4.8617,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0157 - FISH PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1228.02,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -308.26,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -20.0654,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 11.6485,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.3803,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    },
+    "Skerries": {
+      "store": "Skerries",
+      "code": "424",
+      "report": "meat weekly",
+      "scraped_at": "2026-06-23T12:11:00.421965+01:00",
+      "date": "2026-06-23",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0033 - MEAT, POULTRY & FISH",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 36618.41,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 395.63,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 1.0922,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 18.9536,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -2.5405,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0075 - FISH SERVEOVER",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 2272.71,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -22.28,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -0.9708,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 25.4046,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.4508,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0078 - LOOSE SAUSAGES, BACON & PUDDINGS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 83.13,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 42.19,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 103.0532,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 40.3566,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.1016,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0738 - BEEF SERVEOVER",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 5600.24,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -325.06,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -5.486,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 24.8956,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -7.2507,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0739 - LAMB SERVEOVER",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 626.98,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -392.45,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -38.497,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 32.7682,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.1764,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0740 - PORK SERVEOVER",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 842.49,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -168.53,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -16.6693,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 30.9709,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.118,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0742 - CHICKEN SERVEOVER",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 4459.65,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -125.33,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -2.7335,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 22.1415,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -7.8587,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0743 - TURKEY SERVEOVER",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -31.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -100.0,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -36.4516,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0746 - FRESHLY PREPARED BY INGREDIENTS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 227.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 18.5,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 8.8729,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 25.2526,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -8.4773,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0747 - BEEF PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 8635.82,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 1894.13,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 28.0958,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 16.9546,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.9565,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0748 - LAMB PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 725.43,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 107.93,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 17.4785,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 22.2262,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -4.6107,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0749 - PORK PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 766.91,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -254.22,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -24.8959,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 16.8632,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.0262,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0750 - BACON JOINTS PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 877.63,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 19.38,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 2.2581,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 10.8706,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.6696,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0751 - CHICKEN PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 5709.65,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -356.56,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -5.8778,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 11.9531,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.6812,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0752 - TURKEY PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 572.46,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 62.98,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 12.3616,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 16.1149,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 1.39,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0753 - BRD POULTRY PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1987.23,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 247.48,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 14.225,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 19.2577,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.9403,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "C0754 - GAME PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 52.99,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -116.14,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -68.6691,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 13.3296,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 0.0528,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "S0157 - FISH PREPACK",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 3133.41,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -195.98,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -5.8864,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 12.6955,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.7068,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    }
   }
 }
