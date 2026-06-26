@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Labour Intelligence - Moriarty Group</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: #f4f5f7;
+  color: #1d2128;
+}
+.topbar { background: #C0161C; color: #ffffff; padding: 14px 18px; }
+.topbar h1 { margin: 0; font-size: 18px; font-weight: 700; }
+.topbar p { margin: 4px 0 0 0; font-size: 12px; color: #ffd9da; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 16px; }
+.controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 16px; }
+.controls label { font-size: 13px; font-weight: 600; color: #444; }
+select { padding: 9px 12px; border: 1px solid #cbd0d8; border-radius: 8px; background: #ffffff; font-size: 14px; }
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.tab { padding: 9px 14px; border: 1px solid #d6dae1; border-radius: 999px; background: #ffffff; font-size: 13px; font-weight: 600; color: #555; cursor: pointer; }
+.tab.active { background: #E41E26; color: #ffffff; border-color: #E41E26; }
+.section { display: none; }
+.section.active { display: block; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 12px; }
+.card { background: #ffffff; border-radius: 12px; padding: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); border-top: 3px solid #E41E26; }
+.card .lbl { font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; color: #7a828d; }
+.card .val { font-size: 22px; font-weight: 700; margin-top: 6px; }
+.card .sub { font-size: 11px; margin-top: 4px; color: #8a919b; }
+.panel { background: #ffffff; border-radius: 12px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); margin-top: 14px; overflow-x: auto; }
+.panel h2 { font-size: 15px; margin: 0 0 4px 0; }
+.panel .desc { font-size: 12px; color: #8a919b; margin: 0 0 12px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 640px; }
+th { text-align: right; padding: 9px 8px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.3px; color: #7a828d; border-bottom: 2px solid #eceef1; }
+th.l, td.l { text-align: left; }
+td { padding: 9px 8px; border-bottom: 1px solid #f0f1f4; text-align: right; }
+tr:last-child td { border-bottom: none; }
+.bar { height: 6px; border-radius: 4px; background: #E41E26; }
+.barwrap { background: #eef0f3; border-radius: 4px; width: 90px; display: inline-block; vertical-align: middle; margin-right: 6px; }
+.opp { border: 1px solid #eceef1; border-radius: 10px; padding: 14px; margin-bottom: 12px; border-left: 5px solid #c0161c; }
+.opp.under { border-left-color: #1a8a4a; }
+.opp .head { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+.opp .dept { font-weight: 700; font-size: 15px; }
+.opp .type { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; }
+.opp .act { font-size: 13px; margin-top: 8px; color: #333; }
+.opp .meta { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 10px; font-size: 12px; color: #555; }
+.opp .meta b { color: #1d2128; }
+.pill { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 11px; font-weight: 700; color: #fff; }
+.note { font-size: 12px; color: #8a919b; margin-top: 8px; }
+.demo { background: #fff5e6; border: 1px solid #f0d8a8; color: #8a6418; font-size: 12px; padding: 8px 12px; border-radius: 8px; margin-bottom: 12px; }
+.hmwrap { overflow-x: auto; }
+.hm { border-collapse: collapse; min-width: 720px; }
+.hm th { text-align: center; font-size: 10px; padding: 4px; color: #7a828d; border: none; }
+.hm td.hh { text-align: right; font-size: 11px; font-weight: 600; color: #555; padding-right: 8px; border: none; }
+.hm td.cell { width: 42px; height: 30px; text-align: center; font-size: 10px; color: #1d2128; border: 2px solid #ffffff; border-radius: 4px; }
+.legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 11px; color: #555; margin-top: 10px; }
+.legend span { display: inline-flex; align-items: center; gap: 5px; }
+.swatch { width: 14px; height: 14px; border-radius: 3px; display: inline-block; }
+.tline { display: flex; align-items: flex-end; gap: 6px; height: 160px; padding-top: 10px; }
+.tcol { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; }
+.tcol .tbar { width: 70%; border-radius: 4px 4px 0 0; }
+.tcol .tlbl { font-size: 10px; color: #7a828d; margin-top: 4px; }
+.tcol .tval { font-size: 10px; font-weight: 600; margin-bottom: 3px; }
+.budgetline { font-size: 11px; color: #8a919b; margin-top: 6px; }
+.qbtn { display: inline-block; margin: 0 8px 8px 0; padding: 9px 14px; border: 1px solid #d6dae1; border-radius: 999px; background: #ffffff; font-size: 13px; color: #333; cursor: pointer; }
+.qbtn:hover { border-color: #E41E26; color: #E41E26; }
+.answer { background: #fbfbfc; border: 1px solid #eceef1; border-radius: 10px; padding: 14px; margin-top: 12px; font-size: 14px; line-height: 1.5; }
+.answer b { color: #c0161c; }
+.flag { border-left: 5px solid #c0161c; background: #fff5f5; border-radius: 8px; padding: 10px 14px; margin-bottom: 10px; font-size: 13px; }
+.flag b { color: #c0161c; }
+.chat-suggestions { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0; }
+.chat-suggestion { background: #f4f5f7; border: 1px solid #e0e3e8; border-radius: 20px; padding: 6px 12px; font-size: 12px; color: #555; cursor: pointer; }
+.chat-suggestion:hover { border-color: #E41E26; color: #E41E26; }
+.chat-messages { display: flex; flex-direction: column; gap: 10px; min-height: 20px; }
+.msg { display: flex; gap: 8px; align-items: flex-start; }
+.msg.user { flex-direction: row-reverse; }
+.msg-avatar { width: 28px; height: 28px; border-radius: 8px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 13px; }
+.msg.user .msg-avatar { background: #fde8e9; border: 1px solid #f5c6c9; }
+.msg.ai .msg-avatar { background: #eef0f3; border: 1px solid #dfe3e8; }
+.msg-bubble { max-width: 82%; padding: 10px 13px; border-radius: 12px; font-size: 14px; line-height: 1.6; }
+.msg.user .msg-bubble { background: #fde8e9; border: 1px solid #f5c6c9; color: #1d2128; border-bottom-right-radius: 3px; }
+.msg.ai .msg-bubble { background: #f7f8fa; border: 1px solid #eceef1; color: #1d2128; border-bottom-left-radius: 3px; }
+.thinking-dots span { display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: #9aa1ab; margin: 0 2px; animation: dotBounce 1.2s ease-in-out infinite; }
+.thinking-dots span:nth-child(2) { animation-delay: .2s; }
+.thinking-dots span:nth-child(3) { animation-delay: .4s; }
+@keyframes dotBounce { 0%,80%,100% { transform: translateY(0); } 40% { transform: translateY(-5px); } }
+.chat-input-row { display: flex; gap: 8px; padding-top: 12px; border-top: 1px solid #eceef1; margin-top: 12px; }
+.chat-input { flex: 1; background: #ffffff; border: 1px solid #cbd0d8; border-radius: 12px; padding: 12px 14px; color: #1d2128; font-family: inherit; font-size: 16px; outline: none; height: 44px; -webkit-appearance: none; }
+.chat-input:focus { border-color: #E41E26; }
+.chat-send { width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0; background: #C0161C; border: none; color: #fff; font-size: 18px; cursor: pointer; }
+.chat-send:disabled { background: #d99a9c; opacity: .6; cursor: default; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <h1>Labour Intelligence</h1>
+  <p>Maximise profit per labour hour - Moriarty Group</p>
+</div>
+<div class="wrap">
+  <div class="controls">
+    <label for="store">Store</label>
+    <select id="store" onchange="renderAll()">
+      <option value="424">Skerries (424)</option>
+      <option value="374">Balbriggan (374)</option>
+      <option value="356">Palmerstown (356)</option>
+    </select>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" id="t_dash" onclick="show('dash')">Dashboard</div>
+    <div class="tab" id="t_dept" onclick="show('dept')">Departments</div>
+    <div class="tab" id="t_opp" onclick="show('opp')">Opportunities</div>
+    <div class="tab" id="t_heat" onclick="show('heat')">Sales vs Staffing</div>
+    <div class="tab" id="t_cost" onclick="show('cost')">Cost Trend</div>
+    <div class="tab" id="t_ot" onclick="show('ot')">Overtime</div>
+    <div class="tab" id="t_fc" onclick="show('fc')">Forecast</div>
+    <div class="tab" id="t_roi" onclick="show('roi')">Labour ROI</div>
+    <div class="tab" id="t_ai" onclick="show('ai')">AI Consultant</div>
+  </div>
+
+  <div class="section active" id="s_dash">
+    <div class="cards" id="kpiCards"></div>
+    <p class="note">Net sales basis (post-VAT), one trading week. Overtime card reads the Overtime tab sample data.</p>
+  </div>
+
+  <div class="section" id="s_dept">
+    <div class="panel">
+      <h2>Department Productivity League</h2>
+      <p class="desc">Ranked by a blended score of productivity index and labour control.</p>
+      <table id="leagueTable"></table>
+    </div>
+  </div>
+
+  <div class="section" id="s_opp">
+    <div class="panel">
+      <h2>Labour Opportunity Detector</h2>
+      <p class="desc">Departments running materially above or below target sales per hour.</p>
+      <div id="oppList"></div>
+    </div>
+  </div>
+
+  <div class="section" id="s_heat">
+    <div class="panel">
+      <h2>Sales vs Staffing Engine</h2>
+      <p class="desc">Store-level grid, one trading week. Switch the metric to spot dead periods, peaks and mismatches.</p>
+      <div style="margin-bottom:12px;">
+        <label for="hmMetric" style="font-size:13px;font-weight:600;color:#444;margin-right:6px;">Metric</label>
+        <select id="hmMetric" onchange="renderHeat()">
+          <option value="sph">Sales per labour hour</option>
+          <option value="sales">Sales</option>
+          <option value="labour">Labour hours</option>
+          <option value="trans">Transactions</option>
+        </select>
+      </div>
+      <div class="hmwrap"><table class="hm" id="heatTable"></table></div>
+      <div class="legend" id="heatLegend"></div>
+      <div id="heatCallouts" style="margin-top:14px;"></div>
+    </div>
+  </div>
+
+  <div class="section" id="s_cost">
+    <div class="panel">
+      <h2>Labour Cost Analytics</h2>
+      <p class="desc">Weekly labour % against budget. Bars above the budget line are over-cost weeks.</p>
+      <div class="cards" id="costCards" style="margin-bottom:14px;"></div>
+      <div class="tline" id="costTrend"></div>
+      <div class="budgetline" id="costBudget"></div>
+    </div>
+  </div>
+
+  <div class="section" id="s_ot">
+    <div class="panel">
+      <h2>Overtime Intelligence</h2>
+      <p class="desc">Repeated overtime, burnout risk and management dependency.</p>
+      <div id="otFlags"></div>
+      <table id="otTable"></table>
+    </div>
+  </div>
+
+  <div class="section" id="s_fc">
+    <div class="panel">
+      <h2>Forecasting Engine</h2>
+      <div class="demo">Illustrative projection from sample weekly figures. Real forecasting activates once historical sales and labour history are connected.</div>
+      <table id="fcTable"></table>
+    </div>
+  </div>
+
+  <div class="section" id="s_roi">
+    <div class="panel">
+      <h2>Labour ROI - gross profit generated per EUR 1 of labour</h2>
+      <p class="desc">ROI = department gross profit divided by labour cost.</p>
+      <table id="roiTable"></table>
+    </div>
+  </div>
+
+  <div class="section" id="s_ai">
+    <div class="panel">
+      <h2>AI Labour Consultant</h2>
+      <p class="desc">Same AI brain as your Insights consultant, with this store's live labour figures attached to every question.</p>
+      <div class="chat-suggestions" id="chatSuggestions">
+        <div class="chat-suggestion" onclick="useSuggestion(this)">Where can I remove hours safely?</div>
+        <div class="chat-suggestion" onclick="useSuggestion(this)">Which department is most productive?</div>
+        <div class="chat-suggestion" onclick="useSuggestion(this)">Why is the deli underperforming?</div>
+        <div class="chat-suggestion" onclick="useSuggestion(this)">How much labour can I save this week?</div>
+        <div class="chat-suggestion" onclick="useSuggestion(this)">Where am I understaffed?</div>
+      </div>
+      <div class="chat-messages" id="chatMessages"></div>
+      <div class="chat-input-row">
+        <input type="text" class="chat-input" id="chatInput" placeholder="Ask about labour, departments or staffing..." onkeydown="handleChatKey(event)" autocomplete="off" autocorrect="off" spellcheck="false">
+        <button type="button" class="chat-send" id="chatSend" onclick="sendChat()">&#8593;</button>
+      </div>
+      <p class="note">Runs on sample department figures until the roster feed is connected, then answers on live numbers automatically.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+var DATA = {
+  "424": { name: "Skerries", depts: [
+    { d: "Grocery",          s: 112000, h: 300, lc: 4200, gp: 22, t: 360, bh: 290 },
+    { d: "Chilled & Dairy",  s: 42000,  h: 95,  lc: 1330, gp: 26, t: 410, bh: 92 },
+    { d: "Produce",          s: 31000,  h: 110, lc: 1540, gp: 30, t: 240, bh: 115 },
+    { d: "Meat",             s: 27000,  h: 120, lc: 1920, gp: 25, t: 210, bh: 118 },
+    { d: "Deli",             s: 18500,  h: 158, lc: 2528, gp: 56, t: 130, bh: 142 },
+    { d: "Bakery",           s: 13500,  h: 90,  lc: 1350, gp: 58, t: 150, bh: 88 },
+    { d: "Off-Licence",      s: 21000,  h: 38,  lc: 532,  gp: 23, t: 520, bh: 40 }
+  ]},
+  "374": { name: "Balbriggan", depts: [
+    { d: "Grocery",          s: 86000,  h: 250, lc: 3500, gp: 22, t: 330, bh: 245 },
+    { d: "Chilled & Dairy",  s: 33000,  h: 80,  lc: 1120, gp: 26, t: 400, bh: 80 },
+    { d: "Produce",          s: 24000,  h: 115, lc: 1610, gp: 30, t: 230, bh: 110 },
+    { d: "Meat",             s: 21000,  h: 110, lc: 1760, gp: 25, t: 200, bh: 105 },
+    { d: "Deli",             s: 14000,  h: 120, lc: 1920, gp: 55, t: 135, bh: 110 },
+    { d: "Bakery",           s: 10500,  h: 78,  lc: 1170, gp: 58, t: 150, bh: 75 },
+    { d: "Off-Licence",      s: 16000,  h: 32,  lc: 448,  gp: 23, t: 510, bh: 32 }
+  ]},
+  "356": { name: "Palmerstown", depts: [
+    { d: "Grocery",          s: 95000,  h: 270, lc: 3780, gp: 22, t: 340, bh: 265 },
+    { d: "Chilled & Dairy",  s: 36000,  h: 84,  lc: 1176, gp: 26, t: 410, bh: 84 },
+    { d: "Produce",          s: 27000,  h: 100, lc: 1500, gp: 30, t: 250, bh: 105 },
+    { d: "Meat",             s: 23000,  h: 105, lc: 1680, gp: 25, t: 205, bh: 108 },
+    { d: "Deli",             s: 16500,  h: 135, lc: 2160, gp: 56, t: 140, bh: 128 },
+    { d: "Bakery",           s: 12000,  h: 82,  lc: 1230, gp: 58, t: 150, bh: 80 },
+    { d: "Off-Licence",      s: 19000,  h: 36,  lc: 504,  gp: 23, t: 500, bh: 36 }
+  ]}
+};
+
+var WEEKLY = {
+  "424": [13.1, 12.8, 13.4, 13.9, 12.6, 12.9, 13.7, 14.2, 13.0, 12.7, 13.3, 13.1],
+  "374": [14.4, 14.0, 13.8, 14.6, 15.1, 14.2, 13.9, 14.8, 14.3, 13.7, 14.0, 14.5],
+  "356": [13.6, 13.2, 13.9, 13.4, 13.0, 13.7, 14.1, 13.5, 13.2, 13.8, 13.3, 13.6]
+};
+var BUDGET_PCT = { "424": 13.0, "374": 14.0, "356": 13.5 };
+
+var STAFF = {
+  "424": [
+    { n: "A. Byrne",   d: "Deli",    c: 39, a: 51, wk: 5, rate: 16.0 },
+    { n: "C. Murphy",  d: "Grocery", c: 39, a: 44, wk: 2, rate: 14.5 },
+    { n: "D. Kelly",   d: "Meat",    c: 39, a: 49, wk: 4, rate: 17.5 },
+    { n: "E. Walsh",   d: "Produce", c: 25, a: 27, wk: 1, rate: 14.0 },
+    { n: "F. O'Brien", d: "Bakery",  c: 39, a: 40, wk: 0, rate: 15.0 },
+    { n: "G. Doyle",   d: "Grocery", c: 20, a: 26, wk: 3, rate: 14.0 },
+    { n: "H. Lynch",   d: "Deli",    c: 39, a: 47, wk: 4, rate: 16.0 }
+  ],
+  "374": [
+    { n: "J. Ryan",    d: "Grocery", c: 39, a: 46, wk: 3, rate: 14.5 },
+    { n: "K. Nolan",   d: "Deli",    c: 39, a: 50, wk: 6, rate: 16.0 },
+    { n: "L. Brennan", d: "Meat",    c: 39, a: 45, wk: 2, rate: 17.5 },
+    { n: "M. Hayes",   d: "Produce", c: 25, a: 25, wk: 0, rate: 14.0 },
+    { n: "N. Power",   d: "Bakery",  c: 30, a: 33, wk: 1, rate: 15.0 },
+    { n: "O. Daly",    d: "Grocery", c: 39, a: 48, wk: 5, rate: 14.5 }
+  ],
+  "356": [
+    { n: "P. Quinn",   d: "Deli",    c: 39, a: 44, wk: 2, rate: 16.0 },
+    { n: "Q. Carroll", d: "Grocery", c: 39, a: 47, wk: 4, rate: 14.5 },
+    { n: "R. Healy",   d: "Meat",    c: 39, a: 43, wk: 1, rate: 17.5 },
+    { n: "S. Fitz",    d: "Produce", c: 25, a: 29, wk: 3, rate: 14.0 },
+    { n: "T. Burke",   d: "Bakery",  c: 30, a: 31, wk: 0, rate: 15.0 },
+    { n: "U. Moran",   d: "Grocery", c: 20, a: 27, wk: 4, rate: 14.0 }
+  ]
+};
+
+var HOURS = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
+var DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+var HOUR_W = [0.4, 0.7, 1.0, 1.1, 1.4, 1.5, 1.1, 0.9, 1.0, 1.3, 1.4, 1.0, 0.7, 0.4];
+var STAFF_W = [0.6, 0.8, 1.0, 1.0, 1.1, 1.1, 1.0, 1.0, 1.0, 1.1, 1.1, 0.9, 0.7, 0.5];
+var DAY_W = [0.9, 0.85, 0.95, 1.05, 1.35, 1.45, 0.75];
+
+function money(n) {
+  var s = Math.round(n).toString();
+  return "\u20ac" + s.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+function pct(n, dec) { return n.toFixed(dec || 1) + "%"; }
+function rate(x) { return x.lc / x.h; }
+function sph(x) { return x.s / x.h; }
+function labourPct(x) { return x.lc / x.s * 100; }
+function grossProfit(x) { return x.s * x.gp / 100; }
+function contribPerHr(x) { return grossProfit(x) / x.h; }
+function roi(x) { return grossProfit(x) / x.lc; }
+function pi(x) { return sph(x) / x.t; }
+function reqHours(x) { return x.s / x.t; }
+function excessHours(x) { return x.h - reqHours(x); }
+
+function score(x) {
+  var p = Math.min(pi(x), 1.35) / 1.35;
+  var tlp = (reqHours(x) * rate(x)) / x.s;
+  var alp = x.lc / x.s;
+  var lc = Math.min(tlp / alp, 1.3) / 1.3;
+  return Math.round((p * 0.6 + lc * 0.4) * 100);
+}
+function piColour(p) {
+  if (p >= 1.0) return "#1a8a4a";
+  if (p >= 0.9) return "#e8a13a";
+  return "#c0161c";
+}
+function storeCode() { return document.getElementById("store").value; }
+function current() { return DATA[storeCode()]; }
+
+function totals(d) {
+  var i, t = { s: 0, h: 0, lc: 0, gp: 0, bc: 0 };
+  for (i = 0; i < d.length; i++) {
+    t.s += d[i].s; t.h += d[i].h; t.lc += d[i].lc;
+    t.gp += grossProfit(d[i]);
+    t.bc += d[i].bh * rate(d[i]);
+  }
+  return t;
+}
+function weightedTarget(d) {
+  var i, num = 0, den = 0;
+  for (i = 0; i < d.length; i++) { num += d[i].t * d[i].h; den += d[i].h; }
+  return num / den;
+}
+
+function otHours(e) { return Math.max(0, e.a - e.c); }
+function otCost(e) { return otHours(e) * e.rate * 1.5; }
+function otTotalCost(code) {
+  var arr = STAFF[code], i, sum = 0;
+  for (i = 0; i < arr.length; i++) { sum += otCost(arr[i]); }
+  return sum;
+}
+function riskScore(e) {
+  var oh = otHours(e);
+  var r = e.wk * 10 + oh * 3;
+  if (r > 100) r = 100;
+  return Math.round(r);
+}
+
+function show(id) {
+  var ids = ["dash", "dept", "opp", "heat", "cost", "ot", "fc", "roi", "ai"];
+  var i;
+  for (i = 0; i < ids.length; i++) {
+    document.getElementById("s_" + ids[i]).className = "section";
+    document.getElementById("t_" + ids[i]).className = "tab";
+  }
+  document.getElementById("s_" + id).className = "section active";
+  document.getElementById("t_" + id).className = "tab active";
+}
+
+function renderKpis() {
+  var st = current();
+  var d = st.depts;
+  var t = totals(d);
+  var i, saving = 0, oppValue = 0;
+  for (i = 0; i < d.length; i++) {
+    var ex = excessHours(d[i]);
+    if (ex > 4) { var sv = ex * rate(d[i]); saving += sv; oppValue += sv; }
+    else if (ex < -4) { oppValue += (-ex) * d[i].t * (d[i].gp / 100); }
+  }
+  var blendSph = t.s / t.h;
+  var blendLp = t.lc / t.s * 100;
+  var contrib = t.gp / t.h;
+  var grpRoi = t.gp / t.lc;
+  var budVar = t.lc - t.bc;
+  var storePi = blendSph / weightedTarget(d);
+  var otc = otTotalCost(storeCode());
+
+  var cards = [
+    { l: "Net Sales (wk)", v: money(t.s), s: "" },
+    { l: "Labour Cost", v: money(t.lc), s: pct(blendLp) + " of sales" },
+    { l: "Sales / Labour Hr", v: money(blendSph), s: t.h.toFixed(0) + " hours" },
+    { l: "Gross Profit", v: money(t.gp), s: "" },
+    { l: "Contribution / Hr", v: money(contrib), s: "GP per labour hour" },
+    { l: "Labour ROI", v: grpRoi.toFixed(2) + "x", s: "GP per EUR 1 wages" },
+    { l: "Budget Variance", v: money(budVar), s: budVar <= 0 ? "under budget" : "over budget" },
+    { l: "Store Productivity", v: pct(storePi * 100, 0), s: "vs target SPH" },
+    { l: "Overtime Cost", v: money(otc), s: "this week" },
+    { l: "Labour Savings", v: money(saving), s: "safe to remove" },
+    { l: "Opportunity Value", v: money(oppValue), s: "total upside" }
+  ];
+  var html = "", c;
+  for (i = 0; i < cards.length; i++) {
+    c = cards[i];
+    html += '<div class="card"><div class="lbl">' + c.l + '</div>';
+    html += '<div class="val">' + c.v + '</div>';
+    html += '<div class="sub">' + c.s + '</div></div>';
+  }
+  document.getElementById("kpiCards").innerHTML = html;
+}
+
+function renderLeague() {
+  var d = current().depts.slice();
+  d.sort(function (a, b) { return score(b) - score(a); });
+  var html = "";
+  html += "<tr><th class='l'>Rank</th><th class='l'>Department</th>";
+  html += "<th>Sales</th><th>Hours</th><th>SPH</th><th>Labour %</th>";
+  html += "<th>Contrib/Hr</th><th>ROI</th><th>PI</th><th class='l'>Score</th></tr>";
+  var i, x, sc, w;
+  for (i = 0; i < d.length; i++) {
+    x = d[i]; sc = score(x); w = Math.round(sc / 100 * 90);
+    html += "<tr>";
+    html += "<td class='l'>" + (i + 1) + "</td>";
+    html += "<td class='l'><b>" + x.d + "</b></td>";
+    html += "<td>" + money(x.s) + "</td>";
+    html += "<td>" + x.h.toFixed(0) + "</td>";
+    html += "<td>" + money(sph(x)) + "</td>";
+    html += "<td>" + pct(labourPct(x)) + "</td>";
+    html += "<td>" + money(contribPerHr(x)) + "</td>";
+    html += "<td>" + roi(x).toFixed(2) + "x</td>";
+    html += "<td style='color:" + piColour(pi(x)) + ";font-weight:700;'>" + pi(x).toFixed(2) + "</td>";
+    html += "<td class='l'><div class='barwrap'><div class='bar' style='width:" + w + "px'></div></div>" + sc + "</td>";
+    html += "</tr>";
+  }
+  document.getElementById("leagueTable").innerHTML = html;
+}
+
+function buildOpps() {
+  var d = current().depts, list = [], i;
+  for (i = 0; i < d.length; i++) {
+    var x = d[i], ex = excessHours(x);
+    if (ex >= 4) { list.push({ x: x, type: "over", hrs: ex, val: ex * rate(x) }); }
+    else if (ex <= -4) {
+      var lostSales = (-ex) * x.t, gpUp = lostSales * (x.gp / 100);
+      list.push({ x: x, type: "under", hrs: -ex, val: gpUp, lostSales: lostSales });
+    }
+  }
+  list.sort(function (a, b) { return b.val - a.val; });
+  return list;
+}
+
+function renderOpps() {
+  var list = buildOpps(), i;
+  if (list.length === 0) {
+    document.getElementById("oppList").innerHTML = "<p class='note'>No material labour mismatches detected this week.</p>";
+    return;
+  }
+  var html = "";
+  for (i = 0; i < list.length; i++) {
+    var o = list[i];
+    var conf = Math.round(60 + (o.hrs / reqHours(o.x)) * 120);
+    if (conf > 95) conf = 95;
+    if (conf < 60) conf = 60;
+    var prio = o.val >= 200 ? "High" : (o.val >= 80 ? "Medium" : "Low");
+    var prioCol = prio === "High" ? "#c0161c" : (prio === "Medium" ? "#e8a13a" : "#7a828d");
+    var cls = o.type === "under" ? "opp under" : "opp";
+    html += "<div class='" + cls + "'><div class='head'><span class='dept'>" + o.x.d + "</span>";
+    if (o.type === "over") { html += "<span class='type' style='color:#c0161c;'>Overstaffing</span>"; }
+    else { html += "<span class='type' style='color:#1a8a4a;'>Understaffing</span>"; }
+    html += "</div>";
+    if (o.type === "over") {
+      html += "<div class='act'>Remove approx <b>" + o.hrs.toFixed(0) + " labour hours</b> to bring sales per hour back to target (" + money(o.x.t) + ").</div>";
+      html += "<div class='meta'><span>Estimated saving <b>" + money(o.val) + "</b> / wk</span>";
+    } else {
+      html += "<div class='act'>Running above target. Adding <b>" + o.hrs.toFixed(0) + " hours</b> could support up to " + money(o.lostSales) + " more sales.</div>";
+      html += "<div class='meta'><span>Profit upside <b>" + money(o.val) + "</b> / wk</span>";
+    }
+    html += "<span>Confidence <b>" + conf + "%</b></span>";
+    html += "<span>Priority <span class='pill' style='background:" + prioCol + "'>" + prio + "</span></span>";
+    html += "</div></div>";
+  }
+  document.getElementById("oppList").innerHTML = html;
+}
+
+function heatGrid() {
+  var d = current().depts, t = totals(d);
+  var totSales = t.s, totLabour = t.h;
+  var di, hi, salesW = 0, labW = 0;
+  for (di = 0; di < DAYS.length; di++) {
+    for (hi = 0; hi < HOURS.length; hi++) {
+      salesW += DAY_W[di] * HOUR_W[hi];
+      labW += DAY_W[di] * STAFF_W[hi];
+    }
+  }
+  var grid = [];
+  for (di = 0; di < DAYS.length; di++) {
+    var row = [];
+    for (hi = 0; hi < HOURS.length; hi++) {
+      var sw = DAY_W[di] * HOUR_W[hi];
+      var lw = DAY_W[di] * STAFF_W[hi];
+      var cellSales = totSales * sw / salesW;
+      var cellLabour = totLabour * lw / labW;
+      var cellTrans = cellSales / 22;
+      var cellSph = cellLabour > 0 ? cellSales / cellLabour : 0;
+      row.push({ sales: cellSales, labour: cellLabour, trans: cellTrans, sph: cellSph });
+    }
+    grid.push(row);
+  }
+  return grid;
+}
+
+function lerpColour(v, lo, hi) {
+  var f = (v - lo) / (hi - lo);
+  if (f < 0) f = 0;
+  if (f > 1) f = 1;
+  var r, g, b;
+  if (f < 0.5) {
+    var k = f / 0.5;
+    r = Math.round(196 + (232 - 196) * k);
+    g = Math.round(22 + (161 - 22) * k);
+    b = Math.round(28 + (58 - 28) * k);
+  } else {
+    var k2 = (f - 0.5) / 0.5;
+    r = Math.round(232 + (26 - 232) * k2);
+    g = Math.round(161 + (138 - 161) * k2);
+    b = Math.round(58 + (74 - 58) * k2);
+  }
+  return "rgb(" + r + "," + g + "," + b + ")";
+}
+
+function renderHeat() {
+  var metric = document.getElementById("hmMetric").value;
+  var grid = heatGrid();
+  var di, hi, lo = 1e12, hi2 = -1e12, v;
+  for (di = 0; di < DAYS.length; di++) {
+    for (hi = 0; hi < HOURS.length; hi++) {
+      v = grid[di][hi][metric];
+      if (v < lo) lo = v;
+      if (v > hi2) hi2 = v;
+    }
+  }
+  var html = "<tr><th></th>";
+  for (hi = 0; hi < HOURS.length; hi++) { html += "<th>" + HOURS[hi] + "</th>"; }
+  html += "</tr>";
+  for (di = 0; di < DAYS.length; di++) {
+    html += "<tr><td class='hh'>" + DAYS[di] + "</td>";
+    for (hi = 0; hi < HOURS.length; hi++) {
+      v = grid[di][hi][metric];
+      var col = lerpColour(v, lo, hi2);
+      var disp;
+      if (metric === "sales") { disp = "\u20ac" + Math.round(v / 10) * 10; }
+      else if (metric === "labour") { disp = v.toFixed(1); }
+      else if (metric === "trans") { disp = Math.round(v); }
+      else { disp = "\u20ac" + Math.round(v); }
+      html += "<td class='cell' style='background:" + col + "'>" + disp + "</td>";
+    }
+    html += "</tr>";
+  }
+  document.getElementById("heatTable").innerHTML = html;
+
+  var lname = metric === "sph" ? "sales per hour" : (metric === "sales" ? "sales" : (metric === "labour" ? "labour hours" : "transactions"));
+  document.getElementById("heatLegend").innerHTML =
+    "<span><span class='swatch' style='background:#c4161c'></span>Low " + lname + "</span>" +
+    "<span><span class='swatch' style='background:#e8a13a'></span>Mid</span>" +
+    "<span><span class='swatch' style='background:#1a8a4a'></span>High " + lname + "</span>";
+
+  renderHeatCallouts(grid);
+}
+
+function renderHeatCallouts(grid) {
+  var di, hi, cells = [];
+  for (di = 0; di < DAYS.length; di++) {
+    for (hi = 0; hi < HOURS.length; hi++) {
+      cells.push({ day: DAYS[di], hr: HOURS[hi], c: grid[di][hi] });
+    }
+  }
+  var dead = cells.slice();
+  dead.sort(function (a, b) { return a.c.sph - b.c.sph; });
+  var peak = cells.slice();
+  peak.sort(function (a, b) { return b.c.sph - a.c.sph; });
+  var mism = cells.slice();
+  mism.sort(function (a, b) { return (b.c.labour / b.c.sales) - (a.c.labour / a.c.sales); });
+
+  var html = "";
+  html += "<div class='flag' style='border-left-color:#c0161c;'><b>Dead period:</b> " + dead[0].day + " " + dead[0].hr + ":00 returns only " + money(dead[0].c.sph) + " per labour hour. Trim cover here first.</div>";
+  html += "<div class='flag' style='border-left-color:#1a8a4a;background:#f3fbf6;'><b>Peak period:</b> " + peak[0].day + " " + peak[0].hr + ":00 hits " + money(peak[0].c.sph) + " per labour hour. Protect cover here.</div>";
+  html += "<div class='flag' style='border-left-color:#e8a13a;background:#fffaf0;'><b>Mismatch:</b> " + mism[0].day + " " + mism[0].hr + ":00 carries the highest labour relative to sales of the week.</div>";
+  document.getElementById("heatCallouts").innerHTML = html;
+}
+
+function renderCost() {
+  var code = storeCode();
+  var arr = WEEKLY[code], bud = BUDGET_PCT[code];
+  var i, sum = 0, last4 = 0;
+  for (i = 0; i < arr.length; i++) { sum += arr[i]; }
+  for (i = arr.length - 4; i < arr.length; i++) { last4 += arr[i]; }
+  var avg = sum / arr.length;
+  var avg4 = last4 / 4;
+  var thisWk = arr[arr.length - 1];
+
+  var cards = [
+    { l: "This Week", v: pct(thisWk), s: (thisWk <= bud ? "under" : "over") + " budget" },
+    { l: "4-Week Avg", v: pct(avg4), s: "" },
+    { l: "12-Week Avg", v: pct(avg), s: "" },
+    { l: "Budget", v: pct(bud), s: "target labour %" }
+  ];
+  var ch = "", c;
+  for (i = 0; i < cards.length; i++) {
+    c = cards[i];
+    ch += '<div class="card"><div class="lbl">' + c.l + '</div><div class="val">' + c.v + '</div><div class="sub">' + c.s + '</div></div>';
+  }
+  document.getElementById("costCards").innerHTML = ch;
+
+  var maxV = 0;
+  for (i = 0; i < arr.length; i++) { if (arr[i] > maxV) maxV = arr[i]; }
+  maxV = maxV + 1;
+  var th = "";
+  for (i = 0; i < arr.length; i++) {
+    var v = arr[i];
+    var hpx = Math.round(v / maxV * 130);
+    var col = v <= bud ? "#1a8a4a" : "#c0161c";
+    th += "<div class='tcol'><div class='tval'>" + v.toFixed(1) + "</div>";
+    th += "<div class='tbar' style='height:" + hpx + "px;background:" + col + "'></div>";
+    th += "<div class='tlbl'>W" + (i + 1) + "</div></div>";
+  }
+  document.getElementById("costTrend").innerHTML = th;
+  document.getElementById("costBudget").innerHTML = "Budget line: " + pct(bud) + ". Green weeks are on or under budget, red weeks are over.";
+}
+
+function renderOt() {
+  var code = storeCode();
+  var arr = STAFF[code].slice();
+  arr.sort(function (a, b) { return riskScore(b) - riskScore(a); });
+  var i, flags = "";
+  for (i = 0; i < arr.length; i++) {
+    var e = arr[i];
+    if (e.wk >= 4 && otHours(e) >= 6) {
+      flags += "<div class='flag'><b>Burnout risk - " + e.n + " (" + e.d + "):</b> overtime in " + e.wk + " of the last 12 weeks, " + otHours(e).toFixed(0) + " OT hours this week. Review scheduling and rest.</div>";
+    } else if (e.wk >= 4) {
+      flags += "<div class='flag' style='border-left-color:#e8a13a;background:#fffaf0;'><b>Repeated overtime - " + e.n + " (" + e.d + "):</b> overtime in " + e.wk + " of the last 12 weeks suggests a structural rota gap, not a one-off.</div>";
+    }
+  }
+  if (flags === "") { flags = "<p class='note'>No repeated overtime patterns flagged this week.</p>"; }
+  document.getElementById("otFlags").innerHTML = flags;
+
+  var html = "<tr><th class='l'>Employee</th><th class='l'>Dept</th><th>Contract</th><th>Worked</th><th>OT Hrs</th><th>OT Cost</th><th>Wks w/ OT</th><th class='l'>Risk</th></tr>";
+  for (i = 0; i < arr.length; i++) {
+    var x = arr[i], rs = riskScore(x);
+    var rc = rs >= 60 ? "#c0161c" : (rs >= 35 ? "#e8a13a" : "#1a8a4a");
+    var w = Math.round(rs / 100 * 90);
+    html += "<tr><td class='l'><b>" + x.n + "</b></td><td class='l'>" + x.d + "</td>";
+    html += "<td>" + x.c + "</td><td>" + x.a + "</td><td>" + otHours(x).toFixed(0) + "</td>";
+    html += "<td>" + money(otCost(x)) + "</td><td>" + x.wk + "</td>";
+    html += "<td class='l'><div class='barwrap'><div class='bar' style='width:" + w + "px;background:" + rc + "'></div></div>" + rs + "</td></tr>";
+  }
+  document.getElementById("otTable").innerHTML = html;
+}
+
+function renderForecast() {
+  var t = totals(current().depts);
+  var blendLp = t.lc / t.s * 100;
+  var trans = t.s / 22;
+  var rows = [
+    { p: "Next Week", g: 1.01, sf: 1.0 },
+    { p: "Next 4 Weeks (avg)", g: 1.02, sf: 1.0 },
+    { p: "Peak Week (e.g. pre-holiday)", g: 1.18, sf: 1.06 },
+    { p: "Next Quarter (weekly avg)", g: 1.03, sf: 1.0 }
+  ];
+  var html = "<tr><th class='l'>Period</th><th>Forecast Sales</th><th>Transactions</th><th>Labour Hours</th><th>Labour %</th></tr>";
+  var i;
+  for (i = 0; i < rows.length; i++) {
+    var r = rows[i];
+    var fs = t.s * r.g;
+    var ft = trans * r.g;
+    var fh = t.h * r.g * r.sf;
+    var flp = blendLp * (r.sf);
+    html += "<tr><td class='l'><b>" + r.p + "</b></td>";
+    html += "<td>" + money(fs) + "</td>";
+    html += "<td>" + Math.round(ft) + "</td>";
+    html += "<td>" + fh.toFixed(0) + "</td>";
+    html += "<td>" + pct(flp) + "</td></tr>";
+  }
+  document.getElementById("fcTable").innerHTML = html;
+}
+
+function renderRoi() {
+  var d = current().depts.slice();
+  d.sort(function (a, b) { return roi(b) - roi(a); });
+  var html = "<tr><th class='l'>Department</th><th>Labour Cost</th><th>Gross Profit</th><th>Sales per EUR 1</th><th>GP per EUR 1</th><th class='l'>Return</th></tr>";
+  var i;
+  for (i = 0; i < d.length; i++) {
+    var x = d[i], r = roi(x);
+    var w = Math.round(Math.min(r, 6) / 6 * 90);
+    var col = r >= 3 ? "#1a8a4a" : (r >= 2 ? "#e8a13a" : "#c0161c");
+    html += "<tr><td class='l'><b>" + x.d + "</b></td>";
+    html += "<td>" + money(x.lc) + "</td><td>" + money(grossProfit(x)) + "</td>";
+    html += "<td>" + (x.s / x.lc).toFixed(1) + "x</td>";
+    html += "<td style='color:" + col + ";font-weight:700;'>" + r.toFixed(2) + "x</td>";
+    html += "<td class='l'><div class='barwrap'><div class='bar' style='width:" + w + "px;background:" + col + "'></div></div></td></tr>";
+  }
+  document.getElementById("roiTable").innerHTML = html;
+}
+
+var CHAT_ENDPOINT = 'https://mnebkteiwjxbbmnfotse.supabase.co/functions/v1/ai-chat';
+var SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1uZWJrdGVpd2p4YmJtbmZvdHNlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ2MTgwODAsImV4cCI6MjA5MDE5NDA4MH0.cTQbQqoxagmGm4crdpMhFbzlwid1OMMo6UOyhvtbhxA';
+
+var chatHistory = [];
+
+var AARON_TRIGGERS = [
+  'who made', 'who built', 'who created', 'who developed', 'who wrote', 'who designed',
+  'who coded', 'who programmed', 'how was this built', 'how was this made',
+  'how was this created', 'how did you get built', 'how were you built',
+  'how were you made', 'how were you created', 'how do i build', 'how would i build',
+  'how to build', 'how to make a system', 'how to create a system',
+  'how to create something like', 'tell me about yourself', 'what are you',
+  'how do you work', 'how does this system work', 'how was this system'
+];
+var AARON_RESPONSE = 'Aaron made me. \uD83D\uDFE2';
+
+function esc(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function isAaronQuestion(text) {
+  var lower = text.toLowerCase();
+  var i;
+  for (i = 0; i < AARON_TRIGGERS.length; i++) {
+    if (lower.indexOf(AARON_TRIGGERS[i]) !== -1) return true;
+  }
+  return false;
+}
+
+function addMessage(role, text, isThinking) {
+  var msgs = document.getElementById('chatMessages');
+  var div = document.createElement('div');
+  div.className = 'msg ' + role;
+  var avatar = role === 'user' ? '&#128100;' : '&#129302;';
+  var bubble = isThinking
+    ? '<div class="thinking-dots"><span></span><span></span><span></span></div>'
+    : esc(text).replace(/\n/g, '<br>');
+  div.innerHTML = '<div class="msg-avatar">' + avatar + '</div><div class="msg-bubble">' + bubble + '</div>';
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  return div;
+}
+
+function buildLabourContext() {
+  var st = current();
+  var d = st.depts;
+  var t = totals(d);
+  var deptArr = [], i, x;
+  for (i = 0; i < d.length; i++) {
+    x = d[i];
+    deptArr.push({
+      department: x.d,
+      net_sales: Math.round(x.s),
+      labour_hours: x.h,
+      labour_cost: Math.round(x.lc),
+      sales_per_hour: Math.round(sph(x)),
+      labour_pct: Number(labourPct(x).toFixed(1)),
+      gross_profit_pct: x.gp,
+      gp_per_eur_labour: Number(roi(x).toFixed(2)),
+      productivity_index: Number(pi(x).toFixed(2)),
+      target_sph: x.t
+    });
+  }
+  var opps = buildOpps(), oppArr = [], o;
+  for (i = 0; i < opps.length; i++) {
+    o = opps[i];
+    oppArr.push({
+      department: o.x.d,
+      type: o.type === 'over' ? 'overstaffed' : 'understaffed',
+      hours: Math.round(o.hrs),
+      weekly_value_eur: Math.round(o.val)
+    });
+  }
+  return {
+    page: 'Labour Intelligence',
+    store_code: storeCode(),
+    store_name: st.name,
+    period: 'one trading week',
+    basis: 'net post-VAT sales',
+    store_totals: {
+      net_sales: Math.round(t.s),
+      labour_cost: Math.round(t.lc),
+      labour_hours: Math.round(t.h),
+      labour_pct: Number((t.lc / t.s * 100).toFixed(1)),
+      sales_per_hour: Math.round(t.s / t.h),
+      gross_profit: Math.round(t.gp),
+      gp_per_eur_labour: Number((t.gp / t.lc).toFixed(2))
+    },
+    departments: deptArr,
+    opportunities: oppArr
+  };
+}
+
+function handleChatKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChat(); }
+}
+
+function useSuggestion(el) {
+  document.getElementById('chatInput').value = el.textContent;
+  sendChat();
+}
+
+function sendChat() {
+  var input = document.getElementById('chatInput');
+  var text = input.value.trim();
+  if (!text) return;
+  document.getElementById('chatSuggestions').style.display = 'none';
+  addMessage('user', text, false);
+  input.value = '';
+  var btn = document.getElementById('chatSend');
+  btn.disabled = true;
+  chatHistory.push({ role: 'user', content: text });
+  if (isAaronQuestion(text)) {
+    setTimeout(function () {
+      addMessage('ai', AARON_RESPONSE, false);
+      chatHistory.push({ role: 'assistant', content: AARON_RESPONSE });
+      btn.disabled = false;
+    }, 350);
+    return;
+  }
+  var thinking = addMessage('ai', '', true);
+  fetch(CHAT_ENDPOINT, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'apikey': SUPABASE_ANON,
+      'Authorization': 'Bearer ' + SUPABASE_ANON
+    },
+    body: JSON.stringify({
+      question: text,
+      store_code: storeCode(),
+      store_name: current().name,
+      role: 'staff',
+      messages: chatHistory,
+      insightsContext: buildLabourContext()
+    })
+  })
+  .then(function (r) { return r.json(); })
+  .then(function (data) {
+    thinking.remove();
+    var reply = '';
+    if (data && data.answer) { reply = data.answer; }
+    else if (data && data.error) { reply = 'Error: ' + data.error; }
+    else { reply = 'Sorry, no response received.'; }
+    addMessage('ai', reply, false);
+    chatHistory.push({ role: 'assistant', content: reply });
+    btn.disabled = false;
+  })
+  .catch(function () {
+    thinking.remove();
+    addMessage('ai', 'Connection error - please try again.', false);
+    btn.disabled = false;
+  });
+}
+
+function resetChat() {
+  chatHistory = [];
+  var msgs = document.getElementById('chatMessages');
+  if (msgs) { msgs.innerHTML = ''; }
+  var sug = document.getElementById('chatSuggestions');
+  if (sug) { sug.style.display = 'flex'; }
+}
+
+function renderAll() {
+  renderKpis();
+  renderLeague();
+  renderOpps();
+  renderHeat();
+  renderCost();
+  renderOt();
+  renderForecast();
+  renderRoi();
+  resetChat();
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  renderAll();
+});
+</script>
+</body>
+</html>
