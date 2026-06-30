@@ -11746,5 +11746,1357 @@
         ]
       }
     }
+  },
+  "2026-06-30": {
+    "Palmerstown": {
+      "store": "Palmerstown",
+      "code": "356",
+      "report": "hourly sales",
+      "scraped_at": "2026-06-30T12:24:30.664169+01:00",
+      "date": "2026-06-30",
+      "data": {
+        "headers": [
+          "Measures",
+          "6AM To 7AM",
+          "7AM To 8AM",
+          "8AM To 9AM",
+          "9AM To 10AM",
+          "10AM To 11AM",
+          "11AM To Midday",
+          "Midday To 1PM",
+          "1PM To 2PM",
+          "2PM To 3PM",
+          "3PM To 4PM",
+          "4PM To 5PM",
+          "5PM To 6PM",
+          "6PM To 7PM",
+          "7PM To 8PM",
+          "8PM To 9PM",
+          "9PM To 10PM"
+        ],
+        "rows": [
+          {
+            "Measures": {
+              "v": "Measures",
+              "t": "str"
+            },
+            "6AM To 7AM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "7AM To 8AM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "8AM To 9AM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "9AM To 10AM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "10AM To 11AM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "11AM To Midday": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "Midday To 1PM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "1PM To 2PM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "2PM To 3PM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "3PM To 4PM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "4PM To 5PM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "5PM To 6PM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "6PM To 7PM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "7PM To 8PM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "8PM To 9PM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "9PM To 10PM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            }
+          },
+          {
+            "Measures": {
+              "v": "Retail Sales Hourly \u20ac",
+              "t": "str"
+            },
+            "6AM To 7AM": {
+              "v": 2.45,
+              "t": "num"
+            },
+            "7AM To 8AM": {
+              "v": 47.85,
+              "t": "num"
+            },
+            "8AM To 9AM": {
+              "v": 6272.0,
+              "t": "num"
+            },
+            "9AM To 10AM": {
+              "v": 13538.19,
+              "t": "num"
+            },
+            "10AM To 11AM": {
+              "v": 23615.18,
+              "t": "num"
+            },
+            "11AM To Midday": {
+              "v": 28869.29,
+              "t": "num"
+            },
+            "Midday To 1PM": {
+              "v": 32853.16,
+              "t": "num"
+            },
+            "1PM To 2PM": {
+              "v": 32072.9,
+              "t": "num"
+            },
+            "2PM To 3PM": {
+              "v": 24889.79,
+              "t": "num"
+            },
+            "3PM To 4PM": {
+              "v": 27640.47,
+              "t": "num"
+            },
+            "4PM To 5PM": {
+              "v": 29019.04,
+              "t": "num"
+            },
+            "5PM To 6PM": {
+              "v": 31627.98,
+              "t": "num"
+            },
+            "6PM To 7PM": {
+              "v": 26163.66,
+              "t": "num"
+            },
+            "7PM To 8PM": {
+              "v": 23184.13,
+              "t": "num"
+            },
+            "8PM To 9PM": {
+              "v": 14603.07,
+              "t": "num"
+            },
+            "9PM To 10PM": {
+              "v": 86.23,
+              "t": "num"
+            }
+          },
+          {
+            "Measures": {
+              "v": "Retail Transaction Count",
+              "t": "str"
+            },
+            "6AM To 7AM": {
+              "v": 1.0,
+              "t": "num"
+            },
+            "7AM To 8AM": {
+              "v": 13.0,
+              "t": "num"
+            },
+            "8AM To 9AM": {
+              "v": 456.0,
+              "t": "num"
+            },
+            "9AM To 10AM": {
+              "v": 769.0,
+              "t": "num"
+            },
+            "10AM To 11AM": {
+              "v": 1093.0,
+              "t": "num"
+            },
+            "11AM To Midday": {
+              "v": 1324.0,
+              "t": "num"
+            },
+            "Midday To 1PM": {
+              "v": 1562.0,
+              "t": "num"
+            },
+            "1PM To 2PM": {
+              "v": 1565.0,
+              "t": "num"
+            },
+            "2PM To 3PM": {
+              "v": 1373.0,
+              "t": "num"
+            },
+            "3PM To 4PM": {
+              "v": 1391.0,
+              "t": "num"
+            },
+            "4PM To 5PM": {
+              "v": 1526.0,
+              "t": "num"
+            },
+            "5PM To 6PM": {
+              "v": 1648.0,
+              "t": "num"
+            },
+            "6PM To 7PM": {
+              "v": 1446.0,
+              "t": "num"
+            },
+            "7PM To 8PM": {
+              "v": 1301.0,
+              "t": "num"
+            },
+            "8PM To 9PM": {
+              "v": 926.0,
+              "t": "num"
+            },
+            "9PM To 10PM": {
+              "v": 9.0,
+              "t": "num"
+            }
+          },
+          {
+            "Measures": {
+              "v": "Retail Sales Average Spend \u20ac",
+              "t": "str"
+            },
+            "6AM To 7AM": {
+              "v": 2.45,
+              "t": "num"
+            },
+            "7AM To 8AM": {
+              "v": 3.680769230769231,
+              "t": "num"
+            },
+            "8AM To 9AM": {
+              "v": 13.75438596491228,
+              "t": "num"
+            },
+            "9AM To 10AM": {
+              "v": 17.604928478543563,
+              "t": "num"
+            },
+            "10AM To 11AM": {
+              "v": 21.60583714547118,
+              "t": "num"
+            },
+            "11AM To Midday": {
+              "v": 21.804599697885198,
+              "t": "num"
+            },
+            "Midday To 1PM": {
+              "v": 21.032752880921898,
+              "t": "num"
+            },
+            "1PM To 2PM": {
+              "v": 20.493865814696488,
+              "t": "num"
+            },
+            "2PM To 3PM": {
+              "v": 18.128033503277496,
+              "t": "num"
+            },
+            "3PM To 4PM": {
+              "v": 19.870934579439254,
+              "t": "num"
+            },
+            "4PM To 5PM": {
+              "v": 19.01640891218873,
+              "t": "num"
+            },
+            "5PM To 6PM": {
+              "v": 19.191735436893204,
+              "t": "num"
+            },
+            "6PM To 7PM": {
+              "v": 18.093817427385893,
+              "t": "num"
+            },
+            "7PM To 8PM": {
+              "v": 17.8202382782475,
+              "t": "num"
+            },
+            "8PM To 9PM": {
+              "v": 15.770053995680346,
+              "t": "num"
+            },
+            "9PM To 10PM": {
+              "v": 9.581111111111111,
+              "t": "num"
+            }
+          },
+          {
+            "Measures": {
+              "v": "Retail Transaction Count TY LY Var",
+              "t": "str"
+            },
+            "6AM To 7AM": {
+              "v": -1.0,
+              "t": "num"
+            },
+            "7AM To 8AM": {
+              "v": -13.0,
+              "t": "num"
+            },
+            "8AM To 9AM": {
+              "v": 55.0,
+              "t": "num"
+            },
+            "9AM To 10AM": {
+              "v": -46.0,
+              "t": "num"
+            },
+            "10AM To 11AM": {
+              "v": 102.0,
+              "t": "num"
+            },
+            "11AM To Midday": {
+              "v": 36.0,
+              "t": "num"
+            },
+            "Midday To 1PM": {
+              "v": 109.0,
+              "t": "num"
+            },
+            "1PM To 2PM": {
+              "v": -24.0,
+              "t": "num"
+            },
+            "2PM To 3PM": {
+              "v": 26.0,
+              "t": "num"
+            },
+            "3PM To 4PM": {
+              "v": -7.0,
+              "t": "num"
+            },
+            "4PM To 5PM": {
+              "v": -10.0,
+              "t": "num"
+            },
+            "5PM To 6PM": {
+              "v": 154.0,
+              "t": "num"
+            },
+            "6PM To 7PM": {
+              "v": 78.0,
+              "t": "num"
+            },
+            "7PM To 8PM": {
+              "v": 26.0,
+              "t": "num"
+            },
+            "8PM To 9PM": {
+              "v": 109.0,
+              "t": "num"
+            },
+            "9PM To 10PM": {
+              "v": -8.0,
+              "t": "num"
+            }
+          },
+          {
+            "Measures": {
+              "v": "Retail Sales Average Spend \u20ac TY LY Var",
+              "t": "str"
+            },
+            "6AM To 7AM": {
+              "v": -4.0,
+              "t": "num"
+            },
+            "7AM To 8AM": {
+              "v": -1.2423076923076923,
+              "t": "num"
+            },
+            "8AM To 9AM": {
+              "v": -0.6363871024193894,
+              "t": "num"
+            },
+            "9AM To 10AM": {
+              "v": -0.7409979018245352,
+              "t": "num"
+            },
+            "10AM To 11AM": {
+              "v": 3.917128770092777,
+              "t": "num"
+            },
+            "11AM To Midday": {
+              "v": 0.5624490767671873,
+              "t": "num"
+            },
+            "Midday To 1PM": {
+              "v": -0.5358637742742474,
+              "t": "num"
+            },
+            "1PM To 2PM": {
+              "v": 0.9423239644762234,
+              "t": "num"
+            },
+            "2PM To 3PM": {
+              "v": -1.8666509807611078,
+              "t": "num"
+            },
+            "3PM To 4PM": {
+              "v": 0.4807772117711586,
+              "t": "num"
+            },
+            "4PM To 5PM": {
+              "v": -1.7040272857279355,
+              "t": "num"
+            },
+            "5PM To 6PM": {
+              "v": -0.7984051253557922,
+              "t": "num"
+            },
+            "6PM To 7PM": {
+              "v": -0.5722278942515331,
+              "t": "num"
+            },
+            "7PM To 8PM": {
+              "v": -0.05296172175249936,
+              "t": "num"
+            },
+            "8PM To 9PM": {
+              "v": -1.9638260532792629,
+              "t": "num"
+            },
+            "9PM To 10PM": {
+              "v": -13.439477124183009,
+              "t": "num"
+            }
+          }
+        ]
+      }
+    },
+    "Balbriggan": {
+      "store": "Balbriggan",
+      "code": "374",
+      "report": "hourly sales",
+      "scraped_at": "2026-06-30T12:24:30.664169+01:00",
+      "date": "2026-06-30",
+      "data": {
+        "headers": [
+          "Measures",
+          "6AM To 7AM",
+          "7AM To 8AM",
+          "8AM To 9AM",
+          "9AM To 10AM",
+          "10AM To 11AM",
+          "11AM To Midday",
+          "Midday To 1PM",
+          "1PM To 2PM",
+          "2PM To 3PM",
+          "3PM To 4PM",
+          "4PM To 5PM",
+          "5PM To 6PM",
+          "6PM To 7PM",
+          "7PM To 8PM",
+          "8PM To 9PM",
+          "9PM To 10PM"
+        ],
+        "rows": [
+          {
+            "Measures": {
+              "v": "Measures",
+              "t": "str"
+            },
+            "6AM To 7AM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "7AM To 8AM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "8AM To 9AM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "9AM To 10AM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "10AM To 11AM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "11AM To Midday": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "Midday To 1PM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "1PM To 2PM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "2PM To 3PM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "3PM To 4PM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "4PM To 5PM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "5PM To 6PM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "6PM To 7PM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "7PM To 8PM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "8PM To 9PM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "9PM To 10PM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            }
+          },
+          {
+            "Measures": {
+              "v": "Retail Sales Hourly \u20ac",
+              "t": "str"
+            },
+            "6AM To 7AM": {
+              "v": 2.45,
+              "t": "num"
+            },
+            "7AM To 8AM": {
+              "v": 47.85,
+              "t": "num"
+            },
+            "8AM To 9AM": {
+              "v": 6272.0,
+              "t": "num"
+            },
+            "9AM To 10AM": {
+              "v": 13538.19,
+              "t": "num"
+            },
+            "10AM To 11AM": {
+              "v": 23615.18,
+              "t": "num"
+            },
+            "11AM To Midday": {
+              "v": 28869.29,
+              "t": "num"
+            },
+            "Midday To 1PM": {
+              "v": 32853.16,
+              "t": "num"
+            },
+            "1PM To 2PM": {
+              "v": 32072.9,
+              "t": "num"
+            },
+            "2PM To 3PM": {
+              "v": 24889.79,
+              "t": "num"
+            },
+            "3PM To 4PM": {
+              "v": 27640.47,
+              "t": "num"
+            },
+            "4PM To 5PM": {
+              "v": 29019.04,
+              "t": "num"
+            },
+            "5PM To 6PM": {
+              "v": 31627.98,
+              "t": "num"
+            },
+            "6PM To 7PM": {
+              "v": 26163.66,
+              "t": "num"
+            },
+            "7PM To 8PM": {
+              "v": 23184.13,
+              "t": "num"
+            },
+            "8PM To 9PM": {
+              "v": 14603.07,
+              "t": "num"
+            },
+            "9PM To 10PM": {
+              "v": 86.23,
+              "t": "num"
+            }
+          },
+          {
+            "Measures": {
+              "v": "Retail Transaction Count",
+              "t": "str"
+            },
+            "6AM To 7AM": {
+              "v": 1.0,
+              "t": "num"
+            },
+            "7AM To 8AM": {
+              "v": 13.0,
+              "t": "num"
+            },
+            "8AM To 9AM": {
+              "v": 456.0,
+              "t": "num"
+            },
+            "9AM To 10AM": {
+              "v": 769.0,
+              "t": "num"
+            },
+            "10AM To 11AM": {
+              "v": 1093.0,
+              "t": "num"
+            },
+            "11AM To Midday": {
+              "v": 1324.0,
+              "t": "num"
+            },
+            "Midday To 1PM": {
+              "v": 1562.0,
+              "t": "num"
+            },
+            "1PM To 2PM": {
+              "v": 1565.0,
+              "t": "num"
+            },
+            "2PM To 3PM": {
+              "v": 1373.0,
+              "t": "num"
+            },
+            "3PM To 4PM": {
+              "v": 1391.0,
+              "t": "num"
+            },
+            "4PM To 5PM": {
+              "v": 1526.0,
+              "t": "num"
+            },
+            "5PM To 6PM": {
+              "v": 1648.0,
+              "t": "num"
+            },
+            "6PM To 7PM": {
+              "v": 1446.0,
+              "t": "num"
+            },
+            "7PM To 8PM": {
+              "v": 1301.0,
+              "t": "num"
+            },
+            "8PM To 9PM": {
+              "v": 926.0,
+              "t": "num"
+            },
+            "9PM To 10PM": {
+              "v": 9.0,
+              "t": "num"
+            }
+          },
+          {
+            "Measures": {
+              "v": "Retail Sales Average Spend \u20ac",
+              "t": "str"
+            },
+            "6AM To 7AM": {
+              "v": 2.45,
+              "t": "num"
+            },
+            "7AM To 8AM": {
+              "v": 3.680769230769231,
+              "t": "num"
+            },
+            "8AM To 9AM": {
+              "v": 13.75438596491228,
+              "t": "num"
+            },
+            "9AM To 10AM": {
+              "v": 17.604928478543563,
+              "t": "num"
+            },
+            "10AM To 11AM": {
+              "v": 21.60583714547118,
+              "t": "num"
+            },
+            "11AM To Midday": {
+              "v": 21.804599697885198,
+              "t": "num"
+            },
+            "Midday To 1PM": {
+              "v": 21.032752880921898,
+              "t": "num"
+            },
+            "1PM To 2PM": {
+              "v": 20.493865814696488,
+              "t": "num"
+            },
+            "2PM To 3PM": {
+              "v": 18.128033503277496,
+              "t": "num"
+            },
+            "3PM To 4PM": {
+              "v": 19.870934579439254,
+              "t": "num"
+            },
+            "4PM To 5PM": {
+              "v": 19.01640891218873,
+              "t": "num"
+            },
+            "5PM To 6PM": {
+              "v": 19.191735436893204,
+              "t": "num"
+            },
+            "6PM To 7PM": {
+              "v": 18.093817427385893,
+              "t": "num"
+            },
+            "7PM To 8PM": {
+              "v": 17.8202382782475,
+              "t": "num"
+            },
+            "8PM To 9PM": {
+              "v": 15.770053995680346,
+              "t": "num"
+            },
+            "9PM To 10PM": {
+              "v": 9.581111111111111,
+              "t": "num"
+            }
+          },
+          {
+            "Measures": {
+              "v": "Retail Transaction Count TY LY Var",
+              "t": "str"
+            },
+            "6AM To 7AM": {
+              "v": -1.0,
+              "t": "num"
+            },
+            "7AM To 8AM": {
+              "v": -13.0,
+              "t": "num"
+            },
+            "8AM To 9AM": {
+              "v": 55.0,
+              "t": "num"
+            },
+            "9AM To 10AM": {
+              "v": -46.0,
+              "t": "num"
+            },
+            "10AM To 11AM": {
+              "v": 102.0,
+              "t": "num"
+            },
+            "11AM To Midday": {
+              "v": 36.0,
+              "t": "num"
+            },
+            "Midday To 1PM": {
+              "v": 109.0,
+              "t": "num"
+            },
+            "1PM To 2PM": {
+              "v": -24.0,
+              "t": "num"
+            },
+            "2PM To 3PM": {
+              "v": 26.0,
+              "t": "num"
+            },
+            "3PM To 4PM": {
+              "v": -7.0,
+              "t": "num"
+            },
+            "4PM To 5PM": {
+              "v": -10.0,
+              "t": "num"
+            },
+            "5PM To 6PM": {
+              "v": 154.0,
+              "t": "num"
+            },
+            "6PM To 7PM": {
+              "v": 78.0,
+              "t": "num"
+            },
+            "7PM To 8PM": {
+              "v": 26.0,
+              "t": "num"
+            },
+            "8PM To 9PM": {
+              "v": 109.0,
+              "t": "num"
+            },
+            "9PM To 10PM": {
+              "v": -8.0,
+              "t": "num"
+            }
+          },
+          {
+            "Measures": {
+              "v": "Retail Sales Average Spend \u20ac TY LY Var",
+              "t": "str"
+            },
+            "6AM To 7AM": {
+              "v": -4.0,
+              "t": "num"
+            },
+            "7AM To 8AM": {
+              "v": -1.2423076923076923,
+              "t": "num"
+            },
+            "8AM To 9AM": {
+              "v": -0.6363871024193894,
+              "t": "num"
+            },
+            "9AM To 10AM": {
+              "v": -0.7409979018245352,
+              "t": "num"
+            },
+            "10AM To 11AM": {
+              "v": 3.917128770092777,
+              "t": "num"
+            },
+            "11AM To Midday": {
+              "v": 0.5624490767671873,
+              "t": "num"
+            },
+            "Midday To 1PM": {
+              "v": -0.5358637742742474,
+              "t": "num"
+            },
+            "1PM To 2PM": {
+              "v": 0.9423239644762234,
+              "t": "num"
+            },
+            "2PM To 3PM": {
+              "v": -1.8666509807611078,
+              "t": "num"
+            },
+            "3PM To 4PM": {
+              "v": 0.4807772117711586,
+              "t": "num"
+            },
+            "4PM To 5PM": {
+              "v": -1.7040272857279355,
+              "t": "num"
+            },
+            "5PM To 6PM": {
+              "v": -0.7984051253557922,
+              "t": "num"
+            },
+            "6PM To 7PM": {
+              "v": -0.5722278942515331,
+              "t": "num"
+            },
+            "7PM To 8PM": {
+              "v": -0.05296172175249936,
+              "t": "num"
+            },
+            "8PM To 9PM": {
+              "v": -1.9638260532792629,
+              "t": "num"
+            },
+            "9PM To 10PM": {
+              "v": -13.439477124183009,
+              "t": "num"
+            }
+          }
+        ]
+      }
+    },
+    "Skerries": {
+      "store": "Skerries",
+      "code": "424",
+      "report": "hourly sales",
+      "scraped_at": "2026-06-30T12:24:30.664169+01:00",
+      "date": "2026-06-30",
+      "data": {
+        "headers": [
+          "Measures",
+          "6AM To 7AM",
+          "7AM To 8AM",
+          "8AM To 9AM",
+          "9AM To 10AM",
+          "10AM To 11AM",
+          "11AM To Midday",
+          "Midday To 1PM",
+          "1PM To 2PM",
+          "2PM To 3PM",
+          "3PM To 4PM",
+          "4PM To 5PM",
+          "5PM To 6PM",
+          "6PM To 7PM",
+          "7PM To 8PM",
+          "8PM To 9PM",
+          "9PM To 10PM"
+        ],
+        "rows": [
+          {
+            "Measures": {
+              "v": "Measures",
+              "t": "str"
+            },
+            "6AM To 7AM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "7AM To 8AM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "8AM To 9AM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "9AM To 10AM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "10AM To 11AM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "11AM To Midday": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "Midday To 1PM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "1PM To 2PM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "2PM To 3PM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "3PM To 4PM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "4PM To 5PM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "5PM To 6PM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "6PM To 7PM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "7PM To 8PM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "8PM To 9PM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            },
+            "9PM To 10PM": {
+              "v": "Week 26 2026",
+              "t": "str"
+            }
+          },
+          {
+            "Measures": {
+              "v": "Retail Sales Hourly \u20ac",
+              "t": "str"
+            },
+            "6AM To 7AM": {
+              "v": 2.45,
+              "t": "num"
+            },
+            "7AM To 8AM": {
+              "v": 47.85,
+              "t": "num"
+            },
+            "8AM To 9AM": {
+              "v": 6272.0,
+              "t": "num"
+            },
+            "9AM To 10AM": {
+              "v": 13538.19,
+              "t": "num"
+            },
+            "10AM To 11AM": {
+              "v": 23615.18,
+              "t": "num"
+            },
+            "11AM To Midday": {
+              "v": 28869.29,
+              "t": "num"
+            },
+            "Midday To 1PM": {
+              "v": 32853.16,
+              "t": "num"
+            },
+            "1PM To 2PM": {
+              "v": 32072.9,
+              "t": "num"
+            },
+            "2PM To 3PM": {
+              "v": 24889.79,
+              "t": "num"
+            },
+            "3PM To 4PM": {
+              "v": 27640.47,
+              "t": "num"
+            },
+            "4PM To 5PM": {
+              "v": 29019.04,
+              "t": "num"
+            },
+            "5PM To 6PM": {
+              "v": 31627.98,
+              "t": "num"
+            },
+            "6PM To 7PM": {
+              "v": 26163.66,
+              "t": "num"
+            },
+            "7PM To 8PM": {
+              "v": 23184.13,
+              "t": "num"
+            },
+            "8PM To 9PM": {
+              "v": 14603.07,
+              "t": "num"
+            },
+            "9PM To 10PM": {
+              "v": 86.23,
+              "t": "num"
+            }
+          },
+          {
+            "Measures": {
+              "v": "Retail Transaction Count",
+              "t": "str"
+            },
+            "6AM To 7AM": {
+              "v": 1.0,
+              "t": "num"
+            },
+            "7AM To 8AM": {
+              "v": 13.0,
+              "t": "num"
+            },
+            "8AM To 9AM": {
+              "v": 456.0,
+              "t": "num"
+            },
+            "9AM To 10AM": {
+              "v": 769.0,
+              "t": "num"
+            },
+            "10AM To 11AM": {
+              "v": 1093.0,
+              "t": "num"
+            },
+            "11AM To Midday": {
+              "v": 1324.0,
+              "t": "num"
+            },
+            "Midday To 1PM": {
+              "v": 1562.0,
+              "t": "num"
+            },
+            "1PM To 2PM": {
+              "v": 1565.0,
+              "t": "num"
+            },
+            "2PM To 3PM": {
+              "v": 1373.0,
+              "t": "num"
+            },
+            "3PM To 4PM": {
+              "v": 1391.0,
+              "t": "num"
+            },
+            "4PM To 5PM": {
+              "v": 1526.0,
+              "t": "num"
+            },
+            "5PM To 6PM": {
+              "v": 1648.0,
+              "t": "num"
+            },
+            "6PM To 7PM": {
+              "v": 1446.0,
+              "t": "num"
+            },
+            "7PM To 8PM": {
+              "v": 1301.0,
+              "t": "num"
+            },
+            "8PM To 9PM": {
+              "v": 926.0,
+              "t": "num"
+            },
+            "9PM To 10PM": {
+              "v": 9.0,
+              "t": "num"
+            }
+          },
+          {
+            "Measures": {
+              "v": "Retail Sales Average Spend \u20ac",
+              "t": "str"
+            },
+            "6AM To 7AM": {
+              "v": 2.45,
+              "t": "num"
+            },
+            "7AM To 8AM": {
+              "v": 3.680769230769231,
+              "t": "num"
+            },
+            "8AM To 9AM": {
+              "v": 13.75438596491228,
+              "t": "num"
+            },
+            "9AM To 10AM": {
+              "v": 17.604928478543563,
+              "t": "num"
+            },
+            "10AM To 11AM": {
+              "v": 21.60583714547118,
+              "t": "num"
+            },
+            "11AM To Midday": {
+              "v": 21.804599697885198,
+              "t": "num"
+            },
+            "Midday To 1PM": {
+              "v": 21.032752880921898,
+              "t": "num"
+            },
+            "1PM To 2PM": {
+              "v": 20.493865814696488,
+              "t": "num"
+            },
+            "2PM To 3PM": {
+              "v": 18.128033503277496,
+              "t": "num"
+            },
+            "3PM To 4PM": {
+              "v": 19.870934579439254,
+              "t": "num"
+            },
+            "4PM To 5PM": {
+              "v": 19.01640891218873,
+              "t": "num"
+            },
+            "5PM To 6PM": {
+              "v": 19.191735436893204,
+              "t": "num"
+            },
+            "6PM To 7PM": {
+              "v": 18.093817427385893,
+              "t": "num"
+            },
+            "7PM To 8PM": {
+              "v": 17.8202382782475,
+              "t": "num"
+            },
+            "8PM To 9PM": {
+              "v": 15.770053995680346,
+              "t": "num"
+            },
+            "9PM To 10PM": {
+              "v": 9.581111111111111,
+              "t": "num"
+            }
+          },
+          {
+            "Measures": {
+              "v": "Retail Transaction Count TY LY Var",
+              "t": "str"
+            },
+            "6AM To 7AM": {
+              "v": -1.0,
+              "t": "num"
+            },
+            "7AM To 8AM": {
+              "v": -13.0,
+              "t": "num"
+            },
+            "8AM To 9AM": {
+              "v": 55.0,
+              "t": "num"
+            },
+            "9AM To 10AM": {
+              "v": -46.0,
+              "t": "num"
+            },
+            "10AM To 11AM": {
+              "v": 102.0,
+              "t": "num"
+            },
+            "11AM To Midday": {
+              "v": 36.0,
+              "t": "num"
+            },
+            "Midday To 1PM": {
+              "v": 109.0,
+              "t": "num"
+            },
+            "1PM To 2PM": {
+              "v": -24.0,
+              "t": "num"
+            },
+            "2PM To 3PM": {
+              "v": 26.0,
+              "t": "num"
+            },
+            "3PM To 4PM": {
+              "v": -7.0,
+              "t": "num"
+            },
+            "4PM To 5PM": {
+              "v": -10.0,
+              "t": "num"
+            },
+            "5PM To 6PM": {
+              "v": 154.0,
+              "t": "num"
+            },
+            "6PM To 7PM": {
+              "v": 78.0,
+              "t": "num"
+            },
+            "7PM To 8PM": {
+              "v": 26.0,
+              "t": "num"
+            },
+            "8PM To 9PM": {
+              "v": 109.0,
+              "t": "num"
+            },
+            "9PM To 10PM": {
+              "v": -8.0,
+              "t": "num"
+            }
+          },
+          {
+            "Measures": {
+              "v": "Retail Sales Average Spend \u20ac TY LY Var",
+              "t": "str"
+            },
+            "6AM To 7AM": {
+              "v": -4.0,
+              "t": "num"
+            },
+            "7AM To 8AM": {
+              "v": -1.2423076923076923,
+              "t": "num"
+            },
+            "8AM To 9AM": {
+              "v": -0.6363871024193894,
+              "t": "num"
+            },
+            "9AM To 10AM": {
+              "v": -0.7409979018245352,
+              "t": "num"
+            },
+            "10AM To 11AM": {
+              "v": 3.917128770092777,
+              "t": "num"
+            },
+            "11AM To Midday": {
+              "v": 0.5624490767671873,
+              "t": "num"
+            },
+            "Midday To 1PM": {
+              "v": -0.5358637742742474,
+              "t": "num"
+            },
+            "1PM To 2PM": {
+              "v": 0.9423239644762234,
+              "t": "num"
+            },
+            "2PM To 3PM": {
+              "v": -1.8666509807611078,
+              "t": "num"
+            },
+            "3PM To 4PM": {
+              "v": 0.4807772117711586,
+              "t": "num"
+            },
+            "4PM To 5PM": {
+              "v": -1.7040272857279355,
+              "t": "num"
+            },
+            "5PM To 6PM": {
+              "v": -0.7984051253557922,
+              "t": "num"
+            },
+            "6PM To 7PM": {
+              "v": -0.5722278942515331,
+              "t": "num"
+            },
+            "7PM To 8PM": {
+              "v": -0.05296172175249936,
+              "t": "num"
+            },
+            "8PM To 9PM": {
+              "v": -1.9638260532792629,
+              "t": "num"
+            },
+            "9PM To 10PM": {
+              "v": -13.439477124183009,
+              "t": "num"
+            }
+          }
+        ]
+      }
+    }
   }
 }
