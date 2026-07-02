@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ancestry Tracker</title>
+<style>
+/* ink #22201B  vellum #EDE6D4  aged #E1D6BC  bronze #8A5A2B  moss #3B5641  rust #A23B24 */
+html,body{margin:0;padding:0;background:#EDE6D4;color:#22201B;
+  font-family:-apple-system,Georgia,"Times New Roman",serif;-webkit-text-size-adjust:100%;}
+*{box-sizing:border-box;}
+.wrap{max-width:640px;margin:0 auto;padding:0 16px 96px 16px;}
+header.top{position:sticky;top:0;z-index:20;background:#22201B;color:#EDE6D4;
+  padding:calc(env(safe-area-inset-top) + 12px) 16px 12px 16px;}
+header.top h1{margin:0;font-size:19px;letter-spacing:0.5px;font-weight:600;}
+header.top .owner{font-size:12px;color:#C9BE9F;margin-top:2px;}
+header.top .owner a{color:#E1D6BC;text-decoration:underline;cursor:pointer;}
+.tabs{display:flex;background:#2E2B24;border-top:1px solid #4A463B;}
+.tabs button{flex:1;background:none;border:none;color:#C9BE9F;font-family:inherit;
+  font-size:13px;padding:11px 4px;cursor:pointer;border-bottom:3px solid transparent;}
+.tabs button.on{color:#EDE6D4;border-bottom:3px solid #8A5A2B;}
+h2.section{font-size:15px;letter-spacing:1.5px;text-transform:uppercase;color:#8A5A2B;
+  margin:20px 0 8px 0;font-weight:600;}
+h3.era{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#5C574A;
+  margin:14px 0 4px 0;font-weight:600;}
+.card{background:#F6F1E2;border:1px solid #D8CBA9;border-radius:6px;padding:13px 14px;
+  margin:9px 0;box-shadow:0 1px 0 #D8CBA9;}
+.card.tap{cursor:pointer;}
+.card .name{font-size:17px;font-weight:600;}
+.card .meta{font-size:13px;color:#5C574A;margin-top:3px;}
+.badge{display:inline-block;background:#E1D6BC;color:#5C4A2B;font-size:11px;
+  padding:1px 7px;border-radius:10px;margin-right:5px;letter-spacing:0.4px;}
+.btn{display:inline-block;background:#3B5641;color:#EDE6D4;border:none;border-radius:6px;
+  font-family:inherit;font-size:14px;padding:10px 14px;cursor:pointer;margin:4px 6px 4px 0;
+  text-decoration:none;}
+.btn.bronze{background:#8A5A2B;}
+.btn.ghost{background:none;color:#3B5641;border:1px solid #3B5641;}
+.btn.danger{background:none;color:#A23B24;border:1px solid #A23B24;}
+.btn.small{font-size:12px;padding:7px 10px;}
+.btn.full{display:block;width:100%;text-align:center;margin:8px 0;}
+.btn.link{background:#F1E9D4;color:#5C4A2B;border:1px solid #D8CBA9;}
+label.f{display:block;font-size:12px;letter-spacing:0.5px;color:#5C574A;
+  text-transform:uppercase;margin:11px 0 4px 0;}
+input.f,select.f,textarea.f{width:100%;font-family:inherit;font-size:16px;
+  padding:10px;border:1px solid #C7B98F;border-radius:6px;background:#FFFDF6;color:#22201B;}
+textarea.f{min-height:70px;}
+.spine{border-left:2px solid #C7B98F;margin:6px 0 6px 6px;padding-left:14px;}
+.spine .evt{position:relative;margin:0 0 12px 0;}
+.spine .evt:before{content:"";position:absolute;left:-21px;top:5px;width:9px;height:9px;
+  background:#8A5A2B;border-radius:50%;border:2px solid #EDE6D4;}
+.evt .t{font-size:14px;font-weight:600;}
+.evt .d{font-size:12px;color:#5C574A;}
+.evt a{color:#8A5A2B;}
+.modal{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(34,32,27,0.55);
+  z-index:50;display:none;overflow:auto;-webkit-overflow-scrolling:touch;}
+.modal.on{display:block;}
+.sheet{background:#EDE6D4;max-width:640px;margin:40px auto;border-radius:10px;
+  padding:18px 18px calc(env(safe-area-inset-bottom) + 18px) 18px;}
+.sheet h3{margin:0 0 6px 0;font-size:18px;}
+.empty{text-align:center;color:#7A7362;font-size:14px;padding:34px 10px;}
+.empty .big{font-size:15px;color:#5C574A;margin-bottom:6px;}
+.toast{position:fixed;left:16px;right:16px;bottom:calc(env(safe-area-inset-bottom) + 16px);
+  background:#22201B;color:#EDE6D4;padding:12px 14px;border-radius:8px;font-size:14px;
+  z-index:80;display:none;text-align:center;}
+.row2{display:flex;gap:10px;}
+.row2 > div{flex:1;}
+.hint{font-size:12px;color:#7A7362;margin:4px 0 0 0;line-height:1.4;}
+.linkline{font-size:13px;color:#8A5A2B;margin:5px 0;word-break:break-all;}
+.suggest{background:#F1E9D4;border:1px solid #D8CBA9;border-radius:6px;padding:8px 10px;
+  margin:6px 0;font-size:13px;}
+.suggest a{color:#8A5A2B;cursor:pointer;}
+.filter{width:100%;font-family:inherit;font-size:16px;padding:10px;border:1px solid #C7B98F;
+  border-radius:6px;background:#FFFDF6;margin:4px 0 2px 0;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <h1>Ancestry Tracker</h1>
+  <div class="owner">Tree: <span id="ownerName">default</span> &middot; <a id="ownerChange">change</a></div>
+</header>
+<div class="tabs">
+  <button id="tabPeople" class="on">People</button>
+  <button id="tabInbox">Census inbox</button>
+  <button id="tabAbout">Sources</button>
+</div>
+
+<div class="wrap">
+  <div id="viewPeople">
+    <button class="btn bronze full" id="addPersonBtn">+ Add a person</button>
+    <input class="filter" id="peopleFilter" placeholder="Filter by name...">
+    <div id="peopleList"></div>
+  </div>
+
+  <div id="viewInbox" style="display:none;">
+    <h2 class="section">Unlinked census rows</h2>
+    <p class="hint">Rows imported by the fetcher that aren't attached to anyone yet. Tap one to link it to a person, or turn it straight into a new person.</p>
+    <div id="inboxList"></div>
+  </div>
+
+  <div id="viewAbout" style="display:none;">
+    <h2 class="section">How far back you can go</h2>
+    <div class="card"><div class="name">Civil BMD &middot; 1845/1864 &rarr;</div>
+      <div class="meta">IrishGenealogy.ie (GRO). Free images; view at source, paste facts back.</div></div>
+    <div class="card"><div class="name">Census &middot; 1901 / 1911 / 1926</div>
+      <div class="meta">National Archives, free open data. Fetcher can import rows.</div></div>
+    <div class="card"><div class="name">Census fragments &middot; 1821&ndash;1851</div>
+      <div class="meta">Surviving pre-Famine returns at the National Archives.</div></div>
+    <div class="card"><div class="name">Church registers &middot; 1700s &rarr;</div>
+      <div class="meta">NLI Catholic parish registers, IrishGenealogy church records, RootsIreland.</div></div>
+    <div class="card"><div class="name">Griffith's Valuation &middot; 1847&ndash;1864</div>
+      <div class="meta">AskAboutIreland. Occupiers of land and buildings.</div></div>
+    <div class="card"><div class="name">Tithe Applotment Books &middot; 1823&ndash;1837</div>
+      <div class="meta">National Archives. Heads of agricultural households.</div></div>
+    <div class="card"><div class="name">Marriage Licence Bonds &middot; 1623&ndash;1866</div>
+      <div class="meta">National Archives genealogy microsite.</div></div>
+    <div class="card"><div class="name">Catholic Qualification &amp; Convert Rolls &middot; 1700&ndash;1845</div>
+      <div class="meta">National Archives genealogy microsite.</div></div>
+    <div class="card"><div class="name">Down Survey &middot; 1656&ndash;1658</div>
+      <div class="meta">Trinity College. Landowners before and after the Cromwellian settlement &mdash; about as far back as named, searchable records go.</div></div>
+    <p class="hint">Beyond the 1650s you're into Gaelic annals and pedigrees, which aren't searchable person-databases. Each person page links straight into the searches above.</p>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- ===== Person modal ===== -->
+<div class="modal" id="mPerson"><div class="sheet">
+  <h3 id="mPersonTitle">Add a person</h3>
+  <p class="hint">Add whatever you know &mdash; nothing here is required. A bare name, or even just a surname, is enough to start. Fill the rest in later.</p>
+
+  <div id="pCensusPickWrap">
+    <label class="f">Start from an imported census row (optional)</label>
+    <select class="f" id="pFromCensus"><option value="">&mdash; type manually below &mdash;</option></select>
+  </div>
+
+  <input type="hidden" id="pId">
+  <input type="hidden" id="pCensusLink">
+  <div class="row2">
+    <div><label class="f">Given names</label><input class="f" id="pGiven"></div>
+    <div><label class="f">Surname</label><input class="f" id="pSurname"></div>
+  </div>
+  <div id="pMatches"></div>
+  <label class="f">Sex</label>
+  <select class="f" id="pSex"><option>Unknown</option><option>Male</option><option>Female</option></select>
+  <div class="row2">
+    <div><label class="f">Birth date</label><input class="f" id="pBirthDate" placeholder="e.g. abt 1878"></div>
+    <div><label class="f">Birth place</label><input class="f" id="pBirthPlace"></div>
+  </div>
+  <div class="row2">
+    <div><label class="f">Death date</label><input class="f" id="pDeathDate"></div>
+    <div><label class="f">Death place</label><input class="f" id="pDeathPlace"></div>
+  </div>
+  <label class="f">Notes</label><textarea class="f" id="pNotes"></textarea>
+  <button class="btn bronze" id="pSave">Save person</button>
+  <button class="btn ghost" id="pCancel">Cancel</button>
+</div></div>
+
+<!-- ===== Person detail modal ===== -->
+<div class="modal" id="mDetail"><div class="sheet">
+  <h3 id="dName">&nbsp;</h3>
+  <div id="dMeta" class="meta" style="font-size:13px;color:#5C574A;"></div>
+
+  <h2 class="section">Family</h2>
+  <div id="dFamily"></div>
+
+  <h2 class="section">Life events</h2>
+  <div id="dFacts" class="spine"></div>
+  <button class="btn small" id="dAddFact">+ Add event</button>
+
+  <h2 class="section">Sources</h2>
+  <div id="dSources"></div>
+  <button class="btn small" id="dAddSource">+ Add source</button>
+
+  <h2 class="section">Search the records &mdash; newest to oldest</h2>
+  <div id="dSearch"></div>
+
+  <h2 class="section">Census matches</h2>
+  <div id="dCensus"></div>
+
+  <div style="margin-top:18px;border-top:1px solid #C7B98F;padding-top:12px;">
+    <button class="btn ghost small" id="dAddRel">+ Link a relative</button>
+    <button class="btn ghost small" id="dEdit">Edit</button>
+    <button class="btn danger small" id="dDelete">Delete</button>
+    <button class="btn ghost small" id="dClose">Close</button>
+  </div>
+</div></div>
+
+<!-- ===== Fact modal ===== -->
+<div class="modal" id="mFact"><div class="sheet">
+  <h3>Add life event</h3>
+  <label class="f">Type</label>
+  <select class="f" id="fType">
+    <option>Birth</option><option>Baptism</option><option>Marriage</option>
+    <option>Death</option><option>Burial</option><option>Residence</option>
+    <option>Occupation</option><option>Census</option><option>Land / valuation</option>
+    <option>Emigration</option><option>Other</option>
+  </select>
+  <div class="row2">
+    <div><label class="f">Date</label><input class="f" id="fDate"></div>
+    <div><label class="f">Place</label><input class="f" id="fPlace"></div>
+  </div>
+  <label class="f">Detail</label><input class="f" id="fValue" placeholder="e.g. occupation, spouse">
+  <label class="f">Notes</label><textarea class="f" id="fNotes"></textarea>
+  <button class="btn bronze" id="fSave">Save event</button>
+  <button class="btn ghost" id="fCancel">Cancel</button>
+</div></div>
+
+<!-- ===== Source modal ===== -->
+<div class="modal" id="mSource"><div class="sheet">
+  <h3>Add source</h3>
+  <label class="f">Repository</label>
+  <select class="f" id="sRepo">
+    <option>IrishGenealogy.ie (civil BMD)</option>
+    <option>IrishGenealogy.ie (church)</option>
+    <option>NLI parish registers</option>
+    <option>RootsIreland</option>
+    <option>National Archives (census)</option>
+    <option>Griffith's Valuation</option>
+    <option>Tithe Applotment Books</option>
+    <option>Marriage Licence Bonds</option>
+    <option>Convert / Qualification Rolls</option>
+    <option>Wills &amp; Administrations</option>
+    <option>Down Survey</option>
+    <option>FamilySearch</option>
+    <option>Other</option>
+  </select>
+  <label class="f">Title</label><input class="f" id="sTitle" placeholder="e.g. Death cert 1931">
+  <label class="f">Link (URL)</label><input class="f" id="sUrl" placeholder="paste the record URL">
+  <label class="f">Citation</label><textarea class="f" id="sCite"></textarea>
+  <button class="btn bronze" id="sSave">Save source</button>
+  <button class="btn ghost" id="sCancel">Cancel</button>
+</div></div>
+
+<!-- ===== Relationship modal ===== -->
+<div class="modal" id="mRel"><div class="sheet">
+  <h3>Link a relative</h3>
+  <p class="hint" id="relFor"></p>
+  <label class="f">Relationship</label>
+  <select class="f" id="relType">
+    <option value="parent">is a PARENT of this person</option>
+    <option value="child">is a CHILD of this person</option>
+    <option value="spouse">is a SPOUSE / partner of this person</option>
+  </select>
+  <label class="f">Choose an existing person</label>
+  <select class="f" id="relPerson"></select>
+  <button class="btn bronze" id="relSave">Create link</button>
+  <button class="btn link" id="relNew">+ New person instead</button>
+  <button class="btn ghost" id="relCancel">Cancel</button>
+</div></div>
+
+<!-- ===== Link census row modal ===== -->
+<div class="modal" id="mLinkCensus"><div class="sheet">
+  <h3>Attach census row</h3>
+  <p class="hint" id="linkCensusInfo"></p>
+  <label class="f">Person</label>
+  <select class="f" id="linkCensusPerson"></select>
+  <button class="btn bronze" id="linkCensusSave">Attach</button>
+  <button class="btn ghost" id="linkCensusCancel">Cancel</button>
+</div></div>
+
+<script>
+/* ============================================================
+   CONFIG  ->  set these two before use
+   ============================================================ */
+var SUPABASE_URL = "https://ghcnpbwtrhehpnmrxcfn.supabase.co";
+var SUPABASE_ANON_KEY = "sb_publishable_ZAA4X5DepkGngES6586EIw_3qvTtwc3";
+
+/* Record searches, newest -> oldest. FamilySearch pre-fills the name reliably.
+   The others open their search page (their query strings aren't documented, so
+   we don't guess params and risk broken links). Verified base URLs. */
+var SOURCE_SEARCH = {
+  civil:   "https://civilrecords.irishgenealogy.ie/churchrecords/civil-search.jsp",
+  church:  "https://churchrecords.irishgenealogy.ie/churchrecords/index.jsp",
+  nli:     "https://registers.nli.ie/",
+  rootsi:  "https://www.rootsireland.ie/",
+  census:  "https://nationalarchives.ie/collections/search-the-census/",
+  census19:"https://nationalarchives.ie/collections/search-the-census-c19/",
+  griffith:"https://www.askaboutireland.ie/griffith-valuation/",
+  tithe:   "http://titheapplotmentbooks.nationalarchives.ie/search/tab/home.jsp",
+  gene:    "https://nationalarchives.ie/collections/genealogy-website/",
+  down:    "http://downsurvey.tcd.ie/",
+  fs:      "https://www.familysearch.org/search/record/results?f.recordCountry=Ireland"
+};
+
+var REST = SUPABASE_URL + "/rest/v1/";
+
+/* ---- helpers ---- */
+function el(id){ return document.getElementById(id); }
+function esc(s){ if(s===null||s===undefined) return ""; return String(s)
+  .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;"); }
+function owner(){
+  var o = localStorage.getItem("tree_owner");
+  if(!o){ o="default"; localStorage.setItem("tree_owner",o); }
+  return o;
+}
+function toast(msg){
+  var t = el("toast"); t.textContent = msg; t.style.display = "block";
+  setTimeout(function(){ t.style.display="none"; }, 2600);
+}
+function sbHeaders(extra){
+  var h = { "apikey": SUPABASE_ANON_KEY, "Authorization": "Bearer " + SUPABASE_ANON_KEY,
+            "Content-Type": "application/json" };
+  if(extra){ for(var k in extra){ h[k]=extra[k]; } }
+  return h;
+}
+function eqOwner(){ return "tree_owner=eq." + encodeURIComponent(owner()); }
+function show(id){ el(id).classList.add("on"); }
+function hide(id){ el(id).classList.remove("on"); }
+
+/* ---- data layer ---- */
+function apiGet(path){
+  return fetch(REST + path, { headers: sbHeaders() }).then(function(r){ return r.json(); });
+}
+function apiPost(table, body){
+  return fetch(REST + table, { method:"POST",
+    headers: sbHeaders({ "Prefer":"return=representation" }),
+    body: JSON.stringify(body) }).then(function(r){ return r.json(); });
+}
+function apiPatch(table, idFilter, body){
+  return fetch(REST + table + "?" + idFilter, { method:"PATCH",
+    headers: sbHeaders({ "Prefer":"return=representation" }),
+    body: JSON.stringify(body) }).then(function(r){ return r.json(); });
+}
+function apiDelete(table, idFilter){
+  return fetch(REST + table + "?" + idFilter, { method:"DELETE", headers: sbHeaders() });
+}
+
+/* ---- state ---- */
+var CURRENT = null;
+var PEOPLE_CACHE = [];
+var INBOX_CACHE = [];
+var REL_AFTER_NEW = null;   /* pending relationship after creating a new person */
+
+/* ============================================================
+   PEOPLE LIST
+   ============================================================ */
+function displayName(p){
+  var n = ((p.given_names||"") + " " + (p.surname||"")).replace(/\s+/g," ").trim();
+  return n || "(unnamed)";
+}
+function lifeSpan(p){
+  var b = p.birth_date || "", d = p.death_date || "";
+  if(!b && !d) return "";
+  return b + " \u2013 " + d;
+}
+function renderPeople(rows){
+  var box = el("peopleList");
+  if(!rows.length){
+    box.innerHTML = '<div class="empty"><div class="big">No one here yet.</div>'
+      + 'Add the person you know most about first &mdash; usually yourself or a grandparent &mdash; then work outward and backward.</div>';
+    return;
+  }
+  var html="", i;
+  for(i=0;i<rows.length;i++){
+    var p=rows[i];
+    html += '<div class="card tap" data-id="'+esc(p.id)+'">'
+      + '<div class="name">'+esc(displayName(p))+'</div>'
+      + '<div class="meta">'+esc(lifeSpan(p));
+    if(p.birth_place){ html += (lifeSpan(p)?' &middot; ':'') + esc(p.birth_place); }
+    html += '</div></div>';
+  }
+  box.innerHTML = html;
+  var cards = box.getElementsByClassName("card"), j;
+  for(j=0;j<cards.length;j++){
+    cards[j].onclick = function(){ openDetail(this.getAttribute("data-id")); };
+  }
+}
+function loadPeople(){
+  return apiGet("persons?" + eqOwner() + "&order=surname.asc,given_names.asc")
+    .then(function(rows){
+      if(!rows || rows.length===undefined) rows=[];
+      PEOPLE_CACHE = rows;
+      applyFilter();
+    });
+}
+function applyFilter(){
+  var q = (el("peopleFilter").value||"").toLowerCase();
+  if(!q){ renderPeople(PEOPLE_CACHE); return; }
+  var out=[], i;
+  for(i=0;i<PEOPLE_CACHE.length;i++){
+    if(displayName(PEOPLE_CACHE[i]).toLowerCase().indexOf(q) !== -1) out.push(PEOPLE_CACHE[i]);
+  }
+  renderPeople(out);
+}
+function loadInboxCache(){
+  return apiGet("census_records?" + eqOwner() + "&person_id=is.null&order=surname.asc")
+    .then(function(rows){
+      if(!rows || rows.length===undefined) rows=[];
+      INBOX_CACHE = rows;
+    });
+}
+
+/* ============================================================
+   ADD / EDIT PERSON  (partial-friendly + candidate suggestions)
+   ============================================================ */
+function fillCensusPicker(){
+  var sel = el("pFromCensus");
+  sel.innerHTML = '<option value="">&mdash; type manually below &mdash;</option>';
+  var i;
+  for(i=0;i<INBOX_CACHE.length;i++){
+    var c=INBOX_CACHE[i];
+    var o=document.createElement("option");
+    o.value=c.id;
+    o.text=((c.forename||"")+" "+(c.surname||"")).replace(/\s+/g," ").trim()
+      + "  ("+(c.census_year||"?")+", "+(c.townland_street||c.county||"")+")";
+    sel.appendChild(o);
+  }
+}
+function prefillFromCensus(){
+  var id = el("pFromCensus").value;
+  el("pCensusLink").value = id;
+  if(!id) return;
+  var i, c=null;
+  for(i=0;i<INBOX_CACHE.length;i++){ if(INBOX_CACHE[i].id===id){ c=INBOX_CACHE[i]; break; } }
+  if(!c) return;
+  el("pGiven").value = c.forename || "";
+  el("pSurname").value = c.surname || "";
+  el("pSex").value = (c.sex==="Male"||c.sex==="Female") ? c.sex : "Unknown";
+  showMatches();
+}
+function showMatches(){
+  var g=(el("pGiven").value||"").toLowerCase();
+  var s=(el("pSurname").value||"").toLowerCase();
+  var box = el("pMatches");
+  if(!g && !s){ box.innerHTML=""; return; }
+  var hits=[], i;
+  for(i=0;i<PEOPLE_CACHE.length;i++){
+    var p=PEOPLE_CACHE[i];
+    if(el("pId").value && p.id===el("pId").value) continue;
+    var pg=(p.given_names||"").toLowerCase(), ps=(p.surname||"").toLowerCase();
+    var match = (s && ps.indexOf(s)!==-1) || (g && pg.indexOf(g)!==-1);
+    if(match) hits.push(p);
+    if(hits.length>=5) break;
+  }
+  if(!hits.length){ box.innerHTML=""; return; }
+  var html='<div class="suggest">Already in your tree? Tap to open instead of adding a duplicate:<br>';
+  var parts=[];
+  for(i=0;i<hits.length;i++){
+    parts.push('<a data-open="'+esc(hits[i].id)+'">'+esc(displayName(hits[i]))
+      +(lifeSpan(hits[i])?" ("+esc(lifeSpan(hits[i]))+")":"")+'</a>');
+  }
+  box.innerHTML = html + parts.join(" &middot; ") + '</div>';
+  var links = box.querySelectorAll("[data-open]"), j;
+  for(j=0;j<links.length;j++){
+    links[j].onclick = function(){ hide("mPerson"); openDetail(this.getAttribute("data-open")); };
+  }
+}
+function openPersonModal(p){
+  el("pCensusLink").value="";
+  el("pMatches").innerHTML="";
+  if(p){
+    el("mPersonTitle").textContent="Edit person";
+    el("pCensusPickWrap").style.display="none";
+    el("pId").value=p.id;
+    el("pGiven").value=p.given_names||""; el("pSurname").value=p.surname||"";
+    el("pSex").value=p.sex||"Unknown";
+    el("pBirthDate").value=p.birth_date||""; el("pBirthPlace").value=p.birth_place||"";
+    el("pDeathDate").value=p.death_date||""; el("pDeathPlace").value=p.death_place||"";
+    el("pNotes").value=p.notes||"";
+  } else {
+    el("mPersonTitle").textContent="Add a person";
+    el("pCensusPickWrap").style.display="block";
+    el("pId").value="";
+    el("pGiven").value=""; el("pSurname").value=""; el("pSex").value="Unknown";
+    el("pBirthDate").value=""; el("pBirthPlace").value="";
+    el("pDeathDate").value=""; el("pDeathPlace").value=""; el("pNotes").value="";
+    fillCensusPicker();
+  }
+  show("mPerson");
+}
+function savePerson(){
+  var body = {
+    given_names: el("pGiven").value, surname: el("pSurname").value,
+    sex: el("pSex").value, birth_date: el("pBirthDate").value,
+    birth_place: el("pBirthPlace").value, death_date: el("pDeathDate").value,
+    death_place: el("pDeathPlace").value, notes: el("pNotes").value
+  };
+  var id = el("pId").value;
+  var censusLink = el("pCensusLink").value;
+  var pendingRel = REL_AFTER_NEW; REL_AFTER_NEW = null;
+
+  var finish = function(newId){
+    var chain = Promise.resolve();
+    if(censusLink && newId){
+      chain = chain.then(function(){
+        return apiPatch("census_records","id=eq."+censusLink, { person_id:newId });
+      });
+    }
+    if(pendingRel && newId){
+      chain = chain.then(function(){
+        var rb = { tree_owner:owner() };
+        if(pendingRel.kind==="parent"){ rb.type="ParentChild"; rb.person1_id=newId; rb.person2_id=pendingRel.anchor; }
+        else if(pendingRel.kind==="child"){ rb.type="ParentChild"; rb.person1_id=pendingRel.anchor; rb.person2_id=newId; }
+        else { rb.type="Couple"; rb.person1_id=pendingRel.anchor; rb.person2_id=newId; }
+        return apiPost("relationships", rb);
+      });
+    }
+    chain.then(function(){
+      hide("mPerson"); toast("Saved");
+      loadInboxCache();
+      loadPeople().then(function(){
+        if(pendingRel && pendingRel.anchor){ openDetail(pendingRel.anchor); }
+      });
+    });
+  };
+
+  if(id){
+    apiPatch("persons","id=eq."+id, body).then(function(){ finish(id); });
+  } else {
+    body.tree_owner = owner();
+    apiPost("persons", body).then(function(res){
+      var newId = (res && res.length) ? res[0].id : null;
+      finish(newId);
+    });
+  }
+}
+
+/* ============================================================
+   PERSON DETAIL
+   ============================================================ */
+function openDetail(id){
+  apiGet("persons?id=eq."+id).then(function(rows){
+    if(!rows || !rows.length){ toast("Not found"); return; }
+    CURRENT = rows[0];
+    el("dName").textContent = displayName(CURRENT);
+    var meta="";
+    if(CURRENT.sex && CURRENT.sex!=="Unknown") meta += CURRENT.sex;
+    var ls=lifeSpan(CURRENT);
+    if(ls) meta += (meta?" \u00b7 ":"") + ls;
+    if(CURRENT.notes) meta += (meta?" \u00b7 ":"") + CURRENT.notes;
+    el("dMeta").textContent = meta;
+    buildSearchLinks();
+    loadFamily(); loadFacts(); loadSources(); loadCensusFor();
+    show("mDetail");
+  });
+}
+function loadFacts(){
+  apiGet("facts?person_id=eq."+CURRENT.id+"&order=created_at.asc").then(function(rows){
+    if(!rows || rows.length===undefined) rows=[];
+    if(!rows.length){ el("dFacts").innerHTML='<div class="hint">No events yet.</div>'; return; }
+    var html="", i;
+    for(i=0;i<rows.length;i++){
+      var f=rows[i];
+      html += '<div class="evt"><div class="t">'+esc(f.type)+(f.value?': '+esc(f.value):'')+'</div>'
+        + '<div class="d">'+esc(f.date||"")+(f.place?' \u00b7 '+esc(f.place):'')+'</div>'
+        + (f.notes?'<div class="d">'+esc(f.notes)+'</div>':'')
+        + ' <a data-del="'+esc(f.id)+'" style="cursor:pointer;">remove</a></div>';
+    }
+    el("dFacts").innerHTML = html;
+    var links=el("dFacts").querySelectorAll("[data-del]"), j;
+    for(j=0;j<links.length;j++){
+      links[j].onclick=function(){ apiDelete("facts","id=eq."+this.getAttribute("data-del"))
+        .then(function(){ toast("Removed"); loadFacts(); }); };
+    }
+  });
+}
+function loadSources(){
+  apiGet("sources?person_id=eq."+CURRENT.id+"&order=created_at.asc").then(function(rows){
+    if(!rows || rows.length===undefined) rows=[];
+    if(!rows.length){ el("dSources").innerHTML='<div class="hint">No sources cited yet.</div>'; return; }
+    var html="", i;
+    for(i=0;i<rows.length;i++){
+      var s=rows[i];
+      html += '<div class="card"><span class="badge">'+esc(s.repository||"source")+'</span>'+esc(s.title||"Untitled");
+      if(s.url) html += '<div class="linkline"><a href="'+esc(s.url)+'" target="_blank" rel="noopener">open record &nearr;</a></div>';
+      if(s.citation) html += '<div class="meta">'+esc(s.citation)+'</div>';
+      html += ' <a data-del="'+esc(s.id)+'" style="cursor:pointer;color:#A23B24;font-size:12px;">remove</a></div>';
+    }
+    el("dSources").innerHTML = html;
+    var links=el("dSources").querySelectorAll("[data-del]"), j;
+    for(j=0;j<links.length;j++){
+      links[j].onclick=function(){ apiDelete("sources","id=eq."+this.getAttribute("data-del"))
+        .then(function(){ toast("Removed"); loadSources(); }); };
+    }
+  });
+}
+function lk(url, label){
+  return '<a class="btn link small" href="'+esc(url)+'" target="_blank" rel="noopener">'+esc(label)+'</a>';
+}
+function buildSearchLinks(){
+  var g=encodeURIComponent(CURRENT.given_names||"");
+  var s=encodeURIComponent(CURRENT.surname||"");
+  var fs=SOURCE_SEARCH.fs+"&q.givenName="+g+"&q.surname="+s;
+  var html="";
+  html += '<h3 class="era">1845/1864 &rarr; &middot; Civil BMD</h3>'
+        + lk(SOURCE_SEARCH.civil,"IrishGenealogy civil records");
+  html += '<h3 class="era">1901&ndash;1926 &middot; Census</h3>'
+        + lk(SOURCE_SEARCH.census,"Census 1901/1911/1926")
+        + lk(SOURCE_SEARCH.census19,"Fragments 1821\u20131851");
+  html += '<h3 class="era">1700s &rarr; &middot; Church registers</h3>'
+        + lk(SOURCE_SEARCH.church,"IrishGenealogy church")
+        + lk(SOURCE_SEARCH.nli,"NLI parish registers")
+        + lk(SOURCE_SEARCH.rootsi,"RootsIreland");
+  html += '<h3 class="era">1823&ndash;1864 &middot; Land</h3>'
+        + lk(SOURCE_SEARCH.griffith,"Griffith\u2019s Valuation 1847\u201364")
+        + lk(SOURCE_SEARCH.tithe,"Tithe Applotment 1823\u201337");
+  html += '<h3 class="era">1623&ndash;1866 &middot; Deeper records</h3>'
+        + lk(SOURCE_SEARCH.gene,"Marriage Bonds / Convert Rolls / Wills")
+        + lk(SOURCE_SEARCH.down,"Down Survey 1656\u201358");
+  html += '<h3 class="era">Catch-all index</h3>'
+        + '<a class="btn bronze small" href="'+esc(fs)+'" target="_blank" rel="noopener">FamilySearch (name pre-filled)</a>';
+  html += '<div class="hint">Only FamilySearch is pre-filled with this name; the rest open their own search page. View the record at source, then add it under Sources.</div>';
+  el("dSearch").innerHTML = html;
+}
+function personById(id){
+  var i; for(i=0;i<PEOPLE_CACHE.length;i++){ if(PEOPLE_CACHE[i].id===id) return PEOPLE_CACHE[i]; }
+  return null;
+}
+function loadFamily(){
+  apiGet("relationships?" + eqOwner()
+    + "&or=(person1_id.eq."+CURRENT.id+",person2_id.eq."+CURRENT.id+")")
+    .then(function(rows){
+      if(!rows || rows.length===undefined) rows=[];
+      var parents=[], children=[], spouses=[], i;
+      for(i=0;i<rows.length;i++){
+        var r=rows[i];
+        if(r.type==="ParentChild"){
+          if(r.person2_id===CURRENT.id) parents.push(r.person1_id);
+          else if(r.person1_id===CURRENT.id) children.push(r.person2_id);
+        } else if(r.type==="Couple"){
+          spouses.push(r.person1_id===CURRENT.id ? r.person2_id : r.person1_id);
+        }
+      }
+      var out="";
+      out += famGroup("Parents",parents);
+      out += famGroup("Spouse",spouses);
+      out += famGroup("Children",children);
+      if(!out) out='<div class="hint">No relatives linked. Use "Link a relative" below &mdash; you can pick someone or create a new (even unnamed) person.</div>';
+      el("dFamily").innerHTML=out;
+      var links=el("dFamily").querySelectorAll("[data-open]"), j;
+      for(j=0;j<links.length;j++){
+        links[j].onclick=function(){ hide("mDetail"); openDetail(this.getAttribute("data-open")); };
+      }
+    });
+}
+function famGroup(label, ids){
+  if(!ids.length) return "";
+  var parts=[], i;
+  for(i=0;i<ids.length;i++){
+    var p=personById(ids[i]);
+    parts.push('<a data-open="'+esc(ids[i])+'" style="cursor:pointer;color:#8A5A2B;">'
+      +esc(p?displayName(p):"(unknown)")+'</a>');
+  }
+  return '<div class="meta" style="margin-top:6px;"><b>'+label+':</b> '+parts.join(", ")+'</div>';
+}
+function loadCensusFor(){
+  apiGet("census_records?person_id=eq."+CURRENT.id+"&order=census_year.asc").then(function(rows){
+    if(!rows || rows.length===undefined) rows=[];
+    if(!rows.length){ el("dCensus").innerHTML='<div class="hint">No census rows attached. Import with the fetcher, then link from the Census inbox tab.</div>'; return; }
+    var html="", i;
+    for(i=0;i<rows.length;i++){
+      var c=rows[i];
+      html += '<div class="card"><span class="badge">'+esc(c.census_year||"")+'</span>'
+        + esc((c.forename||"")+" "+(c.surname||""))
+        + '<div class="meta">age '+esc(c.age||"?")+' \u00b7 '+esc(c.townland_street||"")
+        + (c.county?', '+esc(c.county):'')+'</div>'
+        + '<div class="meta">'+esc(c.occupation||"")+(c.religion?' \u00b7 '+esc(c.religion):'')+'</div>';
+      if(c.nai_url) html += '<div class="linkline"><a href="'+esc(c.nai_url)+'" target="_blank" rel="noopener">view on NAI &nearr;</a></div>';
+      html += '</div>';
+    }
+    el("dCensus").innerHTML=html;
+  });
+}
+
+/* ============================================================
+   FACT / SOURCE / RELATIONSHIP saves
+   ============================================================ */
+function saveFact(){
+  apiPost("facts", { tree_owner:owner(), person_id:CURRENT.id, type:el("fType").value,
+    date:el("fDate").value, place:el("fPlace").value, value:el("fValue").value,
+    notes:el("fNotes").value }).then(function(){ hide("mFact"); toast("Event added"); loadFacts(); });
+}
+function saveSource(){
+  apiPost("sources", { tree_owner:owner(), person_id:CURRENT.id, repository:el("sRepo").value,
+    title:el("sTitle").value, url:el("sUrl").value, citation:el("sCite").value })
+    .then(function(){ hide("mSource"); toast("Source added"); loadSources(); });
+}
+function openRelModal(){
+  el("relFor").textContent="Linking to: "+displayName(CURRENT);
+  var sel=el("relPerson"); sel.innerHTML="";
+  var i, any=false;
+  for(i=0;i<PEOPLE_CACHE.length;i++){
+    if(PEOPLE_CACHE[i].id===CURRENT.id) continue;
+    var o=document.createElement("option");
+    o.value=PEOPLE_CACHE[i].id; o.text=displayName(PEOPLE_CACHE[i]);
+    sel.appendChild(o); any=true;
+  }
+  if(!any){
+    var none=document.createElement("option");
+    none.value=""; none.text="(no others yet \u2013 use New person)";
+    sel.appendChild(none);
+  }
+  show("mRel");
+}
+function saveRel(){
+  var otherId=el("relPerson").value;
+  if(!otherId){ toast("Pick a person or use New person"); return; }
+  var kind=el("relType").value, body={ tree_owner:owner() };
+  if(kind==="parent"){ body.type="ParentChild"; body.person1_id=otherId; body.person2_id=CURRENT.id; }
+  else if(kind==="child"){ body.type="ParentChild"; body.person1_id=CURRENT.id; body.person2_id=otherId; }
+  else { body.type="Couple"; body.person1_id=CURRENT.id; body.person2_id=otherId; }
+  apiPost("relationships", body).then(function(){ hide("mRel"); toast("Linked"); loadFamily(); });
+}
+function relNewPerson(){
+  /* remember what to link, then open a blank add-person form */
+  REL_AFTER_NEW = { kind: el("relType").value, anchor: CURRENT.id };
+  hide("mRel");
+  openPersonModal(null);
+  toast("Add the relative \u2013 the link is created on save");
+}
+
+/* ============================================================
+   CENSUS INBOX
+   ============================================================ */
+var LINK_CENSUS_ID=null;
+function loadInbox(){
+  loadInboxCache().then(function(){
+    var box=el("inboxList");
+    if(!INBOX_CACHE.length){
+      box.innerHTML='<div class="empty"><div class="big">Inbox empty.</div>'
+        + 'Run the census fetcher on your laptop to pull matched rows in here.</div>';
+      return;
+    }
+    var html="", i;
+    for(i=0;i<INBOX_CACHE.length;i++){
+      var c=INBOX_CACHE[i];
+      html += '<div class="card"><span class="badge">'+esc(c.census_year||"")+'</span>'
+        + esc((c.forename||"")+" "+(c.surname||""))
+        + '<div class="meta">age '+esc(c.age||"?")+' \u00b7 '+esc(c.townland_street||"")
+        + (c.county?', '+esc(c.county):'')+'</div>'
+        + '<button class="btn small" data-link="'+esc(c.id)+'">Link to a person</button>'
+        + '<button class="btn link small" data-new="'+esc(c.id)+'">Make new person</button></div>';
+    }
+    box.innerHTML=html;
+    var lb=box.querySelectorAll("[data-link]"), nb=box.querySelectorAll("[data-new]"), j;
+    for(j=0;j<lb.length;j++){ lb[j].onclick=function(){ openLinkCensus(this.getAttribute("data-link")); }; }
+    for(j=0;j<nb.length;j++){ nb[j].onclick=function(){ newPersonFromCensus(this.getAttribute("data-new")); }; }
+  });
+}
+function newPersonFromCensus(cid){
+  openPersonModal(null);
+  el("pFromCensus").value=cid;
+  prefillFromCensus();
+}
+function openLinkCensus(cid){
+  LINK_CENSUS_ID=cid;
+  el("linkCensusInfo").textContent="Choose who this census row belongs to.";
+  var sel=el("linkCensusPerson"); sel.innerHTML="";
+  var i;
+  for(i=0;i<PEOPLE_CACHE.length;i++){
+    var o=document.createElement("option");
+    o.value=PEOPLE_CACHE[i].id; o.text=displayName(PEOPLE_CACHE[i]);
+    sel.appendChild(o);
+  }
+  if(!sel.options.length){ toast("Add a person first, or use Make new person"); return; }
+  show("mLinkCensus");
+}
+function saveLinkCensus(){
+  apiPatch("census_records","id=eq."+LINK_CENSUS_ID, { person_id: el("linkCensusPerson").value })
+    .then(function(){ hide("mLinkCensus"); toast("Attached"); loadInbox(); });
+}
+
+/* ============================================================
+   TABS + WIRING
+   ============================================================ */
+function switchTab(which){
+  el("viewPeople").style.display = which==="people"?"block":"none";
+  el("viewInbox").style.display  = which==="inbox"?"block":"none";
+  el("viewAbout").style.display  = which==="about"?"block":"none";
+  el("tabPeople").className = which==="people"?"on":"";
+  el("tabInbox").className  = which==="inbox"?"on":"";
+  el("tabAbout").className  = which==="about"?"on":"";
+  if(which==="people") loadPeople();
+  if(which==="inbox"){ loadPeople().then(loadInbox); }
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  el("ownerName").textContent = owner();
+  if(SUPABASE_URL.indexOf("PASTE_")===0 || SUPABASE_ANON_KEY.indexOf("PASTE_")===0){
+    toast("Set SUPABASE_URL and anon key in the CONFIG block");
+  }
+
+  el("ownerChange").onclick=function(){
+    var v=prompt("Tree name (lets you keep separate trees):", owner());
+    if(v){ localStorage.setItem("tree_owner",v); el("ownerName").textContent=v; switchTab("people"); }
+  };
+  el("tabPeople").onclick=function(){ switchTab("people"); };
+  el("tabInbox").onclick =function(){ switchTab("inbox"); };
+  el("tabAbout").onclick =function(){ switchTab("about"); };
+
+  el("peopleFilter").oninput=applyFilter;
+
+  el("addPersonBtn").onclick=function(){ REL_AFTER_NEW=null; loadInboxCache().then(function(){ openPersonModal(null); }); };
+  el("pFromCensus").onchange=prefillFromCensus;
+  el("pGiven").oninput=showMatches;
+  el("pSurname").oninput=showMatches;
+  el("pSave").onclick=savePerson;
+  el("pCancel").onclick=function(){ REL_AFTER_NEW=null; hide("mPerson"); };
+
+  el("dClose").onclick=function(){ hide("mDetail"); loadPeople(); };
+  el("dEdit").onclick=function(){ openPersonModal(CURRENT); };
+  el("dDelete").onclick=function(){
+    if(!confirm("Delete "+displayName(CURRENT)+"? Their events, sources and links go too.")) return;
+    apiDelete("persons","id=eq."+CURRENT.id).then(function(){ hide("mDetail"); toast("Deleted"); loadPeople(); });
+  };
+  el("dAddFact").onclick=function(){
+    el("fType").value="Birth"; el("fDate").value=""; el("fPlace").value="";
+    el("fValue").value=""; el("fNotes").value=""; show("mFact");
+  };
+  el("fSave").onclick=saveFact;
+  el("fCancel").onclick=function(){ hide("mFact"); };
+  el("dAddSource").onclick=function(){
+    el("sTitle").value=""; el("sUrl").value=""; el("sCite").value=""; show("mSource");
+  };
+  el("sSave").onclick=saveSource;
+  el("sCancel").onclick=function(){ hide("mSource"); };
+  el("dAddRel").onclick=openRelModal;
+  el("relSave").onclick=saveRel;
+  el("relNew").onclick=relNewPerson;
+  el("relCancel").onclick=function(){ hide("mRel"); };
+  el("linkCensusSave").onclick=saveLinkCensus;
+  el("linkCensusCancel").onclick=function(){ hide("mLinkCensus"); };
+
+  switchTab("people");
+});
+</script>
+</body>
+</html>
