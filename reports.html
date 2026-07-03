@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Reports - Moriarty Group</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f6f8; color: #1a1a1a; min-height: 100vh; }
@@ -21,7 +22,7 @@
   .report-nav::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); }
   .rnav-tab { padding: 12px 16px; font-size: .78rem; font-weight: 600; color: rgba(255,255,255,0.65); cursor: pointer; border-bottom: 3px solid transparent; white-space: nowrap; transition: color .2s, border-color .2s; }
   .rnav-tab:hover { color: #fff; }
-  .rnav-tab.active { color: #fff; border-bottom-color: #4caf50; }
+  .rnav-tab.active { color: #fff; border-bottom-color: #ffffff; }
 
   .store-bar { background: #fff; border-bottom: 2px solid #e0e0e0; padding: 0 20px; display: flex; gap: 0; }
   .store-tab { padding: 12px 24px; font-size: .88rem; font-weight: 600; color: #555; cursor: pointer; border-bottom: 3px solid transparent; transition: color .2s, border-color .2s; user-select: none; white-space: nowrap; }
@@ -35,6 +36,19 @@
   .status-dot.ok { background: #e41e26; }
   .status-dot.err { background: #d32f2f; }
   .status-dot.loading { background: #ff9800; }
+
+  .chart-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 16px; }
+  .chart-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 10px; padding: 14px 14px 10px 14px; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+  .chart-title { font-size: .74rem; font-weight: 700; color: #c0161c; text-transform: uppercase; letter-spacing: .4px; margin-bottom: 10px; }
+  .chart-box { position: relative; width: 100%; }
+  @media (min-width: 820px) {
+    .chart-grid { grid-template-columns: 1fr 1fr; }
+    .chart-card.full { grid-column: 1 / -1; }
+  }
+
+  @-webkit-keyframes rise { from { opacity: 0; -webkit-transform: translateY(6px); } to { opacity: 1; -webkit-transform: none; } }
+  @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .chart-card, .table-wrap { -webkit-animation: rise .35s ease; animation: rise .35s ease; }
 
   .table-wrap { background: #fff; border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.06); overflow-x: auto; }
   .report-table { width: 100%; border-collapse: collapse; font-size: .82rem; min-width: 500px; }
@@ -111,6 +125,224 @@ var _userStore=_session?(_session.store_code||''):'';
 var _storeMap={palmerstown:'Palmerstown',balbriggan:'Balbriggan',skerries:'Skerries'};
 var _userStoreName=_storeMap[_userStore]||'';
 
+/* ---------- CHART LAYER ---------- */
+var _charts = [];
+var PAL = ['#E41E26','#8E0F13','#F0757B','#C0161C','#FFB0B4','#7A7A7A','#B5B5B5','#D9D9D9'];
+
+if (window.Chart) {
+  Chart.defaults.global.defaultFontFamily = "'Segoe UI', Arial, sans-serif";
+  Chart.defaults.global.defaultFontColor = '#666';
+  Chart.defaults.global.animation.duration = 500;
+}
+
+function destroyCharts() {
+  for (var i = 0; i < _charts.length; i++) { try { _charts[i].destroy(); } catch(e) {} }
+  _charts = [];
+}
+
+function trunc(s, n) {
+  s = String(s === null || s === undefined ? '' : s);
+  return s.length > n ? s.substring(0, n - 1) + '...' : s;
+}
+
+function fmtMoneyShort(v) {
+  var a = Math.abs(v); var s = v < 0 ? '-' : '';
+  if (a >= 1000000) return s + '\u20AC' + (a / 1000000).toFixed(1) + 'm';
+  if (a >= 1000) return s + '\u20AC' + (a / 1000).toFixed(a >= 100000 ? 0 : 1) + 'k';
+  return s + '\u20AC' + a.toFixed(0);
+}
+
+function fmtMoneyFull(v) {
+  return (v < 0 ? '-' : '') + '\u20AC' + Math.abs(v).toLocaleString('en-IE', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+}
+
+function fmtCountV(v) { return Math.round(v).toLocaleString(); }
+
+function isNumericHeader(rows, h) {
+  var n = 0, c = 0;
+  for (var i = 0; i < rows.length; i++) {
+    var cell = rows[i][h];
+    if (cell && cell.v !== null && cell.v !== undefined) {
+      c++;
+      if (typeof cell.v === 'number' && cell.t !== 'pct') n++;
+    }
+  }
+  return c > 0 && n >= c * 0.6;
+}
+
+function numericHeaders(rawHeaders, rows) {
+  var out = [];
+  for (var i = 1; i < rawHeaders.length; i++) {
+    var h = rawHeaders[i];
+    if (h && isNumericHeader(rows, h)) out.push(h);
+  }
+  return out;
+}
+
+function pickValueHeader(numHs) {
+  var pri = [/sales/i, /cash/i, /value/i, /amount/i, /total/i, /qty|units|count/i];
+  for (var p = 0; p < pri.length; p++) {
+    for (var i = 0; i < numHs.length; i++) { if (pri[p].test(numHs[i])) return numHs[i]; }
+  }
+  return numHs[0] || null;
+}
+
+function chartDataRows(rows, firstH) {
+  var out = [];
+  for (var i = 0; i < rows.length; i++) {
+    var c = rows[i][firstH];
+    var lab = (c && c.v !== null && c.v !== undefined) ? String(c.v) : '';
+    if (lab && lab.toLowerCase().indexOf('total') === -1) out.push(rows[i]);
+  }
+  return out;
+}
+
+function pointsFrom(rows, firstH, valH) {
+  var pts = [];
+  for (var i = 0; i < rows.length; i++) {
+    var lc = rows[i][firstH]; var vc = rows[i][valH];
+    if (!lc || lc.v === null || lc.v === undefined) continue;
+    if (!vc || typeof vc.v !== 'number') continue;
+    if (vc.v === 0) continue;
+    pts.push({ l: String(lc.v), v: vc.v });
+  }
+  return pts;
+}
+
+function addCard(grid, title, height, full) {
+  var card = document.createElement('div');
+  card.className = 'chart-card' + (full ? ' full' : '');
+  var t = document.createElement('div');
+  t.className = 'chart-title';
+  t.textContent = title;
+  card.appendChild(t);
+  var box = document.createElement('div');
+  box.className = 'chart-box';
+  box.style.height = height + 'px';
+  var cv = document.createElement('canvas');
+  box.appendChild(cv);
+  card.appendChild(box);
+  grid.appendChild(card);
+  return cv;
+}
+
+function barChart(grid, title, pts, isCount) {
+  var sorted = pts.slice().sort(function(a, b) { return b.v - a.v; }).slice(0, 12);
+  if (sorted.length < 2) return;
+  var labels = [], vals = [];
+  for (var i = 0; i < sorted.length; i++) { labels.push(trunc(sorted[i].l, 20)); vals.push(sorted[i].v); }
+  var h = Math.max(220, Math.min(420, sorted.length * 32 + 50));
+  var cv = addCard(grid, title, h, false);
+  var fmtAxis = function(v) { return isCount ? fmtCountV(v) : fmtMoneyShort(v); };
+  var c = new Chart(cv.getContext('2d'), {
+    type: 'horizontalBar',
+    data: { labels: labels, datasets: [{ data: vals, backgroundColor: '#E41E26', borderWidth: 0, barPercentage: 0.72 }] },
+    options: {
+      responsive: true, maintainAspectRatio: false, legend: { display: false },
+      scales: {
+        xAxes: [{ ticks: { beginAtZero: true, callback: fmtAxis, maxTicksLimit: 6 }, gridLines: { color: '#f0f0f0' } }],
+        yAxes: [{ gridLines: { display: false }, ticks: { fontSize: 11 } }]
+      },
+      tooltips: { callbacks: { label: function(t) { return isCount ? fmtCountV(t.xLabel) : fmtMoneyFull(t.xLabel); } } }
+    }
+  });
+  _charts.push(c);
+}
+
+function doughnutChart(grid, title, pts, isCount) {
+  var pos = [];
+  for (var i = 0; i < pts.length; i++) { if (pts[i].v > 0) pos.push(pts[i]); }
+  pos.sort(function(a, b) { return b.v - a.v; });
+  pos = pos.slice(0, 8);
+  if (pos.length < 2) return;
+  var labels = [], vals = [], cols = [];
+  for (var j = 0; j < pos.length; j++) { labels.push(trunc(pos[j].l, 16)); vals.push(pos[j].v); cols.push(PAL[j % PAL.length]); }
+  var cv = addCard(grid, title, 260, false);
+  var c = new Chart(cv.getContext('2d'), {
+    type: 'doughnut',
+    data: { labels: labels, datasets: [{ data: vals, backgroundColor: cols, borderWidth: 2, borderColor: '#fff' }] },
+    options: {
+      responsive: true, maintainAspectRatio: false, cutoutPercentage: 62,
+      legend: { display: true, position: 'bottom', labels: { boxWidth: 10, fontSize: 10, padding: 8 } },
+      tooltips: { callbacks: { label: function(t, d) {
+        var v = d.datasets[0].data[t.index]; var l = d.labels[t.index];
+        return l + ': ' + (isCount ? fmtCountV(v) : fmtMoneyFull(v));
+      } } }
+    }
+  });
+  _charts.push(c);
+}
+
+function lineChart(grid, title, labels, datasets, isCount) {
+  if (labels.length < 2 || !datasets.length) return;
+  var cv = addCard(grid, title, 300, true);
+  var fmtAxis = function(v) { return isCount ? fmtCountV(v) : fmtMoneyShort(v); };
+  var c = new Chart(cv.getContext('2d'), {
+    type: 'line',
+    data: { labels: labels, datasets: datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false, spanGaps: true,
+      legend: { display: datasets.length > 1, position: 'bottom', labels: { boxWidth: 12, fontSize: 10 } },
+      scales: {
+        xAxes: [{ gridLines: { display: false }, ticks: { fontSize: 10, maxTicksLimit: 14 } }],
+        yAxes: [{ ticks: { beginAtZero: true, callback: fmtAxis, maxTicksLimit: 6 }, gridLines: { color: '#f0f0f0' } }]
+      },
+      tooltips: { mode: 'index', intersect: false, callbacks: { label: function(t, d) {
+        var name = d.datasets[t.datasetIndex].label || '';
+        var v = t.yLabel;
+        return (name ? name + ': ' : '') + (isCount ? fmtCountV(v) : fmtMoneyFull(v));
+      } } }
+    }
+  });
+  _charts.push(c);
+}
+
+function buildCharts(grid, parsed, label) {
+  if (!window.Chart) return;
+  var rawHeaders = parsed.headers || [];
+  var rows = parsed.rows || [];
+  if (!rawHeaders.length || !rows.length) return;
+  var firstH = rawHeaders[0];
+  var numHs = numericHeaders(rawHeaders, rows);
+  if (!numHs.length) return;
+
+  if (label === 'Hourly Sales') {
+    var rs = chartDataRows(rows, firstH);
+    var labels = [];
+    for (var i = 0; i < rs.length; i++) { labels.push(trunc(rs[i][firstH].v, 8)); }
+    var use = numHs.slice(0, 4);
+    var datasets = [];
+    for (var d = 0; d < use.length; d++) {
+      var vals = [];
+      for (var r = 0; r < rs.length; r++) {
+        var cell = rs[r][use[d]];
+        vals.push(cell && typeof cell.v === 'number' ? cell.v : null);
+      }
+      datasets.push({
+        label: trunc(use[d], 22), data: vals,
+        borderColor: PAL[d % PAL.length],
+        backgroundColor: d === 0 ? 'rgba(228,30,38,0.08)' : 'rgba(0,0,0,0)',
+        fill: d === 0, pointRadius: 2, pointBackgroundColor: PAL[d % PAL.length],
+        lineTension: 0.3, borderWidth: 2
+      });
+    }
+    var isC0 = isCountField(use[0], '');
+    lineChart(grid, 'Sales by Hour', labels, datasets, isC0);
+    return;
+  }
+
+  var valH = pickValueHeader(numHs);
+  if (!valH) return;
+  var rs2 = chartDataRows(rows, firstH);
+  var pts = pointsFrom(rs2, firstH, valH);
+  var isC = isCountField(valH, '');
+  barChart(grid, trunc(valH, 26) + ' \u2014 Top 12', pts, isC);
+  if (label.indexOf('Top ') !== 0) {
+    doughnutChart(grid, 'Share of ' + trunc(valH, 22), pts, isC);
+  }
+}
+/* ---------- END CHART LAYER ---------- */
+
 function buildReportNav() {
   var nav = document.getElementById('reportNav');
   nav.innerHTML = '';
@@ -131,6 +363,7 @@ function buildReportNav() {
 
 function loadReport(idx) {
   var report = REPORTS[idx];
+  destroyCharts();
   setStatus('loading', 'Loading ' + report.label + '...');
   document.getElementById('content').innerHTML = '<div class="loading-msg">Loading...</div>';
   document.getElementById('storeBar').innerHTML = '';
@@ -182,8 +415,8 @@ function renderReport(data) {
   renderTable(dateStores[activeStore]);
 
   var report = REPORTS[activeReport];
-  document.getElementById('headerMeta').textContent = report.label + ' · ' + activeDate + (_userRole !== 'admin' && _userStoreName ? ' · ' + _userStoreName : '');
-  setStatus('ok', 'Data loaded · updates daily at 5 AM');
+  document.getElementById('headerMeta').textContent = report.label + ' \u00B7 ' + activeDate + (_userRole !== 'admin' && _userStoreName ? ' \u00B7 ' + _userStoreName : '');
+  setStatus('ok', 'Data loaded \u00B7 updates daily at 5 AM');
 }
 
 function buildStoreBar(stores, dateStores) {
@@ -229,6 +462,7 @@ function isCountField(colHeader, rowLabel) {
 }
 
 function renderTable(storeData) {
+  destroyCharts();
   var content = document.getElementById('content');
   if (!storeData) { showError('No data for this store.'); return; }
   if (storeData.error) { showError('Scrape error: ' + esc(storeData.error)); return; }
@@ -298,7 +532,7 @@ function renderTable(storeData) {
         if (isCountField(h, colIdx === 0 ? '' : rowLabel)) {
           td.textContent = Math.round(v).toLocaleString();
         } else {
-          td.textContent = (v < 0 ? '-' : '') + '€' + Math.abs(v).toLocaleString('en-IE', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+          td.textContent = (v < 0 ? '-' : '') + '\u20AC' + Math.abs(v).toLocaleString('en-IE', {minimumFractionDigits: 2, maximumFractionDigits: 2});
         }
         td.className = v < 0 ? 'val-negative' : (v > 0 ? 'val-positive' : 'val-neutral');
       } else {
@@ -313,6 +547,12 @@ function renderTable(storeData) {
   wrap.appendChild(table);
 
   content.innerHTML = '';
+
+  var chartGrid = document.createElement('div');
+  chartGrid.className = 'chart-grid';
+  try { buildCharts(chartGrid, parsed, REPORTS[activeReport].label); } catch(e) {}
+  if (chartGrid.children.length) content.appendChild(chartGrid);
+
   content.appendChild(wrap);
   if (storeData.scraped_at) {
     var meta = document.createElement('p');
@@ -329,6 +569,7 @@ function setStatus(type, msg) {
 }
 
 function showError(msg) {
+  destroyCharts();
   document.getElementById('content').innerHTML = '<div class="error-msg">' + esc(msg) + '</div>';
 }
 
