@@ -197,7 +197,27 @@ var LIVE = { roster: null, sales: {} };
 var SALES_MAP = {
   "Deli": ["deli"],
   "Butchers": ["beef", "lamb", "pork", "bacon", "poultry", "fish"],
-  "Bakery": ["bread"]
+  "Bakery": ["bread"],
+  "Ambient": ["grocery"],
+  "FV / Produce": ["produce"],
+  "Provisions": ["provision"],
+  "Dairy": ["dairy"],
+  "Frozen": ["frozen"]
+};
+
+// Standing weekly split of the Ambient roster line into functional departments.
+// Hours are allocated out of Ambient at its blended hourly rate; the remainder
+// stays as Ambient (= Grocery Edible + Grocery Impulse + Grocery Non Food).
+// Edit these numbers to change the allocation.
+var AMBIENT_SPLIT = {
+  "424": [
+    { d: "Store Room",   hours: 39 },
+    { d: "Cleaning",     hours: 35 },
+    { d: "FV / Produce", hours: 39 },
+    { d: "Provisions",   hours: 36 },
+    { d: "Dairy",        hours: 36 },
+    { d: "Frozen",       hours: 6 }
+  ]
 };
 
 function parseDmy(s) {
@@ -260,6 +280,39 @@ function mappedSales(code, rosterDept) {
   return { sales: sum, gp: gp };
 }
 
+function fmtHours(h) {
+  var whole = Math.floor(h);
+  var mins = Math.round((h - whole) * 60);
+  if (mins === 60) { whole += 1; mins = 0; }
+  return whole + ":" + (mins < 10 ? "0" : "") + mins;
+}
+
+function applySplit(code, depts) {
+  var plan = AMBIENT_SPLIT[code];
+  if (!plan || !plan.length) return depts;
+  var i, amb = null;
+  for (i = 0; i < depts.length; i++) { if (depts[i].d === "Ambient") { amb = depts[i]; break; } }
+  if (!amb || amb.h <= 0) return depts;
+  var totalSplit = 0;
+  for (i = 0; i < plan.length; i++) { totalSplit += plan[i].hours; }
+  if (totalSplit >= amb.h) return depts;
+  var rate = amb.lc / amb.h;
+  var out = [];
+  for (i = 0; i < depts.length; i++) { if (depts[i] !== amb) out.push(depts[i]); }
+  for (i = 0; i < plan.length; i++) {
+    var nd = { d: plan[i].d, hoursLabel: fmtHours(plan[i].hours), h: plan[i].hours, lc: plan[i].hours * rate, s: null, gpEur: null, split: true };
+    var m = mappedSales(code, plan[i].d);
+    if (m) { nd.s = m.sales; nd.gpEur = m.gp; }
+    out.push(nd);
+  }
+  var remH = amb.h - totalSplit;
+  var na = { d: "Ambient", hoursLabel: fmtHours(remH), h: remH, lc: remH * rate, s: null, gpEur: null, split: true };
+  var ma = mappedSales(code, "Ambient");
+  if (ma) { na.s = ma.sales; na.gpEur = ma.gp; }
+  out.push(na);
+  return out;
+}
+
 function liveFor(code) {
   var r = latestRoster(code);
   if (!r || !r.data || !r.data.departments) return null;
@@ -275,6 +328,7 @@ function liveFor(code) {
     depts.push({ d: k, hoursLabel: dd.hours || "", h: h, lc: c, s: m ? m.sales : null, gpEur: m ? m.gp : null });
     tH += h; tC += c;
   }
+  depts = applySplit(code, depts);
   depts.sort(function (a, b) { return b.lc - a.lc; });
   var out = { rosterRange: r.range, scrapedAt: r.data.scraped_at || "", depts: depts, totalHours: tH, totalCost: tC, salesExVat: null, marginPct: null, weekEnding: "" };
   if (ai) {
@@ -406,7 +460,12 @@ function renderLeague() {
     html += "</tr>";
   }
   document.getElementById("leagueTable").innerHTML = html;
-  document.getElementById("deptNote").textContent = "Support departments (Checkouts, Management, Cash Office, Security, HR, IT, Home Deliveries) have no direct sales line, so SPH does not apply to them individually. Sales weeks and roster weeks differ - see the banner.";
+  var splitPlan = AMBIENT_SPLIT[storeCode()];
+  var noteTxt = "Support departments (Checkouts, Management, Cash Office, Security, HR, IT, Home Deliveries, Store Room, Cleaning) have no direct sales line. Sales weeks and roster weeks differ - see the banner.";
+  if (splitPlan && splitPlan.length) {
+    noteTxt = "Store Room, Cleaning, FV / Produce, Provisions, Dairy, Frozen and the Ambient remainder are your standing weekly allocation of the Ambient roster line, costed at its blended hourly rate. Ambient sales = Grocery Edible + Impulse + Non Food. " + noteTxt;
+  }
+  document.getElementById("deptNote").textContent = noteTxt;
 }
 
 function renderOpps() {
@@ -599,7 +658,7 @@ function buildLabourContext() {
     roster_week: lv.rosterRange,
     sales_week_ending: lv.weekEnding,
     basis: 'ex-VAT weekly sales; roster hours and cost from published Strandum roster',
-    note: 'Sales week is the last completed P&L week; roster week is the current published week. Support departments (Checkouts, Management, Cash Office, Security, HR, IT Scanning, Home Deliveries) have no direct sales line. Only use the figures provided - do not estimate anything not present.',
+    note: 'Sales week is the last completed P&L week; roster week is the current published week. Store Room, Cleaning, FV/Produce, Provisions, Dairy, Frozen and the Ambient remainder are a standing allocation of the Ambient roster line at its blended rate. Ambient sales = the three Grocery lines. Support departments have no direct sales line. Only use the figures provided - do not estimate anything not present.',
     store_totals: st2,
     departments: deptArrL
   };
