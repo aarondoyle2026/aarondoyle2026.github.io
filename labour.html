@@ -16,9 +16,12 @@ body {
 .topbar h1 { margin: 0; font-size: 18px; font-weight: 700; }
 .topbar p { margin: 4px 0 0 0; font-size: 12px; color: #ffd9da; }
 .wrap { max-width: 1180px; margin: 0 auto; padding: 16px; }
-.controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 16px; }
+.controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 10px; }
 .controls label { font-size: 13px; font-weight: 600; color: #444; }
 select { padding: 9px 12px; border: 1px solid #cbd0d8; border-radius: 8px; background: #ffffff; font-size: 14px; }
+.livestatus { font-size: 12px; margin: 0 0 14px 0; padding: 8px 12px; border-radius: 8px; }
+.livestatus.live { background: #eef8f1; border: 1px solid #bfe3cb; color: #1a6b3c; }
+.livestatus.sample { background: #fff5e6; border: 1px solid #f0d8a8; color: #8a6418; }
 .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
 .tab { padding: 9px 14px; border: 1px solid #d6dae1; border-radius: 999px; background: #ffffff; font-size: 13px; font-weight: 600; color: #555; cursor: pointer; }
 .tab.active { background: #E41E26; color: #ffffff; border-color: #E41E26; }
@@ -107,6 +110,7 @@ tr:last-child td { border-bottom: none; }
       <option value="356">Palmerstown (356)</option>
     </select>
   </div>
+  <div class="livestatus sample" id="liveStatus">Loading live data...</div>
 
   <div class="tabs">
     <div class="tab active" id="t_dash" onclick="show('dash')">Dashboard</div>
@@ -122,14 +126,15 @@ tr:last-child td { border-bottom: none; }
 
   <div class="section active" id="s_dash">
     <div class="cards" id="kpiCards"></div>
-    <p class="note">Net sales basis (post-VAT), one trading week. Overtime card reads the Overtime tab sample data.</p>
+    <p class="note" id="dashNote"></p>
   </div>
 
   <div class="section" id="s_dept">
     <div class="panel">
-      <h2>Department Productivity League</h2>
-      <p class="desc">Ranked by a blended score of productivity index and labour control.</p>
+      <h2 id="deptTitle">Department Productivity League</h2>
+      <p class="desc" id="deptDesc">Ranked by a blended score of productivity index and labour control.</p>
       <table id="leagueTable"></table>
+      <p class="note" id="deptNote"></p>
     </div>
   </div>
 
@@ -144,7 +149,7 @@ tr:last-child td { border-bottom: none; }
   <div class="section" id="s_heat">
     <div class="panel">
       <h2>Sales vs Staffing Engine</h2>
-      <p class="desc">Store-level grid, one trading week. Switch the metric to spot dead periods, peaks and mismatches.</p>
+      <p class="desc" id="heatDesc">Store-level grid, one trading week. Switch the metric to spot dead periods, peaks and mismatches.</p>
       <div style="margin-bottom:12px;">
         <label for="hmMetric" style="font-size:13px;font-weight:600;color:#444;margin-right:6px;">Metric</label>
         <select id="hmMetric" onchange="renderHeat()">
@@ -164,6 +169,7 @@ tr:last-child td { border-bottom: none; }
     <div class="panel">
       <h2>Labour Cost Analytics</h2>
       <p class="desc">Weekly labour % against budget. Bars above the budget line are over-cost weeks.</p>
+      <div id="costLiveNote"></div>
       <div class="cards" id="costCards" style="margin-bottom:14px;"></div>
       <div class="tline" id="costTrend"></div>
       <div class="budgetline" id="costBudget"></div>
@@ -174,6 +180,7 @@ tr:last-child td { border-bottom: none; }
     <div class="panel">
       <h2>Overtime Intelligence</h2>
       <p class="desc">Repeated overtime, burnout risk and management dependency.</p>
+      <div id="otLiveNote"></div>
       <div id="otFlags"></div>
       <table id="otTable"></table>
     </div>
@@ -182,7 +189,7 @@ tr:last-child td { border-bottom: none; }
   <div class="section" id="s_fc">
     <div class="panel">
       <h2>Forecasting Engine</h2>
-      <div class="demo">Illustrative projection from sample weekly figures. Real forecasting activates once historical sales and labour history are connected.</div>
+      <div class="demo" id="fcNote">Illustrative projection from sample weekly figures. Real forecasting activates once historical sales and labour history are connected.</div>
       <table id="fcTable"></table>
     </div>
   </div>
@@ -190,8 +197,9 @@ tr:last-child td { border-bottom: none; }
   <div class="section" id="s_roi">
     <div class="panel">
       <h2>Labour ROI - gross profit generated per EUR 1 of labour</h2>
-      <p class="desc">ROI = department gross profit divided by labour cost.</p>
+      <p class="desc" id="roiDesc">ROI = department gross profit divided by labour cost.</p>
       <table id="roiTable"></table>
+      <p class="note" id="roiNote"></p>
     </div>
   </div>
 
@@ -211,7 +219,7 @@ tr:last-child td { border-bottom: none; }
         <input type="text" class="chat-input" id="chatInput" placeholder="Ask about labour, departments or staffing..." onkeydown="handleChatKey(event)" autocomplete="off" autocorrect="off" spellcheck="false">
         <button type="button" class="chat-send" id="chatSend" onclick="sendChat()">&#8593;</button>
       </div>
-      <p class="note">Runs on sample department figures until the roster feed is connected, then answers on live numbers automatically.</p>
+      <p class="note" id="aiNote">Runs on sample department figures until the roster feed is connected, then answers on live numbers automatically.</p>
     </div>
   </div>
 </div>
@@ -288,6 +296,116 @@ var HOUR_W = [0.4, 0.7, 1.0, 1.1, 1.4, 1.5, 1.1, 0.9, 1.0, 1.3, 1.4, 1.0, 0.7, 0
 var STAFF_W = [0.6, 0.8, 1.0, 1.0, 1.1, 1.1, 1.0, 1.0, 1.0, 1.1, 1.1, 0.9, 0.7, 0.5];
 var DAY_W = [0.9, 0.85, 0.95, 1.05, 1.35, 1.45, 0.75];
 
+/*LIVE-HELPERS-START*/
+var RAW_BASE = 'https://raw.githubusercontent.com/aarondoyle2026/aarondoyle2026.github.io/main/';
+var AI_PATHS = { "424": "data/managers_report_ai.json", "374": "data/managers_report_balbriggan_ai.json", "356": "data/managers_report_palmerstown_ai.json" };
+var STORE_NAMES = { "424": "Skerries", "374": "Balbriggan", "356": "Palmerstown" };
+var LIVE = { roster: null, sales: {} };
+
+var SALES_MAP = {
+  "Deli": ["deli"],
+  "Butchers": ["beef", "lamb", "pork", "bacon", "poultry", "fish"],
+  "Bakery": ["bread"]
+};
+
+function parseDmy(s) {
+  var p = String(s || "").split("/");
+  if (p.length !== 3) return 0;
+  return new Date(Number(p[2]), Number(p[1]) - 1, Number(p[0])).getTime();
+}
+
+function latestRoster(code) {
+  if (!LIVE.roster) return null;
+  var name = STORE_NAMES[code];
+  var best = null, bestT = -1, k, endT;
+  for (k in LIVE.roster) {
+    if (!LIVE.roster.hasOwnProperty(k)) continue;
+    if (!LIVE.roster[k] || !LIVE.roster[k][name]) continue;
+    var parts = k.split("-");
+    endT = parseDmy(parts.length > 1 ? parts[1] : parts[0]);
+    if (endT > bestT) { bestT = endT; best = { range: k, data: LIVE.roster[k][name] }; }
+  }
+  return best;
+}
+
+function asPct(v) {
+  var n = Number(v);
+  if (isNaN(n)) return null;
+  return n <= 1 ? n * 100 : n;
+}
+
+function mappedSales(code, rosterDept) {
+  var ai = LIVE.sales[code];
+  if (!ai || !ai.departments || !SALES_MAP[rosterDept]) return null;
+  var toks = SALES_MAP[rosterDept];
+  var i, j, sum = 0, gp = 0, found = false;
+  for (i = 0; i < ai.departments.length; i++) {
+    var d = ai.departments[i];
+    var nm = String(d.dept || "").toLowerCase();
+    for (j = 0; j < toks.length; j++) {
+      if (nm.indexOf(toks[j]) !== -1) {
+        var sv = Number(d.sales_ex_vat);
+        if (!isNaN(sv) && sv > 0) {
+          sum += sv;
+          var mp = asPct(d.act_margin_pct);
+          if (mp !== null) { gp += sv * mp / 100; }
+          found = true;
+        }
+        break;
+      }
+    }
+  }
+  if (!found) return null;
+  return { sales: sum, gp: gp };
+}
+
+function liveFor(code) {
+  var r = latestRoster(code);
+  if (!r || !r.data || !r.data.departments) return null;
+  var ai = LIVE.sales[code] || null;
+  var depts = [], k, dd, tH = 0, tC = 0;
+  for (k in r.data.departments) {
+    if (!r.data.departments.hasOwnProperty(k)) continue;
+    dd = r.data.departments[k];
+    var h = Number(dd.hours_decimal) || 0;
+    var c = Number(dd.cost) || 0;
+    if (h <= 0 && c <= 0) continue;
+    var m = mappedSales(code, k);
+    depts.push({ d: k, hoursLabel: dd.hours || "", h: h, lc: c, s: m ? m.sales : null, gpEur: m ? m.gp : null });
+    tH += h; tC += c;
+  }
+  depts.sort(function (a, b) { return b.lc - a.lc; });
+  var out = { rosterRange: r.range, scrapedAt: r.data.scraped_at || "", depts: depts, totalHours: tH, totalCost: tC, salesExVat: null, marginPct: null, weekEnding: "" };
+  if (ai) {
+    var s = Number(ai.weekly_sales_ex_vat);
+    if (!isNaN(s) && s > 0) out.salesExVat = s;
+    var mp2 = asPct(ai.overall_margin_pct);
+    if (mp2 !== null) out.marginPct = mp2;
+    out.weekEnding = ai.week_ending || "";
+  }
+  return out;
+}
+
+function fetchJson(url) {
+  return fetch(url + '?_=' + Date.now()).then(function (r) {
+    if (!r.ok) { throw new Error('HTTP ' + r.status); }
+    return r.json();
+  });
+}
+
+function loadLive() {
+  var tasks = [];
+  tasks.push(fetchJson(RAW_BASE + 'labour_roster_data.json').then(function (j) { LIVE.roster = j; }).catch(function () { LIVE.roster = null; }));
+  var codes = ['424', '374', '356'], i;
+  for (i = 0; i < codes.length; i++) {
+    (function (code) {
+      tasks.push(fetchJson(RAW_BASE + AI_PATHS[code]).then(function (j) { LIVE.sales[code] = j; }).catch(function () {}));
+    })(codes[i]);
+  }
+  return Promise.all(tasks);
+}
+/*LIVE-HELPERS-END*/
+
 function money(n) {
   var s = Math.round(n).toString();
   return "\u20ac" + s.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -317,6 +435,7 @@ function piColour(p) {
 }
 function storeCode() { return document.getElementById("store").value; }
 function current() { return DATA[storeCode()]; }
+function currentLive() { return liveFor(storeCode()); }
 
 function totals(d) {
   var i, t = { s: 0, h: 0, lc: 0, gp: 0, bc: 0 };
@@ -358,11 +477,50 @@ function show(id) {
   document.getElementById("t_" + id).className = "tab active";
 }
 
+function setStatus() {
+  var el = document.getElementById("liveStatus");
+  var lv = currentLive();
+  if (lv) {
+    var bits = "LIVE - " + STORE_NAMES[storeCode()] + " roster week " + lv.rosterRange;
+    if (lv.salesExVat) { bits += " - sales week ending " + lv.weekEnding + " (ex VAT)"; }
+    else { bits += " - sales feed not found for this store"; }
+    el.className = "livestatus live";
+    el.textContent = bits;
+  } else {
+    el.className = "livestatus sample";
+    el.textContent = "SAMPLE figures - roster feed not yet connected for " + STORE_NAMES[storeCode()] + ". Run the labour scraper to activate live mode.";
+  }
+}
+
 function renderKpis() {
+  var lv = currentLive();
+  var html = "", i, c, cards;
+  if (lv) {
+    cards = [];
+    if (lv.salesExVat) { cards.push({ l: "Net Sales ex VAT", v: money(lv.salesExVat), s: "wk ending " + lv.weekEnding }); }
+    var lp = lv.salesExVat ? (lv.totalCost / lv.salesExVat * 100) : null;
+    cards.push({ l: "Labour Cost", v: money(lv.totalCost), s: lp !== null ? pct(lp) + " of sales" : "roster week " + lv.rosterRange });
+    if (lv.salesExVat) { cards.push({ l: "Sales / Labour Hr", v: money(lv.salesExVat / lv.totalHours), s: lv.totalHours.toFixed(0) + " roster hours" }); }
+    cards.push({ l: "Roster Hours", v: lv.totalHours.toFixed(0), s: lv.rosterRange });
+    cards.push({ l: "Avg Hourly Rate", v: "\u20ac" + (lv.totalCost / lv.totalHours).toFixed(2), s: "blended, all departments" });
+    if (lv.salesExVat && lv.marginPct !== null) {
+      var gp = lv.salesExVat * lv.marginPct / 100;
+      cards.push({ l: "Gross Profit", v: money(gp), s: "at " + lv.marginPct.toFixed(1) + "% margin" });
+      cards.push({ l: "Contribution / Hr", v: money(gp / lv.totalHours), s: "GP per roster hour" });
+      cards.push({ l: "Labour ROI", v: (gp / lv.totalCost).toFixed(2) + "x", s: "GP per EUR 1 wages" });
+    }
+    for (i = 0; i < cards.length; i++) {
+      c = cards[i];
+      html += '<div class="card"><div class="lbl">' + c.l + '</div><div class="val">' + c.v + '</div><div class="sub">' + c.s + '</div></div>';
+    }
+    document.getElementById("kpiCards").innerHTML = html;
+    document.getElementById("dashNote").textContent = "Live figures. Sales are ex VAT for the last completed P&L week; labour is the current published roster week, so the two periods differ by design (rostering forward against known trade).";
+    return;
+  }
   var st = current();
   var d = st.depts;
   var t = totals(d);
-  var i, saving = 0, oppValue = 0;
+  var saving = 0, oppValue = 0;
   for (i = 0; i < d.length; i++) {
     var ex = excessHours(d[i]);
     if (ex > 4) { var sv = ex * rate(d[i]); saving += sv; oppValue += sv; }
@@ -376,7 +534,7 @@ function renderKpis() {
   var storePi = blendSph / weightedTarget(d);
   var otc = otTotalCost(storeCode());
 
-  var cards = [
+  cards = [
     { l: "Net Sales (wk)", v: money(t.s), s: "" },
     { l: "Labour Cost", v: money(t.lc), s: pct(blendLp) + " of sales" },
     { l: "Sales / Labour Hr", v: money(blendSph), s: t.h.toFixed(0) + " hours" },
@@ -389,7 +547,6 @@ function renderKpis() {
     { l: "Labour Savings", v: money(saving), s: "safe to remove" },
     { l: "Opportunity Value", v: money(oppValue), s: "total upside" }
   ];
-  var html = "", c;
   for (i = 0; i < cards.length; i++) {
     c = cards[i];
     html += '<div class="card"><div class="lbl">' + c.l + '</div>';
@@ -397,16 +554,46 @@ function renderKpis() {
     html += '<div class="sub">' + c.s + '</div></div>';
   }
   document.getElementById("kpiCards").innerHTML = html;
+  document.getElementById("dashNote").textContent = "Sample figures shown. Net sales basis (post-VAT), one trading week.";
 }
 
 function renderLeague() {
+  var lv = currentLive();
+  var html = "", i;
+  if (lv) {
+    document.getElementById("deptTitle").textContent = "Roster Departments - hours and cost";
+    document.getElementById("deptDesc").textContent = "Live from the published roster. Sales shown where a department maps to P&L sales lines.";
+    html += "<tr><th class='l'>Department</th><th>Hours</th><th>Labour Cost</th><th>\u20ac / Hr</th><th>% of Labour</th><th>Sales ex VAT</th><th>SPH</th><th>Labour %</th></tr>";
+    for (i = 0; i < lv.depts.length; i++) {
+      var x = lv.depts[i];
+      var shareP = lv.totalCost > 0 ? (x.lc / lv.totalCost * 100) : 0;
+      html += "<tr><td class='l'><b>" + x.d + "</b></td>";
+      html += "<td>" + (x.hoursLabel || x.h.toFixed(1)) + "</td>";
+      html += "<td>" + money(x.lc) + "</td>";
+      html += "<td>" + (x.h > 0 ? "\u20ac" + (x.lc / x.h).toFixed(2) : "-") + "</td>";
+      html += "<td>" + pct(shareP) + "</td>";
+      if (x.s !== null) {
+        html += "<td>" + money(x.s) + "</td>";
+        html += "<td>" + (x.h > 0 ? money(x.s / x.h) : "-") + "</td>";
+        html += "<td>" + pct(x.lc / x.s * 100) + "</td>";
+      } else {
+        html += "<td>-</td><td>-</td><td>-</td>";
+      }
+      html += "</tr>";
+    }
+    document.getElementById("leagueTable").innerHTML = html;
+    document.getElementById("deptNote").textContent = "Support departments (Checkouts, Management, Cash Office, Security, HR, IT, Home Deliveries) have no direct sales line, so SPH does not apply to them individually.";
+    return;
+  }
+  document.getElementById("deptTitle").textContent = "Department Productivity League";
+  document.getElementById("deptDesc").textContent = "Ranked by a blended score of productivity index and labour control.";
+  document.getElementById("deptNote").textContent = "";
   var d = current().depts.slice();
   d.sort(function (a, b) { return score(b) - score(a); });
-  var html = "";
   html += "<tr><th class='l'>Rank</th><th class='l'>Department</th>";
   html += "<th>Sales</th><th>Hours</th><th>SPH</th><th>Labour %</th>";
   html += "<th>Contrib/Hr</th><th>ROI</th><th>PI</th><th class='l'>Score</th></tr>";
-  var i, x, sc, w;
+  var x, sc, w;
   for (i = 0; i < d.length; i++) {
     x = d[i]; sc = score(x); w = Math.round(sc / 100 * 90);
     html += "<tr>";
@@ -440,6 +627,11 @@ function buildOpps() {
 }
 
 function renderOpps() {
+  var lv = currentLive();
+  if (lv) {
+    document.getElementById("oppList").innerHTML = "<p class='note'>Opportunity detection needs a target sales-per-hour for each roster department. Live hours and cost are connected; set department targets to activate this tab on real figures.</p>";
+    return;
+  }
   var list = buildOpps(), i;
   if (list.length === 0) {
     document.getElementById("oppList").innerHTML = "<p class='note'>No material labour mismatches detected this week.</p>";
@@ -472,9 +664,16 @@ function renderOpps() {
   document.getElementById("oppList").innerHTML = html;
 }
 
+function heatTotals() {
+  var lv = currentLive();
+  if (lv && lv.salesExVat) { return { s: lv.salesExVat, h: lv.totalHours, live: true }; }
+  var t = totals(current().depts);
+  return { s: t.s, h: t.h, live: false };
+}
+
 function heatGrid() {
-  var d = current().depts, t = totals(d);
-  var totSales = t.s, totLabour = t.h;
+  var tt = heatTotals();
+  var totSales = tt.s, totLabour = tt.h;
   var di, hi, salesW = 0, labW = 0;
   for (di = 0; di < DAYS.length; di++) {
     for (hi = 0; hi < HOURS.length; hi++) {
@@ -520,6 +719,10 @@ function lerpColour(v, lo, hi) {
 
 function renderHeat() {
   var metric = document.getElementById("hmMetric").value;
+  var tt = heatTotals();
+  document.getElementById("heatDesc").textContent = tt.live
+    ? "Modelled hour-by-hour distribution of this store's real weekly totals (sales ex VAT and roster hours). Exact hourly figures activate when the hourly sales feed is joined."
+    : "Store-level grid, one trading week. Switch the metric to spot dead periods, peaks and mismatches.";
   var grid = heatGrid();
   var di, hi, lo = 1e12, hi2 = -1e12, v;
   for (di = 0; di < DAYS.length; di++) {
@@ -580,6 +783,15 @@ function renderHeatCallouts(grid) {
 
 function renderCost() {
   var code = storeCode();
+  var lv = currentLive();
+  var liveNote = "";
+  if (lv && lv.salesExVat) {
+    var lp = lv.totalCost / lv.salesExVat * 100;
+    liveNote = "<div class='demo'>Live this week: labour " + pct(lp) + " of ex-VAT sales (" + money(lv.totalCost) + " on " + money(lv.salesExVat) + "). The trend below is sample history - it fills with real weeks as the labour scraper runs each week.</div>";
+  } else if (lv) {
+    liveNote = "<div class='demo'>Live roster cost " + money(lv.totalCost) + " this week. Trend below is sample history until weekly runs accumulate.</div>";
+  }
+  document.getElementById("costLiveNote").innerHTML = liveNote;
   var arr = WEEKLY[code], bud = BUDGET_PCT[code];
   var i, sum = 0, last4 = 0;
   for (i = 0; i < arr.length; i++) { sum += arr[i]; }
@@ -619,6 +831,10 @@ function renderCost() {
 
 function renderOt() {
   var code = storeCode();
+  var lv = currentLive();
+  document.getElementById("otLiveNote").innerHTML = lv
+    ? "<div class='demo'>Sample staff shown. Overtime intelligence activates when contracted-vs-worked hours per employee are added to the roster feed.</div>"
+    : "";
   var arr = STAFF[code].slice();
   arr.sort(function (a, b) { return riskScore(b) - riskScore(a); });
   var i, flags = "";
@@ -647,9 +863,18 @@ function renderOt() {
 }
 
 function renderForecast() {
-  var t = totals(current().depts);
-  var blendLp = t.lc / t.s * 100;
-  var trans = t.s / 22;
+  var lv = currentLive();
+  var baseS, baseH, baseLc;
+  if (lv && lv.salesExVat) {
+    baseS = lv.salesExVat; baseH = lv.totalHours; baseLc = lv.totalCost;
+    document.getElementById("fcNote").textContent = "Projection from this store's real weekly figures (ex-VAT sales and roster hours). Growth factors are illustrative until sales history accumulates.";
+  } else {
+    var t = totals(current().depts);
+    baseS = t.s; baseH = t.h; baseLc = t.lc;
+    document.getElementById("fcNote").textContent = "Illustrative projection from sample weekly figures. Real forecasting activates once historical sales and labour history are connected.";
+  }
+  var blendLp = baseLc / baseS * 100;
+  var trans = baseS / 22;
   var rows = [
     { p: "Next Week", g: 1.01, sf: 1.0 },
     { p: "Next 4 Weeks (avg)", g: 1.02, sf: 1.0 },
@@ -660,9 +885,9 @@ function renderForecast() {
   var i;
   for (i = 0; i < rows.length; i++) {
     var r = rows[i];
-    var fs = t.s * r.g;
+    var fs = baseS * r.g;
     var ft = trans * r.g;
-    var fh = t.h * r.g * r.sf;
+    var fh = baseH * r.g * r.sf;
     var flp = blendLp * (r.sf);
     html += "<tr><td class='l'><b>" + r.p + "</b></td>";
     html += "<td>" + money(fs) + "</td>";
@@ -674,19 +899,43 @@ function renderForecast() {
 }
 
 function renderRoi() {
+  var lv = currentLive();
+  var html = "", i;
+  if (lv) {
+    document.getElementById("roiDesc").textContent = "Live: gross profit from mapped P&L sales lines divided by real roster labour cost.";
+    html += "<tr><th class='l'>Department</th><th>Labour Cost</th><th>Sales ex VAT</th><th>Gross Profit</th><th>GP per EUR 1</th><th class='l'>Return</th></tr>";
+    var shown = 0;
+    for (i = 0; i < lv.depts.length; i++) {
+      var x = lv.depts[i];
+      if (x.s === null || x.gpEur === null || x.lc <= 0) continue;
+      var r = x.gpEur / x.lc;
+      var w = Math.round(Math.min(r, 6) / 6 * 90);
+      var col = r >= 3 ? "#1a8a4a" : (r >= 2 ? "#e8a13a" : "#c0161c");
+      html += "<tr><td class='l'><b>" + x.d + "</b></td>";
+      html += "<td>" + money(x.lc) + "</td><td>" + money(x.s) + "</td><td>" + money(x.gpEur) + "</td>";
+      html += "<td style='color:" + col + ";font-weight:700;'>" + r.toFixed(2) + "x</td>";
+      html += "<td class='l'><div class='barwrap'><div class='bar' style='width:" + w + "px;background:" + col + "'></div></div></td></tr>";
+      shown++;
+    }
+    if (shown === 0) { html = ""; document.getElementById("roiNote").textContent = "No roster departments map to P&L sales lines yet."; }
+    else { document.getElementById("roiNote").textContent = "Sales-linked departments only (Deli, Butchers and Bakery when rostered). Support departments have no direct sales line."; }
+    document.getElementById("roiTable").innerHTML = html;
+    return;
+  }
+  document.getElementById("roiDesc").textContent = "ROI = department gross profit divided by labour cost.";
+  document.getElementById("roiNote").textContent = "";
   var d = current().depts.slice();
   d.sort(function (a, b) { return roi(b) - roi(a); });
-  var html = "<tr><th class='l'>Department</th><th>Labour Cost</th><th>Gross Profit</th><th>Sales per EUR 1</th><th>GP per EUR 1</th><th class='l'>Return</th></tr>";
-  var i;
+  html = "<tr><th class='l'>Department</th><th>Labour Cost</th><th>Gross Profit</th><th>Sales per EUR 1</th><th>GP per EUR 1</th><th class='l'>Return</th></tr>";
   for (i = 0; i < d.length; i++) {
-    var x = d[i], r = roi(x);
-    var w = Math.round(Math.min(r, 6) / 6 * 90);
-    var col = r >= 3 ? "#1a8a4a" : (r >= 2 ? "#e8a13a" : "#c0161c");
-    html += "<tr><td class='l'><b>" + x.d + "</b></td>";
-    html += "<td>" + money(x.lc) + "</td><td>" + money(grossProfit(x)) + "</td>";
-    html += "<td>" + (x.s / x.lc).toFixed(1) + "x</td>";
-    html += "<td style='color:" + col + ";font-weight:700;'>" + r.toFixed(2) + "x</td>";
-    html += "<td class='l'><div class='barwrap'><div class='bar' style='width:" + w + "px;background:" + col + "'></div></div></td></tr>";
+    var x2 = d[i], r2 = roi(x2);
+    var w2 = Math.round(Math.min(r2, 6) / 6 * 90);
+    var col2 = r2 >= 3 ? "#1a8a4a" : (r2 >= 2 ? "#e8a13a" : "#c0161c");
+    html += "<tr><td class='l'><b>" + x2.d + "</b></td>";
+    html += "<td>" + money(x2.lc) + "</td><td>" + money(grossProfit(x2)) + "</td>";
+    html += "<td>" + (x2.s / x2.lc).toFixed(1) + "x</td>";
+    html += "<td style='color:" + col2 + ";font-weight:700;'>" + r2.toFixed(2) + "x</td>";
+    html += "<td class='l'><div class='barwrap'><div class='bar' style='width:" + w2 + "px;background:" + col2 + "'></div></div></td></tr>";
   }
   document.getElementById("roiTable").innerHTML = html;
 }
@@ -735,10 +984,58 @@ function addMessage(role, text, isThinking) {
 }
 
 function buildLabourContext() {
+  var lv = currentLive();
+  var i, x;
+  if (lv) {
+    var deptArrL = [];
+    for (i = 0; i < lv.depts.length; i++) {
+      x = lv.depts[i];
+      var row = {
+        department: x.d,
+        roster_hours: x.h,
+        labour_cost: Math.round(x.lc),
+        avg_hourly_rate: x.h > 0 ? Number((x.lc / x.h).toFixed(2)) : null
+      };
+      if (x.s !== null) {
+        row.mapped_sales_ex_vat = Math.round(x.s);
+        row.sales_per_hour = x.h > 0 ? Math.round(x.s / x.h) : null;
+        row.labour_pct = Number((x.lc / x.s * 100).toFixed(1));
+        if (x.gpEur !== null) { row.gp_per_eur_labour = Number((x.gpEur / x.lc).toFixed(2)); }
+      }
+      deptArrL.push(row);
+    }
+    var st2 = {
+      labour_cost: Math.round(lv.totalCost),
+      roster_hours: Math.round(lv.totalHours),
+      avg_hourly_rate: Number((lv.totalCost / lv.totalHours).toFixed(2))
+    };
+    if (lv.salesExVat) {
+      st2.net_sales_ex_vat = Math.round(lv.salesExVat);
+      st2.labour_pct = Number((lv.totalCost / lv.salesExVat * 100).toFixed(1));
+      st2.sales_per_hour = Math.round(lv.salesExVat / lv.totalHours);
+      if (lv.marginPct !== null) {
+        var gp2 = lv.salesExVat * lv.marginPct / 100;
+        st2.gross_profit = Math.round(gp2);
+        st2.gp_per_eur_labour = Number((gp2 / lv.totalCost).toFixed(2));
+      }
+    }
+    return {
+      page: 'Labour Intelligence',
+      data_mode: 'live',
+      store_code: storeCode(),
+      store_name: STORE_NAMES[storeCode()],
+      roster_week: lv.rosterRange,
+      sales_week_ending: lv.weekEnding,
+      basis: 'ex-VAT weekly sales; roster hours and cost from published Strandum roster',
+      note: 'Sales week is the last completed P&L week; roster week is the current published week. Support departments (Checkouts, Management, Cash Office, Security, HR, IT Scanning, Home Deliveries) have no direct sales line.',
+      store_totals: st2,
+      departments: deptArrL
+    };
+  }
   var st = current();
   var d = st.depts;
   var t = totals(d);
-  var deptArr = [], i, x;
+  var deptArr = [];
   for (i = 0; i < d.length; i++) {
     x = d[i];
     deptArr.push({
@@ -766,6 +1063,7 @@ function buildLabourContext() {
   }
   return {
     page: 'Labour Intelligence',
+    data_mode: 'sample',
     store_code: storeCode(),
     store_name: st.name,
     period: 'one trading week',
@@ -822,7 +1120,7 @@ function sendChat() {
     body: JSON.stringify({
       question: text,
       store_code: storeCode(),
-      store_name: current().name,
+      store_name: STORE_NAMES[storeCode()],
       role: 'staff',
       messages: chatHistory,
       insightsContext: buildLabourContext()
@@ -855,6 +1153,7 @@ function resetChat() {
 }
 
 function renderAll() {
+  setStatus();
   renderKpis();
   renderLeague();
   renderOpps();
@@ -863,11 +1162,15 @@ function renderAll() {
   renderOt();
   renderForecast();
   renderRoi();
+  var lv = currentLive();
+  document.getElementById('aiNote').textContent = lv
+    ? 'Answering on live figures: roster week ' + lv.rosterRange + (lv.salesExVat ? ', sales week ending ' + lv.weekEnding + ' (ex VAT).' : '.')
+    : 'Runs on sample department figures until the roster feed is connected, then answers on live numbers automatically.';
   resetChat();
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  renderAll();
+  loadLive().then(function () { renderAll(); }).catch(function () { renderAll(); });
 });
 </script>
 </body>
