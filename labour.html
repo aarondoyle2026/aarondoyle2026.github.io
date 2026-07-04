@@ -257,11 +257,12 @@ function asPct(v) {
 
 function mappedSales(code, rosterDept) {
   var ai = LIVE.sales[code];
-  if (!ai || !ai.departments || !SALES_MAP[rosterDept]) return null;
+  if (!ai || !SALES_MAP[rosterDept]) return null;
   var toks = SALES_MAP[rosterDept];
-  var i, j, sum = 0, gp = 0, found = false;
-  for (i = 0; i < ai.departments.length; i++) {
-    var d = ai.departments[i];
+  var i, j, sum = 0, gp = 0, found = false, hasGp = false;
+  var arr = ai.departments || [];
+  for (i = 0; i < arr.length; i++) {
+    var d = arr[i];
     var nm = String(d.dept || "").toLowerCase();
     for (j = 0; j < toks.length; j++) {
       if (nm.indexOf(toks[j]) !== -1) {
@@ -269,15 +270,29 @@ function mappedSales(code, rosterDept) {
         if (!isNaN(sv) && sv > 0) {
           sum += sv;
           var mp = asPct(d.act_margin_pct);
-          if (mp !== null) { gp += sv * mp / 100; }
+          if (mp !== null) { gp += sv * mp / 100; hasGp = true; }
           found = true;
         }
         break;
       }
     }
   }
+  if (!found && ai.dept_sales_ex_vat) {
+    var k;
+    for (k in ai.dept_sales_ex_vat) {
+      if (!ai.dept_sales_ex_vat.hasOwnProperty(k)) continue;
+      var nm2 = String(k).toLowerCase();
+      for (j = 0; j < toks.length; j++) {
+        if (nm2.indexOf(toks[j]) !== -1) {
+          var sv2 = Number(ai.dept_sales_ex_vat[k]);
+          if (!isNaN(sv2) && sv2 > 0) { sum += sv2; found = true; }
+          break;
+        }
+      }
+    }
+  }
   if (!found) return null;
-  return { sales: sum, gp: gp };
+  return { sales: sum, gp: hasGp ? gp : null };
 }
 
 function fmtHours(h) {
@@ -302,13 +317,13 @@ function applySplit(code, depts) {
   for (i = 0; i < plan.length; i++) {
     var nd = { d: plan[i].d, hoursLabel: fmtHours(plan[i].hours), h: plan[i].hours, lc: plan[i].hours * rate, s: null, gpEur: null, split: true };
     var m = mappedSales(code, plan[i].d);
-    if (m) { nd.s = m.sales; nd.gpEur = m.gp; }
+    if (m) { nd.s = m.sales; nd.gpEur = (m.gp !== null ? m.gp : null); }
     out.push(nd);
   }
   var remH = amb.h - totalSplit;
   var na = { d: "Ambient", hoursLabel: fmtHours(remH), h: remH, lc: remH * rate, s: null, gpEur: null, split: true };
   var ma = mappedSales(code, "Ambient");
-  if (ma) { na.s = ma.sales; na.gpEur = ma.gp; }
+  if (ma) { na.s = ma.sales; na.gpEur = (ma.gp !== null ? ma.gp : null); }
   out.push(na);
   return out;
 }
@@ -325,7 +340,7 @@ function liveFor(code) {
     var c = Number(dd.cost) || 0;
     if (h <= 0 && c <= 0) continue;
     var m = mappedSales(code, k);
-    depts.push({ d: k, hoursLabel: dd.hours || "", h: h, lc: c, s: m ? m.sales : null, gpEur: m ? m.gp : null });
+    depts.push({ d: k, hoursLabel: dd.hours || "", h: h, lc: c, s: m ? m.sales : null, gpEur: (m && m.gp !== null) ? m.gp : null });
     tH += h; tC += c;
   }
   depts = applySplit(code, depts);
