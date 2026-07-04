@@ -198,7 +198,7 @@ var SALES_MAP = {
   "Deli": ["deli"],
   "Butchers": ["beef", "lamb", "pork", "bacon", "poultry", "fish"],
   "Bakery": ["bread"],
-  "Ambient": ["grocery"],
+  "Ambient": ["grocery", "baby", "personal"],
   "FV / Produce": ["produce"],
   "Provisions": ["provision"],
   "Dairy": ["dairy"],
@@ -463,7 +463,7 @@ function renderLeague() {
   var splitPlan = AMBIENT_SPLIT[storeCode()];
   var noteTxt = "Support departments (Checkouts, Management, Cash Office, Security, HR, IT, Home Deliveries, Store Room, Cleaning) have no direct sales line. Sales weeks and roster weeks differ - see the banner.";
   if (splitPlan && splitPlan.length) {
-    noteTxt = "Store Room, Cleaning, FV / Produce, Provisions, Dairy, Frozen and the Ambient remainder are your standing weekly allocation of the Ambient roster line, costed at its blended hourly rate. Ambient sales = Grocery Edible + Impulse + Non Food. " + noteTxt;
+    noteTxt = "Store Room, Cleaning, FV / Produce, Provisions, Dairy, Frozen and the Ambient remainder are your standing weekly allocation of the Ambient roster line, costed at its blended hourly rate. Ambient sales = Grocery Edible + Impulse + Non Food + Baby & Kids + Personal Care. " + noteTxt;
   }
   document.getElementById("deptNote").textContent = noteTxt;
 }
@@ -658,7 +658,7 @@ function buildLabourContext() {
     roster_week: lv.rosterRange,
     sales_week_ending: lv.weekEnding,
     basis: 'ex-VAT weekly sales; roster hours and cost from published Strandum roster',
-    note: 'Sales week is the last completed P&L week; roster week is the current published week. Store Room, Cleaning, FV/Produce, Provisions, Dairy, Frozen and the Ambient remainder are a standing allocation of the Ambient roster line at its blended rate. Ambient sales = the three Grocery lines. Support departments have no direct sales line. Only use the figures provided - do not estimate anything not present.',
+    note: 'Sales week is the last completed P&L week; roster week is the current published week. Store Room, Cleaning, FV/Produce, Provisions, Dairy, Frozen and the Ambient remainder are a standing allocation of the Ambient roster line at its blended rate. Ambient sales = the three Grocery lines plus Baby & Kids and Personal Care. Support departments have no direct sales line. Only use the figures provided - do not estimate anything not present.',
     store_totals: st2,
     departments: deptArrL
   };
