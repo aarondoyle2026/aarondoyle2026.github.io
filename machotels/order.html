@@ -11,6 +11,9 @@ body { font-family:-apple-system, "Helvetica Neue", Arial, sans-serif; backgroun
 .hero h1 { font-size:20px; letter-spacing:2px; text-transform:uppercase; font-weight:700; }
 .hero .sub { font-size:13px; color:#9CC8E0; margin-top:4px; letter-spacing:1px; }
 .tablebadge { display:inline-block; background:#2E9CCA; color:#FFFFFF; font-weight:700; border-radius:20px; padding:6px 14px; margin-top:12px; font-size:15px; }
+.langbar { margin-top:12px; }
+.langbar a { display:inline-block; color:#9CC8E0; text-decoration:none; font-size:13px; font-weight:600; padding:5px 9px; border-radius:14px; margin-right:4px; letter-spacing:1px; }
+.langbar a.on { background:#FFFFFF; color:#0E3A5D; }
 .catnav { position:-webkit-sticky; position:sticky; top:0; background:#0E3A5D; overflow-x:auto; white-space:nowrap; padding:10px 12px; z-index:5; -webkit-overflow-scrolling:touch; }
 .catnav a { display:inline-block; color:#9CC8E0; text-decoration:none; font-size:13px; font-weight:600; letter-spacing:1px; text-transform:uppercase; padding:6px 10px; border-radius:16px; }
 .catnav a.on { background:#2E9CCA; color:#FFFFFF; }
@@ -55,20 +58,21 @@ body { font-family:-apple-system, "Helvetica Neue", Arial, sans-serif; backgroun
 
 <div class="hero">
   <h1>Mac Hotels</h1>
-  <div class="sub">Puerto Marina Snack Bar &middot; Order to your table</div>
+  <div class="sub" id="hsub">Puerto Marina Snack Bar &middot; Order to your table</div>
   <div class="tablebadge" id="tbadge">Table -</div>
+  <div class="langbar" id="langbar"></div>
 </div>
 
 <div id="tprompt" class="tprompt hid">
-  <h2>What table are you at?</h2>
+  <h2 id="tpq">What table are you at?</h2>
   <input type="number" id="tinput" placeholder="Table number" pattern="[0-9]*">
-  <button onclick="setTable()">Start ordering</button>
+  <button onclick="setTable()" id="tpbtn">Start ordering</button>
 </div>
 
 <div id="menuwrap">
   <div class="catnav" id="catnav"></div>
   <div id="menu"></div>
-  <div class="vat">All prices include VAT</div>
+  <div class="vat" id="vatline">All prices include VAT</div>
 </div>
 
 <div class="bar hid" id="basketbar">
@@ -76,9 +80,9 @@ body { font-family:-apple-system, "Helvetica Neue", Arial, sans-serif; backgroun
 </div>
 
 <div class="panel hid" id="panel">
-  <div class="ph">Your order <span onclick="closeBasket()">&#10005; Close</span></div>
+  <div class="ph" id="phead">Your order <span onclick="closeBasket()">&#10005; Close</span></div>
   <div id="lines"></div>
-  <div class="tot">Total <span id="ptotal"></span></div>
+  <div class="tot"><span id="totlbl">Total</span> <span id="ptotal"></span></div>
   <div class="note"><textarea id="onote" placeholder="Any notes for the bar? (ice, lemon, allergies...)"></textarea></div>
   <div class="bar"><button onclick="sendOrder()" id="sendbtn">Send order to the bar</button></div>
 </div>
@@ -87,8 +91,8 @@ body { font-family:-apple-system, "Helvetica Neue", Arial, sans-serif; backgroun
   <div class="done">
     <div class="big">&#127866;</div>
     <h2 id="donehead">Order sent!</h2>
-    <p>The bar has your order and will bring it to your table. Sit back and enjoy the marina.</p>
-    <p style="margin-top:20px;"><a href="#" onclick="resetOrder(); return false;" style="color:#2E9CCA; font-weight:700;">Order something else</a></p>
+    <p id="donebody">The bar has your order and will bring it to your table. Sit back and enjoy the marina.</p>
+    <p style="margin-top:20px;"><a href="#" onclick="resetOrder(); return false;" style="color:#2E9CCA; font-weight:700;" id="doneagain">Order something else</a></p>
   </div>
 </div>
 
@@ -262,6 +266,289 @@ var MENU = [
  ]}
 ];
 
+var LANGS = ["EN", "ES", "DE", "NL"];
+var lang = "EN";
+
+var T = {
+  sub: {
+    EN: "Puerto Marina Snack Bar &middot; Order to your table",
+    ES: "Puerto Marina Snack Bar &middot; Pide desde tu mesa",
+    DE: "Puerto Marina Snack Bar &middot; Bestellen Sie am Tisch",
+    NL: "Puerto Marina Snack Bar &middot; Bestel vanaf uw tafel"
+  },
+  table: { EN: "Table", ES: "Mesa", DE: "Tisch", NL: "Tafel" },
+  askTable: {
+    EN: "What table are you at?",
+    ES: "&iquest;En qu&eacute; mesa est&aacute;s?",
+    DE: "An welchem Tisch sitzen Sie?",
+    NL: "Aan welke tafel zit u?"
+  },
+  tableNo: { EN: "Table number", ES: "N&uacute;mero de mesa", DE: "Tischnummer", NL: "Tafelnummer" },
+  start: { EN: "Start ordering", ES: "Empezar a pedir", DE: "Bestellung starten", NL: "Begin met bestellen" },
+  vat: {
+    EN: "All prices include VAT",
+    ES: "Todos los precios incluyen IVA",
+    DE: "Alle Preise inklusive MwSt.",
+    NL: "Alle prijzen zijn inclusief btw"
+  },
+  viewOrder: { EN: "View order", ES: "Ver pedido", DE: "Bestellung ansehen", NL: "Bestelling bekijken" },
+  yourOrder: { EN: "Your order", ES: "Tu pedido", DE: "Ihre Bestellung", NL: "Uw bestelling" },
+  close: { EN: "Close", ES: "Cerrar", DE: "Schlie&szlig;en", NL: "Sluiten" },
+  total: { EN: "Total", ES: "Total", DE: "Gesamt", NL: "Totaal" },
+  itemNote: {
+    EN: "e.g. no ice, no onion",
+    ES: "p.ej. sin hielo, sin cebolla",
+    DE: "z.B. ohne Eis, ohne Zwiebeln",
+    NL: "bijv. geen ijs, geen ui"
+  },
+  orderNote: {
+    EN: "Any notes for the bar? (ice, lemon, allergies...)",
+    ES: "&iquest;Alguna nota para la barra? (hielo, lim&oacute;n, alergias...)",
+    DE: "Hinweise f&uuml;r die Bar? (Eis, Zitrone, Allergien...)",
+    NL: "Opmerkingen voor de bar? (ijs, citroen, allergie&euml;n...)"
+  },
+  send: {
+    EN: "Send order to the bar",
+    ES: "Enviar pedido a la barra",
+    DE: "Bestellung an die Bar senden",
+    NL: "Bestelling naar de bar sturen"
+  },
+  sending: { EN: "Sending...", ES: "Enviando...", DE: "Wird gesendet...", NL: "Versturen..." },
+  sentHead: { EN: "Order sent", ES: "Pedido enviado", DE: "Bestellung gesendet", NL: "Bestelling verzonden" },
+  sentBody: {
+    EN: "The bar has your order and will bring it to your table. Sit back and enjoy the marina.",
+    ES: "La barra tiene tu pedido y te lo llevar&aacute; a la mesa. Rel&aacute;jate y disfruta del puerto.",
+    DE: "Die Bar hat Ihre Bestellung und bringt sie an Ihren Tisch. Lehnen Sie sich zur&uuml;ck und genie&szlig;en Sie den Hafen.",
+    NL: "De bar heeft uw bestelling en brengt deze naar uw tafel. Leun achterover en geniet van de haven."
+  },
+  again: {
+    EN: "Order something else",
+    ES: "Pedir algo m&aacute;s",
+    DE: "Etwas anderes bestellen",
+    NL: "Nog iets bestellen"
+  },
+  failed: {
+    EN: "Could not send your order. Please try again, or order at the bar.",
+    ES: "No se pudo enviar el pedido. Int&eacute;ntalo de nuevo o pide en la barra.",
+    DE: "Bestellung konnte nicht gesendet werden. Bitte erneut versuchen oder an der Bar bestellen.",
+    NL: "Bestelling kon niet worden verzonden. Probeer opnieuw of bestel aan de bar."
+  }
+};
+
+var CAT_T = {
+  "Something Fresh": {ES:"Algo Fresco", DE:"Etwas Frisches", NL:"Iets Fris"},
+  "Between Bread": {ES:"Entre Pan", DE:"Zwischen Brot", NL:"Tussen Brood"},
+  "Pizzas": {ES:"Pizzas", DE:"Pizzen", NL:"Pizza's"},
+  "Burgers": {ES:"Hamburguesas", DE:"Burger", NL:"Burgers"},
+  "Finger Food": {ES:"Para Picar", DE:"Fingerfood", NL:"Hapjes"},
+  "Something Sweet": {ES:"Algo Dulce", DE:"Etwas S&uuml;&szlig;es", NL:"Iets Zoets"},
+  "Cocktails": {ES:"C&oacute;cteles", DE:"Cocktails", NL:"Cocktails"},
+  "Sangria": {ES:"Sangr&iacute;a", DE:"Sangria", NL:"Sangria"},
+  "Cava & Champagne": {ES:"Cava y Champ&aacute;n", DE:"Cava & Champagner", NL:"Cava & Champagne"},
+  "Aperitifs": {ES:"Aperitivos", DE:"Aperitifs", NL:"Aperitieven"},
+  "Brandys & Cognacs": {ES:"Brandis y Co&ntilde;acs", DE:"Brandy & Cognac", NL:"Brandy & Cognac"},
+  "Whisky": {ES:"Whisky", DE:"Whisky", NL:"Whisky"},
+  "Liqueurs": {ES:"Licores", DE:"Lik&ouml;re", NL:"Likeuren"},
+  "Wines": {ES:"Vinos", DE:"Weine", NL:"Wijnen"},
+  "Beer & Cider": {ES:"Cerveza y Sidra", DE:"Bier & Cider", NL:"Bier & Cider"},
+  "Gin": {ES:"Ginebra", DE:"Gin", NL:"Gin"},
+  "Rum & Vodka": {ES:"Ron y Vodka", DE:"Rum & Wodka", NL:"Rum & Wodka"},
+  "Tonic Water": {ES:"T&oacute;nica", DE:"Tonic Water", NL:"Tonic"},
+  "Soft Drinks": {ES:"Refrescos", DE:"Alkoholfreie Getr&auml;nke", NL:"Frisdranken"},
+  "Smoothies & Juices": {ES:"Zumos y Smoothies", DE:"S&auml;fte & Smoothies", NL:"Sappen & Smoothies"},
+  "Hot Drinks": {ES:"Bebidas Calientes", DE:"Hei&szlig;getr&auml;nke", NL:"Warme Dranken"}
+};
+
+var ITEM_T = {
+"Chicken Caesar Salad":{ES:"Ensalada C&eacute;sar de Pollo",DE:"Caesar Salat mit H&auml;hnchen",NL:"Caesarsalade met Kip"},
+"Tuna Focaccia":{ES:"Focaccia de At&uacute;n",DE:"Thunfisch-Focaccia",NL:"Tonijn Focaccia"},
+"Tomato, Feta, Tuna & Avocado Salad":{ES:"Ensalada de Tomate, Feta, At&uacute;n y Aguacate",DE:"Salat mit Tomate, Feta, Thunfisch & Avocado",NL:"Salade met Tomaat, Feta, Tonijn & Avocado"},
+"Ham & Cheese Toastie":{ES:"S&aacute;ndwich Mixto Tostado",DE:"Getoastetes Schinken-K&auml;se-Sandwich",NL:"Tosti Ham-Kaas"},
+"Club Sandwich":{ES:"S&aacute;ndwich Club",DE:"Club Sandwich",NL:"Club Sandwich"},
+"Vegan Sandwich":{ES:"S&aacute;ndwich Vegano",DE:"Veganes Sandwich",NL:"Vegan Broodje"},
+"Chicken, Bacon & Cheese Baguette":{ES:"Baguette de Pollo, Bacon y Queso",DE:"Baguette mit H&auml;hnchen, Bacon & K&auml;se",NL:"Stokbrood met Kip, Bacon & Kaas"},
+"Tuna Sandwich":{ES:"S&aacute;ndwich de At&uacute;n",DE:"Thunfisch-Sandwich",NL:"Tonijn Broodje"},
+"Ham & Cheese Panini":{ES:"Panini de Jam&oacute;n y Queso",DE:"Panini mit Schinken & K&auml;se",NL:"Panini Ham-Kaas"},
+"Bread & Butter":{ES:"Pan con Mantequilla",DE:"Brot & Butter",NL:"Brood & Boter"},
+"Ham Ruffles":{ES:"Ruffles Jam&oacute;n",DE:"Ruffles Schinken",NL:"Ruffles Ham"},
+"Salted Lays":{ES:"Lays Sal",DE:"Lays Gesalzen",NL:"Lays Zout"},
+"Pizza Margherita":{ES:"Pizza Margarita",DE:"Pizza Margherita",NL:"Pizza Margherita"},
+"Ham & Mushroom Pizza":{ES:"Pizza de Jam&oacute;n y Champi&ntilde;ones",DE:"Pizza Schinken & Pilze",NL:"Pizza Ham & Champignon"},
+"Tuna Pizza":{ES:"Pizza de At&uacute;n",DE:"Thunfisch-Pizza",NL:"Tonijnpizza"},
+"Pepperoni Pizza":{ES:"Pizza de Pepperoni",DE:"Pepperoni-Pizza",NL:"Pepperoni Pizza"},
+"Classic Cheeseburger":{ES:"Hamburguesa Cl&aacute;sica con Queso",DE:"Klassischer Cheeseburger",NL:"Klassieke Cheeseburger"},
+"Hamburger Puerto Marina":{ES:"Hamburguesa Puerto Marina",DE:"Hamburger Puerto Marina",NL:"Hamburger Puerto Marina"},
+"Crispy Chicken Burger":{ES:"Hamburguesa de Pollo Crujiente",DE:"Crispy Chicken Burger",NL:"Krokante Kipburger"},
+"Hot Dog":{ES:"Perrito Caliente",DE:"Hot Dog",NL:"Hotdog"},
+"French Fries":{ES:"Patatas Fritas",DE:"Pommes Frites",NL:"Friet"},
+"Garlic Prawns":{ES:"Gambas al Ajillo",DE:"Knoblauchgarnelen",NL:"Garnalen in Knoflook"},
+"Breaded Chicken Tenderloins":{ES:"Solomillos de Pollo Empanados",DE:"Panierte H&auml;hnchenstreifen",NL:"Gepaneerde Kipreepjes"},
+"Loaded Bacon & Cheese Fries":{ES:"Patatas con Bacon y Queso",DE:"Pommes mit Bacon & K&auml;se",NL:"Friet met Bacon & Kaas"},
+"Pineapple":{ES:"Pi&ntilde;a",DE:"Ananas",NL:"Ananas"},
+"Brownie with Vanilla Ice Cream":{ES:"Brownie con Helado de Vainilla",DE:"Brownie mit Vanilleeis",NL:"Brownie met Vanille-ijs"},
+"Belgian Waffle":{ES:"Gofre Belga",DE:"Belgische Waffel",NL:"Belgische Wafel"},
+"Aperol Spritz":{ES:"Aperol Spritz",DE:"Aperol Spritz",NL:"Aperol Spritz"},
+"Mojito":{ES:"Mojito",DE:"Mojito",NL:"Mojito"},
+"Strawberry Mojito":{ES:"Mojito de Fresa",DE:"Erdbeer-Mojito",NL:"Aardbeien Mojito"},
+"Mojito Sin Alcohol":{ES:"Mojito Sin Alcohol",DE:"Mojito ohne Alkohol",NL:"Mojito zonder Alcohol"},
+"Pina Colada":{ES:"Pi&ntilde;a Colada",DE:"Pi&ntilde;a Colada",NL:"Pi&ntilde;a Colada"},
+"Alcohol-Free Pina Colada":{ES:"Pi&ntilde;a Colada Sin Alcohol",DE:"Pi&ntilde;a Colada ohne Alkohol",NL:"Pi&ntilde;a Colada zonder Alcohol"},
+"Glass of Red Wine Sangria":{ES:"Copa de Sangr&iacute;a de Vino Tinto",DE:"Glas Rotwein-Sangria",NL:"Glas Rode Wijn Sangria"},
+"Glass of Cava Sangria":{ES:"Copa de Sangr&iacute;a de Cava",DE:"Glas Cava-Sangria",NL:"Glas Cava Sangria"},
+"Glass of Red Wine with Soda":{ES:"Copa de Tinto de Verano",DE:"Glas Rotwein mit Soda",NL:"Glas Rode Wijn met Soda"},
+"Spritzer":{ES:"Spritzer",DE:"Weinschorle",NL:"Spritzer"},
+"Jug of Red Wine Sangria":{ES:"Jarra de Sangr&iacute;a de Vino Tinto",DE:"Krug Rotwein-Sangria",NL:"Kan Rode Wijn Sangria"},
+"Jug of Cava Sangria":{ES:"Jarra de Sangr&iacute;a de Cava",DE:"Krug Cava-Sangria",NL:"Kan Cava Sangria"},
+"Jug of Red Wine with Soda":{ES:"Jarra de Tinto de Verano",DE:"Krug Rotwein mit Soda",NL:"Kan Rode Wijn met Soda"},
+"Glass of House Cava":{ES:"Copa de Cava de la Casa",DE:"Glas Hauscava",NL:"Glas Huiscava"},
+"House Cava":{ES:"Cava de la Casa",DE:"Hauscava",NL:"Huiscava"},
+"Glass of Wine":{ES:"Copa de Vino",DE:"Glas Wein",NL:"Glas Wijn"},
+"Small Draught Beer":{ES:"Ca&ntilde;a",DE:"Kleines Fassbier",NL:"Klein Bier van de Tap"},
+"Large Draught Beer":{ES:"Jarra de Cerveza",DE:"Gro&szlig;es Fassbier",NL:"Groot Bier van de Tap"},
+"Spanish Beer bottle":{ES:"Cerveza Espa&ntilde;ola, botella",DE:"Spanisches Bier, Flasche",NL:"Spaans Bier, fles"},
+"Non-Alcoholic Beer":{ES:"Cerveza Sin Alcohol",DE:"Alkoholfreies Bier",NL:"Alcoholvrij Bier"},
+"Heineken bottle":{ES:"Heineken, botella",DE:"Heineken, Flasche",NL:"Heineken, fles"},
+"Coronita bottle":{ES:"Coronita, botella",DE:"Coronita, Flasche",NL:"Coronita, fles"},
+"Magners Cider":{ES:"Sidra Magners",DE:"Magners Cider",NL:"Magners Cider"},
+"Shandy":{ES:"Clara",DE:"Radler",NL:"Radler"},
+"Shandy Large":{ES:"Clara Grande",DE:"Radler Gro&szlig;",NL:"Radler Groot"},
+"Rum Bacardi":{ES:"Ron Bacardi",DE:"Bacardi Rum",NL:"Bacardi Rum"},
+"Rum Havana 7 Years":{ES:"Ron Havana 7 A&ntilde;os",DE:"Havana Rum 7 Jahre",NL:"Havana Rum 7 Jaar"},
+"Mineral Water Still":{ES:"Agua Mineral Sin Gas",DE:"Stilles Mineralwasser",NL:"Mineraalwater zonder Koolzuur"},
+"Mineral Water Sparkling":{ES:"Agua Mineral Con Gas",DE:"Mineralwasser mit Kohlens&auml;ure",NL:"Mineraalwater met Koolzuur"},
+"Kas Lemon 0.3L":{ES:"Kas Lim&oacute;n 0,3L",DE:"Kas Zitrone 0,3L",NL:"Kas Citroen 0,3L"},
+"Kas Lemon 0.5L":{ES:"Kas Lim&oacute;n 0,5L",DE:"Kas Zitrone 0,5L",NL:"Kas Citroen 0,5L"},
+"Kas Orange 0.3L":{ES:"Kas Naranja 0,3L",DE:"Kas Orange 0,3L",NL:"Kas Sinaasappel 0,3L"},
+"Kas Orange 0.5L":{ES:"Kas Naranja 0,5L",DE:"Kas Orange 0,5L",NL:"Kas Sinaasappel 0,5L"},
+"Iced Tea bottle":{ES:"T&eacute; Helado, botella",DE:"Eistee, Flasche",NL:"IJsthee, fles"},
+"Schweppes Soda bottle":{ES:"Soda Schweppes, botella",DE:"Schweppes Soda, Flasche",NL:"Schweppes Soda, fles"},
+"Natural Orange Juice 0.3L":{ES:"Zumo de Naranja Natural 0,3L",DE:"Frisch gepresster Orangensaft 0,3L",NL:"Vers Sinaasappelsap 0,3L"},
+"Natural Orange Juice 0.5L":{ES:"Zumo de Naranja Natural 0,5L",DE:"Frisch gepresster Orangensaft 0,5L",NL:"Vers Sinaasappelsap 0,5L"},
+"Apple Juice bottle":{ES:"Zumo de Manzana, botella",DE:"Apfelsaft, Flasche",NL:"Appelsap, fles"},
+"Orange Juice bottle":{ES:"Zumo de Naranja, botella",DE:"Orangensaft, Flasche",NL:"Sinaasappelsap, fles"},
+"Pineapple Juice":{ES:"Zumo de Pi&ntilde;a",DE:"Ananassaft",NL:"Ananassap"},
+"Espresso":{ES:"Caf&eacute; Solo",DE:"Espresso",NL:"Espresso"},
+"Double Espresso":{ES:"Caf&eacute; Solo Doble",DE:"Doppelter Espresso",NL:"Dubbele Espresso"},
+"American Coffee":{ES:"Caf&eacute; Americano",DE:"Kaffee Americano",NL:"Koffie Americano"},
+"Machiatto":{ES:"Cortado",DE:"Macchiato",NL:"Macchiato"},
+"Flat White":{ES:"Flat White",DE:"Flat White",NL:"Flat White"},
+"Capuccino":{ES:"Capuchino",DE:"Cappuccino",NL:"Cappuccino"},
+"Latte Machiatto":{ES:"Caf&eacute; con Leche",DE:"Latte Macchiato",NL:"Latte Macchiato"},
+"Coffee with a dash of Baileys / Whisky / Brandy":{ES:"Caf&eacute; con un chorrito de Baileys / Whisky / Brandy",DE:"Kaffee mit einem Schuss Baileys / Whisky / Brandy",NL:"Koffie met een scheutje Baileys / Whisky / Brandy"},
+"Tea":{ES:"T&eacute;",DE:"Tee",NL:"Thee"},
+"Chocolate Drink":{ES:"Chocolate a la Taza",DE:"Trinkschokolade",NL:"Warme Chocolademelk"},
+"Glass of Milk":{ES:"Vaso de Leche",DE:"Glas Milch",NL:"Glas Melk"}
+};
+
+var DESC_T = {
+"Lettuce, cherry tomatoes, parmesan, anchovies, croutons, mayo & mustard":{ES:"Lechuga, tomates cherry, parmesano, anchoas, picatostes, mayonesa y mostaza",DE:"Salat, Kirschtomaten, Parmesan, Sardellen, Croutons, Mayonnaise & Senf",NL:"Sla, kerstomaatjes, parmezaan, ansjovis, croutons, mayonaise & mosterd"},
+"Tuna, tomatoes, mozzarella, rucula":{ES:"At&uacute;n, tomate, mozzarella, r&uacute;cula",DE:"Thunfisch, Tomaten, Mozzarella, Rucola",NL:"Tonijn, tomaten, mozzarella, rucola"},
+"Served with chips":{ES:"Servido con patatas",DE:"Mit Pommes serviert",NL:"Geserveerd met friet"},
+"Lettuce, tomato, chicken, bacon, cheese, ham & mayo - with chips":{ES:"Lechuga, tomate, pollo, bacon, queso, jam&oacute;n y mayonesa - con patatas",DE:"Salat, Tomate, H&auml;hnchen, Bacon, K&auml;se, Schinken & Mayonnaise - mit Pommes",NL:"Sla, tomaat, kip, bacon, kaas, ham & mayonaise - met friet"},
+"Seeded bread, lettuce, tomato, avocado, onion, pickles, watercress sauce":{ES:"Pan de semillas, lechuga, tomate, aguacate, cebolla, pepinillos, salsa de berros",DE:"K&ouml;rnerbrot, Salat, Tomate, Avocado, Zwiebel, Gurken, Brunnenkressesauce",NL:"Meergranenbrood, sla, tomaat, avocado, ui, augurk, waterkerssaus"},
+"With fries":{ES:"Con patatas fritas",DE:"Mit Pommes",NL:"Met friet"},
+"Seeded bread, lettuce, tomato, pickles, mayo - with chips":{ES:"Pan de semillas, lechuga, tomate, pepinillos, mayonesa - con patatas",DE:"K&ouml;rnerbrot, Salat, Tomate, Gurken, Mayonnaise - mit Pommes",NL:"Meergranenbrood, sla, tomaat, augurk, mayonaise - met friet"},
+"Cheese, lettuce & tomato in brioche - with fries":{ES:"Queso, lechuga y tomate en pan brioche - con patatas",DE:"K&auml;se, Salat & Tomate im Brioche - mit Pommes",NL:"Kaas, sla & tomaat op briochebrood - met friet"},
+"Lettuce, tomato, gherkins, bacon, caramelised onion, parmesan - with fries":{ES:"Lechuga, tomate, pepinillos, bacon, cebolla caramelizada, parmesano - con patatas",DE:"Salat, Tomate, Gurken, Bacon, karamellisierte Zwiebeln, Parmesan - mit Pommes",NL:"Sla, tomaat, augurk, bacon, gekarameliseerde ui, parmezaan - met friet"},
+"Sesame bun, lettuce, tomato, mayo - with fries":{ES:"Pan de s&eacute;samo, lechuga, tomate, mayonesa - con patatas",DE:"Sesambr&ouml;tchen, Salat, Tomate, Mayonnaise - mit Pommes",NL:"Sesambroodje, sla, tomaat, mayonaise - met friet"},
+"Crispy onions and gherkins":{ES:"Cebolla crujiente y pepinillos",DE:"R&ouml;stzwiebeln und Gurken",NL:"Krokante ui en augurk"},
+"Garlic shrimp casserole with a spicy touch":{ES:"Cazuela de gambas al ajillo con un toque picante",DE:"Garnelentopf mit Knoblauch und einer scharfen Note",NL:"Garnalenpannetje met knoflook en een pittige toets"},
+"With BBQ sauce":{ES:"Con salsa barbacoa",DE:"Mit BBQ-Sauce",NL:"Met BBQ-saus"},
+"Melted cheese, guacamole, pico de gallo & jalapenos":{ES:"Queso fundido, guacamole, pico de gallo y jalape&ntilde;os",DE:"Geschmolzener K&auml;se, Guacamole, Pico de Gallo & Jalape&ntilde;os",NL:"Gesmolten kaas, guacamole, pico de gallo & jalape&ntilde;os"},
+"Whipped cream & chocolate sauce":{ES:"Nata montada y salsa de chocolate",DE:"Schlagsahne & Schokoladensauce",NL:"Slagroom & chocoladesaus"},
+"Aperol, cava, sparkling water":{ES:"Aperol, cava, agua con gas",DE:"Aperol, Cava, Sprudelwasser",NL:"Aperol, cava, bruisend water"},
+"Bacardi rum, mint, lime, brown sugar, lemonade, angostura":{ES:"Ron Bacardi, menta, lima, az&uacute;car moreno, limonada, angostura",DE:"Bacardi Rum, Minze, Limette, brauner Zucker, Limonade, Angostura",NL:"Bacardi rum, munt, limoen, bruine suiker, limonade, angostura"},
+"Lemonade, mint, lime, brown sugar":{ES:"Limonada, menta, lima, az&uacute;car moreno",DE:"Limonade, Minze, Limette, brauner Zucker",NL:"Limonade, munt, limoen, bruine suiker"},
+"Malibu, Bacardi rum, pineapple juice, milk":{ES:"Malibu, ron Bacardi, zumo de pi&ntilde;a, leche",DE:"Malibu, Bacardi Rum, Ananassaft, Milch",NL:"Malibu, Bacardi rum, ananassap, melk"},
+"Coconut syrup, milk, pineapple juice":{ES:"Sirope de coco, leche, zumo de pi&ntilde;a",DE:"Kokossirup, Milch, Ananassaft",NL:"Kokossiroop, melk, ananassap"},
+"Bottle":{ES:"Botella",DE:"Flasche",NL:"Fles"},
+"Dry or semi-dry white / rose / red D.O. Penedes":{ES:"Blanco seco o semiseco / rosado / tinto D.O. Pened&egrave;s",DE:"Trockener oder halbtrockener Wei&szlig;wein / Ros&eacute; / Rotwein D.O. Pened&egrave;s",NL:"Droge of halfdroge witte wijn / ros&eacute; / rode wijn D.O. Pened&egrave;s"},
+"Bottle - white, red or rose":{ES:"Botella - blanco, tinto o rosado",DE:"Flasche - wei&szlig;, rot oder ros&eacute;",NL:"Fles - wit, rood of ros&eacute;"},
+"Say which in the notes":{ES:"Ind&iacute;calo en las notas",DE:"Bitte in den Notizen angeben",NL:"Geef aan in de opmerkingen"}
+};
+
+function itemName(it) {
+  if (lang === "EN") { return it.n; }
+  var e = ITEM_T[it.n];
+  if (e && e[lang]) { return e[lang]; }
+  return it.n;
+}
+
+function itemDesc(it) {
+  if (!it.d) { return ""; }
+  if (lang === "EN") { return it.d; }
+  var e = DESC_T[it.d];
+  if (e && e[lang]) { return e[lang]; }
+  return it.d;
+}
+
+function t(key) {
+  var e = T[key];
+  if (!e) { return ""; }
+  return e[lang] || e.EN;
+}
+
+function catName(en) {
+  if (lang === "EN") { return en; }
+  var e = CAT_T[en];
+  if (e && e[lang]) { return e[lang]; }
+  return en;
+}
+
+function buildLangBar() {
+  var html = "";
+  for (var i = 0; i < LANGS.length; i++) {
+    var L = LANGS[i];
+    html += '<a href="#" onclick="setLang(\'' + L + '\'); return false;" class="' + (L === lang ? "on" : "") + '">' + L + '</a>';
+  }
+  document.getElementById("langbar").innerHTML = html;
+}
+
+function setLang(L) {
+  lang = L;
+  try { localStorage.setItem("mpm_lang", L); } catch (e) {}
+  applyLang();
+}
+
+function applyLang() {
+  buildLangBar();
+  document.getElementById("hsub").innerHTML = t("sub");
+  document.getElementById("tpq").innerHTML = t("askTable");
+  document.getElementById("tinput").placeholder = decodeEnt(t("tableNo"));
+  document.getElementById("tpbtn").innerHTML = t("start");
+  document.getElementById("vatline").innerHTML = t("vat");
+  document.getElementById("phead").innerHTML = t("yourOrder") + ' <span onclick="closeBasket()">&#10005; ' + t("close") + '</span>';
+  document.getElementById("totlbl").innerHTML = t("total");
+  document.getElementById("onote").placeholder = decodeEnt(t("orderNote"));
+  document.getElementById("sendbtn").innerHTML = t("send");
+  document.getElementById("donebody").innerHTML = t("sentBody");
+  document.getElementById("doneagain").innerHTML = t("again");
+  if (tableNo) { document.getElementById("tbadge").innerHTML = t("table") + " " + tableNo; }
+  buildMenu();
+  restoreQtys();
+  updateBar();
+}
+
+function decodeEnt(str) {
+  var d = document.createElement("textarea");
+  d.innerHTML = str;
+  return d.value;
+}
+
+function restoreQtys() {
+  for (var key in basket) {
+    if (basket.hasOwnProperty(key)) {
+      var m = document.getElementById("m-" + key);
+      var q = document.getElementById("q-" + key);
+      if (m && q) {
+        m.className = "btn";
+        q.className = "qty";
+        q.innerHTML = basket[key];
+      }
+    }
+  }
+}
+
 var basket = {};
 var itemNotes = {};
 var tableNo = "";
@@ -291,13 +578,14 @@ function buildMenu() {
   for (var i = 0; i < MENU.length; i++) {
     var cat = MENU[i];
     var id = slug(cat.c);
-    nav += '<a href="#c-' + id + '">' + cat.c + '</a>';
-    html += '<div class="cat" id="c-' + id + '"><h2>' + cat.c + '</h2>';
+    var cn = catName(cat.c);
+    nav += '<a href="#c-' + id + '">' + cn + '</a>';
+    html += '<div class="cat" id="c-' + id + '"><h2>' + cn + '</h2>';
     for (var j = 0; j < cat.items.length; j++) {
       var it = cat.items[j];
       var key = i + "-" + j;
-      html += '<div class="item"><div class="info"><div class="nm">' + it.n + '</div>';
-      if (it.d) { html += '<div class="dt">' + it.d + '</div>'; }
+      html += '<div class="item"><div class="info"><div class="nm">' + itemName(it) + '</div>';
+      if (it.d) { html += '<div class="dt">' + itemDesc(it) + '</div>'; }
       html += '<div class="pr">' + euro(it.p) + '</div></div>';
       html += '<div class="ctl">';
       html += '<button class="btn hid" id="m-' + key + '" onclick="chg(\'' + key + '\',-1)">&minus;</button>';
@@ -348,11 +636,11 @@ function basketTotals() {
 }
 
 function updateBar() {
-  var t = basketTotals();
+  var tt = basketTotals();
   var bar = document.getElementById("basketbar");
-  if (t.count > 0) {
+  if (tt.count > 0) {
     bar.className = "bar";
-    document.getElementById("basketbtn").innerHTML = "View order (" + t.count + ") &middot; " + euro(t.total);
+    document.getElementById("basketbtn").innerHTML = t("viewOrder") + " (" + tt.count + ") &middot; " + euro(tt.total);
   } else {
     bar.className = "bar hid";
   }
@@ -364,14 +652,14 @@ function openBasket() {
     if (basket.hasOwnProperty(key)) {
       var it = itemByKey(key);
       var nv = (itemNotes[key] || "").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
-      html += '<div class="lwrap"><div class="line"><div class="li"><div class="nm">' + it.n + '</div>';
+      html += '<div class="lwrap"><div class="line"><div class="li"><div class="nm">' + itemName(it) + '</div>';
       html += '<div class="pr">' + euro(it.p) + '</div></div>';
       html += '<div class="lc">';
       html += '<button class="btn" onclick="chgLine(\'' + key + '\',-1)">&minus;</button>';
       html += '<span class="qty">' + basket[key] + '</span>';
       html += '<button class="btn add" onclick="chgLine(\'' + key + '\',1)">+</button>';
       html += '</div></div>';
-      html += '<input class="lnote" placeholder="e.g. no ice, no onion" value="' + nv + '" oninput="setNote(\'' + key + '\', this.value)">';
+      html += '<input class="lnote" placeholder="' + decodeEnt(t("itemNote")).replace(/"/g, "") + '" value="' + nv + '" oninput="setNote(\'' + key + '\', this.value)">';
       html += '</div>';
     }
   }
@@ -386,8 +674,8 @@ function setNote(key, val) {
 
 function chgLine(key, delta) {
   chg(key, delta);
-  var t = basketTotals();
-  if (t.count === 0) { closeBasket(); return; }
+  var tt = basketTotals();
+  if (tt.count === 0) { closeBasket(); return; }
   openBasket();
 }
 
@@ -396,8 +684,8 @@ function closeBasket() {
 }
 
 function sendOrder() {
-  var t = basketTotals();
-  if (t.count === 0) { return; }
+  var tt = basketTotals();
+  if (tt.count === 0) { return; }
   var items = [];
   for (var key in basket) {
     if (basket.hasOwnProperty(key)) {
@@ -410,13 +698,13 @@ function sendOrder() {
   var body = {
     table_no: tableNo,
     items: items,
-    total: t.total,
+    total: tt.total,
     note: document.getElementById("onote").value || null,
     status: "new"
   };
   var btn = document.getElementById("sendbtn");
   btn.disabled = true;
-  btn.innerHTML = "Sending...";
+  btn.innerHTML = t("sending");
   fetch(SUPABASE_URL + "/rest/v1/bar_orders", {
     method: "POST",
     headers: {
@@ -428,18 +716,18 @@ function sendOrder() {
     body: JSON.stringify(body)
   }).then(function(res) {
     btn.disabled = false;
-    btn.innerHTML = "Send order to the bar";
+    btn.innerHTML = t("send");
     if (res.ok) {
       document.getElementById("panel").className = "panel hid";
       document.getElementById("donepanel").className = "panel";
-      document.getElementById("donehead").innerHTML = "Order sent - Table " + tableNo;
+      document.getElementById("donehead").innerHTML = t("sentHead") + " - " + t("table") + " " + tableNo;
     } else {
-      alert("Could not send your order. Please try again, or order at the bar.");
+      alert(decodeEnt(t("failed")));
     }
   }).then(null, function(err) {
     btn.disabled = false;
-    btn.innerHTML = "Send order to the bar";
-    alert("No connection. Please try again, or order at the bar.");
+    btn.innerHTML = t("send");
+    alert(decodeEnt(t("failed")));
   });
 }
 
@@ -460,22 +748,29 @@ function setTable() {
   try { localStorage.setItem("mpm_table", tableNo); } catch (e) {}
   document.getElementById("tprompt").className = "tprompt hid";
   document.getElementById("menuwrap").className = "";
-  document.getElementById("tbadge").innerHTML = "Table " + tableNo;
+  document.getElementById("tbadge").innerHTML = t("table") + " " + tableNo;
+  buildMenu();
 }
 
 function init() {
+  var pl = (getParam("lang") || "").toUpperCase();
+  if (!pl) {
+    try { pl = localStorage.getItem("mpm_lang") || ""; } catch (e) { pl = ""; }
+  }
+  for (var li = 0; li < LANGS.length; li++) {
+    if (LANGS[li] === pl) { lang = pl; }
+  }
   var t = getParam("table");
   if (!t) {
     try { t = localStorage.getItem("mpm_table") || ""; } catch (e) { t = ""; }
   }
-  buildMenu();
   if (t) {
     tableNo = t;
-    document.getElementById("tbadge").innerHTML = "Table " + tableNo;
   } else {
     document.getElementById("tprompt").className = "tprompt";
     document.getElementById("menuwrap").className = "hid";
   }
+  applyLang();
 }
 
 init();
