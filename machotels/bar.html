@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mac Hotels - Bar Orders</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+body { font-family:-apple-system, "Helvetica Neue", Arial, sans-serif; background:#0E3A5D; color:#FFFFFF; }
+.top { padding:16px 16px 12px 16px; display:table; width:100%; }
+.top h1 { display:table-cell; font-size:18px; letter-spacing:2px; text-transform:uppercase; }
+.top .r { display:table-cell; text-align:right; vertical-align:middle; }
+.top .r button { background:#2E9CCA; color:#FFFFFF; border:none; border-radius:10px; padding:10px 14px; font-size:14px; font-weight:700; }
+.stat { padding:0 16px 12px 16px; color:#9CC8E0; font-size:13px; }
+.grid { padding:0 12px 24px 12px; }
+.card { background:#FFFFFF; color:#12314A; border-radius:14px; margin:0 4px 12px 4px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.25); }
+.card.old { outline:3px solid #E8B23A; }
+.ch { background:#2E9CCA; color:#FFFFFF; padding:12px 14px; display:table; width:100%; }
+.ch .tno { display:table-cell; font-size:22px; font-weight:800; letter-spacing:1px; }
+.ch .ago { display:table-cell; text-align:right; font-size:13px; color:#DCF0FA; vertical-align:middle; }
+.cb { padding:10px 14px; }
+.il { padding:6px 0; border-bottom:1px solid #E4EEF4; font-size:16px; }
+.il:last-child { border-bottom:none; }
+.il b { display:inline-block; min-width:34px; color:#2E9CCA; }
+.nt { background:#FDF3DA; color:#7A5B12; padding:10px 12px; border-radius:10px; margin:8px 0; font-size:14px; }
+.inote { color:#B07A10; font-size:14px; font-weight:600; margin:2px 0 2px 34px; }
+.cf { padding:10px 14px 14px 14px; display:table; width:100%; }
+.cf .tt { display:table-cell; vertical-align:middle; font-size:16px; font-weight:800; }
+.cf .ac { display:table-cell; text-align:right; }
+.cf button { background:#1F8A4C; color:#FFFFFF; border:none; border-radius:10px; padding:12px 18px; font-size:15px; font-weight:700; }
+.empty { text-align:center; padding:70px 24px; color:#9CC8E0; }
+.empty .big { font-size:50px; }
+.empty p { margin-top:10px; font-size:15px; }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <h1>Mac Hotels &middot; Bar</h1>
+  <div class="r"><button id="sndbtn" onclick="enableSound()">&#128266; Enable sound</button></div>
+</div>
+<div class="stat" id="stat">Connecting...</div>
+<div class="grid" id="grid"></div>
+
+<script>
+var SUPABASE_URL = "https://drfjyckllwnwzotmvbdq.supabase.co";
+var SUPABASE_KEY = "sb_publishable_yGUKp69w0npz4Qat-wzXoA_Zixfe3B8";
+var POLL_MS = 8000;
+
+var audioCtx = null;
+var lastIds = {};
+var firstLoad = true;
+
+function euro(cents) {
+  var s = (cents / 100).toFixed(2);
+  return s.replace(".", ",") + "\u20AC";
+}
+
+function enableSound() {
+  try {
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if (!audioCtx) { audioCtx = new AC(); }
+    if (audioCtx.state === "suspended") { audioCtx.resume(); }
+    beep();
+    document.getElementById("sndbtn").innerHTML = "&#128266; Sound on";
+  } catch (e) {
+    document.getElementById("sndbtn").innerHTML = "Sound unavailable";
+  }
+}
+
+function beep() {
+  if (!audioCtx) { return; }
+  try {
+    var o = audioCtx.createOscillator();
+    var g = audioCtx.createGain();
+    o.type = "sine";
+    o.frequency.value = 880;
+    g.gain.value = 0.3;
+    o.connect(g);
+    g.connect(audioCtx.destination);
+    o.start();
+    setTimeout(function() { o.frequency.value = 660; }, 180);
+    setTimeout(function() { o.stop(); }, 400);
+  } catch (e) {}
+}
+
+function agoText(iso) {
+  var then = new Date(iso).getTime();
+  var mins = Math.floor((new Date().getTime() - then) / 60000);
+  if (mins < 1) { return "just now"; }
+  if (mins === 1) { return "1 min ago"; }
+  return mins + " mins ago";
+}
+
+function agoMins(iso) {
+  return Math.floor((new Date().getTime() - new Date(iso).getTime()) / 60000);
+}
+
+function fetchOrders() {
+  var url = SUPABASE_URL + "/rest/v1/bar_orders?status=eq.new&order=created_at.asc&select=*";
+  fetch(url, {
+    headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY }
+  }).then(function(res) {
+    if (!res.ok) { throw new Error("bad"); }
+    return res.json();
+  }).then(function(rows) {
+    render(rows);
+    var hasNew = false;
+    for (var i = 0; i < rows.length; i++) {
+      if (!lastIds[rows[i].id]) { hasNew = true; }
+    }
+    var seen = {};
+    for (var j = 0; j < rows.length; j++) { seen[rows[j].id] = true; }
+    if (hasNew && !firstLoad) { beep(); }
+    lastIds = seen;
+    firstLoad = false;
+    var d = new Date();
+    var hh = ("0" + d.getHours()).slice(-2);
+    var mm = ("0" + d.getMinutes()).slice(-2);
+    document.getElementById("stat").innerHTML = rows.length + " open order" + (rows.length === 1 ? "" : "s") + " &middot; updated " + hh + ":" + mm;
+  }).then(null, function(err) {
+    document.getElementById("stat").innerHTML = "Connection problem - retrying...";
+  });
+}
+
+function render(rows) {
+  if (rows.length === 0) {
+    document.getElementById("grid").innerHTML = '<div class="empty"><div class="big">&#9969;</div><p>No open orders.<br>New orders appear here automatically.</p></div>';
+    return;
+  }
+  var html = "";
+  for (var i = 0; i < rows.length; i++) {
+    var r = rows[i];
+    var oldCls = agoMins(r.created_at) >= 10 ? " old" : "";
+    html += '<div class="card' + oldCls + '">';
+    html += '<div class="ch"><div class="tno">Table ' + r.table_no + '</div><div class="ago">' + agoText(r.created_at) + '</div></div>';
+    html += '<div class="cb">';
+    var items = r.items || [];
+    for (var j = 0; j < items.length; j++) {
+      html += '<div class="il"><b>' + items[j].qty + '&times;</b> ' + items[j].name;
+      if (items[j].note) { html += '<div class="inote">&rarr; ' + escapeHtml(items[j].note) + '</div>'; }
+      html += '</div>';
+    }
+    if (r.note) { html += '<div class="nt">&#128221; ' + escapeHtml(r.note) + '</div>'; }
+    html += '</div>';
+    html += '<div class="cf"><div class="tt">' + euro(r.total) + '</div><div class="ac"><button onclick="markServed(' + r.id + ')">Mark served</button></div></div>';
+    html += '</div>';
+  }
+  document.getElementById("grid").innerHTML = html;
+}
+
+function escapeHtml(s) {
+  return ("" + s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function markServed(id) {
+  fetch(SUPABASE_URL + "/rest/v1/bar_orders?id=eq." + id, {
+    method: "PATCH",
+    headers: {
+      "apikey": SUPABASE_KEY,
+      "Authorization": "Bearer " + SUPABASE_KEY,
+      "Content-Type": "application/json",
+      "Prefer": "return=minimal"
+    },
+    body: JSON.stringify({status: "served"})
+  }).then(function(res) {
+    fetchOrders();
+  }).then(null, function(err) {
+    alert("Could not update. Try again.");
+  });
+}
+
+fetchOrders();
+setInterval(fetchOrders, POLL_MS);
+</script>
+</body>
+</html>
