@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mac Hotels - Table QR Codes</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:-apple-system, "Helvetica Neue", Arial, sans-serif; background:#F4F7F9; color:#12314A; }
+.ctrl { background:#0E3A5D; color:#FFFFFF; padding:16px 14px; }
+.ctrl h1 { font-size:17px; letter-spacing:1px; text-transform:uppercase; margin-bottom:10px; }
+.ctrl label { display:block; font-size:13px; color:#9CC8E0; margin-bottom:4px; }
+.ctrl input { width:100%; padding:12px; border:none; border-radius:10px; font-size:16px; margin-bottom:10px; }
+.ctrl button { width:100%; background:#E8B23A; color:#0E3A5D; border:none; border-radius:10px; padding:13px; font-size:16px; font-weight:700; }
+.hint { padding:12px 14px; font-size:13px; color:#5B7489; }
+.sheet { padding:8px; }
+.card { background:#FFFFFF; border:2px solid #0E3A5D; border-radius:14px; padding:18px 14px; margin:0 0 10px 0; text-align:center; page-break-inside:avoid; }
+.card .brand { font-size:13px; letter-spacing:2px; text-transform:uppercase; color:#2E9CCA; font-weight:700; }
+.card .tno { font-size:30px; font-weight:800; margin:4px 0 12px 0; }
+.card .qr { display:inline-block; }
+.card .qr img, .card .qr canvas { display:block; margin:0 auto; }
+.card .cta { margin-top:12px; font-size:14px; font-weight:600; }
+.card .sub { font-size:12px; color:#5B7489; margin-top:3px; }
+@media print {
+  .ctrl, .hint { display:none; }
+  body { background:#FFFFFF; }
+  .sheet { padding:0; }
+  .card { margin:0 0 6mm 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="ctrl">
+  <h1>Table QR Codes</h1>
+  <label>How many tables?</label>
+  <input type="number" id="count" value="20" pattern="[0-9]*">
+  <label>Base link</label>
+  <input type="text" id="base" value="https://aarondoyle2026.github.io/machotels/order.html">
+  <button onclick="build()">Generate</button>
+</div>
+
+<div class="hint">Tap Generate, then use the Safari share button &rarr; Print to print or save as PDF. Each card is one table.</div>
+
+<div class="sheet" id="sheet"></div>
+
+<script>
+function build() {
+  var n = parseInt(document.getElementById("count").value, 10);
+  var base = document.getElementById("base").value;
+  var sheet = document.getElementById("sheet");
+  sheet.innerHTML = "";
+  if (!n || n < 1) { return; }
+  if (n > 100) { n = 100; }
+  for (var i = 1; i <= n; i++) {
+    var card = document.createElement("div");
+    card.className = "card";
+    var html = '<div class="brand">Mac Hotels</div>';
+    html += '<div class="tno">Table ' + i + '</div>';
+    html += '<div class="qr" id="qr-' + i + '"></div>';
+    html += '<div class="cta">Scan to order to your table</div>';
+    html += '<div class="sub">Point your camera at the code</div>';
+    card.innerHTML = html;
+    sheet.appendChild(card);
+    new QRCode(document.getElementById("qr-" + i), {
+      text: base + "?table=" + i,
+      width: 180,
+      height: 180,
+      colorDark: "#0E3A5D",
+      colorLight: "#FFFFFF"
+    });
+  }
+}
+
+build();
+</script>
+</body>
+</html>
