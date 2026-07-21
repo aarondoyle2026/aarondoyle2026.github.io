@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Mac Hotels - Order</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+body { font-family:-apple-system, "Helvetica Neue", Arial, sans-serif; background:#F4F7F9; color:#12314A; padding-bottom:90px; }
+.hero { background:#0E3A5D; color:#FFFFFF; padding:22px 18px 18px 18px; }
+.hero h1 { font-size:20px; letter-spacing:2px; text-transform:uppercase; font-weight:700; }
+.hero .sub { font-size:13px; color:#9CC8E0; margin-top:4px; letter-spacing:1px; }
+.tablebadge { display:inline-block; background:#2E9CCA; color:#FFFFFF; font-weight:700; border-radius:20px; padding:6px 14px; margin-top:12px; font-size:15px; }
+.catnav { position:-webkit-sticky; position:sticky; top:0; background:#0E3A5D; overflow-x:auto; white-space:nowrap; padding:10px 12px; z-index:5; -webkit-overflow-scrolling:touch; }
+.catnav a { display:inline-block; color:#9CC8E0; text-decoration:none; font-size:13px; font-weight:600; letter-spacing:1px; text-transform:uppercase; padding:6px 10px; border-radius:16px; }
+.catnav a.on { background:#2E9CCA; color:#FFFFFF; }
+.cat { padding:18px 14px 4px 14px; }
+.cat h2 { font-size:14px; letter-spacing:2px; text-transform:uppercase; color:#2E9CCA; border-bottom:2px solid #2E9CCA; padding-bottom:6px; margin-bottom:10px; font-weight:700; }
+.item { background:#FFFFFF; border-radius:12px; box-shadow:0 1px 3px rgba(14,58,93,0.10); padding:12px 12px; margin-bottom:8px; display:table; width:100%; }
+.item .info { display:table-cell; vertical-align:middle; }
+.item .nm { font-size:15px; font-weight:600; }
+.item .dt { font-size:12px; color:#7A93A6; margin-top:2px; }
+.item .pr { font-size:14px; color:#0E3A5D; font-weight:700; margin-top:2px; }
+.item .ctl { display:table-cell; vertical-align:middle; text-align:right; white-space:nowrap; width:110px; }
+.btn { display:inline-block; width:36px; height:36px; line-height:34px; text-align:center; border-radius:50%; border:none; font-size:20px; font-weight:700; background:#E4EEF4; color:#0E3A5D; }
+.btn.add { background:#2E9CCA; color:#FFFFFF; }
+.qty { display:inline-block; min-width:26px; text-align:center; font-size:16px; font-weight:700; }
+.hid { display:none; }
+.bar { position:fixed; bottom:0; left:0; right:0; background:#0E3A5D; padding:12px 14px; padding-bottom:calc(12px + env(safe-area-inset-bottom)); z-index:10; }
+.bar button { width:100%; background:#E8B23A; color:#0E3A5D; border:none; border-radius:12px; padding:14px; font-size:16px; font-weight:700; letter-spacing:0.5px; }
+.panel { position:fixed; top:0; left:0; right:0; bottom:0; background:#F4F7F9; z-index:20; overflow-y:auto; padding-bottom:120px; }
+.panel .ph { background:#0E3A5D; color:#FFFFFF; padding:18px 14px; font-size:16px; font-weight:700; letter-spacing:1px; }
+.panel .ph span { float:right; color:#9CC8E0; font-weight:400; font-size:14px; }
+.lwrap { background:#FFFFFF; border-radius:12px; margin:8px 14px; padding:12px; box-shadow:0 1px 3px rgba(14,58,93,0.10); }
+.line { display:table; width:100%; }
+.line .li { display:table-cell; vertical-align:middle; }
+.line .lc { display:table-cell; vertical-align:middle; text-align:right; white-space:nowrap; width:120px; }
+.lnote { width:100%; margin-top:8px; border:1px solid #C9DAE5; border-radius:8px; padding:8px 10px; font-size:14px; font-family:inherit; background:#F4F7F9; color:#12314A; }
+.tot { margin:14px; padding:14px; background:#FFFFFF; border-radius:12px; font-size:17px; font-weight:700; box-shadow:0 1px 3px rgba(14,58,93,0.10); }
+.tot span { float:right; }
+.note { margin:0 14px; }
+.note textarea { width:100%; border:1px solid #C9DAE5; border-radius:12px; padding:12px; font-size:15px; font-family:inherit; min-height:70px; background:#FFFFFF; }
+.vat { text-align:center; color:#7A93A6; font-size:12px; margin:14px; }
+.done { text-align:center; padding:70px 24px; }
+.done .big { font-size:56px; }
+.done h2 { font-size:22px; margin:14px 0 8px 0; color:#0E3A5D; }
+.done p { color:#5B7489; font-size:15px; line-height:1.5; }
+.tprompt { padding:26px 18px; }
+.tprompt h2 { font-size:18px; color:#0E3A5D; margin-bottom:10px; }
+.tprompt input { width:100%; padding:14px; font-size:18px; border:1px solid #C9DAE5; border-radius:12px; text-align:center; }
+.tprompt button { width:100%; margin-top:12px; background:#2E9CCA; color:#FFFFFF; border:none; border-radius:12px; padding:14px; font-size:16px; font-weight:700; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Mac Hotels</h1>
+  <div class="sub">Puerto Marina Snack Bar &middot; Order to your table</div>
+  <div class="tablebadge" id="tbadge">Table -</div>
+</div>
+
+<div id="tprompt" class="tprompt hid">
+  <h2>What table are you at?</h2>
+  <input type="number" id="tinput" placeholder="Table number" pattern="[0-9]*">
+  <button onclick="setTable()">Start ordering</button>
+</div>
+
+<div id="menuwrap">
+  <div class="catnav" id="catnav"></div>
+  <div id="menu"></div>
+  <div class="vat">All prices include VAT</div>
+</div>
+
+<div class="bar hid" id="basketbar">
+  <button onclick="openBasket()" id="basketbtn">View order</button>
+</div>
+
+<div class="panel hid" id="panel">
+  <div class="ph">Your order <span onclick="closeBasket()">&#10005; Close</span></div>
+  <div id="lines"></div>
+  <div class="tot">Total <span id="ptotal"></span></div>
+  <div class="note"><textarea id="onote" placeholder="Any notes for the bar? (ice, lemon, allergies...)"></textarea></div>
+  <div class="bar"><button onclick="sendOrder()" id="sendbtn">Send order to the bar</button></div>
+</div>
+
+<div class="panel hid" id="donepanel">
+  <div class="done">
+    <div class="big">&#127866;</div>
+    <h2 id="donehead">Order sent!</h2>
+    <p>The bar has your order and will bring it to your table. Sit back and enjoy the marina.</p>
+    <p style="margin-top:20px;"><a href="#" onclick="resetOrder(); return false;" style="color:#2E9CCA; font-weight:700;">Order something else</a></p>
+  </div>
+</div>
+
+<script>
+var SUPABASE_URL = "https://drfjyckllwnwzotmvbdq.supabase.co";
+var SUPABASE_KEY = "sb_publishable_yGUKp69w0npz4Qat-wzXoA_Zixfe3B8";
+
+var MENU = [
+ {c:"Something Fresh", items:[
+  {n:"Chicken Caesar Salad",p:1200,d:"Lettuce, cherry tomatoes, parmesan, anchovies, croutons, mayo & mustard"},
+  {n:"Tuna Focaccia",p:1200,d:"Tuna, tomatoes, mozzarella, rucula"},
+  {n:"Tomato, Feta, Tuna & Avocado Salad",p:1200}
+ ]},
+ {c:"Between Bread", items:[
+  {n:"Ham & Cheese Toastie",p:950,d:"Served with chips"},
+  {n:"Club Sandwich",p:1150,d:"Lettuce, tomato, chicken, bacon, cheese, ham & mayo - with chips"},
+  {n:"Vegan Sandwich",p:1050,d:"Seeded bread, lettuce, tomato, avocado, onion, pickles, watercress sauce"},
+  {n:"Chicken, Bacon & Cheese Baguette",p:1150,d:"With fries"},
+  {n:"Tuna Sandwich",p:1050,d:"Seeded bread, lettuce, tomato, pickles, mayo - with chips"},
+  {n:"Ham & Cheese Panini",p:1050},
+  {n:"Bread & Butter",p:200},
+  {n:"Ham Ruffles",p:240},
+  {n:"Salted Lays",p:240}
+ ]},
+ {c:"Pizzas", items:[
+  {n:"Pizza Margherita",p:1100},
+  {n:"Ham & Mushroom Pizza",p:1150},
+  {n:"Tuna Pizza",p:1150},
+  {n:"Pepperoni Pizza",p:1150}
+ ]},
+ {c:"Burgers", items:[
+  {n:"Classic Cheeseburger",p:1350,d:"Cheese, lettuce & tomato in brioche - with fries"},
+  {n:"Hamburger Puerto Marina",p:1500,d:"Lettuce, tomato, gherkins, bacon, caramelised onion, parmesan - with fries"},
+  {n:"Crispy Chicken Burger",p:1500,d:"Sesame bun, lettuce, tomato, mayo - with fries"},
+  {n:"Hot Dog",p:850,d:"Crispy onions and gherkins"}
+ ]},
+ {c:"Finger Food", items:[
+  {n:"French Fries",p:670},
+  {n:"Garlic Prawns",p:1350,d:"Garlic shrimp casserole with a spicy touch"},
+  {n:"Breaded Chicken Tenderloins",p:1150,d:"With BBQ sauce"},
+  {n:"Loaded Bacon & Cheese Fries",p:850,d:"Melted cheese, guacamole, pico de gallo & jalapenos"}
+ ]},
+ {c:"Something Sweet", items:[
+  {n:"Pineapple",p:620},
+  {n:"Brownie with Vanilla Ice Cream",p:620},
+  {n:"Belgian Waffle",p:620,d:"Whipped cream & chocolate sauce"}
+ ]},
+ {c:"Cocktails", items:[
+  {n:"Aperol Spritz",p:1000,d:"Aperol, cava, sparkling water"},
+  {n:"Mojito",p:1150,d:"Bacardi rum, mint, lime, brown sugar, lemonade, angostura"},
+  {n:"Strawberry Mojito",p:1150},
+  {n:"Mojito Sin Alcohol",p:950,d:"Lemonade, mint, lime, brown sugar"},
+  {n:"Pina Colada",p:1150,d:"Malibu, Bacardi rum, pineapple juice, milk"},
+  {n:"Alcohol-Free Pina Colada",p:950,d:"Coconut syrup, milk, pineapple juice"}
+ ]},
+ {c:"Sangria", items:[
+  {n:"Glass of Red Wine Sangria",p:720},
+  {n:"Glass of Cava Sangria",p:760},
+  {n:"Glass of Red Wine with Soda",p:520},
+  {n:"Spritzer",p:520},
+  {n:"Jug of Red Wine Sangria",p:2200},
+  {n:"Jug of Cava Sangria",p:2600},
+  {n:"Jug of Red Wine with Soda",p:1900}
+ ]},
+ {c:"Cava & Champagne", items:[
+  {n:"Glass of House Cava",p:450},
+  {n:"House Cava",p:2000,d:"Bottle"},
+  {n:"Benjamin Carta Nevada Mini",p:1150},
+  {n:"Benjamin Cordon Negro",p:1250},
+  {n:"Cava Freixenet Carta Nevada",p:2710,d:"Bottle"},
+  {n:"Cava Brut Cordon Negro",p:3120,d:"Bottle"},
+  {n:"Champagne Moet Chandon Brut",p:9800,d:"Bottle"}
+ ]},
+ {c:"Aperitifs", items:[
+  {n:"Aperol",p:560},
+  {n:"Campari",p:560},
+  {n:"Martini Bianco",p:500},
+  {n:"Martini Bianco Extra Dry",p:500},
+  {n:"Martini Rosso",p:500},
+  {n:"Pernod",p:500},
+  {n:"Ricard",p:500}
+ ]},
+ {c:"Brandys & Cognacs", items:[
+  {n:"Brandy Magno",p:710},
+  {n:"Brandy Veterano",p:620},
+  {n:"Brandy 103 Etiqueta Negra",p:710}
+ ]},
+ {c:"Whisky", items:[
+  {n:"Ballentine's",p:660},
+  {n:"Jack Daniel's",p:910},
+  {n:"Jameson",p:660}
+ ]},
+ {c:"Liqueurs", items:[
+  {n:"Amaretto",p:560},
+  {n:"Baileys",p:560},
+  {n:"Cointreau",p:660},
+  {n:"Jagermeister",p:610},
+  {n:"Licor 43",p:510},
+  {n:"Tequila Jose Cuervo Moreno",p:600},
+  {n:"Tia Maria",p:600}
+ ]},
+ {c:"Wines", items:[
+  {n:"Glass of Wine",p:450,d:"Dry or semi-dry white / rose / red D.O. Penedes"},
+  {n:"Etcetera Blanco",p:2300,d:"Bottle"},
+  {n:"Conde de Caralt",p:1950,d:"Bottle - white, red or rose"}
+ ]},
+ {c:"Beer & Cider", items:[
+  {n:"Small Draught Beer",p:400,d:"33cl"},
+  {n:"Large Draught Beer",p:540,d:"50cl"},
+  {n:"Spanish Beer bottle",p:430,d:"33cl"},
+  {n:"Non-Alcoholic Beer",p:430,d:"33cl"},
+  {n:"Heineken bottle",p:470,d:"33cl"},
+  {n:"Coronita bottle",p:520,d:"33cl"},
+  {n:"Magners Cider",p:820},
+  {n:"Shandy",p:400,d:"33cl"},
+  {n:"Shandy Large",p:540,d:"50cl"}
+ ]},
+ {c:"Gin", items:[
+  {n:"Larios",p:620},
+  {n:"Bombay Sapphire",p:810},
+  {n:"MG Rose",p:810},
+  {n:"Tanqueray",p:810},
+  {n:"Tanqueray 0.0",p:810}
+ ]},
+ {c:"Rum & Vodka", items:[
+  {n:"Rum Bacardi",p:620},
+  {n:"Rum Havana 7 Years",p:910},
+  {n:"Vodka Smirnoff",p:620},
+  {n:"Vodka Absolut",p:660}
+ ]},
+ {c:"Tonic Water", items:[
+  {n:"Tonic Schweppes",p:380}
+ ]},
+ {c:"Soft Drinks", items:[
+  {n:"Mineral Water Still",p:290,d:"50cl"},
+  {n:"Mineral Water Sparkling",p:290,d:"50cl"},
+  {n:"Ginger Ale",p:340},
+  {n:"Kas Lemon 0.3L",p:340},
+  {n:"Kas Lemon 0.5L",p:480},
+  {n:"Kas Orange 0.3L",p:340},
+  {n:"Kas Orange 0.5L",p:480},
+  {n:"Iced Tea bottle",p:380,d:"25cl"},
+  {n:"Pepsi Cola 0.3L",p:340},
+  {n:"Pepsi Cola 0.5L",p:480},
+  {n:"Pepsi Cola Max 0.3L",p:340},
+  {n:"Pepsi Cola Max 0.5L",p:480},
+  {n:"7UP 0.3L",p:340},
+  {n:"7UP 0.5L",p:480},
+  {n:"Red Bull",p:480},
+  {n:"Schweppes Soda bottle",p:340,d:"20cl"}
+ ]},
+ {c:"Smoothies & Juices", items:[
+  {n:"Natural Orange Juice 0.3L",p:550},
+  {n:"Natural Orange Juice 0.5L",p:750},
+  {n:"Apple Juice bottle",p:360,d:"20cl"},
+  {n:"Orange Juice bottle",p:360,d:"20cl"},
+  {n:"Pineapple Juice",p:360,d:"20cl"}
+ ]},
+ {c:"Hot Drinks", items:[
+  {n:"Espresso",p:280},
+  {n:"Double Espresso",p:310},
+  {n:"American Coffee",p:290},
+  {n:"Machiatto",p:290},
+  {n:"Flat White",p:310},
+  {n:"Capuccino",p:430},
+  {n:"Latte Machiatto",p:440},
+  {n:"Coffee with a dash of Baileys / Whisky / Brandy",p:430,d:"Say which in the notes"},
+  {n:"Tea",p:280},
+  {n:"Chocolate Drink",p:330},
+  {n:"Glass of Milk",p:250}
+ ]}
+];
+
+var basket = {};
+var itemNotes = {};
+var tableNo = "";
+
+function euro(cents) {
+  var s = (cents / 100).toFixed(2);
+  return s.replace(".", ",") + "\u20AC";
+}
+
+function getParam(name) {
+  var q = window.location.search.substring(1);
+  var parts = q.split("&");
+  for (var i = 0; i < parts.length; i++) {
+    var kv = parts[i].split("=");
+    if (kv[0] === name) { return decodeURIComponent(kv[1] || ""); }
+  }
+  return "";
+}
+
+function slug(s) {
+  return s.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+}
+
+function buildMenu() {
+  var nav = "";
+  var html = "";
+  for (var i = 0; i < MENU.length; i++) {
+    var cat = MENU[i];
+    var id = slug(cat.c);
+    nav += '<a href="#c-' + id + '">' + cat.c + '</a>';
+    html += '<div class="cat" id="c-' + id + '"><h2>' + cat.c + '</h2>';
+    for (var j = 0; j < cat.items.length; j++) {
+      var it = cat.items[j];
+      var key = i + "-" + j;
+      html += '<div class="item"><div class="info"><div class="nm">' + it.n + '</div>';
+      if (it.d) { html += '<div class="dt">' + it.d + '</div>'; }
+      html += '<div class="pr">' + euro(it.p) + '</div></div>';
+      html += '<div class="ctl">';
+      html += '<button class="btn hid" id="m-' + key + '" onclick="chg(\'' + key + '\',-1)">&minus;</button>';
+      html += '<span class="qty hid" id="q-' + key + '"></span>';
+      html += '<button class="btn add" onclick="chg(\'' + key + '\',1)">+</button>';
+      html += '</div></div>';
+    }
+    html += '</div>';
+  }
+  document.getElementById("catnav").innerHTML = nav;
+  document.getElementById("menu").innerHTML = html;
+}
+
+function itemByKey(key) {
+  var ix = key.split("-");
+  return MENU[parseInt(ix[0], 10)].items[parseInt(ix[1], 10)];
+}
+
+function chg(key, delta) {
+  var cur = basket[key] || 0;
+  cur += delta;
+  if (cur < 0) { cur = 0; }
+  if (cur === 0) { delete basket[key]; delete itemNotes[key]; } else { basket[key] = cur; }
+  var m = document.getElementById("m-" + key);
+  var q = document.getElementById("q-" + key);
+  if (cur > 0) {
+    m.className = "btn";
+    q.className = "qty";
+    q.innerHTML = cur;
+  } else {
+    m.className = "btn hid";
+    q.className = "qty hid";
+  }
+  updateBar();
+}
+
+function basketTotals() {
+  var count = 0;
+  var total = 0;
+  for (var key in basket) {
+    if (basket.hasOwnProperty(key)) {
+      var it = itemByKey(key);
+      count += basket[key];
+      total += it.p * basket[key];
+    }
+  }
+  return {count: count, total: total};
+}
+
+function updateBar() {
+  var t = basketTotals();
+  var bar = document.getElementById("basketbar");
+  if (t.count > 0) {
+    bar.className = "bar";
+    document.getElementById("basketbtn").innerHTML = "View order (" + t.count + ") &middot; " + euro(t.total);
+  } else {
+    bar.className = "bar hid";
+  }
+}
+
+function openBasket() {
+  var html = "";
+  for (var key in basket) {
+    if (basket.hasOwnProperty(key)) {
+      var it = itemByKey(key);
+      var nv = (itemNotes[key] || "").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+      html += '<div class="lwrap"><div class="line"><div class="li"><div class="nm">' + it.n + '</div>';
+      html += '<div class="pr">' + euro(it.p) + '</div></div>';
+      html += '<div class="lc">';
+      html += '<button class="btn" onclick="chgLine(\'' + key + '\',-1)">&minus;</button>';
+      html += '<span class="qty">' + basket[key] + '</span>';
+      html += '<button class="btn add" onclick="chgLine(\'' + key + '\',1)">+</button>';
+      html += '</div></div>';
+      html += '<input class="lnote" placeholder="e.g. no ice, no onion" value="' + nv + '" oninput="setNote(\'' + key + '\', this.value)">';
+      html += '</div>';
+    }
+  }
+  document.getElementById("lines").innerHTML = html;
+  document.getElementById("ptotal").innerHTML = euro(basketTotals().total);
+  document.getElementById("panel").className = "panel";
+}
+
+function setNote(key, val) {
+  if (val) { itemNotes[key] = val; } else { delete itemNotes[key]; }
+}
+
+function chgLine(key, delta) {
+  chg(key, delta);
+  var t = basketTotals();
+  if (t.count === 0) { closeBasket(); return; }
+  openBasket();
+}
+
+function closeBasket() {
+  document.getElementById("panel").className = "panel hid";
+}
+
+function sendOrder() {
+  var t = basketTotals();
+  if (t.count === 0) { return; }
+  var items = [];
+  for (var key in basket) {
+    if (basket.hasOwnProperty(key)) {
+      var it = itemByKey(key);
+      var line = {name: it.n, qty: basket[key], price: it.p};
+      if (itemNotes[key]) { line.note = itemNotes[key]; }
+      items.push(line);
+    }
+  }
+  var body = {
+    table_no: tableNo,
+    items: items,
+    total: t.total,
+    note: document.getElementById("onote").value || null,
+    status: "new"
+  };
+  var btn = document.getElementById("sendbtn");
+  btn.disabled = true;
+  btn.innerHTML = "Sending...";
+  fetch(SUPABASE_URL + "/rest/v1/bar_orders", {
+    method: "POST",
+    headers: {
+      "apikey": SUPABASE_KEY,
+      "Authorization": "Bearer " + SUPABASE_KEY,
+      "Content-Type": "application/json",
+      "Prefer": "return=minimal"
+    },
+    body: JSON.stringify(body)
+  }).then(function(res) {
+    btn.disabled = false;
+    btn.innerHTML = "Send order to the bar";
+    if (res.ok) {
+      document.getElementById("panel").className = "panel hid";
+      document.getElementById("donepanel").className = "panel";
+      document.getElementById("donehead").innerHTML = "Order sent - Table " + tableNo;
+    } else {
+      alert("Could not send your order. Please try again, or order at the bar.");
+    }
+  }).then(null, function(err) {
+    btn.disabled = false;
+    btn.innerHTML = "Send order to the bar";
+    alert("No connection. Please try again, or order at the bar.");
+  });
+}
+
+function resetOrder() {
+  basket = {};
+  itemNotes = {};
+  document.getElementById("onote").value = "";
+  document.getElementById("donepanel").className = "panel hid";
+  buildMenu();
+  updateBar();
+  window.scrollTo(0, 0);
+}
+
+function setTable() {
+  var v = document.getElementById("tinput").value;
+  if (!v) { return; }
+  tableNo = "" + v;
+  try { localStorage.setItem("mpm_table", tableNo); } catch (e) {}
+  document.getElementById("tprompt").className = "tprompt hid";
+  document.getElementById("menuwrap").className = "";
+  document.getElementById("tbadge").innerHTML = "Table " + tableNo;
+}
+
+function init() {
+  var t = getParam("table");
+  if (!t) {
+    try { t = localStorage.getItem("mpm_table") || ""; } catch (e) { t = ""; }
+  }
+  buildMenu();
+  if (t) {
+    tableNo = t;
+    document.getElementById("tbadge").innerHTML = "Table " + tableNo;
+  } else {
+    document.getElementById("tprompt").className = "tprompt";
+    document.getElementById("menuwrap").className = "hid";
+  }
+}
+
+init();
+</script>
+</body>
+</html>
