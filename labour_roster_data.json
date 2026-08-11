@@ -425,5 +425,474 @@
         }
       }
     }
+  },
+  "09/08/2026-15/08/2026": {
+    "Skerries": {
+      "scraped_at": "2026-08-11T11:54:04.882122",
+      "departments": {
+        "Ambient": {
+          "hours": "604:00",
+          "hours_decimal": 604.0,
+          "cost": 10145.2,
+          "days": {
+            "Sun 09/08": {
+              "hours": "50:00",
+              "hours_decimal": 50.0,
+              "cost": 859.65
+            },
+            "Mon 10/08": {
+              "hours": "99:00",
+              "hours_decimal": 99.0,
+              "cost": 1693.37
+            },
+            "Tue 11/08": {
+              "hours": "92:00",
+              "hours_decimal": 92.0,
+              "cost": 1527.22
+            },
+            "Wed 12/08": {
+              "hours": "66:00",
+              "hours_decimal": 66.0,
+              "cost": 1108.88
+            },
+            "Thu 13/08": {
+              "hours": "94:00",
+              "hours_decimal": 94.0,
+              "cost": 1588.32
+            },
+            "Fri 14/08": {
+              "hours": "108:00",
+              "hours_decimal": 108.0,
+              "cost": 1845.47
+            },
+            "Sat 15/08": {
+              "hours": "95:00",
+              "hours_decimal": 95.0,
+              "cost": 1522.29
+            }
+          }
+        },
+        "Butchers": {
+          "hours": "199:00",
+          "hours_decimal": 199.0,
+          "cost": 4336.49,
+          "days": {
+            "Sun 09/08": {
+              "hours": "25:00",
+              "hours_decimal": 25.0,
+              "cost": 420.46
+            },
+            "Mon 10/08": {
+              "hours": "25:00",
+              "hours_decimal": 25.0,
+              "cost": 619.77
+            },
+            "Tue 11/08": {
+              "hours": "25:00",
+              "hours_decimal": 25.0,
+              "cost": 646.95
+            },
+            "Wed 12/08": {
+              "hours": "25:00",
+              "hours_decimal": 25.0,
+              "cost": 757.41
+            },
+            "Thu 13/08": {
+              "hours": "33:00",
+              "hours_decimal": 33.0,
+              "cost": 743.82
+            },
+            "Fri 14/08": {
+              "hours": "32:00",
+              "hours_decimal": 32.0,
+              "cost": 750.61
+            },
+            "Sat 15/08": {
+              "hours": "34:00",
+              "hours_decimal": 34.0,
+              "cost": 397.47
+            }
+          }
+        },
+        "Cash Office": {
+          "hours": "16:00",
+          "hours_decimal": 16.0,
+          "cost": 288.1,
+          "days": {
+            "Sun 09/08": {
+              "hours": "00:00",
+              "hours_decimal": 0.0,
+              "cost": 0.0
+            },
+            "Mon 10/08": {
+              "hours": "04:00",
+              "hours_decimal": 4.0,
+              "cost": 72.03
+            },
+            "Tue 11/08": {
+              "hours": "04:00",
+              "hours_decimal": 4.0,
+              "cost": 72.03
+            },
+            "Wed 12/08": {
+              "hours": "04:00",
+              "hours_decimal": 4.0,
+              "cost": 72.03
+            },
+            "Thu 13/08": {
+              "hours": "00:00",
+              "hours_decimal": 0.0,
+              "cost": 0.0
+            },
+            "Fri 14/08": {
+              "hours": "04:00",
+              "hours_decimal": 4.0,
+              "cost": 72.03
+            },
+            "Sat 15/08": {
+              "hours": "00:00",
+              "hours_decimal": 0.0,
+              "cost": 0.0
+            }
+          }
+        },
+        "Checkouts": {
+          "hours": "430:15",
+          "hours_decimal": 430.25,
+          "cost": 7337.48,
+          "days": {
+            "Sun 09/08": {
+              "hours": "50:30",
+              "hours_decimal": 50.5,
+              "cost": 909.12
+            },
+            "Mon 10/08": {
+              "hours": "58:15",
+              "hours_decimal": 58.25,
+              "cost": 1086.92
+            },
+            "Tue 11/08": {
+              "hours": "55:15",
+              "hours_decimal": 55.25,
+              "cost": 1010.47
+            },
+            "Wed 12/08": {
+              "hours": "53:15",
+              "hours_decimal": 53.25,
+              "cost": 976.33
+            },
+            "Thu 13/08": {
+              "hours": "56:30",
+              "hours_decimal": 56.5,
+              "cost": 898.06
+            },
+            "Fri 14/08": {
+              "hours": "83:45",
+              "hours_decimal": 83.75,
+              "cost": 1368.3
+            },
+            "Sat 15/08": {
+              "hours": "72:45",
+              "hours_decimal": 72.75,
+              "cost": 1088.28
+            }
+          }
+        },
+        "Cleaning": {
+          "hours": "18:00",
+          "hours_decimal": 18.0,
+          "cost": 324.11,
+          "days": {
+            "Sun 09/08": {
+              "hours": "00:00",
+              "hours_decimal": 0.0,
+              "cost": 0.0
+            },
+            "Mon 10/08": {
+              "hours": "00:00",
+              "hours_decimal": 0.0,
+              "cost": 0.0
+            },
+            "Tue 11/08": {
+              "hours": "00:00",
+              "hours_decimal": 0.0,
+              "cost": 0.0
+            },
+            "Wed 12/08": {
+              "hours": "00:00",
+              "hours_decimal": 0.0,
+              "cost": 0.0
+            },
+            "Thu 13/08": {
+              "hours": "06:00",
+              "hours_decimal": 6.0,
+              "cost": 108.04
+            },
+            "Fri 14/08": {
+              "hours": "06:00",
+              "hours_decimal": 6.0,
+              "cost": 108.04
+            },
+            "Sat 15/08": {
+              "hours": "06:00",
+              "hours_decimal": 6.0,
+              "cost": 108.04
+            }
+          }
+        },
+        "Deli": {
+          "hours": "264:00",
+          "hours_decimal": 264.0,
+          "cost": 4401.95,
+          "days": {
+            "Sun 09/08": {
+              "hours": "24:00",
+              "hours_decimal": 24.0,
+              "cost": 437.23
+            },
+            "Mon 10/08": {
+              "hours": "40:00",
+              "hours_decimal": 40.0,
+              "cost": 669.76
+            },
+            "Tue 11/08": {
+              "hours": "39:00",
+              "hours_decimal": 39.0,
+              "cost": 643.77
+            },
+            "Wed 12/08": {
+              "hours": "39:00",
+              "hours_decimal": 39.0,
+              "cost": 783.53
+            },
+            "Thu 13/08": {
+              "hours": "40:00",
+              "hours_decimal": 40.0,
+              "cost": 688.36
+            },
+            "Fri 14/08": {
+              "hours": "41:00",
+              "hours_decimal": 41.0,
+              "cost": 690.01
+            },
+            "Sat 15/08": {
+              "hours": "41:00",
+              "hours_decimal": 41.0,
+              "cost": 489.29
+            }
+          }
+        },
+        "HR": {
+          "hours": "16:00",
+          "hours_decimal": 16.0,
+          "cost": 288.1,
+          "days": {
+            "Sun 09/08": {
+              "hours": "00:00",
+              "hours_decimal": 0.0,
+              "cost": 0.0
+            },
+            "Mon 10/08": {
+              "hours": "08:00",
+              "hours_decimal": 8.0,
+              "cost": 144.05
+            },
+            "Tue 11/08": {
+              "hours": "00:00",
+              "hours_decimal": 0.0,
+              "cost": 0.0
+            },
+            "Wed 12/08": {
+              "hours": "00:00",
+              "hours_decimal": 0.0,
+              "cost": 0.0
+            },
+            "Thu 13/08": {
+              "hours": "04:00",
+              "hours_decimal": 4.0,
+              "cost": 72.03
+            },
+            "Fri 14/08": {
+              "hours": "04:00",
+              "hours_decimal": 4.0,
+              "cost": 72.03
+            },
+            "Sat 15/08": {
+              "hours": "00:00",
+              "hours_decimal": 0.0,
+              "cost": 0.0
+            }
+          }
+        },
+        "Home Deliveries": {
+          "hours": "40:00",
+          "hours_decimal": 40.0,
+          "cost": 720.25,
+          "days": {
+            "Sun 09/08": {
+              "hours": "00:00",
+              "hours_decimal": 0.0,
+              "cost": 0.0
+            },
+            "Mon 10/08": {
+              "hours": "00:00",
+              "hours_decimal": 0.0,
+              "cost": 0.0
+            },
+            "Tue 11/08": {
+              "hours": "00:00",
+              "hours_decimal": 0.0,
+              "cost": 0.0
+            },
+            "Wed 12/08": {
+              "hours": "10:00",
+              "hours_decimal": 10.0,
+              "cost": 180.06
+            },
+            "Thu 13/08": {
+              "hours": "10:00",
+              "hours_decimal": 10.0,
+              "cost": 180.06
+            },
+            "Fri 14/08": {
+              "hours": "10:00",
+              "hours_decimal": 10.0,
+              "cost": 180.06
+            },
+            "Sat 15/08": {
+              "hours": "10:00",
+              "hours_decimal": 10.0,
+              "cost": 180.06
+            }
+          }
+        },
+        "IT Scanning": {
+          "hours": "32:00",
+          "hours_decimal": 32.0,
+          "cost": 556.99,
+          "days": {
+            "Sun 09/08": {
+              "hours": "00:00",
+              "hours_decimal": 0.0,
+              "cost": 0.0
+            },
+            "Mon 10/08": {
+              "hours": "08:00",
+              "hours_decimal": 8.0,
+              "cost": 139.25
+            },
+            "Tue 11/08": {
+              "hours": "08:00",
+              "hours_decimal": 8.0,
+              "cost": 139.25
+            },
+            "Wed 12/08": {
+              "hours": "00:00",
+              "hours_decimal": 0.0,
+              "cost": 0.0
+            },
+            "Thu 13/08": {
+              "hours": "08:00",
+              "hours_decimal": 8.0,
+              "cost": 139.25
+            },
+            "Fri 14/08": {
+              "hours": "08:00",
+              "hours_decimal": 8.0,
+              "cost": 139.25
+            },
+            "Sat 15/08": {
+              "hours": "00:00",
+              "hours_decimal": 0.0,
+              "cost": 0.0
+            }
+          }
+        },
+        "Management": {
+          "hours": "229:00",
+          "hours_decimal": 229.0,
+          "cost": 7011.05,
+          "days": {
+            "Sun 09/08": {
+              "hours": "22:00",
+              "hours_decimal": 22.0,
+              "cost": 0.0
+            },
+            "Mon 10/08": {
+              "hours": "27:00",
+              "hours_decimal": 27.0,
+              "cost": 1402.21
+            },
+            "Tue 11/08": {
+              "hours": "36:00",
+              "hours_decimal": 36.0,
+              "cost": 1402.21
+            },
+            "Wed 12/08": {
+              "hours": "27:00",
+              "hours_decimal": 27.0,
+              "cost": 1402.21
+            },
+            "Thu 13/08": {
+              "hours": "36:00",
+              "hours_decimal": 36.0,
+              "cost": 1402.21
+            },
+            "Fri 14/08": {
+              "hours": "36:00",
+              "hours_decimal": 36.0,
+              "cost": 1402.21
+            },
+            "Sat 15/08": {
+              "hours": "45:00",
+              "hours_decimal": 45.0,
+              "cost": 0.0
+            }
+          }
+        },
+        "Security": {
+          "hours": "41:00",
+          "hours_decimal": 41.0,
+          "cost": 702.25,
+          "days": {
+            "Sun 09/08": {
+              "hours": "09:30",
+              "hours_decimal": 9.5,
+              "cost": 0.0
+            },
+            "Mon 10/08": {
+              "hours": "10:30",
+              "hours_decimal": 10.5,
+              "cost": 140.45
+            },
+            "Tue 11/08": {
+              "hours": "00:00",
+              "hours_decimal": 0.0,
+              "cost": 140.45
+            },
+            "Wed 12/08": {
+              "hours": "00:00",
+              "hours_decimal": 0.0,
+              "cost": 140.45
+            },
+            "Thu 13/08": {
+              "hours": "10:30",
+              "hours_decimal": 10.5,
+              "cost": 140.45
+            },
+            "Fri 14/08": {
+              "hours": "10:30",
+              "hours_decimal": 10.5,
+              "cost": 140.45
+            },
+            "Sat 15/08": {
+              "hours": "00:00",
+              "hours_decimal": 0.0,
+              "cost": 0.0
+            }
+          }
+        }
+      }
+    }
   }
 }
