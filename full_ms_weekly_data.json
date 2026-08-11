@@ -1,3477 +1,4 @@
 {
-  "2026-04-10": {
-    "Palmerstown": {
-      "store": "Palmerstown",
-      "code": "356",
-      "report": "full ms weekly",
-      "scraped_at": "2026-04-10T16:35:26.959360+01:00",
-      "date": "2026-04-10",
-      "data": {
-        "headers": [],
-        "rows": []
-      },
-      "error": "Page.goto: Target page, context or browser has been closed"
-    },
-    "Balbriggan": {
-      "store": "Balbriggan",
-      "code": "374",
-      "report": "full ms weekly",
-      "scraped_at": "2026-04-10T16:35:26.959360+01:00",
-      "date": "2026-04-10",
-      "data": {
-        "headers": [],
-        "rows": []
-      },
-      "error": "Page.goto: Target page, context or browser has been closed"
-    },
-    "Skerries": {
-      "store": "Skerries",
-      "code": "424",
-      "report": "full ms weekly",
-      "scraped_at": "2026-04-10T16:35:26.959360+01:00",
-      "date": "2026-04-10",
-      "data": {
-        "headers": [],
-        "rows": []
-      },
-      "error": "Page.goto: Target page, context or browser has been closed"
-    }
-  },
-  "2026-04-14": {
-    "Palmerstown": {
-      "store": "Palmerstown",
-      "code": "356",
-      "report": "full ms weekly",
-      "scraped_at": "2026-04-14T17:32:15.175791+01:00",
-      "date": "2026-04-14",
-      "data": {
-        "headers": [
-          "Merchandising Structure - Article SV TB",
-          "Retail Sales \u20ac",
-          "Retail Sales \u20ac TY LY Var",
-          "Retail Sales \u20ac TY LY Var %"
-        ],
-        "rows": [
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "Total Merchandising Structure",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 400482.06,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 14568.11,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 3.775,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0024 - GROCERY -  IMPULSE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 75663.55,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 22019.8,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 41.0482,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0025 - GROCERY - EDIBLE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 32687.98,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -1711.94,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -4.9766,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0026 - GROCERY - NON FOOD",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 14521.86,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -2607.5,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -15.2224,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0027 - BABY & KIDS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 2571.62,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -897.47,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -25.8705,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0028 - PERSONAL CARE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 6884.22,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -148.92,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -2.1174,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0029 - BEERS/WINES/SPIRITS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 44762.54,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 3870.06,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 9.464,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0031 - TOBACCO",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 18732.8,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -269.34,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -1.4174,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0032 - PRODUCE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 26177.3,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -6845.41,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -20.7294,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0033 - MEAT, POULTRY & FISH",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 29985.1,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 3070.94,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 11.4101,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0034 - DAIRY",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 27281.41,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -1775.0,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -6.1088,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0035 - BREAD AND CAKES",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 28038.2,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 407.28,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 1.474,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0036 - DELI  AND  FOOD TO GO",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 15722.83,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 348.7,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 2.2681,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0037 - PROVISIONS & CONVENIENCE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 25332.58,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -3042.5,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -10.7224,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0038 - FROZEN FOODS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 11540.69,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -692.46,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -5.6605,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0039 - NON FOOD - RETAIL",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 4755.19,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -364.83,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -7.1256,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0044 - NON FOOD - EXPENSE ITEMS & CONSUMER PROMOTIONS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 2090.84,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -182.73,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -8.0371,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0045 - FUEL",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 421.72,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 288.05,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 215.4934,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0046 - NEWS & MAGS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 3364.86,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -67.19,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -1.9577,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0047 - NON FOOD - INSTORE SERVICES",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 29942.78,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 3168.57,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 11.8344,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "Unmatched - Unmatched",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 3.99,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 0.0,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 0.0,
-              "t": "pct"
-            }
-          }
-        ]
-      }
-    },
-    "Balbriggan": {
-      "store": "Balbriggan",
-      "code": "374",
-      "report": "full ms weekly",
-      "scraped_at": "2026-04-14T17:32:15.175791+01:00",
-      "date": "2026-04-14",
-      "data": {
-        "headers": [
-          "Merchandising Structure - Article SV TB",
-          "Retail Sales \u20ac",
-          "Retail Sales \u20ac TY LY Var",
-          "Retail Sales \u20ac TY LY Var %"
-        ],
-        "rows": [
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "Total Merchandising Structure",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 341645.87,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 16178.11,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 4.9707,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0024 - GROCERY -  IMPULSE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 55357.45,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 12067.56,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 27.8762,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0025 - GROCERY - EDIBLE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 26901.67,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -1178.01,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -4.1952,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0026 - GROCERY - NON FOOD",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 13721.79,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -1235.77,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -8.2618,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0027 - BABY & KIDS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 2634.73,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -671.37,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -20.307,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0028 - PERSONAL CARE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 6142.77,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -772.41,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -11.1698,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0029 - BEERS/WINES/SPIRITS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 52284.86,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 10032.85,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 23.7453,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0031 - TOBACCO",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 15092.75,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 1658.12,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 12.3421,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0032 - PRODUCE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 25956.32,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -2846.23,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -9.8819,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0033 - MEAT, POULTRY & FISH",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 30813.65,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 5677.57,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 22.5873,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0034 - DAIRY",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 23959.29,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -299.04,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -1.2327,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0035 - BREAD AND CAKES",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 25102.8,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -1759.38,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -6.5497,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0036 - DELI  AND  FOOD TO GO",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 10270.41,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -2239.34,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -17.9008,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0037 - PROVISIONS & CONVENIENCE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 18984.64,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -1748.56,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -8.4336,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0038 - FROZEN FOODS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 9067.57,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 10.72,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 0.1184,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0039 - NON FOOD - RETAIL",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 4216.83,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -286.77,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -6.3676,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0044 - NON FOOD - EXPENSE ITEMS & CONSUMER PROMOTIONS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 2058.87,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 30.14,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 1.4857,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0045 - FUEL",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 67.5,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -45.74,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -40.3921,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0046 - NEWS & MAGS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 2477.27,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -69.86,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -2.7427,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0047 - NON FOOD - INSTORE SERVICES",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 16534.7,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -146.37,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -0.8775,
-              "t": "pct"
-            }
-          }
-        ]
-      }
-    },
-    "Skerries": {
-      "store": "Skerries",
-      "code": "424",
-      "report": "full ms weekly",
-      "scraped_at": "2026-04-14T17:32:15.175791+01:00",
-      "date": "2026-04-14",
-      "data": {
-        "headers": [
-          "Merchandising Structure - Article SV TB",
-          "Retail Sales \u20ac",
-          "Retail Sales \u20ac TY LY Var",
-          "Retail Sales \u20ac TY LY Var %"
-        ],
-        "rows": [
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "Total Merchandising Structure",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 415223.28,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 33416.76,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 8.7523,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0024 - GROCERY -  IMPULSE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 67500.42,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 23211.41,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 52.409,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0025 - GROCERY - EDIBLE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 44133.9,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 2797.73,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 6.7682,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0026 - GROCERY - NON FOOD",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 19116.02,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -1900.74,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -9.0439,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0027 - BABY & KIDS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 3371.56,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -284.96,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -7.7932,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0028 - PERSONAL CARE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 8386.88,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -387.44,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -4.4156,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0029 - BEERS/WINES/SPIRITS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 55943.55,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 6199.3,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 12.4623,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0031 - TOBACCO",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 8896.9,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -486.55,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -5.1852,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0032 - PRODUCE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 40091.78,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -1748.77,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -4.1796,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0033 - MEAT, POULTRY & FISH",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 40191.61,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 4164.34,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 11.5589,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0034 - DAIRY",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 36497.4,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 1972.55,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 5.7134,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0035 - BREAD AND CAKES",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 22321.78,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -792.72,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -3.4295,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0036 - DELI  AND  FOOD TO GO",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 8720.99,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -2959.11,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -25.3346,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0037 - PROVISIONS & CONVENIENCE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 27635.36,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 3427.89,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 14.1605,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0038 - FROZEN FOODS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 15128.82,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 920.41,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 6.4779,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0039 - NON FOOD - RETAIL",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 4017.5,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -392.89,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -8.9083,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0044 - NON FOOD - EXPENSE ITEMS & CONSUMER PROMOTIONS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 1404.44,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -34.82,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -2.4193,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0045 - FUEL",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 645.44,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 526.49,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 442.6145,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0046 - NEWS & MAGS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 3551.05,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -292.67,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -7.6142,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0047 - NON FOOD - INSTORE SERVICES",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 7667.88,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -522.69,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -6.3816,
-              "t": "pct"
-            }
-          }
-        ]
-      }
-    }
-  },
-  "2026-04-16": {
-    "Palmerstown": {
-      "store": "Palmerstown",
-      "code": "356",
-      "report": "full ms weekly",
-      "scraped_at": "2026-04-16T09:09:54.142088+01:00",
-      "date": "2026-04-16",
-      "data": {
-        "headers": [
-          "Merchandising Structure - Article SV TB",
-          "Retail Sales \u20ac",
-          "Retail Sales \u20ac TY LY Var",
-          "Retail Sales \u20ac TY LY Var %"
-        ],
-        "rows": [
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "Total Merchandising Structure",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 346298.08,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -34961.65,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -9.17,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0024 - GROCERY -  IMPULSE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 39444.58,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -18738.56,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -32.2062,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0025 - GROCERY - EDIBLE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 31312.92,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -2659.93,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -7.8296,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0026 - GROCERY - NON FOOD",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 15249.31,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -318.91,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -2.0485,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0027 - BABY & KIDS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 2679.34,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -212.81,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -7.3582,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0028 - PERSONAL CARE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 7096.32,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -229.92,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -3.1383,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0029 - BEERS/WINES/SPIRITS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 40732.78,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -3295.77,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -7.4855,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0031 - TOBACCO",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 18274.2,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -54.98,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -0.3,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0032 - PRODUCE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 25154.2,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -1605.6,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -6.0,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0033 - MEAT, POULTRY & FISH",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 26198.25,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -731.27,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -2.7155,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0034 - DAIRY",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 27215.35,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -1335.29,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -4.6769,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0035 - BREAD AND CAKES",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 24205.65,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -3788.76,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -13.534,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0036 - DELI  AND  FOOD TO GO",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 14198.8,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -2240.6,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -13.6295,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0037 - PROVISIONS & CONVENIENCE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 24347.41,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -3647.79,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -13.0301,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0038 - FROZEN FOODS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 10805.75,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -1822.88,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -14.4345,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0039 - NON FOOD - RETAIL",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 4663.1,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 132.96,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 2.935,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0044 - NON FOOD - EXPENSE ITEMS & CONSUMER PROMOTIONS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 1853.41,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -148.48,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -7.417,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0045 - FUEL",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 438.82,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 363.93,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 485.9527,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0046 - NEWS & MAGS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 3556.68,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 143.07,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 4.1912,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0047 - NON FOOD - INSTORE SERVICES",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 28871.21,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 5229.94,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 22.1221,
-              "t": "pct"
-            }
-          }
-        ]
-      }
-    },
-    "Balbriggan": {
-      "store": "Balbriggan",
-      "code": "374",
-      "report": "full ms weekly",
-      "scraped_at": "2026-04-16T09:09:54.142088+01:00",
-      "date": "2026-04-16",
-      "data": {
-        "headers": [
-          "Merchandising Structure - Article SV TB",
-          "Retail Sales \u20ac",
-          "Retail Sales \u20ac TY LY Var",
-          "Retail Sales \u20ac TY LY Var %"
-        ],
-        "rows": [
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "Total Merchandising Structure",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 293219.15,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -31569.64,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -9.7201,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0024 - GROCERY -  IMPULSE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 32984.89,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -14517.93,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -30.5622,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0025 - GROCERY - EDIBLE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 25118.41,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -1097.2,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -4.1853,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0026 - GROCERY - NON FOOD",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 13355.86,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -988.4,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -6.8906,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0027 - BABY & KIDS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 2890.41,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 263.85,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 10.0455,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0028 - PERSONAL CARE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 6017.45,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -448.86,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -6.9415,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0029 - BEERS/WINES/SPIRITS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 46246.42,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 190.27,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 0.4131,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0031 - TOBACCO",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 14168.95,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 507.51,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 3.7149,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0032 - PRODUCE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 22682.37,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -3849.64,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -14.5094,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0033 - MEAT, POULTRY & FISH",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 24960.33,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -1092.75,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -4.1943,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0034 - DAIRY",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 22458.05,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -1015.84,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -4.3275,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0035 - BREAD AND CAKES",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 21581.44,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -4074.39,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -15.881,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0036 - DELI  AND  FOOD TO GO",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 10669.56,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -1927.97,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -15.3043,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0037 - PROVISIONS & CONVENIENCE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 17811.62,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -2722.42,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -13.2581,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0038 - FROZEN FOODS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 8282.48,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -1213.79,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -12.7818,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0039 - NON FOOD - RETAIL",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 3185.28,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -854.02,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -21.1428,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0044 - NON FOOD - EXPENSE ITEMS & CONSUMER PROMOTIONS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 1827.38,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -109.0,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -5.6291,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0045 - FUEL",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 97.5,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 77.51,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 387.7439,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0046 - NEWS & MAGS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 2237.01,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -204.24,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -8.3662,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0047 - NON FOOD - INSTORE SERVICES",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 16631.74,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 1495.67,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 9.8815,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "Unmatched - Unmatched",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 12.0,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 12.0,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": null,
-              "t": "nil"
-            }
-          }
-        ]
-      }
-    },
-    "Skerries": {
-      "store": "Skerries",
-      "code": "424",
-      "report": "full ms weekly",
-      "scraped_at": "2026-04-16T09:09:54.142088+01:00",
-      "date": "2026-04-16",
-      "data": {
-        "headers": [
-          "Merchandising Structure - Article SV TB",
-          "Retail Sales \u20ac",
-          "Retail Sales \u20ac TY LY Var",
-          "Retail Sales \u20ac TY LY Var %"
-        ],
-        "rows": [
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "Total Merchandising Structure",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 351055.86,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -32432.01,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -8.4571,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0024 - GROCERY -  IMPULSE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 34228.11,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -11561.84,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -25.2497,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0025 - GROCERY - EDIBLE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 41568.53,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 41.82,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 0.1007,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0026 - GROCERY - NON FOOD",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 20615.44,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 1267.78,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 6.5526,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0027 - BABY & KIDS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 3114.77,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -679.82,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -17.9155,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0028 - PERSONAL CARE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 8430.63,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -222.67,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -2.5732,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0029 - BEERS/WINES/SPIRITS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 47735.55,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -5159.34,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -9.7539,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0031 - TOBACCO",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 7769.51,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -1961.88,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -20.1603,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0032 - PRODUCE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 37410.47,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -2798.25,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -6.9593,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0033 - MEAT, POULTRY & FISH",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 33968.94,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -3439.28,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -9.1939,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0034 - DAIRY",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 33400.55,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -1038.58,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -3.0157,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0035 - BREAD AND CAKES",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 20161.97,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -2430.08,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -10.7564,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0036 - DELI  AND  FOOD TO GO",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 8228.5,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -3378.25,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -29.1059,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0037 - PROVISIONS & CONVENIENCE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 24360.02,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -588.94,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -2.3606,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0038 - FROZEN FOODS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 13366.04,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -1412.37,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -9.557,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0039 - NON FOOD - RETAIL",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 3890.98,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -302.23,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -7.2076,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0044 - NON FOOD - EXPENSE ITEMS & CONSUMER PROMOTIONS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 1208.87,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -307.48,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -20.2776,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0045 - FUEL",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 727.18,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 662.9,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 1031.2694,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0046 - NEWS & MAGS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 3660.4,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 138.19,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 3.9234,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0047 - NON FOOD - INSTORE SERVICES",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 7209.4,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 738.31,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 11.4094,
-              "t": "pct"
-            }
-          }
-        ]
-      }
-    }
-  },
-  "2026-04-29": {
-    "Palmerstown": {
-      "store": "Palmerstown",
-      "code": "356",
-      "report": "full ms weekly",
-      "scraped_at": "2026-04-29T17:05:23.475842+01:00",
-      "date": "2026-04-29",
-      "data": {
-        "headers": [
-          "Merchandising Structure - Article SV TB",
-          "Retail Sales \u20ac",
-          "Retail Sales \u20ac TY LY Var",
-          "Retail Sales \u20ac TY LY Var %"
-        ],
-        "rows": [
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "Total Merchandising Structure",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 347933.35,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -77625.7,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -18.2409,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0024 - GROCERY -  IMPULSE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 40505.09,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -47816.56,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -54.1391,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0025 - GROCERY - EDIBLE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 34136.72,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -536.44,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -1.5471,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0026 - GROCERY - NON FOOD",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 15585.8,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 462.78,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 3.0601,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0027 - BABY & KIDS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 2740.71,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -490.59,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -15.1824,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0028 - PERSONAL CARE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 6942.48,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -551.7,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -7.3617,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0029 - BEERS/WINES/SPIRITS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 37023.74,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -12478.76,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -25.2083,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0031 - TOBACCO",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 18379.6,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -289.12,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -1.5487,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0032 - PRODUCE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 25791.69,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -579.51,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -2.1975,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0033 - MEAT, POULTRY & FISH",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 26032.68,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -4109.4,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -13.6334,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0034 - DAIRY",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 27067.44,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -2151.08,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -7.362,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0035 - BREAD AND CAKES",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 24792.58,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -4847.43,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -16.3543,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0036 - DELI  AND  FOOD TO GO",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 16140.89,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 1656.24,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 11.4344,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0037 - PROVISIONS & CONVENIENCE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 24768.54,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -3594.15,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -12.6721,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0038 - FROZEN FOODS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 11150.78,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -1257.96,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -10.1377,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0039 - NON FOOD - RETAIL",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 4681.48,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 1120.61,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 31.4701,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0044 - NON FOOD - EXPENSE ITEMS & CONSUMER PROMOTIONS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 1940.11,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -373.98,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -16.161,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0045 - FUEL",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 335.93,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 255.65,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 318.4479,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0046 - NEWS & MAGS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 3415.24,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -475.12,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -12.2128,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0047 - NON FOOD - INSTORE SERVICES",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 26501.85,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -1569.18,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -5.59,
-              "t": "pct"
-            }
-          }
-        ]
-      }
-    },
-    "Balbriggan": {
-      "store": "Balbriggan",
-      "code": "374",
-      "report": "full ms weekly",
-      "scraped_at": "2026-04-29T17:05:23.475842+01:00",
-      "date": "2026-04-29",
-      "data": {
-        "headers": [
-          "Merchandising Structure - Article SV TB",
-          "Retail Sales \u20ac",
-          "Retail Sales \u20ac TY LY Var",
-          "Retail Sales \u20ac TY LY Var %"
-        ],
-        "rows": [
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "Total Merchandising Structure",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 298559.23,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -52680.97,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -14.9986,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0024 - GROCERY -  IMPULSE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 34971.82,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -23445.39,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -40.1344,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0025 - GROCERY - EDIBLE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 27783.14,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 717.41,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 2.6506,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0026 - GROCERY - NON FOOD",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 14354.98,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -877.03,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -5.7578,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0027 - BABY & KIDS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 2915.61,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 396.71,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 15.7493,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0028 - PERSONAL CARE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 6590.99,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -220.01,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -3.2302,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0029 - BEERS/WINES/SPIRITS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 39705.3,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -13052.61,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -24.7406,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0031 - TOBACCO",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 13646.65,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -501.75,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -3.5463,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0032 - PRODUCE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 23420.71,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -3441.96,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -12.8132,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0033 - MEAT, POULTRY & FISH",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 25537.28,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -5214.99,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -16.9581,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0034 - DAIRY",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 22548.51,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -2310.31,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -9.2937,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0035 - BREAD AND CAKES",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 23449.48,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -2905.09,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -11.0231,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0036 - DELI  AND  FOOD TO GO",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 11165.38,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 213.4,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 1.9485,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0037 - PROVISIONS & CONVENIENCE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 18021.88,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -2471.4,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -12.0596,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0038 - FROZEN FOODS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 9038.07,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -36.2,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -0.3989,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0039 - NON FOOD - RETAIL",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 4425.49,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 653.38,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 17.3213,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0044 - NON FOOD - EXPENSE ITEMS & CONSUMER PROMOTIONS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 1959.06,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -121.17,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -5.8248,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0045 - FUEL",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 90.0,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -31.75,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -26.078,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0046 - NEWS & MAGS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 2282.51,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -277.95,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -10.8555,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0047 - NON FOOD - INSTORE SERVICES",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 16652.37,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 245.74,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 1.4978,
-              "t": "pct"
-            }
-          }
-        ]
-      }
-    },
-    "Skerries": {
-      "store": "Skerries",
-      "code": "424",
-      "report": "full ms weekly",
-      "scraped_at": "2026-04-29T17:05:23.475842+01:00",
-      "date": "2026-04-29",
-      "data": {
-        "headers": [
-          "Merchandising Structure - Article SV TB",
-          "Retail Sales \u20ac",
-          "Retail Sales \u20ac TY LY Var",
-          "Retail Sales \u20ac TY LY Var %"
-        ],
-        "rows": [
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "Total Merchandising Structure",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 364411.76,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -52677.17,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -12.6297,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0024 - GROCERY -  IMPULSE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 33742.63,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -33397.39,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -49.7429,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0025 - GROCERY - EDIBLE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 44839.47,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 2686.65,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 6.3736,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0026 - GROCERY - NON FOOD",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 20849.51,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 991.12,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 4.9909,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0027 - BABY & KIDS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 3873.76,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 517.29,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 15.4117,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0028 - PERSONAL CARE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 9081.44,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 403.75,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 4.6527,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0029 - BEERS/WINES/SPIRITS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 43743.12,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -12736.75,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -22.551,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0031 - TOBACCO",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 9859.81,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 368.25,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 3.8798,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0032 - PRODUCE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 39062.67,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -1791.9,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -4.386,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0033 - MEAT, POULTRY & FISH",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 36077.15,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -4256.14,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -10.5524,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0034 - DAIRY",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 34695.22,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -1610.28,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -4.4354,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0035 - BREAD AND CAKES",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 21173.39,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -2496.65,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -10.5477,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0036 - DELI  AND  FOOD TO GO",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 9709.41,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -731.49,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -7.006,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0037 - PROVISIONS & CONVENIENCE",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 26050.82,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 123.21,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 0.4752,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0038 - FROZEN FOODS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 13832.6,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -1150.17,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -7.6766,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0039 - NON FOOD - RETAIL",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 4067.48,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -1068.2,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -20.7996,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0044 - NON FOOD - EXPENSE ITEMS & CONSUMER PROMOTIONS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 1393.21,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": -162.81,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": -10.4632,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0045 - FUEL",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 400.02,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 319.68,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 397.9089,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0046 - NEWS & MAGS",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 3751.71,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 285.75,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 8.2445,
-              "t": "pct"
-            }
-          },
-          {
-            "Merchandising Structure - Article SV TB": {
-              "v": "D0047 - NON FOOD - INSTORE SERVICES",
-              "t": "str"
-            },
-            "Retail Sales \u20ac": {
-              "v": 8208.34,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var": {
-              "v": 1028.91,
-              "t": "num"
-            },
-            "Retail Sales \u20ac TY LY Var %": {
-              "v": 14.3314,
-              "t": "pct"
-            }
-          }
-        ]
-      }
-    }
-  },
   "2026-05-19": {
     "Palmerstown": {
       "store": "Palmerstown",
@@ -10209,6 +6736,1121 @@
             },
             "Retail Sales \u20ac TY LY Var %": {
               "v": 1.1419,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "2026-08-11": {
+    "Palmerstown": {
+      "store": "Palmerstown",
+      "code": "356",
+      "report": "full ms weekly",
+      "scraped_at": "2026-08-11T12:31:52.549690+01:00",
+      "date": "2026-08-11",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "Total Merchandising Structure",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 351462.86,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 23786.34,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 7.2591,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0024 - GROCERY - IMPULSE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 43277.56,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 3252.66,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 8.1266,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0025 - GROCERY - EDIBLE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 32755.74,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 3836.62,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 13.2667,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0026 - GROCERY - NON FOOD",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 16809.63,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 1483.03,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 9.6762,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0027 - BABY & KIDS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 2362.6,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 33.08,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 1.42,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0028 - PERSONAL CARE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 6804.11,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -182.98,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -2.6188,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0029 - BEERS/WINES/SPIRITS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 45694.99,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 2466.62,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 5.706,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0031 - TOBACCO",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 17272.85,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -551.45,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -3.0938,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0032 - PRODUCE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 25070.24,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 1057.1,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 4.4022,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0033 - MEAT, POULTRY & FISH",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 25266.29,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 2078.62,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 8.9643,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0034 - DAIRY",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 26820.01,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 2671.76,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 11.064,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0035 - BREAD AND CAKES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 24301.37,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 1978.41,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 8.8627,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0036 - DELI AND FOOD TO GO",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 15766.08,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 1695.92,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 12.0533,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0037 - PROVISIONS & CONVENIENCE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 24274.94,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 2468.95,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 11.3223,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0038 - FROZEN FOODS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 12834.85,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 2323.02,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 22.0991,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0039 - NON FOOD - RETAIL",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 4607.59,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 359.35,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 8.4588,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0044 - NON FOOD - EXPENSE ITEMS & CONSUMER PROMOTIONS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1359.8,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 77.83,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 6.0711,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0045 - FUEL",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -9.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -100.0,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0046 - NEWS & MAGS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 3401.09,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -18.71,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -0.5471,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0047 - NON FOOD - INSTORE SERVICES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 22783.12,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -1234.49,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -5.1399,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    },
+    "Balbriggan": {
+      "store": "Balbriggan",
+      "code": "374",
+      "report": "full ms weekly",
+      "scraped_at": "2026-08-11T12:31:52.549690+01:00",
+      "date": "2026-08-11",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "Total Merchandising Structure",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 305378.3,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 1756.13,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 0.5784,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0024 - GROCERY - IMPULSE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 36682.33,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 1903.76,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 5.4739,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0025 - GROCERY - EDIBLE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 24687.06,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -450.68,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -1.7928,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0026 - GROCERY - NON FOOD",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 14662.01,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -730.86,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -4.748,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0027 - BABY & KIDS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 2645.96,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -411.98,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -13.4725,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0028 - PERSONAL CARE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 6672.94,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -442.82,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -6.2231,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0029 - BEERS/WINES/SPIRITS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 46765.61,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -608.61,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -1.2847,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0031 - TOBACCO",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 13967.1,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 623.9,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 4.6758,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0032 - PRODUCE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 24801.04,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -211.01,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -0.8436,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0033 - MEAT, POULTRY & FISH",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 25537.82,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -506.91,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -1.9463,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0034 - DAIRY",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 22597.97,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -654.34,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -2.8141,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0035 - BREAD AND CAKES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 22246.06,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -1353.34,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -5.7346,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0036 - DELI AND FOOD TO GO",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 12389.37,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 1609.2,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 14.9274,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0037 - PROVISIONS & CONVENIENCE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 18264.61,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 1252.05,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 7.3596,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0038 - FROZEN FOODS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 10108.26,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 720.48,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 7.6747,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0039 - NON FOOD - RETAIL",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 3463.92,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -325.35,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -8.5861,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0044 - NON FOOD - EXPENSE ITEMS & CONSUMER PROMOTIONS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1562.69,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -228.95,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -12.7788,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0046 - NEWS & MAGS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 2399.41,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -29.67,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -1.2215,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0047 - NON FOOD - INSTORE SERVICES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 15924.14,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 1601.26,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 11.1797,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    },
+    "Skerries": {
+      "store": "Skerries",
+      "code": "424",
+      "report": "full ms weekly",
+      "scraped_at": "2026-08-11T12:31:52.549690+01:00",
+      "date": "2026-08-11",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "Total Merchandising Structure",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 388775.39,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 16309.25,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 4.3787,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0024 - GROCERY - IMPULSE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 40713.53,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 1922.06,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 4.9549,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0025 - GROCERY - EDIBLE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 44012.87,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 2066.99,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 4.9278,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0026 - GROCERY - NON FOOD",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 21071.55,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 864.73,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 4.2794,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0027 - BABY & KIDS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 3859.5,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 595.99,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 18.2622,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0028 - PERSONAL CARE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 8840.86,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 412.73,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 4.8971,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0029 - BEERS/WINES/SPIRITS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 58280.74,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 1764.19,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 3.1215,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0031 - TOBACCO",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 9949.87,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 787.22,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 8.5916,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0032 - PRODUCE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 40417.64,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 1488.03,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 3.8224,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0033 - MEAT, POULTRY & FISH",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 37657.63,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 599.86,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 1.6187,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0034 - DAIRY",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 35747.98,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 949.87,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 2.7297,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0035 - BREAD AND CAKES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 20524.53,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -710.2,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -3.3445,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0036 - DELI AND FOOD TO GO",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 12352.68,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 1443.59,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 13.2329,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0037 - PROVISIONS & CONVENIENCE",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 25043.77,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 2733.81,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 12.2538,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0038 - FROZEN FOODS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 16146.02,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 1775.5,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 12.3552,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0039 - NON FOOD - RETAIL",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 3689.4,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -79.57,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -2.1112,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0044 - NON FOOD - EXPENSE ITEMS & CONSUMER PROMOTIONS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 839.73,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -78.71,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -8.57,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0045 - FUEL",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 24.47,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -26.53,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -52.0196,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0046 - NEWS & MAGS",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 3134.88,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -123.5,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -3.7902,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0047 - NON FOOD - INSTORE SERVICES",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 6467.74,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -76.81,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -1.1736,
               "t": "pct"
             }
           }
