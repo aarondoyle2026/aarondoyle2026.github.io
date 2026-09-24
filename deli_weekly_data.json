@@ -12941,5 +12941,142 @@
         ]
       }
     }
+  },
+  "2026-09-24": {
+    "Palmerstown": {
+      "store": "Palmerstown",
+      "code": "356",
+      "report": "deli weekly",
+      "scraped_at": "2026-09-24T19:18:10.722223+01:00",
+      "date": "2026-09-24",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0036 - DELI AND FOOD TO GO",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 16514.46,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 1178.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 7.681,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 43.2825,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 2.7922,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    },
+    "Balbriggan": {
+      "store": "Balbriggan",
+      "code": "374",
+      "report": "deli weekly",
+      "scraped_at": "2026-09-24T19:18:10.722223+01:00",
+      "date": "2026-09-24",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0036 - DELI AND FOOD TO GO",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 12342.09,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 1121.78,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 9.9978,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 44.4632,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 1.331,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    },
+    "Skerries": {
+      "store": "Skerries",
+      "code": "424",
+      "report": "deli weekly",
+      "scraped_at": "2026-09-24T19:18:10.722223+01:00",
+      "date": "2026-09-24",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0036 - DELI AND FOOD TO GO",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 11449.59,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 2161.6,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 23.2731,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 41.1305,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -0.9432,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    }
   }
 }
