@@ -2858,5 +2858,951 @@
         ]
       }
     }
+  },
+  "2026-09-24": {
+    "Palmerstown": {
+      "store": "Palmerstown",
+      "code": "356",
+      "report": "top cash margin lines",
+      "scraped_at": "2026-09-24T19:18:10.722223+01:00",
+      "date": "2026-09-24",
+      "data": {
+        "headers": [],
+        "rows": []
+      },
+      "error": "Export button never appeared."
+    },
+    "Balbriggan": {
+      "store": "Balbriggan",
+      "code": "374",
+      "report": "top cash margin lines",
+      "scraped_at": "2026-09-24T19:18:10.722223+01:00",
+      "date": "2026-09-24",
+      "data": {
+        "headers": [],
+        "rows": []
+      },
+      "error": "Export button never appeared."
+    },
+    "Skerries": {
+      "store": "Skerries",
+      "code": "424",
+      "report": "top cash margin lines",
+      "scraped_at": "2026-09-24T19:18:10.722223+01:00",
+      "date": "2026-09-24",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Qty",
+          "Retail Sales \u20ac",
+          "Retail Scan Margin \u20ac",
+          "Retail Scan Margin %"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1150694 000 SV CHICKEN FILLETS 5FOR\u20ac6|125GRM 0290870000000",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 453.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 3392.97,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 656.8499999999999,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 19.3591,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1123802 000 CHICKEN FILLET ROLL LARGE | 1PCE 0251100000000",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 145.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 616.25,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 349.31698,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 61.7859,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1035239 000 MEDIUM FRESH SALAD| 1PCE 61003",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 296.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 842.96,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 295.36,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 35.0384,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1683185 003 SIGNATURE TASTES BLUEBERRY | 225GRM 5099839732867",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 476.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1764.41,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 263.69148,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 14.945,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1025220 000 SUPERVALU BAG FOR LIFE RECYCLED| 1PCE 5099839694455",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 605.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 598.95,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 255.72021999999998,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 52.5145,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1040784 000 SAUSAGE ROLLS MULTI-BUY| 1PCE 0237890000000",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 193.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 424.6,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 244.79127,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 62.8409,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1013680 000 SV BANANAS  LOOSE NORMAL |1KGM 0287810000000",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 931.817,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1657.92,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 204.28548,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 12.3218,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1600350 000 SV FREE RANGE LARGE EGGS| 12PCE 5099839581724",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 199.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 925.35,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 194.27375,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 20.9946,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1716276 002 SEANS BROWN | 650GRM 5099839678714",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 176.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 528.0,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 153.70784,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 29.1113,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1018502 000 BRENNANS WHITE SLICED PAN PP .| 800GRM 5011059000014",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 388.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 849.72,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 151.32,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.8082,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1858672 000 DEMI BAGUETTE| 130GRM 5099839724473",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 273.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 215.67,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 144.76916999999997,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 67.1253,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1349780 001 SUPERQUINN PORK SAUSAGES| 480GRM 5099839584312",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 110.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 438.9,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 137.68370000000002,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 31.3702,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1018392 000 A/MORE LOW FAT SUPERMILK [T T]| 1LTR 5011056020428",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 322.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 563.5,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 135.24,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 24.0,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1183884 000 AVONMORE WHOLE SUPER MILK|1.75LTR 5011056021852",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 185.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 545.75,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 135.05,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 24.7458,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1008857 001 SV PINK LADY TRAY| 6PCE 5099839575327",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 269.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 566.41,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 121.40916999999999,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 21.4349,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1016164 000 BRENNANS WHITE HALF PAN | 390GRM 5011059001158",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 194.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 347.26,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 116.39999999999999,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 33.5196,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1025460 000 SUPERVALU FRESH MILK| 2LTR 5099839041358",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 423.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 951.75,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 114.21,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 12.0,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1009043 000 SUPERVALU FRESH MILK| 3LTR 5099839260230",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 216.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 702.0,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 106.91999999999999,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 15.2308,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1183884 001 AVONMORE LOW FAT SUPER MILK|1.75LTR 5011056021845",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 143.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 421.85,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 104.39,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 24.7458,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1794802 001 SIGNATURE TASTE RASPBERRY | 200GRM 5099839732850",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 382.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 1313.63,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 103.96588,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 7.9144,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1019540 000 SUPERVALU CUCUMBER [IRISH] | 1PCE 5099839311444",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 307.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 303.93,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 93.63500000000002,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 30.8081,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1026343 000 SV FREE RANGE LARGE EGGS| 6PCE 5099839044380",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 270.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 688.5,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 89.5239,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 13.0027,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1022674 001 SUPERVALU CARROT BAG [IRISH] | 1KGM 5099839280665",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 327.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 474.15,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 85.42874999999998,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 18.0172,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1025461 000 SUPERVALU LIGHT MILK | 2LTR 5099839041365",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 315.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 708.75,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 85.05,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 12.0,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1310257 001 ALL BUTTER CROISSANT | 70GRM 7005",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 161.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 195.77,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 77.49459,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 44.9284,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1020045 000 BREAKFAST SAUSAGES| 1PCE 0286870000000",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 124.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 117.8,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 72.11339,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 66.7263,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1018390 000 AVONMORE MILK CARTON| 1LTR 5011056020350",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 209.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 332.31,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 64.78999999999999,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 19.4969,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1000941 000 SUPERVALU IRISH CREAMERY BUTTER | 454GRM 5099839244650",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 288.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 861.12,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 64.59552000000001,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 7.5013,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1016345 000 SIG TASTES RASPBERRY| 125GRM 5099839255410",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 123.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 355.47,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 63.959999999999994,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.9931,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1005787 000 AVONMORE FRESH MILK| 2LTR 5011056020053",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 154.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 414.26,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 60.06,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 14.4981,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1118422 000 NOVELTY CAKE| 1PCE 0248200000000",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 155.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 155.0,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 59.063869999999994,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 43.25,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1018071 000 SV RED GRAPE SEEDLESS PNT | 500GRM 5099839095078",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 150.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 433.5,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 52.05000000000001,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 12.0069,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1021128 002 SIGNATURE TASTES CLEMENGOLD LOOSE| 1PCE 81983",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 461.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 207.45,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 45.648219999999995,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 22.0044,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1021584 000 SUPERVALU PEARS LOOSE| 1PCE 4891",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 168.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 92.4,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 29.738840000000003,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 32.1849,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1179723 000 SV PINK LADY LOOSE|1PCE 88941",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 237.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 130.35,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 23.462999999999997,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 18.0,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1042892 005 PETIT PAIN LARGE | 74GRM 81302",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 54.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 35.1,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 21.3948,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 60.9538,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1380097 001 SUPERVALU ICE CUBES| 1.8KGM 5099839716614",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 179.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 175.42,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 14.09589,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 9.8837,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1042883 001 WHITE BATCH CRUSTY ROLL| 90GRM 81300",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 24.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 20.4,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 11.13768,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 54.5965,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1018820 000 SV ORANGES LOOSE LARGE | 1PCE 5099839642845",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 102.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 56.1,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 10.09086,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.9873,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1176123 001 FIREBLOC FIRELOG 920G | 1PCE 8712483220180",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 33.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 68.7,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 5.583629999999999,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 9.2248,
+              "t": "pct"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "1030326 000 SV WRAPPD BROCCOLI CROWN | 350GRM 5099839280481",
+              "t": "str"
+            },
+            "Retail Qty": {
+              "v": 4.0,
+              "t": "num"
+            },
+            "Retail Sales \u20ac": {
+              "v": 6.76,
+              "t": "num"
+            },
+            "Retail Scan Margin \u20ac": {
+              "v": 1.21668,
+              "t": "num"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.9982,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    }
   }
 }
