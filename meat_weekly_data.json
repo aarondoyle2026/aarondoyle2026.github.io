@@ -31375,5 +31375,142 @@
         ]
       }
     }
+  },
+  "2026-09-24": {
+    "Palmerstown": {
+      "store": "Palmerstown",
+      "code": "356",
+      "report": "meat weekly",
+      "scraped_at": "2026-09-24T19:18:10.722223+01:00",
+      "date": "2026-09-24",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0033 - MEAT, POULTRY & FISH",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 25204.29,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -399.35,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -1.5597,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 18.6066,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": 2.2547,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    },
+    "Balbriggan": {
+      "store": "Balbriggan",
+      "code": "374",
+      "report": "meat weekly",
+      "scraped_at": "2026-09-24T19:18:10.722223+01:00",
+      "date": "2026-09-24",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0033 - MEAT, POULTRY & FISH",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 23905.79,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": -2087.55,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": -8.0311,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 17.7328,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -3.1375,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    },
+    "Skerries": {
+      "store": "Skerries",
+      "code": "424",
+      "report": "meat weekly",
+      "scraped_at": "2026-09-24T19:18:10.722223+01:00",
+      "date": "2026-09-24",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Retail Sales \u20ac",
+          "Retail Sales \u20ac TY LY Var",
+          "Retail Sales \u20ac TY LY Var %",
+          "Retail Scan Margin %",
+          "Retail Scan Margin % TY LY Var"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0033 - MEAT, POULTRY & FISH",
+              "t": "str"
+            },
+            "Retail Sales \u20ac": {
+              "v": 35744.89,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var": {
+              "v": 1389.94,
+              "t": "num"
+            },
+            "Retail Sales \u20ac TY LY Var %": {
+              "v": 4.0458,
+              "t": "pct"
+            },
+            "Retail Scan Margin %": {
+              "v": 18.8245,
+              "t": "pct"
+            },
+            "Retail Scan Margin % TY LY Var": {
+              "v": -1.4642,
+              "t": "pct"
+            }
+          }
+        ]
+      }
+    }
   }
 }
