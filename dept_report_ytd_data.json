@@ -3534,5 +3534,43 @@
       },
       "error": "Export file never appeared."
     }
+  },
+  "2026-09-24": {
+    "Palmerstown": {
+      "store": "Palmerstown",
+      "code": "356",
+      "report": "department report ytd",
+      "scraped_at": "2026-09-24T19:18:10.722223+01:00",
+      "date": "2026-09-24",
+      "data": {
+        "headers": [],
+        "rows": []
+      },
+      "error": "Could not select store '356 - Palmerstown'. Last: None"
+    },
+    "Balbriggan": {
+      "store": "Balbriggan",
+      "code": "374",
+      "report": "department report ytd",
+      "scraped_at": "2026-09-24T19:18:10.722223+01:00",
+      "date": "2026-09-24",
+      "data": {
+        "headers": [],
+        "rows": []
+      },
+      "error": "Export button never appeared."
+    },
+    "Skerries": {
+      "store": "Skerries",
+      "code": "424",
+      "report": "department report ytd",
+      "scraped_at": "2026-09-24T19:18:10.722223+01:00",
+      "date": "2026-09-24",
+      "data": {
+        "headers": [],
+        "rows": []
+      },
+      "error": "Export button never appeared."
+    }
   }
 }
