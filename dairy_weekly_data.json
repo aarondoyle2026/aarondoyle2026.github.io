@@ -28502,5 +28502,1381 @@
         ]
       }
     }
+  },
+  "2026-09-24": {
+    "Palmerstown": {
+      "store": "Palmerstown",
+      "code": "356",
+      "report": "dairy weekly",
+      "scraped_at": "2026-09-24T19:18:10.722223+01:00",
+      "date": "2026-09-24",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Waste at Cost & Reduction \u20ac",
+          "Waste at Cost & Reduction %",
+          "Waste Qty",
+          "Reduction Qty"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "Total Merchandising Structure",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 4447.1883,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 1.4184,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 1198.1840000000002,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 1039.299,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0024 - GROCERY - IMPULSE",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 14.552850000000001,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 0.0428,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Reduction Qty": {
+              "v": 20.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0025 - GROCERY - EDIBLE",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 160.04,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 0.4969,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 107.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 3.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0026 - GROCERY - NON FOOD",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0027 - BABY & KIDS",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 10.61,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 0.4262,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 3.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0028 - PERSONAL CARE",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0029 - BEERS/WINES/SPIRITS",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0031 - TOBACCO",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0032 - PRODUCE",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 554.806,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 2.4181,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 160.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 227.11,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0033 - MEAT, POULTRY & FISH",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 453.95,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 1.8011,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 65.45,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 57.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0034 - DAIRY",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 361.0877,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 1.3533,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 88.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 92.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0035 - BREAD AND CAKES",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 826.476,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 3.6477,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 370.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 133.837,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0036 - DELI AND FOOD TO GO",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 604.2158,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 3.8817,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 183.734,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 112.352,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0037 - PROVISIONS & CONVENIENCE",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 1457.37,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 6.0807,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 220.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 394.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0038 - FROZEN FOODS",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 4.08,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 0.0385,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 1.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0039 - NON FOOD - RETAIL",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0044 - NON FOOD - EXPENSE ITEMS & CONSUMER PROMOTIONS",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0045 - FUEL",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0046 - NEWS & MAGS",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0047 - NON FOOD - INSTORE SERVICES",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          }
+        ]
+      }
+    },
+    "Balbriggan": {
+      "store": "Balbriggan",
+      "code": "374",
+      "report": "dairy weekly",
+      "scraped_at": "2026-09-24T19:18:10.722223+01:00",
+      "date": "2026-09-24",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Waste at Cost & Reduction \u20ac",
+          "Waste at Cost & Reduction %",
+          "Waste Qty",
+          "Reduction Qty"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "Total Merchandising Structure",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 3393.969,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 1.2734,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 792.97,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 928.392,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0024 - GROCERY - IMPULSE",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 26.12197,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 0.0856,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Reduction Qty": {
+              "v": 100.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0025 - GROCERY - EDIBLE",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0026 - GROCERY - NON FOOD",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0027 - BABY & KIDS",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0028 - PERSONAL CARE",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0029 - BEERS/WINES/SPIRITS",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0031 - TOBACCO",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0032 - PRODUCE",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 990.84,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 4.5531,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 312.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 338.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0033 - MEAT, POULTRY & FISH",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 934.14,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 3.9076,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 219.97000000000003,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 30.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0034 - DAIRY",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 174.75,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 0.7901,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 71.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 39.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0035 - BREAD AND CAKES",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 528.9382,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 2.5429,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 17.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 264.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0036 - DELI AND FOOD TO GO",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 35.17881,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 0.3058,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Reduction Qty": {
+              "v": 16.392,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0037 - PROVISIONS & CONVENIENCE",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 691.76,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 3.9333,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 166.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 141.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0038 - FROZEN FOODS",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 12.24,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 0.1534,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 7.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0039 - NON FOOD - RETAIL",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0044 - NON FOOD - EXPENSE ITEMS & CONSUMER PROMOTIONS",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0045 - FUEL",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0046 - NEWS & MAGS",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0047 - NON FOOD - INSTORE SERVICES",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          }
+        ]
+      }
+    },
+    "Skerries": {
+      "store": "Skerries",
+      "code": "424",
+      "report": "dairy weekly",
+      "scraped_at": "2026-09-24T19:18:10.722223+01:00",
+      "date": "2026-09-24",
+      "data": {
+        "headers": [
+          "Merchandising Structure - Article SV TB",
+          "Waste at Cost & Reduction \u20ac",
+          "Waste at Cost & Reduction %",
+          "Waste Qty",
+          "Reduction Qty"
+        ],
+        "rows": [
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "Total Merchandising Structure",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 4223.7079,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 1.2505,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 909.3820000000001,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 843.09,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0024 - GROCERY - IMPULSE",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 150.13,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 0.5159,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 57.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0025 - GROCERY - EDIBLE",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 219.45,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 0.4992,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 94.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0026 - GROCERY - NON FOOD",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 30.51,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 0.187,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 11.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0027 - BABY & KIDS",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 29.41,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 0.86,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 4.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0028 - PERSONAL CARE",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 6.7,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 0.0831,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 2.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0029 - BEERS/WINES/SPIRITS",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 13.89,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 0.0356,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 4.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0031 - TOBACCO",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0032 - PRODUCE",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 1078.068,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 2.8232,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 287.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 281.575,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0033 - MEAT, POULTRY & FISH",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 804.62,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 2.251,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 104.562,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 111.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0034 - DAIRY",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 141.4665,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 0.4053,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 60.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 29.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0035 - BREAD AND CAKES",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 318.2973,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 1.6272,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 72.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 69.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0036 - DELI AND FOOD TO GO",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 487.0861,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 4.4503,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 73.82,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 73.515,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0037 - PROVISIONS & CONVENIENCE",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 901.29,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 3.6665,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 124.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 279.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0038 - FROZEN FOODS",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": 42.79,
+              "t": "num"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": 0.32,
+              "t": "pct"
+            },
+            "Waste Qty": {
+              "v": 16.0,
+              "t": "num"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0039 - NON FOOD - RETAIL",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0044 - NON FOOD - EXPENSE ITEMS & CONSUMER PROMOTIONS",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0045 - FUEL",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0046 - NEWS & MAGS",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          },
+          {
+            "Merchandising Structure - Article SV TB": {
+              "v": "D0047 - NON FOOD - INSTORE SERVICES",
+              "t": "str"
+            },
+            "Waste at Cost & Reduction \u20ac": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste at Cost & Reduction %": {
+              "v": null,
+              "t": "nil"
+            },
+            "Waste Qty": {
+              "v": null,
+              "t": "nil"
+            },
+            "Reduction Qty": {
+              "v": 0.0,
+              "t": "num"
+            }
+          }
+        ]
+      }
+    }
   }
 }
