@@ -281,6 +281,9 @@ function buildModel(storeData, file) {
   m.keepEmpty = file === 'hourly_sales_data.json';
   m.top = nodesFromRows(rows, m.cols);
   if (!m.keepEmpty) m.top = pruneEmpty(m.top);
+  m.top = groupUnderDepts(m.top);
+  m.leaves = [];
+  m.leafCount = countAllLeaves(m.top, m.leaves);
   m.primary = pickPrimary(m.cols);
   m.varCol = pickCol(m.cols, function(c) { return c.kind === 'num' && c.isVar && !c.isCount; });
   m.marginCol = pickCol(m.cols, function(c) { return c.kind === 'pct' && /margin/i.test(c.name); });
@@ -305,6 +308,34 @@ function pruneEmpty(list) {
     if (n.isTotal || n.children || nodeHasData(n)) out.push(n);
   }
   return out;
+}
+/* Lines listed after a D00xx row in the main list are folded under that department */
+function groupUnderDepts(list) {
+  var hasDept = false;
+  for (var i = 0; i < list.length; i++) { if (list[i].isDept) { hasDept = true; break; } }
+  if (!hasDept) return list;
+  var out = [], cur = null;
+  for (var j = 0; j < list.length; j++) {
+    var n = list[j];
+    if (n.isDept) { cur = n; out.push(n); continue; }
+    if (n.isTotal) { cur = null; out.push(n); continue; }
+    if (cur) {
+      if (!cur.children) cur.children = [];
+      n.depth = 1;
+      cur.children.push(n);
+    } else {
+      out.push(n);
+    }
+  }
+  return out;
+}
+function countAllLeaves(list, acc) {
+  var c = 0;
+  for (var i = 0; i < list.length; i++) {
+    var n = list[i];
+    if (n.children && n.children.length) { n.leaves = countLeaves(n.children, acc); c += n.leaves; }
+  }
+  return c;
 }
 function numOf(n, k) {
   var c = n.cells[k];
@@ -336,7 +367,7 @@ function topItems(list) {
   if (depts === 1 && out.length > 1) out = out.filter(function(n) { return !n.isDept; });
   return out;
 }
-function usingLeaves() { return M.detailStatus === 'ok' && M.leafCount > 0; }
+function usingLeaves() { return M.leafCount > 0; }
 function chartItems() { return usingLeaves() ? M.leaves : topItems(M.top); }
 function itemWord(items) {
   if (usingLeaves()) return 'lines';
@@ -408,20 +439,19 @@ function applyDetail(m, obj) {
     for (var j = 0; j < hs.length; j++) {
       if (hs[j] !== null && hs[j] !== undefined && String(hs[j]).replace(/^\s+|\s+$/g, '') !== '') pos.push(j);
     }
-    m.leaves = []; m.leafCount = 0;
-    for (var i = 0; i < m.top.length; i++) {
-      var n = m.top[i];
-      if (n.isTotal) continue;
+    walk(m.top, '', function(n) {
+      if (n.isTotal || n.children) return;
       var lines = obj.detail[n.label];
-      if (!lines || !lines.length) continue;
+      if (!lines || !lines.length) return;
       n.children = buildTree(m, lines, pos);
       if (!m.keepEmpty) n.children = pruneEmpty(n.children);
-      if (!n.children.length) { n.children = null; continue; }
-      n.leaves = countLeaves(n.children, m.leaves);
-      m.leafCount += n.leaves;
-    }
-    m.detailStatus = m.leafCount ? 'ok' : 'none';
+      if (!n.children.length) n.children = null;
+    });
+    m.detailStatus = 'ok';
   }
+  m.leaves = [];
+  m.leafCount = countAllLeaves(m.top, m.leaves);
+  if (M !== m) return;
   renderBody();
   renderKpis();
   renderCharts();
@@ -582,6 +612,7 @@ function chartShare(grid) {
   var k = M.primary;
   if (k < 0) return;
   var items = topItems(M.top), pos = [];
+  if (items.length < 3 && usingLeaves()) items = M.leaves;
   for (var i = 0; i < items.length; i++) { var v = numOf(items[i], k); if (v > 0) pos.push({ l: items[i].label, v: v }); }
   if (pos.length < 3) return;
   pos.sort(function(a, b) { return b.v - a.v; });
@@ -827,9 +858,9 @@ function setNote(txt) { if (M && M.note) M.note.textContent = txt; }
 function updateNote() {
   if (!M) return;
   if (M.detailStatus === 'loading') setNote('Loading line detail… · Tap a column heading to sort');
-  else if (M.detailStatus === 'ok') setNote('Tap a department to open its lines · Tap a column heading to sort · ' + fmtCountV(M.leafCount) + ' lines');
+  else if (M.leafCount > 0) setNote('Tap a department to open its lines · Tap a column heading to sort · ' + fmtCountV(M.leafCount) + ' lines');
   else setNote('Tap a column heading to sort');
-  M.collapseBtn.style.display = M.detailStatus === 'ok' ? '' : 'none';
+  M.collapseBtn.style.display = M.leafCount > 0 ? '' : 'none';
 }
 
 /* ---------- PAGE ---------- */
