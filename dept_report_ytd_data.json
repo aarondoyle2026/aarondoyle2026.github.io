@@ -3572,5 +3572,43 @@
       },
       "error": "Export button never appeared."
     }
+  },
+  "2026-09-25": {
+    "Palmerstown": {
+      "store": "Palmerstown",
+      "code": "356",
+      "report": "department report ytd",
+      "scraped_at": "2026-09-25T21:28:59.441376+01:00",
+      "date": "2026-09-25",
+      "data": {
+        "headers": [],
+        "rows": []
+      },
+      "error": "No download and no recognisable spool job after 120s (see spool_debug)"
+    },
+    "Balbriggan": {
+      "store": "Balbriggan",
+      "code": "374",
+      "report": "department report ytd",
+      "scraped_at": "2026-09-25T21:28:59.441376+01:00",
+      "date": "2026-09-25",
+      "data": {
+        "headers": [],
+        "rows": []
+      },
+      "error": "No download and no recognisable spool job after 120s (see spool_debug)"
+    },
+    "Skerries": {
+      "store": "Skerries",
+      "code": "424",
+      "report": "department report ytd",
+      "scraped_at": "2026-09-25T21:28:59.441376+01:00",
+      "date": "2026-09-25",
+      "data": {
+        "headers": [],
+        "rows": []
+      },
+      "error": "No download and no recognisable spool job after 120s (see spool_debug)"
+    }
   }
 }
