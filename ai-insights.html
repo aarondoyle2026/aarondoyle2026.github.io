@@ -129,30 +129,50 @@
 .selected-store-bar{display:flex;align-items:center;gap:8px;padding:8px 12px;background:rgba(45,122,79,.1);border:1px solid rgba(45,122,79,.25);border-radius:10px;margin-bottom:12px;font-size:12px;color:#f0aaaa;}
 .selected-store-bar .store-dot{width:7px;height:7px;border-radius:50%;background:#e41e26;flex-shrink:0;}
 
-.chat-wrap{display:block;}
-.chat-suggestions{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
-.chat-suggestion{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:6px 12px;font-size:11px;color:#8a8080;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:all .15s;}
-.chat-suggestion:active{background:rgba(228,30,38,.15);border-color:#c0161c;color:#e41e26;}
-.chat-messages{display:flex;flex-direction:column;gap:10px;padding-bottom:8px;min-height:20px;}
-.msg{display:flex;gap:8px;align-items:flex-start;}
-.msg.user{flex-direction:row-reverse;}
-.msg-avatar{width:28px;height:28px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;}
-.msg.user .msg-avatar{background:rgba(201,168,76,.2);border:1px solid rgba(201,168,76,.3);}
-.msg.ai .msg-avatar{background:rgba(124,92,191,.2);border:1px solid rgba(124,92,191,.3);}
-.msg-bubble{max-width:82%;padding:10px 13px;border-radius:12px;font-size:13px;line-height:1.65;}
-.msg.user .msg-bubble{background:rgba(228,30,38,.2);border:1px solid rgba(228,30,38,.3);color:#f0ede6;border-bottom-right-radius:3px;}
-.msg.ai .msg-bubble{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:#f0ede6;border-bottom-left-radius:3px;}
-.thinking-dots span{display:inline-block;width:5px;height:5px;border-radius:50%;background:#8a8080;margin:0 2px;animation:dotBounce 1.2s ease-in-out infinite;}
-.thinking-dots span:nth-child(2){animation-delay:.2s;}
-.thinking-dots span:nth-child(3){animation-delay:.4s;}
-@keyframes dotBounce{0%,80%,100%{transform:translateY(0);}40%{transform:translateY(-5px);}}
-.chat-input-row{display:flex;gap:8px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.08);margin-top:12px;position:relative;z-index:10;}
-.chat-input{flex:1;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:12px;padding:12px 14px;color:#ffffff;font-family:'DM Sans',sans-serif;font-size:16px;outline:none;height:44px;-webkit-appearance:none;appearance:none;-webkit-user-select:text;user-select:text;}
-.chat-input:focus{border-color:rgba(45,122,79,.8);background:rgba(255,255,255,0.1);}
-.chat-input::placeholder{color:rgba(255,255,255,0.4);}
-.chat-send{width:42px;height:42px;border-radius:12px;flex-shrink:0;background:#c0161c;border:none;color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;transition:background .15s;}
-.chat-send:active{background:#e41e26;}
-.chat-send:disabled{background:#1a4a2e;opacity:.5;cursor:default;}
+
+.usage-row{display:flex;justify-content:space-between;align-items:center;font-family:'DM Mono',monospace;font-size:11px;color:#8a8080;margin-bottom:6px;}
+.usage-row .val{color:#f0ede6;}
+.usage-bar{height:6px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden;margin-bottom:16px;}
+.usage-bar div{height:100%;width:0%;background:linear-gradient(90deg,#c0161c,#c9a84c);border-radius:3px;transition:width .6s ease;}
+.field-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;color:#8a8080;text-transform:uppercase;margin:4px 0 6px;}
+.ag-select{width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.15);background:#2a0a0a;color:#f0ede6;font-family:'DM Sans',sans-serif;font-size:16px;margin-bottom:14px;-webkit-appearance:none;appearance:none;}
+.kind-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
+.kind-btn{padding:12px 10px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.04);color:#b8b0b0;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;text-align:left;line-height:1.3;-webkit-tap-highlight-color:transparent;}
+.kind-btn small{display:block;font-size:11px;color:#8a8080;font-weight:400;margin-top:3px;}
+.kind-btn.active{background:rgba(228,30,38,.2);border-color:#c0161c;color:#f0ede6;}
+.ag-go{width:100%;padding:14px;border-radius:12px;border:none;background:#c0161c;color:#fff;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.ag-go:disabled{background:#4a1a1a;color:#a08080;cursor:default;}
+.ag-status{font-size:12px;color:#c9a84c;min-height:18px;margin:10px 0 14px;font-family:'DM Mono',monospace;line-height:1.5;}
+.ag-status.err{color:#f0b0b0;}
+.ag-result{margin-bottom:18px;}
+.ag-toolbar{display:flex;justify-content:flex-end;gap:8px;margin-bottom:8px;}
+.ag-tool{padding:8px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#f0ede6;font-size:12px;cursor:pointer;}
+.ag-doc{background:#fbfaf7;color:#1c1c1c;border-radius:14px;padding:20px 18px;font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.6;overflow-wrap:break-word;}
+.ag-doc h1{font-family:'DM Serif Display',serif;font-size:22px;line-height:1.2;color:#8e0f13;margin-bottom:6px;}
+.ag-doc h2{font-size:17px;color:#8e0f13;margin:22px 0 8px;padding-top:12px;border-top:1px solid #e6e1d8;}
+.ag-doc h3{font-size:14px;color:#1c1c1c;margin:14px 0 6px;}
+.ag-doc p{margin:0 0 10px;}
+.ag-doc ul,.ag-doc ol{margin:0 0 10px 20px;}
+.ag-doc li{margin-bottom:6px;}
+.ag-doc strong{color:#111;}
+.ag-doc em{color:#6b6b6b;}
+.ag-doc blockquote{border-left:3px solid #e8a07a;background:#fdf1ea;padding:8px 12px;margin:0 0 10px;border-radius:0 8px 8px 0;}
+.ag-doc hr{border:none;border-top:1px solid #e6e1d8;margin:16px 0;}
+.md-table{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 0 12px;}
+.md-table table{border-collapse:collapse;width:100%;font-size:12.5px;}
+.md-table th{background:#8e0f13;color:#fff;text-align:left;padding:7px 8px;font-weight:600;white-space:nowrap;}
+.md-table td{padding:7px 8px;border-bottom:1px solid #ece7de;vertical-align:top;}
+.md-table td.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;}
+.md-table tr:nth-child(even) td{background:#f6f3ee;}
+.saved-item{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.04);margin-bottom:8px;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.saved-title{font-size:13px;font-weight:500;line-height:1.35;}
+.saved-date{font-family:'DM Mono',monospace;font-size:10px;color:#8a8080;white-space:nowrap;}
+@media print{
+  body{background:#fff !important;}
+  body *{visibility:hidden;}
+  #agendaDoc,#agendaDoc *{visibility:visible;}
+  #agendaDoc{position:absolute;left:0;top:0;width:100%;border-radius:0;padding:0;}
+}
 </style>
 </head>
 <body>
@@ -200,8 +220,8 @@
     <button type="button" class="mode-btn" id="btn-waste" onclick="switchMode('waste')">
       <span class="btn-icon">&#128465;&#65039;</span><span class="btn-label">Waste</span>
     </button>
-    <button type="button" class="mode-btn" id="btn-chat" onclick="switchMode('chat')">
-      <span class="btn-icon">&#128172;</span><span class="btn-label">Ask AI</span>
+    <button type="button" class="mode-btn" id="btn-agenda" onclick="switchMode('agenda')">
+      <span class="btn-icon">&#128466;&#65039;</span><span class="btn-label">Agenda</span>
     </button>
   </div>
 
@@ -260,61 +280,58 @@
     <div class="waste-group-actions" id="wasteGroupActions"></div>
   </div>
 
-  <div class="mode-panel" id="panel-chat">
-    <div class="slabel" style="margin-top:4px;">Ask the AI</div>
+  <div class="mode-panel" id="panel-agenda">
+    <div class="slabel" style="margin-top:4px;">Agenda Maker</div>
+    <div class="usage-row"><span>Monthly AI usage</span><span class="val" id="usagePct">&ndash;</span></div>
+    <div class="usage-bar"><div id="usageBar"></div></div>
 
-    <div class="store-selector" id="chatStoreSelector">
-      <button type="button" class="store-btn active" id="storeBtn356" onclick="selectStore('356','Palmerstown')">Palmerstown</button>
-      <button type="button" class="store-btn" id="storeBtn374" onclick="selectStore('374','Balbriggan')">Balbriggan</button>
-      <button type="button" class="store-btn" id="storeBtn424" onclick="selectStore('424','Skerries')">Skerries</button>
+    <div class="store-selector" id="agendaStoreSelector">
+      <button type="button" class="store-btn active" id="agStore-Palmerstown" onclick="agSelectStore('Palmerstown')">Palmerstown</button>
+      <button type="button" class="store-btn" id="agStore-Balbriggan" onclick="agSelectStore('Balbriggan')">Balbriggan</button>
+      <button type="button" class="store-btn" id="agStore-Skerries" onclick="agSelectStore('Skerries')">Skerries</button>
     </div>
 
-    <div class="selected-store-bar" id="selectedStoreBar">
-      <div class="store-dot"></div>
-      <span id="selectedStoreLabel">Asking about Palmerstown (356)</span>
+    <div class="field-label">Scope</div>
+    <select class="ag-select" id="agendaScope"><option value="Total store">Total store</option></select>
+
+    <div class="field-label">Plan</div>
+    <div class="kind-grid">
+      <button type="button" class="kind-btn active" id="agKind-agenda6" onclick="agSelectKind('agenda6')">6-week agenda<small>Priorities and actions, week by week</small></button>
+      <button type="button" class="kind-btn" id="agKind-margin" onclick="agSelectKind('margin')">Margin recovery<small>Mix vs cost, low-margin lines</small></button>
+      <button type="button" class="kind-btn" id="agKind-waste" onclick="agSelectKind('waste')">Waste reduction<small>Ordering, production, markdowns</small></button>
+      <button type="button" class="kind-btn" id="agKind-range" onclick="agSelectKind('range')">Range review<small>Reinstate, delist, re-codes</small></button>
     </div>
 
-    <div class="chat-suggestions" id="chatSuggestions">
-      <div class="chat-suggestion" onclick="useSuggestion(this)">How is this store performing?</div>
-      <div class="chat-suggestion" onclick="useSuggestion(this)">What's our biggest profit leak?</div>
-      <div class="chat-suggestion" onclick="useSuggestion(this)">How is Deli performing?</div>
-      <div class="chat-suggestion" onclick="useSuggestion(this)">What is the waste situation?</div>
-      <div class="chat-suggestion" onclick="useSuggestion(this)">Any open claims issues?</div>
-      <div class="chat-suggestion" onclick="useSuggestion(this)">Any compliance issues?</div>
+    <button type="button" class="ag-go" id="agendaGo" onclick="agGenerate()">Build plan</button>
+    <div class="ag-status" id="agendaStatus"></div>
+
+    <div class="ag-result" id="agendaResult" style="display:none;">
+      <div class="ag-toolbar"><button type="button" class="ag-tool" onclick="window.print()">Print / Save PDF</button></div>
+      <div class="ag-doc" id="agendaDoc"></div>
     </div>
 
-    <div class="chat-wrap">
-      <div class="chat-messages" id="chatMessages"></div>
-      <div class="chat-input-row">
-        <input type="text" class="chat-input" id="chatInput" placeholder="Ask about any store or metric..." onkeydown="handleChatKey(event)" autocomplete="off" autocorrect="off" spellcheck="false">
-        <button type="button" class="chat-send" id="chatSend" onclick="sendChat()">&#8593;</button>
-      </div>
-    </div>
+    <div class="slabel">Saved plans</div>
+    <div id="agendaSaved"><p style="color:#8a8080;font-size:12px;">Loading&hellip;</p></div>
   </div>
 </div>
 
 <script>
 var INSIGHTS_URL  = 'https://raw.githubusercontent.com/aarondoyle2026/aarondoyle2026.github.io/main/ai_insights.json';
-var CHAT_ENDPOINT = 'https://mnebkteiwjxbbmnfotse.supabase.co/functions/v1/ai-chat';
+var AGENDA_ENDPOINT = 'https://mnebkteiwjxbbmnfotse.supabase.co/functions/v1/ai-agenda';
+var DATA_BASE = 'https://raw.githubusercontent.com/aarondoyle2026/aarondoyle2026.github.io/main/';
 var SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1uZWJrdGVpd2p4YmJtbmZvdHNlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ2MTgwODAsImV4cCI6MjA5MDE5NDA4MH0.cTQbQqoxagmGm4crdpMhFbzlwid1OMMo6UOyhvtbhxA';
 
-var MODES = ['director','leaks','actions','cross','diagnosis','waste','chat'];
+var MODES = ['director','leaks','actions','cross','diagnosis','waste','agenda'];
 
-var AARON_TRIGGERS = [
-  'who made','who built','who created','who developed','who wrote','who designed',
-  'who coded','who programmed','how was this built','how was this made',
-  'how was this created','how did you get built','how were you built',
-  'how were you made','how were you created','how do i build','how would i build',
-  'how to build','how to make a system','how to create a system',
-  'how to create something like','tell me about yourself','what are you',
-  'how do you work','how does this system work','how was this system'
-];
-var AARON_RESPONSE = 'Aaron made me. &#x1F7E2;';
 
 var insightsData = null;
-var chatHistory  = [];
-var selectedStoreCode = '356';
-var selectedStoreName = 'Palmerstown';
+var agStore = 'Palmerstown';
+var agKind = 'agenda6';
+var agBusy = false;
+var agLimit = false;
+var agTimer = null;
+var agLoaded = false;
+var AG_KIND_NAMES = { agenda6: '6-week agenda', margin: 'Margin recovery', waste: 'Waste reduction', range: 'Range review' };
 
 var _session=null;try{_session=JSON.parse(localStorage.getItem('portal_session'));}catch(e){}
 var _userRole=_session?(_session.role||''):'';
@@ -322,21 +339,6 @@ var _userStore=_session?(_session.store_code||''):'';
 var _storeMap={palmerstown:{code:'356',name:'Palmerstown'},balbriggan:{code:'374',name:'Balbriggan'},skerries:{code:'424',name:'Skerries'}};
 var _userStoreInfo=_storeMap[_userStore]||null;
 
-function selectStore(code, name) {
-  selectedStoreCode = code;
-  selectedStoreName = name;
-  var btns = ['356','374','424'];
-  var i;
-  for (i = 0; i < btns.length; i++) {
-    document.getElementById('storeBtn' + btns[i]).classList.remove('active');
-  }
-  document.getElementById('storeBtn' + code).classList.add('active');
-  document.getElementById('selectedStoreLabel').textContent = 'Asking about ' + name + ' (' + code + ')';
-  chatHistory = [];
-  var msgs = document.getElementById('chatMessages');
-  msgs.innerHTML = '';
-  document.getElementById('chatSuggestions').style.display = 'flex';
-}
 
 function setStep(msg, sub, pct) {
   document.getElementById('loadingStep').textContent = msg;
@@ -354,15 +356,9 @@ function switchMode(key) {
   }
   document.getElementById('btn-'   + key).classList.add('active');
   document.getElementById('panel-' + key).classList.add('active');
+  if (key === 'agenda' && !agLoaded) { agLoaded = true; agRefreshStore(); }
 }
-function handleChatKey(e) {
-  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChat(); }
-}
-function useSuggestion(el) {
-  var input = document.getElementById('chatInput');
-  input.value = el.textContent;
-  sendChat();
-}
+
 function renderFreshness(generatedAt, generatedTime) {
   var text = 'Week of <span class="val">' + esc(generatedAt) + '</span>';
   if (generatedTime) text += ' at <span class="val">' + esc(generatedTime) + '</span>';
@@ -371,7 +367,7 @@ function renderFreshness(generatedAt, generatedTime) {
     var diff = Math.floor((new Date() - new Date(generatedAt)) / 86400000);
     if (diff > 8) {
       document.getElementById('staleBar').style.display = 'flex';
-      document.getElementById('staleText').textContent = 'Insights are ' + diff + ' days old - run the KPI scraper on Monday to refresh.';
+      document.getElementById('staleText').textContent = 'Insights are ' + diff + ' days old - run the weekly reports scraper to refresh.';
     }
   } catch(e) {}
 }
@@ -515,96 +511,239 @@ function showError(msg) {
   document.getElementById('loadingScreen').style.display = 'none';
   var el = document.getElementById('errorCard');
   el.style.display = 'block';
-  el.innerHTML = '<strong>Could not load insights</strong><br><br>' + esc(msg) + '<br><br>Insights are generated every Monday when the KPI scraper runs.';
+  el.innerHTML = '<strong>Could not load insights</strong><br><br>' + esc(msg) + '<br><br>Insights are generated weekly when the reports scraper runs.';
 }
-function isAaronQuestion(text) {
-  var lower = text.toLowerCase();
-  var i;
-  for (i = 0; i < AARON_TRIGGERS.length; i++) {
-    if (lower.indexOf(AARON_TRIGGERS[i]) !== -1) return true;
-  }
-  return false;
-}
-function addMessage(role, text, isThinking) {
-  var msgs = document.getElementById('chatMessages');
-  var div  = document.createElement('div');
-  div.className = 'msg ' + role;
-  var avatar = role === 'user' ? '&#128100;' : '&#129302;';
-  var bubble = isThinking
-    ? '<div class="thinking-dots"><span></span><span></span><span></span></div>'
-    : esc(text).replace(/\n/g, '<br>');
-  div.innerHTML = '<div class="msg-avatar">' + avatar + '</div><div class="msg-bubble">' + bubble + '</div>';
-  msgs.appendChild(div);
-  msgs.scrollTop = msgs.scrollHeight;
-  return div;
-}
-function sendChat() {
-  var input = document.getElementById('chatInput');
-  var text  = input.value.trim();
-  if (!text) return;
-  document.getElementById('chatSuggestions').style.display = 'none';
-  addMessage('user', text, false);
-  input.value = '';
-  var btn = document.getElementById('chatSend');
-  btn.disabled = true;
-  chatHistory.push({ role: 'user', content: text });
-  if (isAaronQuestion(text)) {
-    setTimeout(function() {
-      addMessage('ai', AARON_RESPONSE, false);
-      chatHistory.push({ role: 'assistant', content: AARON_RESPONSE });
-      btn.disabled = false;
-    }, 350);
-    return;
-  }
-  var thinking = addMessage('ai', '', true);
-  fetch(CHAT_ENDPOINT, {
+
+/* ---------- AGENDA MAKER ---------- */
+function agPost(body) {
+  return fetch(AGENDA_ENDPOINT, {
     method: 'POST',
-    headers: {
-      'Content-Type':  'application/json',
-      'apikey':        SUPABASE_ANON,
-      'Authorization': 'Bearer ' + SUPABASE_ANON
-    },
-    body: JSON.stringify({
-      question:        text,
-      store_code:      selectedStoreCode,
-      store_name:      selectedStoreName,
-      role:            'staff',
-      messages:        chatHistory,
-      insightsContext: insightsData
-    })
-  })
-  .then(function(r) { return r.json(); })
-  .then(function(data) {
-    thinking.remove();
-    var reply = '';
-    if (data && data.answer) {
-      reply = data.answer;
-    } else if (data && data.error) {
-      reply = 'Error: ' + data.error;
-    } else {
-      reply = 'Sorry, no response received.';
-    }
-    addMessage('ai', reply, false);
-    chatHistory.push({ role: 'assistant', content: reply });
-    btn.disabled = false;
-  })
-  .catch(function() {
-    thinking.remove();
-    addMessage('ai', 'Connection error - please try again.', false);
-    btn.disabled = false;
+    headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_ANON, 'Authorization': 'Bearer ' + SUPABASE_ANON },
+    body: JSON.stringify(body)
+  }).then(function(r) {
+    return r.json().then(function(j) { return j; }, function() { return { error: 'Unexpected response (' + r.status + ')' }; });
   });
 }
+function agSetUsage(pct) {
+  if (typeof pct !== 'number') return;
+  document.getElementById('usagePct').textContent = pct + '%';
+  document.getElementById('usageBar').style.width = Math.min(100, pct) + '%';
+  agLimit = pct >= 100;
+  agUpdateButton();
+}
+function agUpdateButton() {
+  var b = document.getElementById('agendaGo');
+  b.disabled = agBusy || agLimit;
+  b.textContent = agLimit ? 'Monthly limit reached — resets on the 1st' : (agBusy ? 'Building…' : 'Build plan');
+}
+function agStatus(msg, isErr) {
+  var el = document.getElementById('agendaStatus');
+  el.textContent = msg || '';
+  el.className = 'ag-status' + (isErr ? ' err' : '');
+}
+function agSelectStore(name) {
+  if (agBusy) return;
+  agStore = name;
+  var names = ['Palmerstown', 'Balbriggan', 'Skerries'];
+  for (var i = 0; i < names.length; i++) {
+    var b = document.getElementById('agStore-' + names[i]);
+    if (b) b.className = 'store-btn' + (names[i] === name ? ' active' : '');
+  }
+  agRefreshStore();
+}
+function agSelectKind(k) {
+  if (agBusy) return;
+  agKind = k;
+  for (var key in AG_KIND_NAMES) {
+    if (AG_KIND_NAMES.hasOwnProperty(key)) document.getElementById('agKind-' + key).className = 'kind-btn' + (key === k ? ' active' : '');
+  }
+}
+function agRefreshStore() {
+  agLoadDepartments();
+  agLoadSaved();
+}
+/* Department list comes from the latest Department Report for the chosen store */
+function agLoadDepartments() {
+  var sel = document.getElementById('agendaScope');
+  sel.innerHTML = '<option value="Total store">Total store</option>';
+  var files = ['dept_report_ytd_data.json', 'dept_report_latest_data.json'];
+  function tryFile(i) {
+    if (i >= files.length) return;
+    fetch(DATA_BASE + files[i] + '?t=' + Date.now()).then(function(r) { return r.ok ? r.json() : null; }).then(function(data) {
+      var labels = agDeptLabels(data);
+      if (!labels.length) { tryFile(i + 1); return; }
+      for (var j = 0; j < labels.length; j++) {
+        var o = document.createElement('option');
+        o.value = labels[j];
+        o.textContent = labels[j].replace(/^\s*D\d{4}\s*-\s*/, '');
+        sel.appendChild(o);
+      }
+    })['catch'](function() { tryFile(i + 1); });
+  }
+  tryFile(0);
+}
+function agDeptLabels(data) {
+  var out = [];
+  if (!data) return out;
+  var dates = Object.keys(data).sort().reverse();
+  for (var d = 0; d < dates.length; d++) {
+    var sd = data[dates[d]] ? data[dates[d]][agStore] : null;
+    if (!sd || sd.error || !sd.data || !sd.data.rows || !sd.data.rows.length) continue;
+    var h0 = sd.data.headers[0];
+    for (var i = 0; i < sd.data.rows.length; i++) {
+      var c = sd.data.rows[i][h0];
+      var v = c && c.v !== null && c.v !== undefined ? String(c.v) : '';
+      if (/^\s*D\d{4}\s*-/.test(v)) out.push(v);
+    }
+    return out;
+  }
+  return out;
+}
+function agLoadSaved() {
+  var box = document.getElementById('agendaSaved');
+  agPost({ action: 'list', store: agStore }).then(function(res) {
+    agSetUsage(res.pct);
+    var items = res.items || [];
+    if (res.error) { box.innerHTML = '<p style="color:#f0b0b0;font-size:12px;">' + esc(res.error) + '</p>'; return; }
+    if (!items.length) { box.innerHTML = '<p style="color:#8a8080;font-size:12px;">No saved plans for ' + esc(agStore) + ' yet.</p>'; return; }
+    box.innerHTML = '';
+    for (var i = 0; i < items.length; i++) box.appendChild(agSavedRow(items[i]));
+  })['catch'](function() { box.innerHTML = '<p style="color:#f0b0b0;font-size:12px;">Could not load saved plans.</p>'; });
+}
+function agSavedRow(it) {
+  var div = document.createElement('div');
+  div.className = 'saved-item';
+  var scope = it.scope === 'Total store' ? 'Total store' : String(it.scope).replace(/^\s*D\d{4}\s*-\s*/, '');
+  var when = String(it.created_at || '').substring(0, 10);
+  div.innerHTML = '<span class="saved-title">' + esc(AG_KIND_NAMES[it.kind] || it.kind) + ' · ' + esc(scope) + '</span><span class="saved-date">' + esc(when) + '</span>';
+  div.onclick = function() {
+    agStatus('Opening saved plan…');
+    agPost({ action: 'get', id: it.id }).then(function(res) {
+      if (res.error || !res.item) { agStatus(res.error || 'Could not open plan.', true); return; }
+      agStatus('');
+      agShow(res.item.content);
+    })['catch'](function() { agStatus('Could not open plan.', true); });
+  };
+  return div;
+}
+function agGenerate() {
+  if (agBusy || agLimit) return;
+  var scope = document.getElementById('agendaScope').value;
+  agBusy = true;
+  agUpdateButton();
+  var started = Date.now();
+  agStatus('Building ' + AG_KIND_NAMES[agKind].toLowerCase() + ' for ' + agStore + '… this usually takes 1–2 minutes.');
+  agTimer = setInterval(function() {
+    var s = Math.round((Date.now() - started) / 1000);
+    agStatus('Building ' + AG_KIND_NAMES[agKind].toLowerCase() + ' for ' + agStore + '… ' + s + 's');
+  }, 1000);
+  agPost({ action: 'generate', store: agStore, scope: scope, kind: agKind }).then(function(res) {
+    clearInterval(agTimer);
+    agBusy = false;
+    if (res.error === 'limit') { agSetUsage(100); agStatus('Monthly limit reached — resets on the 1st.', true); return; }
+    if (res.error) { agUpdateButton(); agStatus(res.error, true); return; }
+    agSetUsage(res.pct);
+    agStatus('');
+    agShow(res.markdown || '');
+    agLoadSaved();
+  })['catch'](function() {
+    clearInterval(agTimer);
+    agBusy = false;
+    agUpdateButton();
+    agStatus('Connection dropped before the plan came back. It may still have saved — check Saved plans in a minute.', true);
+    setTimeout(agLoadSaved, 60000);
+  });
+}
+function agShow(md) {
+  document.getElementById('agendaDoc').innerHTML = mdRender(md);
+  document.getElementById('agendaResult').style.display = 'block';
+  var el = document.getElementById('agendaResult');
+  if (el.scrollIntoView) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+/* ---------- small Markdown renderer (headings, lists, tables, bold/italic, quotes) ---------- */
+function mdInline(s) {
+  s = esc(s);
+  s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  s = s.replace(/(^|[^*\w])\*([^*\n]+)\*(?!\*)/g, '$1<em>$2</em>');
+  s = s.replace(/(^|\W)_([^_\n]+)_(?=\W|$)/g, '$1<em>$2</em>');
+  return s;
+}
+function mdCells(r) {
+  var t = r.replace(/^\s*\|/, '').replace(/\|\s*$/, '');
+  return t.split('|');
+}
+function mdIsSep(r) {
+  var c = mdCells(r);
+  for (var i = 0; i < c.length; i++) { if (!/^\s*:?-{2,}:?\s*$/.test(c[i])) return false; }
+  return c.length > 0;
+}
+function mdTable(rows) {
+  var html = '<div class="md-table"><table>';
+  var start = 0;
+  if (rows.length > 1 && mdIsSep(rows[1])) {
+    var hc = mdCells(rows[0]);
+    html += '<thead><tr>';
+    for (var h = 0; h < hc.length; h++) html += '<th>' + mdInline(hc[h].replace(/^\s+|\s+$/g, '')) + '</th>';
+    html += '</tr></thead>';
+    start = 2;
+  }
+  html += '<tbody>';
+  for (var i = start; i < rows.length; i++) {
+    if (mdIsSep(rows[i])) continue;
+    var c = mdCells(rows[i]);
+    html += '<tr>';
+    for (var k = 0; k < c.length; k++) {
+      var v = c[k].replace(/^\s+|\s+$/g, '');
+      var isNum = /^[*\s]*[+\-–(]?\s*€?\s*[\d.,]+\s*(%|pp|k|m)?\)?[*\s]*$/.test(v) || /^[*\s]*n\/a[*\s]*$/i.test(v);
+      html += '<td' + (isNum && k > 0 ? ' class="n"' : '') + '>' + mdInline(v) + '</td>';
+    }
+    html += '</tr>';
+  }
+  return html + '</tbody></table></div>';
+}
+function mdRender(md) {
+  var lines = String(md || '').replace(/\r/g, '').split('\n');
+  var out = [], i = 0, list = null;
+  function closeList() { if (list) { out.push('</' + list + '>'); list = null; } }
+  while (i < lines.length) {
+    var ln = lines[i];
+    if (/^\s*\|/.test(ln)) {
+      closeList();
+      var rows = [];
+      while (i < lines.length && /^\s*\|/.test(lines[i])) { rows.push(lines[i]); i++; }
+      out.push(mdTable(rows));
+      continue;
+    }
+    var h = /^(#{1,4})\s+(.*)$/.exec(ln);
+    if (h) { closeList(); var lv = h[1].length; out.push('<h' + lv + '>' + mdInline(h[2]) + '</h' + lv + '>'); i++; continue; }
+    var b = /^\s*[-*•]\s+(.*)$/.exec(ln);
+    if (b) { if (list !== 'ul') { closeList(); out.push('<ul>'); list = 'ul'; } out.push('<li>' + mdInline(b[1]) + '</li>'); i++; continue; }
+    var o = /^\s*\d+[.)]\s+(.*)$/.exec(ln);
+    if (o) { if (list !== 'ol') { closeList(); out.push('<ol>'); list = 'ol'; } out.push('<li>' + mdInline(o[1]) + '</li>'); i++; continue; }
+    if (/^\s*>\s?/.test(ln)) { closeList(); out.push('<blockquote>' + mdInline(ln.replace(/^\s*>\s?/, '')) + '</blockquote>'); i++; continue; }
+    if (/^\s*(-{3,}|\*{3,})\s*$/.test(ln)) { closeList(); out.push('<hr>'); i++; continue; }
+    if (!/\S/.test(ln)) { closeList(); i++; continue; }
+    closeList();
+    var para = [ln];
+    i++;
+    while (i < lines.length && /\S/.test(lines[i]) && !/^(#{1,4}\s|\s*[-*•]\s|\s*\d+[.)]\s|\s*\||\s*>)/.test(lines[i])) { para.push(lines[i]); i++; }
+    out.push('<p>' + mdInline(para.join(' ')) + '</p>');
+  }
+  closeList();
+  return out.join('');
+}
+
 function init() {
-  // Lock chat store to the user's own store for non-admin
+  // Non-admin users can only build plans for their own store
   if (_userRole !== 'admin' && _userStoreInfo) {
-    document.getElementById('chatStoreSelector').style.display = 'none';
-    selectStore(_userStoreInfo.code, _userStoreInfo.name);
+    document.getElementById('agendaStoreSelector').style.display = 'none';
+    agStore = _userStoreInfo.name;
   }
 
   setStep('Fetching latest analysis...', 'Generated weekly by AI', 20);
   fetch(INSIGHTS_URL + '?t=' + Date.now())
     .then(function(r) {
-      if (!r.ok) throw new Error('ai_insights.json not found (status ' + r.status + '). Run the KPI scraper on Monday.');
+      if (!r.ok) throw new Error('ai_insights.json not found (status ' + r.status + '). Run the weekly reports scraper.');
       return r.json();
     })
     .then(function(data) {
