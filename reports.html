@@ -941,7 +941,7 @@ function renderReport(data) {
 
   var report = REPORTS[activeReport];
   document.getElementById('headerMeta').textContent = report.label + ' · ' + activeDate + (_userRole !== 'admin' && _userStoreName ? ' · ' + _userStoreName : '');
-  setStatus('ok', 'Data for ' + activeDate + ' · updates daily at 5 AM');
+  setStatus('ok', 'Data for ' + activeDate + ' · updated weekly');
 }
 
 function buildStoreBar() {
