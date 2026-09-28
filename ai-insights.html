@@ -145,7 +145,10 @@
 .ag-status{font-size:12px;color:#c9a84c;min-height:18px;margin:10px 0 14px;font-family:'DM Mono',monospace;line-height:1.5;}
 .ag-status.err{color:#f0b0b0;}
 .ag-result{margin-bottom:18px;}
-.ag-toolbar{display:flex;justify-content:flex-end;gap:8px;margin-bottom:8px;}
+.ag-toolbar{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:8px;}
+.ag-tool.primary{background:#c0161c;border-color:#c0161c;color:#fff;}
+.ag-doc.editing{outline:2px dashed #c9a84c;outline-offset:4px;}
+.saved-edited{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#f0ede6;background:rgba(124,92,191,.5);border-radius:6px;padding:2px 6px;margin-left:6px;vertical-align:1px;}
 .ag-tool{padding:8px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#f0ede6;font-size:12px;cursor:pointer;}
 .ag-doc{background:#fbfaf7;color:#1c1c1c;border-radius:14px;padding:20px 18px;font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.6;overflow-wrap:break-word;}
 .ag-doc h1{font-family:'DM Serif Display',serif;font-size:22px;line-height:1.2;color:#8e0f13;margin-bottom:6px;}
@@ -167,6 +170,7 @@
 .saved-item{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.04);margin-bottom:8px;cursor:pointer;-webkit-tap-highlight-color:transparent;}
 .saved-title{font-size:13px;font-weight:500;line-height:1.35;}
 .saved-date{font-family:'DM Mono',monospace;font-size:10px;color:#8a8080;white-space:nowrap;}
+.saved-week{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#1a0000;background:#c9a84c;border-radius:6px;padding:2px 6px;margin-left:6px;vertical-align:1px;}
 @media print{
   body{background:#fff !important;}
   body *{visibility:hidden;}
@@ -282,8 +286,10 @@
 
   <div class="mode-panel" id="panel-agenda">
     <div class="slabel" style="margin-top:4px;">Agenda Maker</div>
-    <div class="usage-row"><span>Monthly AI usage</span><span class="val" id="usagePct">&ndash;</span></div>
-    <div class="usage-bar"><div id="usageBar"></div></div>
+    <div id="usageBlock" style="display:none;">
+      <div class="usage-row"><span>Monthly AI usage</span><span class="val" id="usagePct">&ndash;</span></div>
+      <div class="usage-bar"><div id="usageBar"></div></div>
+    </div>
 
     <div class="store-selector" id="agendaStoreSelector">
       <button type="button" class="store-btn active" id="agStore-Palmerstown" onclick="agSelectStore('Palmerstown')">Palmerstown</button>
@@ -292,7 +298,7 @@
     </div>
 
     <div class="field-label">Scope</div>
-    <select class="ag-select" id="agendaScope"><option value="Total store">Total store</option></select>
+    <select class="ag-select" id="agendaScope" onchange="agUpdateButton()"><option value="Total store">Total store</option></select>
 
     <div class="field-label">Plan</div>
     <div class="kind-grid">
@@ -306,7 +312,14 @@
     <div class="ag-status" id="agendaStatus"></div>
 
     <div class="ag-result" id="agendaResult" style="display:none;">
-      <div class="ag-toolbar"><button type="button" class="ag-tool" onclick="window.print()">Print / Save PDF</button></div>
+      <div class="ag-toolbar">
+        <button type="button" class="ag-tool" id="agEditBtn" onclick="agEdit()">Edit</button>
+        <button type="button" class="ag-tool primary" id="agSaveBtn" style="display:none;" onclick="agSave()">Save</button>
+        <button type="button" class="ag-tool" id="agCancelBtn" style="display:none;" onclick="agCancel()">Cancel</button>
+        <button type="button" class="ag-tool" id="agResetBtn" style="display:none;" onclick="agReset()">Reset to original</button>
+        <button type="button" class="ag-tool" onclick="agDownload()">Download (Word)</button>
+        <button type="button" class="ag-tool" onclick="window.print()">Print / PDF</button>
+      </div>
       <div class="ag-doc" id="agendaDoc"></div>
     </div>
 
@@ -332,6 +345,8 @@ var agLimit = false;
 var agTimer = null;
 var agLoaded = false;
 var AG_KIND_NAMES = { agenda6: '6-week agenda', margin: 'Margin recovery', waste: 'Waste reduction', range: 'Range review' };
+var agThisWeek = {};   // 'scope|kind' -> this user's plan id for this week
+var agDocId = null, agDocMd = '', agDocEdited = null, agEditing = false;
 
 var _session=null;try{_session=JSON.parse(localStorage.getItem('portal_session'));}catch(e){}
 var _userRole=_session?(_session.role||''):'';
@@ -515,7 +530,13 @@ function showError(msg) {
 }
 
 /* ---------- AGENDA MAKER ---------- */
+function agUserName() {
+  var ss = null;
+  try { ss = JSON.parse(localStorage.getItem('portal_session')); } catch (e) {}
+  return ss ? String(ss.username || ss.user || ss.name || ss.email || '') : '';
+}
 function agPost(body) {
+  body.user = agUserName();
   return fetch(AGENDA_ENDPOINT, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_ANON, 'Authorization': 'Bearer ' + SUPABASE_ANON },
@@ -524,17 +545,36 @@ function agPost(body) {
     return r.json().then(function(j) { return j; }, function() { return { error: 'Unexpected response (' + r.status + ')' }; });
   });
 }
+function agIsAdmin() { return _userRole === 'admin'; }
+/* What the user is told when a plan can't be built. Staff never see costs, limits or credits. */
+function agFailText(code) {
+  if (!agIsAdmin()) return 'Plans can’t be built right now — please try again later.';
+  if (code === 'limit') return 'Monthly limit reached — resets on the 1st. (Only you can see this.)';
+  if (code === 'credits') return 'API credits have run out — top up in the Console. You’ve been sent a notification. (Only you can see this.)';
+  if (code === 'key') return 'The API key was rejected — check the API key secret in Supabase. (Only you can see this.)';
+  if (code === 'busy') return 'The service is busy — try again in a few minutes.';
+  return 'Something went wrong building the plan — try again shortly.';
+}
 function agSetUsage(pct) {
   if (typeof pct !== 'number') return;
+  if (agIsAdmin()) document.getElementById('usageBlock').style.display = '';
   document.getElementById('usagePct').textContent = pct + '%';
   document.getElementById('usageBar').style.width = Math.min(100, pct) + '%';
   agLimit = pct >= 100;
   agUpdateButton();
 }
+function agCurrentKey() {
+  var sel = document.getElementById('agendaScope');
+  return (sel ? sel.value : 'Total store') + '|' + agKind;
+}
 function agUpdateButton() {
   var b = document.getElementById('agendaGo');
-  b.disabled = agBusy || agLimit;
-  b.textContent = agLimit ? 'Monthly limit reached — resets on the 1st' : (agBusy ? 'Building…' : 'Build plan');
+  var ready = agThisWeek.hasOwnProperty(agCurrentKey());
+  b.disabled = agBusy || (agLimit && !ready);
+  if (agBusy) b.textContent = 'Building…';
+  else if (ready) b.textContent = 'Open this week’s plan';
+  else if (agLimit) b.textContent = agIsAdmin() ? 'Monthly limit reached — resets on the 1st' : 'Plan builder unavailable right now';
+  else b.textContent = 'Build plan';
 }
 function agStatus(msg, isErr) {
   var el = document.getElementById('agendaStatus');
@@ -557,8 +597,11 @@ function agSelectKind(k) {
   for (var key in AG_KIND_NAMES) {
     if (AG_KIND_NAMES.hasOwnProperty(key)) document.getElementById('agKind-' + key).className = 'kind-btn' + (key === k ? ' active' : '');
   }
+  agUpdateButton();
 }
 function agRefreshStore() {
+  agThisWeek = {};
+  agUpdateButton();
   agLoadDepartments();
   agLoadSaved();
 }
@@ -604,30 +647,43 @@ function agLoadSaved() {
   agPost({ action: 'list', store: agStore }).then(function(res) {
     agSetUsage(res.pct);
     var items = res.items || [];
+    agThisWeek = {};
+    for (var w = 0; w < items.length; w++) {
+      if (res.week && items[w].week_start === res.week) {
+        var wk = items[w].scope + '|' + items[w].kind;
+        if (!agThisWeek.hasOwnProperty(wk)) agThisWeek[wk] = items[w].id;
+      }
+    }
+    agUpdateButton();
     if (res.error) { box.innerHTML = '<p style="color:#f0b0b0;font-size:12px;">' + esc(res.error) + '</p>'; return; }
     if (!items.length) { box.innerHTML = '<p style="color:#8a8080;font-size:12px;">No saved plans for ' + esc(agStore) + ' yet.</p>'; return; }
     box.innerHTML = '';
-    for (var i = 0; i < items.length; i++) box.appendChild(agSavedRow(items[i]));
+    for (var i = 0; i < items.length; i++) box.appendChild(agSavedRow(items[i], res.week));
   })['catch'](function() { box.innerHTML = '<p style="color:#f0b0b0;font-size:12px;">Could not load saved plans.</p>'; });
 }
-function agSavedRow(it) {
+function agSavedRow(it, week) {
   var div = document.createElement('div');
   div.className = 'saved-item';
   var scope = it.scope === 'Total store' ? 'Total store' : String(it.scope).replace(/^\s*D\d{4}\s*-\s*/, '');
   var when = String(it.created_at || '').substring(0, 10);
-  div.innerHTML = '<span class="saved-title">' + esc(AG_KIND_NAMES[it.kind] || it.kind) + ' · ' + esc(scope) + '</span><span class="saved-date">' + esc(when) + '</span>';
-  div.onclick = function() {
-    agStatus('Opening saved plan…');
-    agPost({ action: 'get', id: it.id }).then(function(res) {
-      if (res.error || !res.item) { agStatus(res.error || 'Could not open plan.', true); return; }
-      agStatus('');
-      agShow(res.item.content);
-    })['catch'](function() { agStatus('Could not open plan.', true); });
-  };
+  var tag = (week && it.week_start === week ? '<span class="saved-week">This week</span>' : '') + (it.edited ? '<span class="saved-edited">Edited</span>' : '');
+  div.innerHTML = '<span class="saved-title">' + esc(AG_KIND_NAMES[it.kind] || it.kind) + ' · ' + esc(scope) + tag + '</span><span class="saved-date">' + esc(when) + '</span>';
+  div.onclick = function() { agOpenSaved(it.id, ''); };
   return div;
 }
+function agOpenSaved(id, note) {
+  agStatus('Opening saved plan…');
+  agPost({ action: 'get', id: id }).then(function(res) {
+    if (res.error || !res.item) { agStatus(res.error || 'Could not open plan.', true); return; }
+    agStatus(note || '');
+    agShow(res.item.content, res.item.edited_html, id);
+  })['catch'](function() { agStatus('Could not open plan.', true); });
+}
 function agGenerate() {
-  if (agBusy || agLimit) return;
+  if (agBusy) return;
+  var key = agCurrentKey();
+  if (agThisWeek.hasOwnProperty(key)) { agOpenSaved(agThisWeek[key], ''); return; }
+  if (agLimit) return;
   var scope = document.getElementById('agendaScope').value;
   agBusy = true;
   agUpdateButton();
@@ -640,11 +696,24 @@ function agGenerate() {
   agPost({ action: 'generate', store: agStore, scope: scope, kind: agKind }).then(function(res) {
     clearInterval(agTimer);
     agBusy = false;
-    if (res.error === 'limit') { agSetUsage(100); agStatus('Monthly limit reached — resets on the 1st.', true); return; }
+    if (res.error === 'unavailable') {
+      if (res.code === 'limit') agSetUsage(100);
+      agUpdateButton();
+      agStatus(agFailText(res.code), true);
+      return;
+    }
+    if (res.building) {
+      agUpdateButton();
+      agSetUsage(res.pct);
+      agStatus('This plan is being prepared — it will appear in your Saved plans in a minute or two.');
+      setTimeout(agLoadSaved, 45000);
+      setTimeout(agLoadSaved, 120000);
+      return;
+    }
     if (res.error) { agUpdateButton(); agStatus(res.error, true); return; }
     agSetUsage(res.pct);
     agStatus('');
-    agShow(res.markdown || '');
+    agShow(res.markdown || '', null, res.id);
     agLoadSaved();
   })['catch'](function() {
     clearInterval(agTimer);
@@ -654,8 +723,108 @@ function agGenerate() {
     setTimeout(agLoadSaved, 60000);
   });
 }
-function agShow(md) {
-  document.getElementById('agendaDoc').innerHTML = mdRender(md);
+/* Strip anything executable from edited HTML. Parsed in an inert document so nothing runs. */
+function agClean(html) {
+  var doc = document.implementation.createHTMLDocument('');
+  doc.body.innerHTML = String(html || '');
+  var bad = doc.body.querySelectorAll('script,style,iframe,object,embed,link,meta,form,input,button,textarea,select');
+  for (var i = bad.length - 1; i >= 0; i--) bad[i].parentNode.removeChild(bad[i]);
+  var all = doc.body.getElementsByTagName('*');
+  for (var j = 0; j < all.length; j++) {
+    var at = all[j].attributes;
+    for (var k = at.length - 1; k >= 0; k--) {
+      var n = at[k].name.toLowerCase();
+      if (n.indexOf('on') === 0 || n === 'contenteditable' || n === 'style' || ((n === 'href' || n === 'src') && /^\s*(javascript|data):/i.test(at[k].value))) all[j].removeAttribute(at[k].name);
+    }
+  }
+  return doc.body.innerHTML;
+}
+function agRender() {
+  document.getElementById('agendaDoc').innerHTML = agDocEdited ? agClean(agDocEdited) : mdRender(agDocMd);
+}
+function agToolbar() {
+  var has = !!agDocId;
+  document.getElementById('agEditBtn').style.display = has && !agEditing ? '' : 'none';
+  document.getElementById('agSaveBtn').style.display = agEditing ? '' : 'none';
+  document.getElementById('agCancelBtn').style.display = agEditing ? '' : 'none';
+  document.getElementById('agResetBtn').style.display = has && !agEditing && agDocEdited ? '' : 'none';
+}
+function agEndEdit() {
+  var d = document.getElementById('agendaDoc');
+  agEditing = false;
+  d.removeAttribute('contenteditable');
+  d.className = 'ag-doc';
+}
+function agEdit() {
+  if (!agDocId) return;
+  var d = document.getElementById('agendaDoc');
+  agEditing = true;
+  d.setAttribute('contenteditable', 'true');
+  d.className = 'ag-doc editing';
+  agToolbar();
+  agStatus('Editing — tap into the plan to change it, then Save. Changes are saved to your copy only.');
+  try { d.focus(); } catch (e) {}
+}
+function agCancel() {
+  agEndEdit();
+  agRender();
+  agToolbar();
+  agStatus('');
+}
+function agSave() {
+  if (!agDocId) return;
+  var html = agClean(document.getElementById('agendaDoc').innerHTML);
+  agStatus('Saving…');
+  agPost({ action: 'save', id: agDocId, html: html }).then(function(res) {
+    if (res.error) { agStatus(res.error, true); return; }
+    agDocEdited = html;
+    agEndEdit();
+    agRender();
+    agToolbar();
+    agStatus('Saved to your copy.');
+    agLoadSaved();
+  })['catch'](function() { agStatus('Could not save — check your connection and try again.', true); });
+}
+function agReset() {
+  if (!agDocId || !window.confirm('Discard your edits and go back to the original plan?')) return;
+  agPost({ action: 'reset', id: agDocId }).then(function(res) {
+    if (res.error) { agStatus(res.error, true); return; }
+    agDocEdited = null;
+    agEndEdit();
+    agRender();
+    agToolbar();
+    agStatus('Back to the original plan.');
+    agLoadSaved();
+  })['catch'](function() { agStatus('Could not reset — try again.', true); });
+}
+function agDownload() {
+  var d = document.getElementById('agendaDoc');
+  var html = agClean(d.innerHTML);
+  var h1 = d.getElementsByTagName('h1')[0];
+  var title = h1 ? (h1.textContent || h1.innerText || 'Plan') : 'Plan';
+  var css = 'body{font-family:Calibri,Arial,sans-serif;font-size:11pt;color:#1c1c1c;line-height:1.4;}' +
+    'h1{font-size:18pt;color:#8E0F13;margin:0 0 6pt;}h2{font-size:14pt;color:#8E0F13;margin:16pt 0 6pt;}h3{font-size:12pt;margin:10pt 0 4pt;}' +
+    'table{border-collapse:collapse;width:100%;margin:0 0 10pt;}th{background:#8E0F13;color:#ffffff;text-align:left;padding:4pt 6pt;border:1px solid #8E0F13;}' +
+    'td{padding:4pt 6pt;border:1px solid #cccccc;vertical-align:top;}td.n{text-align:right;}blockquote{border-left:3pt solid #e8a07a;background:#fdf1ea;padding:4pt 8pt;margin:0 0 8pt;}';
+  var doc = '\uFEFF<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">' +
+    '<head><meta charset="utf-8"><title>' + esc(title) + '</title><style>' + css + '</style></head><body>' + html + '</body></html>';
+  var name = title.replace(/\s*[·—–|]\s*/g, ' - ').replace(/[\\\/:*?"<>]+/g, '').replace(/\s+/g, ' ').replace(/^\s+|\s+$/g, '').substring(0, 90) || 'Plan';
+  var blob = new Blob([doc], { type: 'application/msword' });
+  var url = (window.URL || window.webkitURL).createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = name + '.doc';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(function() { document.body.removeChild(a); (window.URL || window.webkitURL).revokeObjectURL(url); }, 2000);
+}
+function agShow(md, edited, id) {
+  agDocMd = md || '';
+  agDocEdited = edited || null;
+  agDocId = id || null;
+  agEndEdit();
+  agRender();
+  agToolbar();
   document.getElementById('agendaResult').style.display = 'block';
   var el = document.getElementById('agendaResult');
   if (el.scrollIntoView) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
