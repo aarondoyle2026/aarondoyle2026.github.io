@@ -121,6 +121,12 @@
 .waste-action{background:rgba(45,122,79,.1);border:1px solid rgba(45,122,79,.25);border-radius:10px;padding:10px 12px;font-size:12px;line-height:1.55;color:#f0aaaa;margin-top:8px;}
 .waste-action::before{content:'-> ';color:#e41e26;}
 .waste-group-actions{display:flex;flex-direction:column;gap:8px;}
+.kpi-date{font-family:'DM Mono',monospace;font-size:10px;color:#8a8080;margin:-6px 0 12px;}
+.kpi-store{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:14px;margin-bottom:12px;}
+.kpi-store-name{font-weight:600;font-size:14px;margin-bottom:4px;}
+.kpi-headline{font-size:13px;line-height:1.55;color:#f0d890;margin-bottom:10px;}
+.kpi-sub{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#8a8080;margin:8px 0 6px;}
+.kpi-empty{font-size:12px;color:#8a8080;line-height:1.6;}
 
 .store-selector{display:flex;gap:8px;margin-bottom:14px;}
 .store-btn{flex:1;padding:10px 8px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.04);color:#8a8080;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;text-align:center;transition:all .2s;-webkit-tap-highlight-color:transparent;}
@@ -209,6 +215,9 @@
     <button type="button" class="mode-btn active" id="btn-director" onclick="switchMode('director')">
       <span class="btn-icon">&#128203;</span><span class="btn-label">Director</span>
     </button>
+    <button type="button" class="mode-btn" id="btn-kpi" onclick="switchMode('kpi')">
+      <span class="btn-icon">&#128200;</span><span class="btn-label">KPIs</span>
+    </button>
     <button type="button" class="mode-btn" id="btn-leaks" onclick="switchMode('leaks')">
       <span class="btn-icon">&#128176;</span><span class="btn-label">Leaks</span>
     </button>
@@ -238,6 +247,17 @@
     <div class="flags" id="directorDrivers"></div>
     <div class="slabel">Priority Actions - Next Week</div>
     <div class="num-list" id="directorPriorities"></div>
+  </div>
+
+  <div class="mode-panel" id="panel-kpi">
+    <div class="slabel" style="margin-top:4px;">This Week's KPIs &middot; Year to Date</div>
+    <div class="kpi-date" id="kpiDate"></div>
+    <div class="director-summary" id="kpiSummaryWrap"><div id="kpiSummary"><p class="kpi-empty">Loading&hellip;</p></div></div>
+    <div id="kpiStores"></div>
+    <div id="kpiGroupWrap" style="display:none;">
+      <div class="slabel">Group Actions This Week</div>
+      <div class="num-list" id="kpiGroupActions"></div>
+    </div>
   </div>
 
   <div class="mode-panel" id="panel-leaks">
@@ -332,9 +352,10 @@
 var INSIGHTS_URL  = 'https://raw.githubusercontent.com/aarondoyle2026/aarondoyle2026.github.io/main/ai_insights.json';
 var AGENDA_ENDPOINT = 'https://mnebkteiwjxbbmnfotse.supabase.co/functions/v1/ai-agenda';
 var DATA_BASE = 'https://raw.githubusercontent.com/aarondoyle2026/aarondoyle2026.github.io/main/';
+var KPI_INSIGHTS_URL = DATA_BASE + 'kpi_insights.json';
 var SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1uZWJrdGVpd2p4YmJtbmZvdHNlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ2MTgwODAsImV4cCI6MjA5MDE5NDA4MH0.cTQbQqoxagmGm4crdpMhFbzlwid1OMMo6UOyhvtbhxA';
 
-var MODES = ['director','leaks','actions','cross','diagnosis','waste','agenda'];
+var MODES = ['director','kpi','leaks','actions','cross','diagnosis','waste','agenda'];
 
 
 var insightsData = null;
@@ -522,6 +543,63 @@ function renderWaste(w) {
     ga.appendChild(div);
   });
 }
+function kpiList(items, type, icon) {
+  var h = '';
+  (items || []).forEach(function(t) {
+    h += '<div class="flag ' + type + '"><span class="flag-icon">' + icon + '</span><span>' + esc(t) + '</span></div>';
+  });
+  return h;
+}
+function renderKpi(data) {
+  var ins = data && data.insights;
+  var sumEl = document.getElementById('kpiSummary');
+  if (!ins) { sumEl.innerHTML = '<p class="kpi-empty">No KPI note yet. It is written each Monday.</p>'; return; }
+  document.getElementById('kpiDate').textContent = 'Week of ' + (data.generated_at || '') + (data.generated_time ? ' at ' + data.generated_time : '');
+  var isAdmin = _userRole === 'admin';
+  if (isAdmin && ins.summary) {
+    sumEl.innerHTML = '<p style="font-size:14px;line-height:1.8;">' + esc(ins.summary) + '</p>';
+  } else {
+    document.getElementById('kpiSummaryWrap').style.display = 'none';
+  }
+  var stores = ins.stores || [];
+  if (!isAdmin && _userStoreInfo) {
+    stores = stores.filter(function(s) { return s.name === _userStoreInfo.name; });
+  }
+  var box = document.getElementById('kpiStores');
+  box.innerHTML = '';
+  if (!stores.length) { box.innerHTML = '<p class="kpi-empty">No KPI figures for your store this week.</p>'; }
+  stores.forEach(function(s) {
+    var div = document.createElement('div');
+    div.className = 'kpi-store';
+    var h = '<div class="kpi-store-name">' + esc(s.name || '') + '</div>';
+    if (s.headline) h += '<div class="kpi-headline">' + esc(s.headline) + '</div>';
+    if (s.wins && s.wins.length) h += '<div class="kpi-sub">Going well</div><div class="flags">' + kpiList(s.wins, 'positive', '&#9989;') + '</div>';
+    if (s.watch && s.watch.length) h += '<div class="kpi-sub">Watch</div><div class="flags">' + kpiList(s.watch, 'warning', '&#128310;') + '</div>';
+    if (s.action) h += '<div class="waste-action">' + esc(s.action) + '</div>';
+    div.innerHTML = h;
+    box.appendChild(div);
+  });
+  var ga = ins.group_actions || [];
+  if (isAdmin && ga.length) {
+    document.getElementById('kpiGroupWrap').style.display = 'block';
+    var gl = document.getElementById('kpiGroupActions');
+    gl.innerHTML = '';
+    ga.forEach(function(item, i) {
+      var d = document.createElement('div');
+      d.className = 'num-item gold-item';
+      var n = (i + 1) < 10 ? '0' + (i + 1) : String(i + 1);
+      d.innerHTML = '<span class="num-badge">' + n + '</span><span>' + esc(item) + '</span>';
+      gl.appendChild(d);
+    });
+  }
+}
+function loadKpi() {
+  fetch(KPI_INSIGHTS_URL + '?t=' + Date.now())
+    .then(function(r) { return r.ok ? r.json() : null; })
+    .then(function(d) { renderKpi(d); })
+    .catch(function() { renderKpi(null); });
+}
+
 function showError(msg) {
   document.getElementById('loadingScreen').style.display = 'none';
   var el = document.getElementById('errorCard');
@@ -909,6 +987,7 @@ function init() {
     agStore = _userStoreInfo.name;
   }
 
+  loadKpi();
   setStep('Fetching latest analysis...', 'Generated weekly by AI', 20);
   fetch(INSIGHTS_URL + '?t=' + Date.now())
     .then(function(r) {
