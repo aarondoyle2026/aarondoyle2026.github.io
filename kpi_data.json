@@ -3081,15 +3081,263 @@
     "Palmerstown": {
       "store": "Palmerstown",
       "code": "356",
-      "scraped_at": "2026-09-29T16:55:53.052194+01:00",
+      "scraped_at": "2026-09-29T17:14:57.202612+01:00",
       "date": "2026-09-29",
-      "sections": {},
-      "error": "Export file never appeared."
+      "sections": {
+        "RETAIL SALES ANALYSIS": {
+          "Measures": {
+            "TY": {
+              "v": "TY",
+              "t": "str"
+            },
+            "WTD": {
+              "v": "WTD",
+              "t": "str"
+            },
+            "YTD": {
+              "v": "YTD",
+              "t": "str"
+            }
+          },
+          "Retail Sales €": {
+            "TY": {
+              "v": 47965.67,
+              "t": "eur"
+            },
+            "WTD": {
+              "v": 92327.5,
+              "t": "eur"
+            },
+            "YTD": {
+              "v": 13862102.02,
+              "t": "eur"
+            }
+          },
+          "Retail Sales € TY LY Var": {
+            "TY": {
+              "v": 6045.27,
+              "t": "eur"
+            },
+            "WTD": {
+              "v": 6930.51,
+              "t": "eur"
+            },
+            "YTD": {
+              "v": -275356.13,
+              "t": "eur"
+            }
+          },
+          "Retail Sales € TY LY Var %": {
+            "TY": {
+              "v": 14.4208,
+              "t": "pct"
+            },
+            "WTD": {
+              "v": 8.1156,
+              "t": "pct"
+            },
+            "YTD": {
+              "v": -1.9477,
+              "t": "pct"
+            }
+          }
+        },
+        "RETAIL SCAN MARGIN ANALYSIS": {
+          "Retail Scan Margin €": {
+            "TY": {
+              "v": 8072.606570000001,
+              "t": "eur"
+            },
+            "WTD": {
+              "v": 15998.806240000002,
+              "t": "eur"
+            },
+            "YTD": {
+              "v": 2282896.8641399997,
+              "t": "eur"
+            }
+          },
+          "Retail Scan Margin %": {
+            "TY": {
+              "v": 18.2465,
+              "t": "pct"
+            },
+            "WTD": {
+              "v": 18.8402,
+              "t": "pct"
+            },
+            "YTD": {
+              "v": 17.9978,
+              "t": "pct"
+            }
+          },
+          "Retail Scan Margin € TY LY Var": {
+            "TY": {
+              "v": 1047.042870000003,
+              "t": "eur"
+            },
+            "WTD": {
+              "v": 1511.3348900000037,
+              "t": "eur"
+            },
+            "YTD": {
+              "v": -73543.16685000062,
+              "t": "eur"
+            }
+          },
+          "Retail Scan Margin % TY LY Var": {
+            "TY": {
+              "v": 0.1285,
+              "t": "pct"
+            },
+            "WTD": {
+              "v": 0.4147,
+              "t": "pct"
+            },
+            "YTD": {
+              "v": -0.2198,
+              "t": "pct"
+            }
+          }
+        },
+        "WASTE & REDUCTION ANALYSIS": {
+          "Waste & Reduction €": {
+            "TY": {
+              "v": 941.6948,
+              "t": "eur"
+            },
+            "WTD": {
+              "v": 1297.6893,
+              "t": "eur"
+            },
+            "YTD": {
+              "v": 180218.532,
+              "t": "eur"
+            }
+          },
+          "Waste & Reduction € TY LY Var": {
+            "TY": {
+              "v": 356.8598,
+              "t": "eur"
+            },
+            "WTD": {
+              "v": 101.6069,
+              "t": "eur"
+            },
+            "YTD": {
+              "v": 32601.266,
+              "t": "eur"
+            }
+          },
+          "Waste & Reduction € TY LY Var %": {
+            "TY": {
+              "v": 61.0189,
+              "t": "pct"
+            },
+            "WTD": {
+              "v": 8.495,
+              "t": "pct"
+            },
+            "YTD": {
+              "v": 22.085,
+              "t": "pct"
+            }
+          }
+        },
+        "TRANSACTION COUNT ANALYSIS": {
+          "Retail Transaction Count": {
+            "TY": {
+              "v": 2379.0,
+              "t": "count"
+            },
+            "WTD": {
+              "v": 4470.0,
+              "t": "count"
+            },
+            "YTD": {
+              "v": 672062.0,
+              "t": "count"
+            }
+          },
+          "Retail Transaction Count TY LY Var": {
+            "TY": {
+              "v": -34.0,
+              "t": "count"
+            },
+            "WTD": {
+              "v": -19.0,
+              "t": "count"
+            },
+            "YTD": {
+              "v": -27457.0,
+              "t": "count"
+            }
+          },
+          "Retail Transaction Count TY LY Var %": {
+            "TY": {
+              "v": -1.409,
+              "t": "pct"
+            },
+            "WTD": {
+              "v": -0.4233,
+              "t": "pct"
+            },
+            "YTD": {
+              "v": -3.9251,
+              "t": "pct"
+            }
+          }
+        },
+        "AVERAGE SPEND ANALYSIS": {
+          "Retail Sales Average Spend €": {
+            "TY": {
+              "v": 20.37102564102564,
+              "t": "eur"
+            },
+            "WTD": {
+              "v": 20.872852348993288,
+              "t": "eur"
+            },
+            "YTD": {
+              "v": 20.86989481625207,
+              "t": "eur"
+            }
+          },
+          "Retail Sales Average Spend € TY LY Var": {
+            "TY": {
+              "v": 2.801837907913331,
+              "t": "eur"
+            },
+            "WTD": {
+              "v": 1.6424246368079451,
+              "t": "eur"
+            },
+            "YTD": {
+              "v": 0.4248087213783087,
+              "t": "eur"
+            }
+          },
+          "Retail Sales Average Spend € TY LY Var %": {
+            "TY": {
+              "v": 15.9475,
+              "t": "pct"
+            },
+            "WTD": {
+              "v": 8.5408,
+              "t": "pct"
+            },
+            "YTD": {
+              "v": 2.0778,
+              "t": "pct"
+            }
+          }
+        }
+      }
     },
     "Balbriggan": {
       "store": "Balbriggan",
       "code": "374",
-      "scraped_at": "2026-09-29T16:55:53.052194+01:00",
+      "scraped_at": "2026-09-29T17:14:57.202612+01:00",
       "date": "2026-09-29",
       "sections": {
         "RETAIL SALES ANALYSIS": {
@@ -3161,7 +3409,7 @@
               "t": "eur"
             },
             "YTD": {
-              "v": 1998322.42736,
+              "v": 1998322.4273599999,
               "t": "eur"
             }
           },
@@ -3189,7 +3437,7 @@
               "t": "eur"
             },
             "YTD": {
-              "v": -72543.16484999936,
+              "v": -72543.1648499996,
               "t": "eur"
             }
           },
@@ -3345,7 +3593,7 @@
     "Skerries": {
       "store": "Skerries",
       "code": "424",
-      "scraped_at": "2026-09-29T16:55:53.052194+01:00",
+      "scraped_at": "2026-09-29T17:14:57.202612+01:00",
       "date": "2026-09-29",
       "sections": {
         "RETAIL SALES ANALYSIS": {
