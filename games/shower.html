@@ -1,0 +1,781 @@
+<!doctype html>
+<html lang="en-IE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1d2633">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Shower of Cards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Manrope:wght@400;500;700;800&display=swap">
+<style>
+/* Layout: pass-the-phone card game. Setup → round (prompt card) → private hands → czar judging → result. Single committed look: rain-slate table, ink prompt cards, paper answer cards, raincoat-yellow accent. */
+:root{
+  --table:#1d2633; --table-2:#26313f; --line:#3a4759; --ink:#0c0f14; --paper:#f7f3ea; --paper-d:#d9d2c2;
+  --text:#eef1f5; --muted:#9aa7b8; --rain:#ffd23f; --win:#4ade80;
+  --display:"Bricolage Grotesque","Arial Black",system-ui,sans-serif;
+  --body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+html,body{min-height:100%}
+body{background:var(--table);color:var(--text);font-family:var(--body);font-size:16px;-webkit-tap-highlight-color:transparent}
+button,textarea,input{font:inherit;color:inherit}
+button{border:0;background:none;cursor:pointer;touch-action:manipulation}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--rain);outline-offset:2px}
+#app{box-sizing:border-box;min-height:100%;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 40px}
+.wrap{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(40px,11vw,72px);line-height:.9;margin:0;letter-spacing:-.02em}
+h1 span{color:var(--rain)}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(26px,7vw,40px);line-height:1;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.lede{color:var(--muted);margin:8px 0 0;max-width:48ch}
+.label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--muted)}
+.age{display:inline-block;border:2px solid var(--rain);color:var(--rain);border-radius:6px;padding:2px 7px;font-weight:700;font-size:13px;margin-top:10px}
+.panel{background:var(--table-2);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:14px}
+.players{display:flex;flex-direction:column;gap:8px}
+.prow{display:flex;gap:8px}
+.prow input{flex:1;min-width:0;background:var(--table);border:2px solid var(--line);border-radius:10px;padding:11px 12px;font-weight:700}
+.prow button{width:44px;border-radius:10px;background:var(--table);color:var(--muted);font-size:20px}
+.add{align-self:flex-start;color:var(--rain);font-weight:700;padding:4px 0}
+.seg{display:flex;gap:8px;flex-wrap:wrap}
+.seg button{flex:1;min-width:56px;padding:11px 8px;border-radius:10px;background:var(--table);border:2px solid var(--line);font-weight:700}
+.seg button[aria-pressed="true"]{background:var(--rain);border-color:var(--rain);color:var(--ink)}
+.toggle{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.toggle small{display:block;color:var(--muted);font-size:13px}
+.sw{width:50px;height:30px;border-radius:15px;background:var(--line);position:relative;flex:none}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:var(--text);transition:left .15s}
+.sw[aria-checked="true"]{background:var(--win)} .sw[aria-checked="true"]::after{left:23px}
+.go{background:var(--rain);color:var(--ink);font-family:var(--display);font-weight:800;font-size:21px;padding:16px;border-radius:14px;box-shadow:0 4px 0 #b8941c}
+.go:active{transform:translateY(3px);box-shadow:0 1px 0 #b8941c}
+.go:disabled{opacity:.4;transform:none}
+.alt{border:2px solid var(--line);border-radius:14px;padding:13px;font-weight:700}
+.err{color:#ff8a8a;font-weight:700;margin:0;min-height:1.2em}
+.back{color:var(--muted);font-weight:700;text-decoration:none;font-size:14px}
+
+/* cards */
+.black{background:var(--ink);color:#fff;border-radius:18px;padding:22px 20px 18px;box-shadow:0 10px 30px rgba(0,0,0,.35);display:flex;flex-direction:column;gap:18px;min-height:150px;justify-content:space-between}
+.black p{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(23px,6.4vw,34px);line-height:1.12;letter-spacing:-.01em;text-wrap:pretty}
+.black .foot{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#8f99a8;font-weight:700}
+.pick{background:#fff;color:var(--ink);border-radius:999px;padding:3px 10px;font-weight:700}
+mark{background:var(--rain);color:var(--ink);padding:0 .15em;border-radius:.15em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.blank{display:inline-block;min-width:3.2em;border-bottom:.12em solid #fff;transform:translateY(-.15em)}
+.hand{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.white{position:relative;text-align:left;background:var(--paper);color:var(--ink);border-radius:14px;padding:14px 14px 30px;min-height:108px;font-family:var(--display);font-weight:800;font-size:18px;line-height:1.15;box-shadow:0 4px 0 var(--paper-d);transition:transform .1s}
+.white:active{transform:scale(.98)}
+.white[aria-pressed="true"]{outline:4px solid var(--rain);transform:translateY(-4px)}
+.white .ord{position:absolute;right:10px;bottom:8px;width:24px;height:24px;border-radius:50%;background:var(--ink);color:var(--rain);display:grid;place-items:center;font-size:13px}
+.white.custom{background:var(--table-2);color:var(--text);box-shadow:0 4px 0 #111823;border:2px dashed var(--line);font-weight:500}
+.white.custom textarea{width:100%;box-sizing:border-box;min-height:64px;background:transparent;border:0;resize:none;color:var(--text);font-family:var(--display);font-weight:800;font-size:17px;padding:0}
+.white.custom textarea::placeholder{color:var(--muted)}
+.sticky{position:sticky;bottom:calc(10px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:8px;padding-top:8px}
+.subs{display:flex;flex-direction:column;gap:12px}
+.sub{text-align:left;background:var(--ink);color:#fff;border-radius:16px;padding:18px;font-family:var(--display);font-weight:800;font-size:clamp(20px,5.4vw,26px);line-height:1.18;border:3px solid transparent}
+.sub[aria-pressed="true"]{border-color:var(--rain)}
+.sub small{display:block;margin-top:10px;font-family:var(--body);font-size:13px;color:#8f99a8;font-weight:700}
+.pass{min-height:70vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:16px}
+.pass .who{font-family:var(--display);font-weight:800;font-size:clamp(44px,13vw,80px);line-height:.95;color:var(--rain);overflow-wrap:anywhere}
+.pass p{color:var(--muted);margin:0;max-width:32ch}
+.pass .go{min-width:260px}
+.scores{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.scores li{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--line);font-weight:700;font-variant-numeric:tabular-nums;gap:12px}
+.scores li.lead span:first-child::after{content:" ★";color:var(--rain)}
+.dots{display:flex;gap:4px} .dots i{width:10px;height:10px;border-radius:50%;background:var(--line)} .dots i.on{background:var(--rain)}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:14px;font-weight:700}
+.meta button{color:var(--muted);text-decoration:underline;text-underline-offset:3px;font-weight:700;padding:4px 0}
+.status{display:flex;flex-wrap:wrap;gap:6px}
+.status span{padding:5px 10px;border-radius:999px;background:var(--table-2);font-size:13px;font-weight:700;color:var(--muted)}
+.status span.done{background:var(--win);color:var(--ink)}
+.status span.czar{background:var(--rain);color:var(--ink)}
+.pop{animation:pop .45s cubic-bezier(.3,1.5,.5,1)}
+@keyframes pop{0%{transform:scale(.85);opacity:0}100%{transform:scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ===== Sleek layer: shared look across every game ===== */
+:root{--x-bg:#0b0f17;--x-s1:#121a27;--x-s2:#192335;--x-line:#26314a;--x-text:#e8edf5;--x-muted:#8d99ae;--x-gold:#d6b26e;--x-gold-2:#b8914c;
+  --display:"Sora","Segoe UI",system-ui,sans-serif;--body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif}
+body{font-family:var(--body);-webkit-font-smoothing:antialiased;background-image:radial-gradient(1100px 520px at 50% -12%,rgba(214,178,110,.09),transparent 62%);background-repeat:no-repeat}
+h1,h2{font-family:var(--display);font-weight:700;letter-spacing:-.03em}
+.go{background:linear-gradient(180deg,#e6cb93,#c39b52);color:#17110a;font-family:var(--display);font-weight:600;letter-spacing:0;border-radius:12px;text-shadow:none;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 12px 26px -12px rgba(214,178,110,.7);transition:transform .12s,box-shadow .12s,filter .12s}
+.go:hover{filter:brightness(1.05)}
+.go:active{transform:translateY(1px) scale(.99);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 4px 12px -8px rgba(214,178,110,.6)}
+.go:disabled{filter:grayscale(.7);opacity:.45;transform:none}
+.alt{background:rgba(255,255,255,.035);border:1px solid var(--x-line);border-radius:12px;color:var(--x-text);font-weight:700;transition:background .15s,border-color .15s}
+.alt:hover{background:rgba(255,255,255,.07);border-color:#33405c}
+.panel{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.018));border:1px solid rgba(255,255,255,.07);box-shadow:0 22px 44px -30px rgba(0,0,0,.8)}
+.seg button{border:1px solid var(--x-line);background:rgba(255,255,255,.03);border-radius:10px;font-weight:700;transition:background .15s,color .15s,border-color .15s}
+.seg button[aria-pressed="true"]{background:var(--x-gold);border-color:var(--x-gold);color:#17110a}
+.sw{background:#2a3550;border:0}.sw::after{background:#f2f4f8;box-shadow:0 1px 3px rgba(0,0,0,.45)}.sw[aria-checked="true"]{background:var(--x-gold)}
+.label{letter-spacing:.18em;font-weight:700}
+.chip{border-width:1px}.chip[aria-pressed="true"]{background:var(--x-gold);border-color:var(--x-gold);color:#17110a}
+.toast{background:rgba(18,26,39,.94);color:#f2f4f8;border:1px solid rgba(214,178,110,.55);box-shadow:0 18px 40px -16px rgba(0,0,0,.8)}
+.back{color:var(--x-muted)}
+/* 3D dice */
+.cube{position:relative;width:100%;height:100%;transform-style:preserve-3d}
+.cube .f{position:absolute;inset:0;border-radius:18%;background:linear-gradient(145deg,#fdfcf9,#d6d1c6);box-shadow:inset 0 0 0 1px rgba(0,0,0,.07),inset 0 -.25em .45em rgba(0,0,0,.14);
+  display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);padding:14%;box-sizing:border-box;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.cube .f i{border-radius:50%;background:radial-gradient(circle at 35% 35%,#465069,#0b0f17);margin:13%}
+.cube .f1{transform:translateZ(calc(var(--ds)/2))}.cube .f2{transform:rotateY(90deg) translateZ(calc(var(--ds)/2))}.cube .f3{transform:rotateY(180deg) translateZ(calc(var(--ds)/2))}
+.cube .f4{transform:rotateY(-90deg) translateZ(calc(var(--ds)/2))}.cube .f5{transform:rotateX(90deg) translateZ(calc(var(--ds)/2))}.cube .f6{transform:rotateX(-90deg) translateZ(calc(var(--ds)/2))}
+@keyframes tumble{to{transform:rotateX(360deg) rotateY(360deg)}}
+@keyframes sweep{0%{background-position:130% 0}55%,100%{background-position:-130% 0}}
+@keyframes glint{0%,100%{filter:none;transform:none}50%{filter:drop-shadow(0 0 .35em rgba(255,255,255,.75));transform:scale(1.08)}}
+@media (prefers-reduced-motion:reduce){.plane::after,.board::after,.center::before,body::before{animation:none!important}}
+
+:root{--table:#0b0f17;--table-2:#141c2b;--line:#26314a;--ink:#05070b;--paper:#ece7dc;--paper-d:#b9b19f;--text:#e8edf5;--muted:#8d99ae;--rain:#d6b26e;--win:#6fbf9a}
+h1 span{color:var(--x-gold)}
+.age{border-width:1px;border-radius:999px;padding:3px 10px}
+.prow input{background:var(--x-s1);border:1px solid var(--x-line)}
+.black{background:linear-gradient(160deg,#182032,#05070b 70%);border:1px solid rgba(255,255,255,.08);box-shadow:0 26px 50px -26px rgba(0,0,0,.9)}
+.black p{font-weight:700;letter-spacing:-.02em}
+mark{background:var(--x-gold);color:#0b0f17}
+.white{background:linear-gradient(160deg,#f6f2ea,#ddd6c8);box-shadow:0 12px 24px -18px rgba(0,0,0,.9);font-weight:700;letter-spacing:-.01em}
+.white[aria-pressed="true"]{outline:2px solid var(--x-gold);transform:translateY(-4px);box-shadow:0 18px 30px -16px rgba(214,178,110,.6)}
+.white .ord{background:#0b0f17;color:var(--x-gold)}
+.white.custom{background:var(--x-s1);border:1px dashed var(--x-line)}
+.sub{background:linear-gradient(160deg,#182032,#05070b 70%);border:1px solid rgba(255,255,255,.08);font-weight:700}
+.sub[aria-pressed="true"]{border-color:var(--x-gold);box-shadow:0 0 0 1px var(--x-gold),0 18px 34px -18px rgba(214,178,110,.55)}
+.pass .who{font-weight:700;letter-spacing:-.03em;color:var(--x-gold)}
+.status span{background:var(--x-s1)}.status span.czar{background:var(--x-gold)}.status span.done{background:#4f9a77;color:#fff}
+.dots i.on{background:var(--x-gold)}
+</style>
+</head>
+<body>
+
+
+<main id="app"></main>
+
+<script>window.HB_ONLINE=window.HB_ONLINE||null;</script>
+<script src="online-config.js"></script>
+<script>
+/* ===== Games Press online layer: rooms (Supabase) + live video (WebRTC) ===== */
+(function(){
+const CFG=window.HB_ONLINE||null;
+const ready=()=>!!(CFG&&CFG.url&&CFG.key);
+const LS=k=>"po_"+k;
+const lsGet=(k,d)=>{try{const v=localStorage.getItem(LS(k));return v==null?d:JSON.parse(v)}catch(e){return d}};
+const lsSet=(k,v)=>{try{localStorage.setItem(LS(k),JSON.stringify(v))}catch(e){}};
+let myId=lsGet("me",null); if(!myId){myId=Math.random().toString(36).slice(2,10)+Date.now().toString(36);lsSet("me",myId)}
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let SB=null;
+function sb(){
+  if(SB)return Promise.resolve(SB);
+  if(!ready())return Promise.reject(new Error("Online play isn't set up on this site yet."));
+  return new Promise((res,rej)=>{const go=()=>{SB=window.supabase.createClient(CFG.url,CFG.key,{realtime:{params:{eventsPerSecond:30}}});res(SB)};
+    if(window.supabase)return go();
+    const s=document.createElement("script");s.src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js";
+    s.onload=go;s.onerror=()=>rej(new Error("Couldn't reach the online service. Check your connection."));document.head.appendChild(s)});
+}
+let toastT;
+function toast(m){let t=document.getElementById("po-toast");if(!t){t=document.createElement("div");t.id="po-toast";document.body.appendChild(t)}t.textContent=m;t.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>t.hidden=true,3000)}
+
+/* ---------- styles ---------- */
+const CSS=`
+#po-toast{position:fixed;left:50%;top:calc(14px + env(safe-area-inset-top,0px));transform:translateX(-50%);z-index:90;background:rgba(18,26,39,.95);color:#f2f4f8;border:1px solid rgba(214,178,110,.55);padding:10px 16px;border-radius:12px;font:700 14px/1.3 "Manrope",system-ui,sans-serif;max-width:calc(100% - 32px);text-align:center;box-shadow:0 18px 40px -16px rgba(0,0,0,.8)}
+.po-net{position:fixed;left:50%;bottom:calc(10px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:85;background:#5a1f24;color:#fff;font:700 13px "Manrope",system-ui,sans-serif;padding:8px 14px;border-radius:999px;box-shadow:0 8px 20px rgba(0,0,0,.5)}
+.po-panel{display:flex;flex-direction:column;gap:10px}
+.po-row{display:flex;gap:8px;flex-wrap:wrap}.po-row>*{flex:1;min-width:120px}
+.po-in{background:rgba(255,255,255,.04);border:1px solid #26314a;border-radius:10px;padding:11px 12px;font:700 16px "Manrope",system-ui,sans-serif;color:inherit;min-width:0;box-sizing:border-box;width:100%}
+.po-code{font:700 clamp(40px,13vw,64px) "Sora","Manrope",system-ui,sans-serif;letter-spacing:.14em;color:#d6b26e;line-height:1;text-align:center}
+.po-share{display:flex;gap:8px}.po-share input{flex:1;min-width:0}
+.po-share button{padding:10px 14px;border-radius:10px;background:#26314a;font-weight:800;color:#e8edf5;border:0}
+.po-plist{display:flex;flex-direction:column}
+.po-p{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.07);font-weight:800}
+.po-p small{margin-left:auto;color:#8d99ae;font-weight:600;font-size:13px}
+.po-p i{width:10px;height:10px;border-radius:50%;background:var(--c,#6fbf9a);flex:none}
+.po-p .mini{width:30px;height:30px;flex:none}
+.po-err{color:#f0a493;font-weight:700;margin:0;min-height:1.2em;font-size:14px}
+.po-vbtn{text-decoration:none!important;display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid #33405c;color:#e8edf5;font:700 14px "Manrope",system-ui,sans-serif;cursor:pointer}
+.po-vbtn.on{background:#1f3b2f;border-color:#6fbf9a}
+/* video call: faces take half the screen, the game the other half */
+body.has-video{overflow:hidden}
+#po-stage{position:fixed;left:0;right:0;bottom:0;top:0;transform:translateZ(0);overflow:hidden;background:inherit;z-index:1}
+#po-stage .over,#po-stage .sheet-bg{overflow:auto}
+#po-scroll{position:absolute;inset:0;overflow:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.vbar{position:fixed;z-index:80;display:flex;flex-direction:column;gap:8px;box-sizing:border-box;background:#05070c;padding:8px;font-family:"Manrope",system-ui,sans-serif;
+  padding-top:max(8px,env(safe-area-inset-top,0px));box-shadow:0 0 0 1px rgba(255,255,255,.08)}
+@media (orientation:portrait){
+  .vbar{left:0;right:0;top:0;height:50vh;height:50dvh;padding-left:max(8px,env(safe-area-inset-left,0px));padding-right:max(8px,env(safe-area-inset-right,0px))}
+  body.has-video:not(.vmin) #po-stage{top:50vh;top:50dvh}
+  .vctl{flex-direction:row}
+}
+@media (orientation:landscape){
+  .vbar{top:0;bottom:0;right:0;width:50vw;padding-right:max(8px,env(safe-area-inset-right,0px));padding-bottom:max(8px,env(safe-area-inset-bottom,0px))}
+  body.has-video:not(.vmin) #po-stage{right:50vw}
+}
+.vtiles{position:relative;flex:1;min-height:0;display:grid;gap:6px;grid-template-columns:repeat(var(--vc,1),minmax(0,1fr));grid-auto-rows:minmax(0,1fr)}
+.vt{position:relative;background:#121a27;border-radius:12px;overflow:hidden;min-height:0;transition:box-shadow .15s}
+.vt video{width:100%;height:100%;object-fit:cover;display:block}
+.vt.me video{transform:scaleX(-1)}
+.vtiles.pip .vt.me{position:absolute;right:8px;bottom:8px;width:26%;max-width:150px;aspect-ratio:3/4;z-index:2;box-shadow:0 8px 24px rgba(0,0,0,.7),0 0 0 2px rgba(255,255,255,.25)}
+.vt.talk{box-shadow:0 0 0 3px #6fbf9a}
+.vt .nm{position:absolute;left:8px;bottom:6px;right:8px;color:#fff;font-weight:800;font-size:13px;text-shadow:0 1px 3px #000;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vt.me .nm{font-size:11px}
+.vt .st{position:absolute;inset:0;display:grid;place-items:center;color:#cfd6e2;font-weight:700;font-size:13px;background:rgba(5,7,12,.65);text-align:center;padding:6px}
+.vt.off video{visibility:hidden}
+.vt.off::after{content:attr(data-initial);position:absolute;inset:0;display:grid;place-items:center;font:700 44px "Sora",system-ui,sans-serif;color:#d6b26e}
+.vt.me.off::after{font-size:24px}
+.vctl{display:flex;gap:6px;flex:none}
+.vctl button{flex:1;padding:9px 0;border-radius:10px;background:#1a2335;border:1px solid #26314a;color:#e8edf5;font-size:16px;cursor:pointer;line-height:1}
+.vctl button.red{background:#5a1f24;border-color:#7a2b31}
+.vctl button.off{background:#3a2a1a;border-color:#6a4a20}
+.vsound{flex:none;padding:10px;border-radius:10px;background:#d6b26e;color:#17110a;border:0;font:800 15px "Manrope",system-ui,sans-serif;cursor:pointer}
+body.vmin .vbar{top:auto;left:auto;height:auto;width:auto;bottom:calc(10px + env(safe-area-inset-bottom,0px));right:max(10px,env(safe-area-inset-right,0px));border-radius:14px;padding:6px;background:rgba(5,7,12,.9)}
+body.vmin .vtiles{display:none}
+body.vmin .vctl button{padding:8px 12px}
+}`;
+function injectCSS(){if(document.getElementById("po-css"))return;const s=document.createElement("style");s.id="po-css";s.textContent=CSS;document.head.appendChild(s)}
+
+/* ---------- network status ---------- */
+let netEl=null;
+function netBanner(down){injectCSS();if(down){if(!netEl){netEl=document.createElement("div");netEl.className="po-net";document.body.appendChild(netEl)}netEl.textContent="Connection lost. Reconnecting…";netEl.hidden=false}else if(netEl)netEl.hidden=true}
+addEventListener("offline",()=>netBanner(true));
+addEventListener("online",()=>{netBanner(false);rooms.forEach(r=>r.refresh());if(Video.on)Video._reconnectAll()});
+document.addEventListener("visibilitychange",()=>{if(!document.hidden){rooms.forEach(r=>r.refresh());if(Video.on)Video._checkAll()}});
+
+/* ---------- rooms ---------- */
+const rooms=new Set();
+function Room(game){this.game=game;this.code=null;this.state=null;this.ver=0;this.handlers=[];this.chan=null;this.queue=Promise.resolve();rooms.add(this)}
+Room.prototype.create=async function(state){
+  await sb(); const A="ABCDEFGHJKLMNPQRSTUVWXYZ";
+  for(let t=0;t<6;t++){let code="";for(let i=0;i<5;i++)code+=A[Math.floor(Math.random()*A.length)];
+    state.game=this.game; state.host=state.host||myId;
+    const {error}=await SB.from("hb_rooms").insert({code,state,ver:1});
+    if(!error){this.code=code;this.state=state;this.ver=1;this._sub();lsSet("room_"+this.game,code);this._emit(null,false);return code}}
+  throw new Error("Couldn't create a room. Check your connection and try again.");
+};
+Room.prototype.join=async function(code){
+  await sb(); code=String(code||"").trim().toUpperCase();
+  const {data,error}=await SB.from("hb_rooms").select("state,ver").eq("code",code).maybeSingle();
+  if(error)throw new Error("Couldn't reach the online service. Check your connection.");
+  if(!data)throw new Error("There's no room with that code.");
+  if(data.state&&data.state.game&&data.state.game!==this.game)throw new Error("That code belongs to a different game.");
+  this.code=code;this.state=data.state;this.ver=data.ver;this._sub();lsSet("room_"+this.game,code);this._emit(null,true);return this.state;
+};
+Room.prototype._sub=function(){
+  if(this.chan)SB.removeChannel(this.chan);
+  this.chan=SB.channel("room_"+this.code).on("postgres_changes",{event:"UPDATE",schema:"public",table:"hb_rooms",filter:"code=eq."+this.code},pl=>{
+    if(!pl.new||pl.new.ver<=this.ver)return; const old=this.state; this.state=pl.new.state; this.ver=pl.new.ver; this._emit(old,true);
+  }).subscribe(st=>{ if(st==="SUBSCRIBED"){netBanner(false);if(this._down){this._down=false;this.refresh()}} else if(st==="CHANNEL_ERROR"||st==="TIMED_OUT"){this._down=true;netBanner(true);setTimeout(()=>{if(this._down&&this.code)this._sub()},3000)} });
+};
+Room.prototype.refresh=async function(){
+  if(!this.code||!SB)return;
+  try{const {data}=await SB.from("hb_rooms").select("state,ver").eq("code",this.code).maybeSingle();
+    if(data&&data.ver>this.ver){const old=this.state;this.state=data.state;this.ver=data.ver;this._emit(old,true)}}catch(e){}
+};
+Room.prototype.on=function(fn){this.handlers.push(fn)};
+Room.prototype._emit=function(old,remote){this.handlers.forEach(h=>{try{h(this.state,old,remote)}catch(e){console.error(e)}})};
+/* update(mut): mut gets a fresh copy of the state to change. Retries on conflicts so simultaneous moves (votes, answers) both land. */
+Room.prototype.update=function(mut){
+  const run=async(tries)=>{
+    const base=this.state, prev=this.ver, next=JSON.parse(JSON.stringify(base));
+    if(mut(next)===false)return false;
+    this.state=next; this.ver=prev+1; this._emit(base,false);
+    let res;
+    try{res=await SB.from("hb_rooms").update({state:next,ver:prev+1,updated_at:new Date().toISOString()}).eq("code",this.code).eq("ver",prev).select("ver")}catch(e){res={error:e}}
+    if(res.error||!res.data||!res.data.length){
+      if(this.ver===prev+1&&this.state===next){this.state=base;this.ver=prev}
+      let data=null;try{data=(await SB.from("hb_rooms").select("state,ver").eq("code",this.code).maybeSingle()).data}catch(e){}
+      if(data&&data.ver>=this.ver){const o=this.state;this.state=data.state;this.ver=data.ver;this._emit(o,true)}
+      if(tries<4)return run(tries+1);
+      toast("Couldn't save that move. Check your connection.");return false;
+    }
+    return true;
+  };
+  this.queue=this.queue.then(()=>run(0)).catch(e=>{console.error(e);toast("Connection problem. Trying again…");setTimeout(()=>this.refresh(),1500)});
+  return this.queue;
+};
+Room.prototype.leave=function(){if(this.chan&&SB)SB.removeChannel(this.chan);this.chan=null;lsSet("room_"+this.game,null);this.code=null;this.state=null;this.ver=0;if(Video.on)Video.stop()};
+Room.prototype.me=function(){return this.state&&this.state.players?this.state.players.find(p=>p.id===myId):null};
+Room.prototype.isHost=function(){return !!(this.state&&this.state.host===myId)};
+Room.prototype.saved=function(){return lsGet("room_"+this.game,null)};
+Room.prototype.link=function(){return location.origin+location.pathname+"#"+this.code};
+/* add me as a player (in the lobby); extra fields merged in */
+Room.prototype.addMe=function(name,extra){
+  return this.update(s=>{s.players=s.players||[];if(s.players.some(p=>p.id===myId))return false;
+    let n=String(name||"").trim().slice(0,16)||"Player",base=n,k=2;const taken=s.players.map(p=>p.name.toLowerCase());while(taken.includes(n.toLowerCase()))n=base+" "+k++;
+    s.players.push(Object.assign({id:myId,name:n},extra||{}));});
+};
+
+/* ---------- shared UI bits ---------- */
+function joinPanelHTML(o){
+  o=o||{};
+  if(!ready())return `<div class="po-panel"><span class="label">Play online</span><p style="margin:0;color:#8d99ae">Online play lets everyone use their own phone or laptop from anywhere, with live video. It needs switching on once for this site: see the setup notes that came with the games.</p></div>`;
+  const hc=(location.hash||"").replace("#","").toUpperCase();
+  return `<div class="po-panel"><span class="label">${o.title||"Play online · everyone on their own device"}</span>
+    <input class="po-in" id="po-name" maxlength="16" placeholder="Your name" value="${esc(lsGet("name",""))}" aria-label="Your name">
+    ${o.extraHTML||""}
+    <button class="go" id="po-create">${o.createLabel||"Create a room"}</button>
+    <div class="po-row"><input class="po-in" id="po-code" maxlength="5" placeholder="Room code" value="${/^[A-Z]{5}$/.test(hc)?hc:""}" style="text-transform:uppercase;letter-spacing:.15em" aria-label="Room code"><button class="alt" id="po-join">Join room</button></div>
+    <p class="po-err" id="po-err"></p></div>`;
+}
+function wireJoinPanel(o){
+  if(!ready())return;
+  const nm=document.getElementById("po-name"),err=document.getElementById("po-err");
+  nm.oninput=()=>lsSet("name",nm.value);
+  const need=()=>{if(!nm.value.trim()){err.textContent="Put in your name first.";nm.focus();return false}return true};
+  document.getElementById("po-create").onclick=async e=>{if(!need())return;e.target.disabled=true;err.textContent="";try{await o.onCreate(nm.value.trim())}catch(x){err.textContent=x.message||String(x);e.target.disabled=false}};
+  document.getElementById("po-join").onclick=async e=>{const c=document.getElementById("po-code").value.trim().toUpperCase();
+    if(!/^[A-Z]{5}$/.test(c)){err.textContent="Room codes are 5 letters.";return}if(!need())return;e.target.disabled=true;err.textContent="";
+    try{await o.onJoin(c,nm.value.trim())}catch(x){err.textContent=x.message||String(x);e.target.disabled=false}};
+  if(/^#[A-Za-z]{5}$/.test(location.hash)){const c=document.getElementById("po-code");c&&c.scrollIntoView({block:"center"})}
+}
+function shareHTML(room){
+  return `<div class="po-panel" style="align-items:stretch;text-align:center"><span class="label">Room code</span><div class="po-code">${esc(room.code)}</div>
+    <p style="margin:0;color:#8d99ae">Friends open this game and join with the code, or send them the link.</p>
+    <div class="po-share"><input class="po-in" id="po-link" readonly value="${esc(room.link())}" aria-label="Room link"><button id="po-copy">Copy</button></div></div>`;
+}
+function wireShare(room){
+  const b=document.getElementById("po-copy");if(!b)return;
+  b.onclick=()=>{const i=document.getElementById("po-link");const l=room.link();
+    (navigator.clipboard?navigator.clipboard.writeText(l):Promise.reject()).then(()=>toast("Link copied")).catch(()=>{i.select();toast("Select and copy the link")})};
+}
+function playersHTML(room,o){
+  o=o||{};const s=room.state||{},ps=s.players||[];
+  return `<div class="po-plist">${ps.map(p=>`<div class="po-p" style="--c:${esc(p.color||"#6fbf9a")}">${o.avatar?`<span class="mini">${o.avatar(p)}</span>`:"<i></i>"}<span>${esc(p.name)}</span><small>${[p.id===s.host?"Host":"",p.id===myId?"you":"",o.tag?o.tag(p):""].filter(Boolean).join(" · ")}</small></div>`).join("")||'<p style="color:#8d99ae">Nobody yet.</p>'}</div>`;
+}
+function setHash(code){try{history.replaceState(null,"",code?"#"+code:location.pathname+location.search)}catch(e){}}
+
+/* ---------- live video ---------- */
+const Video={on:false,local:null,peers:{},chan:null,code:null,name:"",ice:null,el:null,mic:true,cam:true,_q:{}};
+async function iceServers(){
+  const list=[{urls:["stun:stun.l.google.com:19302","stun:stun1.l.google.com:19302"]}];
+  if(CFG&&CFG.relayUrl){try{const r=await fetch(CFG.relayUrl);const j=await r.json();if(Array.isArray(j))list.push(...j)}catch(e){}}
+  if(CFG&&Array.isArray(CFG.iceServers))list.push(...CFG.iceServers);
+  return list;
+}
+Video.start=async function(code,name){
+  if(this.on)return; injectCSS(); await sb();
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia)throw new Error("This browser can't do video calls. Try Chrome or Safari.");
+  const AUD={echoCancellation:true,noiseSuppression:true,autoGainControl:true}; let camOk=true;
+  try{this.local=await navigator.mediaDevices.getUserMedia({video:{width:{ideal:640},height:{ideal:480},facingMode:"user"},audio:AUD})}
+  catch(e){ if(e&&e.name==="NotAllowedError")throw new Error("Camera and microphone are blocked. Allow them for this site in your browser settings, then try again.");
+    try{this.local=await navigator.mediaDevices.getUserMedia({audio:AUD});camOk=false;toast("No camera found. You're on voice only.")}catch(e2){throw new Error("Couldn't start your microphone.")} }
+  this.ice=await iceServers(); this.code=code; this.name=name; this.on=true; this.mic=true; this.cam=camOk;
+  this._ui(); this._split(true); this._tile(myId,name,this.local,true); if(!camOk){const t=this.el.querySelector(`[data-id="${myId}"]`);if(t)t.classList.add("off");const cb=this.el.querySelector('[data-a="cam"]');if(cb){cb.classList.add("off");cb.disabled=true}}
+  this._levels();
+  this.chan=SB.channel("vid_"+code,{config:{broadcast:{self:false}}});
+  this.chan.on("broadcast",{event:"sig"},m=>this._sig(m.payload)).subscribe(st=>{if(st==="SUBSCRIBED")this._send({t:"hello",from:myId,name:this.name})});
+  this._iv=setInterval(()=>this._checkAll(),8000);
+  document.body.classList.add("has-video"); Video._fire();
+};
+Video.stop=function(){
+  if(!this.on)return; this._send({t:"bye",from:myId});
+  Object.keys(this.peers).forEach(id=>this._drop(id));
+  if(this.local)this.local.getTracks().forEach(t=>t.stop());
+  if(this.chan&&SB)SB.removeChannel(this.chan); clearInterval(this._iv);
+  this.chan=null;this.local=null;this.on=false; if(this.el)this.el.remove(); this.el=null; this._split(false); clearInterval(this._lv); try{this._ac&&this._ac.close()}catch(e){} this._ac=null;
+  document.body.classList.remove("has-video","vmin"); Video._fire();
+};
+Video.toggle=async function(code,name){ if(this.on)return this.stop(); try{await this.start(code,name)}catch(e){toast(e.message||String(e))} };
+Video._listeners=[]; Video.onChange=fn=>Video._listeners.push(fn); Video._fire=()=>Video._listeners.forEach(f=>{try{f(Video.on)}catch(e){}});
+Video._send=function(p){if(!this.chan)return;try{const r=this.chan.send({type:"broadcast",event:"sig",payload:p});if(r&&r.catch)r.catch(()=>{})}catch(e){}};
+Video._peer=function(id,name){
+  let P=this.peers[id]; if(P){if(name)P.name=name;return P}
+  const pc=new RTCPeerConnection({iceServers:this.ice});
+  P=this.peers[id]={pc,name:name||"Friend",q:[],stream:null,making:false};
+  this.local.getTracks().forEach(t=>pc.addTrack(t,this.local));
+  pc.onicecandidate=e=>{if(e.candidate)this._send({t:"ice",from:myId,to:id,c:e.candidate.toJSON?e.candidate.toJSON():e.candidate})};
+  pc.ontrack=e=>{P.stream=e.streams[0]||new MediaStream([e.track]);this._tile(id,P.name,P.stream,false)};
+  pc.onconnectionstatechange=()=>{const s=pc.connectionState;this._status(id,s==="connected"?"":s==="failed"?"Reconnecting…":s==="disconnected"?"Reconnecting…":"Connecting…");
+    if(s==="failed")this._restart(id); if(s==="disconnected")setTimeout(()=>{if(pc.connectionState==="disconnected")this._restart(id)},4000)};
+  this._tile(id,P.name,null,false); this._status(id,"Connecting…");
+  return P;
+};
+Video._offer=async function(id,restart){
+  const P=this.peers[id]; if(!P||P.making)return; P.making=true;
+  try{const o=await P.pc.createOffer({iceRestart:!!restart});await P.pc.setLocalDescription(o);this._send({t:"offer",from:myId,to:id,name:this.name,sdp:P.pc.localDescription})}catch(e){}
+  P.making=false;
+};
+Video._restart=function(id){ if(myId<id)this._offer(id,true); else this._send({t:"restart",from:myId,to:id}) };
+Video._reconnectAll=function(){this._send({t:"hello",from:myId,name:this.name});Object.keys(this.peers).forEach(id=>this._restart(id))};
+Video._checkAll=function(){Object.keys(this.peers).forEach(id=>{const s=this.peers[id].pc.connectionState;if(s==="failed"||s==="disconnected")this._restart(id)})};
+Video._sig=async function(p){
+  if(!p||p.from===myId||(p.to&&p.to!==myId)||!this.on)return; const from=p.from;
+  try{
+    if(p.t==="hello"){const had=!!this.peers[from];this._send({t:"here",from:myId,to:from,name:this.name});if(had){this._drop(from)}this._peer(from,p.name);if(myId<from)this._offer(from);return}
+    if(p.t==="here"){this._peer(from,p.name);if(myId<from)this._offer(from);return}
+    if(p.t==="bye"){this._drop(from);return}
+    if(p.t==="restart"){if(this.peers[from])this._offer(from,true);return}
+    const P=this._peer(from,p.name),pc=P.pc;
+    if(p.t==="offer"){await pc.setRemoteDescription(p.sdp);const a=await pc.createAnswer();await pc.setLocalDescription(a);this._send({t:"answer",from:myId,to:from,sdp:pc.localDescription});this._flush(from)}
+    else if(p.t==="answer"){if(pc.signalingState==="have-local-offer"){await pc.setRemoteDescription(p.sdp);this._flush(from)}}
+    else if(p.t==="ice"){if(pc.remoteDescription&&pc.remoteDescription.type)await pc.addIceCandidate(p.c).catch(()=>{});else P.q.push(p.c)}
+  }catch(e){console.warn("video signal",e)}
+};
+Video._flush=function(id){const P=this.peers[id];if(!P)return;const q=P.q.splice(0);q.forEach(c=>P.pc.addIceCandidate(c).catch(()=>{}))};
+Video._drop=function(id){const P=this.peers[id];if(P){try{P.pc.close()}catch(e){}delete this.peers[id]}const t=this.el&&this.el.querySelector(`[data-id="${id}"]`);if(t)t.remove();this._count()};
+Video._ui=function(){
+  const el=document.createElement("div");el.className="vbar";el.setAttribute("role","region");el.setAttribute("aria-label","Video call");
+  el.innerHTML=`<div class="vtiles"></div><div class="vctl"><button data-a="mic" title="Mute or unmute" aria-label="Microphone">🎤</button><button data-a="cam" title="Camera on or off" aria-label="Camera">📷</button><button data-a="min" title="Hide faces" aria-label="Hide or show faces">▾</button><button data-a="leave" class="red" title="Leave video" aria-label="Leave video">✕</button></div>`;
+  el.querySelector(".vctl").onclick=e=>{const b=e.target.closest("button");if(!b)return;const a=b.dataset.a;
+    if(a==="mic"){this.mic=!this.mic;this.local.getAudioTracks().forEach(t=>t.enabled=this.mic);b.classList.toggle("off",!this.mic);b.textContent=this.mic?"🎤":"🔇"}
+    if(a==="cam"){this.cam=!this.cam;this.local.getVideoTracks().forEach(t=>t.enabled=this.cam);b.classList.toggle("off",!this.cam);const me=el.querySelector(`[data-id="${myId}"]`);if(me)me.classList.toggle("off",!this.cam)}
+    if(a==="min"){const m=document.body.classList.toggle("vmin");b.textContent=m?"▴":"▾";b.title=m?"Show faces":"Hide faces"}
+    if(a==="leave")this.stop()};
+  document.body.appendChild(el); this.el=el;
+};
+Video._tile=function(id,name,stream,me){
+  if(!this.el)return; let t=this.el.querySelector(`[data-id="${id}"]`);
+  if(!t){t=document.createElement("div");t.className="vt"+(me?" me":"");t.dataset.id=id;t.dataset.initial=(name||"?").trim().charAt(0).toUpperCase();
+    t.innerHTML=`<video autoplay playsinline ${me?"muted":""}></video><span class="nm"></span><span class="st" hidden></span>`;
+    const box=this.el.querySelector(".vtiles"); if(me)box.prepend(t); else box.appendChild(t)}
+  t.querySelector(".nm").textContent=me?name+" (you)":name;
+  if(stream){const v=t.querySelector("video");if(v.srcObject!==stream){v.srcObject=stream;this._play(v)}
+    if(!me){const chk=()=>t.classList.toggle("off",!stream.getVideoTracks().some(x=>x.readyState==="live"&&!x.muted));chk();stream.onaddtrack=chk;stream.getVideoTracks().forEach(x=>{x.onmute=chk;x.onunmute=chk})}
+    if(!me)this._watch(id,stream)}
+  this._count();
+};
+/* phones block sound until a tap: offer a button that starts everyone's audio */
+Video._play=function(v){const p=v.play();if(p&&p.catch)p.catch(()=>this._needTap())};
+Video._needTap=function(){ if(!this.el||this.el.querySelector(".vsound"))return;
+  const b=document.createElement("button");b.className="vsound";b.textContent="🔊 Tap to hear everyone";
+  b.onclick=()=>{this.el.querySelectorAll("video").forEach(v=>{const p=v.play();if(p&&p.catch)p.catch(()=>{})});try{this._ac&&this._ac.resume()}catch(e){}b.remove()};
+  this.el.insertBefore(b,this.el.querySelector(".vctl")) };
+/* green ring round whoever is talking */
+Video._levels=function(){ try{this._ac=new (window.AudioContext||window.webkitAudioContext)()}catch(e){return} this._an={};
+  this._watch(myId,this.local);
+  this._lv=setInterval(()=>{Object.entries(this._an).forEach(([id,a])=>{a.n.getByteFrequencyData(a.buf);let sum=0;for(let i=0;i<a.buf.length;i++)sum+=a.buf[i];
+    const t=this.el&&this.el.querySelector(`[data-id="${id}"]`);if(t)t.classList.toggle("talk",sum/a.buf.length>18&&(id!==myId||this.mic))})},200) };
+Video._watch=function(id,stream){ if(!this._ac||!stream||!stream.getAudioTracks().length)return; try{const src=this._ac.createMediaStreamSource(stream),n=this._ac.createAnalyser();n.fftSize=256;src.connect(n);this._an[id]={n,buf:new Uint8Array(n.frequencyBinCount)}}catch(e){} };
+/* move the game into its own half of the screen */
+Video._split=function(on){
+  const b=document.body, skip=n=>n.nodeType!==1||/^(SCRIPT|STYLE|LINK|META|TITLE)$/.test(n.tagName)||n===this.el||n.id==="po-stage"||n.classList.contains("po-net");
+  if(on){ if(this.stage)return; const outer=document.createElement("div");outer.id="po-stage";const inner=document.createElement("div");inner.id="po-scroll";outer.appendChild(inner);
+    const y=scrollY; [...b.childNodes].forEach(n=>{if(!skip(n)||n.nodeType===3)inner.appendChild(n)}); b.prepend(outer); this.stage=outer; inner.scrollTop=y;
+    this._mo=new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(!skip(n))inner.appendChild(n)})));this._mo.observe(b,{childList:true});
+    const st=window.scrollTo; window.scrollTo=function(x,yy){if(Video.stage){const i=Video.stage.firstChild;if(typeof x==="object")i.scrollTo(x);else i.scrollTo(x||0,yy||0)}else st.apply(window,arguments)};
+  } else { if(!this.stage)return; this._mo&&this._mo.disconnect(); const inner=this.stage.firstChild; [...inner.childNodes].forEach(n=>b.insertBefore(n,this.stage)); this.stage.remove(); this.stage=null }
+};
+Video._status=function(id,txt){const t=this.el&&this.el.querySelector(`[data-id="${id}"] .st`);if(t){t.textContent=txt;t.hidden=!txt}};
+Video._count=function(){ if(!this.el)return; const box=this.el.querySelector(".vtiles"), n=box.querySelectorAll(".vt:not(.me)").length, port=matchMedia("(orientation:portrait)").matches;
+  const c=n<=1?1:port?(n<=4?2:3):(n<=2?1:n<=6?2:3), spare=c*Math.ceil(n/c)>n;
+  box.classList.toggle("pip",n>0&&!spare); box.style.setProperty("--vc",c);
+  const me=box.querySelector(".vt.me"); if(me){if(spare)box.appendChild(me);else box.prepend(me)} };
+addEventListener("resize",()=>Video.on&&Video._count());
+function videoButtonHTML(){return ready()?`<button class="po-vbtn${Video.on?" on":""}" id="po-video">${Video.on?"🎥 Leave video":"🎥 Join video"}</button>`:""}
+function wireVideoButton(room,getName){
+  const b=document.getElementById("po-video");if(!b)return;
+  b.onclick=async()=>{b.disabled=true;await Video.toggle(room.code,getName());b.disabled=false;b.classList.toggle("on",Video.on);b.textContent=Video.on?"🎥 Leave video":"🎥 Join video"};
+}
+Video.onChange(()=>{const b=document.getElementById("po-video");if(b){b.classList.toggle("on",Video.on);b.textContent=Video.on?"🎥 Leave video":"🎥 Join video"}});
+
+window.Online={ready,myId,Room,toast,esc,joinPanelHTML,wireJoinPanel,shareHTML,wireShare,playersHTML,setHash,Video,videoButtonHTML,wireVideoButton,injectCSS,lsGet,lsSet};
+injectCSS();
+})();
+
+</script>
+<script>
+const BLACK=["What's the real reason Mammy won't come for Christmas this year?","The Late Late Toy Show will open this year with _.","My nan's secret to a long life: _.","Nothing ruins a wedding faster than _.","What got me barred from the local?","_: the real reason Ryanair now charges for the toilet.","This year's Leaving Cert essay title: \"Discuss _.\"","I could have gone pro, but then _ happened.","What's in the junk drawer?","Breaking news: Gardaí are searching for _.","The secret ingredient in the Christmas pudding is _.","_ is why I'm not allowed back in Lanzarote.","What came up at the parent-teacher meeting?","Tonight on Room to Improve: a family home built entirely around _.","My dating profile just says: _.","What's the worst thing to hear at a funeral?","_ and _: the perfect Sunday.","The HSE's new health campaign: Say no to _.","Why is Daddy crying in the shed?","The All-Ireland final was abandoned due to _.","Step one: _. Step two: _. Step three: profit.","Lidl's middle aisle this week: _.","What's the real reason the Celtic Tiger died?","My Communion money went on _.","What did I bring to the Debs?","_ is my love language.","The group chat has gone silent since someone posted _.","New Irish passport photo rule: no _.","I'm not drunk, I'm just _.","What's that smell in the car?","My spirit animal is _.","The new crisp flavour nobody asked for: _.","Coming soon to Dublin Zoo: _.","What will I be remembered for?","The most Irish thing ever: _ at a wake.","_: guaranteed to clear a dancefloor.","Things you don't say on a first date: _.","The gender reveal went wrong when the box released _.","What's the hold-up at the self-checkout?","Why did the stag do end in A&E?","The best man's speech was ruined by _.","I left my last job because of _.","What's hidden in the hot press?","The Dáil was suspended today after _.","My mother's only advice: \"Never trust _.\"","What do I think about during Mass?","_: the only thing keeping this country going.","Granny's new boyfriend is really into _.","Day 3 of the Gaeltacht: _ has broken out.","What's the WiFi password?","Coming to Netflix: a gritty reboot of _.","Tomorrow's forecast: scattered showers and _.","What's my excuse for being late?","Uncle Mick swears by _ for a hangover.","The new Penneys collection is inspired by _.","At the bottom of the Liffey, divers found _.","What's Santa's dirty little secret?","I didn't get the job because I mentioned _ in the interview.","_: that's how I want to go.","My wedding vows: \"I promise to love you, honour you, and _.\"","What's going on in the smoking area?","Ever since we cut down the fairy tree, the whole village has had _.","Next on Love Island: _ enters the villa.","Rejected Riverdance routine: _.","Why is there a squad car outside the parish hall?","_ is the real reason the bus is late.","What should you never bring to a music festival?","For my 40th, I want _ and _.","It's not a party until someone brings _.","What's that in the back of the freezer?","My dirty little secret: _.","The worst thing to find in your breakfast roll: _.","What's in Mammy's handbag?","The secret to a good céilí: _.","When I die, scatter my ashes over _.","What made the Angelus late?","In 2050, every Irish child will learn about _ in school.","Sorry I missed your call, I was busy with _.","_: a cry for help or a lifestyle choice?","The neighbours are complaining about _.","I've been banned from the Credit Union for _.","The new national anthem is just four minutes of _.","What's keeping me up at night?","My last search: \"_ near me\".","Why are the sheep looking at me like that?","Christmas dinner was ruined when _ came out.","What's the plan for Paddy's Day?","_ + _ = a great night out.","What did I find in my teenager's room?","The real reason Kerry keep winning: _.","The All-Ireland is sponsored by _ this year.","What's the one thing the Leaving Cert doesn't prepare you for?","Ireland's next big export: _.","What's the matchmaker in Lisdoonvarna really offering?","I knew the date was going badly when _.","My therapist says I need to stop _.","The Tidy Towns committee is furious about _.","What really happened on the school tour?","Introducing the new Irish Olympic sport: _.","Mammy, there's _ in the bath again.","My granny left me _ in her will.","Rule one of the WhatsApp group: no _."];
+const WHITE=["A bag of cans in the Phoenix Park","Uncle Mick's dentures","A garda with a grudge","The Angelus","Losing the run of yourself","A suspicious amount of Taytos","Sweaty céilí dancing","A wet bank holiday in Bundoran","Giving out about the weather","A breakfast roll the size of a newborn","Mammy's wooden spoon","Shifting behind the parish hall","The fear","The Sunday fear","A pint that's been sitting there since Tuesday","An immersion left on since 1998","Granny's Facebook comments","Shifting on the Luas","A strongly worded letter to the County Council","Crying at the Toy Show","Rubbing Sudocrem on everything","A three-day wake","The good biscuits for visitors","Hiding from the TV licence man","A spice bag at 3am","Getting stuck in a turnstile at Croke Park","An emotional support sheep","Fake tan streaks","A stag do in Kilkenny","Being fierce grand","Reversing into the Mass car park","An uncomfortable amount of eye contact","Accidentally liking an ex's photo from 2014","A man called Jimmy who knows a guy","A bodhrán solo","A fistfight at the Christmas market","Mortal sin","Leaving it on the long finger","Leaving Cert Maths Paper 2","A haunted Tamagotchi","Getting the shift at the Debs","Your mother's cousin's husband","Eating a full Christmas dinner in under six minutes","An Irish exit","Saying you'll go to the gym tomorrow","A hurley to the shins","Grand Theft Tractor","An inflatable sheep","A raffle for a ham","A 99 with a flake that's seen things","Lukewarm tea","Wetting the baby's head","A bottle of Buckfast and a dream","Throwing shapes","A rat in the hot press","Being a bit of a gombeen","Smuggling sausages through customs","Getting sick in a Supermac's","A judgemental donkey","Bringing Tupperware to a wedding","Weeping into a Club Orange","The parish newsletter","Calling everything \"a yoke\"","An awkward hug with the boss","Stealing a traffic cone","A Leaving Cert grind with a vampire","Ten Hail Marys","Overly confident seagulls","Lost luggage in Lanzarote","A rogue Roomba","Whoever's been eating the good ham","Nana's secret poitín still","Sitting in the car outside your own house for twenty minutes","Cross-country running in the rain","Accidentally joining a cult","A cardboard cut-out of yourself","A fourteen-minute voice note","The family group chat","Pretending to understand hurling","A gerbil called Diarmuid","Microwaving fish in the office","Being \"a bit of a character\"","A Dublin accent that comes and goes","Feral children at a Communion party","Lying about what county you're from","Unpaid parking tickets","Something buried in the bog","Rural broadband","The septic tank","A mouldy Christmas cake from 2019","Sunburn in April","A small cry in the toilets","Doing the Walls of Limerick wrong","Kissing the Blarney Stone with tongue","Eating a Viennetta with your hands","An emergency fiver in your sock","A wedding DJ who only plays Mr Brightside","\"Only after waking up\" at 4pm","Uncle Mick's political opinions","The smoking area philosopher","A hen party with a twelve-page itinerary","A suspicious rash","Your search history","Getting caught singing in the car","Mammy finding your vape","A tractor run for charity","Going to the Canaries and never leaving the hotel","Scratch cards and regret","A mysterious lump in the porridge","The one snake St Patrick missed","A haunted Communion photo","A goat with a Leaving Cert","Hot whiskey for medicinal purposes","A free pint","Spilling a pint on a stranger","Wearing a county jersey to a wedding","Dad's socks and sandals","Burning the rashers","Coddle","The smell of a wet dog in a small car","A selection box for breakfast","A haunted changing room in Penneys","Panic-buying bread before a storm","Sneaking into the Gaeltacht disco","A suspiciously quiet toddler","A badly timed fart at Mass","Getting your head stuck in the railings","The neighbour's hedge","A seagull stealing your chips","Mortgage advice from a teenager on TikTok","Your ex's new partner, who's better than you","Uncle Mick's mullet","A twelve-pack of crisps and a dream","Crying in Lidl","Arguing with the self-checkout","Unexpected item in the bagging area","A shopping trolley in the canal","Debs photos","Cheating at bingo","Seven pints and a kebab","The craic","Absolutely no craic whatsoever","A slagging that went too far","A cute lad from Cork","Being from Kerry","A Dub on holidays","Tractors in rush hour","New teeth from Turkey","A suspiciously cheap holiday home","Wearing a Christmas jumper in July","The burden of being the eldest daughter","Being the favourite grandchild","Selling the family farm for a PlayStation","A potato that looks like a saint","A bat in the bedroom","A deep conversation with a sheep","A fiver from your granny","Turning up at the wrong funeral","The Rebel County","Elbows at the buffet","Accidentally saying \"love you\" to the taxi driver","The sound of the ice cream van","Hiding behind the couch when someone knocks","A slow puncture","Getting changed on the beach under a towel that's too small","A tiny horse","A full Irish at the wake","Industrial quantities of guilt","Forgetting the name of someone you've known for twenty years","Saying \"grand\" when you're not grand","A man selling batteries in the pub","Festival flu","Free-range children","A bottle of holy water and a prayer","Getting lost in IKEA","Wellies in bed","The emergency ham sandwich","A tin of Roses with only the coffee ones left","Eating the last purple one","Hiding the good chocolate","A stag in a mankini","Drunk-texting your landlord","Rent","Building a house with no planning permission","A flock of angry swans","Wet socks","Being bate into the ground","Calling the dog by your child's name","Pretending you've read Ulysses","Midnight Mass that lasts four hours","Hiding in the jacks at a party","Getting locked out in your dressing gown","A garda who's also your cousin","An offensive amount of glitter","Doing a line with someone's sister","Overdue library books","A suspicious white van","Dad dancing","A breakdown in the Applegreen","The entire middle aisle","A badly timed sneeze","A limp handshake","Comfort rashers","A bucket of coddle","Unwanted advice from strangers","Mammy's lasagne","Feeding the ducks white bread","Losing the head","Having notions","A pocket full of sand","Going full Cork","A shed full of secrets","A greasy chipper bag","A Christmas cracker joke so bad it's a crime","A cousin's wedding in Cavan","Smuggling a roast chicken into the cinema","Granny's dating profile","Hiding in a wardrobe","The bag of bags","Doing the Hokey Cokey at a funeral","A slow cooker full of regret","A selfie with a cow","Dropping your phone in a portaloo","Rubbing a statue for luck","The lads","A WhatsApp group called \"Lads Lads Lads\"","A wedding in Kildare that went on for three days","A curse from a travelling fortune teller at the Ploughing","The Ploughing Championships","Gravy on everything","A lifetime supply of Kimberley biscuits","Telling the hairdresser it's lovely when it's not","Waving at a stranger who wasn't waving at you","Trying to get out of a conversation at the door for 45 minutes","A Christmas Eve pint that turns into a St Stephen's Day pint","Being called \"pet\" by a bus driver","A cheeky Nando's","A hurling injury","Giving it socks","The smell of turf","A heated argument about the dishwasher","A sneaky look at the Lotto results","Leaving a party without saying goodbye to anyone","Kissing a frog for science","A ferret down the trousers","An extremely loud Dublin Bus","Sending a voice note by accident","A naked swim at the Forty Foot","Bringing your own sauce to a restaurant","Whatever's in the Lidl bakery at 9pm","Being caught on the Six One News","Someone's dad on a scooter","A goose that hates you specifically"];
+
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const store={get(k,d){try{const v=localStorage.getItem("soc_"+k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem("soc_"+k,JSON.stringify(v))}catch(e){}}};
+const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const pickOf=t=>Math.max(1,(t.match(/_/g)||[]).length);
+let ac=null;
+function beep(f,d,type,vol){try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();if(ac.state==="suspended")ac.resume();const o=ac.createOscillator(),g=ac.createGain();o.type=type||"sine";o.frequency.value=f;g.gain.setValueAtTime(vol||.18,ac.currentTime);g.gain.exponentialRampToValueAtTime(.001,ac.currentTime+d);o.connect(g).connect(ac.destination);o.start();o.stop(ac.currentTime+d)}catch(e){}}
+const BOT="Random Randall";
+
+let cfg=Object.assign({players:["","",""],target:7,bot:false,custom:true},store.get("cfg",{}));
+let G=store.get("game",null);
+let sel=[], customText="", judgePick=null, setupErr="";
+const save=()=>{store.set("game",G)};
+const app=$("app");
+const showBack=/github\.io$/.test(location.hostname)||location.protocol==="file:";
+
+function fill(black,answers,blankMarks){
+  let i=0;
+  let h=esc(black).replace(/_/g,()=>{const a=answers[i++];return a?`<mark>${esc(a)}</mark>`:'<span class="blank"></span>'});
+  if(!black.includes("_")) h+=answers[0]?` <mark>${esc(answers[0])}</mark>`:"";
+  return h;
+}
+function blackCard(t){const n=pickOf(t);return `<div class="black pop"><p>${fill(t,[])}</p><div class="foot"><span>Shower of Cards</span>${n>1?`<span class="pick">Pick ${n}</span>`:""}</div></div>`}
+
+/* ---------------- setup ---------------- */
+function renderSetup(){
+  const resume=G&&G.phase!=="over";
+  app.innerHTML=`<div class="wrap">
+    ${showBack?'<a class="back" href="./">← All games</a>':""}
+    <header><h1>Shower <span>of</span> Cards</h1>
+      <p class="lede">One player reads a prompt. Everyone else secretly picks their funniest answer from their hand. The reader crowns the best one. Pass one phone round, or play online with everyone on their own device.</p>
+      <span class="age">Adults · 3 to 10 players</span></header>
+    ${resume?`<button class="go" id="resume">Resume game · round ${G.round}</button>`:""}
+    <div class="block panel"><span class="label">Players</span>
+      <div class="players" id="plist">${cfg.players.map((p,i)=>`<div class="prow"><input id="p${i}" maxlength="16" placeholder="Player ${i+1}" value="${esc(p)}" aria-label="Player ${i+1} name"><button data-del="${i}" aria-label="Remove player"${cfg.players.length<=3?" hidden":""}>×</button></div>`).join("")}</div>
+      ${cfg.players.length<10?'<button class="add" id="addP">+ Add player</button>':""}
+    </div>
+    <div class="panel">
+      <div class="block"><span class="label">Points to win</span>
+        <div class="seg" id="tgt">${[5,7,10,15].map(v=>`<button data-v="${v}" aria-pressed="${cfg.target===v}">${v}</button>`).join("")}</div></div>
+      <div class="toggle"><span>Write-your-own card<small>Everyone gets a blank card to fill in each round.</small></span><button class="sw" id="swC" role="switch" aria-checked="${cfg.custom}" aria-label="Write your own"></button></div>
+      <div class="toggle"><span>Add ${BOT}<small>A bot that plays a random card every round. If he wins, everyone has to live with it.</small></span><button class="sw" id="swB" role="switch" aria-checked="${cfg.bot}" aria-label="Add bot"></button></div>
+    </div>
+    <p class="err">${esc(setupErr)}</p>
+    <button class="go" id="start">Deal the cards on this phone</button>
+    <div class="panel">${Online.joinPanelHTML()}</div>
+    <p class="lede" style="font-size:13px">${BLACK.length} prompt cards and ${WHITE.length} answer cards.</p>
+  </div>`;
+  Online.wireJoinPanel({onCreate:oCreate,onJoin:oJoin});
+  cfg.players.forEach((_,i)=>$("p"+i).oninput=e=>{cfg.players[i]=e.target.value;store.set("cfg",cfg)});
+  app.querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>{cfg.players.splice(+b.dataset.del,1);store.set("cfg",cfg);renderSetup()});
+  if($("addP"))$("addP").onclick=()=>{cfg.players.push("");store.set("cfg",cfg);renderSetup();$("p"+(cfg.players.length-1)).focus()};
+  app.querySelectorAll("#tgt button").forEach(b=>b.onclick=()=>{cfg.target=+b.dataset.v;store.set("cfg",cfg);renderSetup()});
+  $("swC").onclick=()=>{cfg.custom=!cfg.custom;store.set("cfg",cfg);renderSetup()};
+  $("swB").onclick=()=>{cfg.bot=!cfg.bot;store.set("cfg",cfg);renderSetup()};
+  if($("resume"))$("resume").onclick=render;
+  $("start").onclick=startGame;
+}
+function startGame(){
+  const names=cfg.players.map((p,i)=>p.trim()||`Player ${i+1}`);
+  if(new Set(names.map(n=>n.toLowerCase())).size!==names.length){setupErr="Two players have the same name. Give everyone a different one.";return renderSetup()}
+  setupErr=""; beep(1,.01);
+  const players=names.map(n=>({name:n,score:0,hand:[],bot:false}));
+  if(cfg.bot)players.push({name:BOT,score:0,hand:[],bot:true});
+  G={players,target:cfg.target,custom:cfg.custom,round:0,czar:-1,bdeck:shuffle(BLACK.map((_,i)=>i)),wdeck:shuffle(WHITE.map((_,i)=>i)),black:null,order:[],cur:0,subs:{},judge:[],phase:"intro",last:null};
+  nextRound();
+}
+function drawWhite(){
+  if(!G.wdeck.length){const held=new Set(G.players.flatMap(p=>p.hand));G.wdeck=shuffle(WHITE.map((_,i)=>i).filter(i=>!held.has(i)))}
+  return G.wdeck.pop();
+}
+function deal(){G.players.forEach(p=>{while(p.hand.length<7)p.hand.push(drawWhite())})}
+function nextRound(){
+  G.round++; deal();
+  do{G.czar=(G.czar+1)%G.players.length}while(G.players[G.czar].bot);
+  newBlack();
+  G.order=G.players.map((_,i)=>i).filter(i=>i!==G.czar&&!G.players[i].bot);
+  G.cur=0; G.subs={}; G.phase="intro";
+  save(); render();
+}
+function newBlack(){ if(!G.bdeck.length)G.bdeck=shuffle(BLACK.map((_,i)=>i)); G.black=G.bdeck.pop(); }
+
+/* ---------------- game screens ---------------- */
+function render(){
+  scrollTo(0,0);
+  if(!G)return renderSetup();
+  ({intro:renderIntro,pass:renderPass,hand:renderHand,toczar:renderToCzar,judge:renderJudge,result:renderResult,over:renderOver}[G.phase]||renderSetup)();
+}
+function statusChips(){
+  return `<div class="status">${G.players.map((p,i)=>`<span class="${i===G.czar?"czar":G.subs[i]?"done":""}">${esc(p.name)}${i===G.czar?" · reader":""}</span>`).join("")}</div>`;
+}
+function renderIntro(){
+  const cz=G.players[G.czar];
+  app.innerHTML=`<div class="wrap">
+    <div class="meta"><span>Round ${G.round} · first to ${G.target}</span><span><button id="scoresBtn">Scores</button> · <button id="quit">Quit</button></span></div>
+    <div><div class="label">Reader this round</div><h2>${esc(cz.name)}</h2><p class="lede" style="margin-top:6px">${esc(cz.name)}, read this out to the room.</p></div>
+    ${blackCard(BLACK[G.black])}
+    <div class="meta"><span>Not funny? <button id="swap">New prompt</button></span></div>
+    <button class="go" id="next">Pass to ${esc(G.players[G.order[0]].name)}</button>
+  </div>`;
+  $("swap").onclick=()=>{newBlack();save();renderIntro()};
+  $("next").onclick=()=>{G.phase="pass";save();render()};
+  $("scoresBtn").onclick=showScores; $("quit").onclick=quit;
+}
+function renderPass(){
+  const p=G.players[G.order[G.cur]];
+  app.innerHTML=`<div class="wrap"><div class="pass">
+    <div class="label">Pass the phone to</div><div class="who">${esc(p.name)}</div>
+    <p>Only ${esc(p.name)} should look at the next screen.</p>
+    <button class="go" id="show">I'm ${esc(p.name)}, show my hand</button>
+    ${statusChips()}
+  </div></div>`;
+  $("show").onclick=()=>{sel=[];customText="";G.phase="hand";save();render()};
+}
+function renderHand(){
+  const pi=G.order[G.cur], p=G.players[pi], b=BLACK[G.black], need=pickOf(b);
+  const answers=sel.map(s=>s==="custom"?customText.trim():WHITE[s]);
+  app.innerHTML=`<div class="wrap">
+    <div class="meta"><span>${esc(p.name)}'s hand</span><span>${p.score} point${p.score===1?"":"s"}</span></div>
+    <div class="black"><p>${fill(b,answers)}</p><div class="foot"><span>${need>1?"Tap cards in order":"Pick one"}</span>${need>1?`<span class="pick">Pick ${need}</span>`:""}</div></div>
+    <div class="hand" id="hand">
+      ${p.hand.map(c=>{const o=sel.indexOf(c);return `<button class="white" data-c="${c}" aria-pressed="${o>=0}">${esc(WHITE[c])}${o>=0&&need>1?`<span class="ord">${o+1}</span>`:""}</button>`}).join("")}
+      ${G.custom?`<div class="white custom" aria-pressed="${sel.includes("custom")}"><textarea id="cust" maxlength="80" placeholder="Write your own answer…">${esc(customText)}</textarea>${sel.includes("custom")&&need>1?`<span class="ord">${sel.indexOf("custom")+1}</span>`:""}</div>`:""}
+    </div>
+    <div class="sticky"><button class="go" id="play" ${sel.length===need&&answers.every(a=>a)?"":"disabled"}>${sel.length<need?`Pick ${need-sel.length} more`:"Play "+(need>1?"these":"this")}</button></div>
+  </div>`;
+  app.querySelectorAll("#hand .white[data-c]").forEach(el=>el.onclick=()=>toggle(+el.dataset.c,need));
+  const ta=$("cust");
+  if(ta){
+    ta.oninput=()=>{customText=ta.value; if(customText.trim()&&!sel.includes("custom")){if(sel.length>=need)sel.shift();sel.push("custom");renderHand();const t=$("cust");t.focus();t.setSelectionRange(t.value.length,t.value.length)} else if(!customText.trim()&&sel.includes("custom")){sel=sel.filter(s=>s!=="custom");renderHand();$("cust").focus()} else {updatePlay(need)}};
+  }
+  $("play").onclick=()=>{
+    const ans=sel.map(s=>s==="custom"?customText.trim():WHITE[s]);
+    G.subs[pi]=ans; p.hand=p.hand.filter(c=>!sel.includes(c)); beep(660,.1);
+    G.cur++; G.phase=G.cur>=G.order.length?"toczar":"pass"; save(); render();
+  };
+}
+function updatePlay(need){const ans=sel.map(s=>s==="custom"?customText.trim():WHITE[s]);const b=$("play");b.disabled=!(sel.length===need&&ans.every(a=>a))}
+function toggle(c,need){
+  if(sel.includes(c))sel=sel.filter(x=>x!==c); else {if(sel.length>=need)sel.shift(); sel.push(c)}
+  beep(520,.05); const y=scrollY; renderHand(); scrollTo(0,y);
+}
+function renderToCzar(){
+  const cz=G.players[G.czar];
+  G.players.forEach((p,i)=>{ if(p.bot&&!G.subs[i]){const n=pickOf(BLACK[G.black]);const cs=shuffle(p.hand.slice()).slice(0,n);G.subs[i]=cs.map(c=>WHITE[c]);p.hand=p.hand.filter(c=>!cs.includes(c))} });
+  G.judge=shuffle(Object.keys(G.subs).map(Number)); save();
+  app.innerHTML=`<div class="wrap"><div class="pass">
+    <div class="label">Everyone's played. Pass to the reader</div><div class="who">${esc(cz.name)}</div>
+    <p>Read each answer out loud, then pick the winner.</p>
+    <button class="go" id="show">I'm ${esc(cz.name)}, show the answers</button>
+  </div></div>`;
+  $("show").onclick=()=>{judgePick=null;G.phase="judge";save();render()};
+}
+function renderJudge(){
+  const b=BLACK[G.black];
+  app.innerHTML=`<div class="wrap">
+    <div><div class="label">${esc(G.players[G.czar].name)} reads them all out</div><h2 style="margin-top:6px">Which one wins?</h2></div>
+    <div class="subs">${G.judge.map((pi,k)=>`<button class="sub pop" style="animation-delay:${k*60}ms" data-p="${pi}" aria-pressed="${judgePick===pi}">${fill(b,G.subs[pi])}<small>Answer ${k+1}</small></button>`).join("")}</div>
+    <div class="sticky"><button class="go" id="crown" ${judgePick===null?"disabled":""}>${judgePick===null?"Tap the funniest":"Crown this one"}</button></div>
+  </div>`;
+  app.querySelectorAll(".sub").forEach(el=>el.onclick=()=>{judgePick=+el.dataset.p;app.querySelectorAll(".sub").forEach(x=>x.setAttribute("aria-pressed",String(x===el)));const c=$("crown");c.disabled=false;c.textContent="Crown this one";beep(500,.05)});
+  $("crown").onclick=()=>{
+    const w=G.players[judgePick]; w.score++;
+    G.last={winner:judgePick,text:fill(b,G.subs[judgePick]),all:G.judge.map(pi=>({name:G.players[pi].name,text:fill(b,G.subs[pi]),win:pi===judgePick}))};
+    G.phase=w.score>=G.target?"over":"result"; save();
+    [523,659,784].forEach((f,i)=>setTimeout(()=>beep(f,.2,"triangle"),i*120)); try{navigator.vibrate&&navigator.vibrate([60,40,60])}catch(e){}
+    render();
+  };
+}
+function scoreList(){
+  const lead=Math.max(...G.players.map(p=>p.score));
+  return `<ul class="scores">${G.players.slice().sort((a,b)=>b.score-a.score).map(p=>`<li class="${p.score===lead&&lead>0?"lead":""}"><span>${esc(p.name)}</span><span style="display:flex;gap:12px;align-items:center"><span class="dots">${Array.from({length:G.target},(_,i)=>`<i class="${i<p.score?"on":""}"></i>`).join("")}</span>${p.score}</span></li>`).join("")}</ul>`;
+}
+function renderResult(){
+  const L=G.last, w=G.players[L.winner];
+  app.innerHTML=`<div class="wrap">
+    <div><div class="label">Round ${G.round} winner</div><h2 style="color:var(--rain)">${esc(w.name)}${w.bot?" (the bot!)":""}</h2></div>
+    <div class="black pop"><p>${L.text}</p><div class="foot"><span>Played by ${esc(w.name)}</span></div></div>
+    <details class="panel"><summary class="label" style="cursor:pointer">Who played what</summary>
+      <ul class="scores">${L.all.map(a=>`<li><span style="font-weight:400">${a.text}</span><span>${esc(a.name)}</span></li>`).join("")}</ul></details>
+    <div class="panel"><span class="label">Scores · first to ${G.target}</span>${scoreList()}</div>
+    <button class="go" id="next">Next round</button>
+  </div>`;
+  $("next").onclick=()=>{beep(1,.01);nextRound()};
+}
+function renderOver(){
+  const L=G.last, w=G.players[L.winner];
+  app.innerHTML=`<div class="wrap">
+    <div class="label">Game over</div><h1 style="color:var(--rain)">${esc(w.name)} wins</h1>
+    <div class="black pop"><p>${L.text}</p><div class="foot"><span>The winning card</span></div></div>
+    <div class="panel"><span class="label">Final scores</span>${scoreList()}</div>
+    <button class="go" id="again">Play again, same players</button>
+    <button class="alt" id="setup">Change players</button>
+  </div>`;
+  $("again").onclick=startGame; $("setup").onclick=()=>{G=null;store.set("game",null);renderSetup()};
+}
+function showScores(){
+  app.innerHTML=`<div class="wrap"><h2>Scores</h2><div class="panel">${scoreList()}</div><button class="go" id="back">Back to the round</button></div>`;
+  $("back").onclick=render;
+}
+function quit(){
+  app.innerHTML=`<div class="wrap"><h2>Quit this game?</h2><p class="lede">Scores and hands will be lost.</p><button class="go" id="yes">Yes, quit</button><button class="alt" id="no">Keep playing</button></div>`;
+  $("yes").onclick=()=>{G=null;store.set("game",null);renderSetup()}; $("no").onclick=render;
+}
+/* ---------------- online play ---------------- */
+let room=null, osel=[], ocustom="", ojudge=null;
+const myId=()=>Online.myId;
+function oPlayer(s,id){return (s.players||[]).find(p=>p.id===id)}
+function oFill(s,p){while(p.hand.length<7){if(!s.wdeck||!s.wdeck.length){const held=new Set(s.players.flatMap(q=>q.hand));s.wdeck=shuffle(WHITE.map((_,i)=>i).filter(i=>!held.has(i)))}p.hand.push(s.wdeck.pop())}}
+function oBlack(s){if(!s.bdeck||!s.bdeck.length)s.bdeck=shuffle(BLACK.map((_,i)=>i));return s.bdeck.pop()}
+function oNewRound(s){s.round=(s.round||0)+1;s.czar=((s.czar==null?-1:s.czar)+1)%s.players.length;s.black=oBlack(s);s.subs={};s.judge=null;s.phase="choose";s.players.forEach(p=>oFill(s,p))}
+function oMaybeJudge(s){const need=s.players.filter((p,i)=>i!==s.czar).map(p=>p.id);if(need.length&&need.every(id=>s.subs[id])){s.phase="judge";s.judge=shuffle(Object.keys(s.subs))}}
+async function oCreate(name){room=new Online.Room("shower");room.on(oRender);await room.create({phase:"lobby",players:[],target:cfg.target,custom:cfg.custom,round:0});await room.addMe(name,{score:0,hand:[]});Online.setHash(room.code)}
+async function oJoin(code,name){room=new Online.Room("shower");room.on(oRender);await room.join(code);
+  if(!room.me()&&name){await room.addMe(name,{score:0,hand:[]});if(room.state.phase!=="lobby")await room.update(s=>{const p=oPlayer(s,myId());if(!p)return false;oFill(s,p)})}
+  Online.setHash(room.code);oRender()}
+function oLeave(){if(room){const r=room;if(r.state&&r.state.phase==="lobby"&&r.me())r.update(s=>{s.players=s.players.filter(p=>p.id!==myId())});r.leave()}room=null;Online.setHash("");renderSetup()}
+function oTop(s){return `<div class="meta"><span>Room <b style="color:var(--rain)">${esc(room.code)}</b>${s.round?` · round ${s.round} · first to ${s.target}`:""}</span><span style="display:flex;gap:10px;align-items:center">${Online.videoButtonHTML()}<button id="oLeave">Leave</button></span></div>`}
+function oChips(s){return `<div class="status">${s.players.map((p,i)=>`<span class="${i===s.czar?"czar":s.subs&&s.subs[p.id]?"done":""}">${esc(p.name)}${i===s.czar?" · reader":""} ${p.score||0}</span>`).join("")}</div>`}
+function oWire(s){const me=room.me();$("oLeave").onclick=oLeave;Online.wireVideoButton(room,()=>me?me.name:"Guest")}
+function oRender(){
+  if(!room||!room.state)return;
+  const s=room.state, me=room.me(), meIdx=s.players?s.players.findIndex(p=>p.id===myId()):-1, czar=s.players&&s.players[s.czar], amCzar=meIdx===s.czar&&meIdx>=0;
+  const focused=document.activeElement&&document.activeElement.id==="ocust";
+  if(s.phase==="lobby"){
+    app.innerHTML=`<div class="wrap">${oTop(s)}<header><h1>Shower <span>of</span> Cards</h1></header>${Online.shareHTML(room)}
+      <div class="panel"><span class="label">Players · ${s.players.length} (3 to 10)</span>${Online.playersHTML(room)}</div>
+      ${room.isHost()?`<div class="panel"><div class="block"><span class="label">Points to win</span><div class="seg" id="otgt">${[5,7,10,15].map(v=>`<button data-v="${v}" aria-pressed="${s.target===v}">${v}</button>`).join("")}</div></div>
+        <div class="toggle"><span>Write-your-own card</span><button class="sw" id="oswC" role="switch" aria-checked="${!!s.custom}" aria-label="Write your own"></button></div></div>
+        <button class="go" id="ostart" ${s.players.length<3?"disabled":""}>${s.players.length<3?"Waiting for at least 3 players…":"Deal the cards"}</button>`
+        :`<p class="lede" style="text-align:center">Waiting for the host to deal…</p>`}</div>`;
+    oWire(s); Online.wireShare(room);
+    if(room.isHost()){app.querySelectorAll("#otgt button").forEach(b=>b.onclick=()=>room.update(x=>{x.target=+b.dataset.v}));
+      $("oswC").onclick=()=>room.update(x=>{x.custom=!x.custom});
+      $("ostart").onclick=()=>{beep(1,.01);room.update(x=>{if(x.players.length<3)return false;x.bdeck=shuffle(BLACK.map((_,i)=>i));x.wdeck=shuffle(WHITE.map((_,i)=>i));x.players.forEach(p=>{p.score=0;p.hand=[]});x.czar=-1;x.round=0;oNewRound(x)})}}
+    return;
+  }
+  const b=BLACK[s.black], need=pickOf(b);
+  if(s.phase==="choose"){
+    const done=Object.keys(s.subs||{}).length, waiting=s.players.length-1-done;
+    let body="";
+    if(amCzar){
+      body=`<div><div class="label">You're the reader</div><h2 style="margin-top:6px">Read this out</h2></div>${blackCard(b)}
+        <p class="lede">${waiting>0?`Waiting for ${waiting} answer${waiting>1?"s":""}…`:"All in!"}</p>
+        <div class="meta"><span>${done?"":`Not funny? <button id="onew">New prompt</button>`}</span><span>${done&&waiting>0?`<button id="oforce">Judge the ${done} in now</button>`:""}</span></div>`;
+    } else if(meIdx<0){
+      body=`<div class="label">Watching</div>${blackCard(b)}`;
+    } else if(s.subs[myId()]){
+      body=`<div><div class="label">Your answer is in</div></div><div class="black"><p>${fill(b,s.subs[myId()])}</p><div class="foot"><span>Waiting for the others…</span></div></div>`;
+    } else {
+      const answers=osel.map(x=>x==="custom"?ocustom.trim():WHITE[x]);
+      body=`<div class="meta"><span>${esc(czar?czar.name:"")} is reading</span><span>${me.score||0} point${me.score===1?"":"s"}</span></div>
+        <div class="black"><p>${fill(b,answers)}</p><div class="foot"><span>${need>1?"Tap cards in order":"Pick one"}</span>${need>1?`<span class="pick">Pick ${need}</span>`:""}</div></div>
+        <div class="hand" id="ohand">${me.hand.map(c=>{const o=osel.indexOf(c);return `<button class="white" data-c="${c}" aria-pressed="${o>=0}">${esc(WHITE[c])}${o>=0&&need>1?`<span class="ord">${o+1}</span>`:""}</button>`}).join("")}
+          ${s.custom?`<div class="white custom" aria-pressed="${osel.includes("custom")}"><textarea id="ocust" maxlength="80" placeholder="Write your own answer…">${esc(ocustom)}</textarea></div>`:""}</div>
+        <div class="sticky"><button class="go" id="oplay" ${osel.length===need&&answers.every(a=>a)?"":"disabled"}>${osel.length<need?`Pick ${need-osel.length} more`:"Play "+(need>1?"these":"this")}</button></div>`;
+    }
+    app.innerHTML=`<div class="wrap">${oTop(s)}${oChips(s)}${body}</div>`; oWire(s);
+    if($("onew"))$("onew").onclick=()=>room.update(x=>{if(Object.keys(x.subs).length)return false;x.black=oBlack(x)});
+    if($("oforce"))$("oforce").onclick=()=>room.update(x=>{if(x.phase!=="choose"||!Object.keys(x.subs).length)return false;x.phase="judge";x.judge=shuffle(Object.keys(x.subs))});
+    app.querySelectorAll("#ohand .white[data-c]").forEach(el=>el.onclick=()=>{const c=+el.dataset.c;if(osel.includes(c))osel=osel.filter(v=>v!==c);else{if(osel.length>=need)osel.shift();osel.push(c)}beep(520,.05);const y=scrollY;oRender();scrollTo(0,y)});
+    const ta=$("ocust"); if(ta){ta.oninput=()=>{ocustom=ta.value;const has=!!ocustom.trim();if(has&&!osel.includes("custom")){if(osel.length>=need)osel.shift();osel.push("custom")}if(!has)osel=osel.filter(v=>v!=="custom");
+      const ans=osel.map(x=>x==="custom"?ocustom.trim():WHITE[x]);const pb=$("oplay");pb.disabled=!(osel.length===need&&ans.every(a=>a));pb.textContent=osel.length<need?`Pick ${need-osel.length} more`:"Play "+(need>1?"these":"this")};
+      if(focused){ta.focus();ta.setSelectionRange(ta.value.length,ta.value.length)}}
+    if($("oplay"))$("oplay").onclick=()=>{const ans=osel.map(x=>x==="custom"?ocustom.trim():WHITE[x]),used=osel.filter(x=>x!=="custom");beep(660,.1);
+      room.update(x=>{const p=oPlayer(x,myId());if(!p||x.phase!=="choose"||x.subs[myId()])return false;x.subs[myId()]=ans;p.hand=p.hand.filter(c=>!used.includes(c));oFill(x,p);oMaybeJudge(x)}).then(()=>{osel=[];ocustom=""})};
+    return;
+  }
+  if(s.phase==="judge"){
+    app.innerHTML=`<div class="wrap">${oTop(s)}<div><div class="label">${amCzar?"Read them all out, then pick":esc(czar?czar.name:"The reader")+" is choosing"}</div><h2 style="margin-top:6px">Which one wins?</h2></div>
+      <div class="subs">${s.judge.map((pid,k)=>`<button class="sub pop" data-p="${esc(pid)}" aria-pressed="${ojudge===pid}" ${amCzar?"":"disabled"}>${fill(b,s.subs[pid])}<small>Answer ${k+1}</small></button>`).join("")}</div>
+      ${amCzar?`<div class="sticky"><button class="go" id="ocrown" ${ojudge?"":"disabled"}>${ojudge?"Crown this one":"Tap the funniest"}</button></div>`:""}</div>`;
+    oWire(s);
+    if(amCzar){app.querySelectorAll(".sub").forEach(el=>el.onclick=()=>{ojudge=el.dataset.p;oRender()});
+      if($("ocrown"))$("ocrown").onclick=()=>{const w=ojudge;ojudge=null;room.update(x=>{if(x.phase!=="judge")return false;const p=oPlayer(x,w);if(!p)return false;p.score=(p.score||0)+1;
+        x.last={winner:w,all:x.judge.map(pid=>({id:pid,ans:x.subs[pid]}))};x.phase=p.score>=x.target?"over":"result"})}}
+    return;
+  }
+  if(s.phase==="result"||s.phase==="over"){
+    const L=s.last, w=oPlayer(s,L.winner), canNext=amCzar||room.isHost();
+    if(!oRender.lastCel||oRender.lastCel!==s.round+":"+s.phase){oRender.lastCel=s.round+":"+s.phase;[523,659,784].forEach((f,i)=>setTimeout(()=>beep(f,.2,"triangle"),i*120))}
+    const lead=Math.max(...s.players.map(p=>p.score||0));
+    app.innerHTML=`<div class="wrap">${oTop(s)}
+      <div><div class="label">${s.phase==="over"?"Game over":"Round "+s.round+" winner"}</div><h2 style="color:var(--rain)">${esc(w?w.name:"Someone")}${s.phase==="over"?" wins the game":""}</h2></div>
+      <div class="black pop"><p>${fill(b,L.all.find(a=>a.id===L.winner).ans)}</p><div class="foot"><span>Played by ${esc(w?w.name:"")}</span></div></div>
+      <details class="panel"><summary class="label" style="cursor:pointer">Who played what</summary><ul class="scores">${L.all.map(a=>{const p=oPlayer(s,a.id);return `<li><span style="font-weight:400">${fill(b,a.ans)}</span><span>${esc(p?p.name:"")}</span></li>`}).join("")}</ul></details>
+      <div class="panel"><span class="label">Scores · first to ${s.target}</span><ul class="scores">${s.players.slice().sort((a,b2)=>(b2.score||0)-(a.score||0)).map(p=>`<li class="${(p.score||0)===lead&&lead>0?"lead":""}"><span>${esc(p.name)}</span><span>${p.score||0}</span></li>`).join("")}</ul></div>
+      ${s.phase==="result"?(canNext?`<button class="go" id="onext">Next round</button>`:`<p class="lede" style="text-align:center">Waiting for the next round…</p>`)
+        :(room.isHost()?`<button class="go" id="oagain">Play again</button>`:`<p class="lede" style="text-align:center">Waiting for the host…</p>`)}</div>`;
+    oWire(s);
+    if($("onext"))$("onext").onclick=()=>room.update(x=>{if(x.phase!=="result")return false;oNewRound(x)});
+    if($("oagain"))$("oagain").onclick=()=>room.update(x=>{x.players.forEach(p=>p.score=0);x.czar=-1;x.round=0;oNewRound(x)});
+  }
+}
+function onlineBoot(){
+  if(!Online.ready())return false;
+  const h=(location.hash||"").replace("#","").toUpperCase(), saved=Online.lsGet("room_shower",null), code=/^[A-Z]{5}$/.test(h)?h:saved;
+  if(!code)return false;
+  const r=new Online.Room("shower");
+  r.join(code).then(()=>{ if(r.me()){room=r;room.on(oRender);Online.setHash(room.code);oRender()} else {Online.lsSet("room_shower",null);r.leave&&r.leave();renderSetup()} }).catch(()=>{Online.lsSet("room_shower",null)});
+  return false;
+}
+
+renderSetup();
+onlineBoot();
+</script>
+
+</body>
+</html>

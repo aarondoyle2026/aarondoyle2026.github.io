@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en-IE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#123b2f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>The Games Press</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Manrope:wght@400;500;700;800&display=swap">
+<style>
+/* Layout: a cupboard of game boxes. Header, then one box per game in its own colours, stacked on phones, two-up on wider screens. Single committed look: painted-press green. */
+:root{
+  --press:#123b2f; --press-2:#184a3b; --shelf:#0b2a21; --text:#f3efe4; --muted:#a9c4b8; --brass:#e8b04a;
+  --display:"Bricolage Grotesque","Arial Black",system-ui,sans-serif;
+  --body:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+html,body{min-height:100%}
+body{background:var(--press);color:var(--text);font-family:var(--body);font-size:16px}
+.wrap{box-sizing:border-box;max-width:900px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px;display:flex;flex-direction:column;gap:24px}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(44px,12vw,84px);line-height:.88;margin:0;letter-spacing:-.03em;text-wrap:balance}
+h1 span{color:var(--brass)}
+.lede{color:var(--muted);margin:10px 0 0;max-width:46ch;font-size:17px}
+.shelf{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:14px}
+.box{display:flex;flex-direction:column;gap:10px;text-decoration:none;color:var(--fg);background:var(--bg);border-radius:18px;padding:20px;min-height:170px;box-shadow:0 6px 0 var(--shelf);position:relative;overflow:hidden;transition:transform .12s}
+.box:hover{transform:translateY(-2px)} .box:active{transform:translateY(3px);box-shadow:0 3px 0 var(--shelf)}
+.box:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+.box b{font-family:var(--display);font-weight:800;font-size:30px;line-height:1;color:var(--hi);letter-spacing:-.01em}
+.box p{margin:0;opacity:.85;max-width:40ch}
+.box .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}
+.box .tags span{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:4px 9px;border-radius:999px;background:rgba(255,255,255,.14)}
+.box .tags span.adult{background:var(--hi);color:var(--bg)}
+.box .glyph{position:absolute;right:-6px;bottom:-22px;font-family:var(--display);font-weight:800;font-size:120px;line-height:1;opacity:.12;pointer-events:none}
+.tips{background:var(--press-2);border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:6px;color:var(--muted)}
+.tips b{color:var(--text)}
+
+/* ===== Sleek layer: shared look across every game ===== */
+:root{--x-bg:#0b0f17;--x-s1:#121a27;--x-s2:#192335;--x-line:#26314a;--x-text:#e8edf5;--x-muted:#8d99ae;--x-gold:#d6b26e;--x-gold-2:#b8914c;
+  --display:"Sora","Segoe UI",system-ui,sans-serif;--body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif}
+body{font-family:var(--body);-webkit-font-smoothing:antialiased;background-image:radial-gradient(1100px 520px at 50% -12%,rgba(214,178,110,.09),transparent 62%);background-repeat:no-repeat}
+h1,h2{font-family:var(--display);font-weight:700;letter-spacing:-.03em}
+.go{background:linear-gradient(180deg,#e6cb93,#c39b52);color:#17110a;font-family:var(--display);font-weight:600;letter-spacing:0;border-radius:12px;text-shadow:none;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 12px 26px -12px rgba(214,178,110,.7);transition:transform .12s,box-shadow .12s,filter .12s}
+.go:hover{filter:brightness(1.05)}
+.go:active{transform:translateY(1px) scale(.99);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 4px 12px -8px rgba(214,178,110,.6)}
+.go:disabled{filter:grayscale(.7);opacity:.45;transform:none}
+.alt{background:rgba(255,255,255,.035);border:1px solid var(--x-line);border-radius:12px;color:var(--x-text);font-weight:700;transition:background .15s,border-color .15s}
+.alt:hover{background:rgba(255,255,255,.07);border-color:#33405c}
+.panel{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.018));border:1px solid rgba(255,255,255,.07);box-shadow:0 22px 44px -30px rgba(0,0,0,.8)}
+.seg button{border:1px solid var(--x-line);background:rgba(255,255,255,.03);border-radius:10px;font-weight:700;transition:background .15s,color .15s,border-color .15s}
+.seg button[aria-pressed="true"]{background:var(--x-gold);border-color:var(--x-gold);color:#17110a}
+.sw{background:#2a3550;border:0}.sw::after{background:#f2f4f8;box-shadow:0 1px 3px rgba(0,0,0,.45)}.sw[aria-checked="true"]{background:var(--x-gold)}
+.label{letter-spacing:.18em;font-weight:700}
+.chip{border-width:1px}.chip[aria-pressed="true"]{background:var(--x-gold);border-color:var(--x-gold);color:#17110a}
+.toast{background:rgba(18,26,39,.94);color:#f2f4f8;border:1px solid rgba(214,178,110,.55);box-shadow:0 18px 40px -16px rgba(0,0,0,.8)}
+.back{color:var(--x-muted)}
+/* 3D dice */
+.cube{position:relative;width:100%;height:100%;transform-style:preserve-3d}
+.cube .f{position:absolute;inset:0;border-radius:18%;background:linear-gradient(145deg,#fdfcf9,#d6d1c6);box-shadow:inset 0 0 0 1px rgba(0,0,0,.07),inset 0 -.25em .45em rgba(0,0,0,.14);
+  display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);padding:14%;box-sizing:border-box;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.cube .f i{border-radius:50%;background:radial-gradient(circle at 35% 35%,#465069,#0b0f17);margin:13%}
+.cube .f1{transform:translateZ(calc(var(--ds)/2))}.cube .f2{transform:rotateY(90deg) translateZ(calc(var(--ds)/2))}.cube .f3{transform:rotateY(180deg) translateZ(calc(var(--ds)/2))}
+.cube .f4{transform:rotateY(-90deg) translateZ(calc(var(--ds)/2))}.cube .f5{transform:rotateX(90deg) translateZ(calc(var(--ds)/2))}.cube .f6{transform:rotateX(-90deg) translateZ(calc(var(--ds)/2))}
+@keyframes tumble{to{transform:rotateX(360deg) rotateY(360deg)}}
+@keyframes sweep{0%{background-position:130% 0}55%,100%{background-position:-130% 0}}
+@keyframes glint{0%,100%{filter:none;transform:none}50%{filter:drop-shadow(0 0 .35em rgba(255,255,255,.75));transform:scale(1.08)}}
+@media (prefers-reduced-motion:reduce){.plane::after,.board::after,.center::before,body::before{animation:none!important}}
+
+:root{--press:#0b0f17;--press-2:#141c2b;--shelf:#05070c;--text:#e8edf5;--muted:#8d99ae;--brass:#d6b26e}
+body::before{content:"";position:fixed;inset:-20%;z-index:-1;pointer-events:none;
+  background:radial-gradient(40% 35% at 20% 15%,rgba(214,178,110,.13),transparent 70%),radial-gradient(40% 35% at 85% 25%,rgba(95,163,217,.10),transparent 70%),radial-gradient(45% 40% at 50% 95%,rgba(207,95,119,.08),transparent 70%);
+  animation:drift 18s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(3%,-3%) rotate(4deg)}}
+h1{font-weight:700;letter-spacing:-.045em}
+.box{background:linear-gradient(155deg,color-mix(in srgb,var(--hi) 16%,#141c2b),#0e141f 70%);color:var(--text);border:1px solid rgba(255,255,255,.07);
+  box-shadow:0 26px 50px -30px rgba(0,0,0,.95);transition:transform .2s,border-color .2s,box-shadow .2s}
+.box:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--hi) 55%,transparent);box-shadow:0 30px 60px -30px color-mix(in srgb,var(--hi) 45%,transparent)}
+.box b{font-weight:700;letter-spacing:-.02em}
+.box .glyph{opacity:.07;font-weight:700}
+.box .tags span{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.06)}
+.box .tags span.adult{background:var(--hi);color:#0b0f17}
+.tips{background:var(--press-2);border:1px solid rgba(255,255,255,.06)}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header><h1>The Games <span>Press</span></h1>
+    <p class="lede">Party games for one phone in the room, or everyone on their own screen from anywhere with live video. No apps, no sign-ups.</p></header>
+  <nav class="shelf" aria-label="Games">
+    <a class="box" href="thirty.html" style="--bg:#0f2a63;--fg:#f6f2e6;--hi:#d6b26e"><b>Thirty Seconds Flat</b><p>Describe five words in thirty seconds and race your team round a 3D board.</p><div class="tags"><span>Teams</span><span>4+ players</span><span>84 decks</span></div><span class="glyph" aria-hidden="true">30</span></a>
+    <a class="box" href="quiz.html" style="--bg:#141c2b;--fg:#e8edf5;--hi:#9b87d6"><b>The Big Night Quiz</b><p>Spin the wheel, answer the question, win the slice. Pick from 22 decks of 100 questions, from Friends and Marvel to the 80s, Ireland and history.</p><div class="tags"><span>Teams</span><span>2,200 questions</span><span>22 decks</span></div><span class="glyph" aria-hidden="true">◔</span></a>
+    <a class="box" href="harbour.html" style="--bg:#0d4a5c;--fg:#eef7f6;--hi:#5fb3c9"><b>Harbour Barons</b><p>Buy up Skerries from the Martello Tower to Tennis Court Lane. Charge rent, build cottages, do deals and dodge the tide.</p><div class="tags"><span>2 to 6 players</span><span>Skerries edition</span></div><span class="glyph" aria-hidden="true">⚓</span></a>
+    <a class="box" href="forehead.html" style="--bg:#16163a;--fg:#fbf7ee;--hi:#d98a5a"><b>Forehead Frenzy</b><p>Phone on your head, mates shout clues, tilt or tap before the clock runs out.</p><div class="tags"><span>2+ players</span><span>Tilt controls</span><span>84 packs</span></div><span class="glyph" aria-hidden="true">?!</span></a>
+    <a class="box" href="shower.html" style="--bg:#1d2633;--fg:#eef1f5;--hi:#e3c66e"><b>Shower of Cards</b><p>Fill in the blank with the worst answer in your hand. The reader crowns the funniest.</p><div class="tags"><span class="adult">Adults</span><span>3 to 10 players</span></div><span class="glyph" aria-hidden="true">_</span></a>
+    <a class="box" href="spoofer.html" style="--bg:#2a1116;--fg:#f8ede9;--hi:#cf5f77"><b>Spot the Spoofer</b><p>Everyone knows the secret word except one bluffer. Find them before they work it out.</p><div class="tags"><span>3 to 15 players</span><span>Bluffing</span></div><span class="glyph" aria-hidden="true">??</span></a>
+  </nav>
+  <div class="tips"><b>Tip</b><span>On iPhone, tap Share then "Add to Home Screen". On Android, open the Chrome menu and tap "Add to Home screen". The games then open full screen like an app.</span></div>
+</div>
+
+</body>
+</html>

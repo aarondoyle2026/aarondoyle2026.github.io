@@ -1,0 +1,808 @@
+<!doctype html>
+<html lang="en-IE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#2a1116">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Spot the Spoofer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Manrope:wght@400;500;700;800&display=swap">
+<style>
+/* Layout: pass-the-phone deduction game. Setup → secret reveals one by one → clue round with timer → vote → reveal → scores. Single committed look: interrogation-room oxblood, cream dossier cards, siren-pink accent. */
+:root{
+  --room:#2a1116; --room-2:#3a1a20; --line:#5a2f37; --paper:#f4ecdc; --ink:#1b0b0e; --text:#f8ede9; --muted:#c79ea4;
+  --siren:#ff4d6d; --safe:#5ee0a0;
+  --display:"Bungee","Arial Black",Impact,sans-serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+html,body{min-height:100%}
+body{background:var(--room);color:var(--text);font-family:var(--body);font-size:16px;-webkit-tap-highlight-color:transparent}
+button,input{font:inherit;color:inherit}
+button{border:0;background:none;cursor:pointer;touch-action:manipulation}
+button:focus-visible,input:focus-visible{outline:3px solid var(--siren);outline-offset:2px}
+#app{box-sizing:border-box;min-height:100%;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 40px}
+.wrap{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(40px,12vw,76px);line-height:.92;margin:0}
+h1 span{color:var(--siren)}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(26px,7.5vw,42px);line-height:1;margin:0;overflow-wrap:anywhere}
+.lede{color:var(--muted);margin:8px 0 0;max-width:46ch}
+.label{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--muted)}
+.panel{background:var(--room-2);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:14px}
+.players{display:flex;flex-direction:column;gap:8px}
+.prow{display:flex;gap:8px}
+.prow input{flex:1;min-width:0;background:var(--room);border:2px solid var(--line);border-radius:10px;padding:11px 12px;font-weight:700}
+.prow button{width:44px;border-radius:10px;background:var(--room);color:var(--muted);font-size:20px}
+.add{align-self:flex-start;color:var(--siren);font-weight:800;padding:4px 0}
+.seg{display:flex;gap:8px;flex-wrap:wrap}
+.seg button{flex:1;min-width:60px;padding:11px 8px;border-radius:10px;background:var(--room);border:2px solid var(--line);font-weight:800}
+.seg button[aria-pressed="true"]{background:var(--siren);border-color:var(--siren);color:#fff}
+.seg button:disabled{opacity:.35}
+.toggle{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.toggle small{display:block;color:var(--muted);font-size:13px}
+.sw{width:50px;height:30px;border-radius:15px;background:var(--line);position:relative;flex:none}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:var(--text);transition:left .15s}
+.sw[aria-checked="true"]{background:var(--safe)} .sw[aria-checked="true"]::after{left:23px}
+.go{background:var(--siren);color:#fff;font-family:var(--display);font-weight:400;font-size:20px;padding:16px;border-radius:14px;box-shadow:0 4px 0 #a8263f}
+.go:active{transform:translateY(3px);box-shadow:0 1px 0 #a8263f}
+.go:disabled{opacity:.4}
+.alt{border:2px solid var(--line);border-radius:14px;padding:13px;font-weight:800}
+.back{color:var(--muted);font-weight:700;text-decoration:none;font-size:14px}
+.err{color:#ffb3c0;font-weight:700;margin:0;min-height:1.2em}
+.pass{min-height:72vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:16px}
+.pass .who{font-family:var(--display);font-size:clamp(42px,13vw,80px);line-height:.95;color:var(--siren);overflow-wrap:anywhere}
+.pass p{color:var(--muted);margin:0;max-width:32ch}
+.pass .go{min-width:260px}
+.dossier{background:var(--paper);color:var(--ink);border-radius:8px;padding:24px 20px;box-shadow:0 14px 30px rgba(0,0,0,.4);transform:rotate(-1.2deg);display:flex;flex-direction:column;gap:12px;text-align:center;position:relative;width:100%;max-width:420px;box-sizing:border-box;animation:flip .45s cubic-bezier(.3,1.4,.5,1)}
+.dossier::before{content:"CLASSIFIED";position:absolute;top:10px;right:12px;font-family:var(--display);font-size:11px;color:var(--siren);border:2px solid var(--siren);padding:2px 6px;transform:rotate(6deg)}
+.dossier .word{font-family:var(--display);font-size:clamp(30px,9vw,48px);line-height:1;overflow-wrap:anywhere}
+.dossier.spoof{background:var(--siren);color:#fff}
+.dossier.spoof::before{color:#fff;border-color:#fff}
+.dossier .cat{font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:13px;opacity:.7}
+@keyframes flip{0%{transform:rotateY(80deg) rotate(-1.2deg);opacity:0}100%{transform:rotateY(0) rotate(-1.2deg);opacity:1}}
+.timer{font-family:var(--display);font-size:clamp(64px,22vw,120px);line-height:1;text-align:center;font-variant-numeric:tabular-nums}
+.timer.low{color:var(--siren)}
+.vote{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.vote button{background:var(--room-2);border:3px solid transparent;border-radius:14px;padding:16px 10px;font-weight:800;font-size:17px;overflow-wrap:anywhere}
+.vote button[aria-pressed="true"]{border-color:var(--siren);background:#4a1c25}
+.verdict{font-family:var(--display);font-size:clamp(30px,9vw,52px);line-height:1;text-align:center}
+.scores{list-style:none;margin:0;padding:0}
+.scores li{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);font-weight:800;font-variant-numeric:tabular-nums;gap:12px}
+.scores li span:first-child{overflow-wrap:anywhere;min-width:0}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{padding:5px 10px;border-radius:999px;background:var(--room-2);font-size:13px;font-weight:800;color:var(--muted)}
+.chips span.done{background:var(--safe);color:var(--ink)}
+.rules{margin:0;padding-left:20px;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ===== Sleek layer: shared look across every game ===== */
+:root{--x-bg:#0b0f17;--x-s1:#121a27;--x-s2:#192335;--x-line:#26314a;--x-text:#e8edf5;--x-muted:#8d99ae;--x-gold:#d6b26e;--x-gold-2:#b8914c;
+  --display:"Sora","Segoe UI",system-ui,sans-serif;--body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif}
+body{font-family:var(--body);-webkit-font-smoothing:antialiased;background-image:radial-gradient(1100px 520px at 50% -12%,rgba(214,178,110,.09),transparent 62%);background-repeat:no-repeat}
+h1,h2{font-family:var(--display);font-weight:700;letter-spacing:-.03em}
+.go{background:linear-gradient(180deg,#e6cb93,#c39b52);color:#17110a;font-family:var(--display);font-weight:600;letter-spacing:0;border-radius:12px;text-shadow:none;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 12px 26px -12px rgba(214,178,110,.7);transition:transform .12s,box-shadow .12s,filter .12s}
+.go:hover{filter:brightness(1.05)}
+.go:active{transform:translateY(1px) scale(.99);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 4px 12px -8px rgba(214,178,110,.6)}
+.go:disabled{filter:grayscale(.7);opacity:.45;transform:none}
+.alt{background:rgba(255,255,255,.035);border:1px solid var(--x-line);border-radius:12px;color:var(--x-text);font-weight:700;transition:background .15s,border-color .15s}
+.alt:hover{background:rgba(255,255,255,.07);border-color:#33405c}
+.panel{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.018));border:1px solid rgba(255,255,255,.07);box-shadow:0 22px 44px -30px rgba(0,0,0,.8)}
+.seg button{border:1px solid var(--x-line);background:rgba(255,255,255,.03);border-radius:10px;font-weight:700;transition:background .15s,color .15s,border-color .15s}
+.seg button[aria-pressed="true"]{background:var(--x-gold);border-color:var(--x-gold);color:#17110a}
+.sw{background:#2a3550;border:0}.sw::after{background:#f2f4f8;box-shadow:0 1px 3px rgba(0,0,0,.45)}.sw[aria-checked="true"]{background:var(--x-gold)}
+.label{letter-spacing:.18em;font-weight:700}
+.chip{border-width:1px}.chip[aria-pressed="true"]{background:var(--x-gold);border-color:var(--x-gold);color:#17110a}
+.toast{background:rgba(18,26,39,.94);color:#f2f4f8;border:1px solid rgba(214,178,110,.55);box-shadow:0 18px 40px -16px rgba(0,0,0,.8)}
+.back{color:var(--x-muted)}
+/* 3D dice */
+.cube{position:relative;width:100%;height:100%;transform-style:preserve-3d}
+.cube .f{position:absolute;inset:0;border-radius:18%;background:linear-gradient(145deg,#fdfcf9,#d6d1c6);box-shadow:inset 0 0 0 1px rgba(0,0,0,.07),inset 0 -.25em .45em rgba(0,0,0,.14);
+  display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);padding:14%;box-sizing:border-box;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.cube .f i{border-radius:50%;background:radial-gradient(circle at 35% 35%,#465069,#0b0f17);margin:13%}
+.cube .f1{transform:translateZ(calc(var(--ds)/2))}.cube .f2{transform:rotateY(90deg) translateZ(calc(var(--ds)/2))}.cube .f3{transform:rotateY(180deg) translateZ(calc(var(--ds)/2))}
+.cube .f4{transform:rotateY(-90deg) translateZ(calc(var(--ds)/2))}.cube .f5{transform:rotateX(90deg) translateZ(calc(var(--ds)/2))}.cube .f6{transform:rotateX(-90deg) translateZ(calc(var(--ds)/2))}
+@keyframes tumble{to{transform:rotateX(360deg) rotateY(360deg)}}
+@keyframes sweep{0%{background-position:130% 0}55%,100%{background-position:-130% 0}}
+@keyframes glint{0%,100%{filter:none;transform:none}50%{filter:drop-shadow(0 0 .35em rgba(255,255,255,.75));transform:scale(1.08)}}
+@media (prefers-reduced-motion:reduce){.plane::after,.board::after,.center::before,body::before{animation:none!important}}
+
+:root{--room:#0d0b12;--room-2:#17131e;--line:#2c2436;--paper:#ece4d6;--ink:#120d14;--text:#ece8f0;--muted:#9a8fa8;--siren:#cf5f77;--safe:#6fbf9a}
+h1{font-weight:700}h1 span{color:var(--siren)}
+body{background-image:radial-gradient(1000px 520px at 50% -12%,rgba(207,95,119,.10),transparent 62%)}
+.prow input{background:var(--x-s1);border:1px solid var(--line)}
+.pass .who{font-weight:700;letter-spacing:-.03em}
+.dossier{background:linear-gradient(160deg,#f3ece0,#d8cdbb);box-shadow:0 30px 50px -24px rgba(0,0,0,.9)}
+.dossier .word{font-weight:700;letter-spacing:-.02em}
+.dossier.spoof{background:linear-gradient(160deg,#d97088,#8f3349)}
+.timer{font-weight:700}.verdict{font-weight:700;letter-spacing:-.02em}
+.vote button{background:var(--room-2);border:1px solid var(--line)}
+.vote button[aria-pressed="true"]{border-color:var(--siren);background:#2a1a2b;box-shadow:0 0 0 1px var(--siren)}
+.chips span{background:var(--room-2)}
+#pre button{flex:1 1 auto;min-width:max-content;padding-inline:14px}
+</style>
+</head>
+<body>
+
+
+<main id="app"></main>
+
+<script>window.HB_ONLINE=window.HB_ONLINE||null;</script>
+<script src="online-config.js"></script>
+<script>
+/* ===== Games Press online layer: rooms (Supabase) + live video (WebRTC) ===== */
+(function(){
+const CFG=window.HB_ONLINE||null;
+const ready=()=>!!(CFG&&CFG.url&&CFG.key);
+const LS=k=>"po_"+k;
+const lsGet=(k,d)=>{try{const v=localStorage.getItem(LS(k));return v==null?d:JSON.parse(v)}catch(e){return d}};
+const lsSet=(k,v)=>{try{localStorage.setItem(LS(k),JSON.stringify(v))}catch(e){}};
+let myId=lsGet("me",null); if(!myId){myId=Math.random().toString(36).slice(2,10)+Date.now().toString(36);lsSet("me",myId)}
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let SB=null;
+function sb(){
+  if(SB)return Promise.resolve(SB);
+  if(!ready())return Promise.reject(new Error("Online play isn't set up on this site yet."));
+  return new Promise((res,rej)=>{const go=()=>{SB=window.supabase.createClient(CFG.url,CFG.key,{realtime:{params:{eventsPerSecond:30}}});res(SB)};
+    if(window.supabase)return go();
+    const s=document.createElement("script");s.src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js";
+    s.onload=go;s.onerror=()=>rej(new Error("Couldn't reach the online service. Check your connection."));document.head.appendChild(s)});
+}
+let toastT;
+function toast(m){let t=document.getElementById("po-toast");if(!t){t=document.createElement("div");t.id="po-toast";document.body.appendChild(t)}t.textContent=m;t.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>t.hidden=true,3000)}
+
+/* ---------- styles ---------- */
+const CSS=`
+#po-toast{position:fixed;left:50%;top:calc(14px + env(safe-area-inset-top,0px));transform:translateX(-50%);z-index:90;background:rgba(18,26,39,.95);color:#f2f4f8;border:1px solid rgba(214,178,110,.55);padding:10px 16px;border-radius:12px;font:700 14px/1.3 "Manrope",system-ui,sans-serif;max-width:calc(100% - 32px);text-align:center;box-shadow:0 18px 40px -16px rgba(0,0,0,.8)}
+.po-net{position:fixed;left:50%;bottom:calc(10px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:85;background:#5a1f24;color:#fff;font:700 13px "Manrope",system-ui,sans-serif;padding:8px 14px;border-radius:999px;box-shadow:0 8px 20px rgba(0,0,0,.5)}
+.po-panel{display:flex;flex-direction:column;gap:10px}
+.po-row{display:flex;gap:8px;flex-wrap:wrap}.po-row>*{flex:1;min-width:120px}
+.po-in{background:rgba(255,255,255,.04);border:1px solid #26314a;border-radius:10px;padding:11px 12px;font:700 16px "Manrope",system-ui,sans-serif;color:inherit;min-width:0;box-sizing:border-box;width:100%}
+.po-code{font:700 clamp(40px,13vw,64px) "Sora","Manrope",system-ui,sans-serif;letter-spacing:.14em;color:#d6b26e;line-height:1;text-align:center}
+.po-share{display:flex;gap:8px}.po-share input{flex:1;min-width:0}
+.po-share button{padding:10px 14px;border-radius:10px;background:#26314a;font-weight:800;color:#e8edf5;border:0}
+.po-plist{display:flex;flex-direction:column}
+.po-p{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.07);font-weight:800}
+.po-p small{margin-left:auto;color:#8d99ae;font-weight:600;font-size:13px}
+.po-p i{width:10px;height:10px;border-radius:50%;background:var(--c,#6fbf9a);flex:none}
+.po-p .mini{width:30px;height:30px;flex:none}
+.po-err{color:#f0a493;font-weight:700;margin:0;min-height:1.2em;font-size:14px}
+.po-vbtn{text-decoration:none!important;display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid #33405c;color:#e8edf5;font:700 14px "Manrope",system-ui,sans-serif;cursor:pointer}
+.po-vbtn.on{background:#1f3b2f;border-color:#6fbf9a}
+/* video call: faces take half the screen, the game the other half */
+body.has-video{overflow:hidden}
+#po-stage{position:fixed;left:0;right:0;bottom:0;top:0;transform:translateZ(0);overflow:hidden;background:inherit;z-index:1}
+#po-stage .over,#po-stage .sheet-bg{overflow:auto}
+#po-scroll{position:absolute;inset:0;overflow:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.vbar{position:fixed;z-index:80;display:flex;flex-direction:column;gap:8px;box-sizing:border-box;background:#05070c;padding:8px;font-family:"Manrope",system-ui,sans-serif;
+  padding-top:max(8px,env(safe-area-inset-top,0px));box-shadow:0 0 0 1px rgba(255,255,255,.08)}
+@media (orientation:portrait){
+  .vbar{left:0;right:0;top:0;height:50vh;height:50dvh;padding-left:max(8px,env(safe-area-inset-left,0px));padding-right:max(8px,env(safe-area-inset-right,0px))}
+  body.has-video:not(.vmin) #po-stage{top:50vh;top:50dvh}
+  .vctl{flex-direction:row}
+}
+@media (orientation:landscape){
+  .vbar{top:0;bottom:0;right:0;width:50vw;padding-right:max(8px,env(safe-area-inset-right,0px));padding-bottom:max(8px,env(safe-area-inset-bottom,0px))}
+  body.has-video:not(.vmin) #po-stage{right:50vw}
+}
+.vtiles{position:relative;flex:1;min-height:0;display:grid;gap:6px;grid-template-columns:repeat(var(--vc,1),minmax(0,1fr));grid-auto-rows:minmax(0,1fr)}
+.vt{position:relative;background:#121a27;border-radius:12px;overflow:hidden;min-height:0;transition:box-shadow .15s}
+.vt video{width:100%;height:100%;object-fit:cover;display:block}
+.vt.me video{transform:scaleX(-1)}
+.vtiles.pip .vt.me{position:absolute;right:8px;bottom:8px;width:26%;max-width:150px;aspect-ratio:3/4;z-index:2;box-shadow:0 8px 24px rgba(0,0,0,.7),0 0 0 2px rgba(255,255,255,.25)}
+.vt.talk{box-shadow:0 0 0 3px #6fbf9a}
+.vt .nm{position:absolute;left:8px;bottom:6px;right:8px;color:#fff;font-weight:800;font-size:13px;text-shadow:0 1px 3px #000;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vt.me .nm{font-size:11px}
+.vt .st{position:absolute;inset:0;display:grid;place-items:center;color:#cfd6e2;font-weight:700;font-size:13px;background:rgba(5,7,12,.65);text-align:center;padding:6px}
+.vt.off video{visibility:hidden}
+.vt.off::after{content:attr(data-initial);position:absolute;inset:0;display:grid;place-items:center;font:700 44px "Sora",system-ui,sans-serif;color:#d6b26e}
+.vt.me.off::after{font-size:24px}
+.vctl{display:flex;gap:6px;flex:none}
+.vctl button{flex:1;padding:9px 0;border-radius:10px;background:#1a2335;border:1px solid #26314a;color:#e8edf5;font-size:16px;cursor:pointer;line-height:1}
+.vctl button.red{background:#5a1f24;border-color:#7a2b31}
+.vctl button.off{background:#3a2a1a;border-color:#6a4a20}
+.vsound{flex:none;padding:10px;border-radius:10px;background:#d6b26e;color:#17110a;border:0;font:800 15px "Manrope",system-ui,sans-serif;cursor:pointer}
+body.vmin .vbar{top:auto;left:auto;height:auto;width:auto;bottom:calc(10px + env(safe-area-inset-bottom,0px));right:max(10px,env(safe-area-inset-right,0px));border-radius:14px;padding:6px;background:rgba(5,7,12,.9)}
+body.vmin .vtiles{display:none}
+body.vmin .vctl button{padding:8px 12px}
+}`;
+function injectCSS(){if(document.getElementById("po-css"))return;const s=document.createElement("style");s.id="po-css";s.textContent=CSS;document.head.appendChild(s)}
+
+/* ---------- network status ---------- */
+let netEl=null;
+function netBanner(down){injectCSS();if(down){if(!netEl){netEl=document.createElement("div");netEl.className="po-net";document.body.appendChild(netEl)}netEl.textContent="Connection lost. Reconnecting…";netEl.hidden=false}else if(netEl)netEl.hidden=true}
+addEventListener("offline",()=>netBanner(true));
+addEventListener("online",()=>{netBanner(false);rooms.forEach(r=>r.refresh());if(Video.on)Video._reconnectAll()});
+document.addEventListener("visibilitychange",()=>{if(!document.hidden){rooms.forEach(r=>r.refresh());if(Video.on)Video._checkAll()}});
+
+/* ---------- rooms ---------- */
+const rooms=new Set();
+function Room(game){this.game=game;this.code=null;this.state=null;this.ver=0;this.handlers=[];this.chan=null;this.queue=Promise.resolve();rooms.add(this)}
+Room.prototype.create=async function(state){
+  await sb(); const A="ABCDEFGHJKLMNPQRSTUVWXYZ";
+  for(let t=0;t<6;t++){let code="";for(let i=0;i<5;i++)code+=A[Math.floor(Math.random()*A.length)];
+    state.game=this.game; state.host=state.host||myId;
+    const {error}=await SB.from("hb_rooms").insert({code,state,ver:1});
+    if(!error){this.code=code;this.state=state;this.ver=1;this._sub();lsSet("room_"+this.game,code);this._emit(null,false);return code}}
+  throw new Error("Couldn't create a room. Check your connection and try again.");
+};
+Room.prototype.join=async function(code){
+  await sb(); code=String(code||"").trim().toUpperCase();
+  const {data,error}=await SB.from("hb_rooms").select("state,ver").eq("code",code).maybeSingle();
+  if(error)throw new Error("Couldn't reach the online service. Check your connection.");
+  if(!data)throw new Error("There's no room with that code.");
+  if(data.state&&data.state.game&&data.state.game!==this.game)throw new Error("That code belongs to a different game.");
+  this.code=code;this.state=data.state;this.ver=data.ver;this._sub();lsSet("room_"+this.game,code);this._emit(null,true);return this.state;
+};
+Room.prototype._sub=function(){
+  if(this.chan)SB.removeChannel(this.chan);
+  this.chan=SB.channel("room_"+this.code).on("postgres_changes",{event:"UPDATE",schema:"public",table:"hb_rooms",filter:"code=eq."+this.code},pl=>{
+    if(!pl.new||pl.new.ver<=this.ver)return; const old=this.state; this.state=pl.new.state; this.ver=pl.new.ver; this._emit(old,true);
+  }).subscribe(st=>{ if(st==="SUBSCRIBED"){netBanner(false);if(this._down){this._down=false;this.refresh()}} else if(st==="CHANNEL_ERROR"||st==="TIMED_OUT"){this._down=true;netBanner(true);setTimeout(()=>{if(this._down&&this.code)this._sub()},3000)} });
+};
+Room.prototype.refresh=async function(){
+  if(!this.code||!SB)return;
+  try{const {data}=await SB.from("hb_rooms").select("state,ver").eq("code",this.code).maybeSingle();
+    if(data&&data.ver>this.ver){const old=this.state;this.state=data.state;this.ver=data.ver;this._emit(old,true)}}catch(e){}
+};
+Room.prototype.on=function(fn){this.handlers.push(fn)};
+Room.prototype._emit=function(old,remote){this.handlers.forEach(h=>{try{h(this.state,old,remote)}catch(e){console.error(e)}})};
+/* update(mut): mut gets a fresh copy of the state to change. Retries on conflicts so simultaneous moves (votes, answers) both land. */
+Room.prototype.update=function(mut){
+  const run=async(tries)=>{
+    const base=this.state, prev=this.ver, next=JSON.parse(JSON.stringify(base));
+    if(mut(next)===false)return false;
+    this.state=next; this.ver=prev+1; this._emit(base,false);
+    let res;
+    try{res=await SB.from("hb_rooms").update({state:next,ver:prev+1,updated_at:new Date().toISOString()}).eq("code",this.code).eq("ver",prev).select("ver")}catch(e){res={error:e}}
+    if(res.error||!res.data||!res.data.length){
+      if(this.ver===prev+1&&this.state===next){this.state=base;this.ver=prev}
+      let data=null;try{data=(await SB.from("hb_rooms").select("state,ver").eq("code",this.code).maybeSingle()).data}catch(e){}
+      if(data&&data.ver>=this.ver){const o=this.state;this.state=data.state;this.ver=data.ver;this._emit(o,true)}
+      if(tries<4)return run(tries+1);
+      toast("Couldn't save that move. Check your connection.");return false;
+    }
+    return true;
+  };
+  this.queue=this.queue.then(()=>run(0)).catch(e=>{console.error(e);toast("Connection problem. Trying again…");setTimeout(()=>this.refresh(),1500)});
+  return this.queue;
+};
+Room.prototype.leave=function(){if(this.chan&&SB)SB.removeChannel(this.chan);this.chan=null;lsSet("room_"+this.game,null);this.code=null;this.state=null;this.ver=0;if(Video.on)Video.stop()};
+Room.prototype.me=function(){return this.state&&this.state.players?this.state.players.find(p=>p.id===myId):null};
+Room.prototype.isHost=function(){return !!(this.state&&this.state.host===myId)};
+Room.prototype.saved=function(){return lsGet("room_"+this.game,null)};
+Room.prototype.link=function(){return location.origin+location.pathname+"#"+this.code};
+/* add me as a player (in the lobby); extra fields merged in */
+Room.prototype.addMe=function(name,extra){
+  return this.update(s=>{s.players=s.players||[];if(s.players.some(p=>p.id===myId))return false;
+    let n=String(name||"").trim().slice(0,16)||"Player",base=n,k=2;const taken=s.players.map(p=>p.name.toLowerCase());while(taken.includes(n.toLowerCase()))n=base+" "+k++;
+    s.players.push(Object.assign({id:myId,name:n},extra||{}));});
+};
+
+/* ---------- shared UI bits ---------- */
+function joinPanelHTML(o){
+  o=o||{};
+  if(!ready())return `<div class="po-panel"><span class="label">Play online</span><p style="margin:0;color:#8d99ae">Online play lets everyone use their own phone or laptop from anywhere, with live video. It needs switching on once for this site: see the setup notes that came with the games.</p></div>`;
+  const hc=(location.hash||"").replace("#","").toUpperCase();
+  return `<div class="po-panel"><span class="label">${o.title||"Play online · everyone on their own device"}</span>
+    <input class="po-in" id="po-name" maxlength="16" placeholder="Your name" value="${esc(lsGet("name",""))}" aria-label="Your name">
+    ${o.extraHTML||""}
+    <button class="go" id="po-create">${o.createLabel||"Create a room"}</button>
+    <div class="po-row"><input class="po-in" id="po-code" maxlength="5" placeholder="Room code" value="${/^[A-Z]{5}$/.test(hc)?hc:""}" style="text-transform:uppercase;letter-spacing:.15em" aria-label="Room code"><button class="alt" id="po-join">Join room</button></div>
+    <p class="po-err" id="po-err"></p></div>`;
+}
+function wireJoinPanel(o){
+  if(!ready())return;
+  const nm=document.getElementById("po-name"),err=document.getElementById("po-err");
+  nm.oninput=()=>lsSet("name",nm.value);
+  const need=()=>{if(!nm.value.trim()){err.textContent="Put in your name first.";nm.focus();return false}return true};
+  document.getElementById("po-create").onclick=async e=>{if(!need())return;e.target.disabled=true;err.textContent="";try{await o.onCreate(nm.value.trim())}catch(x){err.textContent=x.message||String(x);e.target.disabled=false}};
+  document.getElementById("po-join").onclick=async e=>{const c=document.getElementById("po-code").value.trim().toUpperCase();
+    if(!/^[A-Z]{5}$/.test(c)){err.textContent="Room codes are 5 letters.";return}if(!need())return;e.target.disabled=true;err.textContent="";
+    try{await o.onJoin(c,nm.value.trim())}catch(x){err.textContent=x.message||String(x);e.target.disabled=false}};
+  if(/^#[A-Za-z]{5}$/.test(location.hash)){const c=document.getElementById("po-code");c&&c.scrollIntoView({block:"center"})}
+}
+function shareHTML(room){
+  return `<div class="po-panel" style="align-items:stretch;text-align:center"><span class="label">Room code</span><div class="po-code">${esc(room.code)}</div>
+    <p style="margin:0;color:#8d99ae">Friends open this game and join with the code, or send them the link.</p>
+    <div class="po-share"><input class="po-in" id="po-link" readonly value="${esc(room.link())}" aria-label="Room link"><button id="po-copy">Copy</button></div></div>`;
+}
+function wireShare(room){
+  const b=document.getElementById("po-copy");if(!b)return;
+  b.onclick=()=>{const i=document.getElementById("po-link");const l=room.link();
+    (navigator.clipboard?navigator.clipboard.writeText(l):Promise.reject()).then(()=>toast("Link copied")).catch(()=>{i.select();toast("Select and copy the link")})};
+}
+function playersHTML(room,o){
+  o=o||{};const s=room.state||{},ps=s.players||[];
+  return `<div class="po-plist">${ps.map(p=>`<div class="po-p" style="--c:${esc(p.color||"#6fbf9a")}">${o.avatar?`<span class="mini">${o.avatar(p)}</span>`:"<i></i>"}<span>${esc(p.name)}</span><small>${[p.id===s.host?"Host":"",p.id===myId?"you":"",o.tag?o.tag(p):""].filter(Boolean).join(" · ")}</small></div>`).join("")||'<p style="color:#8d99ae">Nobody yet.</p>'}</div>`;
+}
+function setHash(code){try{history.replaceState(null,"",code?"#"+code:location.pathname+location.search)}catch(e){}}
+
+/* ---------- live video ---------- */
+const Video={on:false,local:null,peers:{},chan:null,code:null,name:"",ice:null,el:null,mic:true,cam:true,_q:{}};
+async function iceServers(){
+  const list=[{urls:["stun:stun.l.google.com:19302","stun:stun1.l.google.com:19302"]}];
+  if(CFG&&CFG.relayUrl){try{const r=await fetch(CFG.relayUrl);const j=await r.json();if(Array.isArray(j))list.push(...j)}catch(e){}}
+  if(CFG&&Array.isArray(CFG.iceServers))list.push(...CFG.iceServers);
+  return list;
+}
+Video.start=async function(code,name){
+  if(this.on)return; injectCSS(); await sb();
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia)throw new Error("This browser can't do video calls. Try Chrome or Safari.");
+  const AUD={echoCancellation:true,noiseSuppression:true,autoGainControl:true}; let camOk=true;
+  try{this.local=await navigator.mediaDevices.getUserMedia({video:{width:{ideal:640},height:{ideal:480},facingMode:"user"},audio:AUD})}
+  catch(e){ if(e&&e.name==="NotAllowedError")throw new Error("Camera and microphone are blocked. Allow them for this site in your browser settings, then try again.");
+    try{this.local=await navigator.mediaDevices.getUserMedia({audio:AUD});camOk=false;toast("No camera found. You're on voice only.")}catch(e2){throw new Error("Couldn't start your microphone.")} }
+  this.ice=await iceServers(); this.code=code; this.name=name; this.on=true; this.mic=true; this.cam=camOk;
+  this._ui(); this._split(true); this._tile(myId,name,this.local,true); if(!camOk){const t=this.el.querySelector(`[data-id="${myId}"]`);if(t)t.classList.add("off");const cb=this.el.querySelector('[data-a="cam"]');if(cb){cb.classList.add("off");cb.disabled=true}}
+  this._levels();
+  this.chan=SB.channel("vid_"+code,{config:{broadcast:{self:false}}});
+  this.chan.on("broadcast",{event:"sig"},m=>this._sig(m.payload)).subscribe(st=>{if(st==="SUBSCRIBED")this._send({t:"hello",from:myId,name:this.name})});
+  this._iv=setInterval(()=>this._checkAll(),8000);
+  document.body.classList.add("has-video"); Video._fire();
+};
+Video.stop=function(){
+  if(!this.on)return; this._send({t:"bye",from:myId});
+  Object.keys(this.peers).forEach(id=>this._drop(id));
+  if(this.local)this.local.getTracks().forEach(t=>t.stop());
+  if(this.chan&&SB)SB.removeChannel(this.chan); clearInterval(this._iv);
+  this.chan=null;this.local=null;this.on=false; if(this.el)this.el.remove(); this.el=null; this._split(false); clearInterval(this._lv); try{this._ac&&this._ac.close()}catch(e){} this._ac=null;
+  document.body.classList.remove("has-video","vmin"); Video._fire();
+};
+Video.toggle=async function(code,name){ if(this.on)return this.stop(); try{await this.start(code,name)}catch(e){toast(e.message||String(e))} };
+Video._listeners=[]; Video.onChange=fn=>Video._listeners.push(fn); Video._fire=()=>Video._listeners.forEach(f=>{try{f(Video.on)}catch(e){}});
+Video._send=function(p){if(!this.chan)return;try{const r=this.chan.send({type:"broadcast",event:"sig",payload:p});if(r&&r.catch)r.catch(()=>{})}catch(e){}};
+Video._peer=function(id,name){
+  let P=this.peers[id]; if(P){if(name)P.name=name;return P}
+  const pc=new RTCPeerConnection({iceServers:this.ice});
+  P=this.peers[id]={pc,name:name||"Friend",q:[],stream:null,making:false};
+  this.local.getTracks().forEach(t=>pc.addTrack(t,this.local));
+  pc.onicecandidate=e=>{if(e.candidate)this._send({t:"ice",from:myId,to:id,c:e.candidate.toJSON?e.candidate.toJSON():e.candidate})};
+  pc.ontrack=e=>{P.stream=e.streams[0]||new MediaStream([e.track]);this._tile(id,P.name,P.stream,false)};
+  pc.onconnectionstatechange=()=>{const s=pc.connectionState;this._status(id,s==="connected"?"":s==="failed"?"Reconnecting…":s==="disconnected"?"Reconnecting…":"Connecting…");
+    if(s==="failed")this._restart(id); if(s==="disconnected")setTimeout(()=>{if(pc.connectionState==="disconnected")this._restart(id)},4000)};
+  this._tile(id,P.name,null,false); this._status(id,"Connecting…");
+  return P;
+};
+Video._offer=async function(id,restart){
+  const P=this.peers[id]; if(!P||P.making)return; P.making=true;
+  try{const o=await P.pc.createOffer({iceRestart:!!restart});await P.pc.setLocalDescription(o);this._send({t:"offer",from:myId,to:id,name:this.name,sdp:P.pc.localDescription})}catch(e){}
+  P.making=false;
+};
+Video._restart=function(id){ if(myId<id)this._offer(id,true); else this._send({t:"restart",from:myId,to:id}) };
+Video._reconnectAll=function(){this._send({t:"hello",from:myId,name:this.name});Object.keys(this.peers).forEach(id=>this._restart(id))};
+Video._checkAll=function(){Object.keys(this.peers).forEach(id=>{const s=this.peers[id].pc.connectionState;if(s==="failed"||s==="disconnected")this._restart(id)})};
+Video._sig=async function(p){
+  if(!p||p.from===myId||(p.to&&p.to!==myId)||!this.on)return; const from=p.from;
+  try{
+    if(p.t==="hello"){const had=!!this.peers[from];this._send({t:"here",from:myId,to:from,name:this.name});if(had){this._drop(from)}this._peer(from,p.name);if(myId<from)this._offer(from);return}
+    if(p.t==="here"){this._peer(from,p.name);if(myId<from)this._offer(from);return}
+    if(p.t==="bye"){this._drop(from);return}
+    if(p.t==="restart"){if(this.peers[from])this._offer(from,true);return}
+    const P=this._peer(from,p.name),pc=P.pc;
+    if(p.t==="offer"){await pc.setRemoteDescription(p.sdp);const a=await pc.createAnswer();await pc.setLocalDescription(a);this._send({t:"answer",from:myId,to:from,sdp:pc.localDescription});this._flush(from)}
+    else if(p.t==="answer"){if(pc.signalingState==="have-local-offer"){await pc.setRemoteDescription(p.sdp);this._flush(from)}}
+    else if(p.t==="ice"){if(pc.remoteDescription&&pc.remoteDescription.type)await pc.addIceCandidate(p.c).catch(()=>{});else P.q.push(p.c)}
+  }catch(e){console.warn("video signal",e)}
+};
+Video._flush=function(id){const P=this.peers[id];if(!P)return;const q=P.q.splice(0);q.forEach(c=>P.pc.addIceCandidate(c).catch(()=>{}))};
+Video._drop=function(id){const P=this.peers[id];if(P){try{P.pc.close()}catch(e){}delete this.peers[id]}const t=this.el&&this.el.querySelector(`[data-id="${id}"]`);if(t)t.remove();this._count()};
+Video._ui=function(){
+  const el=document.createElement("div");el.className="vbar";el.setAttribute("role","region");el.setAttribute("aria-label","Video call");
+  el.innerHTML=`<div class="vtiles"></div><div class="vctl"><button data-a="mic" title="Mute or unmute" aria-label="Microphone">🎤</button><button data-a="cam" title="Camera on or off" aria-label="Camera">📷</button><button data-a="min" title="Hide faces" aria-label="Hide or show faces">▾</button><button data-a="leave" class="red" title="Leave video" aria-label="Leave video">✕</button></div>`;
+  el.querySelector(".vctl").onclick=e=>{const b=e.target.closest("button");if(!b)return;const a=b.dataset.a;
+    if(a==="mic"){this.mic=!this.mic;this.local.getAudioTracks().forEach(t=>t.enabled=this.mic);b.classList.toggle("off",!this.mic);b.textContent=this.mic?"🎤":"🔇"}
+    if(a==="cam"){this.cam=!this.cam;this.local.getVideoTracks().forEach(t=>t.enabled=this.cam);b.classList.toggle("off",!this.cam);const me=el.querySelector(`[data-id="${myId}"]`);if(me)me.classList.toggle("off",!this.cam)}
+    if(a==="min"){const m=document.body.classList.toggle("vmin");b.textContent=m?"▴":"▾";b.title=m?"Show faces":"Hide faces"}
+    if(a==="leave")this.stop()};
+  document.body.appendChild(el); this.el=el;
+};
+Video._tile=function(id,name,stream,me){
+  if(!this.el)return; let t=this.el.querySelector(`[data-id="${id}"]`);
+  if(!t){t=document.createElement("div");t.className="vt"+(me?" me":"");t.dataset.id=id;t.dataset.initial=(name||"?").trim().charAt(0).toUpperCase();
+    t.innerHTML=`<video autoplay playsinline ${me?"muted":""}></video><span class="nm"></span><span class="st" hidden></span>`;
+    const box=this.el.querySelector(".vtiles"); if(me)box.prepend(t); else box.appendChild(t)}
+  t.querySelector(".nm").textContent=me?name+" (you)":name;
+  if(stream){const v=t.querySelector("video");if(v.srcObject!==stream){v.srcObject=stream;this._play(v)}
+    if(!me){const chk=()=>t.classList.toggle("off",!stream.getVideoTracks().some(x=>x.readyState==="live"&&!x.muted));chk();stream.onaddtrack=chk;stream.getVideoTracks().forEach(x=>{x.onmute=chk;x.onunmute=chk})}
+    if(!me)this._watch(id,stream)}
+  this._count();
+};
+/* phones block sound until a tap: offer a button that starts everyone's audio */
+Video._play=function(v){const p=v.play();if(p&&p.catch)p.catch(()=>this._needTap())};
+Video._needTap=function(){ if(!this.el||this.el.querySelector(".vsound"))return;
+  const b=document.createElement("button");b.className="vsound";b.textContent="🔊 Tap to hear everyone";
+  b.onclick=()=>{this.el.querySelectorAll("video").forEach(v=>{const p=v.play();if(p&&p.catch)p.catch(()=>{})});try{this._ac&&this._ac.resume()}catch(e){}b.remove()};
+  this.el.insertBefore(b,this.el.querySelector(".vctl")) };
+/* green ring round whoever is talking */
+Video._levels=function(){ try{this._ac=new (window.AudioContext||window.webkitAudioContext)()}catch(e){return} this._an={};
+  this._watch(myId,this.local);
+  this._lv=setInterval(()=>{Object.entries(this._an).forEach(([id,a])=>{a.n.getByteFrequencyData(a.buf);let sum=0;for(let i=0;i<a.buf.length;i++)sum+=a.buf[i];
+    const t=this.el&&this.el.querySelector(`[data-id="${id}"]`);if(t)t.classList.toggle("talk",sum/a.buf.length>18&&(id!==myId||this.mic))})},200) };
+Video._watch=function(id,stream){ if(!this._ac||!stream||!stream.getAudioTracks().length)return; try{const src=this._ac.createMediaStreamSource(stream),n=this._ac.createAnalyser();n.fftSize=256;src.connect(n);this._an[id]={n,buf:new Uint8Array(n.frequencyBinCount)}}catch(e){} };
+/* move the game into its own half of the screen */
+Video._split=function(on){
+  const b=document.body, skip=n=>n.nodeType!==1||/^(SCRIPT|STYLE|LINK|META|TITLE)$/.test(n.tagName)||n===this.el||n.id==="po-stage"||n.classList.contains("po-net");
+  if(on){ if(this.stage)return; const outer=document.createElement("div");outer.id="po-stage";const inner=document.createElement("div");inner.id="po-scroll";outer.appendChild(inner);
+    const y=scrollY; [...b.childNodes].forEach(n=>{if(!skip(n)||n.nodeType===3)inner.appendChild(n)}); b.prepend(outer); this.stage=outer; inner.scrollTop=y;
+    this._mo=new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(!skip(n))inner.appendChild(n)})));this._mo.observe(b,{childList:true});
+    const st=window.scrollTo; window.scrollTo=function(x,yy){if(Video.stage){const i=Video.stage.firstChild;if(typeof x==="object")i.scrollTo(x);else i.scrollTo(x||0,yy||0)}else st.apply(window,arguments)};
+  } else { if(!this.stage)return; this._mo&&this._mo.disconnect(); const inner=this.stage.firstChild; [...inner.childNodes].forEach(n=>b.insertBefore(n,this.stage)); this.stage.remove(); this.stage=null }
+};
+Video._status=function(id,txt){const t=this.el&&this.el.querySelector(`[data-id="${id}"] .st`);if(t){t.textContent=txt;t.hidden=!txt}};
+Video._count=function(){ if(!this.el)return; const box=this.el.querySelector(".vtiles"), n=box.querySelectorAll(".vt:not(.me)").length, port=matchMedia("(orientation:portrait)").matches;
+  const c=n<=1?1:port?(n<=4?2:3):(n<=2?1:n<=6?2:3), spare=c*Math.ceil(n/c)>n;
+  box.classList.toggle("pip",n>0&&!spare); box.style.setProperty("--vc",c);
+  const me=box.querySelector(".vt.me"); if(me){if(spare)box.appendChild(me);else box.prepend(me)} };
+addEventListener("resize",()=>Video.on&&Video._count());
+function videoButtonHTML(){return ready()?`<button class="po-vbtn${Video.on?" on":""}" id="po-video">${Video.on?"🎥 Leave video":"🎥 Join video"}</button>`:""}
+function wireVideoButton(room,getName){
+  const b=document.getElementById("po-video");if(!b)return;
+  b.onclick=async()=>{b.disabled=true;await Video.toggle(room.code,getName());b.disabled=false;b.classList.toggle("on",Video.on);b.textContent=Video.on?"🎥 Leave video":"🎥 Join video"};
+}
+Video.onChange(()=>{const b=document.getElementById("po-video");if(b){b.classList.toggle("on",Video.on);b.textContent=Video.on?"🎥 Leave video":"🎥 Join video"}});
+
+window.Online={ready,myId,Room,toast,esc,joinPanelHTML,wireJoinPanel,shareHTML,wireShare,playersHTML,setHash,Video,videoButtonHTML,wireVideoButton,injectCSS,lsGet,lsSet};
+injectCSS();
+})();
+
+</script>
+<script>
+const P = [
+ {id:"movies",name:"Movies",g:"▶",c:"#ffd23f",w:["Titanic","Jaws","Toy Story","The Lion King","Jurassic Park","Star Wars","Home Alone","Frozen","Shrek","The Godfather","Grease","Rocky","Ghostbusters","Back to the Future","The Matrix","Finding Nemo","Mrs Doubtfire","Top Gun","Gladiator","Harry Potter","The Wizard of Oz","E.T.","Mamma Mia","Dirty Dancing","Forrest Gump","Braveheart","Love Actually","Elf","The Exorcist","Up","Barbie","Oppenheimer","Avatar","Jumanji","Paddington","The Shining","Cars","Rambo","Inception","Ratatouille","The Commitments","Michael Collins","The Banshees of Inisherin","Mean Girls","Pulp Fiction"]},
+ {id:"animals",name:"Animals",g:"🐾",c:"#7ee081",w:["Elephant","Giraffe","Penguin","Kangaroo","Octopus","Sloth","Flamingo","Hedgehog","Badger","Shark","Peacock","Crocodile","Koala","Zebra","Gorilla","Squirrel","Seahorse","Owl","Bat","Camel","Llama","Panda","Jellyfish","Rhino","Hamster","Puffin","Dolphin","Snail","Chameleon","Moose","Woodpecker","Lobster","Ostrich","Polar bear","Hippo","Tortoise","Donkey","Jack Russell","Sheepdog","Frog"]},
+ {id:"irish",name:"Irish Life",g:"☘",c:"#3ecf8e",w:["Taytos","The Late Late Toy Show","Croke Park","Hurling","Leaving Cert","Spice bag","Immersion","The Angelus","Fair City","Guinness","Barry's Tea","Ring of Kerry","Cliffs of Moher","Giant's Causeway","Céilí","Bodhrán","Riverdance","Shamrock","Leprechaun","Banshee","St Patrick's Day","Penneys","Luas","DART","Ballygowan","Mammy","Grand so","Bog","The All-Ireland","Sliotar","Garda","Dáil","Brown bread","Coddle","Tayto Park","Wren Boys","Rebel County","Jackie Healy-Rae","Ballymaloe","The Gaeltacht","Wild Atlantic Way","Bank holiday","Red lemonade","Sambo","Box of Roses"]},
+ {id:"food",name:"Food & Drink",g:"🍕",c:"#ff8a65",w:["Pizza","Sushi","Spaghetti bolognese","Full Irish","Pancakes","Taco","Chicken curry","Fish and chips","Burrito","Cheesecake","Croissant","Popcorn","Smoothie","Hot chocolate","Toastie","Lasagne","Ramen","Doughnut","Coleslaw","Garlic bread","Avocado","Kebab","Trifle","Scone","Irish coffee","Prosecco","Black pudding","Sausage roll","Chips and cheese","Milkshake","Ice cream","Nachos","Pavlova","Brussels sprouts","Porridge","Crème brûlée","Hummus","Pesto","Jelly and ice cream","Battered sausage"]},
+ {id:"sport",name:"Sport",g:"⚽",c:"#5ec8ff",w:["Penalty kick","Slam dunk","Hole in one","Offside","Marathon","Sumo wrestling","Wimbledon","Tour de France","Six Nations","Formula 1","Darts","Snooker","Ice hockey","Skateboarding","Surfing","Archery","Boxing","Synchronised swimming","Curling","High jump","Yellow card","Hat-trick","Grand Slam","Cheltenham","Olympics","Rowing","Pole vault","Water polo","Bowling","Fencing","Free throw","Scrum","Puck-out","Lineout","Photo finish","Referee","Golf buggy","Tug of war","Ironman","Ski jump"]},
+ {id:"actions",name:"Act It Out",g:"🎭",c:"#ff5fa2",w:["Brushing teeth","Riding a horse","Changing a nappy","Parallel parking","Doing the Macarena","Milking a cow","Walking a dog","Playing the bagpipes","Sneezing","Bungee jumping","Ironing","Opening a stuck jar","Waiting for a bus","Taking a selfie","Rowing a boat","Juggling","Climbing a ladder","Typing on a laptop","Hula hooping","Eating spaghetti","Proposing","Swatting a fly","Doing a cartwheel","Chopping onions","Stepping on Lego","Blowing up a balloon","Fishing","Changing a tyre","Robot dance","Moonwalking","Getting a haircut","Scuba diving","Playing air guitar","Surfing","Being a statue","Hailing a taxi","Yawning","Shaving","Knitting","Pushing a trolley"]},
+ {id:"jobs",name:"Jobs",g:"🛠",c:"#ffb347",w:["Firefighter","Dentist","Pilot","Chef","Plumber","Astronaut","Teacher","Vet","Hairdresser","Lifeguard","Butcher","Postman","Magician","Lollipop lady","Farmer","Archaeologist","Surgeon","Bin man","Barista","Judge","Electrician","Clown","Journalist","Window cleaner","Taxi driver","Accountant","Ballet dancer","Security guard","Air hostess","Optician","Florist","Priest","Mechanic","Detective","Zookeeper","Shelf stacker","Personal trainer","Weather presenter","DJ","Undertaker"]},
+ {id:"places",name:"Places",g:"🌍",c:"#9b8cff",w:["Paris","New York","Tokyo","Egypt","Australia","The Amazon","Mount Everest","Las Vegas","Venice","The Sahara","Antarctica","London","Rome","Hollywood","Iceland","Brazil","Dubai","Canada","Galway","Cork","Belfast","Kilkenny","Lanzarote","The Grand Canyon","Niagara Falls","Disneyland","The Moon","Sydney Opera House","Machu Picchu","Great Wall of China","Stonehenge","Mexico","Greece","Amsterdam","Barcelona","Hawaii","Scotland","Jamaica","Tenerife","Lapland"]},
+ {id:"tv",name:"TV Shows",g:"📺",c:"#ff6b6b",w:["Friends","The Simpsons","Father Ted","Mrs Brown's Boys","Love Island","Game of Thrones","Breaking Bad","Normal People","Derry Girls","The Office","Peppa Pig","Doctor Who","Strictly Come Dancing","Coronation Street","EastEnders","Stranger Things","Squid Game","Line of Duty","Bluey","Mr Bean","Only Fools and Horses","The Crown","Gogglebox","Top Gear","Dancing with the Stars","Glenroe","Ros na Rún","Bake Off","Peaky Blinders","Sesame Street","Big Brother","Countdown","The Late Late Show","Vikings","Fawlty Towers","Who Wants to Be a Millionaire","Seinfeld","Grey's Anatomy","The Sopranos","Bridgerton"]},
+ {id:"heroes",name:"Heroes & Villains",g:"⚡",c:"#ffe066",w:["Superman","Batman","Spider-Man","Wonder Woman","The Joker","Darth Vader","Iron Man","The Hulk","Captain America","Thor","Black Panther","Catwoman","Voldemort","Gandalf","Robin Hood","Cruella de Vil","Captain Hook","The Grinch","Dracula","Frankenstein","Wolverine","Lex Luthor","Shrek","Maleficent","King Kong","Godzilla","Zorro","Hercules","Medusa","Sherlock Holmes","James Bond","Indiana Jones","Lara Croft","Mario","Sonic","Pikachu","Buzz Lightyear","Elsa","Scar","Sauron"]},
+ {id:"music",name:"Music",g:"♪",c:"#c77dff",w:["U2","The Beatles","Taylor Swift","Elvis","Michael Jackson","Ed Sheeran","Beyoncé","ABBA","Queen","Westlife","The Cranberries","Madonna","Lady Gaga","Adele","Drake","The Rolling Stones","Christy Moore","The Dubliners","Thin Lizzy","Sinéad O'Connor","Hozier","Coldplay","Oasis","Spice Girls","Boyzone","Elton John","Rihanna","Bruce Springsteen","Dolly Parton","Eminem","Nirvana","Harry Styles","Bob Marley","Kylie","Daniel O'Donnell","The Corrs","Van Morrison","Stevie Wonder","Billie Eilish","Bob Dylan"]},
+ {id:"brands",name:"Brands",g:"®",c:"#4dd4c6",w:["McDonald's","Apple","Nike","Coca-Cola","Lego","IKEA","Amazon","Google","Netflix","Tesla","Ryanair","Aer Lingus","Kellogg's","Cadbury","Lidl","Supermac's","Starbucks","Adidas","Playmobil","Nintendo","PlayStation","Spotify","WhatsApp","TikTok","Instagram","Rolex","Ferrari","Volkswagen","Dyson","Heinz","Pringles","Red Bull","Domino's","KFC","Mars bar","Monopoly","Barbie","Disney","YouTube","Uber"]},
+ {id:"kids",name:"Kids' Pack",g:"★",c:"#ffd6a5",w:["Dinosaur","Rainbow","Unicorn","Pirate","Robot","Princess","Snowman","Teddy bear","Trampoline","Bubbles","Rocket","Dragon","Mermaid","Castle","Ice cream van","Fire engine","Tooth fairy","Monkey","Bouncy castle","Lollipop","Train","Witch","Ghost","Spider","Banana","Swing","Slide","Tractor","Butterfly","Crayon","Sandcastle","Puddle","Superhero","Birthday cake","Balloon","Kite","Sheep","Pig","Bus","Moon"]},
+ {id:"house",name:"Around the House",g:"⌂",c:"#b5e48c",w:["Toaster","Kettle","Hoover","Remote control","Fridge magnet","Hot water bottle","Duvet","Washing machine","Clothes horse","Ironing board","Plunger","Toilet roll","Doorbell","Smoke alarm","Lawnmower","Sofa","Bunk bed","Microwave","Hair dryer","Light bulb","Tin opener","Wheelie bin","Shower curtain","Rubber gloves","Tea towel","Coat hanger","Alarm clock","Oven glove","Fly swatter","Junk drawer","Wi-Fi router","Slippers","Mop","Spice rack","Letterbox","Teapot","Ladder","Candle","Radiator","Phone charger"]},
+ {id:"xmas",name:"Christmas",g:"❄",c:"#ff4d6d",w:["Santa","Rudolph","Mince pie","Advent calendar","Christmas jumper","Mistletoe","Tinsel","Stocking","Turkey","Selection box","Elf on the Shelf","Midnight Mass","Crib","Snowball fight","Carol singers","Christmas cracker","Wrapping paper","Brandy butter","Christmas pudding","Reindeer","Sleigh","Nativity play","Panto","Secret Santa","Gingerbread man","Fairy lights","St Stephen's Day","Little Women's Christmas","Quality Street","Brussels sprouts","Ice skating","The Grinch","Snowman","Chimney","North Pole","Office party","Boxing Day sales","Candy cane","Wreath","New Year's Eve"]},
+ {id:"retro",name:"90s & 00s",g:"◎",c:"#f9c74f",w:["Tamagotchi","Nokia 3310","Walkman","Bebo","Dial-up internet","Pokémon cards","Furby","Game Boy","Discman","Blockbuster","Spice Girls","Y2K","MSN Messenger","Bum bag","Frosted tips","Slap bracelet","Floppy disk","Polaroid","Rollerblades","Super Nintendo","Boy bands","Lava lamp","Juicy tracksuit","Snake on the phone","Fax machine","Mixtape","Pager","Beanie Babies","Crazy Frog","iPod","Razor scooter","Tamagotchi funeral","Ringtones","Euro changeover","Myspace","Big Brother","Celtic Tiger","Club Orange","Wanderly Wagon","Zig and Zag"]},
+ {id:"science",name:"Science & Nature",g:"⚛",c:"#72efdd",w:["Volcano","Tornado","Black hole","Gravity","Magnet","Rainbow","Earthquake","DNA","Microscope","Telescope","Solar eclipse","Lightning","Fossil","Photosynthesis","Planet Mars","Saturn's rings","Tsunami","Glacier","Atom","Electricity","Northern Lights","Coral reef","Rainforest","Desert","Iceberg","Comet","Skeleton","Brain","Heart","Vaccine","Robot","Satellite","Laser","Battery","Wind turbine","Solar panel","Thermometer","Fireworks","Echo","Dinosaur bones"]},
+ {id:"famous",name:"Famous Faces",g:"☺",c:"#ffadad",w:["Albert Einstein","Cleopatra","Napoleon","Mona Lisa","Shakespeare","Marilyn Monroe","Charlie Chaplin","Michael Collins","Mary Robinson","Conor McGregor","Katie Taylor","Roy Keane","Paul Mescal","Saoirse Ronan","Cillian Murphy","Graham Norton","Bono","Oprah","Elon Musk","Barack Obama","Queen Elizabeth","Marie Curie","Leonardo da Vinci","Gandhi","Mozart","Picasso","Neil Armstrong","Muhammad Ali","Serena Williams","Lionel Messi","Cristiano Ronaldo","Usain Bolt","Rory McIlroy","Brendan Gleeson","Liam Neeson","Pierce Brosnan","Colin Farrell","Dermot Kennedy","Ryan Tubridy","Saint Patrick"]}
+];
+const MORE = [
+ ["games","Video Games","🎮","#80ed99","Mario Kart|Minecraft|Fortnite|Tetris|Pac-Man|Space Invaders|FIFA|Call of Duty|The Sims|Grand Theft Auto|Zelda|Donkey Kong|Street Fighter|Angry Birds|Candy Crush|Wii Sports|Animal Crossing|Roblox|Among Us|Pokémon Go|Crash Bandicoot|Lara Croft|Halo|Sonic the Hedgehog|Guitar Hero|Just Dance|Super Mario|Rocket League|Doom|Frogger|Snake|Flappy Bird|Solitaire|Lemmings|Red Dead Redemption|Kirby|Yoshi|Xbox|PlayStation|Game Boy"],
+ ["toys","Toys & Games","🎲","#ffcad4","Monopoly|Jenga|Twister|Scrabble|Rubik's Cube|Hungry Hippos|Operation|Guess Who|Connect Four|Cluedo|Buckaroo|Mouse Trap|Kerplunk|Etch A Sketch|Slinky|Yo-yo|Play-Doh|Hula hoop|Water pistol|Spinning top|Jigsaw|Dominoes|Chess|Draughts|Snakes and ladders|Uno|Pictionary|Trivial Pursuit|Hopscotch|Skipping rope|Marbles|Kite|Rocking horse|Jack-in-the-box|Space hopper|Pogo stick|Frisbee|Lego|Action Man|Sylvanian Families"],
+ ["cartoons","Cartoons","✏","#a0c4ff","Tom and Jerry|Scooby-Doo|Bugs Bunny|SpongeBob|Mickey Mouse|Winnie the Pooh|Paw Patrol|Postman Pat|Fireman Sam|Thomas the Tank Engine|Bob the Builder|The Flintstones|The Jetsons|Looney Tunes|Pink Panther|Road Runner|Popeye|Garfield|Snoopy|Dora the Explorer|Teletubbies|Wallace and Gromit|Shaun the Sheep|Ben 10|Pokémon|Dexter's Laboratory|Johnny Bravo|Rugrats|Hey Arnold|Family Guy|Futurama|Rick and Morty|South Park|Danger Mouse|Captain Planet|He-Man|Thundercats|Peppa Pig|Hey Duggee|In the Night Garden"],
+ ["fairy","Fairy Tales","✦","#e7c6ff","Cinderella|Snow White|Little Red Riding Hood|Jack and the Beanstalk|Goldilocks|Hansel and Gretel|Rapunzel|Sleeping Beauty|The Three Little Pigs|Pinocchio|Peter Pan|The Little Mermaid|Rumpelstiltskin|The Gingerbread Man|Puss in Boots|Beauty and the Beast|The Ugly Duckling|Aladdin|Alice in Wonderland|The Frog Prince|The Emperor's New Clothes|Big Bad Wolf|Fairy godmother|Glass slipper|Magic beans|Poisoned apple|Seven dwarfs|Wicked stepmother|Tooth fairy|Genie|Pied Piper|Humpty Dumpty|Old Mother Hubbard|Princess and the Pea|Billy Goats Gruff|Tortoise and the Hare|Chicken Licken|Children of Lir|Magic carpet|Fairy ring"],
+ ["instruments","Instruments","♫","#ffd166","Guitar|Piano|Drums|Violin|Trumpet|Saxophone|Harp|Tin whistle|Bodhrán|Uilleann pipes|Bagpipes|Accordion|Banjo|Ukulele|Harmonica|Flute|Clarinet|Trombone|Tuba|Cello|Double bass|Xylophone|Triangle|Tambourine|Maracas|Bongos|Keyboard|Organ|Kazoo|Recorder|Didgeridoo|Mandolin|Spoons|Cymbals|French horn|Oboe|Bass guitar|DJ decks|Fiddle|Glockenspiel"],
+ ["countries","Countries","⚑","#90dbf4","France|Spain|Italy|Germany|Portugal|Greece|Turkey|Egypt|Morocco|South Africa|Kenya|Nigeria|India|China|Japan|Thailand|Vietnam|Australia|New Zealand|Canada|USA|Mexico|Brazil|Argentina|Peru|Chile|Jamaica|Cuba|Russia|Poland|Sweden|Norway|Finland|Iceland|Switzerland|Netherlands|Belgium|Scotland|Wales|Ireland"],
+ ["dublin","Dublin","⚓","#56cfe1","Ha'penny Bridge|The Spire|Temple Bar|Phoenix Park|Croke Park|Aviva Stadium|Guinness Storehouse|Trinity College|Book of Kells|Grafton Street|Molly Malone statue|Dublin Zoo|Kilmainham Gaol|St Stephen's Green|Howth|Dún Laoghaire|Bray|The Liffey|O'Connell Street|GPO|Christ Church|Dublin Castle|Moore Street|Henry Street|Luas Red Line|Dublin Bus|Port Tunnel|M50|Dublin Airport|Malahide Castle|Skerries Mills|Balbriggan beach|Bull Island|Smithfield|Dalkey|Glasnevin|Jervis Centre|Liffey Valley|Bewley's|Point Depot"],
+ ["football","Football","⚽","#8ac926","Manchester United|Liverpool|Arsenal|Chelsea|Barcelona|Real Madrid|Celtic|Rangers|Bohemians|Shamrock Rovers|Shelbourne|Dundalk|World Cup|Champions League|Premier League|League of Ireland|Penalty shootout|Bicycle kick|Own goal|Red card|VAR|Corner flag|Goalkeeper|Free kick|Header|Nutmeg|Dive|Manager|Transfer window|Golden boot|Ballon d'Or|Messi|Ronaldo|Haaland|Mbappé|Pelé|Maradona|Roy Keane|Robbie Keane|Jack Charlton"],
+ ["gaa","GAA","🏑","#06d6a0","Hurley|Sliotar|Helmet|Point|Goal|Square ball|Hand pass|Solo run|Sam Maguire|Liam MacCarthy|All-Ireland final|Croke Park|Hill 16|Kerry|Dublin|Kilkenny|Cork|Tipperary|Galway|Mayo curse|Camogie|Ladies football|Handball|Rounders|Club jersey|Minor|County board|Referee|Sideline cut|Puck-out|Black card|Mark|Hawk-Eye|Throw-in|Parish rivalry|Scór|Cúl Camps|The Sunday Game|Munster final|Christy Ring"],
+ ["transport","Transport","✈","#ff9f1c","Bicycle|Helicopter|Hot air balloon|Submarine|Tractor|Ambulance|Fire engine|Double-decker bus|Taxi|Tram|Motorbike|Scooter|Skateboard|Canoe|Yacht|Ferry|Cruise ship|Jet ski|Rocket|Space shuttle|Tank|Limousine|Monster truck|Ice cream van|Camper van|Horse and cart|Rickshaw|Gondola|Cable car|Sleigh|Unicycle|Segway|Steam train|Bullet train|Forklift|Digger|Lorry|Bin lorry|Pedalo|Zip line"],
+ ["halloween","Halloween","☾","#ff7b00","Pumpkin|Witch|Ghost|Vampire|Zombie|Werewolf|Mummy|Skeleton|Black cat|Broomstick|Cauldron|Trick or treat|Bonfire|Barmbrack|Bobbing for apples|Fireworks|Haunted house|Spider web|Bat|Graveyard|Coffin|Candy apple|Costume|Jack-o'-lantern|Samhain|Frankenstein|Grim Reaper|Banshee|Monster mash|Scarecrow|Full moon|Crystal ball|Wizard|Mask|Fake blood|Candle|Sweets|Haunted castle|Ouija board|Owl"],
+ ["noise","Make the Noise","♪","#ef476f","Chicken|Cow|Ambulance siren|Doorbell|Car alarm|Sneeze|Monkey|Seagull|Train|Duck|Donkey|Dial-up internet|Microwave ping|Lion|Owl|Horse|Phone ringing|Fart|Snoring|Kettle boiling|Dog barking|Cat fight|Police car|Helicopter|Thunder|Dentist drill|Baby crying|Rooster|Frog|Bee|Sheep|Pig|Elephant|Wolf howling|Ghost|Hiccups|Clock ticking|Rain|Fireworks|Toilet flush"],
+ ["supermarket","Supermarket","🛒","#7bdff2","Checkout|Self-scan|Trolley|Basket|Deli counter|Hot food counter|Bakery|Butcher counter|Fruit and veg|Frozen aisle|Freezer|Shelf stacker|Price gun|Barcode|Loyalty card|Reusable bag|Bottle return|Lotto|Newspapers|Flowers|Fresh fish|Rotisserie chicken|Breakfast roll|Chicken fillet roll|Wedges|Coffee machine|Reduced to clear|Multibuy|Special offer|Stocktake|Delivery truck|Night shift|Car park|Customer service|Cleanup on aisle 4|Pallet|Click and collect|Wine aisle|Baby aisle|Cereal"],
+ ["office","Office Life","☕","#bdb2ff","Photocopier|Stapler|Team meeting|Zoom call|You're on mute|Out of office|Spreadsheet|PowerPoint|Coffee break|Water cooler|Desk plant|Swivel chair|Lanyard|Payday|Annual leave|Fire drill|Secret Santa|Christmas party|Reply all|Deadline|Overtime|Boss|Intern|Promotion|Pay rise|Job interview|Name badge|Printer jam|Post-it note|Paper clip|Filing cabinet|Lunch thief|Birthday cake in the canteen|Hot desk|Working from home|Monday morning|Friday drinks|Password reset|IT department|Coffee mug"],
+ ["pub","The Pub","🍺","#e9c46a","Pint of plain|Last orders|Lock-in|Trad session|Pool table|Darts board|Jukebox|Snug|Bag of Taytos|Toasted special|Bar stool|Round system|Hot whiskey|Shandy|Cider|Fifteen Euro pint|Beer garden|Smoking area|Barman|Bouncer|Quiz night|Karaoke|Match on the telly|Pub crawl|Stag do|Hen party|Hangover|Taxi home|Chipper after|Pint glass|Bottle opener|Bar tab|Beer mat|Happy hour|Designated driver|Sláinte|One for the road|Pub grub|Open mic|Brewery"],
+ ["slang","Irish Slang","💬","#b9fbc0","Grand|Craic|Eejit|Gas|Deadly|Yer man|Yer wan|Giving out|Gaff|Gobshite|Jacks|Banjaxed|Gowl|Fierce|Savage|Sound|Thanks a million|Go way outta that|Bold|Gurrier|Messages|Shift|Chancer|Knackered|Scarlet|Stall the ball|What's the story|Bake|Gee-eyed|Langers|Mortified|Plámás|Culchie|Jackeen|Ossified|Press|Runners|Sambo|Yoke|Wee"],
+ ["myths","Myths & Legends","☤","#cdb4db","Fionn mac Cumhaill|Cú Chulainn|Tír na nÓg|Children of Lir|Salmon of Knowledge|Giant's Causeway|Leprechaun|Banshee|Púca|Fairy fort|Medusa|Zeus|Hercules|Trojan Horse|Achilles|Minotaur|Pegasus|Thor|Odin|Loki|King Arthur|Excalibur|Merlin|Loch Ness Monster|Bigfoot|Yeti|Unicorn|Phoenix|Dragon|Mermaid|Kraken|Atlantis|Holy Grail|Pandora's box|Cyclops|Robin Hood|Dracula|Werewolf|Sphinx|Grim Reaper"],
+ ["history","History","⌛","#f4a261","Pyramids|Vikings|Romans|Knights|Castle|Cavemen|Dinosaurs|Ice Age|Easter Rising|Famine|Titanic|Moon landing|Berlin Wall|Christopher Columbus|Henry VIII|Cleopatra|Julius Caesar|Napoleon|Brian Boru|Newgrange|Round tower|High cross|Gladiator|Samurai|Pirates|Cowboys|Wild West|Industrial Revolution|Printing press|First car|World War|Suffragettes|Celtic Tiger|Euro coins|Black and white TV|Telegram|Gramophone|Typewriter|Steam engine|Stone Age"],
+ ["dances","Dances","💃","#f72585","Macarena|Riverdance|Irish dancing|Waltz|Tango|Salsa|Twist|Moonwalk|Floss|Robot|Worm|Conga|Hokey Cokey|Cha-cha|Breakdance|Ballet|Tap dance|Line dancing|Can-can|Limbo|Cotton Eye Joe|YMCA|Gangnam Style|Siege of Ennis|Walls of Limerick|The Bus Stop|Haka|Hula|Belly dancing|Disco|Jive|Rumba|Samba|Twerk|Dab|Vogue|Pole dance|Zumba|Morris dancing|Slow set"],
+ ["weddings","Weddings & Parties","♥","#ffafcc","Bride|Groom|Best man|Bridesmaid|Veil|Wedding cake|First dance|Confetti|Bouquet toss|Speeches|Honeymoon|Engagement ring|Hen party|Stag party|Vows|Altar|Champagne toast|Afters|DJ|Photo booth|Birthday cake|Candles|Balloons|Party hats|Piñata|Surprise party|Fancy dress|Musical chairs|Pass the parcel|Goody bag|Christening|Communion|Confirmation money|21st birthday|Retirement do|Anniversary|Baby shower|Gender reveal|Housewarming|Wake"],
+ ["emotions","Act the Feeling","☹","#ffbe0b","Happy|Sad|Angry|Scared|Surprised|Bored|Excited|Jealous|Embarrassed|Proud|Nervous|Confused|Disgusted|In love|Hangry|Sleepy|Shy|Grumpy|Guilty|Relieved|Hopeful|Lonely|Smug|Sarcastic|Starstruck|Heartbroken|Seasick|Ticklish|Brain freeze|Sugar rush|Stage fright|Road rage|Monday blues|Winning the Lotto|Lost your keys|Stubbed toe|Found a fiver|Missed the bus|Exam results|First day at school"],
+ ["body","Body Bits","✋","#ffc8dd","Elbow|Knee|Eyebrow|Belly button|Ankle|Wrist|Shoulder|Earlobe|Tongue|Toenail|Fingerprint|Funny bone|Kneecap|Nostril|Eyelash|Chin|Forehead|Armpit|Thumb|Heel|Shin|Hip|Spine|Skull|Rib|Heart|Lungs|Brain|Stomach|Muscle|Tooth|Dimple|Freckle|Moustache|Beard|Ponytail|Mullet|Bald patch|Six-pack|Double chin"]
+];
+const MORE2 = [
+ ["birds","Birds","🐦","#a8dadc","Robin|Magpie|Crow|Seagull|Pigeon|Swan|Puffin|Penguin|Eagle|Owl|Parrot|Flamingo|Peacock|Ostrich|Emu|Kiwi|Toucan|Hummingbird|Woodpecker|Kingfisher|Heron|Pelican|Vulture|Falcon|Hawk|Blackbird|Wren|Swallow|Sparrow|Goldfinch|Duck|Goose|Turkey|Chicken|Rooster|Budgie|Canary|Stork|Albatross|Dodo"],
+ ["sea","Under the Sea","🌊","#48cae4","Shark|Whale|Dolphin|Octopus|Squid|Jellyfish|Starfish|Crab|Lobster|Seahorse|Clownfish|Stingray|Eel|Turtle|Seal|Walrus|Sea otter|Coral|Oyster|Mussel|Clam|Shrimp|Pufferfish|Swordfish|Hammerhead|Barracuda|Manatee|Narwhal|Orca|Plankton|Seaweed|Sandcastle|Shipwreck|Submarine|Scuba diver|Treasure chest|Lighthouse|Anchor|Mermaid|Kraken"],
+ ["bugs","Creepy Crawlies","🐞","#b5e48c","Spider|Ant|Bee|Wasp|Butterfly|Moth|Ladybird|Beetle|Caterpillar|Worm|Slug|Snail|Grasshopper|Cricket|Dragonfly|Mosquito|Midge|Fly|Flea|Tick|Cockroach|Centipede|Millipede|Scorpion|Earwig|Woodlouse|Firefly|Stick insect|Praying mantis|Termite|Bumblebee|Tarantula|Daddy longlegs|Bluebottle|Leech|Cobweb|Beehive|Anthill|Cocoon|Honey"],
+ ["dogs","Dogs","🐕","#e9c46a","Labrador|Golden retriever|German shepherd|Jack Russell|Border collie|Poodle|Chihuahua|Pug|Bulldog|Dachshund|Beagle|Husky|Dalmatian|Great Dane|Greyhound|Whippet|Irish wolfhound|Irish setter|Cocker spaniel|Boxer|Rottweiler|Doberman|Corgi|Shih tzu|Yorkshire terrier|Staffie|Cockapoo|Labradoodle|Saint Bernard|Sheepdog|Bloodhound|Pomeranian|Schnauzer|Westie|Kerry blue|Lassie|Scooby-Doo|Snoopy|Pluto|Gromit"],
+ ["farm","On the Farm","🚜","#90be6d","Tractor|Combine harvester|Silage|Hay bale|Barn|Pig|Cow|Sheep|Lamb|Goat|Horse|Donkey|Hen|Rooster|Duck|Sheepdog|Farmer|Wellies|Muck spreader|Milking parlour|Scarecrow|Pitchfork|Trough|Gate|Field|Quad bike|Mart|Ploughing Championships|Calf|Bull|Stable|Saddle|Horseshoe|Egg|Haystack|Silo|Wheat|Potato|Turnip|Muck"],
+ ["fruitveg","Fruit & Veg","🥕","#f4845f","Apple|Banana|Orange|Strawberry|Grape|Pineapple|Mango|Kiwi|Watermelon|Lemon|Lime|Cherry|Peach|Pear|Plum|Blueberry|Raspberry|Coconut|Pomegranate|Fig|Carrot|Potato|Onion|Broccoli|Cauliflower|Cabbage|Lettuce|Cucumber|Tomato|Pepper|Mushroom|Garlic|Parsnip|Turnip|Leek|Celery|Sweetcorn|Pumpkin|Aubergine|Courgette"],
+ ["sweets","Sweets & Treats","🍬","#ff99c8","Chocolate|Lollipop|Candy floss|Jelly babies|Wine gums|Fizzy cola bottles|Marshmallow|Toffee|Fudge|Bubblegum|Popcorn|Doughnut|Cupcake|Brownie|Muffin|Cookie|Swiss roll|Jaffa Cakes|Custard creams|Kimberley|Mikado|Club Milk|Twirl|Crunchie|Maltesers|Smarties|Freddo|Choc ice|Ice pop|Ninety-nine|Sherbet|Rock|Liquorice|Haribo|Rice Krispie bun|Banoffee pie|Apple tart|Bread and butter pudding|Tiramisu|Eclair"],
+ ["fastfood","Fast Food","🍔","#ffb703","Burger|Chips|Chicken nuggets|Hot dog|Pizza slice|Milkshake|Onion rings|Kebab|Taco|Burrito|Spice bag|Curry chips|Garlic chips|Doner|Fried chicken|Wings|Drive-through|Happy Meal|Big Mac|Whopper|Salt and chilli chicken|Spring roll|Sweet and sour|Battered sausage|Chipper|Breakfast roll|Toasted sandwich|Wrap|Nachos|Fish supper|Ketchup|Mayo|Garlic dip|Coleslaw|Fizzy drink|Supersize|Delivery driver|Takeaway menu|Late-night chipper|Food truck"],
+ ["drinks","Drinks","🍹","#9d4edd","Tea|Coffee|Cappuccino|Latte|Espresso|Hot chocolate|Orange juice|Smoothie|Lemonade|Cola|Milk|Water|Sparkling water|Guinness|Lager|Cider|Wine|Prosecco|Champagne|Whiskey|Vodka|Gin and tonic|Rum|Tequila|Baileys|Mojito|Piña colada|Margarita|Sangria|Pimm's|Hot toddy|Irish coffee|Energy drink|Iced tea|Kombucha|Bubble tea|Slushie|Milkshake|Shandy|Mulled wine"],
+ ["kitchen","In the Kitchen","🍳","#f6bd60","Frying pan|Saucepan|Whisk|Spatula|Rolling pin|Grater|Colander|Peeler|Chopping board|Ladle|Tongs|Corkscrew|Blender|Food processor|Air fryer|Slow cooker|Toaster|Kettle|Microwave|Dishwasher|Oven|Hob|Fridge|Freezer|Bread bin|Cutlery drawer|Tin foil|Cling film|Lunchbox|Oven glove|Apron|Egg timer|Measuring jug|Weighing scales|Sieve|Pestle and mortar|Wok|Baking tray|Muffin tin|Tea towel"],
+ ["clothes","Clothes & Fashion","👗","#ffafcc","Jeans|Hoodie|Jumper|Cardigan|T-shirt|Shirt|Tie|Suit|Dress|Skirt|Shorts|Leggings|Pyjamas|Dressing gown|Raincoat|Puffer jacket|Scarf|Gloves|Hat|Beanie|Baseball cap|Wellies|Runners|High heels|Flip-flops|Sandals|Boots|Socks|Bikini|Swimming togs|Tracksuit|Onesie|Kilt|Wedding dress|Tuxedo|Bow tie|Handbag|Sunglasses|Belt|Watch"],
+ ["hobbies","Hobbies","🎣","#bde0fe","Fishing|Knitting|Gardening|Painting|Photography|Baking|Hiking|Cycling|Camping|Bird watching|Stamp collecting|Gaming|Reading|Yoga|Pilates|Rock climbing|Surfing|Sea swimming|Golf|Chess|Crosswords|Sudoku|Jigsaw puzzles|Pottery|Woodwork|Metal detecting|Model trains|Karaoke|Dancing|Singing in a choir|Amateur dramatics|Podcasting|Blogging|Vlogging|Cooking|Wine tasting|Drone flying|Geocaching|Calligraphy|Origami"],
+ ["gym","Gym & Fitness","🏋","#ff6b6b","Treadmill|Dumbbell|Kettlebell|Barbell|Bench press|Squat|Lunge|Push-up|Sit-up|Plank|Burpee|Star jump|Rowing machine|Exercise bike|Spin class|Zumba|Yoga mat|Protein shake|Personal trainer|Six-pack|Biceps|Stretching|Warm-up|Cool-down|Park run|Couch to 5K|Marathon|Fitbit|Step count|Sweatband|Gym bag|Locker room|Sauna|Leg day|Pull-up|Skipping|Boxing class|CrossFit|Foam roller|Personal best"],
+ ["school","School Days","✎","#caffbf","Teacher|Principal|Homework|Detention|Lunchbox|Playground|Lunch break|School bus|Uniform|Blazer|Pencil case|Ruler|Rubber|Sharpener|Calculator|Copybook|Whiteboard|Projector|Exam|Leaving Cert|Junior Cert|Debs|Transition Year|Irish oral|School tour|Sports day|Parent-teacher meeting|Report card|Roll call|Fire drill|Science lab|Gym hall|Canteen|Library|Spelling test|Times tables|Hall pass|Mock exams|Graduation|Bold step"],
+ ["hospital","Hospital","⚕","#a2d2ff","Doctor|Nurse|Surgeon|Ambulance|Stretcher|Wheelchair|Crutches|Plaster cast|Bandage|Plaster|X-ray|MRI scan|Stethoscope|Thermometer|Injection|Vaccine|Blood test|Waiting room|A and E|Operating theatre|Anaesthetic|Hospital gown|Visiting hours|Grapes|Get well card|Pharmacy|Prescription|Paracetamol|Sling|Stitches|Paramedic|Defibrillator|Heart monitor|Maternity ward|Midwife|Dentist|Braces|Optician|Glasses|Hiccups"],
+ ["space","Space","🚀","#7b2cbf","Rocket|Astronaut|Alien|UFO|Moon|Sun|Mars|Jupiter|Saturn|Venus|Mercury|Neptune|Uranus|Pluto|Earth|Milky Way|Black hole|Shooting star|Comet|Asteroid|Meteor|Galaxy|Telescope|Space station|Satellite|Rover|Spacesuit|Zero gravity|Countdown|Launch pad|Mission control|NASA|Eclipse|Constellation|Big Dipper|Northern Lights|Crater|Orbit|Light year|Moonwalk"],
+ ["weather","Weather","☂","#8ecae6","Rain|Drizzle|Downpour|Hailstone|Snow|Sleet|Fog|Mist|Frost|Ice|Thunder|Lightning|Rainbow|Sunshine|Heatwave|Storm|Hurricane|Tornado|Gale|Breeze|Cloud|Puddle|Umbrella|Raincoat|Wellies|Sun cream|Weather forecast|Red warning|Met Éireann|Four seasons in one day|Snowman|Snowball|Icicle|Flood|Drought|Monsoon|Tsunami|Sandstorm|Hot water bottle|Soft day"],
+ ["nature","Great Outdoors","⛰","#52b788","Mountain|Volcano|River|Lake|Waterfall|Forest|Jungle|Desert|Beach|Cliff|Cave|Island|Glacier|Valley|Canyon|Bog|Meadow|Swamp|Oasis|Sand dune|Rock pool|Stream|Hill|Field|Woods|Campfire|Tent|Sleeping bag|Compass|Map|Backpack|Hiking boots|Picnic|Sunset|Sunrise|Starry night|Wildflower|Oak tree|Christmas tree|Moss"],
+ ["capitals","Capital Cities","🏛","#4361ee","Dublin|London|Paris|Berlin|Madrid|Rome|Lisbon|Amsterdam|Brussels|Vienna|Prague|Warsaw|Budapest|Athens|Oslo|Stockholm|Copenhagen|Helsinki|Reykjavik|Edinburgh|Cardiff|Belfast|Moscow|Washington|Ottawa|Mexico City|Buenos Aires|Canberra|Wellington|Tokyo|Beijing|Delhi|Bangkok|Cairo|Nairobi|Cape Town|Ankara|Bern|Valletta|Monaco"],
+ ["counties","Irish Counties & Towns","📍","#2a9d8f","Antrim|Armagh|Carlow|Cavan|Clare|Cork|Derry|Donegal|Down|Dublin|Fermanagh|Galway|Kerry|Kildare|Kilkenny|Laois|Leitrim|Limerick|Longford|Louth|Mayo|Meath|Monaghan|Offaly|Roscommon|Sligo|Tipperary|Tyrone|Waterford|Westmeath|Wexford|Wicklow|Skerries|Balbriggan|Palmerstown|Lisdoonvarna|Dingle|Kinsale|Athlone|Bundoran"],
+ ["landmarks","Landmarks","🗼","#f77f00","Eiffel Tower|Statue of Liberty|Big Ben|Colosseum|Leaning Tower of Pisa|Taj Mahal|Great Wall of China|Pyramids of Giza|Sphinx|Stonehenge|Sydney Opera House|Golden Gate Bridge|Mount Rushmore|Christ the Redeemer|Machu Picchu|Acropolis|Sagrada Família|Buckingham Palace|Tower Bridge|London Eye|Empire State Building|Burj Khalifa|Niagara Falls|Grand Canyon|Hollywood sign|Times Square|Kremlin|Neuschwanstein Castle|Blarney Stone|Newgrange|Cliffs of Moher|Skellig Michael|Giant's Causeway|Rock of Cashel|Spike Island|Angkor Wat|Petra|Easter Island heads|Mount Fuji|Uluru"],
+ ["tech","Tech & Internet","💻","#00b4d8","Wi-Fi|Password|Bluetooth|Smartphone|Laptop|Tablet|Smartwatch|Selfie stick|Emoji|Hashtag|Meme|Viral video|Influencer|Podcast|Streaming|Cloud storage|Spam email|Phishing|Virus|Firewall|Update|Charger|Power bank|Headphones|AirPods|Group chat|Voice note|Read receipt|Blue ticks|Screenshot|Autocorrect|Captcha|Cookies|Hacker|Robot|Artificial intelligence|Virtual reality|Drone|Self-driving car|QR code"],
+ ["apps","Apps & Social","📱","#ff70a6","WhatsApp|Instagram|TikTok|Snapchat|Facebook|X|YouTube|Netflix|Spotify|Google Maps|Uber|Deliveroo|Just Eat|Tinder|LinkedIn|Pinterest|Reddit|Zoom|Teams|Duolingo|Candy Crush|Wordle|Shazam|FaceTime|Revolut|PayPal|Amazon|eBay|DoneDeal|Daft.ie|Airbnb|Booking.com|Strava|Fitbit|Calculator|Alarm clock|Torch|Camera roll|App Store|Do not disturb"],
+ ["inventions","Inventions","💡","#ffd60a","Light bulb|Telephone|Wheel|Printing press|Steam engine|Aeroplane|Car|Bicycle|Television|Radio|Computer|Internet|Microwave|Fridge|Washing machine|Camera|Telescope|Microscope|Penicillin|Vaccine|Electricity|Battery|Compass|Clock|Calculator|Typewriter|Sewing machine|Zip|Velcro|Post-it note|Paper clip|Safety pin|Toilet|Tin can|Sticky tape|Barcode|GPS|Smartphone|Bubble wrap|Teabag"],
+ ["books","Books & Characters","📚","#e76f51","Harry Potter|Hermione|Gandalf|Frodo|Sherlock Holmes|Dracula|Frankenstein|Peter Rabbit|The Gruffalo|The Very Hungry Caterpillar|Matilda|Charlie Bucket|Willy Wonka|The BFG|Roald Dahl|Paddington|Winnie the Pooh|Alice|Mr Darcy|Romeo and Juliet|Hamlet|Macbeth|Gulliver|Robinson Crusoe|Moby Dick|Oliver Twist|Scrooge|James Joyce|Ulysses|W.B. Yeats|Oscar Wilde|Dorian Gray|Bram Stoker|Maeve Binchy|Sally Rooney|Where's Wally|Diary of a Wimpy Kid|Famous Five|Hunger Games|Twilight"],
+ ["musicals","Musicals & Stage","🎭","#d00000","The Lion King|Les Misérables|Phantom of the Opera|Mamma Mia|Grease|Cats|Wicked|Hamilton|Matilda|Annie|Oliver|Chicago|Cabaret|West Side Story|The Sound of Music|Mary Poppins|Joseph|Jesus Christ Superstar|Hairspray|Billy Elliot|The Greatest Showman|Rocky Horror|Riverdance|Panto|Ballet|Opera|Curtain call|Standing ovation|Interval|Understudy|Spotlight|Backstage|Encore|Break a leg|Box office|Orchestra pit|Gaiety Theatre|Abbey Theatre|Stand-up comedy|Magic show"],
+ ["rugby","Rugby","🏉","#264653","Scrum|Lineout|Try|Conversion|Drop goal|Penalty|Sin bin|Ruck|Maul|Tackle|Knock-on|Forward pass|Hooker|Prop|Scrum-half|Out-half|Winger|Full-back|Lock|Flanker|Six Nations|Triple Crown|Grand Slam|World Cup|Leinster|Munster|Ulster|Connacht|Lions tour|Haka|Aviva Stadium|Twickenham|Gumshield|Scrum cap|Rugby ball|Bench|Captain|Match referee|TMO|Fields of Athenry"],
+ ["olympics","Olympics","🏅","#ffc300","Gold medal|Podium|Olympic torch|Opening ceremony|Olympic rings|100 metres|Marathon|Hurdles|Long jump|Triple jump|High jump|Pole vault|Javelin|Discus|Shot put|Hammer throw|Relay|Swimming|Diving|Gymnastics|Trampoline|Boxing|Judo|Taekwondo|Fencing|Archery|Rowing|Sailing|Canoeing|Cycling|BMX|Equestrian|Triathlon|Weightlifting|Wrestling|Beach volleyball|Table tennis|Badminton|Skateboarding|Breakdancing"],
+ ["racing","Horses & Racing","🏇","#bc6c25","Jockey|Racehorse|Grand National|Cheltenham|Punchestown|Galway Races|Leopardstown|Fairyhouse|Bookie|Odds|Each way|Photo finish|Starting stalls|Fence|Hurdle|Saddle|Stirrup|Reins|Whip|Silks|Paddock|Trainer|Owner|Favourite|Outsider|Accumulator|Betting slip|Ladies Day|Fascinator|Trophy|Winning post|Stable|Hay|Horseshoe|Pony|Foal|Show jumping|Dressage|Rocking horse|Unicorn"],
+ ["parenting","Babies & Kids","🍼","#ffd6ff","Nappy|Bottle|Soother|Pram|Buggy|Car seat|Cot|High chair|Bib|Rattle|Teddy|Bath time|Bedtime story|Lullaby|Teething|First steps|First word|Crawling|Tantrum|Naughty step|Babysitter|Crèche|Playdate|Peekaboo|Baby monitor|Night feed|Burping|Baby shower|Christening|Sippy cup|Potty training|Lunchbox|School run|Pocket money|Tooth fairy|Bunk beds|Sleepover|Kids' party|Soft play|Are we there yet"],
+ ["holiday","Holidays & Travel","🏖","#00bbf9","Passport|Boarding pass|Suitcase|Airport|Security queue|Duty free|Departure lounge|Flight delay|Window seat|Sun lounger|Pool|Sun cream|Sunburn|Beach towel|Flip-flops|Ice cream|Buffet breakfast|All-inclusive|Room service|Hotel key card|Tour guide|Selfie|Postcard|Souvenir|Jet lag|Currency exchange|Phrasebook|Camping|Caravan|Road trip|Cruise|Backpacking|Hostel|Interrail|Ski holiday|Snorkelling|Theme park|Sandcastle|Holiday romance|Lost luggage"],
+ ["tools","DIY & Tools","🔧","#adb5bd","Hammer|Screwdriver|Spanner|Wrench|Drill|Saw|Chisel|Pliers|Tape measure|Spirit level|Sandpaper|Paintbrush|Paint roller|Ladder|Toolbox|Nails|Screws|Glue gun|Duct tape|WD-40|Wheelbarrow|Shovel|Rake|Hedge trimmer|Lawnmower|Pressure washer|Workbench|Safety goggles|Hard hat|Hi-vis jacket|Flat-pack furniture|Allen key|Wallpaper|Plasterboard|Fuse box|Plumber's wrench|Leaky tap|Shelf|Skip|Builders' tea"],
+ ["cars","Cars & Driving","🚗","#e63946","Steering wheel|Gear stick|Handbrake|Clutch|Seatbelt|Airbag|Indicator|Windscreen wipers|Rear-view mirror|Sat nav|Petrol station|Diesel|Electric car|Charging point|Car wash|NCT|Driving test|L plates|Speed camera|Toll bridge|Roundabout|Traffic lights|Traffic jam|Parking ticket|Clamp|Flat tyre|Jump leads|Breakdown|Boot|Bonnet|Dashboard|Cruise control|Reversing camera|Horn|Hazard lights|Convertible|Jeep|Ferrari|Mini|Volkswagen Beetle"],
+ ["crime","Crime & Detectives","🔍","#6c757d","Detective|Magnifying glass|Fingerprint|Alibi|Suspect|Witness|Crime scene|Police tape|Handcuffs|Jail|Judge|Jury|Courtroom|Lawyer|Getaway car|Bank robbery|Heist|Disguise|Mugshot|Line-up|Interrogation|Lie detector|Evidence|CCTV|Undercover|Spy|Secret agent|James Bond|Sherlock Holmes|Miss Marple|Poirot|Cluedo|Murder mystery|Whodunnit|Pickpocket|Ransom note|Safe cracker|Wanted poster|Sheriff|Garda car"],
+ ["wildwest","Pirates, Knights & Cowboys","⚔","#a68a64","Pirate ship|Treasure map|Parrot|Eye patch|Peg leg|Walk the plank|Jolly Roger|Cannon|Captain Hook|Shiver me timbers|Knight|Armour|Sword|Shield|Castle|Drawbridge|Moat|Dragon|Jousting|Round Table|King|Queen|Jester|Dungeon|Cowboy|Cowgirl|Lasso|Sheriff badge|Saloon|Stagecoach|Horseback|Wanted poster|Gold rush|Tumbleweed|Showdown|Ranch|Rodeo|Cactus|Bow and arrow|Treasure chest"],
+ ["shapes","Colours & Shapes","◆","#80ffdb","Red|Blue|Yellow|Green|Purple|Orange|Pink|Black|White|Brown|Grey|Gold|Silver|Turquoise|Circle|Square|Triangle|Rectangle|Star|Heart|Diamond|Oval|Hexagon|Pentagon|Octagon|Cube|Sphere|Pyramid|Cylinder|Cone|Spiral|Zigzag|Stripes|Polka dots|Checks|Tartan|Rainbow|Glitter|Neon|Camouflage"],
+ ["idioms","Sayings & Idioms","❝","#c9ada7","Break a leg|Piece of cake|Raining cats and dogs|Under the weather|Spill the beans|Cost an arm and a leg|Let the cat out of the bag|Hit the nail on the head|Once in a blue moon|The ball is in your court|Bite the bullet|Kick the bucket|Cry over spilt milk|Burn the midnight oil|Barking up the wrong tree|Elephant in the room|Hold your horses|Head in the clouds|Over the moon|Cold feet|Butterflies in your stomach|A penny for your thoughts|When pigs fly|Two peas in a pod|In hot water|On thin ice|Steal someone's thunder|Jump on the bandwagon|Sit on the fence|Throw in the towel|Pull someone's leg|Take it with a pinch of salt|The early bird catches the worm|Don't count your chickens|Every cloud has a silver lining|Rome wasn't built in a day|Many hands make light work|It's a long road with no turn|Go to bed with the chickens|May the road rise to meet you"],
+ ["comedy","Comedy & Reality TV","😂","#f9844a","Stand-up|Sitcom|Panel show|Sketch show|Laughter track|Punchline|Knock-knock joke|Dad joke|Pun|Whoopee cushion|Custard pie|Banana skin|Clown|Prank call|Candid camera|Love Island|Big Brother|The Apprentice|Dragons' Den|First Dates|Bake Off|Masterchef|The X Factor|Britain's Got Talent|I'm a Celebrity|Survivor|Gogglebox|Come Dine With Me|Ireland's Fittest Family|Dancing with the Stars|Room to Improve|Don't Tell the Bride|The Traitors|Taskmaster|Catchphrase|Blind Date|Golden buzzer|Eviction night|Confession room|Villa recoupling"],
+ ["shops","High Street","🛍","#9bf6ff","Butcher|Baker|Chemist|Newsagent|Post office|Bank|Credit union|Bookies|Barber|Hair salon|Nail bar|Charity shop|Pound shop|Phone shop|Shoe shop|Jewellers|Opticians|Florist|Hardware shop|Pet shop|Toy shop|Off-licence|Café|Chipper|Takeaway|Launderette|Dry cleaners|Estate agent|Travel agent|Bookshop|Record shop|Pawn shop|Tattoo parlour|Shopping centre|Sale rail|Fitting room|Receipt|Refund|Gift card|Black Friday"]
+];
+
+const MORE3 = [
+ ["friends","Friends","☕","#f9c80e","Rachel|Ross|Monica|Chandler|Joey|Phoebe|Gunther|Janice|Central Perk|Smelly Cat|We were on a break|How you doin'?|Pivot!|Marcel the monkey|Ugly Naked Guy|Thanksgiving|Holiday Armadillo|Mike Hannigan|Richard|Emily|Carol and Susan|Ben|Emma|The triplets|Unagi|The chick and the duck|Barcalounger|Foosball table|Days of Our Lives|Dr Drake Ramoray|Moo point|The Rachel haircut|Leather trousers|Spray tan|Geller Cup|The Routine|Purple door|Hugsy|Estelle|Ursula|Regina Phalange|Joey doesn't share food|Mr Heckles|Fat Monica|Vegas wedding|Paleontologist|Massage therapist|Turkey on the head|Bing|Ross's teeth whitening"],
+ ["bbt","The Big Bang Theory","⚛","#4ea8de","Sheldon|Leonard|Penny|Howard|Raj|Bernadette|Amy|Stuart|Wil Wheaton|Bazinga|Knock knock Penny|Soft Kitty|Rock paper scissors lizard Spock|Comic book store|Cheesecake Factory|Caltech|Broken lift|Sheldon's spot|Roommate agreement|Relationship agreement|Mrs Wolowitz|Barry Kripke|Leslie Winkle|Mary Cooper|Meemaw|Fun with Flags|Physicist|Neuroscientist|Astronaut|Halo night|Thai takeaway|Klingon Boggle|Cinnamon the dog|Nobel Prize|Super asymmetry|String theory|Texas|Dungeons and Dragons|Star Trek|Stephen Hawking|Professor Proton|Bert the geologist|Mars rover|Howard's turtleneck|Sheldon's train set|Laundry night|Whiteboard equations|Halloween costume party|Wedding on the roof|Paintball"],
+ ["disney","Disney Films","🏰","#c77dff","Snow White|Cinderella|Bambi|Dumbo|Pinocchio|Fantasia|Peter Pan|Lady and the Tramp|Sleeping Beauty|101 Dalmatians|The Jungle Book|The Aristocats|Robin Hood|The Little Mermaid|Beauty and the Beast|Aladdin|The Lion King|Pocahontas|The Hunchback of Notre Dame|Hercules|Mulan|Tarzan|Lilo and Stitch|The Princess and the Frog|Tangled|Frozen|Moana|Zootropolis|Encanto|Wreck-It Ralph|Big Hero 6|Bolt|Raya and the Last Dragon|Wish|Mary Poppins|Toy Story|Finding Nemo|Monsters, Inc.|Up|Inside Out|Coco|Ratatouille|WALL-E|Cars|The Incredibles|Brave|Bluey Movie|Bedknobs and Broomsticks|Pirates of the Caribbean|Enchanted"],
+ ["marvel","Marvel Films","⚡","#e63946","Iron Man|The Incredible Hulk|Thor|Captain America|The Avengers|Guardians of the Galaxy|Ant-Man|Doctor Strange|Spider-Man|Black Panther|Captain Marvel|Avengers: Endgame|Infinity War|Black Widow|Shang-Chi|Eternals|Deadpool|Wolverine|X-Men|Thanos|Infinity Gauntlet|Infinity Stones|Loki|Groot|Rocket Raccoon|Star-Lord|Gamora|Drax|Nick Fury|Hawkeye|Scarlet Witch|Vision|Ultron|Falcon|Winter Soldier|Wakanda|Vibranium|Mjölnir|Asgard|Stan Lee cameo|S.H.I.E.L.D.|The Snap|Captain America's shield|Hulk smash|I am Iron Man|Wakanda forever|Post-credits scene|Pepper Potts|Aunt May|Hela"],
+ ["simpsons","The Simpsons","🍩","#ffd60a","Homer|Marge|Bart|Lisa|Maggie|Grampa Simpson|Mr Burns|Smithers|Ned Flanders|Moe|Barney|Apu|Krusty the Clown|Sideshow Bob|Milhouse|Nelson|Ralph Wiggum|Chief Wiggum|Principal Skinner|Mrs Krabappel|Groundskeeper Willie|Comic Book Guy|Otto|Patty and Selma|Lenny and Carl|Kwik-E-Mart|Moe's Tavern|Springfield|Nuclear power plant|Duff beer|D'oh!|Eat my shorts|Ay caramba|Excellent|Ha-ha!|Okily dokily|Treehouse of Horror|Itchy and Scratchy|Bart's chalkboard|Pink doughnut|Couch gag|Squishee|Monorail|Santa's Little Helper|Blinky the three-eyed fish|Professor Frink|Dr Hibbert|Mayor Quimby|Troy McClure|Radioactive Man"]
+];
+
+[...MORE,...MORE2,...MORE3].forEach(([id,name,g,c,w])=>P.push({id,name,g,c,w:w.split("|")}));
+
+const PRESETS={"Everything":null,"Family":["animals","kids","cartoons","fairy","toys","food","house","sweets","sea","birds","farm","fruitveg","space","transport","body","weather","jobs","sport"],
+ "Night out":["pub","slang","irish","drinks","music","movies","tv","comedy","fastfood","dances","famous","football","rugby","gaa","weddings","retro"],
+ "Irish":["irish","dublin","counties","gaa","slang","myths","pub","history","rugby","racing"],
+ "TV & Film":["friends","bbt","disney","marvel","simpsons","movies","tv","heroes","cartoons","comedy"],
+ "Places":["places","countries","capitals","landmarks","dublin","counties","holiday"]};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const store={get(k,d){try{const v=localStorage.getItem("spf_"+k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem("spf_"+k,JSON.stringify(v))}catch(e){}}};
+const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+let ac=null;
+function beep(f,d,type,vol){try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();if(ac.state==="suspended")ac.resume();const o=ac.createOscillator(),g=ac.createGain();o.type=type||"sine";o.frequency.value=f;g.gain.setValueAtTime(vol||.18,ac.currentTime);g.gain.exponentialRampToValueAtTime(.001,ac.currentTime+d);o.connect(g).connect(ac.destination);o.start();o.stop(ac.currentTime+d)}catch(e){}}
+const buzz=p=>{try{navigator.vibrate&&navigator.vibrate(p)}catch(e){}};
+const app=$("app");
+const showBack=/github\.io$/.test(location.hostname)||location.protocol==="file:";
+const PACKS=P.filter(p=>p.id!=="mix");
+
+let cfg=Object.assign({players:["","","",""],spoofers:1,hint:true,timer:180,preset:"Everything"},store.get("cfg",{}));
+let G=store.get("game",null), err="", tick=null, vote=null, revealed=false;
+const save=()=>store.set("game",G);
+
+function renderSetup(){
+  const n=cfg.players.length;
+  app.innerHTML=`<div class="wrap">
+    ${showBack?'<a class="back" href="./">← All games</a>':""}
+    <header><h1>Spot the <span>Spoofer</span></h1>
+      <p class="lede">Everyone gets the same secret word except the Spoofer, who has to bluff. Take turns saying one word about it, then vote out who you think is faking.</p></header>
+    ${G&&G.scores?`<button class="go" id="resume">Continue · round ${G.round+1}</button>`:""}
+    <div class="panel"><span class="label">Players · ${n}</span>
+      <div class="players">${cfg.players.map((p,i)=>`<div class="prow"><input id="p${i}" maxlength="16" placeholder="Player ${i+1}" value="${esc(p)}" aria-label="Player ${i+1} name"><button data-del="${i}" aria-label="Remove player"${n<=3?" hidden":""}>×</button></div>`).join("")}</div>
+      ${n<15?'<button class="add" id="addP">+ Add player</button>':""}</div>
+    <div class="panel">
+      <div class="block"><span class="label">Spoofers</span><div class="seg" id="spf">${[1,2,3].map(v=>`<button data-v="${v}" aria-pressed="${cfg.spoofers===v}" ${v>1&&n<v*3?"disabled":""}>${v}</button>`).join("")}</div></div>
+      <div class="block"><span class="label">Talk time</span><div class="seg" id="tmr">${[[0,"Off"],[120,"2 min"],[180,"3 min"],[300,"5 min"]].map(([v,l])=>`<button data-v="${v}" aria-pressed="${cfg.timer===v}">${l}</button>`).join("")}</div></div>
+      <div class="block"><span class="label">Words from</span><div class="seg" id="pre">${Object.keys(PRESETS).map(k=>`<button data-v="${k}" aria-pressed="${cfg.preset===k}">${k}</button>`).join("")}</div></div>
+      <div class="toggle"><span>Give the Spoofer a hint<small>The Spoofer sees the category, like "Animals". Easier for them.</small></span><button class="sw" id="hint" role="switch" aria-checked="${cfg.hint}" aria-label="Spoofer hint"></button></div>
+    </div>
+    <p class="err">${esc(err)}</p>
+    <button class="go" id="start">New game on this phone</button>
+    <div class="panel">${Online.joinPanelHTML()}</div>
+    <div class="panel"><span class="label">How it works</span><ol class="rules">
+      <li>Pass the phone round. Each person peeks at their card.</li>
+      <li>Go round the circle. Everyone says one word linked to the secret word.</li>
+      <li>Don't make it too obvious, or the Spoofer will work it out.</li>
+      <li>Vote. If you catch the Spoofer, they get one guess at the word to steal the round.</li></ol></div>
+  </div>`;
+  cfg.players.forEach((_,i)=>$("p"+i).oninput=e=>{cfg.players[i]=e.target.value;store.set("cfg",cfg)});
+  app.querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>{cfg.players.splice(+b.dataset.del,1);if(cfg.spoofers*3>cfg.players.length)cfg.spoofers=1;store.set("cfg",cfg);renderSetup()});
+  if($("addP"))$("addP").onclick=()=>{cfg.players.push("");store.set("cfg",cfg);renderSetup();$("p"+(cfg.players.length-1)).focus()};
+  [["spf","spoofers",Number],["tmr","timer",Number],["pre","preset",String]].forEach(([id,k,f])=>app.querySelectorAll(`#${id} button`).forEach(b=>b.onclick=()=>{cfg[k]=f(b.dataset.v);store.set("cfg",cfg);renderSetup()}));
+  $("hint").onclick=()=>{cfg.hint=!cfg.hint;store.set("cfg",cfg);renderSetup()};
+  if($("resume"))$("resume").onclick=()=>newRound();
+  Online.wireJoinPanel({onCreate:oCreate,onJoin:oJoin});
+  $("start").onclick=()=>{
+    const names=cfg.players.map((p,i)=>p.trim()||`Player ${i+1}`);
+    if(new Set(names.map(x=>x.toLowerCase())).size!==names.length){err="Two players have the same name.";return renderSetup()}
+    err=""; beep(1,.01);
+    G={names,scores:names.map(()=>0),round:0,used:[]};
+    newRound();
+  };
+}
+function newRound(){
+  const ids=PRESETS[cfg.preset], decks=PACKS.filter(p=>!ids||ids.includes(p.id));
+  let deck, word, guard=0;
+  do{deck=decks[Math.floor(Math.random()*decks.length)];word=deck.w[Math.floor(Math.random()*deck.w.length)]}while(G.used.includes(word)&&guard++<200);
+  G.used.push(word); if(G.used.length>500)G.used=G.used.slice(-300);
+  const n=G.names.length, k=Math.min(cfg.spoofers,Math.max(1,Math.floor(n/3)));
+  G.round++; G.word=word; G.cat=deck.name; G.spoof=shuffle([...Array(n).keys()]).slice(0,k);
+  G.order=[...Array(n).keys()]; const start=Math.floor(Math.random()*n); G.order=G.order.slice(start).concat(G.order.slice(0,start));
+  G.cur=0; G.first=G.order[Math.floor(Math.random()*n)]; G.phase="pass"; G.hint=cfg.hint; G.timer=cfg.timer;
+  vote=null; save(); render();
+}
+function render(){
+  scrollTo(0,0); clearInterval(tick);
+  if(!G||!G.phase)return renderSetup();
+  ({pass:renderPass,peek:renderPeek,talk:renderTalk,vote:renderVote,verdict:renderVerdict}[G.phase])();
+}
+function chips(){return `<div class="chips">${G.order.map((pi,i)=>`<span class="${i<G.cur?"done":""}">${esc(G.names[pi])}</span>`).join("")}</div>`}
+function renderPass(){
+  const pi=G.order[G.cur];
+  app.innerHTML=`<div class="wrap"><div class="pass">
+    <div class="label">Round ${G.round} · pass the phone to</div><div class="who">${esc(G.names[pi])}</div>
+    <p>Make sure nobody else can see the screen.</p>
+    <button class="go" id="peek">I'm ${esc(G.names[pi])}, show me</button>${chips()}
+    <button class="alt" id="quit" style="border:0;color:var(--muted)">Back to setup</button>
+  </div></div>`;
+  $("peek").onclick=()=>{G.phase="peek";save();buzz(30);render()};
+  $("quit").onclick=()=>{G.phase=null;save();renderSetup()};
+}
+function renderPeek(){
+  const pi=G.order[G.cur], isS=G.spoof.includes(pi), last=G.cur===G.order.length-1;
+  app.innerHTML=`<div class="wrap"><div class="pass">
+    <div class="label">${esc(G.names[pi])}, your card</div>
+    ${isS?`<div class="dossier spoof"><div class="cat">You are</div><div class="word">The Spoofer</div><div>${G.hint?`The category is <b>${esc(G.cat)}</b>. Blend in.`:"You don't know the word. Listen and blend in."}${G.spoof.length>1?"<br>There's more than one Spoofer.":""}</div></div>`
+          :`<div class="dossier"><div class="cat">${esc(G.cat)}</div><div class="word">${esc(G.word)}</div><div>Don't say the word. Find the Spoofer.</div></div>`}
+    <button class="go" id="hide">${last?"Hide it. Everyone's seen it":"Hide it and pass on"}</button>
+  </div></div>`;
+  $("hide").onclick=()=>{G.cur++;G.phase=G.cur>=G.order.length?"talk":"pass";if(G.phase==="talk")G.ends=G.timer?Date.now()+G.timer*1000:0;save();render()};
+}
+function renderTalk(){
+  app.innerHTML=`<div class="wrap">
+    <div><div class="label">Round ${G.round} · everyone's seen their card</div><h2 style="margin-top:8px">${esc(G.names[G.first])} goes first</h2>
+    <p class="lede">Go round the circle. Each person says one word about the secret word. Then talk it out.</p></div>
+    ${G.timer?`<div class="timer" id="t"></div>`:""}
+    <button class="go" id="vote">Time to vote</button>
+    ${G.timer?'<button class="alt" id="add">+1 minute</button>':""}
+  </div>`;
+  const upd=()=>{const left=Math.max(0,Math.round((G.ends-Date.now())/1000));const el=$("t");if(!el)return;el.textContent=`${Math.floor(left/60)}:${String(left%60).padStart(2,"0")}`;el.classList.toggle("low",left<=15);
+    if(left<=10&&left>0)beep(700,.06,"square",.1); if(left===0){clearInterval(tick);beep(200,.6,"sawtooth",.2);buzz([100,60,100])}};
+  if(G.timer){upd();tick=setInterval(upd,1000);$("add").onclick=()=>{G.ends=Math.max(G.ends,Date.now())+60000;save();clearInterval(tick);upd();tick=setInterval(upd,1000)}}
+  $("vote").onclick=()=>{G.phase="vote";vote=null;save();render()};
+}
+function renderVote(){
+  app.innerHTML=`<div class="wrap">
+    <div><div class="label">Vote together</div><h2 style="margin-top:8px">Who's the Spoofer?</h2>
+    <p class="lede">Count to three and everyone points. Tap whoever got the most votes.</p></div>
+    <div class="vote">${G.names.map((n,i)=>`<button data-i="${i}" aria-pressed="${vote===i}">${esc(n)}</button>`).join("")}</div>
+    <button class="go" id="reveal" ${vote===null?"disabled":""}>${vote===null?"Pick a player":"Unmask "+esc(G.names[vote])}</button>
+  </div>`;
+  app.querySelectorAll(".vote button").forEach(b=>b.onclick=()=>{vote=+b.dataset.i;renderVote()});
+  $("reveal").onclick=()=>{G.accused=vote;G.phase="verdict";G.stage="unmask";save();render()};
+}
+function renderVerdict(){
+  const caught=G.spoof.includes(G.accused), sNames=G.spoof.map(i=>G.names[i]).join(" and ");
+  if(G.stage==="unmask"){
+    beep(caught?880:180,.4,caught?"triangle":"sawtooth"); buzz(caught?[50,40,50]:[200]);
+    app.innerHTML=`<div class="wrap"><div class="pass">
+      <div class="label">${esc(G.names[G.accused])} is…</div>
+      <div class="verdict" style="color:${caught?"var(--safe)":"var(--siren)"}">${caught?"The Spoofer!":"Innocent"}</div>
+      ${caught?`<p>${esc(G.names[G.accused])}, you get one guess at the secret word. Say it out loud.</p>
+        <button class="go" id="right">They guessed it</button><button class="alt" id="wrong">They got it wrong</button>`
+        :`<p>The real Spoofer was <b style="color:var(--text)">${esc(sNames)}</b>. The word was <b style="color:var(--text)">${esc(G.word)}</b>.</p><button class="go" id="next">See scores</button>`}
+    </div></div>`;
+    G.stage="done";
+    const score=(who)=>{ if(who==="spoof")G.spoof.forEach(i=>G.scores[i]+=2); else G.names.forEach((_,i)=>{if(!G.spoof.includes(i))G.scores[i]+=1}); save(); };
+    if(caught){$("right").onclick=()=>{score("spoof");G.result=`${esc(G.names[G.accused])} was caught but guessed <b>${esc(G.word)}</b>. Spoofer${G.spoof.length>1?"s":""} +2.`;showScores()};
+               $("wrong").onclick=()=>{score("team");G.result=`Caught! The word was <b>${esc(G.word)}</b>. Everyone else +1.`;showScores()}}
+    else $("next").onclick=()=>{score("spoof");G.result=`${esc(sNames)} got away with it. The word was <b>${esc(G.word)}</b>. Spoofer${G.spoof.length>1?"s":""} +2.`;showScores()};
+    return;
+  }
+  showScores();
+}
+function showScores(){
+  G.phase="verdict"; G.stage="done"; save();
+  const rows=G.names.map((n,i)=>({n,s:G.scores[i]})).sort((a,b)=>b.s-a.s);
+  app.innerHTML=`<div class="wrap">
+    <div><div class="label">Round ${G.round}</div><p style="font-size:18px;margin:8px 0 0">${G.result||""}</p></div>
+    <div class="panel"><span class="label">Scores</span><ul class="scores">${rows.map(r=>`<li><span>${esc(r.n)}</span><span>${r.s}</span></li>`).join("")}</ul></div>
+    <button class="go" id="next">Next round</button>
+    <button class="alt" id="setup">Change players or settings</button>
+  </div>`;
+  $("next").onclick=()=>{beep(1,.01);newRound()};
+  $("setup").onclick=()=>{G.phase=null;save();renderSetup()};
+}
+/* ---------- online play ---------- */
+let room=null, peek=false, otick=null;
+const me_=()=>room&&room.me();
+const oP=(s,id)=>(s.players||[]).find(p=>p.id===id);
+function oRound(s){
+  const ids=PRESETS[s.preset], decks=PACKS.filter(p=>!ids||ids.includes(p.id)); s.used=s.used||[];
+  let deck,word,g=0; do{deck=decks[Math.floor(Math.random()*decks.length)];word=deck.w[Math.floor(Math.random()*deck.w.length)]}while(s.used.includes(word)&&g++<200);
+  s.used.push(word); if(s.used.length>400)s.used=s.used.slice(-200);
+  const n=s.players.length, k=Math.min(s.spoofers,Math.max(1,Math.floor(n/3)));
+  s.round=(s.round||0)+1; s.word=word; s.cat=deck.name; s.spoof=shuffle(s.players.map(p=>p.id)).slice(0,k);
+  s.first=s.players[Math.floor(Math.random()*n)].id; s.phase="talk"; s.ends=s.timer?Date.now()+s.timer*1000:0; s.votes={}; s.accused=null; s.guess=null; s.result=null;
+}
+function oTally(s){
+  const c={}; Object.values(s.votes).forEach(v=>c[v]=(c[v]||0)+1); const max=Math.max(0,...Object.values(c)); const top=Object.keys(c).filter(k=>c[k]===max);
+  s.accused=top.length===1?top[0]:null; s.tie=top.length>1; s.phase="verdict";
+  const caught=s.accused&&s.spoof.includes(s.accused);
+  if(!caught){s.spoof.forEach(id=>{const p=oP(s,id);if(p)p.score+=2});s.result=(s.tie?"It was a tie, so nobody was thrown out. ":"")+"The Spoofer got away with it. Spoofer +2.";s.guess="none"}
+}
+function oScoreGuess(s,ok){ if(ok){s.spoof.forEach(id=>{const p=oP(s,id);if(p)p.score+=2});s.result="Caught, but the Spoofer guessed the word. Spoofer +2."} else {s.players.forEach(p=>{if(!s.spoof.includes(p.id))p.score+=1});s.result="Caught! Everyone else +1."} s.guess=ok?"right":"wrong" }
+const norm=x=>String(x||"").toLowerCase().replace(/^the\s+/,"").replace(/[^a-z0-9]/g,"");
+async function oCreate(name){room=new Online.Room("spoofer");room.on(oRender);await room.create({phase:"lobby",players:[],preset:cfg.preset,spoofers:cfg.spoofers,timer:cfg.timer,hint:cfg.hint,round:0});await room.addMe(name,{score:0});Online.setHash(room.code)}
+async function oJoin(code,name){room=new Online.Room("spoofer");room.on(oRender);await room.join(code);if(!room.me()&&name)await room.addMe(name,{score:0});Online.setHash(room.code);oRender()}
+function oLeave(){if(room){if(room.state&&room.state.phase==="lobby"&&room.me())room.update(s=>{s.players=s.players.filter(p=>p.id!==Online.myId)});room.leave()}room=null;clearInterval(otick);Online.setHash("");renderSetup()}
+function oTop(s){return `<div class="minor" style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><span class="label">Room <b style="color:var(--siren)">${esc(room.code)}</b>${s.round?` · round ${s.round}`:""}</span><span style="display:flex;gap:10px;align-items:center">${Online.videoButtonHTML()}<button class="alt" id="oLeave" style="padding:7px 12px">Leave</button></span></div>`}
+function oWire(){$("oLeave").onclick=oLeave;Online.wireVideoButton(room,()=>me_()?me_().name:"Guest")}
+function oScores(s){return `<ul class="scores">${s.players.slice().sort((a,b)=>b.score-a.score).map(p=>`<li><span>${esc(p.name)}</span><span>${p.score}</span></li>`).join("")}</ul>`}
+function oRender(){
+  if(!room||!room.state)return; clearInterval(otick);
+  const s=room.state, me=me_(), host=room.isHost();
+  if(s.phase==="lobby"){
+    app.innerHTML=`<div class="wrap">${oTop(s)}<header><h1>Spot the <span>Spoofer</span></h1></header>${Online.shareHTML(room)}
+      <div class="panel"><span class="label">Players · ${s.players.length}</span>${Online.playersHTML(room)}</div>
+      ${host?`<div class="panel">
+        <div class="block"><span class="label">Spoofers</span><div class="seg" id="ospf">${[1,2,3].map(v=>`<button data-v="${v}" aria-pressed="${s.spoofers===v}" ${v>1&&s.players.length<v*3?"disabled":""}>${v}</button>`).join("")}</div></div>
+        <div class="block"><span class="label">Talk time</span><div class="seg" id="otmr">${[[0,"Off"],[120,"2 min"],[180,"3 min"],[300,"5 min"]].map(([v,l])=>`<button data-v="${v}" aria-pressed="${s.timer===v}">${l}</button>`).join("")}</div></div>
+        <div class="block"><span class="label">Words from</span><div class="seg" id="opre">${Object.keys(PRESETS).map(k=>`<button data-v="${k}" aria-pressed="${s.preset===k}">${k}</button>`).join("")}</div></div>
+        <div class="toggle"><span>Give the Spoofer a hint<small>The Spoofer sees the category.</small></span><button class="sw" id="ohint" role="switch" aria-checked="${!!s.hint}" aria-label="Hint"></button></div></div>
+        <button class="go" id="ostart" ${s.players.length<3?"disabled":""}>${s.players.length<3?"Waiting for at least 3 players…":"Deal the cards"}</button>`:`<p class="lede" style="text-align:center">Waiting for the host to start…</p>`}</div>`;
+    oWire(); Online.wireShare(room);
+    if(host){[["ospf","spoofers",Number],["otmr","timer",Number],["opre","preset",String]].forEach(([id,k,f])=>app.querySelectorAll(`#${id} button`).forEach(b=>b.onclick=()=>room.update(x=>{x[k]=f(b.dataset.v)})));
+      $("ohint").onclick=()=>room.update(x=>{x.hint=!x.hint});
+      $("ostart").onclick=()=>{beep(1,.01);room.update(x=>{if(x.players.length<3)return false;x.players.forEach(p=>p.score=0);x.round=0;oRound(x)})}}
+    return;
+  }
+  const isS=me&&s.spoof.includes(me.id);
+  const card=!me?`<div class="dossier"><div class="cat">Watching</div><div class="word">Round ${s.round}</div></div>`
+    :peek?(isS?`<div class="dossier spoof"><div class="cat">You are</div><div class="word">The Spoofer</div><div>${s.hint?`The category is <b>${esc(s.cat)}</b>. Blend in.`:"You don't know the word. Blend in."}${s.spoof.length>1?"<br>There's more than one Spoofer.":""}</div></div>`
+      :`<div class="dossier"><div class="cat">${esc(s.cat)}</div><div class="word">${esc(s.word)}</div><div>Don't say the word. Find the Spoofer.</div></div>`)
+    :`<button class="dossier" id="opeek" style="cursor:pointer;border:0"><div class="cat">Your secret card</div><div class="word">Tap to look</div><div>Keep your screen to yourself.</div></button>`;
+  if(s.phase==="talk"){
+    const first=oP(s,s.first);
+    app.innerHTML=`<div class="wrap">${oTop(s)}<div style="display:flex;justify-content:center">${card}</div>
+      ${me&&peek?'<button class="alt" id="ohide">Hide my card</button>':""}
+      <div><div class="label">Round ${s.round}</div><h2 style="margin-top:8px">${esc(first?first.name:"Someone")} goes first</h2><p class="lede">Go round in turn. Everyone says one word about the secret word, then talk it out.</p></div>
+      ${s.timer?'<div class="timer" id="ot"></div>':""}
+      <button class="go" id="ovote">Time to vote</button></div>`;
+    oWire(); if($("opeek"))$("opeek").onclick=()=>{peek=true;buzz(30);oRender()}; if($("ohide"))$("ohide").onclick=()=>{peek=false;oRender()};
+    $("ovote").onclick=()=>room.update(x=>{if(x.phase!=="talk")return false;x.phase="vote"});
+    if(s.timer){const upd=()=>{const left=Math.max(0,Math.round((s.ends-Date.now())/1000)),el=$("ot");if(!el)return;el.textContent=`${Math.floor(left/60)}:${String(left%60).padStart(2,"0")}`;el.classList.toggle("low",left<=15);if(left===0){clearInterval(otick);beep(200,.6,"sawtooth",.2)}};upd();otick=setInterval(upd,1000)}
+    return;
+  }
+  if(s.phase==="vote"){
+    const mine=me&&s.votes[me.id], voted=Object.keys(s.votes).length;
+    app.innerHTML=`<div class="wrap">${oTop(s)}<div><div class="label">${voted} of ${s.players.length} voted</div><h2 style="margin-top:8px">Who's the Spoofer?</h2>
+      <p class="lede">${me?(mine?"Your vote is in. You can change it until everyone has voted.":"Tap who you think is faking."):"Players are voting."}</p></div>
+      <div class="vote">${s.players.map(p=>`<button data-i="${esc(p.id)}" aria-pressed="${mine===p.id}" ${!me||p.id===me.id?"disabled":""}>${esc(p.name)}${s.votes[p.id]?" ✓":""}</button>`).join("")}</div>
+      ${host&&voted>0&&voted<s.players.length?'<button class="alt" id="ocount">Count the votes now</button>':""}
+      <div style="display:flex;justify-content:center">${card}</div></div>`;
+    oWire(); if($("opeek"))$("opeek").onclick=()=>{peek=true;oRender()};
+    app.querySelectorAll(".vote button").forEach(b=>b.onclick=()=>{const t=b.dataset.i;beep(500,.05);room.update(x=>{if(x.phase!=="vote")return false;x.votes[Online.myId]=t;if(Object.keys(x.votes).length>=x.players.length)oTally(x)})});
+    if($("ocount"))$("ocount").onclick=()=>room.update(x=>{if(x.phase!=="vote")return false;oTally(x)});
+    return;
+  }
+  if(s.phase==="verdict"){
+    const acc=oP(s,s.accused), caught=s.accused&&s.spoof.includes(s.accused), sNames=s.spoof.map(id=>(oP(s,id)||{}).name).join(" and ");
+    const tallies=s.players.map(p=>({p,n:Object.values(s.votes).filter(v=>v===p.id).length})).filter(x=>x.n).sort((a,b)=>b.n-a.n);
+    const iAmAccusedSpoof=me&&caught&&s.accused===me.id&&!s.guess;
+    if(oRender.cel!==s.round+":"+(s.guess||"")){oRender.cel=s.round+":"+(s.guess||"");beep(caught?880:180,.4,caught?"triangle":"sawtooth");buzz(caught?[50,40,50]:[200])}
+    app.innerHTML=`<div class="wrap">${oTop(s)}
+      <div style="text-align:center"><div class="label">${acc?esc(acc.name)+" is…":"Votes were tied"}</div>
+      <div class="verdict" style="color:${caught?"var(--safe)":"var(--siren)"};margin-top:8px">${caught?"The Spoofer!":acc?"Innocent":"No one's out"}</div></div>
+      <div class="panel"><span class="label">Votes</span><ul class="scores">${tallies.map(x=>`<li><span>${esc(x.p.name)}</span><span>${x.n}</span></li>`).join("")}</ul></div>
+      ${caught&&!s.guess?(iAmAccusedSpoof?`<div class="panel"><span class="label">One guess to steal the round</span><input class="po-in" id="oguess" maxlength="40" placeholder="Type the secret word" autocomplete="off"><button class="go" id="osend">Submit my guess</button></div>`
+        :`<p class="lede" style="text-align:center">${esc(acc.name)} gets one guess at the word…</p>`):""}
+      ${s.guess?`<div class="panel"><p style="margin:0;font-size:18px">${esc(s.result)}</p><p style="margin:0;color:var(--muted)">The Spoofer was <b style="color:var(--text)">${esc(sNames)}</b>. The word was <b style="color:var(--text)">${esc(s.word)}</b>${s.guessText?`. They guessed “${esc(s.guessText)}”`:""}.</p></div>
+        <div class="panel"><span class="label">Scores</span>${oScores(s)}</div>
+        ${host?'<button class="go" id="onext">Next round</button><button class="alt" id="olobby">Back to the lobby</button>':'<p class="lede" style="text-align:center">Waiting for the host…</p>'}`:""}</div>`;
+    oWire();
+    if($("osend"))$("osend").onclick=()=>{const g=$("oguess").value;if(!g.trim())return;room.update(x=>{if(x.guess)return false;x.guessText=g.trim().slice(0,40);oScoreGuess(x,norm(g)===norm(x.word))})};
+    if($("onext"))$("onext").onclick=()=>{peek=false;room.update(x=>{oRound(x)})};
+    if($("olobby"))$("olobby").onclick=()=>room.update(x=>{x.phase="lobby"});
+  }
+}
+let _lastRound=null;
+const _oRender=oRender; oRender=function(){ if(room&&room.state&&room.state.round!==_lastRound){_lastRound=room.state.round;peek=false} _oRender() };
+function onlineBoot(){
+  if(!Online.ready())return; const h=(location.hash||"").replace("#","").toUpperCase(), saved=Online.lsGet("room_spoofer",null), code=/^[A-Z]{5}$/.test(h)?h:saved; if(!code)return;
+  const r=new Online.Room("spoofer"); r.join(code).then(()=>{if(r.me()){room=r;room.on(oRender);Online.setHash(room.code);oRender()}else{Online.lsSet("room_spoofer",null)}}).catch(()=>Online.lsSet("room_spoofer",null));
+}
+
+if(G&&G.phase==="verdict"&&G.stage==="done")showScores(); else if(G&&G.phase==="talk")render(); else renderSetup();
+onlineBoot();
+</script>
+
+</body>
+</html>
