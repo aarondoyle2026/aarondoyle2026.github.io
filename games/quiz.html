@@ -118,6 +118,39 @@ svg.ch{display:block;width:100%;height:100%;overflow:visible}
 .oteam{display:grid;grid-template-columns:52px 1fr auto;gap:12px;align-items:center;text-align:left;width:100%;padding:10px 12px;border-radius:14px;border:1px solid var(--x-line);background:rgba(255,255,255,.03);color:var(--x-text);font:inherit;cursor:pointer;margin-top:8px}
 .oteam[aria-pressed="true"]{border-color:var(--pc);background:color-mix(in srgb,var(--pc) 16%,transparent)}
 .oteam .av svg{width:52px;height:52px}.oteam b{display:block}.oteam small{color:var(--muted)}.oteam em{font-style:normal;font-weight:800;font-size:13px;color:var(--pc)}
+
+/* board race */
+.bstage{perspective:1000px;display:flex;justify-content:center;padding:4px 0 2px}
+.btilt{width:min(100%,420px);transform:rotateX(26deg);transform-style:preserve-3d;transform-origin:50% 60%}
+.bgrid{position:relative;display:grid;grid-template-columns:repeat(var(--cols),1fr);grid-template-rows:repeat(var(--rows),1fr);gap:5px;padding:8px;border-radius:18px;
+  background:linear-gradient(160deg,#1a2335,#0e141f);box-shadow:0 30px 50px -20px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.08),0 10px 0 #070a10}
+.bsq{aspect-ratio:1;border-radius:10px;background:linear-gradient(160deg,color-mix(in srgb,var(--dc) 88%,#fff 12%),color-mix(in srgb,var(--dc) 70%,#000));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 0 color-mix(in srgb,var(--dc) 45%,#000);display:flex;flex-direction:column;justify-content:space-between;padding:4px 5px;color:#0b0f17;min-width:0;overflow:hidden}
+.bsq b{font:700 12px var(--display);line-height:1}.bsq span{font-size:9px;font-weight:800;line-height:1.05;overflow-wrap:anywhere;opacity:.85}
+.bsq.st,.bsq.fin{--dc:#d6b26e;justify-content:center;align-items:center}.bsq.st b,.bsq.fin b{font-size:11px}
+.bsq.fin{background:repeating-conic-gradient(#e8edf5 0 25%,#1a2335 0 50%) 0 0/14px 14px;box-shadow:0 4px 0 #070a10,0 0 0 2px #d6b26e}.bsq.fin b{background:#d6b26e;padding:3px 5px;border-radius:6px}
+.bsq.tg{outline:3px solid #fff;outline-offset:1px;animation:tgp 1s ease-in-out infinite}
+@keyframes tgp{50%{outline-color:rgba(255,255,255,.3)}}
+.bpcs{position:absolute;inset:8px;pointer-events:none}
+.bpc{position:absolute;width:13%;aspect-ratio:3/4;transform:translate(-50%,-78%) rotateX(-26deg);transform-origin:50% 100%;transition:left .26s ease,top .26s ease;filter:drop-shadow(0 6px 4px rgba(0,0,0,.55));z-index:2}
+.bpc svg{width:100%;height:100%}.bpc.up{z-index:3}
+.bpc.hop{animation:hop .26s ease}
+@keyframes hop{50%{margin-top:-14px}}
+.broll{display:flex;align-items:center;justify-content:center;gap:14px}
+.broll .cat{text-align:left;max-width:30ch}
+.die2{width:52px;height:52px;flex:none;border-radius:12px;background:linear-gradient(145deg,#fdfcf9,#d6d1c6);display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);padding:7px;box-sizing:border-box;box-shadow:0 8px 16px -6px rgba(0,0,0,.7),inset 0 -3px 6px rgba(0,0,0,.15)}
+.die2 i{border-radius:50%;margin:2px}.die2 i.on{background:radial-gradient(circle at 35% 35%,#465069,#0b0f17)}
+.die2.rolling{animation:wob .14s linear infinite}@keyframes wob{50%{transform:rotate(14deg) scale(1.05)}}
+.tprog{width:10px;height:40px;border-radius:6px;background:#1c2638;display:flex;align-items:flex-end;overflow:hidden;justify-self:center}.tprog i{display:block;width:100%;background:var(--pc);border-radius:6px}
+.tscore{font:700 26px var(--display);color:var(--pc);text-align:center;font-variant-numeric:tabular-nums}
+.team{grid-template-columns:44px minmax(0,1fr) 46px}
+/* keep score */
+.scard{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding:26px 18px;border-radius:20px;
+  background:radial-gradient(120% 90% at 50% 0%,color-mix(in srgb,var(--dc) 35%,#141c2b),#0e141f 75%);border:1px solid rgba(255,255,255,.07);box-shadow:0 26px 50px -30px rgba(0,0,0,.95)}
+.scard h2{color:var(--pc);margin:0;font-size:clamp(30px,8vw,44px)}
+.sdeck{display:inline-flex;align-items:center;gap:10px;font:700 20px var(--display);padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.06)}
+.sdeck i{width:14px;height:14px;border-radius:4px;background:var(--dc)}
+body.has-video .btilt{transform:rotateX(18deg)}
 </style>
 </head>
 <body>
@@ -2762,9 +2795,12 @@ const buzz=p=>{try{navigator.vibrate&&navigator.vibrate(p)}catch(e){}};
 const app=$("app");
 const showBack=/github\.io$/.test(location.hostname)||location.protocol==="file:";
 
-let cfg=Object.assign({teams:[{name:"",char:"wizard"},{name:"",char:"robot"}],decks:PRESETS["Classic six"].slice(),mode:"mc",timer:0,level:"mixed"},store.get("cfg",{}));
+let cfg=Object.assign({teams:[{name:"",char:"wizard"},{name:"",char:"robot"}],decks:PRESETS["Classic six"].slice(),mode:"mc",timer:0,level:"mixed",game:"wheel",len:"standard",rounds:10},store.get("cfg",{}));
 cfg.decks=cfg.decks.filter(deckById);
-let G=store.get("game",null), err="", tick=null, spinning=false;
+let G=store.get("game",null), err="", tick=null, spinning=false, rolling=false, animRoll=0, lastPos={};
+const GAMES={wheel:"Spin the wheel",board:"Board race",score:"Keep score"};
+const BOARD_LEN={short:20,standard:30,long:40};
+const deckLimits=()=>cfg.game==="score"?[1,22]:[2,8];
 let save=()=>store.set("game",G);
 const saveCfg=()=>store.set("cfg",cfg);
 
@@ -2773,14 +2809,19 @@ function renderSetup(){
   const n=cfg.decks.length;
   app.innerHTML=`<div class="wrap">
     ${showBack?'<a class="back" href="./">← All games</a>':""}
-    <header><h1>The Big Night <span>Quiz</span></h1><p class="lede">Spin the wheel, answer the question, win the slice. First team to fill their pie wins. Pick the decks that go on the wheel.</p></header>
+    <header><h1>The Big Night <span>Quiz</span></h1><p class="lede">${({wheel:"Spin the wheel, answer the question, win the slice. First team to fill their pie wins.",board:"Roll the die and answer the question on the square you'd land on. Get it right and you move there. First team to the finish wins.",score:"Every team gets the same number of questions. One point for a right answer, two for a harder one. Most points wins."})[cfg.game]}</p></header>
     ${G&&G.phase!=="over"?`<button class="go" id="resume">Resume game</button>`:""}
     <div class="panel"><span class="label">Teams</span>
       ${cfg.teams.map((t,i)=>`<div class="tcard" style="--pc:${COLORS[i]}"><span class="dot"></span><input id="tn${i}" maxlength="16" placeholder="${NAMES[i]} team" value="${esc(t.name)}" aria-label="Team ${i+1} name"><button class="x" data-del="${i}" aria-label="Remove team" ${cfg.teams.length<=2?"hidden":""}>×</button>
         <div class="chars" data-i="${i}">${Object.keys(CHARS).map(id=>`<button data-c="${id}" aria-pressed="${t.char===id}" aria-label="${CHARS[id].name}" title="${CHARS[id].name}">${chSVG(id)}</button>`).join("")}</div></div>`).join("")}
       ${cfg.teams.length<6?'<button class="add" id="addT">+ Add team</button>':""}
     </div>
-    <div class="panel"><span class="label">Decks on the wheel · ${n} picked (2 to 8)</span>
+    <div class="panel"><span class="label">Game type</span>
+      <div class="seg" id="gameSeg">${Object.entries(GAMES).map(([v,l])=>`<button data-v="${v}" aria-pressed="${cfg.game===v}">${l}</button>`).join("")}</div>
+      ${cfg.game==="board"?`<span class="label">Board length</span><div class="seg" id="lenSeg">${[["short","Short · 20"],["standard","Standard · 30"],["long","Long · 40"]].map(([v,l])=>`<button data-v="${v}" aria-pressed="${cfg.len===v}">${l}</button>`).join("")}</div>`:""}
+      ${cfg.game==="score"?`<span class="label">Questions per team</span><div class="seg" id="rndSeg">${[5,10,15,20].map(v=>`<button data-v="${v}" aria-pressed="${cfg.rounds===v}">${v}</button>`).join("")}</div>`:""}
+    </div>
+    <div class="panel"><span class="label">${({wheel:"Decks on the wheel",board:"Decks on the board",score:"Decks in the mix"})[cfg.game]} · ${n} picked (${deckLimits().join(" to ")})</span>
       <div class="presets">${Object.keys(PRESETS).map(k=>`<button data-p="${esc(k)}">${esc(k)}</button>`).join("")}<button data-p="__random">Surprise me</button></div>
       <div class="decks">${DECKS.map(d=>`<button class="deck" data-d="${d.id}" style="--dc:${d.c}" aria-pressed="${cfg.decks.includes(d.id)}"><i></i><span>${esc(d.name)}<small>${d.q.length+(d.h?d.h.length:0)} questions</small></span></button>`).join("")}</div>
     </div>
@@ -2793,7 +2834,7 @@ function renderSetup(){
       <div class="seg" id="timeSeg">${[[0,"Off"],[20,"20s"],[30,"30s"],[45,"45s"]].map(([v,l])=>`<button data-v="${v}" aria-pressed="${cfg.timer===v}">${l}</button>`).join("")}</div>
     </div>
     <p class="err">${esc(err)}</p>
-    <button class="go" id="start" ${n<2||n>8?"disabled":""}>${n<2?"Pick at least 2 decks":n>8?"Pick 8 decks or fewer":"Start game"}</button>
+    <button class="go" id="start" ${n<deckLimits()[0]||n>deckLimits()[1]?"disabled":""}>${n<deckLimits()[0]?`Pick at least ${deckLimits()[0]} deck${deckLimits()[0]>1?"s":""}`:n>deckLimits()[1]?`Pick ${deckLimits()[1]} decks or fewer`:"Start game"}</button>
   </div>`;
   cfg.teams.forEach((t,i)=>$("tn"+i).oninput=e=>{t.name=e.target.value;saveCfg()});
   app.querySelectorAll(".chars").forEach(box=>{const i=+box.dataset.i;box.querySelectorAll("button").forEach(b=>b.onclick=()=>{cfg.teams[i].char=b.dataset.c;saveCfg();box.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)))});
@@ -2805,6 +2846,9 @@ function renderSetup(){
   app.querySelectorAll("#modeSeg button").forEach(b=>b.onclick=()=>{cfg.mode=b.dataset.v;saveCfg();renderSetup()});
   app.querySelectorAll("#lvlSeg button").forEach(b=>b.onclick=()=>{cfg.level=b.dataset.v;saveCfg();renderSetup()});
   app.querySelectorAll("#timeSeg button").forEach(b=>b.onclick=()=>{cfg.timer=+b.dataset.v;saveCfg();renderSetup()});
+  app.querySelectorAll("#gameSeg button").forEach(b=>b.onclick=()=>{cfg.game=b.dataset.v;saveCfg();renderSetup()});
+  app.querySelectorAll("#lenSeg button").forEach(b=>b.onclick=()=>{cfg.len=b.dataset.v;saveCfg();renderSetup()});
+  app.querySelectorAll("#rndSeg button").forEach(b=>b.onclick=()=>{cfg.rounds=+b.dataset.v;saveCfg();renderSetup()});
   if($("resume"))$("resume").onclick=render;
   $("start").onclick=startGame;
 }
@@ -2812,11 +2856,16 @@ function startGame(){
   const names=cfg.teams.map((t,i)=>t.name.trim()||`${NAMES[i]} team`);
   if(new Set(names.map(n=>n.toLowerCase())).size!==names.length){err="Two teams have the same name.";return renderSetup()}
   err=""; beep(1,.01);
-  G={teams:cfg.teams.map((t,i)=>({name:names[i],char:t.char,color:COLORS[i],wedges:[],right:0,asked:0})),decks:cfg.decks.slice(),mode:cfg.mode,timer:cfg.timer,level:cfg.level||"mixed",
-     turn:0,used:{},phase:"spin",cur:null,rot:0,streak:0};
+  const game=cfg.game||"wheel";
+  G={teams:cfg.teams.map((t,i)=>({name:names[i],char:t.char,color:COLORS[i],wedges:[],right:0,asked:0,pos:0,score:0})),decks:cfg.decks.slice(),mode:cfg.mode,timer:cfg.timer,level:cfg.level||"mixed",
+     game,turn:0,used:{},phase:"spin",cur:null,rot:0,streak:0,roll:null,target:null,rounds:cfg.rounds||10};
+  if(game==="board"){const N=BOARD_LEN[cfg.len]||30,sq=["start"];let bag=[];for(let i=1;i<N-1;i++){if(!bag.length)bag=shuffle(G.decks.slice());if(bag[0]===sq[i-1]&&bag.length>1)bag.push(bag.shift());sq.push(bag.shift())}sq.push("finish");G.squares=sq}
+  G.nextDeck=pickDeck(); lastPos={};
   save(); render();
 }
 
+function pickDeck(prev){const d=G.decks;if(d.length===1)return d[0];let k;do{k=d[Math.floor(Math.random()*d.length)]}while(k===prev);return k}
+const GAME=()=>G&&G.game||"wheel";
 /* ---------- pieces ---------- */
 function pieSVG(team){
   const n=G.decks.length, r=20;
@@ -2827,7 +2876,8 @@ function pieSVG(team){
   return out+`<circle r="5" fill="#0b0f17"/><circle r="3.6" fill="#d6b26e"/></svg>`;
 }
 function teamsHTML(){
-  return `<div class="teams">${G.teams.map((t,i)=>`<div class="team${i===G.turn?" up":""}" style="--pc:${t.color}"><span class="av">${chSVG(t.char)}</span><span class="nm">${esc(t.name)}<small>${t.wedges.length} of ${G.decks.length} slices</small></span>${pieSVG(t)}</div>`).join("")}</div>`;
+  const g=GAME(), N=G.squares?G.squares.length-1:0;
+  return `<div class="teams">${G.teams.map((t,i)=>`<div class="team${i===G.turn?" up":""}" style="--pc:${t.color}"><span class="av">${chSVG(t.char)}</span><span class="nm">${esc(t.name)}<small>${g==="wheel"?`${t.wedges.length} of ${G.decks.length} slices`:g==="board"?(t.pos?`Square ${t.pos} of ${N}`:"On the start"):`${Math.min(t.asked,G.rounds)} of ${G.rounds} asked`}</small></span>${g==="wheel"?pieSVG(t):g==="board"?`<span class="tprog"><i style="height:${Math.round(t.pos/N*100)}%"></i></span>`:`<span class="tscore">${t.score||0}</span>`}</div>`).join("")}</div>`;
 }
 function wheelHTML(){
   const n=G.decks.length, seg=360/n;
@@ -2842,6 +2892,8 @@ function render(){
   if(!G)return renderSetup();
   if(G.phase==="over")return renderOver();
   if(G.phase==="question"||G.phase==="result")return renderQuestion();
+  if(GAME()==="board")return renderBoardTurn();
+  if(GAME()==="score")return renderScoreTurn();
   const t=G.teams[G.turn];
   app.innerHTML=`<div class="wrap">
     ${teamsHTML()}
@@ -2894,14 +2946,18 @@ function renderQuestion(){
   }
   let foot="";
   if(done){
-    const won=c.ok&&!c.hadWedge;
-    foot=`<div class="verdict ${c.ok?"good":"bad"}">${c.ok?(won?`Correct! ${esc(d.name)} slice won`:"Correct!"):(c.timeout?"Time's up!":"Not this time")}</div>
-      ${G.winning?`<p class="lede" style="text-align:center">Full pie!</p>`:`<button class="go" id="next">${c.ok&&G.phase!=="over"?`${esc(t.name)} spins again`:"Next team"}</button>`}`;
+    const won=c.ok&&!c.hadWedge, g=GAME(), fin=G.squares&&G.target===G.squares.length-1;
+    const msg=g==="board"?(c.ok?(fin?"Correct! Over the finish line":`Correct! Move to square ${G.target}`):`${c.timeout?"Time's up!":"Not this time."} Stay on ${t.pos?"square "+t.pos:"the start"}`)
+      :g==="score"?(c.ok?`Correct! +${c.pts} point${c.pts>1?"s":""}`:(c.timeout?"Time's up! No points":"Not this time. No points"))
+      :(c.ok?(won?`Correct! ${esc(d.name)} slice won`:"Correct!"):(c.timeout?"Time's up!":"Not this time"));
+    const lastQ=g==="score"&&G.teams.every((x,i)=>x.asked>=G.rounds);
+    foot=`<div class="verdict ${c.ok?"good":"bad"}">${msg}</div>
+      ${G.winning?`<p class="lede" style="text-align:center">${g==="board"?"Winner!":"Full pie!"}</p>`:`<button class="go" id="next">${g==="wheel"&&c.ok&&G.phase!=="over"?`${esc(t.name)} spins again`:lastQ?"See the final scores":"Next team"}</button>`}`;
   }
   app.innerHTML=`<div class="wrap">
     ${teamsHTML()}
     <div class="qcard" style="--dc:${d.c}">
-      <div class="kind"><span>${esc(d.name)}${c.hard?" · Harder":""}</span><span>${esc(t.name)}${has?" · already has this slice":""}</span></div>
+      <div class="kind"><span>${esc(d.name)}${c.hard?" · Harder":""}</span><span>${esc(t.name)}${GAME()==="wheel"&&has?" · already has this slice":GAME()==="board"&&G.target!=null?` · for square ${G.target===G.squares.length-1?"Finish":G.target}`:GAME()==="score"?` · ${c.hard?"2 points":"1 point"}`:""}</span></div>
       ${G.timer&&!done?`<div class="tbar"><div id="tb"></div></div>`:""}
       <div class="q">${esc(c.q)}</div>
       ${body}
@@ -2912,7 +2968,7 @@ function renderQuestion(){
   if($("show"))$("show").onclick=()=>{c.shown=true;save();renderQuestion()};
   if($("gotIt"))$("gotIt").onclick=()=>finish(true);
   if($("missed"))$("missed").onclick=()=>finish(false);
-  if($("next"))$("next").onclick=()=>{ if(G.phase==="over")return render(); if(c.ok){G.phase="spin";G.cur=null;save();render()} else nextTeam() };
+  if($("next"))$("next").onclick=()=>{ if(G.phase==="over")return render(); if(c.ok&&GAME()==="wheel"){G.phase="spin";G.cur=null;save();render()} else nextTeam() };
   if(G.timer&&!done){
     const tb=$("tb"); const upd=()=>{const left=Math.max(0,c.ends-Date.now());tb.style.transform=`scaleX(${left/(G.timer*1000)})`;
       if(left<=5000&&left>0&&Math.round(left/1000)!==upd.l){upd.l=Math.round(left/1000);beep(700,.05,"square",.06)}
@@ -2924,27 +2980,112 @@ function finish(ok){
   clearInterval(tick);
   const t=G.teams[G.turn], c=G.cur; if(G.phase==="result")return;
   c.ok=ok; c.hadWedge=t.wedges.includes(c.deck); G.phase="result";
+  if(GAME()!=="wheel"){
+    if(ok){t.right++; [660,880,1100].forEach((f,i)=>setTimeout(()=>beep(f,.12,"triangle"),i*90)); buzz([30,30,30])} else {beep(220,.35,"sawtooth",.1);buzz(120)}
+    if(GAME()==="score"){ c.pts=ok?(c.hard?2:1):0; t.score=(t.score||0)+c.pts }
+    if(GAME()==="board"&&ok){ c.from=t.pos; t.pos=G.target;
+      if(t.pos>=G.squares.length-1){G.winning=true;save();renderQuestion();setTimeout(()=>{G.phase="over";G.winner=G.turn;G.winning=false;save();render()},1600);return} }
+    save(); renderQuestion(); return }
   if(ok){t.right++; if(!c.hadWedge)t.wedges.push(c.deck);
     [660,880,1100].forEach((f,i)=>setTimeout(()=>beep(f,.12,"triangle"),i*90)); buzz([30,30,30]);
     if(t.wedges.length===G.decks.length){G.phase="result";G.winning=true;save();renderQuestion();setTimeout(()=>{G.phase="over";G.winner=G.turn;G.winning=false;save();render()},1400);return}
   } else {beep(220,.35,"sawtooth",.1);buzz(120)}
   save(); renderQuestion();
 }
-function nextTeam(){G.turn=(G.turn+1)%G.teams.length;G.phase="spin";G.cur=null;save();render()}
+function nextTeam(){G.turn=(G.turn+1)%G.teams.length;G.phase="spin";G.roll=null;G.target=null;G.rollAt=0;
+  const prev=G.cur&&G.cur.deck; G.cur=null; G.nextDeck=pickDeck(prev);
+  if(GAME()==="score"&&G.teams.every(t=>t.asked>=G.rounds)){const best=Math.max(...G.teams.map(t=>t.score||0)),top=G.teams.map((t,i)=>i).filter(i=>(G.teams[i].score||0)===best);G.phase="over";G.winner=top.length===1?top[0]:null;G.tie=top.length>1}
+  save();render()}
 
+
+/* ---------- board race ---------- */
+const PIPS={1:[4],2:[0,8],3:[0,4,8],4:[0,2,6,8],5:[0,2,4,6,8],6:[0,2,3,5,6,8]};
+const dieFace=n=>`<div class="die2" id="die">${Array.from({length:9},(_,i)=>`<i${PIPS[n].includes(i)?' class="on"':""}></i>`).join("")}</div>`;
+function sqDeck(i){const s=G.squares[i];return s==="start"||s==="finish"?null:deckById(s)}
+function boardHTML(){
+  const N=G.squares.length, cols=5, rows=Math.ceil(N/cols);
+  const cell=i=>{const r=Math.floor(i/cols),c=r%2?cols-1-(i%cols):i%cols;return {x:c,y:rows-1-r}};
+  const sq=G.squares.map((id,i)=>{const {x,y}=cell(i),d=sqDeck(i),tg=G.target===i;
+    const cls=id==="start"?"bsq st":id==="finish"?"bsq fin":"bsq";
+    return `<div class="${cls}${tg?" tg":""}" style="grid-column:${x+1};grid-row:${y+1};${d?`--dc:${d.c}`:""}"><b>${id==="start"?"Start":id==="finish"?"Finish":i}</b>${d?`<span>${esc(SHORT[d.id]||d.name)}</span>`:""}</div>`}).join("");
+  const at={};G.teams.forEach((t,i)=>{(at[t.pos]=at[t.pos]||[]).push(i)});
+  const pcs=G.teams.map((t,i)=>{const p=lastPos[i]!=null?lastPos[i]:t.pos,{x,y}=cell(p),grp=at[t.pos]||[i],k=grp.indexOf(i),off=(k-(grp.length-1)/2)*14;
+    const fc=cell(t.pos), fl=`calc(${(fc.x+.5)/cols*100}% + ${(off*2.2/cols).toFixed(2)}%)`, l0=p===t.pos?fl:`${(x+.5)/cols*100}%`;
+    return `<div class="bpc${i===G.turn?" up":""}" id="pc${i}" data-fl="${fl}" style="--pc:${t.color};left:${l0};top:${(y+.5)/rows*100}%">${chSVG(t.char)}</div>`}).join("");
+  return `<div class="bstage"><div class="btilt"><div class="bgrid" style="--cols:${cols};--rows:${rows}">${sq}<div class="bpcs">${pcs}</div></div></div></div>`;
+}
+function hopPieces(){
+  const N=G.squares.length, cols=5, rows=Math.ceil(N/cols);
+  const cell=i=>{const r=Math.floor(i/cols),c=r%2?cols-1-(i%cols):i%cols;return {x:c,y:rows-1-r}};
+  G.teams.forEach((t,i)=>{const from=lastPos[i]; lastPos[i]=t.pos; if(from==null||from===t.pos)return;
+    const el=$("pc"+i); if(!el)return; let p=from; const dir=t.pos>from?1:-1;
+    const step=()=>{ if(!document.body.contains(el))return; p+=dir; const {x,y}=cell(p); el.style.left=p===t.pos?el.dataset.fl:`${(x+.5)/cols*100}%`; el.style.top=`${(y+.5)/rows*100}%`;
+      el.classList.remove("hop"); void el.offsetWidth; el.classList.add("hop"); beep(500+p*12,.06,"triangle",.08);
+      if(p!==t.pos)setTimeout(step,RM?0:280) };
+    setTimeout(step,RM?0:350) });
+}
+function renderBoardTurn(){
+  const t=G.teams[G.turn], last=G.squares.length-1, r=G.roll, tg=G.target;
+  const d=tg!=null?(tg===last?null:sqDeck(tg)):null;
+  const fresh=r&&G.rollAt&&animRoll!==G.rollAt&&Date.now()-G.rollAt<1200;
+  app.innerHTML=`<div class="wrap">
+    ${teamsHTML()}
+    <div style="text-align:center"><div class="label">Up next</div><h2 style="color:${t.color};margin-top:6px">${esc(t.name)}</h2></div>
+    ${boardHTML()}
+    <div class="broll">${dieFace(r||6)}<div class="cat" id="cat" aria-live="polite">${!r?`Roll to see where you could land`:tg===last?`Reach the finish with any deck. Get this right to win!`:`Square ${tg}: <i style="--dc:${d.c}"></i>${esc(d.name)}. Get it right to move there.`}</div></div>
+    ${r?`<button class="go" id="askBtn">Show the question</button>`:`<button class="go" id="spin">Roll the die</button>`}
+    <div class="legend">${G.decks.map(id=>`<span style="--dc:${deckById(id).c}"><i></i>${esc(deckById(id).name)}</span>`).join("")}</div>
+    <div class="minor"><span></span><span><button id="skip">Skip team</button> · <button id="quit">End game</button></span></div>
+  </div>`;
+  hopPieces();
+  if(fresh){ animRoll=G.rollAt; const die=$("die"),cat=$("cat"),btn=$("askBtn"); if(btn)btn.disabled=true; const keep=cat.innerHTML; cat.textContent="…";
+    let k=0; const spinD=()=>{ if(!document.body.contains(die))return; die.innerHTML=dieFace(1+Math.floor(Math.random()*6)).replace(/^<div[^>]*>|<\/div>$/g,""); die.classList.add("rolling"); beep(900,.02,"square",.05);
+      if(++k<(RM?1:10))setTimeout(spinD,70); else { die.innerHTML=dieFace(r).replace(/^<div[^>]*>|<\/div>$/g,""); die.classList.remove("rolling"); cat.innerHTML=keep; beep(660,.12,"triangle"); if(btn&&(!ON||canAct()))btn.disabled=false } };
+    spinD(); }
+  if($("spin"))$("spin").onclick=rollDie;
+  if($("askBtn"))$("askBtn").onclick=()=>{ if(ON&&!canAct())return; if(G.phase!=="spin"||!G.roll)return; ask(G.target===last?G.decks[Math.floor(Math.random()*G.decks.length)]:G.squares[G.target]) };
+  $("skip").onclick=()=>{nextTeam()};
+  $("quit").onclick=()=>{G.phase="over";G.ended=true;save();render()};
+}
+function rollDie(){
+  if(G.roll||(ON&&!canAct()))return; beep(1,.01);
+  const t=G.teams[G.turn], r=1+Math.floor(Math.random()*6);
+  G.roll=r; G.target=Math.min(t.pos+r,G.squares.length-1); G.rollAt=Date.now(); save(); render();
+}
+/* ---------- keep score ---------- */
+function renderScoreTurn(){
+  const t=G.teams[G.turn], d=deckById(G.nextDeck)||deckById(G.decks[0]);
+  app.innerHTML=`<div class="wrap">
+    ${teamsHTML()}
+    <div class="scard" style="--dc:${d.c};--pc:${t.color}">
+      <div class="label">Question ${Math.min(t.asked+1,G.rounds)} of ${G.rounds}</div>
+      <h2>${esc(t.name)}</h2>
+      <div class="sdeck"><i></i>${esc(d.name)}</div>
+      <p class="lede" style="margin:0">One point for a right answer${G.level==="easy"?"":", two if it's a harder one"}.</p>
+    </div>
+    <button class="go" id="spin">Show the question</button>
+    <div class="minor"><span></span><span><button id="skip">Skip team</button> · <button id="quit">End game</button></span></div>
+  </div>`;
+  $("spin").onclick=()=>{ if(ON&&!canAct())return; if(G.phase!=="spin")return; ask(d.id) };
+  $("skip").onclick=()=>{nextTeam()};
+  $("quit").onclick=()=>{G.phase="over";G.ended=true;save();render()};
+}
 /* ---------- winner ---------- */
 function renderOver(){
-  const ranked=G.teams.map((t,i)=>({t,i})).sort((a,b)=>b.t.wedges.length-a.t.wedges.length||b.t.right-a.t.right);
+  const g=GAME(), key=t=>g==="wheel"?t.wedges.length:g==="board"?t.pos:(t.score||0);
+  const ranked=G.teams.map((t,i)=>({t,i})).sort((a,b)=>key(b.t)-key(a.t)||b.t.right-a.t.right);
   const w=G.winner!=null?G.teams[G.winner]:ranked[0].t;
+  const head=G.tie?"It's a tie at the top! Leading on right answers":G.ended&&G.winner==null?"Leading when the game ended":({wheel:"Full pie! The winner is",board:"First over the finish line",score:"Top score! The winner is"})[g];
+  const N=G.squares?G.squares.length-1:0;
   app.innerHTML=`<div class="wrap">
-    <div class="winner" style="--pc:${w.color}"><div class="label">${G.ended&&G.winner==null?"Leading when the game ended":"Full pie! The winner is"}</div><span class="av">${chSVG(w.char)}</span><h1>${esc(w.name)}</h1></div>
-    <div class="panel"><span class="label">Final pies</span><ul class="stand">${ranked.map(({t})=>`<li style="--pc:${t.color}"><span class="mini">${chSVG(t.char)}</span><span>${esc(t.name)}<br><small style="color:var(--muted);font-weight:600">${t.right} right from ${t.asked} questions</small></span><span>${pieSVG(t)}</span><span>${t.wedges.length}/${G.decks.length}</span></li>`).join("")}</ul></div>
-    <button class="go" id="again">Rematch, same teams and decks</button>
+    <div class="winner" style="--pc:${w.color}"><div class="label">${head}</div><span class="av">${chSVG(w.char)}</span><h1>${esc(w.name)}</h1></div>
+    <div class="panel"><span class="label">${({wheel:"Final pies",board:"Final board",score:"Final scores"})[g]}</span><ul class="stand">${ranked.map(({t})=>`<li style="--pc:${t.color}"><span class="mini">${chSVG(t.char)}</span><span>${esc(t.name)}<br><small style="color:var(--muted);font-weight:600">${t.right} right from ${t.asked} questions</small></span><span>${g==="wheel"?pieSVG(t):""}</span><span>${g==="wheel"?`${t.wedges.length}/${G.decks.length}`:g==="board"?(t.pos>=N?"Finished":`Square ${t.pos}`):`${t.score||0} pts`}</span></li>`).join("")}</ul></div>
+    <button class="go" id="again">Rematch, same game and teams</button>
     <button class="alt" id="setup">Change teams or decks</button>
   </div>`;
   $("again").onclick=()=>{G=null;store.set("game",null);startGame()};
   $("setup").onclick=()=>{G=null;store.set("game",null);renderSetup()};
-  if(G.winner!=null&&!RM)confetti();
+  if((G.winner!=null||G.tie)&&!RM)confetti();
   [523,659,784,1047].forEach((f,i)=>setTimeout(()=>beep(f,.3,"triangle"),i*150));
 }
 function confetti(){
@@ -2974,7 +3115,7 @@ function oDecorate(){
   if(!G)return;
   const act=canAct(), judge=canJudge(), host=room.isHost(), t=G.teams[G.turn], names=oPlayersOn(G.turn).map(p=>p.name);
   const off=(sel)=>app.querySelectorAll(sel).forEach(b=>{b.disabled=true;b.classList.add("watching")});
-  if(!act)off("#spin,#skip,.opt,#next");
+  if(!act)off("#spin,#askBtn,#skip,.opt,#next");
   if(!judge)off("#show,#gotIt,#missed");
   if(!host)off("#quit,#again,#setup");
   if(G.phase==="question"&&G.mode==="open"&&!G.cur.shown&&!judge){const b=$("show");if(b){b.textContent="The other teams will check your answer";}}
@@ -3012,7 +3153,7 @@ function oOnlineBox(){ const box=$("onlineBox"); if(!box)return; if(ON){box.inne
     editing=false; const c=clone(cfg); room.update(s=>{s.cfg=c;s.players.forEach(p=>{if(p.team>=c.teams.length)p.team=0})}); return renderLobby() }
   if(ON){ if(!room.isHost())return; cfg=clone(room.state.cfg); G=null; sg(); return }
   sg() }}
-const roomCfg=()=>({teams:cfg.teams.map(t=>({name:t.name,char:t.char})),decks:cfg.decks.slice(),mode:cfg.mode,timer:cfg.timer,level:cfg.level||"mixed"});
+const roomCfg=()=>({teams:cfg.teams.map(t=>({name:t.name,char:t.char})),decks:cfg.decks.slice(),mode:cfg.mode,timer:cfg.timer,level:cfg.level||"mixed",game:cfg.game||"wheel",len:cfg.len||"standard",rounds:cfg.rounds||10});
 function teamFor(s){const c=s.cfg.teams.map((_,i)=>s.players.filter(p=>p.team===i).length);return c.indexOf(Math.min(...c))}
 async function oCreate(name){ room=new Online.Room("quiz"); room.on(oOn); ON=true; await room.create({phase:"lobby",players:[],cfg:roomCfg(),g:null}); await room.addMe(name,{team:0}); Online.setHash(room.code); renderLobby() }
 async function oJoin(code,name){ room=new Online.Room("quiz"); await room.join(code); ON=true; room.on(oOn);
@@ -3032,7 +3173,7 @@ function renderLobby(){
     <div class="panel"><span class="label">Teams</span>
       ${c.teams.map((t,i)=>{const ps=s.players.filter(p=>p.team===i),mine=me&&me.team===i;return `<button class="oteam" data-t="${i}" style="--pc:${COLORS[i]}" aria-pressed="${mine}"><span class="av">${chSVG(t.char)}</span><span><b>${esc(t.name||NAMES[i]+" team")}</b><small>${ps.length?ps.map(p=>esc(p.name)).join(", "):"Nobody yet"}</small></span><em>${mine?"Your team":"Join"}</em></button>`}).join("")}
     </div>
-    <div class="panel"><span class="label">Game</span><p style="margin:0;color:var(--muted)">${c.decks.map(id=>esc(deckById(id).name)).join(" · ")}</p>
+    <div class="panel"><span class="label">Game · ${GAMES[c.game||"wheel"]}${c.game==="board"?` · ${BOARD_LEN[c.len]||30} squares`:c.game==="score"?` · ${c.rounds||10} questions each`:""}</span><p style="margin:0;color:var(--muted)">${c.decks.map(id=>esc(deckById(id).name)).join(" · ")}</p>
       <p style="margin:0;color:var(--muted)">${c.mode==="mc"?"Four options":"Open answer, the other teams check it"} · ${({easy:"Easier",mixed:"Mixed",hard:"Harder"})[c.level||"mixed"]} · ${c.timer?c.timer+"s per question":"No time limit"}</p>
       ${host?'<button class="alt" id="oedit">Change teams or decks</button>':""}</div>
     ${host?`<button class="go" id="ostart">Start the quiz</button>`:`<p class="onote">Waiting for the host to start…</p>`}
