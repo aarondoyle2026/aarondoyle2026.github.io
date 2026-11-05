@@ -132,7 +132,7 @@ svg.ch{display:block;width:100%;height:100%;overflow:visible}
 .bsq.tg{outline:3px solid #fff;outline-offset:1px;animation:tgp 1s ease-in-out infinite}
 @keyframes tgp{50%{outline-color:rgba(255,255,255,.3)}}
 .bpcs{position:absolute;inset:8px;pointer-events:none}
-.bpc{position:absolute;width:13%;aspect-ratio:3/4;transform:translate(-50%,-78%) rotateX(-26deg);transform-origin:50% 100%;transition:left .26s ease,top .26s ease;filter:drop-shadow(0 6px 4px rgba(0,0,0,.55));z-index:2}
+.bpc{position:absolute;width:var(--pw,13%);aspect-ratio:3/4;transform:translate(-50%,-78%) rotateX(-26deg);transform-origin:50% 100%;transition:left .26s ease,top .26s ease;filter:drop-shadow(0 6px 4px rgba(0,0,0,.55));z-index:2}
 .bpc svg{width:100%;height:100%}.bpc.up{z-index:3}
 .bpc.hop{animation:hop .26s ease}
 @keyframes hop{50%{margin-top:-14px}}
@@ -151,6 +151,14 @@ svg.ch{display:block;width:100%;height:100%;overflow:visible}
 .sdeck{display:inline-flex;align-items:center;gap:10px;font:700 20px var(--display);padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.06)}
 .sdeck i{width:14px;height:14px;border-radius:4px;background:var(--dc)}
 body.has-video .btilt{transform:rotateX(18deg)}
+.bsq.star{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 0 color-mix(in srgb,var(--dc) 45%,#000),0 0 0 2px #d6b26e}
+.bsq em{font-style:normal;color:#fff;text-shadow:0 0 6px #d6b26e,0 1px 2px #000}
+.cat.starq b{color:#d6b26e}
+.bsq b{font-size:13px}.bsq span{font-size:10px}
+.bwheel{display:flex;flex-direction:column;gap:16px}.bwheel .tilt{width:min(62vw,250px)}
+.bnote{margin:0;text-align:center;color:var(--muted);font-weight:700}.bnote.starq b{color:#d6b26e}
+.bsq .sst{font-size:18px;color:#fff;text-shadow:0 0 8px #fff8,0 1px 2px #000;align-self:center}
+.bsq{color:#0b0f17}
 </style>
 </head>
 <body>
@@ -2795,11 +2803,14 @@ const buzz=p=>{try{navigator.vibrate&&navigator.vibrate(p)}catch(e){}};
 const app=$("app");
 const showBack=/github\.io$/.test(location.hostname)||location.protocol==="file:";
 
-let cfg=Object.assign({teams:[{name:"",char:"wizard"},{name:"",char:"robot"}],decks:PRESETS["Classic six"].slice(),mode:"mc",timer:0,level:"mixed",game:"wheel",len:"standard",rounds:10},store.get("cfg",{}));
+let cfg=Object.assign({teams:[{name:"",char:"wizard"},{name:"",char:"robot"}],decks:PRESETS["Classic six"].slice(),mode:"mc",timer:0,level:"mixed",game:"wheel",len:"standard",rounds:3,theme:"deck"},store.get("cfg",{}));
+if(!(cfg.rounds>=1&&cfg.rounds<=4))cfg.rounds=3;
 cfg.decks=cfg.decks.filter(deckById);
 let G=store.get("game",null), err="", tick=null, spinning=false, rolling=false, animRoll=0, lastPos={};
 const GAMES={wheel:"Spin the wheel",board:"Board race",score:"Keep score"};
-const BOARD_LEN={short:20,standard:30,long:40};
+const BOARD_LEN={short:12,standard:18,long:24};
+const PER_ROUND=5;
+const isStar=i=>G.squares&&i>0&&i<G.squares.length-1&&i%5===0;
 const deckLimits=()=>cfg.game==="score"?[1,22]:[2,8];
 let save=()=>store.set("game",G);
 const saveCfg=()=>store.set("cfg",cfg);
@@ -2809,7 +2820,7 @@ function renderSetup(){
   const n=cfg.decks.length;
   app.innerHTML=`<div class="wrap">
     ${showBack?'<a class="back" href="./">← All games</a>':""}
-    <header><h1>The Big Night <span>Quiz</span></h1><p class="lede">${({wheel:"Spin the wheel, answer the question, win the slice. First team to fill their pie wins.",board:"Roll the die and answer the question on the square you'd land on. Get it right and you move there. First team to the finish wins.",score:"Every team gets the same number of questions. One point for a right answer, two for a harder one. Most points wins."})[cfg.game]}</p></header>
+    <header><h1>The Big Night <span>Quiz</span></h1><p class="lede">${({wheel:"Spin the wheel, answer the question, win the slice. First team to fill their pie wins.",board:"Answer a question from the next square's deck. Get it right and move one square. Star squares ask a harder one for a jump of two. First team to the finish wins.",score:"Rounds of five questions per team. One point for a right answer, two for a harder one. Scores after every round, most points at the end wins."})[cfg.game]}</p></header>
     ${G&&G.phase!=="over"?`<button class="go" id="resume">Resume game</button>`:""}
     <div class="panel"><span class="label">Teams</span>
       ${cfg.teams.map((t,i)=>`<div class="tcard" style="--pc:${COLORS[i]}"><span class="dot"></span><input id="tn${i}" maxlength="16" placeholder="${NAMES[i]} team" value="${esc(t.name)}" aria-label="Team ${i+1} name"><button class="x" data-del="${i}" aria-label="Remove team" ${cfg.teams.length<=2?"hidden":""}>×</button>
@@ -2818,8 +2829,9 @@ function renderSetup(){
     </div>
     <div class="panel"><span class="label">Game type</span>
       <div class="seg" id="gameSeg">${Object.entries(GAMES).map(([v,l])=>`<button data-v="${v}" aria-pressed="${cfg.game===v}">${l}</button>`).join("")}</div>
-      ${cfg.game==="board"?`<span class="label">Board length</span><div class="seg" id="lenSeg">${[["short","Short · 20"],["standard","Standard · 30"],["long","Long · 40"]].map(([v,l])=>`<button data-v="${v}" aria-pressed="${cfg.len===v}">${l}</button>`).join("")}</div>`:""}
-      ${cfg.game==="score"?`<span class="label">Questions per team</span><div class="seg" id="rndSeg">${[5,10,15,20].map(v=>`<button data-v="${v}" aria-pressed="${cfg.rounds===v}">${v}</button>`).join("")}</div>`:""}
+      ${cfg.game==="board"?`<span class="label">Board length</span><div class="seg" id="lenSeg">${[["short","Short · 12"],["standard","Standard · 18"],["long","Long · 24"]].map(([v,l])=>`<button data-v="${v}" aria-pressed="${cfg.len===v}">${l}</button>`).join("")}</div>`:""}
+      ${cfg.game==="score"?`<span class="label">Rounds of 5 questions</span><div class="seg" id="rndSeg">${[1,2,3,4].map(v=>`<button data-v="${v}" aria-pressed="${cfg.rounds===v}">${v} round${v>1?"s":""}</button>`).join("")}</div>
+        <span class="label">Round topics</span><div class="seg" id="thmSeg"><button data-v="deck" aria-pressed="${cfg.theme!=="mix"}">One deck per round</button><button data-v="mix" aria-pressed="${cfg.theme==="mix"}">Mixed</button></div>`:""}
     </div>
     <div class="panel"><span class="label">${({wheel:"Decks on the wheel",board:"Decks on the board",score:"Decks in the mix"})[cfg.game]} · ${n} picked (${deckLimits().join(" to ")})</span>
       <div class="presets">${Object.keys(PRESETS).map(k=>`<button data-p="${esc(k)}">${esc(k)}</button>`).join("")}<button data-p="__random">Surprise me</button></div>
@@ -2849,6 +2861,7 @@ function renderSetup(){
   app.querySelectorAll("#gameSeg button").forEach(b=>b.onclick=()=>{cfg.game=b.dataset.v;saveCfg();renderSetup()});
   app.querySelectorAll("#lenSeg button").forEach(b=>b.onclick=()=>{cfg.len=b.dataset.v;saveCfg();renderSetup()});
   app.querySelectorAll("#rndSeg button").forEach(b=>b.onclick=()=>{cfg.rounds=+b.dataset.v;saveCfg();renderSetup()});
+  app.querySelectorAll("#thmSeg button").forEach(b=>b.onclick=()=>{cfg.theme=b.dataset.v;saveCfg();renderSetup()});
   if($("resume"))$("resume").onclick=render;
   $("start").onclick=startGame;
 }
@@ -2858,7 +2871,8 @@ function startGame(){
   err=""; beep(1,.01);
   const game=cfg.game||"wheel";
   G={teams:cfg.teams.map((t,i)=>({name:names[i],char:t.char,color:COLORS[i],wedges:[],right:0,asked:0,pos:0,score:0})),decks:cfg.decks.slice(),mode:cfg.mode,timer:cfg.timer,level:cfg.level||"mixed",
-     game,turn:0,used:{},phase:"spin",cur:null,rot:0,streak:0,roll:null,target:null,rounds:cfg.rounds||10};
+     game,turn:0,used:{},phase:"spin",cur:null,rot:0,streak:0,roll:null,target:null,nRounds:cfg.rounds||3,rounds:(cfg.rounds||3)*PER_ROUND,roundNo:1,theme:cfg.theme||"deck"};
+  if(game==="score"){G.needTopic=G.theme!=="mix";G.roundDeck=null}
   if(game==="board"){const N=BOARD_LEN[cfg.len]||30,sq=["start"];let bag=[];for(let i=1;i<N-1;i++){if(!bag.length)bag=shuffle(G.decks.slice());if(bag[0]===sq[i-1]&&bag.length>1)bag.push(bag.shift());sq.push(bag.shift())}sq.push("finish");G.squares=sq}
   G.nextDeck=pickDeck(); lastPos={};
   save(); render();
@@ -2877,7 +2891,7 @@ function pieSVG(team){
 }
 function teamsHTML(){
   const g=GAME(), N=G.squares?G.squares.length-1:0;
-  return `<div class="teams">${G.teams.map((t,i)=>`<div class="team${i===G.turn?" up":""}" style="--pc:${t.color}"><span class="av">${chSVG(t.char)}</span><span class="nm">${esc(t.name)}<small>${g==="wheel"?`${t.wedges.length} of ${G.decks.length} slices`:g==="board"?(t.pos?`Square ${t.pos} of ${N}`:"On the start"):`${Math.min(t.asked,G.rounds)} of ${G.rounds} asked`}</small></span>${g==="wheel"?pieSVG(t):g==="board"?`<span class="tprog"><i style="height:${Math.round(t.pos/N*100)}%"></i></span>`:`<span class="tscore">${t.score||0}</span>`}</div>`).join("")}</div>`;
+  return `<div class="teams">${G.teams.map((t,i)=>`<div class="team${i===G.turn?" up":""}" style="--pc:${t.color}"><span class="av">${chSVG(t.char)}</span><span class="nm">${esc(t.name)}<small>${g==="wheel"?`${t.wedges.length} of ${G.decks.length} slices`:g==="board"?(t.pos?`Square ${t.pos} of ${N}`:"On the start"):`Round ${G.roundNo||1} · ${Math.min(Math.max(0,t.asked-((G.roundNo||1)-1)*PER_ROUND),PER_ROUND)} of ${PER_ROUND}`}</small></span>${g==="wheel"?pieSVG(t):g==="board"?`<span class="tprog"><i style="height:${Math.round(t.pos/N*100)}%"></i></span>`:`<span class="tscore">${t.score||0}</span>`}</div>`).join("")}</div>`;
 }
 function wheelHTML(){
   const n=G.decks.length, seg=360/n;
@@ -2893,6 +2907,7 @@ function render(){
   if(G.phase==="over")return renderOver();
   if(G.phase==="question"||G.phase==="result")return renderQuestion();
   if(GAME()==="board")return renderBoardTurn();
+  if(G.phase==="roundEnd")return renderRoundEnd();
   if(GAME()==="score")return renderScoreTurn();
   const t=G.teams[G.turn];
   app.innerHTML=`<div class="wrap">
@@ -2920,12 +2935,19 @@ function spin(){
   setTimeout(()=>{
     spinning=false; if(!$("cat")||G.phase!=="spin")return; const d=deckById(G.decks[k]);
     $("cat").innerHTML=`<i style="--dc:${d.c}"></i>${esc(d.name)}`; beep(660,.12,"triangle");buzz(30);
-    setTimeout(()=>ask(d.id),RM?0:700);
+    setTimeout(()=>spinDone(d.id),RM?0:700);
   },RM?50:4300);
 }
-function ask(deckId){
+function spinDone(id){
+  if(G.phase!=="spin")return; const g=GAME();
+  if(g==="board"){const t=G.teams[G.turn],last=G.squares.length-1,nx=Math.min(t.pos+1,last),star=isStar(nx);G.star=star;G.target=Math.min(t.pos+(star?2:1),last);return ask(id,star)}
+  if(g==="score"&&G.needTopic){G.needTopic=false;G.roundDeck=id;G.nextDeck=id;save();return render()}
+  ask(id)
+}
+const wheelBlock=(msg,btn)=>`${wheelHTML()}<div class="cat" id="cat" aria-live="polite">${msg}</div><button class="go" id="spin">${btn}</button>`;
+function ask(deckId,forceHard){
   const d=deckById(deckId), lv=G.level||"mixed", hard=d.h||[];
-  const src=lv==="easy"?d.q:lv==="hard"?(hard.length?hard:d.q):d.q.concat(hard);
+  const src=forceHard&&hard.length?hard:lv==="easy"?d.q:lv==="hard"?(hard.length?hard:d.q):d.q.concat(hard);
   G.used[deckId]=(G.used[deckId]||[]).filter(x=>typeof x==="string");
   let pool=src.filter(l=>!G.used[deckId].includes(l.split("|")[0]));
   if(!pool.length){G.used[deckId]=[];pool=src}
@@ -2947,17 +2969,17 @@ function renderQuestion(){
   let foot="";
   if(done){
     const won=c.ok&&!c.hadWedge, g=GAME(), fin=G.squares&&G.target===G.squares.length-1;
-    const msg=g==="board"?(c.ok?(fin?"Correct! Over the finish line":`Correct! Move to square ${G.target}`):`${c.timeout?"Time's up!":"Not this time."} Stay on ${t.pos?"square "+t.pos:"the start"}`)
+    const msg=g==="board"?(c.ok?(fin?"Correct! Over the finish line":G.star?`Star answer! Jump 2 to square ${G.target}`:`Correct! Move to square ${G.target}`):`${c.timeout?"Time's up!":"Not this time."} Stay on ${t.pos?"square "+t.pos:"the start"}`)
       :g==="score"?(c.ok?`Correct! +${c.pts} point${c.pts>1?"s":""}`:(c.timeout?"Time's up! No points":"Not this time. No points"))
       :(c.ok?(won?`Correct! ${esc(d.name)} slice won`:"Correct!"):(c.timeout?"Time's up!":"Not this time"));
-    const lastQ=g==="score"&&G.teams.every((x,i)=>x.asked>=G.rounds);
+    const lastQ=g==="score"&&G.teams.every((x,i)=>x.asked>=G.rounds), roundDone=g==="score"&&!lastQ&&G.teams.every(x=>x.asked>=(G.roundNo||1)*PER_ROUND);
     foot=`<div class="verdict ${c.ok?"good":"bad"}">${msg}</div>
-      ${G.winning?`<p class="lede" style="text-align:center">${g==="board"?"Winner!":"Full pie!"}</p>`:`<button class="go" id="next">${g==="wheel"&&c.ok&&G.phase!=="over"?`${esc(t.name)} spins again`:lastQ?"See the final scores":"Next team"}</button>`}`;
+      ${G.winning?`<p class="lede" style="text-align:center">${g==="board"?"Winner!":"Full pie!"}</p>`:`<button class="go" id="next">${g==="wheel"&&c.ok&&G.phase!=="over"?`${esc(t.name)} spins again`:lastQ?"See the final scores":roundDone?`See the scores after round ${G.roundNo}`:"Next team"}</button>`}`;
   }
   app.innerHTML=`<div class="wrap">
     ${teamsHTML()}
     <div class="qcard" style="--dc:${d.c}">
-      <div class="kind"><span>${esc(d.name)}${c.hard?" · Harder":""}</span><span>${esc(t.name)}${GAME()==="wheel"&&has?" · already has this slice":GAME()==="board"&&G.target!=null?` · for square ${G.target===G.squares.length-1?"Finish":G.target}`:GAME()==="score"?` · ${c.hard?"2 points":"1 point"}`:""}</span></div>
+      <div class="kind"><span>${esc(d.name)}${c.hard?" · Harder":""}</span><span>${esc(t.name)}${GAME()==="wheel"&&has?" · already has this slice":GAME()==="board"&&G.target!=null?` · ${G.star?"★ Star · ":""}for square ${G.target===G.squares.length-1?"Finish":G.target}`:GAME()==="score"?` · ${c.hard?"2 points":"1 point"}`:""}</span></div>
       ${G.timer&&!done?`<div class="tbar"><div id="tb"></div></div>`:""}
       <div class="q">${esc(c.q)}</div>
       ${body}
@@ -2992,75 +3014,76 @@ function finish(ok){
   } else {beep(220,.35,"sawtooth",.1);buzz(120)}
   save(); renderQuestion();
 }
-function nextTeam(){G.turn=(G.turn+1)%G.teams.length;G.phase="spin";G.roll=null;G.target=null;G.rollAt=0;
+function nextTeam(){G.turn=(G.turn+1)%G.teams.length;G.phase="spin";G.roll=null;G.target=null;G.rollAt=0;G.star=false;
   const prev=G.cur&&G.cur.deck; G.cur=null; G.nextDeck=pickDeck(prev);
-  if(GAME()==="score"&&G.teams.every(t=>t.asked>=G.rounds)){const best=Math.max(...G.teams.map(t=>t.score||0)),top=G.teams.map((t,i)=>i).filter(i=>(G.teams[i].score||0)===best);G.phase="over";G.winner=top.length===1?top[0]:null;G.tie=top.length>1}
+  if(GAME()==="score"){
+    if(G.teams.every(t=>t.asked>=G.rounds)){const best=Math.max(...G.teams.map(t=>t.score||0)),top=G.teams.map((t,i)=>i).filter(i=>(G.teams[i].score||0)===best);G.phase="over";G.winner=top.length===1?top[0]:null;G.tie=top.length>1}
+    else { const cap=(G.roundNo||1)*PER_ROUND;
+      if(G.teams.every(t=>t.asked>=cap)){G.phase="roundEnd";G.turn=0}
+      else { let k=0; while(G.teams[G.turn].asked>=cap&&k++<G.teams.length)G.turn=(G.turn+1)%G.teams.length }
+      if(G.theme!=="mix"&&G.roundDeck)G.nextDeck=G.roundDeck }
+  }
   save();render()}
 
 
 /* ---------- board race ---------- */
-const PIPS={1:[4],2:[0,8],3:[0,4,8],4:[0,2,6,8],5:[0,2,4,6,8],6:[0,2,3,5,6,8]};
-const dieFace=n=>`<div class="die2" id="die">${Array.from({length:9},(_,i)=>`<i${PIPS[n].includes(i)?' class="on"':""}></i>`).join("")}</div>`;
 function sqDeck(i){const s=G.squares[i];return s==="start"||s==="finish"?null:deckById(s)}
 function boardHTML(){
-  const N=G.squares.length, cols=5, rows=Math.ceil(N/cols);
+  const N=G.squares.length, cols=G.squares.length<=12?4:G.squares.length<=18?5:6, rows=Math.ceil(N/cols);
   const cell=i=>{const r=Math.floor(i/cols),c=r%2?cols-1-(i%cols):i%cols;return {x:c,y:rows-1-r}};
-  const sq=G.squares.map((id,i)=>{const {x,y}=cell(i),d=sqDeck(i),tg=G.target===i;
+  const t0=G.teams[G.turn], nxt=G.phase==="spin"?Math.min(t0.pos+1,N-1):G.target;
+  const sq=G.squares.map((id,i)=>{const {x,y}=cell(i),d=sqDeck(i),tg=nxt===i,st=isStar(i);
     const cls=id==="start"?"bsq st":id==="finish"?"bsq fin":"bsq";
-    return `<div class="${cls}${tg?" tg":""}" style="grid-column:${x+1};grid-row:${y+1};${d?`--dc:${d.c}`:""}"><b>${id==="start"?"Start":id==="finish"?"Finish":i}</b>${d?`<span>${esc(SHORT[d.id]||d.name)}</span>`:""}</div>`}).join("");
+    return `<div class="${cls}${tg?" tg":""}${st?" star":""}" style="grid-column:${x+1};grid-row:${y+1};--dc:${st?"#d6b26e":i%2?"#5b6b8c":"#71819f"}"><b>${id==="start"?"Start":id==="finish"?"Finish":i}</b>${st?'<span class="sst">★</span>':""}</div>`}).join("");
   const at={};G.teams.forEach((t,i)=>{(at[t.pos]=at[t.pos]||[]).push(i)});
   const pcs=G.teams.map((t,i)=>{const p=lastPos[i]!=null?lastPos[i]:t.pos,{x,y}=cell(p),grp=at[t.pos]||[i],k=grp.indexOf(i),off=(k-(grp.length-1)/2)*14;
     const fc=cell(t.pos), fl=`calc(${(fc.x+.5)/cols*100}% + ${(off*2.2/cols).toFixed(2)}%)`, l0=p===t.pos?fl:`${(x+.5)/cols*100}%`;
-    return `<div class="bpc${i===G.turn?" up":""}" id="pc${i}" data-fl="${fl}" style="--pc:${t.color};left:${l0};top:${(y+.5)/rows*100}%">${chSVG(t.char)}</div>`}).join("");
-  return `<div class="bstage"><div class="btilt"><div class="bgrid" style="--cols:${cols};--rows:${rows}">${sq}<div class="bpcs">${pcs}</div></div></div></div>`;
+    return `<div class="bpc${i===G.turn?" up":""}" id="pc${i}" data-fl="${fl}" style="--pc:${t.color};--pw:${(62/cols).toFixed(1)}%;left:${l0};top:${(y+.5)/rows*100}%">${chSVG(t.char)}</div>`}).join("");
+  return `<div class="bstage"><div class="btilt"><div class="bgrid" data-cols="${cols}" style="--cols:${cols};--rows:${rows}">${sq}<div class="bpcs">${pcs}</div></div></div></div>`;
 }
 function hopPieces(){
-  const N=G.squares.length, cols=5, rows=Math.ceil(N/cols);
+  const g=document.querySelector(".bgrid"); if(!g)return; const N=G.squares.length, cols=+g.dataset.cols, rows=Math.ceil(N/cols);
   const cell=i=>{const r=Math.floor(i/cols),c=r%2?cols-1-(i%cols):i%cols;return {x:c,y:rows-1-r}};
   G.teams.forEach((t,i)=>{const from=lastPos[i]; lastPos[i]=t.pos; if(from==null||from===t.pos)return;
     const el=$("pc"+i); if(!el)return; let p=from; const dir=t.pos>from?1:-1;
     const step=()=>{ if(!document.body.contains(el))return; p+=dir; const {x,y}=cell(p); el.style.left=p===t.pos?el.dataset.fl:`${(x+.5)/cols*100}%`; el.style.top=`${(y+.5)/rows*100}%`;
-      el.classList.remove("hop"); void el.offsetWidth; el.classList.add("hop"); beep(500+p*12,.06,"triangle",.08);
-      if(p!==t.pos)setTimeout(step,RM?0:280) };
+      el.classList.remove("hop"); void el.offsetWidth; el.classList.add("hop"); beep(500+p*15,.06,"triangle",.08);
+      if(p!==t.pos)setTimeout(step,RM?0:300) };
     setTimeout(step,RM?0:350) });
 }
 function renderBoardTurn(){
-  const t=G.teams[G.turn], last=G.squares.length-1, r=G.roll, tg=G.target;
-  const d=tg!=null?(tg===last?null:sqDeck(tg)):null;
-  const fresh=r&&G.rollAt&&animRoll!==G.rollAt&&Date.now()-G.rollAt<1200;
+  const t=G.teams[G.turn], last=G.squares.length-1, nx=Math.min(t.pos+1,last), star=isStar(nx), fin=nx===last;
   app.innerHTML=`<div class="wrap">
     ${teamsHTML()}
     <div style="text-align:center"><div class="label">Up next</div><h2 style="color:${t.color};margin-top:6px">${esc(t.name)}</h2></div>
     ${boardHTML()}
-    <div class="broll">${dieFace(r||6)}<div class="cat" id="cat" aria-live="polite">${!r?`Roll to see where you could land`:tg===last?`Reach the finish with any deck. Get this right to win!`:`Square ${tg}: <i style="--dc:${d.c}"></i>${esc(d.name)}. Get it right to move there.`}</div></div>
-    ${r?`<button class="go" id="askBtn">Show the question</button>`:`<button class="go" id="spin">Roll the die</button>`}
-    <div class="legend">${G.decks.map(id=>`<span style="--dc:${deckById(id).c}"><i></i>${esc(deckById(id).name)}</span>`).join("")}</div>
+    <p class="bnote ${star?"starq":""}">${fin?"Final question! Get it right to cross the finish line.":star?"<b>★ Star square next.</b> You'll get a harder question: get it right to jump 2.":`Get it right to move to square ${nx}.`}</p>
+    <div class="bwheel">${wheelBlock("Spin to pick your category","Spin the wheel")}</div>
+    <div class="legend">${G.decks.map(id=>`<span style="--dc:${deckById(id).c}"><i></i>${esc(deckById(id).name)}</span>`).join("")}<span><i style="background:none;color:#d6b26e;width:auto">★</i>Star: jump 2</span></div>
     <div class="minor"><span></span><span><button id="skip">Skip team</button> · <button id="quit">End game</button></span></div>
   </div>`;
   hopPieces();
-  if(fresh){ animRoll=G.rollAt; const die=$("die"),cat=$("cat"),btn=$("askBtn"); if(btn)btn.disabled=true; const keep=cat.innerHTML; cat.textContent="…";
-    let k=0; const spinD=()=>{ if(!document.body.contains(die))return; die.innerHTML=dieFace(1+Math.floor(Math.random()*6)).replace(/^<div[^>]*>|<\/div>$/g,""); die.classList.add("rolling"); beep(900,.02,"square",.05);
-      if(++k<(RM?1:10))setTimeout(spinD,70); else { die.innerHTML=dieFace(r).replace(/^<div[^>]*>|<\/div>$/g,""); die.classList.remove("rolling"); cat.innerHTML=keep; beep(660,.12,"triangle"); if(btn&&(!ON||canAct()))btn.disabled=false } };
-    spinD(); }
-  if($("spin"))$("spin").onclick=rollDie;
-  if($("askBtn"))$("askBtn").onclick=()=>{ if(ON&&!canAct())return; if(G.phase!=="spin"||!G.roll)return; ask(G.target===last?G.decks[Math.floor(Math.random()*G.decks.length)]:G.squares[G.target]) };
+  $("spin").onclick=spin;
   $("skip").onclick=()=>{nextTeam()};
   $("quit").onclick=()=>{G.phase="over";G.ended=true;save();render()};
 }
-function rollDie(){
-  if(G.roll||(ON&&!canAct()))return; beep(1,.01);
-  const t=G.teams[G.turn], r=1+Math.floor(Math.random()*6);
-  G.roll=r; G.target=Math.min(t.pos+r,G.squares.length-1); G.rollAt=Date.now(); save(); render();
-}
 /* ---------- keep score ---------- */
 function renderScoreTurn(){
-  const t=G.teams[G.turn], d=deckById(G.nextDeck)||deckById(G.decks[0]);
+  const t=G.teams[G.turn], d=deckById(G.nextDeck)||deckById(G.decks[0]), rn=G.roundNo||1, qn=Math.min(t.asked-(rn-1)*PER_ROUND+1,PER_ROUND);
+  if(G.needTopic||G.theme==="mix"){
+    app.innerHTML=`<div class="wrap">
+      ${teamsHTML()}
+      <div style="text-align:center"><div class="label">${G.needTopic?`Round ${rn} of ${G.nRounds}`:`Round ${rn} of ${G.nRounds} · Question ${qn} of ${PER_ROUND}`}</div><h2 style="color:${t.color};margin-top:6px">${G.needTopic?"Spin for the round topic":esc(t.name)}</h2></div>
+      ${wheelBlock(G.needTopic?"Every team's next 5 questions come from this deck":"Spin to pick your category",G.needTopic?"Spin for the topic":"Spin the wheel")}
+      <div class="minor"><span></span><span><button id="skip">Skip team</button> · <button id="quit">End game</button></span></div>
+    </div>`;
+    $("spin").onclick=spin; $("skip").onclick=()=>{nextTeam()}; $("quit").onclick=()=>{G.phase="over";G.ended=true;save();render()}; if(G.needTopic)$("skip").parentNode.innerHTML='<button id="quit2">End game</button>',$("quit2").onclick=()=>{G.phase="over";G.ended=true;save();render()}; return }
   app.innerHTML=`<div class="wrap">
     ${teamsHTML()}
     <div class="scard" style="--dc:${d.c};--pc:${t.color}">
-      <div class="label">Question ${Math.min(t.asked+1,G.rounds)} of ${G.rounds}</div>
+      <div class="label">Round ${rn} of ${G.nRounds} · Question ${qn} of ${PER_ROUND}</div>
       <h2>${esc(t.name)}</h2>
-      <div class="sdeck"><i></i>${esc(d.name)}</div>
+      <div class="sdeck"><i></i>Round topic: ${esc(d.name)}</div>
       <p class="lede" style="margin:0">One point for a right answer${G.level==="easy"?"":", two if it's a harder one"}.</p>
     </div>
     <button class="go" id="spin">Show the question</button>
@@ -3068,6 +3091,18 @@ function renderScoreTurn(){
   </div>`;
   $("spin").onclick=()=>{ if(ON&&!canAct())return; if(G.phase!=="spin")return; ask(d.id) };
   $("skip").onclick=()=>{nextTeam()};
+  $("quit").onclick=()=>{G.phase="over";G.ended=true;save();render()};
+}
+function renderRoundEnd(){
+  const rn=G.roundNo||1, ranked=G.teams.slice().sort((a,b)=>(b.score||0)-(a.score||0)), nd=deckById(G.nextDeck);
+  app.innerHTML=`<div class="wrap">
+    <div class="scard" style="--dc:#d6b26e;--pc:#d6b26e"><div class="label">End of round ${rn} of ${G.nRounds}</div><h2>Scores so far</h2>
+      <ul class="stand" style="width:100%;text-align:left">${ranked.map((t,k)=>`<li style="--pc:${t.color}"><span class="mini">${chSVG(t.char)}</span><span>${k===0?"🏆 ":""}${esc(t.name)}</span><span></span><span>${t.score||0} pts</span></li>`).join("")}</ul></div>
+    <div style="text-align:center"><div class="label">Next up · Round ${rn+1}</div><p class="lede" style="margin:6px 0 0">${G.theme!=="mix"?"Spin the wheel for the next topic":"Spin for every question"}</p></div>
+    <button class="go" id="spin">Start round ${rn+1}</button>
+    <div class="minor"><span></span><span><button id="quit">End game</button></span></div>
+  </div>`;
+  $("spin").onclick=()=>{ if(ON&&!room.isHost()&&!canAct())return; if(G.phase!=="roundEnd")return; G.roundNo=rn+1; G.phase="spin"; G.needTopic=G.theme!=="mix"; save(); render() };
   $("quit").onclick=()=>{G.phase="over";G.ended=true;save();render()};
 }
 /* ---------- winner ---------- */
@@ -3134,7 +3169,7 @@ function oDecorate(){
 }
 // wrap renderers so every screen gets the room bar and watch-mode controls
 {const r0=render,q0=renderQuestion,o0=renderOver;
- render=function(){r0();if(G&&G.phase==="spin")oDecorate()};
+ render=function(){r0();if(G&&(G.phase==="spin"||G.phase==="roundEnd"))oDecorate()};
  renderQuestion=function(){q0();oDecorate()};
  renderOver=function(){o0();oDecorate()};}
 // spin: record the spin so other devices animate it too
@@ -3153,7 +3188,7 @@ function oOnlineBox(){ const box=$("onlineBox"); if(!box)return; if(ON){box.inne
     editing=false; const c=clone(cfg); room.update(s=>{s.cfg=c;s.players.forEach(p=>{if(p.team>=c.teams.length)p.team=0})}); return renderLobby() }
   if(ON){ if(!room.isHost())return; cfg=clone(room.state.cfg); G=null; sg(); return }
   sg() }}
-const roomCfg=()=>({teams:cfg.teams.map(t=>({name:t.name,char:t.char})),decks:cfg.decks.slice(),mode:cfg.mode,timer:cfg.timer,level:cfg.level||"mixed",game:cfg.game||"wheel",len:cfg.len||"standard",rounds:cfg.rounds||10});
+const roomCfg=()=>({teams:cfg.teams.map(t=>({name:t.name,char:t.char})),decks:cfg.decks.slice(),mode:cfg.mode,timer:cfg.timer,level:cfg.level||"mixed",game:cfg.game||"wheel",len:cfg.len||"standard",rounds:cfg.rounds||3,theme:cfg.theme||"deck"});
 function teamFor(s){const c=s.cfg.teams.map((_,i)=>s.players.filter(p=>p.team===i).length);return c.indexOf(Math.min(...c))}
 async function oCreate(name){ room=new Online.Room("quiz"); room.on(oOn); ON=true; await room.create({phase:"lobby",players:[],cfg:roomCfg(),g:null}); await room.addMe(name,{team:0}); Online.setHash(room.code); renderLobby() }
 async function oJoin(code,name){ room=new Online.Room("quiz"); await room.join(code); ON=true; room.on(oOn);
@@ -3173,7 +3208,7 @@ function renderLobby(){
     <div class="panel"><span class="label">Teams</span>
       ${c.teams.map((t,i)=>{const ps=s.players.filter(p=>p.team===i),mine=me&&me.team===i;return `<button class="oteam" data-t="${i}" style="--pc:${COLORS[i]}" aria-pressed="${mine}"><span class="av">${chSVG(t.char)}</span><span><b>${esc(t.name||NAMES[i]+" team")}</b><small>${ps.length?ps.map(p=>esc(p.name)).join(", "):"Nobody yet"}</small></span><em>${mine?"Your team":"Join"}</em></button>`}).join("")}
     </div>
-    <div class="panel"><span class="label">Game · ${GAMES[c.game||"wheel"]}${c.game==="board"?` · ${BOARD_LEN[c.len]||30} squares`:c.game==="score"?` · ${c.rounds||10} questions each`:""}</span><p style="margin:0;color:var(--muted)">${c.decks.map(id=>esc(deckById(id).name)).join(" · ")}</p>
+    <div class="panel"><span class="label">Game · ${GAMES[c.game||"wheel"]}${c.game==="board"?` · ${BOARD_LEN[c.len]||30} squares`:c.game==="score"?` · ${c.rounds||3} round${(c.rounds||3)>1?"s":""} of 5`:""}</span><p style="margin:0;color:var(--muted)">${c.decks.map(id=>esc(deckById(id).name)).join(" · ")}</p>
       <p style="margin:0;color:var(--muted)">${c.mode==="mc"?"Four options":"Open answer, the other teams check it"} · ${({easy:"Easier",mixed:"Mixed",hard:"Harder"})[c.level||"mixed"]} · ${c.timer?c.timer+"s per question":"No time limit"}</p>
       ${host?'<button class="alt" id="oedit">Change teams or decks</button>':""}</div>
     ${host?`<button class="go" id="ostart">Start the quiz</button>`:`<p class="onote">Waiting for the host to start…</p>`}
