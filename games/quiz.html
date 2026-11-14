@@ -2966,9 +2966,14 @@ function spinDone(id){
   ask(id)
 }
 const wheelBlock=(msg,btn)=>`${wheelHTML()}<div class="cat" id="cat" aria-live="polite">${msg}</div><button class="go" id="spin">${btn}</button>`;
+/* fair difficulty: every team's 1st question is the same difficulty, every team's 2nd question, and so on */
+function hardTurn(){ const lv=G.level||"mixed"; if(lv!=="mixed")return lv==="hard";
+  const k=G.teams[G.turn].asked; G.diffs=G.diffs||{};
+  if(G.diffs[k]==null){ const tq=G.decks.reduce((a,id)=>a+deckById(id).q.length,0), th=G.decks.reduce((a,id)=>a+(deckById(id).h||[]).length,0); G.diffs[k]=Math.random()<th/(tq+th||1) }
+  return G.diffs[k] }
 function ask(deckId,forceHard){
-  const d=deckById(deckId), lv=G.level||"mixed", hard=d.h||[];
-  const src=forceHard&&hard.length?hard:lv==="easy"?d.q:lv==="hard"?(hard.length?hard:d.q):d.q.concat(hard);
+  const d=deckById(deckId), hard=d.h||[], wantHard=forceHard||hardTurn();
+  const src=wantHard&&hard.length?hard:d.q;
   G.used[deckId]=(G.used[deckId]||[]).filter(x=>typeof x==="string");
   let pool=src.filter(l=>!G.used[deckId].includes(l.split("|")[0]));
   if(!pool.length){G.used[deckId]=[];pool=src}
