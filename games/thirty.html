@@ -49,6 +49,7 @@ h1 em{font-style:normal;color:var(--sand)}
 /* decks */
 .deck-tools{display:flex;gap:8px;flex-wrap:wrap}
 .deck-tools button{padding:6px 11px;border-radius:999px;background:var(--lane);font-size:13px;font-weight:800;color:var(--sand)}
+.deck-tools button.pAll{background:var(--sand);color:#0b0f17}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chip{padding:7px 11px;border-radius:999px;border:2px solid var(--line);font-size:14px;font-weight:600;color:var(--muted)}
 .chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--board)}
@@ -795,19 +796,18 @@ const DEF_NAMES=["Red","Blue","Green","Gold","Purple","Orange"];
 const DICE=[0,0,1,1,2,2];
 const SPECIAL={double:{ic:"★",name:"Double",msg:"next turn scores double"},lightning:{ic:"⚡",name:"Lightning",msg:"next turn gets half the time"},free:{ic:"◎",name:"Free roll",msg:"next turn skips the die"}};
 const PRESETS={
-  "Everything":()=>P.map(p=>p.id),
   "Family":()=>["animals","kids","cartoons","fairy","toys","food","house","sweets","shapes","sea","birds","farm","fruitveg","parenting","space","transport","noise","emotions","body","weather"],
   "Night out":()=>["pub","slang","irish","drinks","music","movies","tv","comedy","fastfood","dances","idioms","famous","football","rugby","gaa","weddings","retro"],
   "Irish":()=>["irish","dublin","counties","gaa","slang","myths","pub","history","rugby","racing"],
-  "TV & Film":()=>["friends","bbt","disney","marvel","simpsons","movies","tv","heroes","cartoons","comedy"],
+  "TV & Film":()=>["friends","bbt","meangirls","disney","marvel","simpsons","movies","tv","heroes","cartoons","comedy"],
   "Pop culture":()=>["movies","tv","music","famous","heroes","games","cartoons","musicals","books","comedy","apps","brands","retro"],
   "General knowledge":()=>["countries","capitals","landmarks","science","space","history","inventions","nature","weather","instruments","olympics","birds","sea"]
 };
 const $=id=>document.getElementById(id);
 const store={get(k,d){try{const v=localStorage.getItem("tsf2_"+k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem("tsf2_"+k,JSON.stringify(v))}catch(e){}}};
 
-let cfg=Object.assign({teams:[{name:"Red",players:""},{name:"Blue",players:""}],time:30,goal:36,mode:"mix",decks:PRESETS["Everything"](),die:true,special:true,steal:false,snd:true},store.get("cfg",{}));
-cfg.decks=cfg.decks.filter(id=>P.some(p=>p.id===id));
+let cfg=Object.assign({teams:[{name:"Red",players:""},{name:"Blue",players:""}],time:30,goal:36,mode:"mix",decks:[],die:true,special:true,steal:false,snd:true},store.get("cfg",{}));
+cfg.decks=[]; // every visit starts with no decks picked
 let G=null, timer=null, tLeft=0, turnTime=30, phase="", curCard=[], picks=[], wake=null;
 
 /* ---------- feedback ---------- */
@@ -855,9 +855,10 @@ function renderTeams(){
 $("addTeam").onclick=()=>{cfg.teams.push({name:DEF_NAMES[cfg.teams.length],players:"",char:DEF_CHARS[cfg.teams.length%6]});saveCfg();renderTeams();$("tn"+(cfg.teams.length-1)).select()};
 function renderDecks(){
   const pr=$("presets"); pr.innerHTML="";
+  const all=document.createElement("button");all.textContent="Select all";all.className="pAll";all.onclick=()=>{cfg.decks=P.map(p=>p.id);saveCfg();renderDecks()};pr.appendChild(all);
+  const none=document.createElement("button");none.textContent="Clear";none.onclick=()=>{cfg.decks=[];saveCfg();renderDecks()};pr.appendChild(none);
   Object.keys(PRESETS).forEach(k=>{const b=document.createElement("button");b.textContent=k;
     b.onclick=()=>{cfg.decks=PRESETS[k]().filter(id=>P.some(p=>p.id===id));saveCfg();renderDecks()};pr.appendChild(b)});
-  const none=document.createElement("button");none.textContent="Clear";none.onclick=()=>{cfg.decks=[];saveCfg();renderDecks()};pr.appendChild(none);
   const c=$("chips"); c.innerHTML="";
   P.slice().sort((a,b)=>a.name.localeCompare(b.name)).forEach(p=>{const b=document.createElement("button");b.className="chip";b.textContent=p.name;
     b.setAttribute("aria-pressed",String(cfg.decks.includes(p.id)));
@@ -1290,13 +1291,13 @@ function renderLobby(){
     <div class="panel"><span class="label">Teams · tap to join one</span>
       ${c.teams.map((t,i)=>{const ps=s.players.filter(p=>p.team===i),mine=m&&m.team===i;return `<button class="oteam" data-t="${i}" style="--tc:${TEAM_COLORS[i]}" aria-pressed="${mine}"><span class="av">${charSVG(t.char)}</span><span><b>${esc(t.name)}</b><small>${ps.length?ps.map(p=>esc(p.name)).join(", "):"Nobody yet"}</small></span><em>${mine?"Your team":"Join"}</em></button>`}).join("")}
       <p class="hint">Describers rotate through each team's players. Teammates guess without seeing the card. The other teams see it so nobody cheats.</p></div>
-    <div class="panel"><span class="label">Game</span><p class="hint" style="margin:0">${c.time}s turns · board of ${c.goal} · ${c.mode==="mix"?"mixed cards":"themed cards"} · ${c.decks.length} decks${c.die?" · die on":""}${c.special?" · specials":""}${c.steal?" · steals":""}</p>
+    <div class="panel"><span class="label">Game</span><p class="hint" style="margin:0">${c.time}s turns · board of ${c.goal} · ${c.mode==="mix"?"mixed cards":"themed cards"} · ${c.decks.length?c.decks.length+" decks":"<b>no decks picked yet</b>"}${c.die?" · die on":""}${c.special?" · specials":""}${c.steal?" · steals":""}</p>
       ${host?'<button class="alt" id="oedit">Change teams or decks</button>':""}</div>
     ${host?'<button class="go" id="ostart">Start the game</button>':'<p class="hint" style="text-align:center">Waiting for the host to start…</p>'}`;
   oFillBar(); Online.wireShare(room);
   document.querySelectorAll(".oteam").forEach(b=>b.onclick=()=>{const i=+b.dataset.t;room.update(x=>{const p=x.players.find(p=>p.id===Online.myId);if(!p||p.team===i)return false;p.team=i})});
   if($("oedit"))$("oedit").onclick=()=>{editing=true; const c2=clone(room.state.cfg); Object.assign(cfg,c2); initSetup()};
-  if($("ostart"))$("ostart").onclick=()=>$("startGame").onclick();
+  if($("ostart"))$("ostart").onclick=()=>{ if(!(room.state.cfg.decks||[]).length){ $("oedit").onclick(); $("setupErr").textContent="Pick your decks first, or tap Select all."; return } $("startGame").onclick() };
 }
 document.addEventListener("visibilitychange",()=>{ if(!document.hidden&&ON&&room)room.refresh&&room.refresh() });
 function onlineBoot(){ if(!Online.ready())return; const h=(location.hash||"").replace("#","").toUpperCase(), saved=Online.lsGet("room_thirty",null), code=/^[A-Z]{5}$/.test(h)?h:saved; if(!code)return;
