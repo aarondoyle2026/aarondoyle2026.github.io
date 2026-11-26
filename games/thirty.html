@@ -275,7 +275,7 @@ body.has-video .card-top .t{font-size:28px}
 <section id="setup" class="screen"><div class="wrap">
   <a id="backLink" href="./" hidden style="color:var(--muted);font-weight:700;text-decoration:none;font-size:14px">← All games</a>
   <header><h1>Thirty Seconds <em>Flat</em></h1>
-    <p class="lede">Five words, thirty seconds, no saying the word. Roll the die, describe as many as you can, and race round the board.</p></header>
+    <p class="lede">Five words, thirty seconds, no saying the word. Roll the dice, describe as many as you can, and race round the board.</p></header>
   <div class="obar-slot"></div>
   <div id="onlineBox"></div>
   <button class="go" id="resumeBtn" hidden>Resume last game</button>
@@ -301,8 +301,8 @@ body.has-video .card-top .t{font-size:28px}
     <div class="chips" id="chips"></div></div>
 
   <div class="panel">
-    <div class="toggle"><span>Die roll<small>Roll 0, 1 or 2 before each turn. It comes off the score.</small></span><button class="sw" id="dieSw" role="switch" aria-label="Die roll"></button></div>
-    <div class="toggle"><span>Special squares<small>★ doubles your next turn, ⚡ halves your next timer, ◎ skips your next die roll.</small></span><button class="sw" id="spSw" role="switch" aria-label="Special squares"></button></div>
+    <div class="toggle"><span>Dice roll<small>Roll 0, 1 or 2 before each turn. It comes off the score.</small></span><button class="sw" id="dieSw" role="switch" aria-label="Dice roll"></button></div>
+    <div class="toggle"><span>Special squares<small>★ doubles your next turn, ⚡ halves your next timer, ◎ skips your next dice roll.</small></span><button class="sw" id="spSw" role="switch" aria-label="Special squares"></button></div>
     <div class="toggle"><span>Steals<small>Other teams win a space for each missed word they shout at the buzzer.</small></span><button class="sw" id="stealSw" role="switch" aria-label="Steals"></button></div>
     <div class="toggle"><span>Sounds and vibration</span><button class="sw" id="sndSw" role="switch" aria-label="Sounds"></button></div>
   </div>
@@ -794,7 +794,7 @@ const TW={"actions": ["Brushing your hair", "Putting on make-up", "Shaving", "Ta
 const TEAM_COLORS=["#e4776b","#5ba3d9","#6fbf9a","#d9a441","#9b87d6","#d08a5a"];
 const DEF_NAMES=["Red","Blue","Green","Gold","Purple","Orange"];
 const DICE=[0,0,1,1,2,2];
-const SPECIAL={double:{ic:"★",name:"Double",msg:"next turn scores double"},lightning:{ic:"⚡",name:"Lightning",msg:"next turn gets half the time"},free:{ic:"◎",name:"Free roll",msg:"next turn skips the die"}};
+const SPECIAL={double:{ic:"★",name:"Double",msg:"next turn scores double"},lightning:{ic:"⚡",name:"Lightning",msg:"next turn gets half the time"},free:{ic:"◎",name:"Free roll",msg:"next turn skips the dice"}};
 const PRESETS={
   "Family":()=>["animals","kids","cartoons","fairy","toys","food","house","sweets","shapes","sea","birds","farm","fruitveg","parenting","space","transport","noise","emotions","body","weather"],
   "Night out":()=>["pub","slang","irish","drinks","music","movies","tv","comedy","fastfood","dances","idioms","famous","football","rugby","gaa","weddings","retro"],
@@ -900,9 +900,9 @@ function toBoard(moving){
   const needRoll=c.die&&!(eff&&t.effect==="free");
   G.roll=needRoll?null:0;
   $("die").textContent=needRoll?"?":"0"; $("die").classList.toggle("off",!needRoll); $("die").classList.remove("rolling");
-  $("dieText").textContent=!c.die?"Die is off this game.":needRoll?"Roll first. The number comes off this turn's score.":"Free roll: nothing comes off this turn.";
+  $("dieText").textContent=!c.die?"Dice is off this game.":needRoll?"Roll first. The number comes off this turn's score.":"Free roll: nothing comes off this turn.";
   $("turnBtn").disabled=false;
-  $("turnBtn").textContent=needRoll?"Roll the die":"Hand over the phone";
+  $("turnBtn").textContent=needRoll?"Roll the dice":"Hand over the phone";
   renderScores(); renderTrack(); renderLog();
   $("wordCount").textContent=`${G.used.length} words played`;
   $("undoBtn").hidden=!G.hist.length;
@@ -1044,7 +1044,7 @@ function handover(){
   turnTime=t.effect==="lightning"&&G.cfg.special?Math.max(10,Math.round(G.cfg.time/2)):G.cfg.time;
   $("handover").style.setProperty("--tc",t.color);
   $("hoWho").textContent=d||t.name; $("hoChar").innerHTML=charSVG(charOf(t,G.turn));
-  $("hoTxt").textContent=`${d?t.name+" · ":""}${turnTime} seconds${G.roll?` · die ${G.roll}`:""}. Keep the screen away from your team.`;
+  $("hoTxt").textContent=`${d?t.name+" · ":""}${turnTime} seconds${G.roll?` · dice ${G.roll}`:""}. Keep the screen away from your team.`;
   overlay("handover");
 }
 $("hoBack").onclick=()=>overlay(null);
@@ -1109,7 +1109,7 @@ function calc(){
 }
 function updateSum(){
   const {got,dbl,move}=calc();
-  let s=`${got} right`+(G.roll?` − ${G.roll} die`:"")+(dbl?` × 2`:"")+` = <strong>${move}</strong> space${move===1?"":"s"}`;
+  let s=`${got} right`+(G.roll?` − ${G.roll} dice`:"")+(dbl?` × 2`:"")+` = <strong>${move}</strong> space${move===1?"":"s"}`;
   $("eq").innerHTML=s+`<br><small style="color:var(--muted)">Fix any ticks before you move.</small>`;
 }
 $("stopBtn").onclick=()=>timeUp(false);
@@ -1119,7 +1119,7 @@ $("confirmBtn").onclick=()=>{
   const from=t.pos; t.pos+=move; t.turns++; t.got+=got; if(got===5)t.clean++;
   if(d){G.pstats[t.name+"|"+d]=(G.pstats[t.name+"|"+d]||0)+got}
   t.effect=null; t.pi++;
-  G.log.push({color:t.color,text:`${t.name}${d?" ("+d+")":""}: ${got}/5${G.roll?", die "+G.roll:""}, moved ${move} to ${Math.min(t.pos,G.cfg.goal)}`});
+  G.log.push({color:t.color,text:`${t.name}${d?" ("+d+")":""}: ${got}/5${G.roll?", dice "+G.roll:""}, moved ${move} to ${Math.min(t.pos,G.cfg.goal)}`});
   phase="";
   const missed=curCard.filter((c,i)=>!picks[i]).map(c=>c.w);
   if(G.cfg.steal&&missed.length&&G.teams.length>1) return stealScreen(missed,()=>afterMove(t,from));
@@ -1208,7 +1208,7 @@ function oBoardDecor(moving){
     if(oSeenRoll!==G.seq+"|"+G.turn&&!animating){ die.classList.add("rolling"); die.textContent="?"; die.classList.remove("rolling") }
     die.textContent=G.roll; $("dieText").textContent=G.roll===0?"Lucky. Nothing comes off.":`${G.roll} comes off this turn's score.`; }
   oSeenRoll=G.seq+"|"+G.turn;
-  const label=!act?`${t.name} are up`:(needRoll&&G.roll==null)?"Roll the die":"Start the turn. You describe";
+  const label=!act?`${t.name} are up`:(needRoll&&G.roll==null)?"Roll the dice":"Start the turn. You describe";
   if(animating)btnTxt=label; else if(!moving){btn.textContent=label; btn.disabled=!act}
   const names=teamPl(G.turn).map(p=>p.name);
   if(!moving&&names.length)$("upDesc").innerHTML=`${esc(describer(t))} <span>describes${names.length>1?" · "+names.map(esc).join(", "):""}</span>`;
@@ -1291,7 +1291,7 @@ function renderLobby(){
     <div class="panel"><span class="label">Teams · tap to join one</span>
       ${c.teams.map((t,i)=>{const ps=s.players.filter(p=>p.team===i),mine=m&&m.team===i;return `<button class="oteam" data-t="${i}" style="--tc:${TEAM_COLORS[i]}" aria-pressed="${mine}"><span class="av">${charSVG(t.char)}</span><span><b>${esc(t.name)}</b><small>${ps.length?ps.map(p=>esc(p.name)).join(", "):"Nobody yet"}</small></span><em>${mine?"Your team":"Join"}</em></button>`}).join("")}
       <p class="hint">Describers rotate through each team's players. Teammates guess without seeing the card. The other teams see it so nobody cheats.</p></div>
-    <div class="panel"><span class="label">Game</span><p class="hint" style="margin:0">${c.time}s turns · board of ${c.goal} · ${c.mode==="mix"?"mixed cards":"themed cards"} · ${c.decks.length?c.decks.length+" decks":"<b>no decks picked yet</b>"}${c.die?" · die on":""}${c.special?" · specials":""}${c.steal?" · steals":""}</p>
+    <div class="panel"><span class="label">Game</span><p class="hint" style="margin:0">${c.time}s turns · board of ${c.goal} · ${c.mode==="mix"?"mixed cards":"themed cards"} · ${c.decks.length?c.decks.length+" decks":"<b>no decks picked yet</b>"}${c.die?" · dice on":""}${c.special?" · specials":""}${c.steal?" · steals":""}</p>
       ${host?'<button class="alt" id="oedit">Change teams or decks</button>':""}</div>
     ${host?'<button class="go" id="ostart">Start the game</button>':'<p class="hint" style="text-align:center">Waiting for the host to start…</p>'}`;
   oFillBar(); Online.wireShare(room);
